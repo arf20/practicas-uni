@@ -1,0 +1,42 @@
+\documentclass{amsart}
+\usepackage{sagetex}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+\newtheorem{ejer}{Ejercicio}
+\newtheorem{defn}{Definición}
+\newtheorem{prop}{Proposición}
+\newtheorem{ejem}{Ejemplo}
+
+\def\n{\mathbb{N}}
+\def\r{\mathbb{R}}
+\def\z{\mathbb{Z}}
+\def\q{\mathbb{Q}}
+
+
+\title{Ejemplo SageTeX}
+
+
+
+\begin{document}
+	
+	\begin{ejer}
+	\maketitle
+	
+	Definir matrices $A$ y $B$
+	
+	\begin{sageblock}
+		A = matrix(QQ, [[1,2,3],[4,5,6]])
+		show(A)
+	\end{sageblock}
+
+	$$
+		\sage{A}
+	$$
+
+	
+	
+	\end{ejer}	
+
+\end{document}
+
+
