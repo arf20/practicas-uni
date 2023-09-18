@@ -50,13 +50,13 @@ except:
 _st_.current_tex_line = 92
 _st_.blockbegin()
 try:
- C = matrix(Zmod(5), [[3, 2, 1, 4], [4, 4, 3, 3], [2, 5, 1, 5], [3, 2, 0, 1]])
+ A = matrix(Zmod(5), [[3, 2, 1, 4], [4, 4, 3, 3], [2, 5, 1, 5], [3, 2, 0, 1]])
 except:
  _st_.goboom(94)
 _st_.blockend()
 try:
- _st_.current_tex_line = 96
- _st_.inline(6, latex(C.inverse()))
+ _st_.current_tex_line = 98
+ _st_.inline(6, latex(A.echelon_form()))
 except:
- _st_.goboom(96)
+ _st_.goboom(98)
 _st_.endofdoc()

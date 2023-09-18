@@ -1,0 +1,37 @@
+\documentclass{amsart}
+\usepackage{sagetex}
+\newtheorem{ejercicio}{Ejercicio}
+
+\begin{document}
+
+\begin{ejercicio}
+Calcula la matriz inversa de la matriz 
+$A = \left(\begin{array}{ccc} 1 & 2 & 1/2 \\ 3 & 1 & 0 \\ 2 & 3 & 1 \end{array}\right)$ 
+definida sobre el cuerpo de los números racionales. 
+\end{ejercicio}
+{\it Solución.}
+
+% Escribe aquí la solución a tu ejercicio
+
+\begin{sageblock}
+	A = matrix(QQ, [[1, 2, 1/2], [3, 1, 0], [2, 3, 1]])
+	Ap = A.augment(matrix.identity(3), subdivide=True)
+	Apr = Ap.echelon_form()
+\end{sageblock}
+
+La matriz ampliada por la identidad
+$$
+	[A|I] = \sage{Ap}
+$$
+reducida es
+$$
+	\sage{Apr} = [I|P]
+$$
+la identidad, por tanto A es invertible, y es
+$$
+	\sage{A.inverse()}
+$$
+
+% Fin del ejercicio
+
+\end{document}

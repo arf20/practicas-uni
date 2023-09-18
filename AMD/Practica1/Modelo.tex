@@ -37,11 +37,11 @@ sobre el cuerpo de los racionales $\q$, realizar las siguientes operaciones: $2\
 % Escribe tu soluci\'on para el Ejercicio 1
 
 \begin{sageblock}
-A = matrix(QQ, [[2, 5, -3], [-1, 2, 11]])
-B = matrix(QQ, [[-1, 2, 11], [2, 4, -7]])
+	A = matrix(QQ, [[2, 5, -3], [-1, 2, 11]])
+	B = matrix(QQ, [[-1, 2, 11], [2, 4, -7]])
 \end{sageblock}
 
-$2 * A$ es $\sage{2 * A}$, $A + B$ es $\sage{A + B}$, $3 * A$ es $\sage{3 * A}$, y $A * B^T$ es $\sage{A * B.T}$
+$2 A$ es $$\sage{2 * A}$$ $A + B$ es $$\sage{A + B}$$ $3 A$ es $$\sage{3 * A}$$ y $A B^T$ es $$\sage{A * B.T}$$
 
 % Fin del Ejercicio 1
 
@@ -67,9 +67,9 @@ sobre el cuerpo $\z _{13}$. Se pide:
 	C = matrix(QQ, [[-5, 2, -2, 1, 3], [1, 2, -3, 2, -1], [2, -3, 1, -4, 2]])
 \end{sageblock}
 
-La matriz reducida de $C$ es $\sage{C.echelon_form()}$
+La matriz reducida de $C$ es $$\sage{C.echelon_form()}$$
 
-Las ultimas dos columnas de $C$ reducida son $\sage{C.echelon_form()[:, 3:]}$
+Las ultimas dos columnas de $C$ reducida son $$\sage{C.echelon_form()[:, 3:]}$$
 
 % Fin del Ejercicio 2
 
@@ -90,11 +90,14 @@ sobre $\z _5$, encuentra si es posible su inversa.
 % Escribe tu soluci\'on para el Ejercicio 3
 
 \begin{sageblock}
-	C = matrix(Zmod(5), [[3, 2, 1, 4], [4, 4, 3, 3], [2, 5, 1, 5], [3, 2, 0, 1]])
+	A = matrix(Zmod(5), [[3, 2, 1, 4], [4, 4, 3, 3], [2, 5, 1, 5], [3, 2, 0, 1]])
 \end{sageblock}
 
-La inversa en $\z_5$ existe y es $\sage{C.inverse()}$
-
+La matriz de $A$ reducida es
+$$
+	\sage{A.echelon_form()} = I
+$$
+por tanto A es inversible
 
 % Fin del Ejercicio 3
 

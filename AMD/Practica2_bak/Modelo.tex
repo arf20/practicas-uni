@@ -1,0 +1,373 @@
+\documentclass{amsart}
+\usepackage{sagetex}
+\usepackage[utf8]{inputenc}
+\newtheorem{ejer}{Ejercicio}
+
+\def\n{\mathbb{N}}
+\def\r{\mathbb{R}}
+\def\z{\mathbb{Z}}
+\def\q{\mathbb{Q}}
+\def\c{\mathbb{C}}
+
+\begin{document}
+\begin{center}
+\textrm{ \bf {AMD Curso 2023-2024}}
+\vskip 0.3cm
+\textrm{ \bf {Prácticas Semana 2} }
+\end{center}
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\r $ :
+\[ x_{1} - x_{2} - 5 x_{3} - 5 x_{4} = 6 \]
+\[ -x_{1} - x_{2} + 2 x_{3} + x_{4} = 1 \]
+\[ -x_{2} - 2 x_{3} - 3 x_{4} = 5 \]
+\[ x_{4} = -2 \]
+\end{ejer}
+
+{\it Soluci\'on.-}
+% Inicio del ejercicio 1
+\begin{sageblock}
+A = matrix(QQ,[[1,-1,-5,-5],[-1,-1,2,1],[0,-1,-2,-3],[0,0,0,1]])
+B = matrix(QQ,[[6],[1],[5],[-2]])
+Ap = A.augment(B, subdivide=True)
+\end{sageblock}
+
+$$
+	A = \sage{A}
+$$
+$$
+	A' = \sage{Ap}
+$$
+
+$rg(A) = \sage{A.rank()} = rg(A') = \sage{Ap.rank()} = A_{rows} = 4$, por tanto es un sistema compatile determinado cuya solución es
+
+$$
+	\sage{A.solve_right(B)}
+$$
+o $x_1 = 0$, $x_2 = -1$, $x_3 = 1$ y $x_4 = -2$
+
+% fin del ejercicio 1
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\r $ :
+\[ 2 x_{1} - x_{2} = 8 \]
+\[ x_{1} - x_{3} = -3 \]
+\[ x_{2} = -5 \]
+\[ x_{1} = 2 \]
+\[ x_{3} = 8 \]
+\end{ejer}
+
+{\it Soluci\'on.-}
+% Inicio del ejercicio 2
+\begin{sageblock}
+A = matrix(QQ,[[2,-1,0],[1,0,-1],[0,1,0],[1,0,0],[0,0,1]])
+B = matrix(QQ,[[8],[-3],[-5],[2],[8]])
+Ap = A.augment(B, subdivide=True)
+\end{sageblock}
+
+$$
+A = \sage{A}
+$$
+$$
+A' = \sage{Ap}
+$$
+
+$rg(A) = \sage{A.rank()} \not= rg(A') = \sage{Ap.rank()} \not= A_{rows} = 5$, por tanto es un sistema incompatible sin solución.
+
+
+
+% Fin del ejercicio 2
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\z _7$ :
+\[ 3x_{1} + x_{2} + 3x_{3} + 5x_{4} + 2x_{5} = 3 \]
+\[ 3x_{3} + 3x_{4} + x_{5} = 1 \]
+\[ 4x_{5} = 12 \]
+
+\end{ejer}
+
+{\it Soluci\'on.-}
+
+% Inicio del ejercicio 3
+
+\begin{sageblock}
+A=matrix(Zmod(7),[[3,1,3,5,2],[0,0,3,3,1],[0,0,0,0,4]])
+B=matrix(Zmod(7),[[3],[1],[12]])
+Ap = A.augment(B, subdivide=True)
+\end{sageblock}
+
+$$
+A = \sage{A}
+$$
+$$
+A' = \sage{Ap}
+$$
+
+$rg(A) = \sage{A.rank()} = rg(A') = \sage{Ap.rank()} = A_{rows} = 3$, por tanto es un sistema compatile determinado cuya solución es
+$$
+\sage{A.solve_right(B)}
+$$
+es decir $x_1 = 2$, $x_1 = 0$, $x_1 = 4$, $x_1 = 0$, $x_1 = 3$
+
+% Fin del ejercicio 3
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\r $:
+\[ -x_{2} + 3 x_{3} = 3 \]
+\[ x_{1} - 2 x_{2} + 5 x_{3} = 3 \]
+\[ x_{1} - 3 x_{2} + 9 x_{3} = 7 \]
+\[ x_{1} - 2 x_{2} + 3 x_{3} = 1 \]
+\[ 2 x_{1} - 3 x_{2} + 9 x_{3} = 5 \]
+\end{ejer}
+
+{\it Soluci\'on.-}
+% Inicio del ejercicio 4
+
+\begin{sageblock}
+A = matrix(QQ,[[0,-1,3],[1,-2,5],[1,-3,9],[1,-2,3],[2,-3,9]])
+B = matrix(QQ,[[3],[3],[7],[1],[5]])
+Ap = A.augment(B, subdivide=True)
+sol = A.solve_right(B)
+\end{sageblock}
+
+$$
+	A = \sage{A}
+$$
+$$
+	A' = \sage{Ap}
+$$
+
+La matriz ampliada reducida forma identidad, por tanto es un sistema compatible determinado
+$$
+	\sage{Ap.echelon_form()}
+$$
+
+Y la solución resulta
+$$
+	\sage{A.solve_right(B)}
+$$
+
+% Fin del ejercicio 4
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\r $:
+\[ x_{1} - x_{2} + x_{3} + 2 x_{4} = 2 \]
+\[ x_{2} - 2 x_{3} - 5 x_{4} = -1 \]
+\[ x_{2} - x_{3} - 2 x_{4} = 0 \]
+\end{ejer}
+
+{\it Soluci\'on.-}
+% Inicio del ejercicio 5
+
+\begin{sageblock}
+A = matrix(QQ,[[1,-1,1,2],[0,1,-2,-5],[0,1,-1,-2]])
+B = matrix(QQ,[[2],[-1],[0]])
+
+\end{sageblock}
+
+
+% Fin del ejercicio 5
+
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\z _5$:
+\[ 0 = 0 \]
+\[ x_{1} + 3 x_{2} + 2 x_{3} = 0 \]
+\[ -x_{1} + x_{2} + x_{3} = 1 \]
+\[ -x_{1} + 3 x_{2} = 3 \]
+\[ -x_{1} + 3 x_{2} = 0 \]
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 6
+
+
+\begin{sageblock}
+A = matrix(Zmod(5),[[0,0,0],[1,3,2],[4,1,1],[4,3,0],[4,3,0]])
+B = matrix(Zmod(5),[[0],[0],[1],[3],[0]])
+
+\end{sageblock}
+
+
+
+% Fin del ejercicio 6
+
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\z _5$:
+\[ x_{1} - x_{2} + 3 x_{4} = 0 \]
+\[ x_{2} - x_{4} = 3 \]
+\[ 2 x_{1} + 2 x_{2} + x_{3} + 2 x_{4} = 4 \]
+\[ 2 x_{1} + 2 x_{2} + 3 x_{3} + 3 x_{4} = 3 \]
+\[ 2 x_{1} + 2 x_{2} + 3 x_{3} = 3 \]
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 7
+
+\begin{sageblock}
+A = matrix(Zmod(5),[[1,4,0,3],[0,1,0,4],[2,2,1,2],[2,2,3,3],[2,2,3,0]])
+B = matrix(Zmod(5),[[0],[3],[4],[3],[3]])
+
+\end{sageblock}
+
+
+
+
+% Fin del ejercicio 7
+
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\z _{11}$:
+\[ 2x_{1} - x_{2} + x_{3} + x_{4} = 1 \]
+\[ 2x_{1} + x_{} - x_{4} = 2 \]
+\[ x_{2} + 2x_{3} + 3x_{4} = 0 \]
+\end{ejer}
+{\it Soluci\'on.- }
+% Inicio del ejercicio 8
+
+\begin{sageblock}
+A=matrix(Zmod(11),[[2,-1,1,1],[2,1,0,-1],[0,1,2,3]])
+B=matrix(Zmod(11),[1,2,0])
+
+\end{sageblock}
+
+
+
+
+% Fin del ejercicio 8
+
+
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\z _7$:
+\[ x_{1} + x_{3} - x_{4} = 2 \]
+\[ -x_{1} + x_{2} - x_{3} + x_{4} = 2 \]
+\[ x_{2} + x_{3} - x_{4} = 2 \]
+\[ x_{1} - x_{3} - x_{4} = 2 \]
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 9
+
+\begin{sageblock}
+A = matrix(Zmod(7),[[1,0,1,2],[2,1,2,1],[0,1,1,2],[1,0,2,2]])
+B = matrix(Zmod(7),[[2],[2],[2],[2]])
+
+\end{sageblock}
+
+
+
+
+
+% Fin del ejercicio 9
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\r $:
+\[ -x_{1} - 5x_{3} + x_{6} = -1 \]
+\[ 3x_{1} + x_{2} - x_{3} + x_{5} = 0 \]
+\[ -2x_{1} + x_{4} = 3 \]
+
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 10
+
+\begin{sageblock}
+A=matrix(QQ,[[-1,0,-5,0,0,1],[3,1,1,0,1,0],[-2,0,0,1,0,0]])
+B=matrix(QQ,[-1,0,3])
+
+\end{sageblock}
+
+
+
+
+
+% Fin del ejercicio 10
+
+
+\begin{ejer} Encuentra cuando sea posible la inversa de la matriz
+
+\[ \left( \begin{array}{ccc}
+2 & 3 & 1 \\
+1 & 4 & 3 \\
+2 & 5 & 1 \end{array} \right) \ \hbox{ en} \  \z _{2}. \] 
+
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 11
+
+\begin{sageblock}
+A=matrix(Zmod(2),[[2,3,1],[1,4,3],[2,5,1]])
+\end{sageblock}
+
+
+
+% Fin del ejercicio 11
+
+\begin{ejer} Encuentra cuando sea posible la inversa de la matriz
+
+\[ \left( \begin{array}{cc}
+1 & 2 \\
+3 & 4 \end{array} \right) \ \hbox{en} \ \z _{7}. \]
+
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 12
+
+\begin{sageblock}
+A=matrix(Zmod(7),[[1,2],[3,4]])
+\end{sageblock}
+
+
+
+% Fin del ejercicio 12
+
+\begin{ejer} Encuentra cuando sea posible la inversa de la matriz
+
+\[ \left( \begin{array}{cccc}
+1 & 2 & 3 \\
+4 & 6 & 0 \\
+3 & 0 & 0  \end{array} \right) \ \hbox{en} \ \z _{5}. \]
+
+\end{ejer}
+{\bf Solución.-}
+% Inicio del ejercicio 13
+
+\begin{sageblock}
+A=matrix(Zmod(5),[[1,2,3],[4,6,0],[3,0,0]])
+\end{sageblock}
+
+
+% Fin del ejercicio 13
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

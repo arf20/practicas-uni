@@ -34,9 +34,9 @@
 \end{array}\right)}{}{}{}{}}
 \newlabel{@sageinline6}{{%
 \left(\begin{array}{rrrr}
-3 & 1 & 4 & 0 \\
-1 & 4 & 2 & 4 \\
-4 & 3 & 3 & 0 \\
-4 & 4 & 4 & 3
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
 \end{array}\right)}{}{}{}{}}
-%bbf8a5cb41edd1602771bc2ed783b036% md5sum of corresponding .sage file (minus "goboom", "current_tex_line", and pause/unpause lines)
+%53c5dd9ac14bd986b8a9d3190760a0c3% md5sum of corresponding .sage file (minus "goboom", "current_tex_line", and pause/unpause lines)

@@ -1,0 +1,499 @@
+\documentclass{amsart}
+\usepackage{sagetex}
+\usepackage[utf8]{inputenc}
+\newtheorem{ejer}{Ejercicio}
+
+\def\n{\mathbb{N}}
+\def\r{\mathbb{R}}
+\def\z{\mathbb{Z}}
+\def\q{\mathbb{Q}}
+\def\c{\mathbb{C}}
+
+\begin{document}
+\begin{center}
+\textrm{ \bf {AMD Curso 2023-2024}}
+\vskip 0.3cm
+\textrm{ \bf {Prácticas Semana 2} }
+\end{center}
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\r $ :
+\[ x_{1} - x_{2} - 5 x_{3} - 5 x_{4} = 6 \]
+\[ -x_{1} - x_{2} + 2 x_{3} + x_{4} = 1 \]
+\[ -x_{2} - 2 x_{3} - 3 x_{4} = 5 \]
+\[ x_{4} = -2 \]
+\end{ejer}
+
+{\it Soluci\'on.-}
+% Inicio del ejercicio 1
+\begin{sageblock}
+A = matrix(QQ,[[1,-1,-5,-5],[-1,-1,2,1],[0,-1,-2,-3],[0,0,0,1]])
+B = matrix(QQ,[[6],[1],[5],[-2]])
+Ap = A.augment(B, subdivide=True)
+R = Ap.echelon_form()
+S = R[:, 4:]
+\end{sageblock}
+
+$$
+	A = \sage{A}
+$$
+$$
+	B = \sage{B}
+$$
+$$
+	A' = [A|B] = \sage{Ap}
+$$
+$$
+	R = \sage{R} = [I|S]
+$$
+La matriz $A$ reducida es la identidad por tanto el Sistema es Compatible Determinado, por tanto la solución S es
+$$
+	S = \sage{S}
+$$
+es decir
+\begin{align*}
+	x_1 &= \sage{S[0, 0]} \\
+	x_2 &= \sage{S[1, 0]} \\
+	x_3 &= \sage{S[2, 0]} \\ 
+	x_4 &= \sage{S[3, 0]}
+\end{align*}
+
+% fin del ejercicio 1
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\r $ :
+\[ 2 x_{1} - x_{2} = 8 \]
+\[ x_{1} - x_{3} = -3 \]
+\[ x_{2} = -5 \]
+\[ x_{1} = 2 \]
+\[ x_{3} = 8 \]
+\end{ejer}
+
+{\it Soluci\'on.-}
+% Inicio del ejercicio 2
+\begin{sageblock}
+A = matrix(QQ,[[2,-1,0],[1,0,-1],[0,1,0],[1,0,0],[0,0,1]])
+B = matrix(QQ,[[8],[-3],[-5],[2],[8]])
+Ap = A.augment(B, subdivide=True)
+R = Ap.echelon_form()
+\end{sageblock}
+
+$$
+	A' = [A|B] = \sage{Ap}
+$$
+$$
+	R = \sage{R}
+$$
+En la cuarta fila de la matriz aumentada reducida, $0=1$ es un absurdo, por tanto esto es un Sistema Incompatible.
+
+
+% Fin del ejercicio 2
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\z _7$ :
+\[ 3x_{1} + x_{2} + 3x_{3} + 5x_{4} + 2x_{5} = 3 \]
+\[ 3x_{3} + 3x_{4} + x_{5} = 1 \]
+\[ 4x_{5} = 12 \]
+
+\end{ejer}
+
+{\it Soluci\'on.-}
+
+% Inicio del ejercicio 3
+
+\begin{sageblock}
+A=matrix(Zmod(7),[[3,1,3,5,2],[0,0,3,3,1],[0,0,0,0,4]])
+B=matrix(Zmod(7),[3,1,12]).T
+Ap = A.augment(B, subdivide=True)
+R = Ap.echelon_form()
+\end{sageblock}
+
+$$
+	A' = [A|B] = \sage{Ap}
+$$
+$$
+	R = \sage{R}
+$$
+La matriz aumentada reducida no tiene identidad, y no contiene absurdos, por tanto debe ser un Sistema Compatible Indeterminado:
+
+\begin{align*}
+	x_1 + 5 x_2 + 3 x_4 &= 2 \\
+	x_3 + x_4 &= 4 \\
+	x_5 &= 3 \\ 
+\end{align*}
+
+Que parametrizando quedan dos parametros libres
+\begin{align*}
+	x_1 &= 2 - 3 \alpha - 5 \beta \\
+	x_2 &= \beta \\
+	x_3 &= 4 - \alpha \\
+	x_4 &= \alpha \\
+	x_5 &= 3
+\end{align*}
+
+% Fin del ejercicio 3
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\r $:
+\[ -x_{2} + 3 x_{3} = 3 \]
+\[ x_{1} - 2 x_{2} + 5 x_{3} = 3 \]
+\[ x_{1} - 3 x_{2} + 9 x_{3} = 7 \]
+\[ x_{1} - 2 x_{2} + 3 x_{3} = 1 \]
+\[ 2 x_{1} - 3 x_{2} + 9 x_{3} = 5 \]
+\end{ejer}
+
+{\it Soluci\'on.-}
+% Inicio del ejercicio 4
+
+\begin{sageblock}
+A = matrix(QQ,[[0,-1,3],[1,-2,5],[1,-3,9],[1,-2,3],[2,-3,9]])
+B = matrix(QQ,[[3],[3],[7],[1],[5]])
+Ap = A.augment(B, subdivide=True)
+R = Ap.echelon_form()
+\end{sageblock}
+
+$$
+	A' = [A|B] = \sage{Ap}
+$$
+$$
+	R = \sage{R}
+$$
+La matriz de A reducida queda como identidad, y las filas extra no son absurdos, por tanto esto es un SCD, cuya solución es
+\begin{align*}
+	x_1 &= -2 \\
+	x_2 &= 0 \\
+	x_3 &= 1 \\
+\end{align*}
+
+% Fin del ejercicio 4
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\r $:
+\[ x_{1} - x_{2} + x_{3} + 2 x_{4} = 2 \]
+\[ x_{2} - 2 x_{3} - 5 x_{4} = -1 \]
+\[ x_{2} - x_{3} - 2 x_{4} = 0 \]
+\end{ejer}
+
+{\it Soluci\'on.-}
+% Inicio del ejercicio 5
+
+\begin{sageblock}
+A = matrix(QQ,[[1,-1,1,2],[0,1,-2,-5],[0,1,-1,-2]])
+B = matrix(QQ,[[2],[-1],[0]])
+Ap = A.augment(B, subdivide=True)
+R = Ap.echelon_form()
+\end{sageblock}
+
+$$
+A' = [A|B] = \sage{Ap}
+$$
+$$
+R = \sage{R}
+$$
+Es SCI:
+\begin{align*}
+	x_1 &= 2 \\
+	x_2 + x_4   &= 1 \\
+	x_3 + 3 x_4 &= 1 \\
+\end{align*}
+
+\begin{align*}
+	x_1 &= 2 \\
+	x_2 &= 1 - \alpha \\
+	x_3 &= 1 - 3 \alpha \\
+	x_4 &= \alpha
+\end{align*}
+
+% Fin del ejercicio 5
+
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\z _5$:
+\[ 0 = 0 \]
+\[ x_{1} + 3 x_{2} + 2 x_{3} = 0 \]
+\[ -x_{1} + x_{2} + x_{3} = 1 \]
+\[ -x_{1} + 3 x_{2} = 3 \]
+\[ -x_{1} + 3 x_{2} = 0 \]
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 6
+
+
+\begin{sageblock}
+A = matrix(Zmod(5),[[0,0,0],[1,3,2],[4,1,1],[4,3,0],[4,3,0]])
+B = matrix(Zmod(5),[[0],[0],[1],[3],[0]])
+Ap = A.augment(B, subdivide=True)
+R = Ap.echelon_form()
+\end{sageblock}
+
+$$
+A' = [A|B] = \sage{Ap}
+$$
+$$
+R = \sage{R}
+$$
+
+$0=0$ es un absurdo por tanto es SI.
+% Fin del ejercicio 6
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\z _5$:
+\[ x_{1} - x_{2} + 3 x_{4} = 0 \]
+\[ x_{2} - x_{4} = 3 \]
+\[ 2 x_{1} + 2 x_{2} + x_{3} + 2 x_{4} = 4 \]
+\[ 2 x_{1} + 2 x_{2} + 3 x_{3} + 3 x_{4} = 3 \]
+\[ 2 x_{1} + 2 x_{2} + 3 x_{3} = 3 \]
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 7
+
+\begin{sageblock}
+A = matrix(Zmod(5),[[1,4,0,3],[0,1,0,4],[2,2,1,2],[2,2,3,3],[2,2,3,0]])
+B = matrix(Zmod(5),[[0],[3],[4],[3],[3]])
+Ap = A.augment(B, subdivide=True)
+R = Ap.echelon_form()
+\end{sageblock}
+
+$$
+A' = [A|B] = \sage{Ap}
+$$
+$$
+R = \sage{R}
+$$
+La matriz reducida resulta la identidad sin absurdos y por tanto es SCD:
+\begin{align*}
+	x_1 &= 3 \\
+	x_2 &= 3 \\
+	x_3 &= 2 \\
+	x_4 &= 0
+\end{align*}
+
+% Fin del ejercicio 7
+
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\z _{11}$:
+\[ 2x_{1} - x_{2} + x_{3} + x_{4} = 1 \]
+\[ 2x_{1} + x_{} - x_{4} = 2 \]
+\[ x_{2} + 2x_{3} + 3x_{4} = 0 \]
+\end{ejer}
+{\it Soluci\'on.- }
+% Inicio del ejercicio 8
+
+\begin{sageblock}
+A=matrix(Zmod(11),[[2,-1,1,1],[2,1,0,-1],[0,1,2,3]])
+B=matrix(Zmod(11),[1,2,0]).T
+Ap = A.augment(B, subdivide=True)
+R = Ap.echelon_form()
+\end{sageblock}
+
+$$
+A' = [A|B] = \sage{Ap}
+$$
+$$
+R = \sage{R}
+$$
+
+Matriz reducida es parte identidad sin absurdos, SCI, parametrización:
+\begin{align*}
+	x_1 &= 3 - 4 \alpha \\
+	x_2 &= 7 - 2 \alpha \\
+	x_3 &= 2 - 6 \alpha \\
+	x_4 &= \alpha
+\end{align*}
+
+% Fin del ejercicio 8
+
+
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\z _7$:
+\[ x_{1} + x_{3} - x_{4} = 2 \]
+\[ -x_{1} + x_{2} - x_{3} + x_{4} = 2 \]
+\[ x_{2} + x_{3} - x_{4} = 2 \]
+\[ x_{1} - x_{3} - x_{4} = 2 \]
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 9
+
+\begin{sageblock}
+A = matrix(Zmod(7),[[1,0,1,2],[2,1,2,1],[0,1,1,2],[1,0,2,2]])
+B = matrix(Zmod(7),[[2],[2],[2],[2]])
+Ap = A.augment(B, subdivide=True)
+R = Ap.echelon_form()
+\end{sageblock}
+
+$$
+A' = [A|B] = \sage{Ap}
+$$
+$$
+R = \sage{R}
+$$
+Matriz reducida es identidad, SCD:
+\begin{align*}
+	x_1 &= 6 \\
+	x_2 &= 6 \\
+	x_3 &= 0 \\
+	x_4 &= 5
+\end{align*}
+
+% Fin del ejercicio 9
+
+\begin{ejer} Estudia y resuelve si es posible el siguiente sistema de ecuaciones sobre $\r $:
+\[ -x_{1} - 5x_{3} + x_{6} = -1 \]
+\[ 3x_{1} + x_{2} - x_{3} + x_{5} = 0 \]
+\[ -2x_{1} + x_{4} = 3 \]
+
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 10
+
+\begin{sageblock}
+A=matrix(QQ,[[-1,0,-5,0,0,1],[3,1,1,0,1,0],[-2,0,0,1,0,0]])
+B=matrix(QQ,[-1,0,3]).T
+Ap = A.augment(B, subdivide=True)
+R = Ap.echelon_form()
+\end{sageblock}
+
+$$
+A' = [A|B] = \sage{Ap}
+$$
+$$
+R = \sage{R}
+$$
+La matriz reducida es en parte identidad por tanto SCI, parametrización:
+
+\begin{align*}
+	x_1 &= -\frac{3}{2} + \frac{1}{2} \gamma \\
+	x_2 &= 4 - \frac{7}{5} \gamma - \beta - \frac{1}{5} \alpha \\
+	x_3 &= \frac{1}{2} - \frac{1}{10} \gamma + \frac{1}{5} \alpha \\
+	x_4 &= \gamma \\
+	x_5 &= \beta \\
+	x_6 &= \alpha
+\end{align*}
+
+
+% Fin del ejercicio 10
+
+
+\begin{ejer} Encuentra cuando sea posible la inversa de la matriz
+
+\[ \left( \begin{array}{ccc}
+2 & 3 & 1 \\
+1 & 4 & 3 \\
+2 & 5 & 1 \end{array} \right) \ \hbox{ en} \  \z _{2}. \] 
+
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 11
+
+\begin{sageblock}
+A=matrix(Zmod(2),[[2,3,1],[1,4,3],[2,5,1]])
+AI = A.augment(matrix.identity(3), subdivide=True)
+R = AI.echelon_form()
+\end{sageblock}
+
+$$
+[A|I] = \sage{AI}
+$$
+$$
+R = \sage{R}
+$$
+La matriz reducida de $[A|I]$ no queda como identidad por tanto no es invertible (regular)
+
+% Fin del ejercicio 11
+
+\begin{ejer} Encuentra cuando sea posible la inversa de la matriz
+
+\[ \left( \begin{array}{cc}
+1 & 2 \\
+3 & 4 \end{array} \right) \ \hbox{en} \ \z _{7}. \]
+
+\end{ejer}
+
+{\it Soluci\'on.- }
+% Inicio del ejercicio 12
+
+\begin{sageblock}
+A=matrix(Zmod(7),[[1,2],[3,4]])
+AI = A.augment(matrix.identity(2), subdivide=True)
+R = AI.echelon_form()
+\end{sageblock}
+
+$$
+[A|I] = \sage{AI}
+$$
+$$
+R = \sage{R}
+$$
+La matriz reducida de $[A|I]$ queda $[I|A^{-1}]$, así que $A^{-1}$ es
+$$
+A^{-1} = \sage{R[:, 2:]}
+$$
+
+% Fin del ejercicio 12
+
+\begin{ejer} Encuentra cuando sea posible la inversa de la matriz
+
+\[ \left( \begin{array}{cccc}
+1 & 2 & 3 \\
+4 & 6 & 0 \\
+3 & 0 & 0  \end{array} \right) \ \hbox{en} \ \z _{5}. \]
+
+\end{ejer}
+{\bf Solución.-}
+% Inicio del ejercicio 13
+
+\begin{sageblock}
+A=matrix(Zmod(5),[[1,2,3],[4,6,0],[3,0,0]])
+AI = A.augment(matrix.identity(3), subdivide=True)
+R = AI.echelon_form()
+\end{sageblock}
+
+$$
+[A|I] = \sage{AI}
+$$
+$$
+R = \sage{R}
+$$
+La matriz reducida de $[A|I]$ queda $[I|A^{-1}]$, así que $A^{-1}$ es
+$$
+A^{-1} = \sage{R[:, 3:]}
+$$
+
+% Fin del ejercicio 13
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
