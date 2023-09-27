@@ -1,0 +1,143 @@
+\documentclass{amsart}
+\usepackage{sagetex}
+\usepackage[utf8]{inputenc}
+\newtheorem{ejer}{Ejercicio}
+
+\def\n{\mathbb{N}}
+\def\r{\mathbb{R}}
+\def\z{\mathbb{Z}}
+\def\q{\mathbb{Q}}
+\def\c{\mathbb{C}}
+
+\begin{document}
+\begin{center}
+\textrm{ \bf {AMD Curso 2023-2024}}
+\vskip 0.3cm
+\textrm{ \bf {Tarea Semana 3} }
+\end{center}
+
+\begin{sagesilent}
+set_random_seed(23836) # Cambia este número por las 5 primeras cifras de tu DNI o NIE
+
+n1 = ZZ.random_element(2^30)
+x1 = ZZ.random_element(n1)
+while(gcd(x1,n1)!=1):
+  x1 = ZZ.random_element(n1)
+a2 = ZZ.random_element(2^15)
+b2 = ZZ.random_element(2^15)
+m2 = gcd(a2,b2)*ZZ.random_element(2^10)
+p3 = ZZ.random_element(2^20).next_prime()
+m31 = p3*ZZ.random_element(2^15)
+m32 = p3*ZZ.random_element(2^15)
+g3 = gcd(m31,m32)
+n3 = ZZ.random_element(m31*m32)
+a3 = Zmod(m31)(n3)
+b3 = Zmod(m32)(n3)
+\end{sagesilent}
+
+
+\vskip 1cm
+
+\begin{ejer}  Calcula, usando la reducción de matrices, el inverso de $\sage{x1}$ en $\z_{\sage{n1}}$ .
+
+\end{ejer}
+{\it Solución.-}
+
+% Escribe tu soluci\'on para el Ejercicio 1
+
+\begin{sageblock}
+	A = matrix(ZZ, [[x1], [n1]])
+	Ap = block_matrix([[A, 1]])
+	Ar = Ap.echelon_form()
+	Ar = copy(Ar)
+	Ar.subdivide([], 1)
+	S = Ar.subdivision(0, 1)
+	R = S * A
+\end{sageblock}
+
+$$
+	A' = [A|I] = \sage{Ap}
+$$
+
+$$
+	\sage{Ar}
+$$
+
+El mcd$(\sage{x1}, \sage{n1}) = 1$, por tanto es invertible.
+
+$$
+	\sage{S} \sage{A} = \sage{R}
+$$
+La expresión del mcd de $\sage{x1}$ y $\sage{n1}$
+$$
+	\sage{S[0][0]} \cdot \sage{A[0][0]} + (\sage{S[0][1]}) \cdot \sage{A[1][0]} = \sage{R[0][0]}
+$$
+
+$$
+	\sage{S[0][0]} \cdot \sage{A[0][0]} = \sage{R[0][0]}
+$$
+
+$$
+	\sage{A[0][0]}^{-1} = \sage{S[0][0]} \text{ en } (\z_{\sage{n1}})
+$$
+
+% Fin del Ejercicio 1
+
+\vskip 1cm
+
+\begin{ejer} Dada la ecuación $\sage{a2}x + \sage{b2}y = \sage{m2}$, indica si tiene solución y (caso de tener) calcula todas las posibles soluciones.
+
+\end{ejer}
+{\it Solución.-}
+
+% Escribe tu soluci\'on para el Ejercicio 2
+
+
+\begin{sageblock}
+	A = matrix(ZZ, [[a2], [b2]])
+	Ap = block_matrix([[A, 1]])
+	Ar = Ap.echelon_form()
+	R = Ar[:, 1:] * A
+\end{sageblock}
+
+$$
+	A' = [A|I] = \sage{Ap}
+$$
+reducida
+$$
+	\sage{Ar}
+$$
+
+mcd$(\sage{a2}, \sage{b2}) = 1$ es divisor de $145$, por tanto hay solución.
+
+$$
+	\sage{Ar[:, 1:]} \sage{A} = \sage{R}
+$$
+
+
+
+
+% Fin del Ejercicio 2
+
+\vskip 1cm
+
+\begin{ejer} Obtener todas las soluciones del siguiente sistema de congruencias:
+\begin{align*}
+n &\equiv \sage{a3} \pmod{\sage{m31}} \\
+n &\equiv \sage{b3} \pmod{\sage{m32}} \\
+\end{align*}
+\end{ejer}
+{\it Solución.-} 
+
+% Escribe tu soluci\'on para el Ejercicio 3
+
+
+
+
+
+
+
+
+% Fin del Ejercicio 3
+
+\end{document}

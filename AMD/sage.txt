@@ -4,6 +4,7 @@ A.augment(B, subdivide=True)   aumentar por B
 block_matrix(1, 2, [A, B])     aumentar por B
 A.augment(matrix.identity(n)   aumentar por identidad N
 block_matrix(1, 2, [A, 1])     aumentar por identidad
+block_matrix([[A, B]])         aumentar por B o I mas facil
 A.echelon_form()               reducir
 
 	Resolver matriz: cuando reduces gauss [A|b] sale [I|s] si es SCD, solucion es vector s
