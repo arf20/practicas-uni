@@ -208,43 +208,459 @@ try:
 except:
  _st_.goboom(114)
 try:
- _st_.current_tex_line = 128
- _st_.inline(32, latex(a3))
+ _st_.current_tex_line = 122
+ _st_.inline(32, latex(Ar[0][1]))
 except:
- _st_.goboom(128)
+ _st_.goboom(122)
 try:
- _st_.current_tex_line = 128
- _st_.inline(33, latex(m31))
+ _st_.current_tex_line = 122
+ _st_.inline(33, latex(A[0][0]))
 except:
- _st_.goboom(128)
+ _st_.goboom(122)
 try:
- _st_.current_tex_line = 128
- _st_.inline(34, latex(b3))
+ _st_.current_tex_line = 122
+ _st_.inline(34, latex(Ar[0][2]))
 except:
- _st_.goboom(128)
+ _st_.goboom(122)
 try:
- _st_.current_tex_line = 128
- _st_.inline(35, latex(m32))
+ _st_.current_tex_line = 122
+ _st_.inline(35, latex(A[1][0]))
 except:
- _st_.goboom(128)
+ _st_.goboom(122)
 try:
- _st_.current_tex_line = 128
- _st_.inline(32, latex(a3))
+ _st_.current_tex_line = 122
+ _st_.inline(36, latex(R[0][0]))
 except:
- _st_.goboom(128)
+ _st_.goboom(122)
 try:
- _st_.current_tex_line = 128
- _st_.inline(33, latex(m31))
+ _st_.current_tex_line = 122
+ _st_.inline(37, latex(Ar[1][1]))
 except:
- _st_.goboom(128)
+ _st_.goboom(122)
 try:
- _st_.current_tex_line = 128
- _st_.inline(34, latex(b3))
+ _st_.current_tex_line = 122
+ _st_.inline(38, latex(A[0][0]))
 except:
- _st_.goboom(128)
+ _st_.goboom(122)
 try:
- _st_.current_tex_line = 128
- _st_.inline(35, latex(m32))
+ _st_.current_tex_line = 122
+ _st_.inline(39, latex(Ar[1][2]))
 except:
- _st_.goboom(128)
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(40, latex(A[1][0]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(41, latex(R[1][0]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(32, latex(Ar[0][1]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(33, latex(A[0][0]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(34, latex(Ar[0][2]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(35, latex(A[1][0]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(36, latex(R[0][0]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(37, latex(Ar[1][1]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(38, latex(A[0][0]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(39, latex(Ar[1][2]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(40, latex(A[1][0]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 122
+ _st_.inline(41, latex(R[1][0]))
+except:
+ _st_.goboom(122)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(42, latex(Ar[0][1]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(43, latex(A[0][0]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(44, latex(m2))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(45, latex(Ar[0][2]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(46, latex(A[1][0]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(47, latex(m2))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(48, latex(m2))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(49, latex(Ar[1][1]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(50, latex(A[0][0]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(51, latex(Ar[1][2]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(52, latex(A[1][0]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(53, latex(R[1][0]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(42, latex(Ar[0][1]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(43, latex(A[0][0]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(44, latex(m2))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(45, latex(Ar[0][2]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(46, latex(A[1][0]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(47, latex(m2))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(48, latex(m2))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(49, latex(Ar[1][1]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(50, latex(A[0][0]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(51, latex(Ar[1][2]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(52, latex(A[1][0]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 129
+ _st_.inline(53, latex(R[1][0]))
+except:
+ _st_.goboom(129)
+try:
+ _st_.current_tex_line = 134
+ _st_.inline(54, latex(A[0][0]))
+except:
+ _st_.goboom(134)
+try:
+ _st_.current_tex_line = 134
+ _st_.inline(55, latex(Ar[0][1] * m2))
+except:
+ _st_.goboom(134)
+try:
+ _st_.current_tex_line = 134
+ _st_.inline(56, latex(Ar[1][1]))
+except:
+ _st_.goboom(134)
+try:
+ _st_.current_tex_line = 134
+ _st_.inline(57, latex(A[1][0]))
+except:
+ _st_.goboom(134)
+try:
+ _st_.current_tex_line = 134
+ _st_.inline(58, latex(Ar[0][2] * m2))
+except:
+ _st_.goboom(134)
+try:
+ _st_.current_tex_line = 134
+ _st_.inline(59, latex(Ar[1][2]))
+except:
+ _st_.goboom(134)
+try:
+ _st_.current_tex_line = 134
+ _st_.inline(60, latex(m2))
+except:
+ _st_.goboom(134)
+try:
+ _st_.current_tex_line = 142
+ _st_.inline(61, latex(Ar[0][1] * m2))
+except:
+ _st_.goboom(142)
+try:
+ _st_.current_tex_line = 142
+ _st_.inline(62, latex(Ar[1][1]))
+except:
+ _st_.goboom(142)
+try:
+ _st_.current_tex_line = 142
+ _st_.inline(63, latex(Ar[0][2] * m2))
+except:
+ _st_.goboom(142)
+try:
+ _st_.current_tex_line = 142
+ _st_.inline(64, latex(Ar[1][2]))
+except:
+ _st_.goboom(142)
+try:
+ _st_.current_tex_line = 142
+ _st_.inline(61, latex(Ar[0][1] * m2))
+except:
+ _st_.goboom(142)
+try:
+ _st_.current_tex_line = 142
+ _st_.inline(62, latex(Ar[1][1]))
+except:
+ _st_.goboom(142)
+try:
+ _st_.current_tex_line = 142
+ _st_.inline(63, latex(Ar[0][2] * m2))
+except:
+ _st_.goboom(142)
+try:
+ _st_.current_tex_line = 142
+ _st_.inline(64, latex(Ar[1][2]))
+except:
+ _st_.goboom(142)
+try:
+ _st_.current_tex_line = 152
+ _st_.inline(65, latex(a3))
+except:
+ _st_.goboom(152)
+try:
+ _st_.current_tex_line = 152
+ _st_.inline(66, latex(m31))
+except:
+ _st_.goboom(152)
+try:
+ _st_.current_tex_line = 152
+ _st_.inline(67, latex(b3))
+except:
+ _st_.goboom(152)
+try:
+ _st_.current_tex_line = 152
+ _st_.inline(68, latex(m32))
+except:
+ _st_.goboom(152)
+try:
+ _st_.current_tex_line = 152
+ _st_.inline(65, latex(a3))
+except:
+ _st_.goboom(152)
+try:
+ _st_.current_tex_line = 152
+ _st_.inline(66, latex(m31))
+except:
+ _st_.goboom(152)
+try:
+ _st_.current_tex_line = 152
+ _st_.inline(67, latex(b3))
+except:
+ _st_.goboom(152)
+try:
+ _st_.current_tex_line = 152
+ _st_.inline(68, latex(m32))
+except:
+ _st_.goboom(152)
+_st_.current_tex_line = 158
+_st_.blockbegin()
+try:
+ A = matrix(ZZ, [[m31], [m32]])
+ Ap = block_matrix([[A, 1]])
+ Ar = Ap.echelon_form()
+ Ar = copy(Ar)
+ Ar.subdivide([], 1)
+except:
+ _st_.goboom(164)
+_st_.blockend()
+try:
+ _st_.current_tex_line = 166
+ _st_.inline(69, latex(m31))
+except:
+ _st_.goboom(166)
+try:
+ _st_.current_tex_line = 166
+ _st_.inline(70, latex(m32))
+except:
+ _st_.goboom(166)
+try:
+ _st_.current_tex_line = 169
+ _st_.inline(71, latex(Ap))
+except:
+ _st_.goboom(169)
+try:
+ _st_.current_tex_line = 172
+ _st_.inline(72, latex(Ar))
+except:
+ _st_.goboom(172)
+try:
+ _st_.current_tex_line = 175
+ _st_.inline(73, latex(m31))
+except:
+ _st_.goboom(175)
+try:
+ _st_.current_tex_line = 175
+ _st_.inline(74, latex(m32))
+except:
+ _st_.goboom(175)
+try:
+ _st_.current_tex_line = 175
+ _st_.inline(75, latex(Ar[0][0]))
+except:
+ _st_.goboom(175)
+try:
+ _st_.current_tex_line = 180
+ _st_.inline(76, latex(a3))
+except:
+ _st_.goboom(180)
+try:
+ _st_.current_tex_line = 180
+ _st_.inline(77, latex(m31))
+except:
+ _st_.goboom(180)
+try:
+ _st_.current_tex_line = 180
+ _st_.inline(78, latex(b3))
+except:
+ _st_.goboom(180)
+try:
+ _st_.current_tex_line = 180
+ _st_.inline(79, latex(m32))
+except:
+ _st_.goboom(180)
+try:
+ _st_.current_tex_line = 180
+ _st_.inline(76, latex(a3))
+except:
+ _st_.goboom(180)
+try:
+ _st_.current_tex_line = 180
+ _st_.inline(77, latex(m31))
+except:
+ _st_.goboom(180)
+try:
+ _st_.current_tex_line = 180
+ _st_.inline(78, latex(b3))
+except:
+ _st_.goboom(180)
+try:
+ _st_.current_tex_line = 180
+ _st_.inline(79, latex(m32))
+except:
+ _st_.goboom(180)
+try:
+ _st_.current_tex_line = 183
+ _st_.inline(80, latex(a3))
+except:
+ _st_.goboom(183)
+try:
+ _st_.current_tex_line = 183
+ _st_.inline(81, latex(m31))
+except:
+ _st_.goboom(183)
+try:
+ _st_.current_tex_line = 183
+ _st_.inline(82, latex(b3))
+except:
+ _st_.goboom(183)
+try:
+ _st_.current_tex_line = 183
+ _st_.inline(83, latex(m32))
+except:
+ _st_.goboom(183)
+try:
+ _st_.current_tex_line = 187
+ _st_.inline(84, latex(m31))
+except:
+ _st_.goboom(187)
+try:
+ _st_.current_tex_line = 187
+ _st_.inline(85, latex(m32))
+except:
+ _st_.goboom(187)
+try:
+ _st_.current_tex_line = 187
+ _st_.inline(86, latex(b3 - a3))
+except:
+ _st_.goboom(187)
 _st_.endofdoc()

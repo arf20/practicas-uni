@@ -75,7 +75,7 @@ $$
 
 $$
 	\sage{S[0][0]} \cdot \sage{A[0][0]} = \sage{R[0][0]}
-$$
+$$  
 
 $$
 	\sage{A[0][0]}^{-1} = \sage{S[0][0]} \text{ en } (\z_{\sage{n1}})
@@ -114,8 +114,32 @@ $$
 	\sage{Ar[:, 1:]} \sage{A} = \sage{R}
 $$
 
+Desarrollar
 
+\begin{align*}
+	\sage{Ar[0][1]} \cdot \sage{A[0][0]} + (\sage{Ar[0][2]}) \cdot \sage{A[1][0]} &= \sage{R[0][0]} \\
+	\sage{Ar[1][1]} \cdot \sage{A[0][0]} + (\sage{Ar[1][2]}) \cdot \sage{A[1][0]} &= \sage{R[1][0]} \\
+\end{align*}
 
+Multiplicar primera relación por $m$ para tener $m$, y segunda relación por $t$
+
+\begin{align*}
+	\sage{Ar[0][1]} \cdot \sage{A[0][0]} \cdot \sage{m2} + (\sage{Ar[0][2]}) \cdot \sage{A[1][0]} \cdot \sage{m2} &= \sage{m2} \\
+	\sage{Ar[1][1]} \cdot \sage{A[0][0]} \cdot t + (\sage{Ar[1][2]}) \cdot \sage{A[1][0]} \cdot t &= \sage{R[1][0]} \\
+\end{align*}
+
+Sumar las dos
+
+$$
+	\sage{A[0][0]} (\sage{Ar[0][1] * m2} + \sage{Ar[1][1]} t) + \sage{A[1][0]} (\sage{Ar[0][2] * m2}  \sage{Ar[1][2]}t) = \sage{m2}
+$$
+
+Extraer $x$ e $y$
+
+\begin{align*}
+	x &= \sage{Ar[0][1] * m2} + \sage{Ar[1][1]} t \\
+	y &= \sage{Ar[0][2] * m2}  \sage{Ar[1][2]}t \\
+\end{align*}
 
 % Fin del Ejercicio 2
 
@@ -131,9 +155,37 @@ n &\equiv \sage{b3} \pmod{\sage{m32}} \\
 
 % Escribe tu soluci\'on para el Ejercicio 3
 
+\begin{sageblock}
+	A = matrix(ZZ, [[m31], [m32]])
+	Ap = block_matrix([[A, 1]])
+	Ar = Ap.echelon_form()
+	Ar = copy(Ar)
+	Ar.subdivide([], 1)
+\end{sageblock}
 
+$\text{mcd}(\sage{m31}, \sage{m32})$
 
+$$
+	\sage{Ap}
+$$
+$$
+	\sage{Ar}
+$$
 
+$\text{mcd}(\sage{m31}, \sage{m32}) = \sage{Ar[0][0]} \not= 1$ es un caso 2
+
+\begin{align*}
+	n &= \sage{a3} + \sage{m31} x \\
+	n &= \sage{b3} + \sage{m32} y \\
+\end{align*}
+
+$$
+	\sage{a3} + \sage{m31} x = \sage{b3} + \sage{m32} y
+$$
+
+$$
+	\sage{m31} x - \sage{m32} y = \sage{b3 - a3}
+$$
 
 
 
