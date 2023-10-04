@@ -33,7 +33,7 @@ except:
 _st_.current_tex_line = 66
 _st_.blockbegin()
 try:
- C = matrix(QQ, [[-5, 2, -2, 1, 3], [1, 2, -3, 2, -1], [2, -3, 1, -4, 2]])
+ C = matrix(Zmod(3), [[-5, 2, -2, 1, 3], [1, 2, -3, 2, -1], [2, -3, 1, -4, 2]])
 except:
  _st_.goboom(68)
 _st_.blockend()
@@ -59,4 +59,9 @@ try:
  _st_.inline(6, latex(A.echelon_form()))
 except:
  _st_.goboom(98)
+try:
+ _st_.current_tex_line = 103
+ _st_.inline(7, latex(A.inverse()))
+except:
+ _st_.goboom(103)
 _st_.endofdoc()

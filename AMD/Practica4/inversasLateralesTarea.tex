@@ -1,0 +1,1634 @@
+\documentclass{amsart}
+\usepackage{sagetex}
+\usepackage[utf8]{inputenc}
+\usepackage[most]{tcolorbox}
+\newtheorem{ejer}{Ejercicio}
+
+\title{Pr\'acticas de \'Algebra y Matem\'atica Discreta. Inversas Laterales}
+
+\begin{document}
+\maketitle
+
+\begin{sagesilent}
+import random
+set_random_seed(123456) # Cambia este número por las 5 primeras cifras de tu DNI o NIE
+
+a = random.choice(range(5,21))
+b = random.choice(range(22,41))
+c = random.choice(range(52,61))
+\end{sagesilent}
+
+\begin{tcolorbox}[colback = red!40!white]
+Los ejercicios que debes realizar para completar esta tarea son al menos el Ejercicio~\sage{a},
+el Ejercicio~\sage{b} y el Ejercicio~\sage{c}.
+\end{tcolorbox}
+
+\section{Inversas Laterales}
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrr}
+11 & 16 & 0 & 14 \\
+7 & 15 & 8 & 15 \\
+1 & 10 & 6 & 15 \\
+4 & 9 & 6 & 4
+\end{array}\right] \in {\bf M}_{4\times 4}({\mathbb Z}_{17})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 1
+
+\begin{sageblock}
+matrix(Zmod(17),[[11,16,0,14],
+[7,15,8,15],
+[1,10,6,15],
+[4,9,6,4]])
+\end{sageblock}
+
+% Fin del Ejercicio 1
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrrrr}
+28 & 10 & 8 & 4 & 5 & 1 \\
+19 & 14 & 15 & 14 & 22 & 10 \\
+28 & 8 & 20 & 24 & 17 & 28 \\
+10 & 16 & 16 & 3 & 25 & 20 \\
+13 & 14 & 23 & 13 & 25 & 16 \\
+27 & 4 & 28 & 18 & 9 & 14
+\end{array}\right] \in {\bf M}_{6\times 6}({\mathbb Z}_{29})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 2
+
+\begin{sageblock}
+matrix(Zmod(29),[[28,10,8,4,5,1],
+[19,14,15,14,22,10],
+[28,8,20,24,17,28],
+[10,16,16,3,25,20],
+[13,14,23,13,25,16],
+[27,4,28,18,9,14]])
+\end{sageblock}
+
+% Fin del Ejercicio 2
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrrrr}
+1 & -1 & -1 & -2 & 2 & 4 \\
+0 & 1 & 0 & 1 & -3 & -4 \\
+0 & -1 & 1 & 2 & 6 & -4 \\
+-1 & -1 & 1 & 1 & 4 & 1
+\end{array}\right] \in {\bf M}_{4\times 6}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 3
+
+\begin{sageblock}
+matrix(QQ,[[1,-1,-1,-2,2,4],
+[0,1,0,1,-3,-4],
+[0,-1,1,2,6,-4],
+[-1,-1,1,1,4,1]])
+\end{sageblock}
+
+% Fin del Ejercicio 3
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrr}
+12 & 9 & 3 & 0 \\
+13 & 17 & 38 & 39 \\
+17 & 12 & 15 & 36 \\
+16 & 30 & 37 & 40 \\
+36 & 10 & 5 & 14 \\
+38 & 15 & 19 & 16
+\end{array}\right] \in {\bf M}_{6\times 4}({\mathbb Z}_{43})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 4
+
+\begin{sageblock}
+matrix(Zmod(43),[[12,9,3,0],
+[13,17,38,39],
+[17,12,15,36],
+[16,30,37,40],
+[36,10,5,14],
+[38,15,19,16]])
+\end{sageblock}
+
+% Fin del Ejercicio 4
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrr}
+28 & 8 & 22 & 14 \\
+22 & 0 & 26 & 2 \\
+11 & 21 & 17 & 2 \\
+28 & 2 & 20 & 21
+\end{array}\right] \in {\bf M}_{4\times 4}({\mathbb Z}_{29})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 5
+
+\begin{sageblock}
+matrix(Zmod(29),[[28,8,22,14],
+[22,0,26,2],
+[11,21,17,2],
+[28,2,20,21]])
+\end{sageblock}
+
+% Fin del Ejercicio 5
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrrrr}
+5 & 3 & 3 & -1 & 9 & -6 \\
+-2 & -1 & -1 & 0 & -5 & 1 \\
+2 & 1 & 2 & 3 & 5 & -8 \\
+1 & 0 & 0 & 2 & 7 & 3 \\
+0 & 0 & 0 & 2 & 3 & 1 \\
+2 & 2 & 2 & -6 & -3 & -4
+\end{array}\right] \in {\bf M}_{6\times 6}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 6
+
+\begin{sageblock}
+matrix(QQ,[[5,3,3,-1,9,-6],
+[-2,-1,-1,0,-5,1],
+[2,1,2,3,5,-8],
+[1,0,0,2,7,3],
+[0,0,0,2,3,1],
+[2,2,2,-6,-3,-4]])
+\end{sageblock}
+
+% Fin del Ejercicio 6
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrr}
+7 & 34 & 28 & 30 \\
+31 & 30 & 31 & 13 \\
+29 & 12 & 6 & 17 \\
+8 & 28 & 11 & 23 \\
+1 & 0 & 17 & 22 \\
+17 & 35 & 31 & 4 \\
+14 & 32 & 0 & 29 \\
+9 & 17 & 15 & 32
+\end{array}\right] \in {\bf M}_{8\times 4}({\mathbb Z}_{37})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 7
+
+\begin{sageblock}
+A = matrix(Zmod(37),[[7,34,28,30],
+[31,30,31,13],
+[29,12,6,17],
+[8,28,11,23],
+[1,0,17,22],
+[17,35,31,4],
+[14,32,0,29],
+[9,17,15,32]])
+
+Ap = block_matrix([[A, 1]])
+Ar = Ap.echelon_form()
+
+Atp = block_matrix([[A.T, 1]])
+Atr = Atp.echelon_form()
+Atr = copy(Atr)
+Atr.subdivide([3], [3])
+\end{sageblock}
+
+Ampliada
+$$
+	\sage{Ap}
+$$
+Reducida
+$$
+	\sage{Ar}
+$$
+No sale identidad por tanto no tiene inversa por la izquierda
+
+Transpuesta ampliada
+$$
+	\sage{Atp}
+$$
+Reducida
+$$
+	\sage{Atr} = \begin{bmatrix}
+		I & B \\
+		0 & H \\
+	\end{bmatrix}
+$$
+Sale identidad, por tanto existe matriz inversa lateral por la izquierda, que es $B$
+$$
+	B = \sage{Atr[:3, 3:]}
+$$
+
+
+% Fin del Ejercicio 7
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrr}
+3 & 3 & 2 & 4 \\
+4 & 0 & 0 & 3 \\
+4 & 0 & 1 & 3 \\
+3 & 4 & 0 & 4 \\
+1 & 1 & 2 & 2 \\
+0 & 0 & 3 & 4
+\end{array}\right] \in {\bf M}_{6\times 4}({\mathbb Z}_{5})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 8
+
+\begin{sageblock}
+matrix(Zmod(5),[[3,3,2,4],
+[4,0,0,3],
+[4,0,1,3],
+[3,4,0,4],
+[1,1,2,2],
+[0,0,3,4]])
+\end{sageblock}
+
+% Fin del Ejercicio 8
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrrrr}
+1 & -2 & 1 & 3 & 3 & 4 \\
+-1 & 3 & -1 & -6 & -7 & -7 \\
+-2 & 1 & -1 & 0 & 2 & -1 \\
+-2 & 3 & -1 & -5 & -5 & -6
+\end{array}\right] \in {\bf M}_{4\times 6}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 9
+
+\begin{sageblock}
+matrix(QQ,[[1,-2,1,3,3,4],
+[-1,3,-1,-6,-7,-7],
+[-2,1,-1,0,2,-1],
+[-2,3,-1,-5,-5,-6]])
+\end{sageblock}
+
+% Fin del Ejercicio 9
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrr}
+5 & 27 & 35 & 2 \\
+3 & 16 & 31 & 6 \\
+8 & 6 & 26 & 13 \\
+33 & 15 & 33 & 14
+\end{array}\right] \in {\bf M}_{4\times 4}({\mathbb Z}_{37})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 10
+
+\begin{sageblock}
+matrix(Zmod(37),[[5,27,35,2],
+[3,16,31,6],
+[8,6,26,13],
+[33,15,33,14]])
+\end{sageblock}
+
+% Fin del Ejercicio 10
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrrrrrr}
+0 & 0 & -1 & -1 & -1 & -4 & -2 & 3 \\
+1 & 2 & -1 & 0 & -1 & -4 & 2 & 2 \\
+0 & 0 & 0 & 1 & 2 & 4 & 2 & -8 \\
+0 & 0 & -1 & -2 & -2 & -6 & -4 & 7
+\end{array}\right] \in {\bf M}_{4\times 8}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 11
+
+\begin{sageblock}
+matrix(QQ,[[0,0,-1,-1,-1,-4,-2,3],
+[1,2,-1,0,-1,-4,2,2],
+[0,0,0,1,2,4,2,-8],
+[0,0,-1,-2,-2,-6,-4,7]])
+\end{sageblock}
+
+% Fin del Ejercicio 11
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrrrr}
+1 & 1 & 2 & 0 & 1 & 7 \\
+-1 & 0 & -1 & -1 & 3 & -5 \\
+-1 & -1 & -1 & -2 & 5 & -4 \\
+-1 & 1 & 0 & -1 & 4 & -3
+\end{array}\right] \in {\bf M}_{4\times 6}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 12
+
+\begin{sageblock}
+matrix(QQ,[[1,1,2,0,1,7],
+[-1,0,-1,-1,3,-5],
+[-1,-1,-1,-2,5,-4],
+[-1,1,0,-1,4,-3]])
+\end{sageblock}
+
+% Fin del Ejercicio 12
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrr}
+5 & -5 & -6 & -1 \\
+0 & 1 & 2 & -8 \\
+-4 & 4 & 5 & 0 \\
+-3 & 2 & 3 & 4 \\
+4 & -4 & -6 & 5 \\
+-4 & 5 & 5 & -2 \\
+0 & 0 & -3 & 9 \\
+-2 & 2 & 0 & 6
+\end{array}\right] \in {\bf M}_{8\times 4}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 13
+
+\begin{sageblock}
+matrix(QQ,[[5,-5,-6,-1],
+[0,1,2,-8],
+[-4,4,5,0],
+[-3,2,3,4],
+[4,-4,-6,5],
+[-4,5,5,-2],
+[0,0,-3,9],
+[-2,2,0,6]])
+\end{sageblock}
+
+% Fin del Ejercicio 13
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrrrr}
+1 & 1 & 0 & -2 & 1 & 5 \\
+0 & 1 & 1 & -3 & 6 & 6 \\
+0 & -2 & -1 & 3 & -9 & -5 \\
+-1 & -2 & 0 & 3 & -4 & -7
+\end{array}\right] \in {\bf M}_{4\times 6}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 14
+
+\begin{sageblock}
+matrix(QQ,[[1,1,0,-2,1,5],
+[0,1,1,-3,6,6],
+[0,-2,-1,3,-9,-5],
+[-1,-2,0,3,-4,-7]])
+\end{sageblock}
+
+% Fin del Ejercicio 14
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrrrr}
+1 & 1 & 2 & 4 & 2 & 9 \\
+-1 & 0 & 0 & 1 & 1 & -1 \\
+1 & -1 & -1 & -3 & 0 & 1 \\
+1 & 0 & 0 & 0 & -1 & 4 \\
+0 & 2 & 2 & 6 & -1 & 7 \\
+0 & -1 & -2 & -3 & -4 & -2
+\end{array}\right] \in {\bf M}_{6\times 6}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 15
+
+\begin{sageblock}
+matrix(QQ,[[1,1,2,4,2,9],
+[-1,0,0,1,1,-1],
+[1,-1,-1,-3,0,1],
+[1,0,0,0,-1,4],
+[0,2,2,6,-1,7],
+[0,-1,-2,-3,-4,-2]])
+\end{sageblock}
+
+% Fin del Ejercicio 15
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrr}
+10 & 15 & 15 & 22 \\
+20 & 0 & 1 & 13 \\
+7 & 8 & 10 & 3 \\
+3 & 6 & 14 & 15 \\
+21 & 11 & 9 & 12 \\
+12 & 16 & 13 & 11
+\end{array}\right] \in {\bf M}_{6\times 4}({\mathbb Z}_{23})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 16
+
+\begin{sageblock}
+matrix(Zmod(23),[[10,15,15,22],
+[20,0,1,13],
+[7,8,10,3],
+[3,6,14,15],
+[21,11,9,12],
+[12,16,13,11]])
+\end{sageblock}
+
+% Fin del Ejercicio 16
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrr}
+6 & 6 & 5 & 4 \\
+10 & 6 & 1 & 9 \\
+4 & 0 & 1 & 6 \\
+3 & 7 & 10 & 4
+\end{array}\right] \in {\bf M}_{4\times 4}({\mathbb Z}_{11})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 17
+
+\begin{sageblock}
+matrix(Zmod(11),[[6,6,5,4],
+[10,6,1,9],
+[4,0,1,6],
+[3,7,10,4]])
+\end{sageblock}
+
+% Fin del Ejercicio 17
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrr}
+6 & 6 & 0 & 6 \\
+1 & 0 & 1 & 6 \\
+1 & 2 & 0 & 2 \\
+6 & 1 & 5 & 3
+\end{array}\right] \in {\bf M}_{4\times 4}({\mathbb Z}_{7})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 18
+
+\begin{sageblock}
+matrix(Zmod(7),[[6,6,0,6],
+[1,0,1,6],
+[1,2,0,2],
+[6,1,5,3]])
+\end{sageblock}
+
+% Fin del Ejercicio 18
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrrrr}
+27 & 35 & 31 & 10 & 37 & 19 \\
+11 & 30 & 46 & 38 & 27 & 34 \\
+35 & 13 & 20 & 3 & 23 & 38 \\
+6 & 45 & 40 & 25 & 23 & 19 \\
+28 & 1 & 11 & 40 & 6 & 20 \\
+7 & 37 & 15 & 15 & 32 & 27
+\end{array}\right] \in {\bf M}_{6\times 6}({\mathbb Z}_{47})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 19
+
+\begin{sageblock}
+matrix(Zmod(47),[[27,35,31,10,37,19],
+[11,30,46,38,27,34],
+[35,13,20,3,23,38],
+[6,45,40,25,23,19],
+[28,1,11,40,6,20],
+[7,37,15,15,32,27]])
+\end{sageblock}
+
+% Fin del Ejercicio 19
+
+
+\begin{ejer} Determina si la siguiente matriz tiene inversas laterales y calc\'ulalas en caso de existir,
+\[ \left[\begin{array}{rrrr}
+3 & 10 & 9 & 8 \\
+5 & 0 & 2 & 8 \\
+2 & 8 & 9 & 10 \\
+2 & 8 & 9 & 0
+\end{array}\right] \in {\bf M}_{4\times 4}({\mathbb Z}_{11})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 20
+
+\begin{sageblock}
+matrix(Zmod(11),[[3,10,9,8],
+[5,0,2,8],
+[2,8,9,10],
+[2,8,9,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 20
+
+\section{Vectores Linealmente Independientes y Generadores de $K^n$}
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb R}}^{6}$,
+\[ A = \left[\begin{array}{rrrr}
+2 & 1 & -5 & 9 \\
+1 & 1 & -1 & 2 \\
+0 & -1 & -2 & 2 \\
+1 & 2 & 2 & -2 \\
+0 & -1 & 1 & -4 \\
+-1 & 1 & 5 & -4
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 21
+
+\begin{sageblock}
+matrix(QQ,[[2,1,-5,9],
+[1,1,-1,2],
+[0,-1,-2,2],
+[1,2,2,-2],
+[0,-1,1,-4],
+[-1,1,5,-4]])
+\end{sageblock}
+
+% Fin del Ejercicio 21
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb R}}^{5}$,
+\[ A = \left[\begin{array}{rrrr}
+-1 & 2 & 8 & 1 \\
+0 & 1 & 3 & 1 \\
+1 & 1 & 0 & 2 \\
+0 & -1 & 2 & -1 \\
+0 & 1 & 5 & 1
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 22
+
+\begin{sageblock}
+matrix(QQ,[[-1,2,8,1],
+[0,1,3,1],
+[1,1,0,2],
+[0,-1,2,-1],
+[0,1,5,1]])
+\end{sageblock}
+
+% Fin del Ejercicio 22
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb R}}^{5}$,
+\[ A = \left[\begin{array}{rrrrrr}
+0 & 2 & 2 & -1 & -3 & 7 \\
+0 & 1 & 3 & -2 & 1 & 7 \\
+0 & 0 & 1 & -1 & 0 & 3 \\
+1 & -1 & -1 & 0 & -5 & 2 \\
+0 & 1 & 2 & -1 & 2 & 3
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 23
+
+\begin{sageblock}
+matrix(QQ,[[0,2,2,-1,-3,7],
+[0,1,3,-2,1,7],
+[0,0,1,-1,0,3],
+[1,-1,-1,0,-5,2],
+[0,1,2,-1,2,3]])
+\end{sageblock}
+
+% Fin del Ejercicio 23
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb R}}^{6}$,
+\[ A = \left[\begin{array}{rrrrr}
+3 & 1 & 7 & 8 & 6 \\
+2 & 1 & 6 & 6 & 3 \\
+0 & 2 & 9 & 5 & -5 \\
+3 & 2 & 6 & 6 & 3 \\
+0 & 1 & 8 & 4 & -8 \\
+1 & -1 & -7 & -4 & 2
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 24
+
+\begin{sageblock}
+matrix(QQ,[[3,1,7,8,6],
+[2,1,6,6,3],
+[0,2,9,5,-5],
+[3,2,6,6,3],
+[0,1,8,4,-8],
+[1,-1,-7,-4,2]])
+\end{sageblock}
+
+% Fin del Ejercicio 24
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb Z}_{29}}^{6}$,
+\[ A = \left[\begin{array}{rrr}
+10 & 24 & 11 \\
+2 & 2 & 20 \\
+11 & 5 & 0 \\
+11 & 13 & 16 \\
+6 & 16 & 12 \\
+28 & 20 & 25
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 25
+
+\begin{sageblock}
+matrix(Zmod(29),[[10,24,11],
+[2,2,20],
+[11,5,0],
+[11,13,16],
+[6,16,12],
+[28,20,25]])
+\end{sageblock}
+
+% Fin del Ejercicio 25
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb Z}_{13}}^{6}$,
+\[ A = \left[\begin{array}{rrrrrr}
+12 & 2 & 10 & 11 & 1 & 3 \\
+11 & 3 & 11 & 12 & 2 & 3 \\
+11 & 1 & 6 & 4 & 3 & 8 \\
+8 & 12 & 12 & 6 & 3 & 10 \\
+3 & 2 & 5 & 12 & 12 & 11 \\
+10 & 4 & 10 & 7 & 12 & 9
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 26
+
+\begin{sageblock}
+matrix(Zmod(13),[[12,2,10,11,1,3],
+[11,3,11,12,2,3],
+[11,1,6,4,3,8],
+[8,12,12,6,3,10],
+[3,2,5,12,12,11],
+[10,4,10,7,12,9]])
+\end{sageblock}
+
+% Fin del Ejercicio 26
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb R}}^{8}$,
+\[ A = \left[\begin{array}{rrr}
+-1 & 0 & 3 \\
+0 & 1 & -3 \\
+-1 & -3 & 9 \\
+1 & 1 & -4 \\
+0 & -3 & 6 \\
+0 & -2 & 8 \\
+-1 & -3 & 9 \\
+0 & -3 & 4
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 27
+
+\begin{sageblock}
+matrix(QQ,[[-1,0,3],
+[0,1,-3],
+[-1,-3,9],
+[1,1,-4],
+[0,-3,6],
+[0,-2,8],
+[-1,-3,9],
+[0,-3,4]])
+\end{sageblock}
+
+% Fin del Ejercicio 27
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb Z}_{7}}^{7}$,
+\[ A = \left[\begin{array}{rrrr}
+3 & 5 & 4 & 1 \\
+2 & 6 & 1 & 0 \\
+6 & 1 & 5 & 5 \\
+0 & 5 & 2 & 6 \\
+2 & 2 & 4 & 2 \\
+5 & 1 & 5 & 4 \\
+2 & 6 & 6 & 4
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 28
+
+\begin{sageblock}
+matrix(Zmod(7),[[3,5,4,1],
+[2,6,1,0],
+[6,1,5,5],
+[0,5,2,6],
+[2,2,4,2],
+[5,1,5,4],
+[2,6,6,4]])
+\end{sageblock}
+
+% Fin del Ejercicio 28
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb R}}^{5}$,
+\[ A = \left[\begin{array}{rrrrr}
+-1 & 1 & -2 & 4 & -2 \\
+0 & 1 & -2 & 8 & -6 \\
+0 & 1 & -1 & 4 & -4 \\
+0 & 0 & -1 & 5 & -2 \\
+-1 & 0 & 0 & -1 & 3
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 29
+
+\begin{sageblock}
+matrix(QQ,[[-1,1,-2,4,-2],
+[0,1,-2,8,-6],
+[0,1,-1,4,-4],
+[0,0,-1,5,-2],
+[-1,0,0,-1,3]])
+\end{sageblock}
+
+% Fin del Ejercicio 29
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb Z}_{5}}^{7}$,
+\[ A = \left[\begin{array}{rrr}
+4 & 1 & 4 \\
+2 & 2 & 2 \\
+3 & 0 & 4 \\
+0 & 3 & 0 \\
+4 & 3 & 3 \\
+0 & 0 & 0 \\
+3 & 0 & 2
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 30
+
+\begin{sageblock}
+matrix(Zmod(5),[[4,1,4],
+[2,2,2],
+[3,0,4],
+[0,3,0],
+[4,3,3],
+[0,0,0],
+[3,0,2]])
+\end{sageblock}
+
+% Fin del Ejercicio 30
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb Z}_{13}}^{6}$,
+\[ A = \left[\begin{array}{rrrrr}
+6 & 0 & 10 & 8 & 10 \\
+12 & 11 & 5 & 7 & 6 \\
+1 & 2 & 9 & 9 & 7 \\
+7 & 8 & 7 & 4 & 3 \\
+1 & 5 & 1 & 6 & 2 \\
+8 & 8 & 10 & 8 & 7
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 31
+
+\begin{sageblock}
+matrix(Zmod(13),[[6,0,10,8,10],
+[12,11,5,7,6],
+[1,2,9,9,7],
+[7,8,7,4,3],
+[1,5,1,6,2],
+[8,8,10,8,7]])
+\end{sageblock}
+
+% Fin del Ejercicio 31
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb Z}_{17}}^{8}$,
+\[ A = \left[\begin{array}{rrr}
+12 & 9 & 8 \\
+5 & 10 & 4 \\
+5 & 15 & 15 \\
+3 & 11 & 11 \\
+4 & 2 & 4 \\
+0 & 15 & 12 \\
+11 & 2 & 13 \\
+0 & 11 & 4
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 32
+
+\begin{sageblock}
+matrix(Zmod(17),[[12,9,8],
+[5,10,4],
+[5,15,15],
+[3,11,11],
+[4,2,4],
+[0,15,12],
+[11,2,13],
+[0,11,4]])
+\end{sageblock}
+
+% Fin del Ejercicio 32
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb Z}_{43}}^{7}$,
+\[ A = \left[\begin{array}{rrrrr}
+8 & 40 & 42 & 1 & 5 \\
+12 & 30 & 13 & 8 & 31 \\
+3 & 33 & 4 & 41 & 9 \\
+15 & 5 & 21 & 28 & 19 \\
+0 & 36 & 18 & 33 & 19 \\
+41 & 29 & 5 & 22 & 28 \\
+5 & 32 & 10 & 19 & 31
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 33
+
+\begin{sageblock}
+matrix(Zmod(43),[[8,40,42,1,5],
+[12,30,13,8,31],
+[3,33,4,41,9],
+[15,5,21,28,19],
+[0,36,18,33,19],
+[41,29,5,22,28],
+[5,32,10,19,31]])
+\end{sageblock}
+
+% Fin del Ejercicio 33
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb R}}^{8}$,
+\[ A = \left[\begin{array}{rrrr}
+-5 & -4 & -1 & 2 \\
+-3 & -5 & -4 & -8 \\
+0 & 0 & 1 & 5 \\
+-2 & -3 & -3 & -7 \\
+2 & 3 & 3 & 5 \\
+0 & -2 & -3 & -5 \\
+2 & 2 & 1 & 1 \\
+-1 & -2 & -2 & -6
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 34
+
+\begin{sageblock}
+matrix(QQ,[[-5,-4,-1,2],
+[-3,-5,-4,-8],
+[0,0,1,5],
+[-2,-3,-3,-7],
+[2,3,3,5],
+[0,-2,-3,-5],
+[2,2,1,1],
+[-1,-2,-2,-6]])
+\end{sageblock}
+
+% Fin del Ejercicio 34
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb R}}^{8}$,
+\[ A = \left[\begin{array}{rrr}
+2 & -5 & -5 \\
+1 & -2 & -2 \\
+-4 & 7 & 8 \\
+2 & -6 & -2 \\
+3 & -5 & -5 \\
+0 & -2 & -7 \\
+3 & -8 & -5 \\
+0 & -5 & -9
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 35
+
+\begin{sageblock}
+matrix(QQ,[[2,-5,-5],
+[1,-2,-2],
+[-4,7,8],
+[2,-6,-2],
+[3,-5,-5],
+[0,-2,-7],
+[3,-8,-5],
+[0,-5,-9]])
+\end{sageblock}
+
+% Fin del Ejercicio 35
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb R}}^{7}$,
+\[ A = \left[\begin{array}{rrrr}
+-2 & -1 & 4 & -8 \\
+1 & 0 & -2 & -5 \\
+1 & 0 & -1 & 0 \\
+-1 & -2 & 3 & 5 \\
+-2 & 1 & 2 & 8 \\
+-1 & 0 & 2 & 0 \\
+0 & 2 & 1 & 8
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 36
+
+\begin{sageblock}
+matrix(QQ,[[-2,-1,4,-8],
+[1,0,-2,-5],
+[1,0,-1,0],
+[-1,-2,3,5],
+[-2,1,2,8],
+[-1,0,2,0],
+[0,2,1,8]])
+\end{sageblock}
+
+% Fin del Ejercicio 36
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb R}}^{5}$,
+\[ A = \left[\begin{array}{rrrrrr}
+-1 & -2 & -1 & 1 & -6 & 1 \\
+-1 & 0 & -4 & -3 & -5 & 2 \\
+-2 & -1 & -4 & -1 & -7 & -1 \\
+2 & 3 & 2 & -2 & 9 & 1 \\
+0 & 2 & -3 & -6 & -2 & 8
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 37
+
+\begin{sageblock}
+matrix(QQ,[[-1,-2,-1,1,-6,1],
+[-1,0,-4,-3,-5,2],
+[-2,-1,-4,-1,-7,-1],
+[2,3,2,-2,9,1],
+[0,2,-3,-6,-2,8]])
+\end{sageblock}
+
+% Fin del Ejercicio 37
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb Z}_{47}}^{5}$,
+\[ A = \left[\begin{array}{rrrrr}
+42 & 44 & 29 & 24 & 16 \\
+1 & 20 & 42 & 44 & 39 \\
+27 & 34 & 17 & 34 & 33 \\
+17 & 29 & 5 & 10 & 28 \\
+11 & 9 & 30 & 41 & 45
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 38
+
+\begin{sageblock}
+matrix(Zmod(47),[[42,44,29,24,16],
+[1,20,42,44,39],
+[27,34,17,34,33],
+[17,29,5,10,28],
+[11,9,30,41,45]])
+\end{sageblock}
+
+% Fin del Ejercicio 38
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb Z}_{23}}^{6}$,
+\[ A = \left[\begin{array}{rrrrrr}
+2 & 2 & 15 & 8 & 4 & 20 \\
+15 & 8 & 6 & 8 & 18 & 14 \\
+13 & 7 & 10 & 6 & 9 & 3 \\
+16 & 10 & 14 & 15 & 2 & 10 \\
+4 & 0 & 0 & 22 & 15 & 11 \\
+22 & 12 & 7 & 2 & 18 & 1
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 39
+
+\begin{sageblock}
+matrix(Zmod(23),[[2,2,15,8,4,20],
+[15,8,6,8,18,14],
+[13,7,10,6,9,3],
+[16,10,14,15,2,10],
+[4,0,0,22,15,11],
+[22,12,7,2,18,1]])
+\end{sageblock}
+
+% Fin del Ejercicio 39
+
+
+\begin{ejer} Determina si las columnas de esta matriz son vectores linealmente independientes, generadores y/o base de ${{\mathbb Z}_{43}}^{8}$,
+\[ A = \left[\begin{array}{rrr}
+39 & 3 & 6 \\
+25 & 24 & 38 \\
+17 & 20 & 18 \\
+12 & 1 & 28 \\
+27 & 30 & 34 \\
+24 & 41 & 26 \\
+0 & 19 & 32 \\
+5 & 15 & 35
+\end{array}\right] \]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 40
+
+\begin{sageblock}
+matrix(Zmod(43),[[39,3,6],
+[25,24,38],
+[17,20,18],
+[12,1,28],
+[27,30,34],
+[24,41,26],
+[0,19,32],
+[5,15,35]])
+\end{sageblock}
+
+% Fin del Ejercicio 40
+
+\section{Formas Implícita y Paramétrica de un Espacio Vectorial}
+
+\begin{ejer} Sea $V$ el espacio vectorial sobre los números reales 
+generado por las columnas de la matriz 
+\[B = \left(\begin{array}{rrr}
+2 & -83 & -2 \\
+2 & 3 & -1 \\
+-3 & 1 & -1 \\
+-3 & 1 & 3 \\
+1 & 1 & -1 \\
+1 & 3 & 0
+\end{array}\right)\]
+Escribe $V$ en forma impl\'icita 
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 41
+
+\begin{sageblock}
+matrix(QQ,[[2,-83,-2],
+[2,3,-1],
+[-3,1,-1],
+[-3,1,3],
+[1,1,-1],
+[1,3,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 41
+
+\begin{ejer} Sea $V$ el espacio vectorial sobre los números reales 
+generado por las columnas de la matriz 
+\[B = \left(\begin{array}{rrrr}
+-1 & 0 & -5 & 1 \\
+2 & 3 & -1 & -1 \\
+-1 & 2 & -1 & 1 \\
+2 & 0 & -1 & -3 \\
+2 & -1 & 0 & -2 \\
+3 & -1 & -4 & -8 \\
+-7 & 1 & -33 & -1 \\
+-8 & 8 & 19 & 0
+\end{array}\right)\]
+Escribe $V$ en forma impl\'icita 
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 42
+
+\begin{sageblock}
+matrix(QQ,[[-1,0,-5,1],
+[2,3,-1,-1],
+[-1,2,-1,1],
+[2,0,-1,-3],
+[2,-1,0,-2],
+[3,-1,-4,-8],
+[-7,1,-33,-1],
+[-8,8,19,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 42
+
+
+\begin{ejer} Sea $V$ el espacio vectorial sobre los números reales 
+generado por las columnas de la matriz 
+\[B = \left(\begin{array}{rrr}
+1 & 1 & 0 \\
+-2 & 1 & -1 \\
+-3 & 3 & -2 \\
+4 & -1 & 0 \\
+0 & 1 & -235857
+\end{array}\right)\]
+Escribe $V$ en forma impl\'icita 
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 43
+
+\begin{sageblock}
+matrix(QQ,[[1,1,0],
+[-2,1,-1],
+[-3,3,-2],
+[4,-1,0],
+[0,1,-235857]])
+\end{sageblock}
+
+% Fin del Ejercicio 43
+
+
+\begin{ejer} Sea $V$ el espacio vectorial sobre los números reales 
+generado por las columnas de la matriz 
+\[B = \left(\begin{array}{rrrrr}
+0 & 3 & 2 & -2 & 40 \\
+-5 & 0 & -4 & 1 & 1 \\
+-2 & -1 & 1 & 1 & 0 \\
+-2 & 0 & -1 & 5 & 1 \\
+8 & -3 & 2 & 0 & 1 \\
+0 & -5 & 0 & 1 & 1 \\
+-1 & 1 & 1 & 0 & -1 \\
+1 & -1 & -1 & 0 & -9
+\end{array}\right)\]
+Escribe $V$ en forma impl\'icita 
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 44
+
+\begin{sageblock}
+matrix(QQ,[[0,3,2,-2,40],
+[-5,0,-4,1,1],
+[-2,-1,1,1,0],
+[-2,0,-1,5,1],
+[8,-3,2,0,1],
+[0,-5,0,1,1],
+[-1,1,1,0,-1],
+[1,-1,-1,0,-9]])
+\end{sageblock}
+
+% Fin del Ejercicio 44
+
+
+\begin{ejer} Sea $V$ el espacio vectorial sobre los números reales 
+generado por las columnas de la matriz 
+\[B = \left(\begin{array}{rrr}
+2 & 6 & 8 \\
+0 & 3 & 1 \\
+0 & 2 & 1 \\
+0 & -1 & 1 \\
+-1 & 0 & 2 \\
+27 & 14 & 3
+\end{array}\right)\]
+Escribe $V$ en forma impl\'icita 
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 45
+
+\begin{sageblock}
+matrix(QQ,[[2,6,8],
+[0,3,1],
+[0,2,1],
+[0,-1,1],
+[-1,0,2],
+[27,14,3]])
+\end{sageblock}
+
+% Fin del Ejercicio 45
+
+
+\begin{ejer} Sea $V$ el espacio vectorial sobre los números reales 
+generado por las columnas de la matriz 
+\[B = \left(\begin{array}{rrrr}
+0 & 293 & 1 & -3 \\
+-1 & -1 & 1 & -1 \\
+0 & 0 & 1 & 2 \\
+-2 & 3 & -2 & 5 \\
+-1 & 0 & 10 & -1 \\
+-1 & -18 & 0 & 1 \\
+2 & -1 & 1 & 1 \\
+1 & -4 & 0 & 26
+\end{array}\right)\]
+Escribe $V$ en forma impl\'icita 
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 46
+
+\begin{sageblock}
+matrix(QQ,[[0,293,1,-3],
+[-1,-1,1,-1],
+[0,0,1,2],
+[-2,3,-2,5],
+[-1,0,10,-1],
+[-1,-18,0,1],
+[2,-1,1,1],
+[1,-4,0,26]])
+\end{sageblock}
+
+% Fin del Ejercicio 46
+
+
+\begin{ejer} Sea $V$ el espacio vectorial sobre los números reales 
+generado por las columnas de la matriz 
+\[B = \left(\begin{array}{rrrr}
+-3 & 5 & -1 & -1 \\
+1 & -1 & -2 & -4 \\
+-1 & -1 & -7 & -3 \\
+1 & -1 & -1 & -6 \\
+-1 & 13 & 3 & 2 \\
+1 & 1 & 7 & 0 \\
+0 & -2 & -2 & -1 \\
+-2 & 2 & 0 & 2
+\end{array}\right)\]
+Escribe $V$ en forma impl\'icita 
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 47
+
+\begin{sageblock}
+matrix(QQ,[[-3,5,-1,-1],
+[1,-1,-2,-4],
+[-1,-1,-7,-3],
+[1,-1,-1,-6],
+[-1,13,3,2],
+[1,1,7,0],
+[0,-2,-2,-1],
+[-2,2,0,2]])
+\end{sageblock}
+
+% Fin del Ejercicio 47
+
+
+\begin{ejer} Sea $V$ el espacio vectorial sobre los números reales 
+generado por las columnas de la matriz 
+\[B = \left(\begin{array}{rrr}
+0 & -2 & 0 \\
+1 & -2 & -1 \\
+75 & -3 & 1 \\
+0 & -1 & 15 \\
+0 & 0 & 1 \\
+0 & 0 & 1 \\
+1 & 1 & 0
+\end{array}\right)\]
+Escribe $V$ en forma impl\'icita 
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 48
+
+\begin{sageblock}
+matrix(QQ,[[0,-2,0],
+[1,-2,-1],
+[75,-3,1],
+[0,-1,15],
+[0,0,1],
+[0,0,1],
+[1,1,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 48
+
+
+\begin{ejer} Sea $V$ el espacio vectorial sobre los números reales 
+generado por las columnas de la matriz 
+\[B = \left(\begin{array}{rrrr}
+0 & 1 & 3 & 0 \\
+0 & 0 & -2 & 0 \\
+0 & -6 & 1 & -2 \\
+1 & 5 & -1 & 0 \\
+-1 & 1 & -1 & -2 \\
+-10 & 0 & 0 & 0 \\
+19 & -1 & -2 & -2 \\
+1 & -11 & 1 & 1
+\end{array}\right)\]
+Escribe $V$ en forma impl\'icita 
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 49
+
+\begin{sageblock}
+matrix(QQ,[[0,1,3,0],
+[0,0,-2,0],
+[0,-6,1,-2],
+[1,5,-1,0],
+[-1,1,-1,-2],
+[-10,0,0,0],
+[19,-1,-2,-2],
+[1,-11,1,1]])
+\end{sageblock}
+
+% Fin del Ejercicio 49
+
+
+\begin{ejer} Sea $V$ el espacio vectorial sobre los números reales 
+generado por las columnas de la matriz 
+\[B = \left(\begin{array}{rrr}
+0 & 0 & -2 \\
+2 & 0 & -1 \\
+2 & 3 & -1 \\
+0 & -6 & 1 \\
+0 & -3 & 0 \\
+0 & 2 & -1
+\end{array}\right)\]
+Escribe $V$ en forma impl\'icita 
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 50
+
+\begin{sageblock}
+matrix(QQ,[[0,0,-2],
+[2,0,-1],
+[2,3,-1],
+[0,-6,1],
+[0,-3,0],
+[0,2,-1]])
+\end{sageblock}
+
+% Fin del Ejercicio 50
+
+
+\begin{ejer} Sea $W$ el espacio vectorial sobre los números reales dado
+como anulador por la derecha de la matriz 
+\[A = \left(\begin{array}{rrrrr}
+-6 & 0 & -1 & 0 & -2 \\
+0 & -2 & 1 & 2 & 0 \\
+1 & 0 & 0 & 0 & -3
+\end{array}\right),\]
+es decir, $W = N(A)$. Escribe $W$ en forma param\'etrica.
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 51
+
+\begin{sageblock}
+matrix(QQ,[[-6,0,-1,0,-2],
+[0,-2,1,2,0],
+[1,0,0,0,-3]])
+\end{sageblock}
+
+% Fin del Ejercicio 51
+
+
+\begin{ejer} Sea $W$ el espacio vectorial sobre los números reales dado
+como anulador por la derecha de la matriz 
+\[A = \left(\begin{array}{rrrrrrrr}
+-1 & 0 & 1 & 0 & 0 & 0 & 0 & 6 \\
+20 & 2 & 1 & 0 & 0 & -1 & 0 & -1 \\
+0 & 1 & -2 & 1 & -2 & 1 & 0 & 0 \\
+-1 & -2 & -1 & -1 & -43 & -2 & 1 & -1 \\
+10 & 62 & 1 & 1 & 0 & -9 & 1 & 0
+\end{array}\right),\]
+es decir, $W = N(A)$. Escribe $W$ en forma param\'etrica.
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 52
+
+\begin{sageblock}
+matrix(QQ,[[-1,0,1,0,0,0,0,6],
+[20,2,1,0,0,-1,0,-1],
+[0,1,-2,1,-2,1,0,0],
+[-1,-2,-1,-1,-43,-2,1,-1],
+[10,62,1,1,0,-9,1,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 52
+
+
+\begin{ejer} Sea $W$ el espacio vectorial sobre los números reales dado
+como anulador por la derecha de la matriz 
+\[A = \left(\begin{array}{rrrrrr}
+-2 & -1 & 1 & -2 & 3 & 1 \\
+21 & 1 & 2 & 1 & 1 & 26 \\
+1 & 1 & 1 & 5 & 3 & -1 \\
+-1 & -8 & 0 & 3 & 0 & 7
+\end{array}\right),\]
+es decir, $W = N(A)$. Escribe $W$ en forma param\'etrica.
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 53
+
+\begin{sageblock}
+matrix(QQ,[[-2,-1,1,-2,3,1],
+[21,1,2,1,1,26],
+[1,1,1,5,3,-1],
+[-1,-8,0,3,0,7]])
+\end{sageblock}
+
+% Fin del Ejercicio 53
+
+
+\begin{ejer} Sea $W$ el espacio vectorial sobre los números reales dado
+como anulador por la derecha de la matriz 
+\[A = \left(\begin{array}{rrrrrrrrr}
+-1 & -197 & 0 & 1 & 9 & 0 & 0 & 0 & -86 \\
+-1 & -1 & 1 & -1 & -1 & -1 & 1 & 1 & 1 \\
+-3 & -8 & 1 & 1 & -1 & -1 & 1 & 0 & -1 \\
+4 & 0 & -10 & -1 & 0 & 1 & 1 & 7 & 5 \\
+0 & 1 & 0 & -4 & 2 & 0 & -2 & 0 & -4
+\end{array}\right),\]
+es decir, $W = N(A)$. Escribe $W$ en forma param\'etrica.
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 54
+
+\begin{sageblock}
+matrix(QQ,[[-1,-197,0,1,9,0,0,0,-86],
+[-1,-1,1,-1,-1,-1,1,1,1],
+[-3,-8,1,1,-1,-1,1,0,-1],
+[4,0,-10,-1,0,1,1,7,5],
+[0,1,0,-4,2,0,-2,0,-4]])
+\end{sageblock}
+
+% Fin del Ejercicio 54
+
+
+\begin{ejer} Sea $W$ el espacio vectorial sobre los números reales dado
+como anulador por la derecha de la matriz 
+\[A = \left(\begin{array}{rrrrrrrrr}
+-1 & 0 & 0 & -3 & -1 & -1 & 137 & 1 & 3 \\
+-2 & -3 & -61 & -2 & 182 & -3 & 4 & 0 & 0 \\
+1 & 1 & 2 & 1 & -1 & 1 & 1 & -13 & -1 \\
+13 & 0 & -7 & 0 & 0 & 1 & -6 & -7 & 11 \\
+2 & 10 & 1 & 2 & -1 & 1 & 7 & -5 & -1
+\end{array}\right),\]
+es decir, $W = N(A)$. Escribe $W$ en forma param\'etrica.
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 55
+
+\begin{sageblock}
+matrix(QQ,[[-1,0,0,-3,-1,-1,137,1,3],
+[-2,-3,-61,-2,182,-3,4,0,0],
+[1,1,2,1,-1,1,1,-13,-1],
+[13,0,-7,0,0,1,-6,-7,11],
+[2,10,1,2,-1,1,7,-5,-1]])
+\end{sageblock}
+
+% Fin del Ejercicio 55
+
+
+\begin{ejer} Sea $W$ el espacio vectorial sobre los números reales dado
+como anulador por la derecha de la matriz 
+\[A = \left(\begin{array}{rrrrrrrrr}
+0 & 0 & 1 & -1 & 14 & -2 & 0 & -1 & -1 \\
+-1 & -1 & -1 & 0 & 1 & -1 & -1 & 1 & -5 \\
+1 & -11 & 28 & -3 & 2 & 1 & 1 & 1 & 1 \\
+-1 & 1 & -1 & -7 & -12 & -1 & -9 & 1 & 1 \\
+61 & 0 & 0 & 11 & -2 & -1 & 1 & -1 & -1
+\end{array}\right),\]
+es decir, $W = N(A)$. Escribe $W$ en forma param\'etrica.
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 56
+
+\begin{sageblock}
+matrix(QQ,[[0,0,1,-1,14,-2,0,-1,-1],
+[-1,-1,-1,0,1,-1,-1,1,-5],
+[1,-11,28,-3,2,1,1,1,1],
+[-1,1,-1,-7,-12,-1,-9,1,1],
+[61,0,0,11,-2,-1,1,-1,-1]])
+\end{sageblock}
+
+% Fin del Ejercicio 56
+
+
+\begin{ejer} Sea $W$ el espacio vectorial sobre los números reales dado
+como anulador por la derecha de la matriz 
+\[A = \left(\begin{array}{rrrrrrr}
+-1 & 1 & -1 & -1 & -2 & 4 & 7 \\
+0 & 0 & -3 & -13 & -84 & 2 & -1 \\
+1 & 1 & 0 & 0 & 1 & -18 & 5
+\end{array}\right),\]
+es decir, $W = N(A)$. Escribe $W$ en forma param\'etrica.
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 57
+
+\begin{sageblock}
+matrix(QQ,[[-1,1,-1,-1,-2,4,7],
+[0,0,-3,-13,-84,2,-1],
+[1,1,0,0,1,-18,5]])
+\end{sageblock}
+
+% Fin del Ejercicio 57
+
+
+\begin{ejer} Sea $W$ el espacio vectorial sobre los números reales dado
+como anulador por la derecha de la matriz 
+\[A = \left(\begin{array}{rrrrrrrrr}
+1 & -19 & -1 & -1 & -2 & 1 & -2 & 2 & 8 \\
+-1 & -1 & 0 & -2 & 1 & 0 & -1 & 1 & -4 \\
+3 & 64 & 0 & 2 & 1 & 0 & 1 & 0 & 0 \\
+-1 & 4 & 1 & 2 & 2 & 2 & 1 & -1 & -5 \\
+-2 & 8 & 1 & 1 & 0 & 0 & -47 & 2 & -1
+\end{array}\right),\]
+es decir, $W = N(A)$. Escribe $W$ en forma param\'etrica.
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 58
+
+\begin{sageblock}
+matrix(QQ,[[1,-19,-1,-1,-2,1,-2,2,8],
+[-1,-1,0,-2,1,0,-1,1,-4],
+[3,64,0,2,1,0,1,0,0],
+[-1,4,1,2,2,2,1,-1,-5],
+[-2,8,1,1,0,0,-47,2,-1]])
+\end{sageblock}
+
+% Fin del Ejercicio 58
+
+
+\begin{ejer} Sea $W$ el espacio vectorial sobre los números reales dado
+como anulador por la derecha de la matriz 
+\[A = \left(\begin{array}{rrrrrrr}
+0 & 0 & -1 & 1 & -4 & 1 & 2 \\
+6 & 0 & -8 & 1 & 0 & -68 & -1 \\
+-3 & 0 & -1 & 2 & 1 & 2 & 2 \\
+0 & 1 & -1 & -1 & -1 & -1 & 1
+\end{array}\right),\]
+es decir, $W = N(A)$. Escribe $W$ en forma param\'etrica.
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 59
+
+\begin{sageblock}
+matrix(QQ,[[0,0,-1,1,-4,1,2],
+[6,0,-8,1,0,-68,-1],
+[-3,0,-1,2,1,2,2],
+[0,1,-1,-1,-1,-1,1]])
+\end{sageblock}
+
+% Fin del Ejercicio 59
+
+
+\begin{ejer} Sea $W$ el espacio vectorial sobre los números reales dado
+como anulador por la derecha de la matriz 
+\[A = \left(\begin{array}{rrrrrrr}
+1 & -1 & 2 & 2 & 10 & -5 & -1 \\
+-1 & -8 & 2 & -7 & -17 & -2 & 0 \\
+4 & 3 & -1 & -11 & 1 & 1 & -1 \\
+1 & 4 & 1 & 1 & -1 & 2 & 1 \\
+1 & -2 & -1 & 2 & 1 & 5 & -2
+\end{array}\right),\]
+es decir, $W = N(A)$. Escribe $W$ en forma param\'etrica.
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 60
+
+\begin{sageblock}
+matrix(QQ,[[1,-1,2,2,10,-5,-1],
+[-1,-8,2,-7,-17,-2,0],
+[4,3,-1,-11,1,1,-1],
+[1,4,1,1,-1,2,1],
+[1,-2,-1,2,1,5,-2]])
+\end{sageblock}
+
+% Fin del Ejercicio 60
+
+
+\end{document}

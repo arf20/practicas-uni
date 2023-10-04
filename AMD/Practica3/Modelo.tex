@@ -156,18 +156,33 @@ n &\equiv \sage{b3} \pmod{\sage{m32}} \\
 % Escribe tu soluci\'on para el Ejercicio 3
 
 \begin{sageblock}
-	A = matrix(ZZ, [[m31], [m32]])
+	A = matrix(ZZ, [[m31], [-m32]])
 	Ap = block_matrix([[A, 1]])
 	Ar = Ap.echelon_form()
 	Ar = copy(Ar)
 	Ar.subdivide([], 1)
+	As = Ar[:, 1:]
+	R = Ar[:, :1]
+	
+	mcd = R[0, 0]
+	
+	a3n = 1792944400
+	b3n = 16054429802
+	d = b3n - a3n
+	
+	F = d / mcd
+	
+	c3 = a3n + (m31 * As[0, 0] * F)
+	cm3 = m31 * As[1, 0]
 \end{sageblock}
 
 $\text{mcd}(\sage{m31}, \sage{m32})$
 
+
 $$
-	\sage{Ap}
+	[A|I] = \sage{Ap}
 $$
+reducida
 $$
 	\sage{Ar}
 $$
@@ -184,11 +199,46 @@ $$
 $$
 
 $$
-	\sage{m31} x - \sage{m32} y = \sage{b3 - a3}
+	\sage{m31} x - \sage{m32} y = \sage{d} = d
 $$
 
+$$
+	F = \frac{\sage{d}}{\sage{mcd}} = \sage{F}
+$$
+El mcd es divisor de $d$, por tanto hay solución
 
+$$
+	\sage{As} \cdot \sage{A} = \sage{R}
+$$
 
+\begin{align*}
+	\sage{As[0, 0]} \cdot \sage{A[0, 0]} + \sage{As[0, 1]} \cdot (\sage{A[1, 0]}) &= \sage{R[0, 0]} \\
+	\sage{As[1, 0]} \cdot \sage{A[0, 0]} + \sage{As[1, 1]} \cdot (\sage{A[1, 0]}) &= \sage{R[1, 0]} \\
+\end{align*}
+
+Multiplicar la de arriba para dar $d$, y abajo por $t$
+
+\begin{align*}
+	\sage{As[0, 0]} \cdot \sage{A[0, 0]} \cdot \sage{F} + \sage{As[0, 1]} \cdot (\sage{A[1, 0]}) \cdot \sage{F} &= \sage{R[0, 0] * F} \\
+	\sage{As[1, 0]} \cdot \sage{A[0, 0]} \cdot t + \sage{As[1, 1]} \cdot (\sage{A[1, 0]}) \cdot t &= \sage{R[1, 0]} \\
+\end{align*}
+
+Al sumarlas
+
+$$
+	\sage{A[0, 0]} (\sage{As[0, 0] * F} + \sage{As[1, 0]} t)  \sage{A[1, 0]} (\sage{As[0, 1] * F} + \sage{As[1, 1]} t) = \sage{d}
+$$
+
+\begin{align*}
+	x &= \sage{As[0, 0] * F} + \sage{As[1, 0]} t \\
+	y &= \sage{As[0, 1] * F} + \sage{As[1, 1]} t \\
+\end{align*}
+
+\begin{align*}
+	n &= \sage{a3} + \sage{m31} x = \sage{a3} + \sage{m31} (\sage{As[0, 0] * F} + \sage{As[1, 0]} t) \\
+	&= \sage{c3} + \sage{cm3} t \\
+	&= \sage{c3} \text{ (mod \sage{cm3})}
+\end{align*}
 
 % Fin del Ejercicio 3
 

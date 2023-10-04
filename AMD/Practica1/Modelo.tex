@@ -64,7 +64,7 @@ sobre el cuerpo $\z _{13}$. Se pide:
 % Escribe tu soluci\'on para el Ejercicio 2
 
 \begin{sageblock}
-	C = matrix(QQ, [[-5, 2, -2, 1, 3], [1, 2, -3, 2, -1], [2, -3, 1, -4, 2]])
+	C = matrix(Zmod(3), [[-5, 2, -2, 1, 3], [1, 2, -3, 2, -1], [2, -3, 1, -4, 2]])
 \end{sageblock}
 
 La matriz reducida de $C$ es $$\sage{C.echelon_form()}$$
@@ -98,6 +98,10 @@ $$
 	\sage{A.echelon_form()} = I
 $$
 por tanto A es inversible
+
+$$
+	\sage{A.inverse()}
+$$
 
 % Fin del Ejercicio 3
 

@@ -22,15 +22,15 @@
 \end{array}\right)}{}{}{}{}}
 \newlabel{@sageinline4}{{%
 \left(\begin{array}{rrrrr}
-1 & 0 & 0 & \frac{9}{35} & -\frac{29}{35} \\
-0 & 1 & 0 & \frac{59}{35} & -\frac{54}{35} \\
-0 & 0 & 1 & \frac{19}{35} & -\frac{34}{35}
+1 & 0 & 0 & 0 & 2 \\
+0 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 2 & 1
 \end{array}\right)}{}{}{}{}}
 \newlabel{@sageinline5}{{%
 \left(\begin{array}{rr}
-\frac{9}{35} & -\frac{29}{35} \\
-\frac{59}{35} & -\frac{54}{35} \\
-\frac{19}{35} & -\frac{34}{35}
+0 & 2 \\
+1 & 0 \\
+2 & 1
 \end{array}\right)}{}{}{}{}}
 \newlabel{@sageinline6}{{%
 \left(\begin{array}{rrrr}
@@ -39,4 +39,11 @@
 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 1
 \end{array}\right)}{}{}{}{}}
-%53c5dd9ac14bd986b8a9d3190760a0c3% md5sum of corresponding .sage file (minus "goboom", "current_tex_line", and pause/unpause lines)
+\newlabel{@sageinline7}{{%
+\left(\begin{array}{rrrr}
+3 & 1 & 4 & 0 \\
+1 & 4 & 2 & 4 \\
+4 & 3 & 3 & 0 \\
+4 & 4 & 4 & 3
+\end{array}\right)}{}{}{}{}}
+%d55a5c4a89a8b7920d186c9f446b419d% md5sum of corresponding .sage file (minus "goboom", "current_tex_line", and pause/unpause lines)

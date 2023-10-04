@@ -175,12 +175,12 @@
 \newlabel{@sageinline71}{{%
 \left(\begin{array}{r|rr}
 4959384998 & 1 & 0 \\
-18622220374 & 0 & 1
+-18622220374 & 0 & 1
 \end{array}\right)}{}{}{}{}}
 \newlabel{@sageinline72}{{%
 \left(\begin{array}{r|rr}
-2002174 & 5884 & -1567 \\
-0 & 9301 & -2477
+2002174 & 5884 & 1567 \\
+0 & 9301 & 2477
 \end{array}\right)}{}{}{}{}}
 \newlabel{@sageinline73}{{%
 4959384998}{}{}{}{}}
@@ -209,5 +209,114 @@
 \newlabel{@sageinline85}{{%
 18622220374}{}{}{}{}}
 \newlabel{@sageinline86}{{%
+14261485402}{}{}{}{}}
+\newlabel{@sageinline87}{{%
+14261485402}{}{}{}{}}
+\newlabel{@sageinline88}{{%
+2002174}{}{}{}{}}
+\newlabel{@sageinline89}{{%
+7123}{}{}{}{}}
+\newlabel{@sageinline90}{{%
+\left(\begin{array}{rr}
+5884 & 1567 \\
+9301 & 2477
+\end{array}\right)}{}{}{}{}}
+\newlabel{@sageinline91}{{%
+\left(\begin{array}{r}
+4959384998 \\
+-18622220374
+\end{array}\right)}{}{}{}{}}
+\newlabel{@sageinline92}{{%
+\left(\begin{array}{r}
+2002174 \\
+0
+\end{array}\right)}{}{}{}{}}
+\newlabel{@sageinline93}{{%
+5884}{}{}{}{}}
+\newlabel{@sageinline94}{{%
+4959384998}{}{}{}{}}
+\newlabel{@sageinline95}{{%
+1567}{}{}{}{}}
+\newlabel{@sageinline96}{{%
+-18622220374}{}{}{}{}}
+\newlabel{@sageinline97}{{%
+2002174}{}{}{}{}}
+\newlabel{@sageinline98}{{%
+9301}{}{}{}{}}
+\newlabel{@sageinline99}{{%
+4959384998}{}{}{}{}}
+\newlabel{@sageinline100}{{%
+2477}{}{}{}{}}
+\newlabel{@sageinline101}{{%
+-18622220374}{}{}{}{}}
+\newlabel{@sageinline102}{{%
 0}{}{}{}{}}
-%c5626cf185d9e102d3bbfb69cfa3f68e% md5sum of corresponding .sage file (minus "goboom", "current_tex_line", and pause/unpause lines)
+\newlabel{@sageinline103}{{%
+5884}{}{}{}{}}
+\newlabel{@sageinline104}{{%
+4959384998}{}{}{}{}}
+\newlabel{@sageinline105}{{%
+7123}{}{}{}{}}
+\newlabel{@sageinline106}{{%
+1567}{}{}{}{}}
+\newlabel{@sageinline107}{{%
+-18622220374}{}{}{}{}}
+\newlabel{@sageinline108}{{%
+7123}{}{}{}{}}
+\newlabel{@sageinline109}{{%
+14261485402}{}{}{}{}}
+\newlabel{@sageinline110}{{%
+9301}{}{}{}{}}
+\newlabel{@sageinline111}{{%
+4959384998}{}{}{}{}}
+\newlabel{@sageinline112}{{%
+2477}{}{}{}{}}
+\newlabel{@sageinline113}{{%
+-18622220374}{}{}{}{}}
+\newlabel{@sageinline114}{{%
+0}{}{}{}{}}
+\newlabel{@sageinline115}{{%
+4959384998}{}{}{}{}}
+\newlabel{@sageinline116}{{%
+41911732}{}{}{}{}}
+\newlabel{@sageinline117}{{%
+9301}{}{}{}{}}
+\newlabel{@sageinline118}{{%
+-18622220374}{}{}{}{}}
+\newlabel{@sageinline119}{{%
+11161741}{}{}{}{}}
+\newlabel{@sageinline120}{{%
+2477}{}{}{}{}}
+\newlabel{@sageinline121}{{%
+14261485402}{}{}{}{}}
+\newlabel{@sageinline122}{{%
+41911732}{}{}{}{}}
+\newlabel{@sageinline123}{{%
+9301}{}{}{}{}}
+\newlabel{@sageinline124}{{%
+11161741}{}{}{}{}}
+\newlabel{@sageinline125}{{%
+2477}{}{}{}{}}
+\newlabel{@sageinline126}{{%
+1792944400}{}{}{}{}}
+\newlabel{@sageinline127}{{%
+4959384998}{}{}{}{}}
+\newlabel{@sageinline128}{{%
+1792944400}{}{}{}{}}
+\newlabel{@sageinline129}{{%
+4959384998}{}{}{}{}}
+\newlabel{@sageinline130}{{%
+41911732}{}{}{}{}}
+\newlabel{@sageinline131}{{%
+9301}{}{}{}{}}
+\newlabel{@sageinline132}{{%
+207856416713940936}{}{}{}{}}
+\newlabel{@sageinline133}{{%
+46127239866398}{}{}{}{}}
+\newlabel{@sageinline134}{{%
+207856416713940936}{}{}{}{}}
+\newlabel{@sageinline135}{{%
+46127239866398}{}{}{}{}}
+\newlabel{@sageinline136}{{%
+46127239866398}{}{}{}{}}
+%f00132d37eeaadc60e94e265a1615f3b% md5sum of corresponding .sage file (minus "goboom", "current_tex_line", and pause/unpause lines)
