@@ -7,6 +7,9 @@ block_matrix(1, 2, [A, 1])     aumentar por identidad
 block_matrix([[A, B]])         aumentar por B o I mas facil
 A.echelon_form()               reducir
 
+A.subdivide([r], [c])          poner lineas subdivisiones
+A.subdivision(x, y)            coger subdivision
+
 	Resolver matriz: cuando reduces gauss [A|b] sale [I|s] si es SCD, solucion es vector s
 				si no sale identidad y no hay absurdos es SCI y hay que parametrizar las columnas que no sean pivotes
 				si hay absurdos es SI
