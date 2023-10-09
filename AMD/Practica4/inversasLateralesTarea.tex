@@ -206,7 +206,9 @@ Ar = Ap.echelon_form()
 Atp = block_matrix([[A.T, 1]])
 Atr = Atp.echelon_form()
 Atr = copy(Atr)
-Atr.subdivide([3], [3])
+Atr.subdivide([3], [8])
+
+B = Atr.subdivision(1, 1).T
 \end{sageblock}
 
 Ampliada
@@ -226,13 +228,13 @@ $$
 Reducida
 $$
 	\sage{Atr} = \begin{bmatrix}
-		I & B \\
-		0 & H \\
+		I & B^t \\
+		0 & H^t \\
 	\end{bmatrix}
 $$
 Sale identidad, por tanto existe matriz inversa lateral por la izquierda, que es $B$
 $$
-	B = \sage{Atr[:3, 3:]}
+	B = \sage{B}
 $$
 
 
@@ -1442,7 +1444,31 @@ A = matrix(QQ,[[-1,0,1,0,0,0,0,6],
 [0,1,-2,1,-2,1,0,0],
 [-1,-2,-1,-1,-43,-2,1,-1],
 [10,62,1,1,0,-9,1,0]])
+
+Atp = block_matrix([[A.T, 1]])
+Atr = Ap.echelon_form()
+Atr = copy(Atr)
+Atr.subdivide([4], [5])
+H = Atr.subdivision(1, 1).T
 \end{sageblock}
+
+El espacio que nos dan es $W = N(A)$, calcular una matriz H tal que $W = C(B)$. Para ello ampliamos la matriz A transpuesta (por ser de tipo A) por la identidad
+$$
+	[A^t|I] = \sage{Atp}
+$$
+y se reduce
+$$
+	\sage{Atr} = \begin{bmatrix}
+		I & B^t \\
+		0 & H^t \\
+	\end{bmatrix}
+$$
+y por la derecha de los 0s queda
+$$
+	H = \sage{H}
+$$
+
+
 
 % Fin del Ejercicio 52
 
