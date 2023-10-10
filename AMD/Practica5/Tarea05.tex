@@ -1,0 +1,4476 @@
+\documentclass[12pt]{amsart}
+\usepackage[usefamily=sage]{pythontex} 
+%\usepackage{sagetex}
+\usepackage[utf8]{inputenc}
+\usepackage[margin = 2cm]{geometry}
+%\usepackage[spanish]{babel}
+\usepackage[most]{tcolorbox}
+\newtheorem{ejer}{Ejercicio}
+
+\title{Álgebra y Matemática Discreta \\ Tarea de Aplicaciones Lineales }
+
+\begin{document}
+\maketitle
+
+\begin{sageblock}
+miDNI = 12345   # introduce aqui las 5 ultimas cifras de tu DNI o NIE
+primo = ZZ(miDNI^2).next_prime()
+EJ = [1+20*i+ZZ(Zmod(20)(primo^(i+2))) for i in range(4)]
+\end{sageblock}
+
+\begin{tcolorbox}[colback = orange!60!white]
+Los ejercicios que tienes que realizar son al menos el Ejercicio~\sage{EJ[0]}, Ejercicio~\sage{EJ[1]}, Ejercicio~\sage{EJ[2]} y Ejercicio~\sage{EJ[3]}.
+\end{tcolorbox}
+
+
+\begin{ejer} Sea $K$ el cuerpo de 47 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{3} \to K^{3}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+3 \\
+28 \\
+45
+\end{array}\right]\right) = \left[\begin{array}{r}
+1 \\
+0 \\
+0
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+7 \\
+15 \\
+17
+\end{array}\right]\right) = \left[\begin{array}{r}
+8 \\
+44 \\
+11
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+1 \\
+15 \\
+0
+\end{array}\right]\right) = \left[\begin{array}{r}
+11 \\
+23 \\
+20
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+3 \\
+28 \\
+45
+\end{array}\right] = \left[\begin{array}{r}
+1 \\
+0 \\
+0
+\end{array}\right] \quad M \left[\begin{array}{r}
+7 \\
+15 \\
+17
+\end{array}\right] = \left[\begin{array}{r}
+8 \\
+44 \\
+11
+\end{array}\right] \quad M \left[\begin{array}{r}
+1 \\
+15 \\
+0
+\end{array}\right] = \left[\begin{array}{r}
+11 \\
+23 \\
+20
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rrr}
+3 & 7 & 1 \\
+28 & 15 & 15 \\
+45 & 17 & 0
+\end{array}\right] = \left[\begin{array}{rrr}
+1 & 8 & 11 \\
+0 & 44 & 23 \\
+0 & 11 & 20
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 1
+
+% Fin del Ejercicio 1
+
+
+\begin{ejer} Sea $K$ el cuerpo de 7 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{3} \to K^{4}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+0 \\
+6 \\
+1
+\end{array}\right]\right) = \left[\begin{array}{r}
+1 \\
+0 \\
+5 \\
+5
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+4 \\
+6 \\
+5
+\end{array}\right]\right) = \left[\begin{array}{r}
+4 \\
+5 \\
+6 \\
+0
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+1 \\
+0 \\
+3
+\end{array}\right]\right) = \left[\begin{array}{r}
+4 \\
+2 \\
+4 \\
+4
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+0 \\
+6 \\
+1
+\end{array}\right] = \left[\begin{array}{r}
+1 \\
+0 \\
+5 \\
+5
+\end{array}\right] \quad M \left[\begin{array}{r}
+4 \\
+6 \\
+5
+\end{array}\right] = \left[\begin{array}{r}
+4 \\
+5 \\
+6 \\
+0
+\end{array}\right] \quad M \left[\begin{array}{r}
+1 \\
+0 \\
+3
+\end{array}\right] = \left[\begin{array}{r}
+4 \\
+2 \\
+4 \\
+4
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rrr}
+0 & 4 & 1 \\
+6 & 6 & 0 \\
+1 & 5 & 3
+\end{array}\right] = \left[\begin{array}{rrr}
+1 & 4 & 4 \\
+0 & 5 & 2 \\
+5 & 6 & 4 \\
+5 & 0 & 4
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 2
+
+% Fin del Ejercicio 2
+
+
+\begin{ejer} Sea $K$ el cuerpo de 31 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{3} \to K^{2}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+19 \\
+19 \\
+6
+\end{array}\right]\right) = \left[\begin{array}{r}
+4 \\
+2
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+10 \\
+16 \\
+27
+\end{array}\right]\right) = \left[\begin{array}{r}
+6 \\
+17
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+18 \\
+19 \\
+20
+\end{array}\right]\right) = \left[\begin{array}{r}
+28 \\
+11
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+19 \\
+19 \\
+6
+\end{array}\right] = \left[\begin{array}{r}
+4 \\
+2
+\end{array}\right] \quad M \left[\begin{array}{r}
+10 \\
+16 \\
+27
+\end{array}\right] = \left[\begin{array}{r}
+6 \\
+17
+\end{array}\right] \quad M \left[\begin{array}{r}
+18 \\
+19 \\
+20
+\end{array}\right] = \left[\begin{array}{r}
+28 \\
+11
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rrr}
+19 & 10 & 18 \\
+19 & 16 & 19 \\
+6 & 27 & 20
+\end{array}\right] = \left[\begin{array}{rrr}
+4 & 6 & 28 \\
+2 & 17 & 11
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 3
+
+% Fin del Ejercicio 3
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{3} \to K^{4}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+2 \\
+1 \\
+1
+\end{array}\right]\right) = \left[\begin{array}{r}
+-2 \\
+0 \\
+1 \\
+0
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+1 \\
+1 \\
+0
+\end{array}\right]\right) = \left[\begin{array}{r}
+0 \\
+-\frac{1}{2} \\
+-1 \\
+-2
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+5 \\
+0 \\
+6
+\end{array}\right]\right) = \left[\begin{array}{r}
+0 \\
+\frac{1}{2} \\
+-1 \\
+0
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+2 \\
+1 \\
+1
+\end{array}\right] = \left[\begin{array}{r}
+-2 \\
+0 \\
+1 \\
+0
+\end{array}\right] \quad M \left[\begin{array}{r}
+1 \\
+1 \\
+0
+\end{array}\right] = \left[\begin{array}{r}
+0 \\
+-\frac{1}{2} \\
+-1 \\
+-2
+\end{array}\right] \quad M \left[\begin{array}{r}
+5 \\
+0 \\
+6
+\end{array}\right] = \left[\begin{array}{r}
+0 \\
+\frac{1}{2} \\
+-1 \\
+0
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rrr}
+2 & 1 & 5 \\
+1 & 1 & 0 \\
+1 & 0 & 6
+\end{array}\right] = \left[\begin{array}{rrr}
+-2 & 0 & 0 \\
+0 & -\frac{1}{2} & \frac{1}{2} \\
+1 & -1 & -1 \\
+0 & -2 & 0
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 4
+
+% Fin del Ejercicio 4
+
+
+\begin{ejer} Sea $K$ el cuerpo de 47 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{3} \to K^{2}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+18 \\
+38 \\
+26
+\end{array}\right]\right) = \left[\begin{array}{r}
+16 \\
+15
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+40 \\
+14 \\
+44
+\end{array}\right]\right) = \left[\begin{array}{r}
+7 \\
+16
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+22 \\
+36 \\
+38
+\end{array}\right]\right) = \left[\begin{array}{r}
+32 \\
+43
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+18 \\
+38 \\
+26
+\end{array}\right] = \left[\begin{array}{r}
+16 \\
+15
+\end{array}\right] \quad M \left[\begin{array}{r}
+40 \\
+14 \\
+44
+\end{array}\right] = \left[\begin{array}{r}
+7 \\
+16
+\end{array}\right] \quad M \left[\begin{array}{r}
+22 \\
+36 \\
+38
+\end{array}\right] = \left[\begin{array}{r}
+32 \\
+43
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rrr}
+18 & 40 & 22 \\
+38 & 14 & 36 \\
+26 & 44 & 38
+\end{array}\right] = \left[\begin{array}{rrr}
+16 & 7 & 32 \\
+15 & 16 & 43
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 5
+
+% Fin del Ejercicio 5
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{2} \to K^{4}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+1 \\
+-5
+\end{array}\right]\right) = \left[\begin{array}{r}
+\frac{1}{2} \\
+0 \\
+-\frac{1}{2} \\
+0
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+2 \\
+-9
+\end{array}\right]\right) = \left[\begin{array}{r}
+-2 \\
+-1 \\
+0 \\
+-1
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+1 \\
+-5
+\end{array}\right] = \left[\begin{array}{r}
+\frac{1}{2} \\
+0 \\
+-\frac{1}{2} \\
+0
+\end{array}\right] \quad M \left[\begin{array}{r}
+2 \\
+-9
+\end{array}\right] = \left[\begin{array}{r}
+-2 \\
+-1 \\
+0 \\
+-1
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rr}
+1 & 2 \\
+-5 & -9
+\end{array}\right] = \left[\begin{array}{rr}
+\frac{1}{2} & -2 \\
+0 & -1 \\
+-\frac{1}{2} & 0 \\
+0 & -1
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 6
+
+% Fin del Ejercicio 6
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{2} \to K^{3}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+1 \\
+0
+\end{array}\right]\right) = \left[\begin{array}{r}
+0 \\
+\frac{1}{2} \\
+0
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+-2 \\
+1
+\end{array}\right]\right) = \left[\begin{array}{r}
+-\frac{1}{2} \\
+\frac{1}{2} \\
+0
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+1 \\
+0
+\end{array}\right] = \left[\begin{array}{r}
+0 \\
+\frac{1}{2} \\
+0
+\end{array}\right] \quad M \left[\begin{array}{r}
+-2 \\
+1
+\end{array}\right] = \left[\begin{array}{r}
+-\frac{1}{2} \\
+\frac{1}{2} \\
+0
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rr}
+1 & -2 \\
+0 & 1
+\end{array}\right] = \left[\begin{array}{rr}
+0 & -\frac{1}{2} \\
+\frac{1}{2} & \frac{1}{2} \\
+0 & 0
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 7
+
+% Fin del Ejercicio 7
+
+
+\begin{ejer} Sea $K$ el cuerpo de 29 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{2} \to K^{2}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+27 \\
+24
+\end{array}\right]\right) = \left[\begin{array}{r}
+3 \\
+5
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+7 \\
+17
+\end{array}\right]\right) = \left[\begin{array}{r}
+3 \\
+18
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+27 \\
+24
+\end{array}\right] = \left[\begin{array}{r}
+3 \\
+5
+\end{array}\right] \quad M \left[\begin{array}{r}
+7 \\
+17
+\end{array}\right] = \left[\begin{array}{r}
+3 \\
+18
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rr}
+27 & 7 \\
+24 & 17
+\end{array}\right] = \left[\begin{array}{rr}
+3 & 3 \\
+5 & 18
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 8
+
+% Fin del Ejercicio 8
+
+
+\begin{ejer} Sea $K$ el cuerpo de 13 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{2} \to K^{3}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+0 \\
+2
+\end{array}\right]\right) = \left[\begin{array}{r}
+7 \\
+4 \\
+7
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+6 \\
+9
+\end{array}\right]\right) = \left[\begin{array}{r}
+1 \\
+10 \\
+10
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+0 \\
+2
+\end{array}\right] = \left[\begin{array}{r}
+7 \\
+4 \\
+7
+\end{array}\right] \quad M \left[\begin{array}{r}
+6 \\
+9
+\end{array}\right] = \left[\begin{array}{r}
+1 \\
+10 \\
+10
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rr}
+0 & 6 \\
+2 & 9
+\end{array}\right] = \left[\begin{array}{rr}
+7 & 1 \\
+4 & 10 \\
+7 & 10
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 9
+
+% Fin del Ejercicio 9
+
+
+\begin{ejer} Sea $K$ el cuerpo de 19 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{2} \to K^{4}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+9 \\
+13
+\end{array}\right]\right) = \left[\begin{array}{r}
+17 \\
+1 \\
+6 \\
+12
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+10 \\
+4
+\end{array}\right]\right) = \left[\begin{array}{r}
+0 \\
+10 \\
+3 \\
+18
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+9 \\
+13
+\end{array}\right] = \left[\begin{array}{r}
+17 \\
+1 \\
+6 \\
+12
+\end{array}\right] \quad M \left[\begin{array}{r}
+10 \\
+4
+\end{array}\right] = \left[\begin{array}{r}
+0 \\
+10 \\
+3 \\
+18
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rr}
+9 & 10 \\
+13 & 4
+\end{array}\right] = \left[\begin{array}{rr}
+17 & 0 \\
+1 & 10 \\
+6 & 3 \\
+12 & 18
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 10
+
+% Fin del Ejercicio 10
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{3} \to K^{4}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+-1 \\
+2 \\
+1
+\end{array}\right]\right) = \left[\begin{array}{r}
+0 \\
+0 \\
+2 \\
+-1
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+0 \\
+-1 \\
+-1
+\end{array}\right]\right) = \left[\begin{array}{r}
+-1 \\
+0 \\
+0 \\
+0
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+2 \\
+-8 \\
+-5
+\end{array}\right]\right) = \left[\begin{array}{r}
+0 \\
+-2 \\
+0 \\
+-1
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+-1 \\
+2 \\
+1
+\end{array}\right] = \left[\begin{array}{r}
+0 \\
+0 \\
+2 \\
+-1
+\end{array}\right] \quad M \left[\begin{array}{r}
+0 \\
+-1 \\
+-1
+\end{array}\right] = \left[\begin{array}{r}
+-1 \\
+0 \\
+0 \\
+0
+\end{array}\right] \quad M \left[\begin{array}{r}
+2 \\
+-8 \\
+-5
+\end{array}\right] = \left[\begin{array}{r}
+0 \\
+-2 \\
+0 \\
+-1
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rrr}
+-1 & 0 & 2 \\
+2 & -1 & -8 \\
+1 & -1 & -5
+\end{array}\right] = \left[\begin{array}{rrr}
+0 & -1 & 0 \\
+0 & 0 & -2 \\
+2 & 0 & 0 \\
+-1 & 0 & -1
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 11
+
+% Fin del Ejercicio 11
+
+
+\begin{ejer} Sea $K$ el cuerpo de 31 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{3} \to K^{3}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+2 \\
+30 \\
+5
+\end{array}\right]\right) = \left[\begin{array}{r}
+21 \\
+2 \\
+3
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+1 \\
+0 \\
+0
+\end{array}\right]\right) = \left[\begin{array}{r}
+6 \\
+28 \\
+17
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+9 \\
+10 \\
+13
+\end{array}\right]\right) = \left[\begin{array}{r}
+23 \\
+14 \\
+12
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+2 \\
+30 \\
+5
+\end{array}\right] = \left[\begin{array}{r}
+21 \\
+2 \\
+3
+\end{array}\right] \quad M \left[\begin{array}{r}
+1 \\
+0 \\
+0
+\end{array}\right] = \left[\begin{array}{r}
+6 \\
+28 \\
+17
+\end{array}\right] \quad M \left[\begin{array}{r}
+9 \\
+10 \\
+13
+\end{array}\right] = \left[\begin{array}{r}
+23 \\
+14 \\
+12
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rrr}
+2 & 1 & 9 \\
+30 & 0 & 10 \\
+5 & 0 & 13
+\end{array}\right] = \left[\begin{array}{rrr}
+21 & 6 & 23 \\
+2 & 28 & 14 \\
+3 & 17 & 12
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 12
+
+% Fin del Ejercicio 12
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{3} \to K^{2}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+1 \\
+0 \\
+-1
+\end{array}\right]\right) = \left[\begin{array}{r}
+\frac{1}{2} \\
+2
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+0 \\
+1 \\
+-2
+\end{array}\right]\right) = \left[\begin{array}{r}
+1 \\
+0
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+5 \\
+-5 \\
+6
+\end{array}\right]\right) = \left[\begin{array}{r}
+0 \\
+1
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+1 \\
+0 \\
+-1
+\end{array}\right] = \left[\begin{array}{r}
+\frac{1}{2} \\
+2
+\end{array}\right] \quad M \left[\begin{array}{r}
+0 \\
+1 \\
+-2
+\end{array}\right] = \left[\begin{array}{r}
+1 \\
+0
+\end{array}\right] \quad M \left[\begin{array}{r}
+5 \\
+-5 \\
+6
+\end{array}\right] = \left[\begin{array}{r}
+0 \\
+1
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rrr}
+1 & 0 & 5 \\
+0 & 1 & -5 \\
+-1 & -2 & 6
+\end{array}\right] = \left[\begin{array}{rrr}
+\frac{1}{2} & 1 & 0 \\
+2 & 0 & 1
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 13
+
+% Fin del Ejercicio 13
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{2} \to K^{2}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+1 \\
+-2
+\end{array}\right]\right) = \left[\begin{array}{r}
+0 \\
+2
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+-4 \\
+9
+\end{array}\right]\right) = \left[\begin{array}{r}
+-2 \\
+-1
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+1 \\
+-2
+\end{array}\right] = \left[\begin{array}{r}
+0 \\
+2
+\end{array}\right] \quad M \left[\begin{array}{r}
+-4 \\
+9
+\end{array}\right] = \left[\begin{array}{r}
+-2 \\
+-1
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rr}
+1 & -4 \\
+-2 & 9
+\end{array}\right] = \left[\begin{array}{rr}
+0 & -2 \\
+2 & -1
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 14
+
+% Fin del Ejercicio 14
+
+
+\begin{ejer} Sea $K$ el cuerpo de 7 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{2} \to K^{4}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+3 \\
+6
+\end{array}\right]\right) = \left[\begin{array}{r}
+6 \\
+0 \\
+3 \\
+4
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+6 \\
+3
+\end{array}\right]\right) = \left[\begin{array}{r}
+5 \\
+6 \\
+6 \\
+4
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+3 \\
+6
+\end{array}\right] = \left[\begin{array}{r}
+6 \\
+0 \\
+3 \\
+4
+\end{array}\right] \quad M \left[\begin{array}{r}
+6 \\
+3
+\end{array}\right] = \left[\begin{array}{r}
+5 \\
+6 \\
+6 \\
+4
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rr}
+3 & 6 \\
+6 & 3
+\end{array}\right] = \left[\begin{array}{rr}
+6 & 5 \\
+0 & 6 \\
+3 & 6 \\
+4 & 4
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 15
+
+% Fin del Ejercicio 15
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{3} \to K^{4}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+-3 \\
+2 \\
+1
+\end{array}\right]\right) = \left[\begin{array}{r}
+-2 \\
+2 \\
+-1 \\
+0
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+7 \\
+-5 \\
+2
+\end{array}\right]\right) = \left[\begin{array}{r}
+1 \\
+2 \\
+\frac{1}{2} \\
+2
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+-8 \\
+5 \\
+8
+\end{array}\right]\right) = \left[\begin{array}{r}
+-1 \\
+-\frac{1}{2} \\
+\frac{1}{2} \\
+\frac{1}{2}
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+-3 \\
+2 \\
+1
+\end{array}\right] = \left[\begin{array}{r}
+-2 \\
+2 \\
+-1 \\
+0
+\end{array}\right] \quad M \left[\begin{array}{r}
+7 \\
+-5 \\
+2
+\end{array}\right] = \left[\begin{array}{r}
+1 \\
+2 \\
+\frac{1}{2} \\
+2
+\end{array}\right] \quad M \left[\begin{array}{r}
+-8 \\
+5 \\
+8
+\end{array}\right] = \left[\begin{array}{r}
+-1 \\
+-\frac{1}{2} \\
+\frac{1}{2} \\
+\frac{1}{2}
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rrr}
+-3 & 7 & -8 \\
+2 & -5 & 5 \\
+1 & 2 & 8
+\end{array}\right] = \left[\begin{array}{rrr}
+-2 & 1 & -1 \\
+2 & 2 & -\frac{1}{2} \\
+-1 & \frac{1}{2} & \frac{1}{2} \\
+0 & 2 & \frac{1}{2}
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 16
+
+% Fin del Ejercicio 16
+
+
+\begin{ejer} Sea $K$ el cuerpo de 17 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{2} \to K^{2}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+4 \\
+14
+\end{array}\right]\right) = \left[\begin{array}{r}
+3 \\
+6
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+11 \\
+9
+\end{array}\right]\right) = \left[\begin{array}{r}
+6 \\
+8
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+4 \\
+14
+\end{array}\right] = \left[\begin{array}{r}
+3 \\
+6
+\end{array}\right] \quad M \left[\begin{array}{r}
+11 \\
+9
+\end{array}\right] = \left[\begin{array}{r}
+6 \\
+8
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rr}
+4 & 11 \\
+14 & 9
+\end{array}\right] = \left[\begin{array}{rr}
+3 & 6 \\
+6 & 8
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 17
+
+% Fin del Ejercicio 17
+
+
+\begin{ejer} Sea $K$ el cuerpo de 47 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{3} \to K^{2}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+11 \\
+35 \\
+42
+\end{array}\right]\right) = \left[\begin{array}{r}
+10 \\
+24
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+29 \\
+24 \\
+10
+\end{array}\right]\right) = \left[\begin{array}{r}
+41 \\
+46
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+20 \\
+34 \\
+23
+\end{array}\right]\right) = \left[\begin{array}{r}
+11 \\
+29
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+11 \\
+35 \\
+42
+\end{array}\right] = \left[\begin{array}{r}
+10 \\
+24
+\end{array}\right] \quad M \left[\begin{array}{r}
+29 \\
+24 \\
+10
+\end{array}\right] = \left[\begin{array}{r}
+41 \\
+46
+\end{array}\right] \quad M \left[\begin{array}{r}
+20 \\
+34 \\
+23
+\end{array}\right] = \left[\begin{array}{r}
+11 \\
+29
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rrr}
+11 & 29 & 20 \\
+35 & 24 & 34 \\
+42 & 10 & 23
+\end{array}\right] = \left[\begin{array}{rrr}
+10 & 41 & 11 \\
+24 & 46 & 29
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 18
+
+% Fin del Ejercicio 18
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{2} \to K^{2}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+-1 \\
+-2
+\end{array}\right]\right) = \left[\begin{array}{r}
+-2 \\
+2
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+-3 \\
+-7
+\end{array}\right]\right) = \left[\begin{array}{r}
+1 \\
+0
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+-1 \\
+-2
+\end{array}\right] = \left[\begin{array}{r}
+-2 \\
+2
+\end{array}\right] \quad M \left[\begin{array}{r}
+-3 \\
+-7
+\end{array}\right] = \left[\begin{array}{r}
+1 \\
+0
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rr}
+-1 & -3 \\
+-2 & -7
+\end{array}\right] = \left[\begin{array}{rr}
+-2 & 1 \\
+2 & 0
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 19
+
+% Fin del Ejercicio 19
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicación]
+Calcula la aplicaci\'on lineal $f:K^{3} \to K^{4}$ que cumple las siguientes condiciones: 
+\[f\left(\left[\begin{array}{r}
+-1 \\
+0 \\
+-2
+\end{array}\right]\right) = \left[\begin{array}{r}
+0 \\
+2 \\
+1 \\
+-2
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+0 \\
+1 \\
+2
+\end{array}\right]\right) = \left[\begin{array}{r}
+-\frac{1}{2} \\
+2 \\
+-1 \\
+0
+\end{array}\right] \quad f\left(\left[\begin{array}{r}
+-1 \\
+-3 \\
+-9
+\end{array}\right]\right) = \left[\begin{array}{r}
+-1 \\
+-1 \\
+\frac{1}{2} \\
+1
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Sistema Matricial]
+Resuelve el siguiente sistema de ecuaciones matriciales despejando el valor de la matriz $M$
+\[M \left[\begin{array}{r}
+-1 \\
+0 \\
+-2
+\end{array}\right] = \left[\begin{array}{r}
+0 \\
+2 \\
+1 \\
+-2
+\end{array}\right] \quad M \left[\begin{array}{r}
+0 \\
+1 \\
+2
+\end{array}\right] = \left[\begin{array}{r}
+-\frac{1}{2} \\
+2 \\
+-1 \\
+0
+\end{array}\right] \quad M \left[\begin{array}{r}
+-1 \\
+-3 \\
+-9
+\end{array}\right] = \left[\begin{array}{r}
+-1 \\
+-1 \\
+\frac{1}{2} \\
+1
+\end{array}\right] \quad 
+\]\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuación Matricial]
+Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
+\[M \left[\begin{array}{rrr}
+-1 & 0 & -1 \\
+0 & 1 & -3 \\
+-2 & 2 & -9
+\end{array}\right] = \left[\begin{array}{rrr}
+0 & -\frac{1}{2} & -1 \\
+2 & 2 & -1 \\
+1 & -1 & \frac{1}{2} \\
+-2 & 0 & 1
+\end{array}\right] \quad 
+\]
+\end{tcolorbox}
+\end{minipage}%
+\end{ejer}
+
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 20
+
+% Fin del Ejercicio 20
+
+
+\begin{ejer} Sea $K$ el cuerpo de 19 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{3}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrr}
+1 & 9 & 8 & 9 \\
+0 & 1 & 6 & 5 \\
+16 & 0 & 6 & 6
+\end{array}\right] \in {\bf M}_{3\times 4}({\mathbb Z}_{19})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 21
+
+\begin{sageblock}
+matrix(Zmod(19),[[1,9,8,9],
+[0,1,6,5],
+[16,0,6,6]])
+\end{sageblock}
+
+% Fin del Ejercicio 21
+
+
+\begin{ejer} Sea $K$ el cuerpo de 43 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{5}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrr}
+33 & 4 & 7 & 36 & 32 \\
+36 & 7 & 34 & 14 & 20 \\
+13 & 37 & 14 & 39 & 42 \\
+32 & 38 & 26 & 0 & 3 \\
+26 & 36 & 37 & 42 & 39
+\end{array}\right] \in {\bf M}_{5\times 5}({\mathbb Z}_{43})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 22
+
+\begin{sageblock}
+matrix(Zmod(43),[[33,4,7,36,32],
+[36,7,34,14,20],
+[13,37,14,39,42],
+[32,38,26,0,3],
+[26,36,37,42,39]])
+\end{sageblock}
+
+% Fin del Ejercicio 22
+
+
+\begin{ejer} Sea $K$ el cuerpo de 31 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{4}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrr}
+13 & 7 & 6 & 0 \\
+18 & 2 & 15 & 2 \\
+20 & 30 & 8 & 19 \\
+13 & 18 & 23 & 9
+\end{array}\right] \in {\bf M}_{4\times 4}({\mathbb Z}_{31})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 23
+
+\begin{sageblock}
+matrix(Zmod(31),[[13,7,6,0],
+[18,2,15,2],
+[20,30,8,19],
+[13,18,23,9]])
+\end{sageblock}
+
+% Fin del Ejercicio 23
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{4}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrr}
+-1 & 3 & -2 & 4 & -2 \\
+-2 & 5 & -3 & 5 & -5 \\
+-2 & 2 & 1 & -7 & -9 \\
+1 & -4 & 1 & 0 & 4
+\end{array}\right] \in {\bf M}_{4\times 5}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 24
+
+\begin{sageblock}
+matrix(QQ,[[-1,3,-2,4,-2],
+[-2,5,-3,5,-5],
+[-2,2,1,-7,-9],
+[1,-4,1,0,4]])
+\end{sageblock}
+
+% Fin del Ejercicio 24
+
+
+\begin{ejer} Sea $K$ el cuerpo de 5 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{3}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrr}
+2 & 2 & 4 & 1 \\
+3 & 1 & 3 & 2 \\
+4 & 3 & 4 & 1
+\end{array}\right] \in {\bf M}_{3\times 4}({\mathbb Z}_{5})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 25
+
+\begin{sageblock}
+matrix(Zmod(5),[[2,2,4,1],
+[3,1,3,2],
+[4,3,4,1]])
+\end{sageblock}
+
+% Fin del Ejercicio 25
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{4}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrr}
+1 & 3 & -1 & 4 \\
+5 & 6 & -3 & 0 \\
+-1 & -3 & -2 & -8 \\
+0 & -2 & 0 & -5
+\end{array}\right] \in {\bf M}_{4\times 4}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 26
+
+\begin{sageblock}
+matrix(QQ,[[1,3,-1,4],
+[5,6,-3,0],
+[-1,-3,-2,-8],
+[0,-2,0,-5]])
+\end{sageblock}
+
+% Fin del Ejercicio 26
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{4}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrr}
+2 & -2 & 8 \\
+-1 & 3 & -5 \\
+-1 & -1 & -4 \\
+1 & 0 & 3
+\end{array}\right] \in {\bf M}_{4\times 3}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 27
+
+\begin{sageblock}
+matrix(QQ,[[2,-2,8],
+[-1,3,-5],
+[-1,-1,-4],
+[1,0,3]])
+\end{sageblock}
+
+% Fin del Ejercicio 27
+
+
+\begin{ejer} Sea $K$ el cuerpo de 19 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{3}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrr}
+16 & 4 & 18 & 16 & 9 \\
+12 & 0 & 10 & 5 & 16 \\
+5 & 4 & 10 & 18 & 0
+\end{array}\right] \in {\bf M}_{3\times 5}({\mathbb Z}_{19})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 28
+
+\begin{sageblock}
+matrix(Zmod(19),[[16,4,18,16,9],
+[12,0,10,5,16],
+[5,4,10,18,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 28
+
+
+\begin{ejer} Sea $K$ el cuerpo de 37 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{3}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrr}
+0 & 14 & 14 \\
+15 & 2 & 11 \\
+7 & 11 & 27
+\end{array}\right] \in {\bf M}_{3\times 3}({\mathbb Z}_{37})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 29
+
+\begin{sageblock}
+matrix(Zmod(37),[[0,14,14],
+[15,2,11],
+[7,11,27]])
+\end{sageblock}
+
+% Fin del Ejercicio 29
+
+
+\begin{ejer} Sea $K$ el cuerpo de 7 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{5}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrr}
+1 & 5 & 0 \\
+6 & 2 & 1 \\
+6 & 2 & 4 \\
+4 & 6 & 6 \\
+5 & 4 & 5
+\end{array}\right] \in {\bf M}_{5\times 3}({\mathbb Z}_{7})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 30
+
+\begin{sageblock}
+matrix(Zmod(7),[[1,5,0],
+[6,2,1],
+[6,2,4],
+[4,6,6],
+[5,4,5]])
+\end{sageblock}
+
+% Fin del Ejercicio 30
+
+
+\begin{ejer} Sea $K$ el cuerpo de 11 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{3}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrr}
+6 & 6 & 2 \\
+7 & 9 & 6 \\
+1 & 0 & 5
+\end{array}\right] \in {\bf M}_{3\times 3}({\mathbb Z}_{11})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 31
+
+\begin{sageblock}
+matrix(Zmod(11),[[6,6,2],
+[7,9,6],
+[1,0,5]])
+\end{sageblock}
+
+% Fin del Ejercicio 31
+
+
+\begin{ejer} Sea $K$ el cuerpo de 31 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{5}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrr}
+27 & 2 & 22 & 11 \\
+14 & 16 & 19 & 26 \\
+21 & 24 & 14 & 6 \\
+21 & 24 & 1 & 2 \\
+18 & 28 & 8 & 28
+\end{array}\right] \in {\bf M}_{5\times 4}({\mathbb Z}_{31})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 32
+
+\begin{sageblock}
+matrix(Zmod(31),[[27,2,22,11],
+[14,16,19,26],
+[21,24,14,6],
+[21,24,1,2],
+[18,28,8,28]])
+\end{sageblock}
+
+% Fin del Ejercicio 32
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{4}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrr}
+1 & -3 & -8 & -2 \\
+-2 & -1 & -8 & 7 \\
+0 & -2 & -7 & 1 \\
+-2 & -1 & -4 & 3
+\end{array}\right] \in {\bf M}_{4\times 4}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 33
+
+\begin{sageblock}
+matrix(QQ,[[1,-3,-8,-2],
+[-2,-1,-8,7],
+[0,-2,-7,1],
+[-2,-1,-4,3]])
+\end{sageblock}
+
+% Fin del Ejercicio 33
+
+
+\begin{ejer} Sea $K$ el cuerpo de 47 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{3}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrr}
+18 & 27 & 46 \\
+31 & 10 & 26 \\
+25 & 14 & 44
+\end{array}\right] \in {\bf M}_{3\times 3}({\mathbb Z}_{47})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 34
+
+\begin{sageblock}
+matrix(Zmod(47),[[18,27,46],
+[31,10,26],
+[25,14,44]])
+\end{sageblock}
+
+% Fin del Ejercicio 34
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{3}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrr}
+-5 & -1 & -2 & -2 \\
+-1 & 2 & 9 & 4 \\
+2 & 0 & -1 & 0
+\end{array}\right] \in {\bf M}_{3\times 4}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 35
+
+\begin{sageblock}
+matrix(QQ,[[-5,-1,-2,-2],
+[-1,2,9,4],
+[2,0,-1,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 35
+
+
+\begin{ejer} Sea $K$ el cuerpo de 17 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{5}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrr}
+5 & 5 & 3 \\
+16 & 10 & 10 \\
+5 & 2 & 3 \\
+10 & 5 & 1 \\
+12 & 8 & 2
+\end{array}\right] \in {\bf M}_{5\times 3}({\mathbb Z}_{17})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 36
+
+\begin{sageblock}
+matrix(Zmod(17),[[5,5,3],
+[16,10,10],
+[5,2,3],
+[10,5,1],
+[12,8,2]])
+\end{sageblock}
+
+% Fin del Ejercicio 36
+
+
+\begin{ejer} Sea $K$ el cuerpo de 5 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{4}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrr}
+1 & 4 & 2 & 2 \\
+0 & 1 & 2 & 0 \\
+3 & 1 & 0 & 2 \\
+1 & 1 & 3 & 0
+\end{array}\right] \in {\bf M}_{4\times 4}({\mathbb Z}_{5})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 37
+
+\begin{sageblock}
+matrix(Zmod(5),[[1,4,2,2],
+[0,1,2,0],
+[3,1,0,2],
+[1,1,3,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 37
+
+
+\begin{ejer} Sea $K$ el cuerpo de 7 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{4}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrr}
+6 & 1 & 0 & 2 \\
+3 & 0 & 1 & 0 \\
+5 & 6 & 1 & 4 \\
+4 & 3 & 4 & 5
+\end{array}\right] \in {\bf M}_{4\times 4}({\mathbb Z}_{7})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 38
+
+\begin{sageblock}
+matrix(Zmod(7),[[6,1,0,2],
+[3,0,1,0],
+[5,6,1,4],
+[4,3,4,5]])
+\end{sageblock}
+
+% Fin del Ejercicio 38
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{3}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrr}
+1 & 0 & 3 \\
+2 & 1 & 7 \\
+0 & 0 & 1
+\end{array}\right] \in {\bf M}_{3\times 3}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 39
+
+\begin{sageblock}
+matrix(QQ,[[1,0,3],
+[2,1,7],
+[0,0,1]])
+\end{sageblock}
+
+% Fin del Ejercicio 39
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Aplicaciones]
+Determina si la aplicaci\'on lineal asociada a la matriz $A$ es inyectiva, sobreyectiva, biyectiva o ninguna de esas cosas, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Vectores]
+Determina si las columnas de la matriz $A$ son linealmente idependientes, generadores o base de $K^{4}$, siendo $A$ la matriz \end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Inversas]
+Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por los dos lados o por ninguno, siendo $A$ la matriz 
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrr}
+3 & 1 & -6 \\
+2 & -1 & -9 \\
+1 & -1 & -5 \\
+1 & 1 & 0
+\end{array}\right] \in {\bf M}_{4\times 3}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 40
+
+\begin{sageblock}
+matrix(QQ,[[3,1,-6],
+[2,-1,-9],
+[1,-1,-5],
+[1,1,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 40
+
+
+\begin{ejer} Sea $K$ el cuerpo de 11 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{2} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rr}
+7 & 9 \\
+6 & 3 \\
+10 & 5
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rr}
+7 & 9 \\
+6 & 3 \\
+10 & 5
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 7 x_{0} + 9 x_{1} = 0 \]
+\[ 6 x_{0} + 3 x_{1} = 0 \]
+\[ -x_{0} + 5 x_{1} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrr}
+10 & 6 & 1 & 3 & 5 & 6 & 4 & 9 & 0 \\
+0 & 0 & 9 & 5 & 4 & 10 & 3 & 3 & 0
+\end{array}\right] \in {\bf M}_{2\times 9}({\mathbb Z}_{11})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 41
+
+\begin{sageblock}
+matrix(Zmod(11),[[7,9],
+[6,3],
+[10,5]])
+matrix(Zmod(11),[[10,6,1,3,5,6,4,9,0],
+[0,0,9,5,4,10,3,3,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 41
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{3} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+-2 & 8 & 4 \\
+2 & -8 & -9 \\
+1 & -4 & -3 \\
+-1 & 4 & 0 \\
+-1 & 4 & 8
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrr}
+-2 & 8 & 4 \\
+2 & -8 & -9 \\
+1 & -4 & -3 \\
+-1 & 4 & 0 \\
+-1 & 4 & 8
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ -2 x_{0} + 8 x_{1} + 4 x_{2} = 0 \]
+\[ 2 x_{0} - 8 x_{1} - 9 x_{2} = 0 \]
+\[ x_{0} - 4 x_{1} - 3 x_{2} = 0 \]
+\[ -x_{0} + 4 x_{1} = 0 \]
+\[ -x_{0} + 4 x_{1} + 8 x_{2} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+-4 & \frac{1}{8} & 2 & 2 & -3 & -1 & 1 & -\frac{1}{2} & \frac{1}{4} & 1 \\
+1 & \frac{1}{32} & 2 & \frac{1}{2} & -\frac{1}{29} & -\frac{1}{4} & \frac{1}{4} & -\frac{1}{8} & 0 & \frac{1}{3} \\
+-2 & 0 & \frac{2}{5} & 0 & \frac{1}{2} & 0 & 0 & 0 & -\frac{1}{3} & -\frac{1}{2}
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 42
+
+\begin{sageblock}
+matrix(QQ,[[-2,8,4],
+[2,-8,-9],
+[1,-4,-3],
+[-1,4,0],
+[-1,4,8]])
+matrix(QQ,[[-4,1/8,2,2,-3,-1,1,-1/2,1/4,1],
+[1,1/32,2,1/2,-1/29,-1/4,1/4,-1/8,0,1/3],
+[-2,0,2/5,0,1/2,0,0,0,-1/3,-1/2]])
+\end{sageblock}
+
+% Fin del Ejercicio 42
+
+
+\begin{ejer} Sea $K$ el cuerpo de 29 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{3} \to K^{4}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+21 & 5 & 6 \\
+1 & 28 & 23 \\
+3 & 4 & 22 \\
+23 & 24 & 27
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrr}
+21 & 5 & 6 \\
+1 & 28 & 23 \\
+3 & 4 & 22 \\
+23 & 24 & 27
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 21 x_{0} + 5 x_{1} + 6 x_{2} = 0 \]
+\[ x_{0} - x_{1} + 23 x_{2} = 0 \]
+\[ 3 x_{0} + 4 x_{1} + 22 x_{2} = 0 \]
+\[ 23 x_{0} + 24 x_{1} + 27 x_{2} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+19 & 13 & 0 & 15 & 22 & 5 & 2 & 3 & 18 & 9 \\
+26 & 16 & 18 & 19 & 22 & 21 & 18 & 27 & 21 & 23 \\
+23 & 11 & 22 & 9 & 4 & 27 & 7 & 25 & 23 & 17
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{29})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 43
+
+\begin{sageblock}
+matrix(Zmod(29),[[21,5,6],
+[1,28,23],
+[3,4,22],
+[23,24,27]])
+matrix(Zmod(29),[[19,13,0,15,22,5,2,3,18,9],
+[26,16,18,19,22,21,18,27,21,23],
+[23,11,22,9,4,27,7,25,23,17]])
+\end{sageblock}
+
+% Fin del Ejercicio 43
+
+
+\begin{ejer} Sea $K$ el cuerpo de 11 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{4} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rrrr}
+7 & 1 & 0 & 1 \\
+10 & 0 & 7 & 10 \\
+3 & 7 & 3 & 5
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrrr}
+7 & 1 & 0 & 1 \\
+10 & 0 & 7 & 10 \\
+3 & 7 & 3 & 5
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 7 x_{0} + x_{1} + x_{3} = 0 \]
+\[ -x_{0} + 7 x_{2} - x_{3} = 0 \]
+\[ 3 x_{0} + 7 x_{1} + 3 x_{2} + 5 x_{3} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrr}
+6 & 2 & 3 & 2 & 1 & 10 & 9 & 9 & 4 \\
+0 & 5 & 0 & 7 & 1 & 1 & 3 & 0 & 2 \\
+9 & 2 & 9 & 2 & 7 & 7 & 6 & 9 & 5 \\
+2 & 4 & 5 & 1 & 5 & 6 & 0 & 10 & 7
+\end{array}\right] \in {\bf M}_{4\times 9}({\mathbb Z}_{11})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 44
+
+\begin{sageblock}
+matrix(Zmod(11),[[7,1,0,1],
+[10,0,7,10],
+[3,7,3,5]])
+matrix(Zmod(11),[[6,2,3,2,1,10,9,9,4],
+[0,5,0,7,1,1,3,0,2],
+[9,2,9,2,7,7,6,9,5],
+[2,4,5,1,5,6,0,10,7]])
+\end{sageblock}
+
+% Fin del Ejercicio 44
+
+
+\begin{ejer} Sea $K$ el cuerpo de 19 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{3} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+0 & 0 & 16 \\
+6 & 0 & 9 \\
+17 & 0 & 5 \\
+5 & 0 & 9 \\
+11 & 0 & 11
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrr}
+0 & 0 & 16 \\
+6 & 0 & 9 \\
+17 & 0 & 5 \\
+5 & 0 & 9 \\
+11 & 0 & 11
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 16 x_{2} = 0 \]
+\[ 6 x_{0} + 9 x_{2} = 0 \]
+\[ 17 x_{0} + 5 x_{2} = 0 \]
+\[ 5 x_{0} + 9 x_{2} = 0 \]
+\[ 11 x_{0} + 11 x_{2} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+15 & 0 & 13 & 0 & 0 & 1 & 0 & 0 & 2 & 5 \\
+13 & 2 & 18 & 18 & 4 & 16 & 6 & 1 & 10 & 7 \\
+12 & 0 & 13 & 0 & 0 & 8 & 0 & 0 & 5 & 17
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{19})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 45
+
+\begin{sageblock}
+matrix(Zmod(19),[[0,0,16],
+[6,0,9],
+[17,0,5],
+[5,0,9],
+[11,0,11]])
+matrix(Zmod(19),[[15,0,13,0,0,1,0,0,2,5],
+[13,2,18,18,4,16,6,1,10,7],
+[12,0,13,0,0,8,0,0,5,17]])
+\end{sageblock}
+
+% Fin del Ejercicio 45
+
+
+\begin{ejer} Sea $K$ el cuerpo de 31 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{4} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rrrr}
+11 & 23 & 9 & 23 \\
+22 & 15 & 18 & 15 \\
+29 & 24 & 24 & 27
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrrr}
+11 & 23 & 9 & 23 \\
+22 & 15 & 18 & 15 \\
+29 & 24 & 24 & 27
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 11 x_{0} + 23 x_{1} + 9 x_{2} + 23 x_{3} = 0 \]
+\[ 22 x_{0} + 15 x_{1} + 18 x_{2} + 15 x_{3} = 0 \]
+\[ 29 x_{0} + 24 x_{1} + 24 x_{2} + 27 x_{3} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+14 & 12 & 27 & 15 & 26 & 5 & 2 & 12 & 12 & 18 \\
+23 & 14 & 0 & 1 & 23 & 26 & 4 & 7 & 21 & 22 \\
+28 & 2 & 5 & 19 & 4 & 10 & 28 & 20 & 15 & 11 \\
+20 & 28 & 9 & 12 & 25 & 13 & 0 & 1 & 24 & 25
+\end{array}\right] \in {\bf M}_{4\times 10}({\mathbb Z}_{31})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 46
+
+\begin{sageblock}
+matrix(Zmod(31),[[11,23,9,23],
+[22,15,18,15],
+[29,24,24,27]])
+matrix(Zmod(31),[[14,12,27,15,26,5,2,12,12,18],
+[23,14,0,1,23,26,4,7,21,22],
+[28,2,5,19,4,10,28,20,15,11],
+[20,28,9,12,25,13,0,1,24,25]])
+\end{sageblock}
+
+% Fin del Ejercicio 46
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{2} \to K^{4}$ siendo  $$ M(f) = \left[\begin{array}{rr}
+4 & 8 \\
+4 & 8 \\
+-1 & -2 \\
+-2 & -4
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rr}
+4 & 8 \\
+4 & 8 \\
+-1 & -2 \\
+-2 & -4
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 4 x_{0} + 8 x_{1} = 0 \]
+\[ 4 x_{0} + 8 x_{1} = 0 \]
+\[ -x_{0} - 2 x_{1} = 0 \]
+\[ -2 x_{0} - 4 x_{1} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrr}
+\frac{1}{26} & -\frac{49}{8} & \frac{2}{3} & 50 & -\frac{1}{8} & -\frac{1}{3} & \frac{2}{5} & -64 & -1 \\
+-1 & -\frac{1}{3} & -\frac{1}{3} & -25 & \frac{1}{16} & 1 & 1 & \frac{1}{2} & \frac{1}{2}
+\end{array}\right] \in {\bf M}_{2\times 9}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 47
+
+\begin{sageblock}
+matrix(QQ,[[4,8],
+[4,8],
+[-1,-2],
+[-2,-4]])
+matrix(QQ,[[1/26,-49/8,2/3,50,-1/8,-1/3,2/5,-64,-1],
+[-1,-1/3,-1/3,-25,1/16,1,1,1/2,1/2]])
+\end{sageblock}
+
+% Fin del Ejercicio 47
+
+
+\begin{ejer} Sea $K$ el cuerpo de 29 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{2} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rr}
+9 & 12 \\
+4 & 15 \\
+9 & 12
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rr}
+9 & 12 \\
+4 & 15 \\
+9 & 12
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 9 x_{0} + 12 x_{1} = 0 \]
+\[ 4 x_{0} + 15 x_{1} = 0 \]
+\[ 9 x_{0} + 12 x_{1} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrr}
+19 & 12 & 7 & 18 & 9 & 10 & 22 & 1 & 12 \\
+25 & 15 & 25 & 0 & 27 & 7 & 27 & 21 & 20
+\end{array}\right] \in {\bf M}_{2\times 9}({\mathbb Z}_{29})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 48
+
+\begin{sageblock}
+matrix(Zmod(29),[[9,12],
+[4,15],
+[9,12]])
+matrix(Zmod(29),[[19,12,7,18,9,10,22,1,12],
+[25,15,25,0,27,7,27,21,20]])
+\end{sageblock}
+
+% Fin del Ejercicio 48
+
+
+\begin{ejer} Sea $K$ el cuerpo de 5 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{3} \to K^{2}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+1 & 0 & 4 \\
+4 & 0 & 1
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrr}
+1 & 0 & 4 \\
+4 & 0 & 1
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ x_{0} - x_{2} = 0 \]
+\[ -x_{0} + x_{2} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+2 & 1 & 3 & 1 & 4 & 0 & 0 & 4 & 0 & 4 \\
+4 & 4 & 4 & 4 & 2 & 2 & 2 & 1 & 1 & 1 \\
+4 & 1 & 2 & 3 & 4 & 1 & 0 & 0 & 0 & 4
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{5})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 49
+
+\begin{sageblock}
+matrix(Zmod(5),[[1,0,4],
+[4,0,1]])
+matrix(Zmod(5),[[2,1,3,1,4,0,0,4,0,4],
+[4,4,4,4,2,2,2,1,1,1],
+[4,1,2,3,4,1,0,0,0,4]])
+\end{sageblock}
+
+% Fin del Ejercicio 49
+
+
+\begin{ejer} Sea $K$ el cuerpo de 43 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{3} \to K^{4}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+30 & 27 & 35 \\
+40 & 9 & 22 \\
+16 & 33 & 14 \\
+22 & 23 & 15
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrr}
+30 & 27 & 35 \\
+40 & 9 & 22 \\
+16 & 33 & 14 \\
+22 & 23 & 15
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 30 x_{0} + 27 x_{1} + 35 x_{2} = 0 \]
+\[ 40 x_{0} + 9 x_{1} + 22 x_{2} = 0 \]
+\[ 16 x_{0} + 33 x_{1} + 14 x_{2} = 0 \]
+\[ 22 x_{0} + 23 x_{1} + 15 x_{2} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+25 & 34 & 11 & 11 & 10 & 38 & 12 & 26 & 29 & 0 \\
+30 & 33 & 22 & 17 & 26 & 4 & 33 & 32 & 37 & 0 \\
+32 & 40 & 16 & 18 & 29 & 27 & 38 & 1 & 24 & 0
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{43})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 50
+
+\begin{sageblock}
+matrix(Zmod(43),[[30,27,35],
+[40,9,22],
+[16,33,14],
+[22,23,15]])
+matrix(Zmod(43),[[25,34,11,11,10,38,12,26,29,0],
+[30,33,22,17,26,4,33,32,37,0],
+[32,40,16,18,29,27,38,1,24,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 50
+
+
+\begin{ejer} Sea $K$ el cuerpo de 19 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{5} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rrrrr}
+11 & 16 & 14 & 10 & 6 \\
+9 & 8 & 8 & 5 & 8 \\
+6 & 1 & 18 & 3 & 10
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrrrr}
+11 & 16 & 14 & 10 & 6 \\
+9 & 8 & 8 & 5 & 8 \\
+6 & 1 & 18 & 3 & 10
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 11 x_{0} + 16 x_{1} + 14 x_{2} + 10 x_{3} + 6 x_{4} = 0 \]
+\[ 9 x_{0} + 8 x_{1} + 8 x_{2} + 5 x_{3} + 8 x_{4} = 0 \]
+\[ 6 x_{0} + x_{1} - x_{2} + 3 x_{3} + 10 x_{4} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+1 & 9 & 12 & 8 & 7 & 9 & 16 & 0 & 9 & 14 \\
+1 & 5 & 10 & 6 & 15 & 7 & 12 & 10 & 9 & 18 \\
+1 & 3 & 11 & 3 & 16 & 8 & 17 & 9 & 6 & 5 \\
+8 & 2 & 18 & 9 & 7 & 15 & 17 & 0 & 6 & 10 \\
+13 & 13 & 16 & 14 & 9 & 13 & 5 & 7 & 2 & 12
+\end{array}\right] \in {\bf M}_{5\times 10}({\mathbb Z}_{19})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 51
+
+\begin{sageblock}
+matrix(Zmod(19),[[11,16,14,10,6],
+[9,8,8,5,8],
+[6,1,18,3,10]])
+matrix(Zmod(19),[[1,9,12,8,7,9,16,0,9,14],
+[1,5,10,6,15,7,12,10,9,18],
+[1,3,11,3,16,8,17,9,6,5],
+[8,2,18,9,7,15,17,0,6,10],
+[13,13,16,14,9,13,5,7,2,12]])
+\end{sageblock}
+
+% Fin del Ejercicio 51
+
+
+\begin{ejer} Sea $K$ el cuerpo de 31 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{3} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+27 & 14 & 23 \\
+26 & 16 & 2 \\
+10 & 10 & 1 \\
+18 & 27 & 29 \\
+8 & 10 & 22
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrr}
+27 & 14 & 23 \\
+26 & 16 & 2 \\
+10 & 10 & 1 \\
+18 & 27 & 29 \\
+8 & 10 & 22
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 27 x_{0} + 14 x_{1} + 23 x_{2} = 0 \]
+\[ 26 x_{0} + 16 x_{1} + 2 x_{2} = 0 \]
+\[ 10 x_{0} + 10 x_{1} + x_{2} = 0 \]
+\[ 18 x_{0} + 27 x_{1} + 29 x_{2} = 0 \]
+\[ 8 x_{0} + 10 x_{1} + 22 x_{2} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+24 & 1 & 17 & 15 & 21 & 23 & 2 & 3 & 30 & 26 \\
+12 & 15 & 22 & 7 & 14 & 19 & 3 & 20 & 14 & 7 \\
+12 & 5 & 26 & 28 & 0 & 14 & 12 & 18 & 25 & 29
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{31})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 52
+
+\begin{sageblock}
+matrix(Zmod(31),[[27,14,23],
+[26,16,2],
+[10,10,1],
+[18,27,29],
+[8,10,22]])
+matrix(Zmod(31),[[24,1,17,15,21,23,2,3,30,26],
+[12,15,22,7,14,19,3,20,14,7],
+[12,5,26,28,0,14,12,18,25,29]])
+\end{sageblock}
+
+% Fin del Ejercicio 52
+
+
+\begin{ejer} Sea $K$ el cuerpo de 5 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{2} \to K^{4}$ siendo  $$ M(f) = \left[\begin{array}{rr}
+1 & 3 \\
+1 & 3 \\
+0 & 0 \\
+2 & 1
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rr}
+1 & 3 \\
+1 & 3 \\
+0 & 0 \\
+2 & 1
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ x_{0} + 3 x_{1} = 0 \]
+\[ x_{0} + 3 x_{1} = 0 \]
+\[ 0 = 0 \]
+\[ 2 x_{0} + x_{1} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrr}
+1 & 2 & 3 & 0 & 2 & 4 & 3 & 4 \\
+3 & 2 & 4 & 1 & 1 & 1 & 3 & 2
+\end{array}\right] \in {\bf M}_{2\times 8}({\mathbb Z}_{5})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 53
+
+\begin{sageblock}
+matrix(Zmod(5),[[1,3],
+[1,3],
+[0,0],
+[2,1]])
+matrix(Zmod(5),[[1,2,3,0,2,4,3,4],
+[3,2,4,1,1,1,3,2]])
+\end{sageblock}
+
+% Fin del Ejercicio 53
+
+
+\begin{ejer} Sea $K$ el cuerpo de 19 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{2} \to K^{4}$ siendo  $$ M(f) = \left[\begin{array}{rr}
+10 & 4 \\
+11 & 12 \\
+15 & 6 \\
+10 & 4
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rr}
+10 & 4 \\
+11 & 12 \\
+15 & 6 \\
+10 & 4
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 10 x_{0} + 4 x_{1} = 0 \]
+\[ 11 x_{0} + 12 x_{1} = 0 \]
+\[ 15 x_{0} + 6 x_{1} = 0 \]
+\[ 10 x_{0} + 4 x_{1} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrr}
+10 & 13 & 1 & 1 & 8 & 9 & 15 & 3 & 9 \\
+4 & 18 & 1 & 7 & 18 & 12 & 13 & 2 & 6
+\end{array}\right] \in {\bf M}_{2\times 9}({\mathbb Z}_{19})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 54
+
+\begin{sageblock}
+matrix(Zmod(19),[[10,4],
+[11,12],
+[15,6],
+[10,4]])
+matrix(Zmod(19),[[10,13,1,1,8,9,15,3,9],
+[4,18,1,7,18,12,13,2,6]])
+\end{sageblock}
+
+% Fin del Ejercicio 54
+
+
+\begin{ejer} Sea $K$ el cuerpo de 47 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{4} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rrrr}
+7 & 37 & 8 & 0 \\
+7 & 3 & 35 & 34 \\
+21 & 11 & 26 & 6
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrrr}
+7 & 37 & 8 & 0 \\
+7 & 3 & 35 & 34 \\
+21 & 11 & 26 & 6
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 7 x_{0} + 37 x_{1} + 8 x_{2} = 0 \]
+\[ 7 x_{0} + 3 x_{1} + 35 x_{2} + 34 x_{3} = 0 \]
+\[ 21 x_{0} + 11 x_{1} + 26 x_{2} + 6 x_{3} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+28 & 41 & 45 & 46 & 40 & 8 & 40 & 44 & 42 & 23 \\
+5 & 31 & 40 & 38 & 1 & 10 & 27 & 46 & 22 & 28 \\
+17 & 44 & 40 & 10 & 34 & 29 & 34 & 12 & 1 & 46 \\
+15 & 32 & 11 & 8 & 11 & 16 & 0 & 25 & 8 & 11
+\end{array}\right] \in {\bf M}_{4\times 10}({\mathbb Z}_{47})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 55
+
+\begin{sageblock}
+matrix(Zmod(47),[[7,37,8,0],
+[7,3,35,34],
+[21,11,26,6]])
+matrix(Zmod(47),[[28,41,45,46,40,8,40,44,42,23],
+[5,31,40,38,1,10,27,46,22,28],
+[17,44,40,10,34,29,34,12,1,46],
+[15,32,11,8,11,16,0,25,8,11]])
+\end{sageblock}
+
+% Fin del Ejercicio 55
+
+
+\begin{ejer} Sea $K$ el cuerpo de 17 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{3} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+8 & 9 & 3 \\
+10 & 5 & 6 \\
+12 & 6 & 14 \\
+0 & 10 & 10 \\
+2 & 16 & 6
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrr}
+8 & 9 & 3 \\
+10 & 5 & 6 \\
+12 & 6 & 14 \\
+0 & 10 & 10 \\
+2 & 16 & 6
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 8 x_{0} + 9 x_{1} + 3 x_{2} = 0 \]
+\[ 10 x_{0} + 5 x_{1} + 6 x_{2} = 0 \]
+\[ 12 x_{0} + 6 x_{1} + 14 x_{2} = 0 \]
+\[ 10 x_{1} + 10 x_{2} = 0 \]
+\[ 2 x_{0} - x_{1} + 6 x_{2} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+15 & 5 & 1 & 0 & 14 & 13 & 9 & 13 & 9 & 6 \\
+14 & 3 & 13 & 0 & 4 & 11 & 5 & 6 & 11 & 5 \\
+3 & 5 & 12 & 0 & 13 & 6 & 12 & 1 & 16 & 14
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{17})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 56
+
+\begin{sageblock}
+matrix(Zmod(17),[[8,9,3],
+[10,5,6],
+[12,6,14],
+[0,10,10],
+[2,16,6]])
+matrix(Zmod(17),[[15,5,1,0,14,13,9,13,9,6],
+[14,3,13,0,4,11,5,6,11,5],
+[3,5,12,0,13,6,12,1,16,14]])
+\end{sageblock}
+
+% Fin del Ejercicio 56
+
+
+\begin{ejer} Sea $K$ el cuerpo de 41 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{2} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rr}
+27 & 24 \\
+1 & 10 \\
+22 & 15 \\
+26 & 14 \\
+16 & 37
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rr}
+27 & 24 \\
+1 & 10 \\
+22 & 15 \\
+26 & 14 \\
+16 & 37
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 27 x_{0} + 24 x_{1} = 0 \]
+\[ x_{0} + 10 x_{1} = 0 \]
+\[ 22 x_{0} + 15 x_{1} = 0 \]
+\[ 26 x_{0} + 14 x_{1} = 0 \]
+\[ 16 x_{0} + 37 x_{1} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+35 & 39 & 40 & 6 & 35 & 25 & 35 & 22 & 27 & 3 \\
+17 & 33 & 37 & 39 & 13 & 32 & 0 & 6 & 28 & 12
+\end{array}\right] \in {\bf M}_{2\times 10}({\mathbb Z}_{41})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 57
+
+\begin{sageblock}
+matrix(Zmod(41),[[27,24],
+[1,10],
+[22,15],
+[26,14],
+[16,37]])
+matrix(Zmod(41),[[35,39,40,6,35,25,35,22,27,3],
+[17,33,37,39,13,32,0,6,28,12]])
+\end{sageblock}
+
+% Fin del Ejercicio 57
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{3} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+-2 & 7 & -1 \\
+0 & 1 & -1 \\
+1 & -1 & -2 \\
+0 & 4 & -4 \\
+-1 & 1 & 2
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrr}
+-2 & 7 & -1 \\
+0 & 1 & -1 \\
+1 & -1 & -2 \\
+0 & 4 & -4 \\
+-1 & 1 & 2
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ -2 x_{0} + 7 x_{1} - x_{2} = 0 \]
+\[ x_{1} - x_{2} = 0 \]
+\[ x_{0} - x_{1} - 2 x_{2} = 0 \]
+\[ 4 x_{1} - 4 x_{2} = 0 \]
+\[ -x_{0} + x_{1} + 2 x_{2} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrr}
+0 & \frac{2}{3} & 0 & -\frac{1}{3} & -\frac{13}{8} & 2 & 0 & -3 \\
+0 & -\frac{1}{250} & 1 & 2 & -\frac{13}{24} & -5 & 0 & -1 \\
+-\frac{2}{5} & \frac{1}{15} & \frac{3}{4} & 0 & -\frac{13}{24} & -3 & 0 & -1
+\end{array}\right] \in {\bf M}_{3\times 8}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 58
+
+\begin{sageblock}
+matrix(QQ,[[-2,7,-1],
+[0,1,-1],
+[1,-1,-2],
+[0,4,-4],
+[-1,1,2]])
+matrix(QQ,[[0,2/3,0,-1/3,-13/8,2,0,-3],
+[0,-1/250,1,2,-13/24,-5,0,-1],
+[-2/5,1/15,3/4,0,-13/24,-3,0,-1]])
+\end{sageblock}
+
+% Fin del Ejercicio 58
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{3} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+0 & 0 & -1 \\
+1 & -4 & -1 \\
+0 & 0 & 4 \\
+0 & 0 & 4 \\
+2 & -8 & -3
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrr}
+0 & 0 & -1 \\
+1 & -4 & -1 \\
+0 & 0 & 4 \\
+0 & 0 & 4 \\
+2 & -8 & -3
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ -x_{2} = 0 \]
+\[ x_{0} - 4 x_{1} - x_{2} = 0 \]
+\[ 4 x_{2} = 0 \]
+\[ 4 x_{2} = 0 \]
+\[ 2 x_{0} - 8 x_{1} - 3 x_{2} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+-\frac{1}{2} & -1 & -1 & 3 & 0 & -\frac{1}{3} & -\frac{2}{3} & -21 & \frac{33}{2} & \frac{1}{14} \\
+-\frac{1}{8} & -\frac{1}{4} & -\frac{1}{2} & \frac{3}{4} & -\frac{1}{3} & -1 & -\frac{1}{6} & 0 & \frac{33}{8} & -\frac{1}{3} \\
+0 & 0 & -1 & 0 & 13 & -15 & 0 & -\frac{5}{2} & 0 & \frac{1}{3}
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 59
+
+\begin{sageblock}
+matrix(QQ,[[0,0,-1],
+[1,-4,-1],
+[0,0,4],
+[0,0,4],
+[2,-8,-3]])
+matrix(QQ,[[-1/2,-1,-1,3,0,-1/3,-2/3,-21,33/2,1/14],
+[-1/8,-1/4,-1/2,3/4,-1/3,-1,-1/6,0,33/8,-1/3],
+[0,0,-1,0,13,-15,0,-5/2,0,1/3]])
+\end{sageblock}
+
+% Fin del Ejercicio 59
+
+
+\begin{ejer} Sea $K$ el cuerpo de 41 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el núcleo de la aplicación lineal $f:K^{3} \to K^{4}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+38 & 5 & 28 \\
+29 & 10 & 12 \\
+17 & 30 & 1 \\
+6 & 17 & 9
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el anulador por la derecha de la matriz $$ \left[\begin{array}{rrr}
+38 & 5 & 28 \\
+29 & 10 & 12 \\
+17 & 30 & 1 \\
+6 & 17 & 9
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en espacio vectorial definido en forma implícita por las siguientes ecuaciones:
+\[ 38 x_{0} + 5 x_{1} + 28 x_{2} = 0 \]
+\[ 29 x_{0} + 10 x_{1} + 12 x_{2} = 0 \]
+\[ 17 x_{0} + 30 x_{1} + x_{2} = 0 \]
+\[ 6 x_{0} + 17 x_{1} + 9 x_{2} = 0 \]
+Siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+10 & 3 & 7 & 27 & 27 & 2 & 24 & 13 & 21 & 16 \\
+36 & 0 & 31 & 35 & 7 & 40 & 15 & 14 & 8 & 33 \\
+21 & 16 & 13 & 19 & 28 & 37 & 2 & 15 & 10 & 9
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{41})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 60
+
+\begin{sageblock}
+matrix(Zmod(41),[[38,5,28],
+[29,10,12],
+[17,30,1],
+[6,17,9]])
+matrix(Zmod(41),[[10,3,7,27,27,2,24,13,21,16],
+[36,0,31,35,7,40,15,14,8,33],
+[21,16,13,19,28,37,2,15,10,9]])
+\end{sageblock}
+
+% Fin del Ejercicio 60
+
+
+\begin{ejer} Sea $K$ el cuerpo de 37 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{3} \to K^{4}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+21 & 3 & 27 \\
+23 & 5 & 20 \\
+8 & 14 & 31 \\
+29 & 8 & 25
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrr}
+21 & 3 & 27 \\
+23 & 5 & 20 \\
+8 & 14 & 31 \\
+29 & 8 & 25
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrr}
+21 & 3 & 27 \\
+23 & 5 & 20 \\
+8 & 14 & 31 \\
+29 & 8 & 25
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+1 & 16 & 36 & 35 & 13 & 10 & 24 & 14 & 10 & 33 \\
+28 & 30 & 6 & 18 & 18 & 35 & 16 & 30 & 11 & 3 \\
+20 & 30 & 22 & 6 & 24 & 30 & 6 & 29 & 35 & 23 \\
+3 & 33 & 30 & 11 & 1 & 34 & 10 & 2 & 17 & 8
+\end{array}\right] \in {\bf M}_{4\times 10}({\mathbb Z}_{37})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 61
+
+\begin{sageblock}
+matrix(Zmod(37),[[21,3,27],
+[23,5,20],
+[8,14,31],
+[29,8,25]])
+matrix(Zmod(37),[[1,16,36,35,13,10,24,14,10,33],
+[28,30,6,18,18,35,16,30,11,3],
+[20,30,22,6,24,30,6,29,35,23],
+[3,33,30,11,1,34,10,2,17,8]])
+\end{sageblock}
+
+% Fin del Ejercicio 61
+
+
+\begin{ejer} Sea $K$ el cuerpo de 43 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{2} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rr}
+25 & 31 \\
+19 & 27 \\
+32 & 7
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rr}
+25 & 31 \\
+19 & 27 \\
+32 & 7
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rr}
+25 & 31 \\
+19 & 27 \\
+32 & 7
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+2 & 19 & 31 & 36 & 37 & 35 & 26 & 14 & 4 & 28 \\
+17 & 32 & 27 & 4 & 35 & 17 & 6 & 17 & 0 & 23 \\
+6 & 18 & 7 & 12 & 25 & 16 & 35 & 5 & 16 & 41
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{43})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 62
+
+\begin{sageblock}
+matrix(Zmod(43),[[25,31],
+[19,27],
+[32,7]])
+matrix(Zmod(43),[[2,19,31,36,37,35,26,14,4,28],
+[17,32,27,4,35,17,6,17,0,23],
+[6,18,7,12,25,16,35,5,16,41]])
+\end{sageblock}
+
+% Fin del Ejercicio 62
+
+
+\begin{ejer} Sea $K$ el cuerpo de 29 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{3} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+0 & 11 & 15 \\
+28 & 11 & 4 \\
+12 & 23 & 21 \\
+18 & 6 & 19 \\
+15 & 4 & 7
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrr}
+0 & 11 & 15 \\
+28 & 11 & 4 \\
+12 & 23 & 21 \\
+18 & 6 & 19 \\
+15 & 4 & 7
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrr}
+0 & 11 & 15 \\
+28 & 11 & 4 \\
+12 & 23 & 21 \\
+18 & 6 & 19 \\
+15 & 4 & 7
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+13 & 23 & 21 & 13 & 4 & 1 & 17 & 13 & 7 & 21 \\
+1 & 2 & 20 & 21 & 9 & 2 & 15 & 19 & 8 & 27 \\
+13 & 1 & 19 & 13 & 9 & 18 & 20 & 19 & 9 & 22 \\
+28 & 22 & 11 & 13 & 15 & 15 & 11 & 2 & 17 & 1 \\
+16 & 6 & 20 & 11 & 24 & 15 & 23 & 9 & 3 & 2
+\end{array}\right] \in {\bf M}_{5\times 10}({\mathbb Z}_{29})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 63
+
+\begin{sageblock}
+matrix(Zmod(29),[[0,11,15],
+[28,11,4],
+[12,23,21],
+[18,6,19],
+[15,4,7]])
+matrix(Zmod(29),[[13,23,21,13,4,1,17,13,7,21],
+[1,2,20,21,9,2,15,19,8,27],
+[13,1,19,13,9,18,20,19,9,22],
+[28,22,11,13,15,15,11,2,17,1],
+[16,6,20,11,24,15,23,9,3,2]])
+\end{sageblock}
+
+% Fin del Ejercicio 63
+
+
+\begin{ejer} Sea $K$ el cuerpo de 17 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{3} \to K^{4}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+9 & 6 & 15 \\
+2 & 9 & 5 \\
+9 & 3 & 4 \\
+4 & 4 & 4
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrr}
+9 & 6 & 15 \\
+2 & 9 & 5 \\
+9 & 3 & 4 \\
+4 & 4 & 4
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrr}
+9 & 6 & 15 \\
+2 & 9 & 5 \\
+9 & 3 & 4 \\
+4 & 4 & 4
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+4 & 1 & 2 & 14 & 12 & 3 & 11 & 8 & 10 & 10 \\
+16 & 8 & 12 & 2 & 11 & 16 & 0 & 9 & 9 & 11 \\
+4 & 16 & 13 & 10 & 8 & 14 & 2 & 0 & 15 & 2 \\
+15 & 1 & 8 & 8 & 9 & 4 & 15 & 9 & 10 & 3
+\end{array}\right] \in {\bf M}_{4\times 10}({\mathbb Z}_{17})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 64
+
+\begin{sageblock}
+matrix(Zmod(17),[[9,6,15],
+[2,9,5],
+[9,3,4],
+[4,4,4]])
+matrix(Zmod(17),[[4,1,2,14,12,3,11,8,10,10],
+[16,8,12,2,11,16,0,9,9,11],
+[4,16,13,10,8,14,2,0,15,2],
+[15,1,8,8,9,4,15,9,10,3]])
+\end{sageblock}
+
+% Fin del Ejercicio 64
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{3} \to K^{4}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+1 & -4 & 2 \\
+1 & -3 & 1 \\
+3 & -7 & 1 \\
+-2 & 5 & -1
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrr}
+1 & -4 & 2 \\
+1 & -3 & 1 \\
+3 & -7 & 1 \\
+-2 & 5 & -1
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrr}
+1 & -4 & 2 \\
+1 & -3 & 1 \\
+3 & -7 & 1 \\
+-2 & 5 & -1
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrr}
+\frac{11}{94} & 0 & \frac{3}{2} & 288 & \frac{8}{9} & 0 & 0 & -2 & -4 \\
+-1 & 1 & -\frac{1}{2} & \frac{1}{20} & -\frac{1}{2} & -1 & 6 & 0 & 0 \\
+-\frac{246}{47} & 5 & -\frac{5}{3} & \frac{1}{5} & 3 & -5 & 2 & 4 & -1 \\
+\frac{293}{94} & -3 & \frac{2}{7} & -1 & -1 & 3 & 0 & -2 & -5
+\end{array}\right] \in {\bf M}_{4\times 9}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 65
+
+\begin{sageblock}
+matrix(QQ,[[1,-4,2],
+[1,-3,1],
+[3,-7,1],
+[-2,5,-1]])
+matrix(QQ,[[11/94,0,3/2,288,8/9,0,0,-2,-4],
+[-1,1,-1/2,1/20,-1/2,-1,6,0,0],
+[-246/47,5,-5/3,1/5,3,-5,2,4,-1],
+[293/94,-3,2/7,-1,-1,3,0,-2,-5]])
+\end{sageblock}
+
+% Fin del Ejercicio 65
+
+
+\begin{ejer} Sea $K$ el cuerpo de 29 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{5} \to K^{2}$ siendo  $$ M(f) = \left[\begin{array}{rrrrr}
+10 & 7 & 5 & 14 & 16 \\
+3 & 5 & 16 & 10 & 28
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrrrr}
+10 & 7 & 5 & 14 & 16 \\
+3 & 5 & 16 & 10 & 28
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrrrr}
+10 & 7 & 5 & 14 & 16 \\
+3 & 5 & 16 & 10 & 28
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrr}
+17 & 5 & 14 & 6 & 22 & 21 & 7 & 9 & 26 \\
+8 & 4 & 1 & 20 & 24 & 7 & 5 & 23 & 14
+\end{array}\right] \in {\bf M}_{2\times 9}({\mathbb Z}_{29})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 66
+
+\begin{sageblock}
+matrix(Zmod(29),[[10,7,5,14,16],
+[3,5,16,10,28]])
+matrix(Zmod(29),[[17,5,14,6,22,21,7,9,26],
+[8,4,1,20,24,7,5,23,14]])
+\end{sageblock}
+
+% Fin del Ejercicio 66
+
+
+\begin{ejer} Sea $K$ el cuerpo de 13 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{2} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rr}
+4 & 11 \\
+10 & 8 \\
+7 & 3
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rr}
+4 & 11 \\
+10 & 8 \\
+7 & 3
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rr}
+4 & 11 \\
+10 & 8 \\
+7 & 3
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+12 & 9 & 1 & 11 & 8 & 5 & 7 & 10 & 10 & 2 \\
+4 & 3 & 9 & 8 & 7 & 9 & 3 & 12 & 8 & 11 \\
+8 & 6 & 5 & 3 & 1 & 6 & 12 & 11 & 3 & 3
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{13})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 67
+
+\begin{sageblock}
+matrix(Zmod(13),[[4,11],
+[10,8],
+[7,3]])
+matrix(Zmod(13),[[12,9,1,11,8,5,7,10,10,2],
+[4,3,9,8,7,9,3,12,8,11],
+[8,6,5,3,1,6,12,11,3,3]])
+\end{sageblock}
+
+% Fin del Ejercicio 67
+
+
+\begin{ejer} Sea $K$ el cuerpo de 19 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{3} \to K^{4}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+10 & 4 & 15 \\
+15 & 15 & 9 \\
+4 & 2 & 13 \\
+14 & 18 & 10
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrr}
+10 & 4 & 15 \\
+15 & 15 & 9 \\
+4 & 2 & 13 \\
+14 & 18 & 10
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrr}
+10 & 4 & 15 \\
+15 & 15 & 9 \\
+4 & 2 & 13 \\
+14 & 18 & 10
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+16 & 12 & 13 & 8 & 18 & 18 & 15 & 7 & 7 & 12 \\
+0 & 6 & 6 & 3 & 6 & 5 & 18 & 16 & 1 & 5 \\
+18 & 3 & 9 & 18 & 16 & 12 & 0 & 8 & 18 & 0 \\
+2 & 18 & 3 & 14 & 14 & 12 & 0 & 7 & 6 & 1
+\end{array}\right] \in {\bf M}_{4\times 10}({\mathbb Z}_{19})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 68
+
+\begin{sageblock}
+matrix(Zmod(19),[[10,4,15],
+[15,15,9],
+[4,2,13],
+[14,18,10]])
+matrix(Zmod(19),[[16,12,13,8,18,18,15,7,7,12],
+[0,6,6,3,6,5,18,16,1,5],
+[18,3,9,18,16,12,0,8,18,0],
+[2,18,3,14,14,12,0,7,6,1]])
+\end{sageblock}
+
+% Fin del Ejercicio 68
+
+
+\begin{ejer} Sea $K$ el cuerpo de 47 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{4} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rrrr}
+20 & 11 & 22 & 21 \\
+34 & 14 & 28 & 31 \\
+6 & 31 & 43 & 0
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrrr}
+20 & 11 & 22 & 21 \\
+34 & 14 & 28 & 31 \\
+6 & 31 & 43 & 0
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrrr}
+20 & 11 & 22 & 21 \\
+34 & 14 & 28 & 31 \\
+6 & 31 & 43 & 0
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+44 & 40 & 37 & 11 & 39 & 16 & 16 & 45 & 39 & 19 \\
+25 & 28 & 30 & 40 & 24 & 46 & 46 & 37 & 24 & 40 \\
+13 & 16 & 19 & 16 & 45 & 14 & 6 & 39 & 25 & 30
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{47})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 69
+
+\begin{sageblock}
+matrix(Zmod(47),[[20,11,22,21],
+[34,14,28,31],
+[6,31,43,0]])
+matrix(Zmod(47),[[44,40,37,11,39,16,16,45,39,19],
+[25,28,30,40,24,46,46,37,24,40],
+[13,16,19,16,45,14,6,39,25,30]])
+\end{sageblock}
+
+% Fin del Ejercicio 69
+
+
+\begin{ejer} Sea $K$ el cuerpo de 31 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{3} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+19 & 2 & 4 \\
+11 & 11 & 16 \\
+30 & 30 & 7 \\
+0 & 18 & 30 \\
+21 & 12 & 24
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrr}
+19 & 2 & 4 \\
+11 & 11 & 16 \\
+30 & 30 & 7 \\
+0 & 18 & 30 \\
+21 & 12 & 24
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrr}
+19 & 2 & 4 \\
+11 & 11 & 16 \\
+30 & 30 & 7 \\
+0 & 18 & 30 \\
+21 & 12 & 24
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+27 & 21 & 3 & 15 & 21 & 2 & 7 & 24 & 18 & 21 \\
+6 & 6 & 29 & 15 & 11 & 7 & 6 & 20 & 30 & 19 \\
+22 & 22 & 3 & 3 & 12 & 5 & 23 & 1 & 30 & 21 \\
+23 & 2 & 24 & 16 & 0 & 14 & 19 & 11 & 6 & 24 \\
+7 & 2 & 18 & 6 & 8 & 12 & 30 & 20 & 29 & 2
+\end{array}\right] \in {\bf M}_{5\times 10}({\mathbb Z}_{31})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 70
+
+\begin{sageblock}
+matrix(Zmod(31),[[19,2,4],
+[11,11,16],
+[30,30,7],
+[0,18,30],
+[21,12,24]])
+matrix(Zmod(31),[[27,21,3,15,21,2,7,24,18,21],
+[6,6,29,15,11,7,6,20,30,19],
+[22,22,3,3,12,5,23,1,30,21],
+[23,2,24,16,0,14,19,11,6,24],
+[7,2,18,6,8,12,30,20,29,2]])
+\end{sageblock}
+
+% Fin del Ejercicio 70
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{5} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rrrrr}
+1 & 2 & 1 & -7 & 0 \\
+-1 & -1 & 0 & 4 & 1 \\
+0 & -1 & -1 & 3 & -1
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrrrr}
+1 & 2 & 1 & -7 & 0 \\
+-1 & -1 & 0 & 4 & 1 \\
+0 & -1 & -1 & 3 & -1
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrrrr}
+1 & 2 & 1 & -7 & 0 \\
+-1 & -1 & 0 & 4 & 1 \\
+0 & -1 & -1 & 3 & -1
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+-\frac{1}{2} & -\frac{1}{2} & 0 & 1 & 1 & -\frac{13}{3} & 0 & -3 & 2 & \frac{1}{13} \\
+-2 & -\frac{7}{3} & -\frac{21}{32} & \frac{1}{2} & 0 & -4 & 2 & -\frac{1}{20} & -4 & 0 \\
+0 & \frac{17}{6} & 5 & -\frac{3}{2} & -1 & 14 & -\frac{335}{3} & \frac{48}{11} & 2 & -\frac{1}{13}
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 71
+
+\begin{sageblock}
+matrix(QQ,[[1,2,1,-7,0],
+[-1,-1,0,4,1],
+[0,-1,-1,3,-1]])
+matrix(QQ,[[-1/2,-1/2,0,1,1,-13/3,0,-3,2,1/13],
+[-2,-7/3,-21/32,1/2,0,-4,2,-1/20,-4,0],
+[0,17/6,5,-3/2,-1,14,-335/3,48/11,2,-1/13]])
+\end{sageblock}
+
+% Fin del Ejercicio 71
+
+
+\begin{ejer} Sea $K$ el cuerpo de 29 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{4} \to K^{2}$ siendo  $$ M(f) = \left[\begin{array}{rrrr}
+10 & 1 & 0 & 10 \\
+19 & 28 & 0 & 19
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrrr}
+10 & 1 & 0 & 10 \\
+19 & 28 & 0 & 19
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrrr}
+10 & 1 & 0 & 10 \\
+19 & 28 & 0 & 19
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2} \\
+x_{3}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+14 & 13 & 12 & 15 & 14 & 13 & 25 & 23 & 26 & 4 \\
+28 & 15 & 6 & 14 & 15 & 16 & 4 & 19 & 4 & 25
+\end{array}\right] \in {\bf M}_{2\times 10}({\mathbb Z}_{29})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 72
+
+\begin{sageblock}
+matrix(Zmod(29),[[10,1,0,10],
+[19,28,0,19]])
+matrix(Zmod(29),[[14,13,12,15,14,13,25,23,26,4],
+[28,15,6,14,15,16,4,19,4,25]])
+\end{sageblock}
+
+% Fin del Ejercicio 72
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{3} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+6 & -7 & -7 \\
+-5 & 6 & 6 \\
+1 & 3 & 3 \\
+4 & -1 & -1 \\
+5 & -1 & -1
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrr}
+6 & -7 & -7 \\
+-5 & 6 & 6 \\
+1 & 3 & 3 \\
+4 & -1 & -1 \\
+5 & -1 & -1
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrr}
+6 & -7 & -7 \\
+-5 & 6 & 6 \\
+1 & 3 & 3 \\
+4 & -1 & -1 \\
+5 & -1 & -1
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+\frac{3}{2} & 0 & 0 & 23 & -3 & -1 & -\frac{1}{3} & 4 & -6 & 1 \\
+2 & -2 & \frac{8}{3} & \frac{2}{3} & 1 & -2 & -2 & 0 & 0 & 1 \\
+\frac{163}{2} & -50 & \frac{200}{3} & 0 & -\frac{1}{4} & -\frac{1}{2} & -1 & 3 & -126 & 46 \\
+\frac{145}{2} & -44 & \frac{176}{3} & -\frac{11}{2} & \frac{2}{3} & \frac{1}{3} & -1 & -3 & -114 & 41 \\
+\frac{191}{2} & -58 & \frac{232}{3} & 2 & -19 & -5 & \frac{1}{3} & -10 & -150 & 54
+\end{array}\right] \in {\bf M}_{5\times 10}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 73
+
+\begin{sageblock}
+matrix(QQ,[[6,-7,-7],
+[-5,6,6],
+[1,3,3],
+[4,-1,-1],
+[5,-1,-1]])
+matrix(QQ,[[3/2,0,0,23,-3,-1,-1/3,4,-6,1],
+[2,-2,8/3,2/3,1,-2,-2,0,0,1],
+[163/2,-50,200/3,0,-1/4,-1/2,-1,3,-126,46],
+[145/2,-44,176/3,-11/2,2/3,1/3,-1,-3,-114,41],
+[191/2,-58,232/3,2,-19,-5,1/3,-10,-150,54]])
+\end{sageblock}
+
+% Fin del Ejercicio 73
+
+
+\begin{ejer} Sea $K$ el cuerpo de 41 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{5} \to K^{2}$ siendo  $$ M(f) = \left[\begin{array}{rrrrr}
+40 & 21 & 29 & 34 & 21 \\
+3 & 19 & 36 & 21 & 19
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrrrr}
+40 & 21 & 29 & 34 & 21 \\
+3 & 19 & 36 & 21 & 19
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrrrr}
+40 & 21 & 29 & 34 & 21 \\
+3 & 19 & 36 & 21 & 19
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+35 & 37 & 18 & 39 & 7 & 25 & 13 & 40 & 19 & 17 \\
+18 & 6 & 28 & 16 & 33 & 7 & 10 & 34 & 25 & 31
+\end{array}\right] \in {\bf M}_{2\times 10}({\mathbb Z}_{41})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 74
+
+\begin{sageblock}
+matrix(Zmod(41),[[40,21,29,34,21],
+[3,19,36,21,19]])
+matrix(Zmod(41),[[35,37,18,39,7,25,13,40,19,17],
+[18,6,28,16,33,7,10,34,25,31]])
+\end{sageblock}
+
+% Fin del Ejercicio 74
+
+
+\begin{ejer} Sea $K$ el cuerpo de los n\'umeros reales.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{2} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rr}
+7 & -7 \\
+-3 & 3 \\
+-3 & 3 \\
+-2 & 2 \\
+5 & -5
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rr}
+7 & -7 \\
+-3 & 3 \\
+-3 & 3 \\
+-2 & 2 \\
+5 & -5
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rr}
+7 & -7 \\
+-3 & 3 \\
+-3 & 3 \\
+-2 & 2 \\
+5 & -5
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrr}
+-\frac{4}{5} & \frac{1}{3} & 0 & -1 & 1 & 0 & -3 & -\frac{1}{35} & 0 \\
+-\frac{1}{5} & -\frac{1}{7} & 0 & \frac{3}{7} & -\frac{3}{7} & 0 & -\frac{1}{4} & -2 & -3 \\
+2 & -\frac{1}{7} & 1 & \frac{3}{7} & -\frac{3}{7} & 0 & -\frac{2}{67} & \frac{1}{24} & -\frac{1}{4} \\
+-\frac{1}{5} & -\frac{2}{21} & -\frac{1}{4} & \frac{2}{7} & -\frac{2}{7} & 0 & 11 & \frac{4}{29} & 0 \\
+0 & \frac{5}{21} & 4 & -\frac{5}{7} & \frac{5}{7} & 0 & -4 & 0 & 1
+\end{array}\right] \in {\bf M}_{5\times 9}({\mathbb R})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 75
+
+\begin{sageblock}
+matrix(QQ,[[7,-7],
+[-3,3],
+[-3,3],
+[-2,2],
+[5,-5]])
+matrix(QQ,[[-4/5,1/3,0,-1,1,0,-3,-1/35,0],
+[-1/5,-1/7,0,3/7,-3/7,0,-1/4,-2,-3],
+[2,-1/7,1,3/7,-3/7,0,-2/67,1/24,-1/4],
+[-1/5,-2/21,-1/4,2/7,-2/7,0,11,4/29,0],
+[0,5/21,4,-5/7,5/7,0,-4,0,1]])
+\end{sageblock}
+
+% Fin del Ejercicio 75
+
+
+\begin{ejer} Sea $K$ el cuerpo de 7 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{3} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+0 & 5 & 3 \\
+6 & 3 & 6 \\
+3 & 0 & 0 \\
+2 & 5 & 3 \\
+4 & 5 & 3
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrr}
+0 & 5 & 3 \\
+6 & 3 & 6 \\
+3 & 0 & 0 \\
+2 & 5 & 3 \\
+4 & 5 & 3
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrr}
+0 & 5 & 3 \\
+6 & 3 & 6 \\
+3 & 0 & 0 \\
+2 & 5 & 3 \\
+4 & 5 & 3
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+2 & 2 & 4 & 2 & 0 & 3 & 1 & 6 & 1 & 0 \\
+1 & 2 & 6 & 5 & 1 & 2 & 1 & 5 & 4 & 0 \\
+5 & 6 & 6 & 0 & 4 & 3 & 5 & 0 & 1 & 0 \\
+6 & 0 & 1 & 5 & 5 & 2 & 5 & 6 & 4 & 0 \\
+1 & 1 & 5 & 5 & 3 & 3 & 4 & 6 & 0 & 0
+\end{array}\right] \in {\bf M}_{5\times 10}({\mathbb Z}_{7})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 76
+
+\begin{sageblock}
+matrix(Zmod(7),[[0,5,3],
+[6,3,6],
+[3,0,0],
+[2,5,3],
+[4,5,3]])
+matrix(Zmod(7),[[2,2,4,2,0,3,1,6,1,0],
+[1,2,6,5,1,2,1,5,4,0],
+[5,6,6,0,4,3,5,0,1,0],
+[6,0,1,5,5,2,5,6,4,0],
+[1,1,5,5,3,3,4,6,0,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 76
+
+
+\begin{ejer} Sea $K$ el cuerpo de 41 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{3} \to K^{4}$ siendo  $$ M(f) = \left[\begin{array}{rrr}
+0 & 13 & 33 \\
+12 & 12 & 6 \\
+8 & 40 & 19 \\
+4 & 30 & 27
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrr}
+0 & 13 & 33 \\
+12 & 12 & 6 \\
+8 & 40 & 19 \\
+4 & 30 & 27
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrr}
+0 & 13 & 33 \\
+12 & 12 & 6 \\
+8 & 40 & 19 \\
+4 & 30 & 27
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+9 & 34 & 13 & 36 & 4 & 24 & 12 & 12 & 25 & 5 \\
+17 & 14 & 38 & 14 & 18 & 22 & 13 & 36 & 25 & 14 \\
+3 & 37 & 30 & 38 & 15 & 38 & 5 & 22 & 33 & 21 \\
+10 & 27 & 25 & 35 & 37 & 28 & 36 & 36 & 31 & 20
+\end{array}\right] \in {\bf M}_{4\times 10}({\mathbb Z}_{41})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 77
+
+\begin{sageblock}
+matrix(Zmod(41),[[0,13,33],
+[12,12,6],
+[8,40,19],
+[4,30,27]])
+matrix(Zmod(41),[[9,34,13,36,4,24,12,12,25,5],
+[17,14,38,14,18,22,13,36,25,14],
+[3,37,30,38,15,38,5,22,33,21],
+[10,27,25,35,37,28,36,36,31,20]])
+\end{sageblock}
+
+% Fin del Ejercicio 77
+
+
+\begin{ejer} Sea $K$ el cuerpo de 31 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{5} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rrrrr}
+17 & 17 & 28 & 30 & 19 \\
+6 & 6 & 30 & 24 & 29 \\
+15 & 15 & 9 & 16 & 29
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrrrr}
+17 & 17 & 28 & 30 & 19 \\
+6 & 6 & 30 & 24 & 29 \\
+15 & 15 & 9 & 16 & 29
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrrrr}
+17 & 17 & 28 & 30 & 19 \\
+6 & 6 & 30 & 24 & 29 \\
+15 & 15 & 9 & 16 & 29
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+16 & 29 & 18 & 2 & 19 & 19 & 10 & 6 & 11 & 10 \\
+19 & 3 & 24 & 12 & 8 & 10 & 17 & 7 & 24 & 16 \\
+23 & 19 & 7 & 22 & 2 & 18 & 10 & 26 & 24 & 4
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{31})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 78
+
+\begin{sageblock}
+matrix(Zmod(31),[[17,17,28,30,19],
+[6,6,30,24,29],
+[15,15,9,16,29]])
+matrix(Zmod(31),[[16,29,18,2,19,19,10,6,11,10],
+[19,3,24,12,8,10,17,7,24,16],
+[23,19,7,22,2,18,10,26,24,4]])
+\end{sageblock}
+
+% Fin del Ejercicio 78
+
+
+\begin{ejer} Sea $K$ el cuerpo de 5 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{2} \to K^{5}$ siendo  $$ M(f) = \left[\begin{array}{rr}
+2 & 0 \\
+4 & 0 \\
+1 & 0 \\
+2 & 0 \\
+3 & 0
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rr}
+2 & 0 \\
+4 & 0 \\
+1 & 0 \\
+2 & 0 \\
+3 & 0
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rr}
+2 & 0 \\
+4 & 0 \\
+1 & 0 \\
+2 & 0 \\
+3 & 0
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrr}
+1 & 4 & 2 & 4 & 0 & 4 & 1 & 2 \\
+2 & 1 & 0 & 1 & 0 & 3 & 3 & 1 \\
+3 & 2 & 3 & 1 & 0 & 2 & 4 & 0 \\
+1 & 0 & 4 & 1 & 0 & 4 & 0 & 2 \\
+4 & 4 & 4 & 3 & 0 & 1 & 2 & 0
+\end{array}\right] \in {\bf M}_{5\times 8}({\mathbb Z}_{5})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 79
+
+\begin{sageblock}
+matrix(Zmod(5),[[2,0],
+[4,0],
+[1,0],
+[2,0],
+[3,0]])
+matrix(Zmod(5),[[1,4,2,4,0,4,1,2],
+[2,1,0,1,0,3,3,1],
+[3,2,3,1,0,2,4,0],
+[1,0,4,1,0,4,0,2],
+[4,4,4,3,0,1,2,0]])
+\end{sageblock}
+
+% Fin del Ejercicio 79
+
+
+\begin{ejer} Sea $K$ el cuerpo de 19 elementos.
+\newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = green!20!white,title=Versión Núcleo]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en la imagen de la aplicación lineal $f:K^{5} \to K^{3}$ siendo  $$ M(f) = \left[\begin{array}{rrrrr}
+1 & 15 & 5 & 14 & 1 \\
+0 & 1 & 8 & 1 & 9 \\
+17 & 12 & 3 & 14 & 15
+\end{array}\right] $$ y $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth}
+\begin{tcolorbox}[colback = blue!20!white,title=Versión Anulador]
+Determina de entre los vectores columna de la matriz $A$, cuales de ellos están en el espacio generado por las columnas de la matriz $$ \left[\begin{array}{rrrrr}
+1 & 15 & 5 & 14 & 1 \\
+0 & 1 & 8 & 1 & 9 \\
+17 & 12 & 3 & 14 & 15
+\end{array}\right] $$ siendo $A$ la matriz que se da a continuación:\end{tcolorbox}
+\end{minipage} \newline
+\noindent\begin{minipage}{\textwidth} 
+\begin{tcolorbox}[colback = red!20!white,title=Versión Ecuaciones Implícitas]
+Para cada una de las columnas $B$ de la matriz $A$, determina qué sistemas de ecuaciones tienen solución, siendo $$ \left[\begin{array}{rrrrr}
+1 & 15 & 5 & 14 & 1 \\
+0 & 1 & 8 & 1 & 9 \\
+17 & 12 & 3 & 14 & 15
+\end{array}\right] \left[\begin{array}{r}
+x_{0} \\
+x_{1} \\
+x_{2} \\
+x_{3} \\
+x_{4}
+\end{array}\right] = B$$ siendo $A$ la matriz que se da a continuación:
+\end{tcolorbox}
+\end{minipage}
+\[ A = \left[\begin{array}{rrrrrrrrrr}
+0 & 10 & 3 & 5 & 6 & 1 & 5 & 16 & 7 & 2 \\
+9 & 15 & 6 & 0 & 9 & 5 & 11 & 16 & 0 & 17 \\
+5 & 2 & 11 & 9 & 6 & 18 & 6 & 9 & 5 & 7
+\end{array}\right] \in {\bf M}_{3\times 10}({\mathbb Z}_{19})\]
+\end{ejer}
+
+{\it Soluci\'on:}
+% Escribe tu soluci\'on para el Ejercicio 80
+
+\begin{sageblock}
+matrix(Zmod(19),[[1,15,5,14,1],
+[0,1,8,1,9],
+[17,12,3,14,15]])
+matrix(Zmod(19),[[0,10,3,5,6,1,5,16,7,2],
+[9,15,6,0,9,5,11,16,0,17],
+[5,2,11,9,6,18,6,9,5,7]])
+\end{sageblock}
+
+% Fin del Ejercicio 80
+
+\end{document}
