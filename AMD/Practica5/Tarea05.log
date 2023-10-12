@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.10.9)  9 OCT 2023 19:12
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.10.10)  12 OCT 2023 11:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -117,182 +117,76 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 \thm@headsep=\skip57
 \dth@everypar=\toks26
 )
-(/usr/share/texlive/texmf-dist/tex/latex/pythontex/pythontex.sty
-Package: pythontex 2021/06/06 v0.18 execute and typeset Python code and other l
-anguages
+(/usr/share/texmf/tex/latex/sagetex/sagetex.sty
+Package: sagetex 2021/10/16 v3.6 embedding Sage into LaTeX documents
 
-(/usr/share/texlive/texmf-dist/tex/latex/fvextra/fvextra.sty
-Package: fvextra 2022/11/30 v1.5 fvextra - extensions and patches for fancyvrb
-
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count272
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks27
+\verbatim@line=\toks28
+\verbatim@in@stream=\read2
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2023/01/19 4.5a verbatim text (tvz,hv)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
-\KV@toks@=\toks27
+\KV@toks@=\toks29
 )
-\FV@CodeLineNo=\count273
-\FV@InFile=\read2
+\FV@CodeLineNo=\count272
+\FV@InFile=\read3
 \FV@TabBox=\box54
-\c@FancyVerbLine=\count274
-\FV@StepNumber=\count275
+\c@FancyVerbLine=\count273
+\FV@StepNumber=\count274
 \FV@OutFile=\write3
 )
-(/usr/share/texlive/texmf-dist/tex/latex/upquote/upquote.sty
-Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
-tim
-)
-(/usr/share/texlive/texmf-dist/tex/latex/lineno/lineno.sty
-Package: lineno 2023/01/19 line numbers on paragraphs v5.1
-\linenopenalty=\count276
-\output=\toks28
-\linenoprevgraf=\count277
-\linenumbersep=\dimen152
-\linenumberwidth=\dimen153
-\c@linenumber=\count278
-\c@pagewiselinenumber=\count279
-\c@LN@truepage=\count280
-\c@internallinenumber=\count281
-\c@internallinenumbers=\count282
-\quotelinenumbersep=\dimen154
-\bframerule=\dimen155
-\bframesep=\dimen156
-\bframebox=\box55
-\linenoamsmath@ams@eqpen=\count283
-LaTeX Info: Redefining \\ on input line 3131.
-)
-\c@FV@TrueTabGroupLevel=\count284
-\c@FV@TrueTabCounter=\count285
-\FV@TabBox@Group=\box56
-\FV@TmpLength=\skip58
-\c@FV@HighlightLinesStart=\count286
-\c@FV@HighlightLinesStop=\count287
-\FV@LoopCount=\count288
-\FV@NCharsBox=\box57
-\FV@BreakIndent=\dimen157
-\FV@BreakIndentNChars=\count289
-\FV@BreakSymbolSepLeft=\dimen158
-\FV@BreakSymbolSepLeftNChars=\count290
-\FV@BreakSymbolSepRight=\dimen159
-\FV@BreakSymbolSepRightNChars=\count291
-\FV@BreakSymbolIndentLeft=\dimen160
-\FV@BreakSymbolIndentLeftNChars=\count292
-\FV@BreakSymbolIndentRight=\dimen161
-\FV@BreakSymbolIndentRightNChars=\count293
-\c@FancyVerbLineBreakLast=\count294
-\FV@LineBox=\box58
-\FV@LineIndentBox=\box59
-\c@FV@BreakBufferDepth=\count295
-\FV@LineWidth=\dimen162
-)
-(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.sty
-(/usr/share/texlive/texmf-dist/tex/generic/xstring/xstring.tex
-\integerpart=\count296
-\decimalpart=\count297
-)
-Package: xstring 2023/01/14 v1.85 String manipulations (CT)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/pgfopts/pgfopts.sty
-Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count275
+\lst@gtempboxa=\box55
+\lst@token=\toks30
+\lst@length=\count276
+\lst@currlwidth=\dimen152
+\lst@column=\count277
+\lst@pos=\count278
+\lst@lostspace=\dimen153
+\lst@width=\dimen154
+\lst@newlines=\count279
+\lst@lineno=\count280
+\lst@maxwidth=\dimen155
 
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks29
-\pgfkeys@temptoks=\toks30
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered
-.code.tex
-\pgfkeys@tmptoks=\toks31
-)))
-\pgfopts@list@add@a@toks=\toks32
-\pgfopts@list@add@b@toks=\toks33
-) (/usr/share/texlive/texmf-dist/tex/latex/newfloat/newfloat.sty
-Package: newfloat 2019/09/02 v1.1l Defining new floating environments (AR)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count281
+\lst@skipnumbers=\count282
+\lst@framebox=\box56
 )
-(/usr/share/texlive/texmf-dist/tex/latex/currfile/currfile.sty
-Package: currfile 2022/10/10 v0.8 Provides the file path elements of the curren
-t input file
-
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/filehook/filehook.sty
-Package: filehook 2022/10/25 v0.8b Hooks for input files
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
 
-(/usr/share/texlive/texmf-dist/tex/latex/filehook/filehook-2020.sty
-Package: filehook-2020 2022/10/25 v0.8b Hooks for input files
-))
-\c@currfiledepth=\count298
-)
-\pytx@codefile=\write4
-\openout4 = `Tarea05.pytxcode'.
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
 
-\c@pytx@FancyVerbLineTemp=\count299
-\c@pytx@py@default@default=\count300
-\c@pytx@pycon@default@default=\count301
-\c@pytx@sympy@default@default=\count302
-\c@pytx@sympycon@default@default=\count303
-\c@pytx@pylab@default@default=\count304
-\c@pytx@pylabcon@default@default=\count305
-\c@pytx@sage@default@default=\count306
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks34
-\inpenc@posthook=\toks35
-)
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2020/01/02 v5.9 Page Geometry
+Package xcolor Info: Driver file: pdftex.def on input line 227.
 
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
-Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
-))
-\Gm@cnth=\count307
-\Gm@cntv=\count308
-\c@Gm@tempcnt=\count309
-\Gm@bindingoffset=\dimen163
-\Gm@wd@mp=\dimen164
-\Gm@odd@mp=\dimen165
-\Gm@even@mp=\dimen166
-\Gm@layoutwidth=\dimen167
-\Gm@layoutheight=\dimen168
-\Gm@layouthoffset=\dimen169
-\Gm@layoutvoffset=\dimen170
-\Gm@dimlist=\toks36
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 )
-(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
-Package: tcolorbox 2022/06/24 version 5.1.1 text color boxes
-
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks37
-\pgfutil@tempdima=\dimen171
-\pgfutil@tempdimb=\dimen172
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
+Package xcolor Info: Model `RGB' extended on input line 1369.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
 )
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box60
-)
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
-Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
-))
-Package: pgf 2023-01-15 v3.1.10 (3.1.10)
-
-(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -306,42 +200,113 @@ Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
-))
-\Gin@req@height=\dimen173
-\Gin@req@width=\dimen174
 )
+\Gin@req@height=\dimen156
+\Gin@req@width=\dimen157
+)
+(/usr/share/texlive/texmf-dist/tex/latex/makecmds/makecmds.sty
+Package: makecmds 2009/09/03 v1.0a extra command making commands
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2022/04/13 v1.1d Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty
+Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
+)
+\c@ST@inline=\count283
+\c@ST@plot=\count284
+\c@ST@cmdline=\count285
+\sagetexindent=\skip58
+
+(./Tarea05.sagetex.sout)
+\sagecommandlineskip=\skip59
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2021/02/14 v1.3d Input encoding file
+\inpenc@prehook=\toks31
+\inpenc@posthook=\toks32
+)
+(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+
+(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count286
+\Gm@cntv=\count287
+\c@Gm@tempcnt=\count288
+\Gm@bindingoffset=\dimen158
+\Gm@wd@mp=\dimen159
+\Gm@odd@mp=\dimen160
+\Gm@even@mp=\dimen161
+\Gm@layoutwidth=\dimen162
+\Gm@layoutheight=\dimen163
+\Gm@layouthoffset=\dimen164
+\Gm@layoutvoffset=\dimen165
+\Gm@dimlist=\toks33
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2022/06/24 version 5.1.1 text color boxes
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks34
+\pgfutil@tempdima=\dimen166
+\pgfutil@tempdimb=\dimen167
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box57
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
-\pgf@x=\dimen175
-\pgf@y=\dimen176
-\pgf@xa=\dimen177
-\pgf@ya=\dimen178
-\pgf@xb=\dimen179
-\pgf@yb=\dimen180
-\pgf@xc=\dimen181
-\pgf@yc=\dimen182
-\pgf@xd=\dimen183
-\pgf@yd=\dimen184
-\w@pgf@writea=\write5
-\r@pgf@reada=\read3
-\c@pgf@counta=\count310
-\c@pgf@countb=\count311
-\c@pgf@countc=\count312
-\c@pgf@countd=\count313
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks35
+\pgfkeys@temptoks=\toks36
+
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered
+.code.tex
+\pgfkeys@tmptoks=\toks37
+))
+\pgf@x=\dimen168
+\pgf@y=\dimen169
+\pgf@xa=\dimen170
+\pgf@ya=\dimen171
+\pgf@xb=\dimen172
+\pgf@yb=\dimen173
+\pgf@xc=\dimen174
+\pgf@yc=\dimen175
+\pgf@xd=\dimen176
+\pgf@yd=\dimen177
+\w@pgf@writea=\write4
+\r@pgf@reada=\read4
+\c@pgf@counta=\count289
+\c@pgf@countb=\count290
+\c@pgf@countc=\count291
+\c@pgf@countd=\count292
 \t@pgf@toka=\toks38
 \t@pgf@tokb=\toks39
 \t@pgf@tokc=\toks40
-\pgf@sys@id@count=\count314
-
-(/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+\pgf@sys@id@count=\count293
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
 )
 Driver file for pgf: pgfsys-pdftex.def
-
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
 File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
 
@@ -352,40 +317,22 @@ File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
 File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfsyssoftpath@smallbuffer@items=\count315
-\pgfsyssoftpath@bigbuffer@items=\count316
+\pgfsyssoftpath@smallbuffer@items=\count294
+\pgfsyssoftpath@bigbuffer@items=\count295
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
 File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
-)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2022/06/12 v2.14 LaTeX color extensions (UK)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package xcolor Info: Driver file: pdftex.def on input line 227.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1353.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1357.
-Package xcolor Info: Model `RGB' extended on input line 1369.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1371.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1372.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1373.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1374.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1375.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1376.
-)
+))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen185
-\pgfmath@count=\count317
-\pgfmath@box=\box61
+\pgfmath@dimen=\dimen178
+\pgfmath@count=\count296
+\pgfmath@box=\box58
 \pgfmath@toks=\toks41
 \pgfmath@stack@operand=\toks42
 \pgfmath@stack@operation=\toks43
@@ -409,58 +356,58 @@ tex)
 thmetics.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count318
+\c@pgfmathroundto@lastzeros=\count297
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
 x
 File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@picminx=\dimen186
-\pgf@picmaxx=\dimen187
-\pgf@picminy=\dimen188
-\pgf@picmaxy=\dimen189
-\pgf@pathminx=\dimen190
-\pgf@pathmaxx=\dimen191
-\pgf@pathminy=\dimen192
-\pgf@pathmaxy=\dimen193
-\pgf@xx=\dimen194
-\pgf@xy=\dimen195
-\pgf@yx=\dimen196
-\pgf@yy=\dimen197
-\pgf@zx=\dimen198
-\pgf@zy=\dimen256
+\pgf@picminx=\dimen179
+\pgf@picmaxx=\dimen180
+\pgf@picminy=\dimen181
+\pgf@picmaxy=\dimen182
+\pgf@pathminx=\dimen183
+\pgf@pathmaxx=\dimen184
+\pgf@pathminy=\dimen185
+\pgf@pathmaxy=\dimen186
+\pgf@xx=\dimen187
+\pgf@xy=\dimen188
+\pgf@yx=\dimen189
+\pgf@yy=\dimen190
+\pgf@zx=\dimen191
+\pgf@zy=\dimen192
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
 code.tex
 File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@path@lastx=\dimen257
-\pgf@path@lasty=\dimen258
+\pgf@path@lastx=\dimen193
+\pgf@path@lasty=\dimen194
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
 .tex
 File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@shorten@end@additional=\dimen259
-\pgf@shorten@start@additional=\dimen260
+\pgf@shorten@end@additional=\dimen195
+\pgf@shorten@start@additional=\dimen196
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
 x
 File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfpic=\box62
-\pgf@hbox=\box63
-\pgf@layerbox@main=\box64
-\pgf@picture@serial@count=\count319
+\pgfpic=\box59
+\pgf@hbox=\box60
+\pgf@layerbox@main=\box61
+\pgf@picture@serial@count=\count298
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
 File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgflinewidth=\dimen261
+\pgflinewidth=\dimen197
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
 s.code.tex
 File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@pt@x=\dimen262
-\pgf@pt@y=\dimen263
-\pgf@pt@temp=\dimen264
+\pgf@pt@x=\dimen198
+\pgf@pt@y=\dimen256
+\pgf@pt@temp=\dimen257
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -476,13 +423,13 @@ File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
 x
 File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfarrowsep=\dimen265
+\pgfarrowsep=\dimen258
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@max=\dimen266
-\pgf@sys@shading@range@num=\count320
-\pgf@shadingcount=\count321
+\pgf@max=\dimen259
+\pgf@sys@shading@range@num=\count299
+\pgf@shadingcount=\count300
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
@@ -490,7 +437,7 @@ File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.
 tex
 File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfexternal@startupbox=\box65
+\pgfexternal@startupbox=\box62
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.te
 x
@@ -509,61 +456,61 @@ File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfnodeparttextbox=\box66
+\pgfnodeparttextbox=\box63
 ) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
 .sty
 Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
-\pgf@nodesepstart=\dimen267
-\pgf@nodesepend=\dimen268
+\pgf@nodesepstart=\dimen260
+\pgf@nodesepend=\dimen261
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
 .sty
 Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
-)) (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks44
-\verbatim@line=\toks45
-\verbatim@in@stream=\read4
-)
-(/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
 
 (/usr/share/texlive/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\tcb@titlebox=\box67
-\tcb@upperbox=\box68
-\tcb@lowerbox=\box69
-\tcb@phantombox=\box70
-\c@tcbbreakpart=\count322
-\c@tcblayer=\count323
-\c@tcolorbox@number=\count324
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count301
+)
+\tcb@titlebox=\box64
+\tcb@upperbox=\box65
+\tcb@lowerbox=\box66
+\tcb@phantombox=\box67
+\c@tcbbreakpart=\count302
+\c@tcblayer=\count303
+\c@tcolorbox@number=\count304
+\tcb@temp=\box68
+\tcb@temp=\box69
+\tcb@temp=\box70
 \tcb@temp=\box71
-\tcb@temp=\box72
-\tcb@temp=\box73
-\tcb@temp=\box74
 
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
 Library (tcolorbox): 'tcbraster.code.tex' version '5.1.1'
-\c@tcbrastercolumn=\count325
-\c@tcbrasterrow=\count326
-\c@tcbrasternum=\count327
-\c@tcbraster=\count328
+\c@tcbrastercolumn=\count305
+\c@tcbrasterrow=\count306
+\c@tcbrasternum=\count307
+\c@tcbraster=\count308
 ) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
 Library (tcolorbox): 'tcbskins.code.tex' version '5.1.1'
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty
+(/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex))
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
-\pgffor@iter=\dimen269
-\pgffor@skip=\dimen270
-\pgffor@stack=\toks46
-\pgffor@toks=\toks47
+\pgffor@iter=\dimen262
+\pgffor@skip=\dimen263
+\pgffor@stack=\toks44
+\pgffor@toks=\toks45
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2023-01-15 v3.1.10 (3.1.10)
@@ -571,39 +518,39 @@ Package: tikz 2023-01-15 v3.1.10 (3.1.10)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
 .code.tex
 File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgf@plot@mark@count=\count329
-\pgfplotmarksize=\dimen271
+\pgf@plot@mark@count=\count309
+\pgfplotmarksize=\dimen264
 )
-\tikz@lastx=\dimen272
-\tikz@lasty=\dimen273
-\tikz@lastxsaved=\dimen274
-\tikz@lastysaved=\dimen275
-\tikz@lastmovetox=\dimen276
-\tikz@lastmovetoy=\dimen277
-\tikzleveldistance=\dimen278
-\tikzsiblingdistance=\dimen279
-\tikz@figbox=\box75
-\tikz@figbox@bg=\box76
-\tikz@tempbox=\box77
-\tikz@tempbox@bg=\box78
-\tikztreelevel=\count330
-\tikznumberofchildren=\count331
-\tikznumberofcurrentchild=\count332
-\tikz@fig@count=\count333
+\tikz@lastx=\dimen265
+\tikz@lasty=\dimen266
+\tikz@lastxsaved=\dimen267
+\tikz@lastysaved=\dimen268
+\tikz@lastmovetox=\dimen269
+\tikz@lastmovetoy=\dimen270
+\tikzleveldistance=\dimen271
+\tikzsiblingdistance=\dimen272
+\tikz@figbox=\box72
+\tikz@figbox@bg=\box73
+\tikz@tempbox=\box74
+\tikz@tempbox@bg=\box75
+\tikztreelevel=\count310
+\tikznumberofchildren=\count311
+\tikznumberofcurrentchild=\count312
+\tikz@fig@count=\count313
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
-\pgfmatrixcurrentrow=\count334
-\pgfmatrixcurrentcolumn=\count335
-\pgf@matrix@numberofcolumns=\count336
+\pgfmatrixcurrentrow=\count314
+\pgfmatrixcurrentcolumn=\count315
+\pgf@matrix@numberofcolumns=\count316
 )
-\tikz@expandcount=\count337
+\tikz@expandcount=\count317
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
 )))
-\tcb@waterbox=\box79
+\tcb@waterbox=\box76
 
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
 Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '5.1.1'
@@ -612,13 +559,16 @@ Library (tcolorbox): 'tcbbreakable.code.tex' version '5.1.1'
 (/usr/share/texlive/texmf-dist/tex/latex/pdfcol/pdfcol.sty
 Package: pdfcol 2022-09-21 v1.7 Handle new color stacks for pdfTeX (HO)
 
+(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+)
 (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 ))
 Package pdfcol Info: New color stack `tcb@breakable' = 1 on input line 23.
-\tcb@testbox=\box80
-\tcb@totalupperbox=\box81
-\tcb@totallowerbox=\box82
+\tcb@testbox=\box77
+\tcb@totalupperbox=\box78
+\tcb@totallowerbox=\box79
 )
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
 Library (tcolorbox): 'tcbhooks.code.tex' version '5.1.1'
@@ -626,39 +576,14 @@ Library (tcolorbox): 'tcbhooks.code.tex' version '5.1.1'
 Library (tcolorbox): 'tcbtheorems.code.tex' version '5.1.1'
 ) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
 Library (tcolorbox): 'tcbfitting.code.tex' version '5.1.1'
-\tcbfitdim=\dimen280
-\tcb@lowerfitdim=\dimen281
-\tcb@upperfitdim=\dimen282
-\tcb@cur@hbadness=\count338
+\tcbfitdim=\dimen273
+\tcb@lowerfitdim=\dimen274
+\tcb@upperfitdim=\dimen275
+\tcb@cur@hbadness=\count318
 ) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
 Library (tcolorbox): 'tcblistingsutf8.code.tex' version '5.1.1'
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
 Library (tcolorbox): 'tcblistings.code.tex' version '5.1.1'
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count339
-\lst@gtempboxa=\box83
-\lst@token=\toks48
-\lst@length=\count340
-\lst@currlwidth=\dimen283
-\lst@column=\count341
-\lst@pos=\count342
-\lst@lostspace=\dimen284
-\lst@width=\dimen285
-\lst@newlines=\count343
-\lst@lineno=\count344
-\lst@maxwidth=\dimen286
-
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count345
-\lst@skipnumbers=\count346
-\lst@framebox=\box84
-)
-(/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
-File: listings.cfg 2020/03/24 1.8d listings configuration
-))
-Package: listings 2020/03/24 1.8d (Carsten Heinz)
-
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
 Library (tcolorbox): 'tcblistingscore.code.tex' version '5.1.1'
 (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
@@ -674,7 +599,7 @@ Package pdftexcmds Info: \pdfdraftmode found.
 Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
 Package shellesc Info: Restricted shell escape enabled on input line 77.
 ))
-\c@tcblisting=\count347
+\c@tcblisting=\count319
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/listingsutf8/listingsutf8.sty
 Package: listingsutf8 2019-12-10 v1.5 Allow UTF-8 in listings input (HO)
@@ -703,11 +628,11 @@ File: pgflibraryfadings.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ))) (/usr/share/texlive/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
 Library (tcolorbox): 'tcbposter.code.tex' version '5.1.1'
 ))
-\c@ejer=\count348
+\c@ejer=\count320
  (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count349
-\l__pdf_internal_box=\box85
+\l__color_backend_stack_int=\count321
+\l__pdf_internal_box=\box80
 )
 (./Tarea05.aux)
 \openout1 = `Tarea05.aux'.
@@ -737,13 +662,34 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 12.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-No file pythontex-files-Tarea05/Tarea05.pytxmcr.
-Run PythonTeX to create it.
-Package newfloat Info: New float `listing' with options `fileext=lopytx' on inp
-ut line 12.
-\c@listing=\count350
-\newfloat@ftype=\count351
-Package newfloat Info: float type `listing'=8 on input line 12.
+\c@lstlisting=\count322
+
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count323
+\scratchdimen=\dimen276
+\scratchbox=\box81
+\nofMPsegments=\count324
+\nofMParguments=\count325
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count326
+\MPscratchDim=\dimen277
+\MPnumerator=\count327
+\makeMPintoPDFobject=\count328
+\everyMPtoPDFconversion=\toks47
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+85.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\ST@sf=\write5
+\openout5 = `Tarea05.sagetex.sage'.
+
+
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -778,424 +724,157 @@ Package newfloat Info: float type `listing'=8 on input line 12.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count352
-\scratchdimen=\dimen287
-\scratchbox=\box86
-\nofMPsegments=\count353
-\nofMParguments=\count354
-\everyMPshowfont=\toks49
-\MPscratchCnt=\count355
-\MPscratchDim=\dimen288
-\MPnumerator=\count356
-\makeMPintoPDFobject=\count357
-\everyMPtoPDFconversion=\toks50
-) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
-Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
-Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
-)
-\c@lstlisting=\count358
-\c@pytx@sage@default@default@line=\count359
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 19.
-
-
-Package PythonTeX Warning: Missing autoprint content on input line 22.
-
-
-Package PythonTeX Warning: Missing autoprint content on input line 22.
-
-
-Package PythonTeX Warning: Missing autoprint content on input line 22.
-
-
-Package PythonTeX Warning: Missing autoprint content on input line 22.
-
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [2]
-[3]
+ [3]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[6]
+Underfull \vbox (badness 1515) has occurred while \output is active []
 
- [6]
-[7]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [7]
+Underfull \vbox (badness 4120) has occurred while \output is active []
 
  [8]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4120) has occurred while \output is active []
 
  [9]
-Underfull \vbox (badness 3724) has occurred while \output is active []
+Underfull \vbox (badness 4120) has occurred while \output is active []
 
  [10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [11]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1588.
-
-[12]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1626.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1662.
-
-
-Underfull \vbox (badness 3179) has occurred while \output is active []
-
- [13]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1698.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1732.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [14]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1768.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1804.
-
-
-Underfull \vbox (badness 5726) has occurred while \output is active []
-
- [15]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1838.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1872.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[12] [13] [14] [15]
+Underfull \vbox (badness 1337) has occurred while \output is active []
 
  [16]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1910.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1944.
-
-
-Underfull \vbox (badness 5726) has occurred while \output is active []
-
- [17]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 1982.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2018.
-
-
-Underfull \vbox (badness 3179) has occurred while \output is active []
-
- [18]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2052.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2086.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [19]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2124.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2160.
-
-
-Underfull \vbox (badness 3179) has occurred while \output is active []
-
- [20]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2196.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2230.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+[17] [18] [19] [20]
+Underfull \vbox (badness 1281) has occurred while \output is active []
 
  [21]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2266.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2313.
-
-
-Underfull \vbox (badness 3364) has occurred while \output is active []
-
- [22]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2370.
-
-
+[22]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [23]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package PythonTeX Warning: Non-existent Pygments content on input line 2423.
+ [24]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[24]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2474.
-
-[25]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2531.
-
-
+ [25]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [26]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2582.
-
-
+[27]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [27]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2633.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2680.
-
-[28]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2725.
-
-
+ [28]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [29]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2778.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1742) has occurred while \output is active []
 
  [30]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2831.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [31]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2888.
-
-
+[31]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32]
+[33]
+Underfull \vbox (badness 3199) has occurred while \output is active []
 
-Package PythonTeX Warning: Non-existent Pygments content on input line 2939.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [33]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 2990.
-
-[34]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3041.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3098.
-
-
+ [34]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [35]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3153.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [36]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3210.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 4144) has occurred while \output is active []
 
  [37]
+[38]
+Underfull \vbox (badness 3108) has occurred while \output is active []
 
-Package PythonTeX Warning: Non-existent Pygments content on input line 3267.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [38]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3320.
-
-[39]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3379.
-
-
-Underfull \vbox (badness 4886) has occurred while \output is active []
-
- [40]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3431.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+ [39]
+[40]
+Underfull \vbox (badness 3199) has occurred while \output is active []
 
  [41]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3496.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [42]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3555.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [43]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package PythonTeX Warning: Non-existent Pygments content on input line 3614.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3663.
-
-[44]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3715.
-
-
-Underfull \vbox (badness 1509) has occurred while \output is active []
+ [44]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [45]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3774.
-
-
-Underfull \vbox (badness 4886) has occurred while \output is active []
+Underfull \vbox (badness 5832) has occurred while \output is active []
 
  [46]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3828.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [47]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3893.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 2359) has occurred while \output is active []
 
  [48]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package PythonTeX Warning: Non-existent Pygments content on input line 3948.
-
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 3996.
-
-[49]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 4061.
-
-
+ [49]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [50]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 4110.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [51]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 4174.
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [52]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 4239.
-
-
+[52]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [53]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 4298.
-
-
-Underfull \vbox (badness 4886) has occurred while \output is active []
-
- [54]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 4353.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
+ [54]
+Underfull \vbox (badness 6125) has occurred while \output is active []
+
  [55]
-
-Package PythonTeX Warning: Non-existent Pygments content on input line 4417.
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [56]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package PythonTeX Warning: Non-existent Pygments content on input line 4472.
+ [57]
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[57] (./Tarea05.aux) ) 
+ [58]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [59]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [60]
+[61]
+*********************************************************************
+[62] (./Tarea05.aux) ) 
 Here is how much of TeX's memory you used:
- 24124 strings out of 478051
- 518865 string characters out of 5840943
- 1883330 words of memory out of 5000000
- 43635 multiletter control sequences out of 15000+600000
- 520205 words of font info for 63 fonts, out of 8000000 for 9000
- 175 hyphenation exceptions out of 8191
- 109i,12n,106p,448b,606s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 21655 strings out of 477975
+ 460677 string characters out of 5839280
+ 1885330 words of memory out of 5000000
+ 41271 multiletter control sequences out of 15000+600000
+ 520374 words of font info for 64 fonts, out of 8000000 for 9000
+ 220 hyphenation exceptions out of 8191
+ 93i,12n,99p,448b,604s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
 s/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
 mex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.
@@ -1205,11 +884,12 @@ sr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/symbols/msbm10.pfb>
-Output written on Tarea05.pdf (57 pages, 243302 bytes).
+ype1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/symbols/msbm10.pfb>
+Output written on Tarea05.pdf (62 pages, 267145 bytes).
 PDF statistics:
- 278 PDF objects out of 1000 (max. 8388607)
- 173 compressed objects within 2 object streams
+ 299 PDF objects out of 1000 (max. 8388607)
+ 187 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  157 words of extra memory for PDF output out of 10000 (max. 10000000)
 

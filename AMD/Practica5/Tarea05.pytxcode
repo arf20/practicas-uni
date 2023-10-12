@@ -1,5 +1,5 @@
 =>PYTHONTEX#sage#default#default#0#block#####15#
-miDNI = 12345   # introduce aqui las 5 ultimas cifras de tu DNI o NIE
+miDNI = 36363   # introduce aqui las 5 ultimas cifras de tu DNI o NIE
 primo = ZZ(miDNI^2).next_prime()
 EJ = [1+20*i+ZZ(Zmod(20)(primo^(i+2))) for i in range(4)]
 =>PYTHONTEX#sage#default#default#1#i#####22#

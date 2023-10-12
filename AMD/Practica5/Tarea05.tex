@@ -1,6 +1,6 @@
 \documentclass[12pt]{amsart}
-\usepackage[usefamily=sage]{pythontex} 
-%\usepackage{sagetex}
+%\usepackage[usefamily=sage]{pythontex} 
+\usepackage{sagetex}
 \usepackage[utf8]{inputenc}
 \usepackage[margin = 2cm]{geometry}
 %\usepackage[spanish]{babel}
@@ -13,9 +13,15 @@
 \maketitle
 
 \begin{sageblock}
-miDNI = 12345   # introduce aqui las 5 ultimas cifras de tu DNI o NIE
+miDNI = 36363   # introduce aqui las 5 ultimas cifras de tu DNI o NIE
 primo = ZZ(miDNI^2).next_prime()
 EJ = [1+20*i+ZZ(Zmod(20)(primo^(i+2))) for i in range(4)]
+
+# fijar primeros valores
+EJ[0] = 10
+EJ[1] = 38
+EJ[2] = 42
+EJ[3] = 74
 \end{sageblock}
 
 \begin{tcolorbox}[colback = orange!60!white]
@@ -779,6 +785,25 @@ Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
 
 {\it Soluci\'on:}
 % Escribe tu soluci\'on para el Ejercicio 10
+
+\begin{sageblock}
+	A = matrix(Zmod(19), [[9, 10], [13, 4]])
+	B = matrix(Zmod(19), [[9, 10], [13, 4], [12, 18]])
+	Ap = block_matrix([[A, 1]])
+	Ai = Ap.echelon_form().subdivision(0, 1)
+\end{sageblock}
+
+$$
+	M = \sage{B} \sage{A}^{-1}
+$$
+
+$$
+	M = \sage{B} \sage{Ai}
+$$
+
+$$
+	M = \sage{B * Ai}
+$$
 
 % Fin del Ejercicio 10
 
@@ -2189,11 +2214,18 @@ Determina si la matriz $A$ tiene inversa por la izquierda, por la derecha, por l
 % Escribe tu soluci\'on para el Ejercicio 38
 
 \begin{sageblock}
-matrix(Zmod(7),[[6,1,0,2],
+A = matrix(Zmod(7),[[6,1,0,2],
 [3,0,1,0],
 [5,6,1,4],
 [4,3,4,5]])
+Ar = A.echelon_form()
 \end{sageblock}
+
+$$
+	R = \sage{Ar}
+$$
+
+La aplicación lineal biyectiva, sus columnas son base y su matriz tiene inversa por los dos lados
 
 % Fin del Ejercicio 38
 
@@ -2359,15 +2391,24 @@ Siendo $A$ la matriz que se da a continuación:
 % Escribe tu soluci\'on para el Ejercicio 42
 
 \begin{sageblock}
-matrix(QQ,[[-2,8,4],
+M = matrix(QQ,[[-2,8,4],
 [2,-8,-9],
 [1,-4,-3],
 [-1,4,0],
 [-1,4,8]])
-matrix(QQ,[[-4,1/8,2,2,-3,-1,1,-1/2,1/4,1],
+A = matrix(QQ,[[-4,1/8,2,2,-3,-1,1,-1/2,1/4,1],
 [1,1/32,2,1/2,-1/29,-1/4,1/4,-1/8,0,1/3],
 [-2,0,2/5,0,1/2,0,0,0,-1/3,-1/2]])
 \end{sageblock}
+
+La matriz reducida
+$$
+	\sage{M.echelon_form()}
+$$
+
+\begin{align*}
+	
+\end{align*}
 
 % Fin del Ejercicio 42
 
