@@ -301,10 +301,10 @@ except:
 _st_.blockend()
 try:
  _st_.current_tex_line = 2406
- _st_.inline(10, latex(M.echelon_form()))
+ _st_.inline(10, latex(M*A))
 except:
  _st_.goboom(2406)
-_st_.current_tex_line = 2452
+_st_.current_tex_line = 2453
 _st_.blockbegin()
 try:
  matrix(Zmod(29),[[21,5,6],
@@ -315,9 +315,9 @@ try:
  [26,16,18,19,22,21,18,27,21,23],
  [23,11,22,9,4,27,7,25,23,17]])
 except:
- _st_.goboom(2460)
+ _st_.goboom(2461)
 _st_.blockend()
-_st_.current_tex_line = 2503
+_st_.current_tex_line = 2504
 _st_.blockbegin()
 try:
  matrix(Zmod(11),[[7,1,0,1],
@@ -328,9 +328,9 @@ try:
  [9,2,9,2,7,7,6,9,5],
  [2,4,5,1,5,6,0,10,7]])
 except:
- _st_.goboom(2511)
+ _st_.goboom(2512)
 _st_.blockend()
-_st_.current_tex_line = 2559
+_st_.current_tex_line = 2560
 _st_.blockbegin()
 try:
  matrix(Zmod(19),[[0,0,16],
@@ -342,9 +342,9 @@ try:
  [13,2,18,18,4,16,6,1,10,7],
  [12,0,13,0,0,8,0,0,5,17]])
 except:
- _st_.goboom(2568)
+ _st_.goboom(2569)
 _st_.blockend()
-_st_.current_tex_line = 2611
+_st_.current_tex_line = 2612
 _st_.blockbegin()
 try:
  matrix(Zmod(31),[[11,23,9,23],
@@ -355,9 +355,9 @@ try:
  [28,2,5,19,4,10,28,20,15,11],
  [20,28,9,12,25,13,0,1,24,25]])
 except:
- _st_.goboom(2619)
+ _st_.goboom(2620)
 _st_.blockend()
-_st_.current_tex_line = 2663
+_st_.current_tex_line = 2664
 _st_.blockbegin()
 try:
  matrix(QQ,[[4,8],
@@ -367,9 +367,9 @@ try:
  matrix(QQ,[[1/26,-49/8,2/3,50,-1/8,-1/3,2/5,-64,-1],
  [-1,-1/3,-1/3,-25,1/16,1,1,1/2,1/2]])
 except:
- _st_.goboom(2670)
+ _st_.goboom(2671)
 _st_.blockend()
-_st_.current_tex_line = 2711
+_st_.current_tex_line = 2712
 _st_.blockbegin()
 try:
  matrix(Zmod(29),[[9,12],
@@ -378,9 +378,9 @@ try:
  matrix(Zmod(29),[[19,12,7,18,9,10,22,1,12],
  [25,15,25,0,27,7,27,21,20]])
 except:
- _st_.goboom(2717)
+ _st_.goboom(2718)
 _st_.blockend()
-_st_.current_tex_line = 2756
+_st_.current_tex_line = 2757
 _st_.blockbegin()
 try:
  matrix(Zmod(5),[[1,0,4],
@@ -389,9 +389,9 @@ try:
  [4,4,4,4,2,2,2,1,1,1],
  [4,1,2,3,4,1,0,0,0,4]])
 except:
- _st_.goboom(2762)
+ _st_.goboom(2763)
 _st_.blockend()
-_st_.current_tex_line = 2807
+_st_.current_tex_line = 2808
 _st_.blockbegin()
 try:
  matrix(Zmod(43),[[30,27,35],
@@ -402,9 +402,9 @@ try:
  [30,33,22,17,26,4,33,32,37,0],
  [32,40,16,18,29,27,38,1,24,0]])
 except:
- _st_.goboom(2815)
+ _st_.goboom(2816)
 _st_.blockend()
-_st_.current_tex_line = 2859
+_st_.current_tex_line = 2860
 _st_.blockbegin()
 try:
  matrix(Zmod(19),[[11,16,14,10,6],
@@ -416,9 +416,9 @@ try:
  [8,2,18,9,7,15,17,0,6,10],
  [13,13,16,14,9,13,5,7,2,12]])
 except:
- _st_.goboom(2868)
+ _st_.goboom(2869)
 _st_.blockend()
-_st_.current_tex_line = 2916
+_st_.current_tex_line = 2917
 _st_.blockbegin()
 try:
  matrix(Zmod(31),[[27,14,23],
@@ -430,9 +430,9 @@ try:
  [12,15,22,7,14,19,3,20,14,7],
  [12,5,26,28,0,14,12,18,25,29]])
 except:
- _st_.goboom(2925)
+ _st_.goboom(2926)
 _st_.blockend()
-_st_.current_tex_line = 2969
+_st_.current_tex_line = 2970
 _st_.blockbegin()
 try:
  matrix(Zmod(5),[[1,3],
@@ -442,9 +442,9 @@ try:
  matrix(Zmod(5),[[1,2,3,0,2,4,3,4],
  [3,2,4,1,1,1,3,2]])
 except:
- _st_.goboom(2976)
+ _st_.goboom(2977)
 _st_.blockend()
-_st_.current_tex_line = 3020
+_st_.current_tex_line = 3021
 _st_.blockbegin()
 try:
  matrix(Zmod(19),[[10,4],
@@ -454,9 +454,9 @@ try:
  matrix(Zmod(19),[[10,13,1,1,8,9,15,3,9],
  [4,18,1,7,18,12,13,2,6]])
 except:
- _st_.goboom(3027)
+ _st_.goboom(3028)
 _st_.blockend()
-_st_.current_tex_line = 3070
+_st_.current_tex_line = 3071
 _st_.blockbegin()
 try:
  matrix(Zmod(47),[[7,37,8,0],
@@ -467,9 +467,9 @@ try:
  [17,44,40,10,34,29,34,12,1,46],
  [15,32,11,8,11,16,0,25,8,11]])
 except:
- _st_.goboom(3078)
+ _st_.goboom(3079)
 _st_.blockend()
-_st_.current_tex_line = 3126
+_st_.current_tex_line = 3127
 _st_.blockbegin()
 try:
  matrix(Zmod(17),[[8,9,3],
@@ -481,9 +481,9 @@ try:
  [14,3,13,0,4,11,5,6,11,5],
  [3,5,12,0,13,6,12,1,16,14]])
 except:
- _st_.goboom(3135)
+ _st_.goboom(3136)
 _st_.blockend()
-_st_.current_tex_line = 3182
+_st_.current_tex_line = 3183
 _st_.blockbegin()
 try:
  matrix(Zmod(41),[[27,24],
@@ -494,9 +494,9 @@ try:
  matrix(Zmod(41),[[35,39,40,6,35,25,35,22,27,3],
  [17,33,37,39,13,32,0,6,28,12]])
 except:
- _st_.goboom(3190)
+ _st_.goboom(3191)
 _st_.blockend()
-_st_.current_tex_line = 3238
+_st_.current_tex_line = 3239
 _st_.blockbegin()
 try:
  matrix(QQ,[[-2,7,-1],
@@ -508,9 +508,9 @@ try:
  [0,-1/250,1,2,-13/24,-5,0,-1],
  [-2/5,1/15,3/4,0,-13/24,-3,0,-1]])
 except:
- _st_.goboom(3247)
+ _st_.goboom(3248)
 _st_.blockend()
-_st_.current_tex_line = 3295
+_st_.current_tex_line = 3296
 _st_.blockbegin()
 try:
  matrix(QQ,[[0,0,-1],
@@ -522,9 +522,9 @@ try:
  [-1/8,-1/4,-1/2,3/4,-1/3,-1,-1/6,0,33/8,-1/3],
  [0,0,-1,0,13,-15,0,-5/2,0,1/3]])
 except:
- _st_.goboom(3304)
+ _st_.goboom(3305)
 _st_.blockend()
-_st_.current_tex_line = 3349
+_st_.current_tex_line = 3350
 _st_.blockbegin()
 try:
  matrix(Zmod(41),[[38,5,28],
@@ -535,9 +535,9 @@ try:
  [36,0,31,35,7,40,15,14,8,33],
  [21,16,13,19,28,37,2,15,10,9]])
 except:
- _st_.goboom(3357)
+ _st_.goboom(3358)
 _st_.blockend()
-_st_.current_tex_line = 3407
+_st_.current_tex_line = 3408
 _st_.blockbegin()
 try:
  matrix(Zmod(37),[[21,3,27],
@@ -549,9 +549,9 @@ try:
  [20,30,22,6,24,30,6,29,35,23],
  [3,33,30,11,1,34,10,2,17,8]])
 except:
- _st_.goboom(3416)
+ _st_.goboom(3417)
 _st_.blockend()
-_st_.current_tex_line = 3461
+_st_.current_tex_line = 3462
 _st_.blockbegin()
 try:
  matrix(Zmod(43),[[25,31],
@@ -561,9 +561,9 @@ try:
  [17,32,27,4,35,17,6,17,0,23],
  [6,18,7,12,25,16,35,5,16,41]])
 except:
- _st_.goboom(3468)
+ _st_.goboom(3469)
 _st_.blockend()
-_st_.current_tex_line = 3522
+_st_.current_tex_line = 3523
 _st_.blockbegin()
 try:
  matrix(Zmod(29),[[0,11,15],
@@ -577,9 +577,9 @@ try:
  [28,22,11,13,15,15,11,2,17,1],
  [16,6,20,11,24,15,23,9,3,2]])
 except:
- _st_.goboom(3533)
+ _st_.goboom(3534)
 _st_.blockend()
-_st_.current_tex_line = 3583
+_st_.current_tex_line = 3584
 _st_.blockbegin()
 try:
  matrix(Zmod(17),[[9,6,15],
@@ -591,9 +591,9 @@ try:
  [4,16,13,10,8,14,2,0,15,2],
  [15,1,8,8,9,4,15,9,10,3]])
 except:
- _st_.goboom(3592)
+ _st_.goboom(3593)
 _st_.blockend()
-_st_.current_tex_line = 3642
+_st_.current_tex_line = 3643
 _st_.blockbegin()
 try:
  matrix(QQ,[[1,-4,2],
@@ -605,9 +605,9 @@ try:
  [-246/47,5,-5/3,1/5,3,-5,2,4,-1],
  [293/94,-3,2/7,-1,-1,3,0,-2,-5]])
 except:
- _st_.goboom(3651)
+ _st_.goboom(3652)
 _st_.blockend()
-_st_.current_tex_line = 3695
+_st_.current_tex_line = 3696
 _st_.blockbegin()
 try:
  matrix(Zmod(29),[[10,7,5,14,16],
@@ -615,9 +615,9 @@ try:
  matrix(Zmod(29),[[17,5,14,6,22,21,7,9,26],
  [8,4,1,20,24,7,5,23,14]])
 except:
- _st_.goboom(3700)
+ _st_.goboom(3701)
 _st_.blockend()
-_st_.current_tex_line = 3745
+_st_.current_tex_line = 3746
 _st_.blockbegin()
 try:
  matrix(Zmod(13),[[4,11],
@@ -627,9 +627,9 @@ try:
  [4,3,9,8,7,9,3,12,8,11],
  [8,6,5,3,1,6,12,11,3,3]])
 except:
- _st_.goboom(3752)
+ _st_.goboom(3753)
 _st_.blockend()
-_st_.current_tex_line = 3802
+_st_.current_tex_line = 3803
 _st_.blockbegin()
 try:
  matrix(Zmod(19),[[10,4,15],
@@ -641,9 +641,9 @@ try:
  [18,3,9,18,16,12,0,8,18,0],
  [2,18,3,14,14,12,0,7,6,1]])
 except:
- _st_.goboom(3811)
+ _st_.goboom(3812)
 _st_.blockend()
-_st_.current_tex_line = 3858
+_st_.current_tex_line = 3859
 _st_.blockbegin()
 try:
  matrix(Zmod(47),[[20,11,22,21],
@@ -653,9 +653,9 @@ try:
  [25,28,30,40,24,46,46,37,24,40],
  [13,16,19,16,45,14,6,39,25,30]])
 except:
- _st_.goboom(3865)
+ _st_.goboom(3866)
 _st_.blockend()
-_st_.current_tex_line = 3919
+_st_.current_tex_line = 3920
 _st_.blockbegin()
 try:
  matrix(Zmod(31),[[19,2,4],
@@ -669,9 +669,9 @@ try:
  [23,2,24,16,0,14,19,11,6,24],
  [7,2,18,6,8,12,30,20,29,2]])
 except:
- _st_.goboom(3930)
+ _st_.goboom(3931)
 _st_.blockend()
-_st_.current_tex_line = 3978
+_st_.current_tex_line = 3979
 _st_.blockbegin()
 try:
  matrix(QQ,[[1,2,1,-7,0],
@@ -681,9 +681,9 @@ try:
  [-2,-7/3,-21/32,1/2,0,-4,2,-1/20,-4,0],
  [0,17/6,5,-3/2,-1,14,-335/3,48/11,2,-1/13]])
 except:
- _st_.goboom(3985)
+ _st_.goboom(3986)
 _st_.blockend()
-_st_.current_tex_line = 4028
+_st_.current_tex_line = 4029
 _st_.blockbegin()
 try:
  matrix(Zmod(29),[[10,1,0,10],
@@ -691,9 +691,9 @@ try:
  matrix(Zmod(29),[[14,13,12,15,14,13,25,23,26,4],
  [28,15,6,14,15,16,4,19,4,25]])
 except:
- _st_.goboom(4033)
+ _st_.goboom(4034)
 _st_.blockend()
-_st_.current_tex_line = 4087
+_st_.current_tex_line = 4088
 _st_.blockbegin()
 try:
  matrix(QQ,[[6,-7,-7],
@@ -707,19 +707,31 @@ try:
  [145/2,-44,176/3,-11/2,2/3,1/3,-1,-3,-114,41],
  [191/2,-58,232/3,2,-19,-5,1/3,-10,-150,54]])
 except:
- _st_.goboom(4098)
+ _st_.goboom(4099)
 _st_.blockend()
-_st_.current_tex_line = 4142
+_st_.current_tex_line = 4143
 _st_.blockbegin()
 try:
- matrix(Zmod(41),[[40,21,29,34,21],
+ M = matrix(Zmod(41),[[40,21,29,34,21],
  [3,19,36,21,19]])
- matrix(Zmod(41),[[35,37,18,39,7,25,13,40,19,17],
+ A = matrix(Zmod(41),[[35,37,18,39,7,25,13,40,19,17],
  [18,6,28,16,33,7,10,34,25,31]])
+ MA = block_matrix([[M, A]])
+ MAr = MA.echelon_form()
 except:
- _st_.goboom(4147)
+ _st_.goboom(4150)
 _st_.blockend()
-_st_.current_tex_line = 4200
+try:
+ _st_.current_tex_line = 4154
+ _st_.inline(11, latex(MA))
+except:
+ _st_.goboom(4154)
+try:
+ _st_.current_tex_line = 4157
+ _st_.inline(12, latex(MAr))
+except:
+ _st_.goboom(4157)
+_st_.current_tex_line = 4212
 _st_.blockbegin()
 try:
  matrix(QQ,[[7,-7],
@@ -733,9 +745,9 @@ try:
  [-1/5,-2/21,-1/4,2/7,-2/7,0,11,4/29,0],
  [0,5/21,4,-5/7,5/7,0,-4,0,1]])
 except:
- _st_.goboom(4211)
+ _st_.goboom(4223)
 _st_.blockend()
-_st_.current_tex_line = 4265
+_st_.current_tex_line = 4277
 _st_.blockbegin()
 try:
  matrix(Zmod(7),[[0,5,3],
@@ -749,9 +761,9 @@ try:
  [6,0,1,5,5,2,5,6,4,0],
  [1,1,5,5,3,3,4,6,0,0]])
 except:
- _st_.goboom(4276)
+ _st_.goboom(4288)
 _st_.blockend()
-_st_.current_tex_line = 4326
+_st_.current_tex_line = 4338
 _st_.blockbegin()
 try:
  matrix(Zmod(41),[[0,13,33],
@@ -763,9 +775,9 @@ try:
  [3,37,30,38,15,38,5,22,33,21],
  [10,27,25,35,37,28,36,36,31,20]])
 except:
- _st_.goboom(4335)
+ _st_.goboom(4347)
 _st_.blockend()
-_st_.current_tex_line = 4383
+_st_.current_tex_line = 4395
 _st_.blockbegin()
 try:
  matrix(Zmod(31),[[17,17,28,30,19],
@@ -775,9 +787,9 @@ try:
  [19,3,24,12,8,10,17,7,24,16],
  [23,19,7,22,2,18,10,26,24,4]])
 except:
- _st_.goboom(4390)
+ _st_.goboom(4402)
 _st_.blockend()
-_st_.current_tex_line = 4443
+_st_.current_tex_line = 4455
 _st_.blockbegin()
 try:
  matrix(Zmod(5),[[2,0],
@@ -791,9 +803,9 @@ try:
  [1,0,4,1,0,4,0,2],
  [4,4,4,3,0,1,2,0]])
 except:
- _st_.goboom(4454)
+ _st_.goboom(4466)
 _st_.blockend()
-_st_.current_tex_line = 4502
+_st_.current_tex_line = 4514
 _st_.blockbegin()
 try:
  matrix(Zmod(19),[[1,15,5,14,1],
@@ -803,6 +815,6 @@ try:
  [9,15,6,0,9,5,11,16,0,17],
  [5,2,11,9,6,18,6,9,5,7]])
 except:
- _st_.goboom(4509)
+ _st_.goboom(4521)
 _st_.blockend()
 _st_.endofdoc()

@@ -787,10 +787,10 @@ Resuelve la ecuación matricial siguiente despejando el valor de la matriz $M$
 % Escribe tu soluci\'on para el Ejercicio 10
 
 \begin{sageblock}
-	A = matrix(Zmod(19), [[9, 10], [13, 4]])
-	B = matrix(Zmod(19), [[9, 10], [13, 4], [12, 18]])
-	Ap = block_matrix([[A, 1]])
-	Ai = Ap.echelon_form().subdivision(0, 1)
+A = matrix(Zmod(19), [[9, 10], [13, 4]])
+B = matrix(Zmod(19), [[9, 10], [13, 4], [12, 18]])
+Ap = block_matrix([[A, 1]])
+Ai = Ap.echelon_form().subdivision(0, 1)
 \end{sageblock}
 
 $$
@@ -2401,16 +2401,11 @@ A = matrix(QQ,[[-4,1/8,2,2,-3,-1,1,-1/2,1/4,1],
 [-2,0,2/5,0,1/2,0,0,0,-1/3,-1/2]])
 \end{sageblock}
 
-La matriz reducida
+Para calcular las columnas vectores del nucleo, aplicamos $f$ a todas las columnas de $A$ multiplicandola por $M(f)$
 $$
-	\sage{M.echelon_form()}
+	M\cdot A = \sage{M*A}
 $$
-
-\begin{align*}
-	x_1 &= 
-	x_2 &= 
-	x_3 &= 
-\end{align*}
+Las columnas que dan $0$ pertenecen al nucleo, y contando desde $1$ son la 2, 4, 6, 7 y 8.
 
 % Fin del Ejercicio 42
 
@@ -4146,11 +4141,22 @@ x_{4}
 % Escribe tu soluci\'on para el Ejercicio 74
 
 \begin{sageblock}
-matrix(Zmod(41),[[40,21,29,34,21],
+M = matrix(Zmod(41),[[40,21,29,34,21],
 [3,19,36,21,19]])
-matrix(Zmod(41),[[35,37,18,39,7,25,13,40,19,17],
+A = matrix(Zmod(41),[[35,37,18,39,7,25,13,40,19,17],
 [18,6,28,16,33,7,10,34,25,31]])
+MA = block_matrix([[M, A]])
+MAr = MA.echelon_form()
 \end{sageblock}
+
+Pertenecen a la imagen de $f$ aquellos vectores de $A$ donde $MX = $ cada de las columnas de $A$ tengan solución.
+$$
+	[M|A] = \sage{MA} \to
+$$
+$$
+	\sage{MAr}
+$$
+Las columnas donde $H = 0$, ya que $0 = H$ y $0 = 0$. Estas son 1, 3, 6, 9, 10.
 
 % Fin del Ejercicio 74
 
