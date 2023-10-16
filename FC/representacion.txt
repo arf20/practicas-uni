@@ -1,0 +1,32 @@
+unsigned int (you know)
+	cada bit vale 2^i
+0001 = 1
+0010 = 2
+0100 = 4
+0101 = 5
+
+signed int (two complement, complemento a 2, C2)
+	para invertir el numero, inviertes todos los bits y sumas 1
+	o inviertes solo todos los bits a la izquierda del ultimo 1
+	sabiendo el tamaño de int (el MSB es signo)
+8 -> -8
+00001000 = 8
+11110111 invertido
+11111000 +1 = 248 -> -8 C2
+
+float (simple precision IEEE 754)
+	seeeeeeeemmmmmmmmmmmmmmmmmmmmmmm
+	sign     1 bit
+	exponent 8 bit unsigned normal
+	mantissa 23 bit que vale cada bit 1/2^i desde la izquierda
+
+	s = (-1)^s
+	E = e - S (127)
+	M = 1.m
+	N = (-1)^s * 2^(e - S) * 1.m
+
+1 10000000 10110000000000000000000
+s = -1
+E = 1000000 (128) - 127 = 1
+M = 1.1011 = 1.6875
+N = -1 * 2 * 1.6875 = -3.375
