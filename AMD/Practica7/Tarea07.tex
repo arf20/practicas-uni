@@ -1,0 +1,169 @@
+\documentclass{amsart}
+\usepackage{sagetex} % Para usar sagetex
+%\usepackage[usefamily=sage]{pythontex} % Para usar pythontex
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+
+\newtheorem{thm}{Teorema}
+\newtheorem{ejer}[thm]{Ejercicio}
+\newtheorem{defn}[thm]{Definición}
+\newtheorem{ejem}[thm]{Ejemplo}
+\newtheorem{lem}[thm]{Lema}
+
+\title{Álgebra y Matemática Discreta \\ Tarea 07}
+\begin{document}
+\maketitle
+
+
+\begin{ejer}
+Dado el grafo
+
+\begin{center}
+\begin{tikzpicture}[xscale = 0.6, vertice/.style = {fill=white,circle,draw},]
+
+\node[vertice] (A) at (0,0) {{\bf a}};
+\node[vertice] (B) at (2,2) {{\bf b}};
+\node[vertice] (C) at (6,2) {{\bf c}};
+\node[vertice] (D) at (10,2) {{\bf d}};
+\node[vertice] (E) at (14,0) {{\bf e}};
+\node[vertice] (F) at (10,-2) {{\bf f}};
+\node[vertice] (G) at (6,-2) {{\bf g}};
+\node[vertice] (H) at (2,-2) {{\bf h}};
+\node[vertice] (I) at (4,0) {{\bf i}};
+\node[vertice] (J) at (8,0) {{\bf j}};
+
+\draw (A) -- (B);
+\draw (A) -- (C);
+\draw (A) -- (H);
+\draw (A) -- (I);
+\draw (B) -- (C);
+\draw (B) -- (H);
+\draw (B) -- (I);
+\draw (D) -- (E);
+\draw (D) -- (C);
+\draw (E) -- (F);
+\draw (E) -- (G);
+\draw (E) -- (J);
+\draw (F) -- (G);
+\draw (G) -- (H);
+\draw (H) -- (I);
+\draw (I) -- (J);
+\draw (J) -- (C);
+\draw (J) -- (G);
+
+\end{tikzpicture}
+\end{center}
+
+¿es un grafo Euleriano?. En caso afirmativo, encuentra un ciclo euleriano.
+
+\end{ejer}
+
+{\it Solución.-}
+
+% Escribe tu solucion para el ejercicio 1
+
+
+
+
+
+% Fin del ejercicio 1
+
+
+\begin{ejer}
+Dado el grafo ponderado
+
+\begin{center}
+\begin{tikzpicture}[xscale = 0.6, vertice/.style = {fill=white,circle,draw},]
+
+\node[vertice] (A) at (0,0) {{\bf a}};
+\node[vertice] (B) at (2,2) {{\bf b}};
+\node[vertice] (C) at (6,2) {{\bf c}};
+\node[vertice] (D) at (10,2) {{\bf d}};
+\node[vertice] (E) at (14,0) {{\bf e}};
+\node[vertice] (F) at (10,-2) {{\bf f}};
+\node[vertice] (G) at (6,-2) {{\bf g}};
+\node[vertice] (H) at (2,-2) {{\bf h}};
+\node[vertice] (I) at (4,0) {{\bf i}};
+\node[vertice] (J) at (8,0) {{\bf j}};
+
+
+\draw (A) -- node[fill=white] {2} (B);
+\draw (A) .. controls (1,4) and (3.5,3) .. node[fill=white] {1} (C);
+\draw (A) -- node[fill=white] {3} (H);
+\draw (A) -- node[fill=white] {1} (I);
+\draw (B) -- node[fill=white] {2} (C);
+\draw (B) -- node[fill=white] {1} (I);
+\draw (C) -- node[fill=white] {2} (I);
+\draw (D) -- node[fill=white] {2} (E);
+\draw (D) -- node[fill=white] {3} (C);
+\draw (D) -- node[fill=white] {1} (J);
+\draw (D) .. controls (17,2) and (17,-2) .. node[fill=white] {3} (F);
+\draw (E) -- node[fill=white] {1} (F);
+\draw (E) -- node[fill=white] {3} (G);
+\draw (E) -- node[fill=white] {4} (J);
+\draw (F) -- node[fill=white] {2} (G);
+\draw (G) -- node[fill=white] {2} (H);
+\draw (H) -- node[fill=white] {3} (I);
+\draw (I) --node[fill=white] {3}  (J);
+\draw (G) -- node[fill=white] {1} (I);
+\draw (J) -- node[fill=white] {5} (C);
+\draw (J) -- node[fill=white] {4} (G);
+
+\end{tikzpicture}
+\end{center}
+
+Se pide
+\begin{itemize}
+\item[a)] Determinar un árbol generador de peso mínimo usando el Algoritmo de Kruskal
+\item[b)] Determinar un árbol generador de peso mínimo usando el Algoritmo de Prim, comenzando por el vértice ${\bf h}$.
+\end{itemize}
+
+\end{ejer}
+
+{\it Solución.-}
+% Escribe tu solucion para el ejercicio 2
+
+
+
+
+
+
+% fin del ejercicio 2
+
+
+\begin{ejer}
+Sea el grafo definido por la matriz:
+
+$$\left[
+\begin{array}{cccccccccc}
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 1 & 1 \\
+0 & 1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
+1 & 1 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 & 0
+\end{array}
+\right]
+$$
+¿ Es un grafo bicoloreable ?. En caso afirmativo obtén una representación bipartita del mismo y encuentra si es posible un emparejamiento.
+
+\end{ejer}
+
+{\it Solución.-}
+% Escribe tu solucion para el ejercicio 3
+
+
+
+
+
+% fin del ejercicio 3
+
+
+
+\end{document}
+
+
