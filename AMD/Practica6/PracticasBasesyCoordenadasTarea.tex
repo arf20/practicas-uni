@@ -91,6 +91,19 @@ en base $B$.
 {\it Soluci\'on:}
 % Escribe tu soluci\'on para el Ejercicio 2
 
+\begin{sageblock}
+B = matrix(QQ, [[1, -2, -5], [0, 1, 3], [3, -4, -8], [-1, 0, 4], [1, -4, -6]])
+y = column_matrix(QQ, [-5, 3, -8, 4, -5])
+
+By = block_matrix([[B, y]])
+Byr = By.echelon_form()
+\end{sageblock}
+
+$$
+	[B|y] = \sage{By} \to \sage{Byr}
+$$
+
+La columnas de terminos independientes de la matriz $B$ ampliada por $y$ reducida, es pivote, y por tanto no está en $V$, y por tanto el sistema es incompatible.
 
 % Fin del Ejercicio 2
 
@@ -326,15 +339,35 @@ $$
 \node (RB1) at (2,0) {$\r^4_{B_1}$};
 \node (RB2) at (4,0) {$\r^4_{B_2}$};
 \draw[->] (RC)  to node [above] {$f$} 
-                   node [below] {$M_1$} (RB1);
+                   node [below] {$M_{C_2B_1}(f)$} (RB1);
 \draw[->] (RB1) to node [above] {$id$} 
-                   node [below] {$M_2$} (RB2); 
+                   node [below] {$M_{B_1B_2}(id)$} (RB2); 
 \draw[->] (RC) .. controls (0.5,-1.5) and (3.5,-1.5) .. 
                node [above] {$f$}
-               node [below] {$M_3$} (RB2);
+               node [below] {$M_{C_2B_2}$} (RB2);
 \end{tikzpicture}
 $$
 
+\begin{sageblock}
+MC2B1 = matrix(QQ, [[-2, -8], [2, 9], [-1, -4], [-1, -1]])
+B1 = matrix(QQ, [[1, 1, -2, -2], [1, 2, -3, -4], [1, -1, 1, 5], [-4, -1, 7, 9]])
+B2 = matrix(QQ, [[1, 2, -1, 8], [0, 1, -1, 0], [0, 5, -4, 5], [0, 5, -6, -4]])
+MCB2 =  B2.inverse() * B1 * MC2B1
+\end{sageblock}
+
+Si calculamos las matrices de cada de esas aplicaciones tenemos
+\begin{itemize}
+	\item $M_{C_2B_1}(f)$ nos la dan
+	\item $M_{B_1B_2}(id) = P_{B_1B_2} = B_2^{-1} B_1$
+\end{itemize}
+Entonces
+$$
+	M(f) = M_{C_2B_2}(f) = M_{B_1B_2}(id) M_{C_2B_1}(f) = B_2^{-1} B_1  M_{C_2B_1}(f)
+$$
+
+$$
+	M(f) = \sage{B2.inverse()} \sage{B1} \sage{MC2B1} = \sage{MCB2}
+$$
 
 % Fin del Ejercicio 7
 
@@ -738,7 +771,18 @@ B' = \left[\begin{array}{rrrrr}
 {\it Soluci\'on:}
 % Escribe tu soluci\'on para el Ejercicio 18
 
+\begin{sageblock}
+B = matrix(Zmod(7), [[3, 0, 4, 1, 3], [6, 6, 4, 4, 2], [4, 0, 5, 0, 0], [6, 3, 1, 0, 1], [4, 5, 4, 0, 0], [1, 6, 3, 0, 3]])
+Bp = matrix(Zmod(7), [[2, 3, 2, 3, 6], [6, 6, 1, 3, 1], [0, 2, 6, 0, 5], [4, 5, 4, 3, 5], [2, 2, 1, 5, 6], [3, 0, 3, 0, 5]])
+BBp = block_matrix([[B, Bp]])
+BBpr = BBp.echelon_form()
+\end{sageblock}
 
+$$
+	[B|B'] = \sage{BBp} \to \sage{BBpr}
+$$
+
+No es subespacio porque hay columnas pivote en B', no se puede representar como combinación lineal de B.
 
 % Fin del Ejercicio 18
 
@@ -907,7 +951,42 @@ H' = \left[\begin{array}{rrrrr}
 {\it Soluci\'on:}
 % Escribe tu soluci\'on para el Ejercicio 22
 
+\begin{sageblock}
+B = column_matrix(Zmod(19), [1, 8, 15, 2, 16])
+Hp = matrix(Zmod(19), [[1, 11, 0, 10, 0], [5, 15, 66, 2, 4]])
+HpTI = block_matrix([[Hp.T, 1]])
+HpTIr = HpTI.echelon_form()
+HpTIr = copy(HpTIr)
+HpTIr.subdivide(2,2)
+A = HpTIr.subdivision(1,1)
+BAT = block_matrix(2,1,[B.T,A])
+BATr = BAT.echelon_form()
+BATr = copy(BATr)
+BATr.subdivide(None,4)
+\end{sageblock}
 
+$$
+	[H'^T|I] = \sage{HpTI} \to \sage{HpTIr}
+$$
+
+Las parametricas de $U$ es $U = C(A)$ donde $A$ es
+$$
+	A = \sage{A}
+$$
+
+$U \cap V$ es
+
+$$
+	U \cap V = N(\frac{B}{A})  = \sage{BAT} \to \sage{BATr}
+$$
+
+Que en implicitas sería
+\begin{align*}
+	x_1 &= 8 \\
+	x_2 &= 3 \\ 
+	x_3 &= 12 \\
+	x_4 &= 16 \\
+\end{align*}
 
 % Fin del Ejercicio 22
 

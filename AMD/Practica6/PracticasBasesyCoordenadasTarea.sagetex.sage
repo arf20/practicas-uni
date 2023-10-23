@@ -41,7 +41,28 @@ try:
  _st_.inline(3, latex(R.subdivision(0,1)))
 except:
  _st_.goboom(70)
-_st_.current_tex_line = 123
+_st_.current_tex_line = 94
+_st_.blockbegin()
+try:
+ B = matrix(QQ, [[1, -2, -5], [0, 1, 3], [3, -4, -8], [-1, 0, 4], [1, -4, -6]])
+ y = column_matrix(QQ, [-5, 3, -8, 4, -5])
+ 
+ By = block_matrix([[B, y]])
+ Byr = By.echelon_form()
+except:
+ _st_.goboom(100)
+_st_.blockend()
+try:
+ _st_.current_tex_line = 103
+ _st_.inline(4, latex(By))
+except:
+ _st_.goboom(103)
+try:
+ _st_.current_tex_line = 103
+ _st_.inline(5, latex(Byr))
+except:
+ _st_.goboom(103)
+_st_.current_tex_line = 136
 _st_.blockbegin()
 try:
  B=matrix(QQ,[[1,7,-1],[0,1,-1],
@@ -56,202 +77,232 @@ try:
  R.subdivide(3,3)
  A=R.subdivision(0,1)
 except:
- _st_.goboom(135)
+ _st_.goboom(148)
 _st_.blockend()
 try:
- _st_.current_tex_line = 140
- _st_.inline(4, latex(BI))
+ _st_.current_tex_line = 153
+ _st_.inline(6, latex(BI))
 except:
- _st_.goboom(140)
+ _st_.goboom(153)
 try:
- _st_.current_tex_line = 144
- _st_.inline(5, latex(R))
+ _st_.current_tex_line = 157
+ _st_.inline(7, latex(R))
 except:
- _st_.goboom(144)
+ _st_.goboom(157)
 try:
- _st_.current_tex_line = 148
- _st_.inline(6, latex(A))
+ _st_.current_tex_line = 161
+ _st_.inline(8, latex(A))
 except:
- _st_.goboom(148)
+ _st_.goboom(161)
 try:
- _st_.current_tex_line = 152
- _st_.inline(7, latex(A))
+ _st_.current_tex_line = 165
+ _st_.inline(9, latex(A))
 except:
- _st_.goboom(152)
+ _st_.goboom(165)
 try:
- _st_.current_tex_line = 152
- _st_.inline(8, latex(B1))
+ _st_.current_tex_line = 165
+ _st_.inline(10, latex(B1))
 except:
- _st_.goboom(152)
+ _st_.goboom(165)
 try:
- _st_.current_tex_line = 152
- _st_.inline(9, latex(A*B1))
+ _st_.current_tex_line = 165
+ _st_.inline(11, latex(A*B1))
 except:
- _st_.goboom(152)
+ _st_.goboom(165)
 try:
- _st_.current_tex_line = 163
- _st_.inline(10, latex(A*B1))
+ _st_.current_tex_line = 176
+ _st_.inline(12, latex(A*B1))
 except:
- _st_.goboom(163)
-_st_.current_tex_line = 181
+ _st_.goboom(176)
+_st_.current_tex_line = 194
 _st_.blockbegin()
 try:
  B=matrix(Zmod(7),[[1,7,-1,2],[0,1,-1,-1],
  [0,-5,6,-4],[0,2,-4,-1]])
 except:
- _st_.goboom(184)
+ _st_.goboom(197)
 _st_.blockend()
 try:
- _st_.current_tex_line = 198
- _st_.inline(11, latex(B^-1))
+ _st_.current_tex_line = 211
+ _st_.inline(13, latex(B^-1))
 except:
- _st_.goboom(198)
-_st_.current_tex_line = 216
+ _st_.goboom(211)
+_st_.current_tex_line = 229
 _st_.blockbegin()
 try:
  Mf = matrix(QQ,[[1,2,3],[-3,-5,-8],[-1,-5,-6]])
  B1=matrix(QQ,[[1,1,6],[-1,0,-2],[0,0,1]])
  B=matrix(QQ,[[-2,7,3],[1,-4,-1],[0,0,1]])
 except:
- _st_.goboom(220)
+ _st_.goboom(233)
 _st_.blockend()
 try:
- _st_.current_tex_line = 251
- _st_.inline(12, latex(B^-1))
+ _st_.current_tex_line = 264
+ _st_.inline(14, latex(B^-1))
 except:
- _st_.goboom(251)
+ _st_.goboom(264)
 try:
- _st_.current_tex_line = 251
- _st_.inline(13, latex(Mf))
+ _st_.current_tex_line = 264
+ _st_.inline(15, latex(Mf))
 except:
- _st_.goboom(251)
+ _st_.goboom(264)
 try:
- _st_.current_tex_line = 251
- _st_.inline(14, latex(B1))
+ _st_.current_tex_line = 264
+ _st_.inline(16, latex(B1))
 except:
- _st_.goboom(251)
+ _st_.goboom(264)
 try:
- _st_.current_tex_line = 252
- _st_.inline(15, latex(B^-1*Mf*B1))
+ _st_.current_tex_line = 265
+ _st_.inline(17, latex(B^-1*Mf*B1))
 except:
- _st_.goboom(252)
-_st_.current_tex_line = 266
+ _st_.goboom(265)
+_st_.current_tex_line = 279
 _st_.blockbegin()
 try:
  MB1Bf = matrix(QQ,[[-2,-6,2,0],[-3,-9,3,0]])
  B1=matrix(QQ,[[6,-4,0,3],[-1,2,-4,-7],[0,2,-5,-7],[5,-3,-1,1]])
  B=matrix(QQ,[[-1,5],[-2,9]])
 except:
- _st_.goboom(270)
+ _st_.goboom(283)
 _st_.blockend()
 try:
- _st_.current_tex_line = 301
- _st_.inline(16, latex(B))
+ _st_.current_tex_line = 314
+ _st_.inline(18, latex(B))
 except:
- _st_.goboom(301)
+ _st_.goboom(314)
 try:
- _st_.current_tex_line = 301
- _st_.inline(17, latex(MB1Bf))
+ _st_.current_tex_line = 314
+ _st_.inline(19, latex(MB1Bf))
 except:
- _st_.goboom(301)
+ _st_.goboom(314)
 try:
- _st_.current_tex_line = 301
- _st_.inline(18, latex(B1.inverse()))
+ _st_.current_tex_line = 314
+ _st_.inline(20, latex(B1.inverse()))
 except:
- _st_.goboom(301)
+ _st_.goboom(314)
 try:
- _st_.current_tex_line = 302
- _st_.inline(19, latex(B*MB1Bf*B1.inverse()))
+ _st_.current_tex_line = 315
+ _st_.inline(21, latex(B*MB1Bf*B1.inverse()))
 except:
- _st_.goboom(302)
-_st_.current_tex_line = 354
+ _st_.goboom(315)
+_st_.current_tex_line = 351
+_st_.blockbegin()
+try:
+ MC2B1 = matrix(QQ, [[-2, -8], [2, 9], [-1, -4], [-1, -1]])
+ B1 = matrix(QQ, [[1, 1, -2, -2], [1, 2, -3, -4], [1, -1, 1, 5], [-4, -1, 7, 9]])
+ B2 = matrix(QQ, [[1, 2, -1, 8], [0, 1, -1, 0], [0, 5, -4, 5], [0, 5, -6, -4]])
+ MCB2 =  B2.inverse() * B1 * MC2B1
+except:
+ _st_.goboom(356)
+_st_.blockend()
+try:
+ _st_.current_tex_line = 369
+ _st_.inline(22, latex(B2.inverse()))
+except:
+ _st_.goboom(369)
+try:
+ _st_.current_tex_line = 369
+ _st_.inline(23, latex(B1))
+except:
+ _st_.goboom(369)
+try:
+ _st_.current_tex_line = 369
+ _st_.inline(24, latex(MC2B1))
+except:
+ _st_.goboom(369)
+try:
+ _st_.current_tex_line = 369
+ _st_.inline(25, latex(MCB2))
+except:
+ _st_.goboom(369)
+_st_.current_tex_line = 387
 _st_.blockbegin()
 try:
  MB11C2f = matrix(QQ,[[4,0,8],[3,0,6]])
  B11=matrix(QQ,[[-2,3,-5],[3,-5,8],[0,-4,5]])
  B12=matrix(QQ,[[1,1,-2],[3,4,-8],[-5,-3,7]])
 except:
- _st_.goboom(358)
+ _st_.goboom(391)
 _st_.blockend()
 try:
- _st_.current_tex_line = 386
- _st_.inline(20, latex(MB11C2f))
+ _st_.current_tex_line = 419
+ _st_.inline(26, latex(MB11C2f))
 except:
- _st_.goboom(386)
+ _st_.goboom(419)
 try:
- _st_.current_tex_line = 386
- _st_.inline(21, latex(B11))
+ _st_.current_tex_line = 419
+ _st_.inline(27, latex(B11))
 except:
- _st_.goboom(386)
+ _st_.goboom(419)
 try:
- _st_.current_tex_line = 386
- _st_.inline(22, latex(B12))
+ _st_.current_tex_line = 419
+ _st_.inline(28, latex(B12))
 except:
- _st_.goboom(386)
+ _st_.goboom(419)
 try:
- _st_.current_tex_line = 387
- _st_.inline(23, latex(MB11C2f*B11.inverse()*B12))
+ _st_.current_tex_line = 420
+ _st_.inline(29, latex(MB11C2f*B11.inverse()*B12))
 except:
- _st_.goboom(387)
-_st_.current_tex_line = 400
+ _st_.goboom(420)
+_st_.current_tex_line = 433
 _st_.blockbegin()
 try:
  MB1Bf = matrix(QQ,[[-2,2],[-1,1]])
  B1=matrix(QQ,[[6,-5],[5,-4]])
  B=matrix(QQ,[[-1,-5],[2,9]])
 except:
- _st_.goboom(404)
+ _st_.goboom(437)
 _st_.blockend()
 try:
- _st_.current_tex_line = 437
- _st_.inline(24, latex(B))
+ _st_.current_tex_line = 470
+ _st_.inline(30, latex(B))
 except:
- _st_.goboom(437)
+ _st_.goboom(470)
 try:
- _st_.current_tex_line = 437
- _st_.inline(25, latex(MB1Bf))
+ _st_.current_tex_line = 470
+ _st_.inline(31, latex(MB1Bf))
 except:
- _st_.goboom(437)
+ _st_.goboom(470)
 try:
- _st_.current_tex_line = 437
- _st_.inline(26, latex(B1))
+ _st_.current_tex_line = 470
+ _st_.inline(32, latex(B1))
 except:
- _st_.goboom(437)
+ _st_.goboom(470)
 try:
- _st_.current_tex_line = 437
- _st_.inline(27, latex(B*MB1Bf*B1.inverse()))
+ _st_.current_tex_line = 470
+ _st_.inline(33, latex(B*MB1Bf*B1.inverse()))
 except:
- _st_.goboom(437)
-_st_.current_tex_line = 454
+ _st_.goboom(470)
+_st_.current_tex_line = 487
 _st_.blockbegin()
 try:
  MB1C3f = matrix(Zmod(5),[[2,3],[4,4],[1,3]])
  B1=matrix(Zmod(5),[[6,-5],[5,-4]])
  B=matrix(Zmod(5),[[2,3,4],[0,-3,4],[0,0,3]])
 except:
- _st_.goboom(458)
+ _st_.goboom(491)
 _st_.blockend()
 try:
- _st_.current_tex_line = 489
- _st_.inline(28, latex(B))
+ _st_.current_tex_line = 522
+ _st_.inline(34, latex(B))
 except:
- _st_.goboom(489)
+ _st_.goboom(522)
 try:
- _st_.current_tex_line = 489
- _st_.inline(29, latex(MB1C3f))
+ _st_.current_tex_line = 522
+ _st_.inline(35, latex(MB1C3f))
 except:
- _st_.goboom(489)
+ _st_.goboom(522)
 try:
- _st_.current_tex_line = 489
- _st_.inline(30, latex(B1))
+ _st_.current_tex_line = 522
+ _st_.inline(36, latex(B1))
 except:
- _st_.goboom(489)
+ _st_.goboom(522)
 try:
- _st_.current_tex_line = 489
- _st_.inline(31, latex(B.inverse()*MB1C3f*B1.inverse()))
+ _st_.current_tex_line = 522
+ _st_.inline(37, latex(B.inverse()*MB1C3f*B1.inverse()))
 except:
- _st_.goboom(489)
-_st_.current_tex_line = 504
+ _st_.goboom(522)
+_st_.current_tex_line = 537
 _st_.blockbegin()
 try:
  A=matrix(Zmod(3),[[1,1,1,2],[1,0,2,0],[0,1,2,2]])
@@ -263,165 +314,165 @@ try:
  v1 = column_matrix(Zmod(3),[1,1,1,0])
  v2 = column_matrix(Zmod(3),[0,1,0,1])
 except:
- _st_.goboom(513)
+ _st_.goboom(546)
 _st_.blockend()
 try:
- _st_.current_tex_line = 516
- _st_.inline(32, latex(A))
+ _st_.current_tex_line = 549
+ _st_.inline(38, latex(A))
 except:
- _st_.goboom(516)
+ _st_.goboom(549)
 try:
- _st_.current_tex_line = 516
- _st_.inline(33, latex(X))
+ _st_.current_tex_line = 549
+ _st_.inline(39, latex(X))
 except:
- _st_.goboom(516)
+ _st_.goboom(549)
 try:
- _st_.current_tex_line = 523
- _st_.inline(34, latex(Ecuaciones[0,0]))
+ _st_.current_tex_line = 556
+ _st_.inline(40, latex(Ecuaciones[0,0]))
 except:
- _st_.goboom(523)
+ _st_.goboom(556)
 try:
- _st_.current_tex_line = 523
- _st_.inline(35, latex(Ecuaciones[1,0]))
+ _st_.current_tex_line = 556
+ _st_.inline(41, latex(Ecuaciones[1,0]))
 except:
- _st_.goboom(523)
+ _st_.goboom(556)
 try:
- _st_.current_tex_line = 523
- _st_.inline(36, latex(Ecuaciones[2,0]))
+ _st_.current_tex_line = 556
+ _st_.inline(42, latex(Ecuaciones[2,0]))
 except:
- _st_.goboom(523)
+ _st_.goboom(556)
 try:
- _st_.current_tex_line = 523
- _st_.inline(34, latex(Ecuaciones[0,0]))
+ _st_.current_tex_line = 556
+ _st_.inline(40, latex(Ecuaciones[0,0]))
 except:
- _st_.goboom(523)
+ _st_.goboom(556)
 try:
- _st_.current_tex_line = 523
- _st_.inline(35, latex(Ecuaciones[1,0]))
+ _st_.current_tex_line = 556
+ _st_.inline(41, latex(Ecuaciones[1,0]))
 except:
- _st_.goboom(523)
+ _st_.goboom(556)
 try:
- _st_.current_tex_line = 523
- _st_.inline(36, latex(Ecuaciones[2,0]))
+ _st_.current_tex_line = 556
+ _st_.inline(42, latex(Ecuaciones[2,0]))
 except:
- _st_.goboom(523)
+ _st_.goboom(556)
 try:
- _st_.current_tex_line = 526
- _st_.inline(37, latex(R))
+ _st_.current_tex_line = 559
+ _st_.inline(43, latex(R))
 except:
- _st_.goboom(526)
+ _st_.goboom(559)
 try:
- _st_.current_tex_line = 532
- _st_.inline(38, latex(EcuacionesR[0,0]))
+ _st_.current_tex_line = 565
+ _st_.inline(44, latex(EcuacionesR[0,0]))
 except:
- _st_.goboom(532)
+ _st_.goboom(565)
 try:
- _st_.current_tex_line = 532
- _st_.inline(39, latex(EcuacionesR[1,0]))
+ _st_.current_tex_line = 565
+ _st_.inline(45, latex(EcuacionesR[1,0]))
 except:
- _st_.goboom(532)
+ _st_.goboom(565)
 try:
- _st_.current_tex_line = 532
- _st_.inline(40, latex(EcuacionesR[2,0]))
+ _st_.current_tex_line = 565
+ _st_.inline(46, latex(EcuacionesR[2,0]))
 except:
- _st_.goboom(532)
+ _st_.goboom(565)
 try:
- _st_.current_tex_line = 532
- _st_.inline(38, latex(EcuacionesR[0,0]))
+ _st_.current_tex_line = 565
+ _st_.inline(44, latex(EcuacionesR[0,0]))
 except:
- _st_.goboom(532)
+ _st_.goboom(565)
 try:
- _st_.current_tex_line = 532
- _st_.inline(39, latex(EcuacionesR[1,0]))
+ _st_.current_tex_line = 565
+ _st_.inline(45, latex(EcuacionesR[1,0]))
 except:
- _st_.goboom(532)
+ _st_.goboom(565)
 try:
- _st_.current_tex_line = 532
- _st_.inline(40, latex(EcuacionesR[2,0]))
+ _st_.current_tex_line = 565
+ _st_.inline(46, latex(EcuacionesR[2,0]))
 except:
- _st_.goboom(532)
+ _st_.goboom(565)
 try:
- _st_.current_tex_line = 535
- _st_.inline(41, latex(X))
+ _st_.current_tex_line = 568
+ _st_.inline(47, latex(X))
 except:
- _st_.goboom(535)
+ _st_.goboom(568)
 try:
- _st_.current_tex_line = 535
- _st_.inline(42, latex(v1))
+ _st_.current_tex_line = 568
+ _st_.inline(48, latex(v1))
 except:
- _st_.goboom(535)
+ _st_.goboom(568)
 try:
- _st_.current_tex_line = 535
- _st_.inline(43, latex(v2))
+ _st_.current_tex_line = 568
+ _st_.inline(49, latex(v2))
 except:
- _st_.goboom(535)
+ _st_.goboom(568)
 try:
- _st_.current_tex_line = 537
- _st_.inline(44, latex(v1))
+ _st_.current_tex_line = 570
+ _st_.inline(50, latex(v1))
 except:
- _st_.goboom(537)
+ _st_.goboom(570)
 try:
- _st_.current_tex_line = 537
- _st_.inline(45, latex(v2))
+ _st_.current_tex_line = 570
+ _st_.inline(51, latex(v2))
 except:
- _st_.goboom(537)
-_st_.current_tex_line = 551
+ _st_.goboom(570)
+_st_.current_tex_line = 584
 _st_.blockbegin()
 try:
  A = matrix(Zmod(5),[[4,4,2],[2,1,0],[2,2,2]])
  R = A.echelon_form()
 except:
- _st_.goboom(554)
+ _st_.goboom(587)
 _st_.blockend()
 try:
- _st_.current_tex_line = 557
- _st_.inline(46, latex(R))
+ _st_.current_tex_line = 590
+ _st_.inline(52, latex(R))
 except:
- _st_.goboom(557)
+ _st_.goboom(590)
 try:
- _st_.current_tex_line = 560
- _st_.inline(47, latex(A[:,0]))
+ _st_.current_tex_line = 593
+ _st_.inline(53, latex(A[:,0]))
 except:
- _st_.goboom(560)
+ _st_.goboom(593)
 try:
- _st_.current_tex_line = 560
- _st_.inline(48, latex(A[:,1]))
+ _st_.current_tex_line = 593
+ _st_.inline(54, latex(A[:,1]))
 except:
- _st_.goboom(560)
+ _st_.goboom(593)
 try:
- _st_.current_tex_line = 560
- _st_.inline(49, latex(A[:,2]))
+ _st_.current_tex_line = 593
+ _st_.inline(55, latex(A[:,2]))
 except:
- _st_.goboom(560)
-_st_.current_tex_line = 576
+ _st_.goboom(593)
+_st_.current_tex_line = 609
 _st_.blockbegin()
 try:
  A=matrix(Zmod(5),[[0,4,3,1],[1,0,2,0],[3,3,3,0]])
  B=A.echelon_form()
 except:
- _st_.goboom(579)
+ _st_.goboom(612)
 _st_.blockend()
 try:
- _st_.current_tex_line = 582
- _st_.inline(50, latex(B))
+ _st_.current_tex_line = 615
+ _st_.inline(56, latex(B))
 except:
- _st_.goboom(582)
+ _st_.goboom(615)
 try:
- _st_.current_tex_line = 583
- _st_.inline(51, latex(B[0,:].T))
+ _st_.current_tex_line = 616
+ _st_.inline(57, latex(B[0,:].T))
 except:
- _st_.goboom(583)
+ _st_.goboom(616)
 try:
- _st_.current_tex_line = 583
- _st_.inline(52, latex(B[1,:].T))
+ _st_.current_tex_line = 616
+ _st_.inline(58, latex(B[1,:].T))
 except:
- _st_.goboom(583)
+ _st_.goboom(616)
 try:
- _st_.current_tex_line = 583
- _st_.inline(53, latex(B[2,:].T))
+ _st_.current_tex_line = 616
+ _st_.inline(59, latex(B[2,:].T))
 except:
- _st_.goboom(583)
-_st_.current_tex_line = 599
+ _st_.goboom(616)
+_st_.current_tex_line = 632
 _st_.blockbegin()
 try:
  A=matrix(Zmod(3),[[0,2],[0,1],[2,0],[2,1]])
@@ -431,57 +482,57 @@ try:
  R.subdivide(2,2)
  H = R.subdivision(1,1)
 except:
- _st_.goboom(606)
+ _st_.goboom(639)
 _st_.blockend()
 try:
- _st_.current_tex_line = 609
- _st_.inline(54, latex(B))
+ _st_.current_tex_line = 642
+ _st_.inline(60, latex(B))
 except:
- _st_.goboom(609)
+ _st_.goboom(642)
 try:
- _st_.current_tex_line = 609
- _st_.inline(55, latex(R))
+ _st_.current_tex_line = 642
+ _st_.inline(61, latex(R))
 except:
- _st_.goboom(609)
+ _st_.goboom(642)
 try:
- _st_.current_tex_line = 612
- _st_.inline(56, latex(H[0,:].T))
+ _st_.current_tex_line = 645
+ _st_.inline(62, latex(H[0,:].T))
 except:
- _st_.goboom(612)
+ _st_.goboom(645)
 try:
- _st_.current_tex_line = 612
- _st_.inline(57, latex(H[1,:].T))
+ _st_.current_tex_line = 645
+ _st_.inline(63, latex(H[1,:].T))
 except:
- _st_.goboom(612)
-_st_.current_tex_line = 626
+ _st_.goboom(645)
+_st_.current_tex_line = 659
 _st_.blockbegin()
 try:
  B=matrix(Zmod(5),[[3,4,4,0],[1,0,0,0],[4,2,3,3]])
  C=B.echelon_form()
 except:
- _st_.goboom(629)
+ _st_.goboom(662)
 _st_.blockend()
 try:
- _st_.current_tex_line = 632
- _st_.inline(58, latex(C))
+ _st_.current_tex_line = 665
+ _st_.inline(64, latex(C))
 except:
- _st_.goboom(632)
+ _st_.goboom(665)
 try:
- _st_.current_tex_line = 633
- _st_.inline(59, latex(B[:,0]))
+ _st_.current_tex_line = 666
+ _st_.inline(65, latex(B[:,0]))
 except:
- _st_.goboom(633)
+ _st_.goboom(666)
 try:
- _st_.current_tex_line = 633
- _st_.inline(60, latex(B[:,1]))
+ _st_.current_tex_line = 666
+ _st_.inline(66, latex(B[:,1]))
 except:
- _st_.goboom(633)
+ _st_.goboom(666)
 try:
- _st_.current_tex_line = 633
- _st_.inline(61, latex(B[:,2]))
+ _st_.current_tex_line = 666
+ _st_.inline(67, latex(B[:,2]))
 except:
- _st_.goboom(633)
-_st_.current_tex_line = 656
+ _st_.goboom(666)
+_st_.current_tex_line = 689
 _st_.blockbegin()
 try:
  B=matrix(QQ,[[1,-4],[-1,5],[-3,7],[1,-2]])
@@ -489,24 +540,24 @@ try:
  B1B=block_matrix(1,2,[B1,B])
  C=B1B.echelon_form()
 except:
- _st_.goboom(661)
+ _st_.goboom(694)
 _st_.blockend()
 try:
- _st_.current_tex_line = 665
- _st_.inline(62, latex(C))
+ _st_.current_tex_line = 698
+ _st_.inline(68, latex(C))
 except:
- _st_.goboom(665)
+ _st_.goboom(698)
 try:
- _st_.current_tex_line = 667
- _st_.inline(63, latex(B1B[:,0]))
+ _st_.current_tex_line = 700
+ _st_.inline(69, latex(B1B[:,0]))
 except:
- _st_.goboom(667)
+ _st_.goboom(700)
 try:
- _st_.current_tex_line = 667
- _st_.inline(64, latex(B1B[:,1]))
+ _st_.current_tex_line = 700
+ _st_.inline(70, latex(B1B[:,1]))
 except:
- _st_.goboom(667)
-_st_.current_tex_line = 695
+ _st_.goboom(700)
+_st_.current_tex_line = 728
 _st_.blockbegin()
 try:
  B=matrix(Zmod(5),[[0,3,2,4],[3,1,0,1],
@@ -516,19 +567,39 @@ try:
  BB1 = block_matrix(1,2,[B,B1])
  R=BB1.echelon_form()
 except:
- _st_.goboom(702)
+ _st_.goboom(735)
 _st_.blockend()
 try:
- _st_.current_tex_line = 706
- _st_.inline(65, latex(BB1))
+ _st_.current_tex_line = 739
+ _st_.inline(71, latex(BB1))
 except:
- _st_.goboom(706)
+ _st_.goboom(739)
 try:
- _st_.current_tex_line = 710
- _st_.inline(66, latex(R))
+ _st_.current_tex_line = 743
+ _st_.inline(72, latex(R))
 except:
- _st_.goboom(710)
-_st_.current_tex_line = 760
+ _st_.goboom(743)
+_st_.current_tex_line = 774
+_st_.blockbegin()
+try:
+ B = matrix(Zmod(7), [[3, 0, 4, 1, 3], [6, 6, 4, 4, 2], [4, 0, 5, 0, 0], [6, 3, 1, 0, 1], [4, 5, 4, 0, 0], [1, 6, 3, 0, 3]])
+ Bp = matrix(Zmod(7), [[2, 3, 2, 3, 6], [6, 6, 1, 3, 1], [0, 2, 6, 0, 5], [4, 5, 4, 3, 5], [2, 2, 1, 5, 6], [3, 0, 3, 0, 5]])
+ BBp = block_matrix([[B, Bp]])
+ BBpr = BBp.echelon_form()
+except:
+ _st_.goboom(779)
+_st_.blockend()
+try:
+ _st_.current_tex_line = 782
+ _st_.inline(73, latex(BBp))
+except:
+ _st_.goboom(782)
+try:
+ _st_.current_tex_line = 782
+ _st_.inline(74, latex(BBpr))
+except:
+ _st_.goboom(782)
+_st_.current_tex_line = 804
 _st_.blockbegin()
 try:
  H=matrix(Zmod(5),[[1,4,4,2,0],[0,2,4,2,4],
@@ -540,39 +611,39 @@ try:
  R.subdivide(2,4)
  A=R.subdivision(1,1)
 except:
- _st_.goboom(769)
+ _st_.goboom(813)
 _st_.blockend()
 try:
- _st_.current_tex_line = 776
- _st_.inline(67, latex(HTI))
+ _st_.current_tex_line = 820
+ _st_.inline(75, latex(HTI))
 except:
- _st_.goboom(776)
+ _st_.goboom(820)
 try:
- _st_.current_tex_line = 780
- _st_.inline(68, latex(R))
+ _st_.current_tex_line = 824
+ _st_.inline(76, latex(R))
 except:
- _st_.goboom(780)
+ _st_.goboom(824)
 try:
- _st_.current_tex_line = 784
- _st_.inline(69, latex(A.T))
+ _st_.current_tex_line = 828
+ _st_.inline(77, latex(A.T))
 except:
- _st_.goboom(784)
+ _st_.goboom(828)
 try:
- _st_.current_tex_line = 787
- _st_.inline(70, latex(H1))
+ _st_.current_tex_line = 831
+ _st_.inline(78, latex(H1))
 except:
- _st_.goboom(787)
+ _st_.goboom(831)
 try:
- _st_.current_tex_line = 787
- _st_.inline(71, latex(A))
+ _st_.current_tex_line = 831
+ _st_.inline(79, latex(A))
 except:
- _st_.goboom(787)
+ _st_.goboom(831)
 try:
- _st_.current_tex_line = 787
- _st_.inline(72, latex(H1*A.T))
+ _st_.current_tex_line = 831
+ _st_.inline(80, latex(H1*A.T))
 except:
- _st_.goboom(787)
-_st_.current_tex_line = 809
+ _st_.goboom(831)
+_st_.current_tex_line = 853
 _st_.blockbegin()
 try:
  H=matrix(Zmod(31),[[12,19,9,30,0],[30,14,29,4,19],
@@ -585,39 +656,39 @@ try:
  R.subdivide(2,4)
  A=R.subdivision(1,1)
 except:
- _st_.goboom(819)
+ _st_.goboom(863)
 _st_.blockend()
 try:
- _st_.current_tex_line = 826
- _st_.inline(73, latex(HTI))
+ _st_.current_tex_line = 870
+ _st_.inline(81, latex(HTI))
 except:
- _st_.goboom(826)
+ _st_.goboom(870)
 try:
- _st_.current_tex_line = 830
- _st_.inline(74, latex(R))
+ _st_.current_tex_line = 874
+ _st_.inline(82, latex(R))
 except:
- _st_.goboom(830)
+ _st_.goboom(874)
 try:
- _st_.current_tex_line = 834
- _st_.inline(75, latex(A.T))
+ _st_.current_tex_line = 878
+ _st_.inline(83, latex(A.T))
 except:
- _st_.goboom(834)
+ _st_.goboom(878)
 try:
- _st_.current_tex_line = 837
- _st_.inline(76, latex(H1))
+ _st_.current_tex_line = 881
+ _st_.inline(84, latex(H1))
 except:
- _st_.goboom(837)
+ _st_.goboom(881)
 try:
- _st_.current_tex_line = 837
- _st_.inline(77, latex(A))
+ _st_.current_tex_line = 881
+ _st_.inline(85, latex(A))
 except:
- _st_.goboom(837)
+ _st_.goboom(881)
 try:
- _st_.current_tex_line = 837
- _st_.inline(78, latex(H1*A.T))
+ _st_.current_tex_line = 881
+ _st_.inline(86, latex(H1*A.T))
 except:
- _st_.goboom(837)
-_st_.current_tex_line = 860
+ _st_.goboom(881)
+_st_.current_tex_line = 904
 _st_.blockbegin()
 try:
  B=column_matrix(Zmod(19),[1,8,14,0,18])
@@ -629,26 +700,68 @@ try:
  A=R.subdivision(1,1)
  D=block_matrix(1,2,[A.T,B])
 except:
- _st_.goboom(869)
+ _st_.goboom(913)
 _st_.blockend()
 try:
- _st_.current_tex_line = 876
- _st_.inline(79, latex(H1TI))
+ _st_.current_tex_line = 920
+ _st_.inline(87, latex(H1TI))
 except:
- _st_.goboom(876)
+ _st_.goboom(920)
 try:
- _st_.current_tex_line = 880
- _st_.inline(80, latex(R))
+ _st_.current_tex_line = 924
+ _st_.inline(88, latex(R))
 except:
- _st_.goboom(880)
+ _st_.goboom(924)
 try:
- _st_.current_tex_line = 884
- _st_.inline(81, latex(A.T))
+ _st_.current_tex_line = 928
+ _st_.inline(89, latex(A.T))
 except:
- _st_.goboom(884)
+ _st_.goboom(928)
 try:
- _st_.current_tex_line = 888
- _st_.inline(82, latex(D))
+ _st_.current_tex_line = 932
+ _st_.inline(90, latex(D))
 except:
- _st_.goboom(888)
+ _st_.goboom(932)
+_st_.current_tex_line = 954
+_st_.blockbegin()
+try:
+ B = column_matrix(Zmod(19), [1, 8, 15, 2, 16])
+ Hp = matrix(Zmod(19), [[1, 11, 0, 10, 0], [5, 15, 66, 2, 4]])
+ HpTI = block_matrix([[Hp.T, 1]])
+ HpTIr = HpTI.echelon_form()
+ HpTIr = copy(HpTIr)
+ HpTIr.subdivide(2,2)
+ A = HpTIr.subdivision(1,1)
+ BAT = block_matrix(2,1,[B.T,A])
+ BATr = BAT.echelon_form()
+ BATr = copy(BATr)
+ BATr.subdivide(None,4)
+except:
+ _st_.goboom(966)
+_st_.blockend()
+try:
+ _st_.current_tex_line = 969
+ _st_.inline(91, latex(HpTI))
+except:
+ _st_.goboom(969)
+try:
+ _st_.current_tex_line = 969
+ _st_.inline(92, latex(HpTIr))
+except:
+ _st_.goboom(969)
+try:
+ _st_.current_tex_line = 974
+ _st_.inline(93, latex(A))
+except:
+ _st_.goboom(974)
+try:
+ _st_.current_tex_line = 980
+ _st_.inline(94, latex(BAT))
+except:
+ _st_.goboom(980)
+try:
+ _st_.current_tex_line = 980
+ _st_.inline(95, latex(BATr))
+except:
+ _st_.goboom(980)
 _st_.endofdoc()

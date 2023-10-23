@@ -37,6 +37,22 @@
 5
 \end{array}\right]}{}{}{}{}}
 \newlabel{@sageinline4}{{%
+\left[\begin{array}{rrr|r}
+1 & -2 & -5 & -5 \\
+0 & 1 & 3 & 3 \\
+3 & -4 & -8 & -8 \\
+-1 & 0 & 4 & 4 \\
+1 & -4 & -6 & -5
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline5}{{%
+\left[\begin{array}{rrr|r}
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline6}{{%
 \left[\begin{array}{rrr|rrrrrr}
 1 & 7 & -1 & 1 & 0 & 0 & 0 & 0 & 0 \\
 0 & 1 & -1 & 0 & 1 & 0 & 0 & 0 & 0 \\
@@ -45,7 +61,7 @@
 0 & 4 & -3 & 0 & 0 & 0 & 0 & 1 & 0 \\
 0 & 0 & -3 & 0 & 0 & 0 & 0 & 0 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline5}{{%
+\newlabel{@sageinline7}{{%
 \left[\begin{array}{rrr|rrrrrr}
 1 & 0 & 0 & 1 & 0 & 0 & 0 & -\frac{7}{4} & \frac{17}{12} \\
 0 & 1 & 0 & 0 & 0 & 0 & 0 & \frac{1}{4} & -\frac{1}{4} \\
@@ -55,19 +71,19 @@
 0 & 0 & 0 & 0 & 0 & 1 & 0 & \frac{5}{4} & \frac{3}{4} \\
 0 & 0 & 0 & 0 & 0 & 0 & 1 & -\frac{1}{2} & -\frac{5}{6}
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline6}{{%
-\left[\begin{array}{rrrrrr}
-1 & 0 & 0 & 0 & -\frac{7}{4} & \frac{17}{12} \\
-0 & 0 & 0 & 0 & \frac{1}{4} & -\frac{1}{4} \\
-0 & 0 & 0 & 0 & 0 & -\frac{1}{3}
-\end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline7}{{%
-\left[\begin{array}{rrrrrr}
-1 & 0 & 0 & 0 & -\frac{7}{4} & \frac{17}{12} \\
-0 & 0 & 0 & 0 & \frac{1}{4} & -\frac{1}{4} \\
-0 & 0 & 0 & 0 & 0 & -\frac{1}{3}
-\end{array}\right]}{}{}{}{}}
 \newlabel{@sageinline8}{{%
+\left[\begin{array}{rrrrrr}
+1 & 0 & 0 & 0 & -\frac{7}{4} & \frac{17}{12} \\
+0 & 0 & 0 & 0 & \frac{1}{4} & -\frac{1}{4} \\
+0 & 0 & 0 & 0 & 0 & -\frac{1}{3}
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline9}{{%
+\left[\begin{array}{rrrrrr}
+1 & 0 & 0 & 0 & -\frac{7}{4} & \frac{17}{12} \\
+0 & 0 & 0 & 0 & \frac{1}{4} & -\frac{1}{4} \\
+0 & 0 & 0 & 0 & 0 & -\frac{1}{3}
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline10}{{%
 \left[\begin{array}{rrr}
 15 & -8 & -38 \\
 2 & -1 & -6 \\
@@ -76,261 +92,289 @@
 8 & -4 & -23 \\
 0 & 0 & -3
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline9}{{%
-\left[\begin{array}{rrr}
-1 & -1 & -2 \\
-2 & -1 & -5 \\
-0 & 0 & 1
-\end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline10}{{%
-\left[\begin{array}{rrr}
-1 & -1 & -2 \\
-2 & -1 & -5 \\
-0 & 0 & 1
-\end{array}\right]}{}{}{}{}}
 \newlabel{@sageinline11}{{%
+\left[\begin{array}{rrr}
+1 & -1 & -2 \\
+2 & -1 & -5 \\
+0 & 0 & 1
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline12}{{%
+\left[\begin{array}{rrr}
+1 & -1 & -2 \\
+2 & -1 & -5 \\
+0 & 0 & 1
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline13}{{%
 \left[\begin{array}{rrrr}
 1 & 5 & 1 & 0 \\
 0 & 5 & 6 & 6 \\
 0 & 2 & 2 & 4 \\
 0 & 2 & 4 & 2
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline12}{{%
+\newlabel{@sageinline14}{{%
 \left[\begin{array}{rrr}
 -4 & -7 & 5 \\
 -1 & -2 & 1 \\
 0 & 0 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline13}{{%
+\newlabel{@sageinline15}{{%
 \left[\begin{array}{rrr}
 1 & 2 & 3 \\
 -3 & -5 & -8 \\
 -1 & -5 & -6
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline14}{{%
+\newlabel{@sageinline16}{{%
 \left[\begin{array}{rrr}
 1 & 1 & 6 \\
 -1 & 0 & -2 \\
 0 & 0 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline15}{{%
+\newlabel{@sageinline17}{{%
 \left[\begin{array}{rrr}
 10 & 12 & 82 \\
 1 & 4 & 25 \\
 4 & -1 & -2
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline16}{{%
+\newlabel{@sageinline18}{{%
 \left[\begin{array}{rr}
 -1 & 5 \\
 -2 & 9
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline17}{{%
+\newlabel{@sageinline19}{{%
 \left[\begin{array}{rrrr}
 -2 & -6 & 2 & 0 \\
 -3 & -9 & 3 & 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline18}{{%
+\newlabel{@sageinline20}{{%
 \left[\begin{array}{rrrr}
 19 & 3 & 2 & -22 \\
 23 & 3 & 3 & -27 \\
 19 & 4 & 1 & -22 \\
 -7 & -2 & 0 & 8
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline19}{{%
+\newlabel{@sageinline21}{{%
 \left[\begin{array}{rrrr}
 -897 & -104 & -130 & 1053 \\
 -1587 & -184 & -230 & 1863
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline20}{{%
+\newlabel{@sageinline22}{{%
+\left[\begin{array}{rrrr}
+1 & 33 & -4 & -3 \\
+0 & 46 & -4 & -5 \\
+0 & 45 & -4 & -5 \\
+0 & -10 & 1 & 1
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline23}{{%
+\left[\begin{array}{rrrr}
+1 & 1 & -2 & -2 \\
+1 & 2 & -3 & -4 \\
+1 & -1 & 1 & 5 \\
+-4 & -1 & 7 & 9
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline24}{{%
+\left[\begin{array}{rr}
+-2 & -8 \\
+2 & 9 \\
+-1 & -4 \\
+-1 & -1
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline25}{{%
+\left[\begin{array}{rr}
+371 & 1015 \\
+504 & 1370 \\
+495 & 1344 \\
+-110 & -300
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline26}{{%
 \left[\begin{array}{rrr}
 4 & 0 & 8 \\
 3 & 0 & 6
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline21}{{%
+\newlabel{@sageinline27}{{%
 \left[\begin{array}{rrr}
 -2 & 3 & -5 \\
 3 & -5 & 8 \\
 0 & -4 & 5
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline22}{{%
+\newlabel{@sageinline28}{{%
 \left[\begin{array}{rrr}
 1 & 1 & -2 \\
 3 & 4 & -8 \\
 -5 & -3 & 7
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline23}{{%
+\newlabel{@sageinline29}{{%
 \left[\begin{array}{rrr}
 -220 & -256 & 516 \\
 -165 & -192 & 387
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline24}{{%
+\newlabel{@sageinline30}{{%
 \left[\begin{array}{rr}
 -1 & -5 \\
 2 & 9
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline25}{{%
+\newlabel{@sageinline31}{{%
 \left[\begin{array}{rr}
 -2 & 2 \\
 -1 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline26}{{%
+\newlabel{@sageinline32}{{%
 \left[\begin{array}{rr}
 6 & -5 \\
 5 & -4
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline27}{{%
+\newlabel{@sageinline33}{{%
 \left[\begin{array}{rr}
 7 & -7 \\
 -13 & 13
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline28}{{%
+\newlabel{@sageinline34}{{%
 \left[\begin{array}{rrr}
 2 & 3 & 4 \\
 0 & 2 & 4 \\
 0 & 0 & 3
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline29}{{%
+\newlabel{@sageinline35}{{%
 \left[\begin{array}{rr}
 2 & 3 \\
 4 & 4 \\
 1 & 3
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline30}{{%
+\newlabel{@sageinline36}{{%
 \left[\begin{array}{rr}
 1 & 0 \\
 0 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline31}{{%
+\newlabel{@sageinline37}{{%
 \left[\begin{array}{rr}
 0 & 2 \\
 3 & 0 \\
 2 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline32}{{%
+\newlabel{@sageinline38}{{%
 \left[\begin{array}{rrrr}
 1 & 1 & 1 & 2 \\
 1 & 0 & 2 & 0 \\
 0 & 1 & 2 & 2
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline33}{{%
+\newlabel{@sageinline39}{{%
 \left[\begin{array}{r}
 x_{0} \\
 x_{1} \\
 x_{2} \\
 x_{3}
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline34}{{%
+\newlabel{@sageinline40}{{%
 x_{0} + x_{1} + x_{2} - x_{3}}{}{}{}{}}
-\newlabel{@sageinline35}{{%
+\newlabel{@sageinline41}{{%
 x_{0} - x_{2}}{}{}{}{}}
-\newlabel{@sageinline36}{{%
+\newlabel{@sageinline42}{{%
 x_{1} - x_{2} - x_{3}}{}{}{}{}}
-\newlabel{@sageinline37}{{%
+\newlabel{@sageinline43}{{%
 \left[\begin{array}{rrrr}
 1 & 0 & 2 & 0 \\
 0 & 1 & 2 & 2 \\
 0 & 0 & 0 & 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline38}{{%
+\newlabel{@sageinline44}{{%
 x_{0} - x_{2}}{}{}{}{}}
-\newlabel{@sageinline39}{{%
+\newlabel{@sageinline45}{{%
 x_{1} - x_{2} - x_{3}}{}{}{}{}}
-\newlabel{@sageinline40}{{%
+\newlabel{@sageinline46}{{%
 0}{}{}{}{}}
-\newlabel{@sageinline41}{{%
+\newlabel{@sageinline47}{{%
 \left[\begin{array}{r}
 x_{0} \\
 x_{1} \\
 x_{2} \\
 x_{3}
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline42}{{%
+\newlabel{@sageinline48}{{%
 \left[\begin{array}{r}
 1 \\
 1 \\
 1 \\
 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline43}{{%
+\newlabel{@sageinline49}{{%
 \left[\begin{array}{r}
 0 \\
 1 \\
 0 \\
 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline44}{{%
+\newlabel{@sageinline50}{{%
 \left[\begin{array}{r}
 1 \\
 1 \\
 1 \\
 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline45}{{%
+\newlabel{@sageinline51}{{%
 \left[\begin{array}{r}
 0 \\
 1 \\
 0 \\
 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline46}{{%
+\newlabel{@sageinline52}{{%
 \left[\begin{array}{rrr}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
 0 & 0 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline47}{{%
+\newlabel{@sageinline53}{{%
 \left[\begin{array}{r}
 4 \\
 2 \\
 2
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline48}{{%
+\newlabel{@sageinline54}{{%
 \left[\begin{array}{r}
 4 \\
 1 \\
 2
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline49}{{%
+\newlabel{@sageinline55}{{%
 \left[\begin{array}{r}
 2 \\
 0 \\
 2
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline50}{{%
+\newlabel{@sageinline56}{{%
 \left[\begin{array}{rrrr}
 1 & 0 & 0 & 4 \\
 0 & 1 & 0 & 3 \\
 0 & 0 & 1 & 3
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline51}{{%
+\newlabel{@sageinline57}{{%
 \left[\begin{array}{r}
 1 \\
 0 \\
 0 \\
 4
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline52}{{%
+\newlabel{@sageinline58}{{%
 \left[\begin{array}{r}
 0 \\
 1 \\
 0 \\
 3
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline53}{{%
+\newlabel{@sageinline59}{{%
 \left[\begin{array}{r}
 0 \\
 0 \\
 1 \\
 3
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline54}{{%
+\newlabel{@sageinline60}{{%
 \left[\begin{array}{rr|rrrr}
 0 & 2 & 1 & 0 & 0 & 0 \\
 0 & 1 & 0 & 1 & 0 & 0 \\
 2 & 0 & 0 & 0 & 1 & 0 \\
 2 & 1 & 0 & 0 & 0 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline55}{{%
+\newlabel{@sageinline61}{{%
 \left[\begin{array}{rr|rrrr}
 1 & 0 & 0 & 0 & 2 & 0 \\
 0 & 1 & 0 & 0 & 2 & 1 \\
@@ -338,66 +382,66 @@ x_{3}
  0 & 0 & 1 & 0 & 2 & 1 \\
 0 & 0 & 0 & 1 & 1 & 2
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline56}{{%
+\newlabel{@sageinline62}{{%
 \left[\begin{array}{r}
 1 \\
 0 \\
 2 \\
 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline57}{{%
+\newlabel{@sageinline63}{{%
 \left[\begin{array}{r}
 0 \\
 1 \\
 1 \\
 2
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline58}{{%
+\newlabel{@sageinline64}{{%
 \left[\begin{array}{rrrr}
 1 & 0 & 0 & 0 \\
 0 & 1 & 0 & 2 \\
 0 & 0 & 1 & 3
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline59}{{%
+\newlabel{@sageinline65}{{%
 \left[\begin{array}{r}
 3 \\
 1 \\
 4
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline60}{{%
+\newlabel{@sageinline66}{{%
 \left[\begin{array}{r}
 4 \\
 0 \\
 2
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline61}{{%
+\newlabel{@sageinline67}{{%
 \left[\begin{array}{r}
 4 \\
 0 \\
 3
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline62}{{%
+\newlabel{@sageinline68}{{%
 \left[\begin{array}{r|rr}
 1 & 0 & -1 \\
 0 & 1 & 1 \\
 0 & 0 & 0 \\
 0 & 0 & 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline63}{{%
+\newlabel{@sageinline69}{{%
 \left[\begin{array}{r}
 5 \\
 -6 \\
 -10 \\
 3
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline64}{{%
+\newlabel{@sageinline70}{{%
 \left[\begin{array}{r}
 1 \\
 -1 \\
 -3 \\
 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline65}{{%
+\newlabel{@sageinline71}{{%
 \left[\begin{array}{rrrr|rr}
 0 & 3 & 2 & 4 & 2 & 4 \\
 3 & 1 & 0 & 1 & 2 & 4 \\
@@ -405,7 +449,7 @@ x_{3}
 0 & 0 & 3 & 3 & 1 & 3 \\
 2 & 4 & 2 & 1 & 2 & 3
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline66}{{%
+\newlabel{@sageinline72}{{%
 \left[\begin{array}{rrrr|rr}
 1 & 0 & 0 & 4 & 2 & 0 \\
 0 & 1 & 0 & 4 & 1 & 4 \\
@@ -413,7 +457,25 @@ x_{3}
 0 & 0 & 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 & 0 & 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline67}{{%
+\newlabel{@sageinline73}{{%
+\left[\begin{array}{rrrrr|rrrrr}
+3 & 0 & 4 & 1 & 3 & 2 & 3 & 2 & 3 & 6 \\
+6 & 6 & 4 & 4 & 2 & 6 & 6 & 1 & 3 & 1 \\
+4 & 0 & 5 & 0 & 0 & 0 & 2 & 6 & 0 & 5 \\
+6 & 3 & 1 & 0 & 1 & 4 & 5 & 4 & 3 & 5 \\
+4 & 5 & 4 & 0 & 0 & 2 & 2 & 1 & 5 & 6 \\
+1 & 6 & 3 & 0 & 3 & 3 & 0 & 3 & 0 & 5
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline74}{{%
+\left[\begin{array}{rrrrr|rrrrr}
+1 & 0 & 0 & 0 & 3 & 0 & 0 & 5 & 1 & 0 \\
+0 & 1 & 0 & 0 & 4 & 0 & 0 & 2 & 6 & 3 \\
+0 & 0 & 1 & 0 & 6 & 0 & 0 & 5 & 4 & 1 \\
+0 & 0 & 0 & 1 & 5 & 0 & 0 & 4 & 6 & 1 \\
+0 & 0 & 0 & 0 & 0 & 1 & 0 & 2 & 0 & 4 \\
+0 & 0 & 0 & 0 & 0 & 0 & 1 & 5 & 2 & 0
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline75}{{%
 \left[\begin{array}{rrrr|rrrrr}
 1 & 0 & 2 & 2 & 1 & 0 & 0 & 0 & 0 \\
 4 & 2 & 1 & 2 & 0 & 1 & 0 & 0 & 0 \\
@@ -421,7 +483,7 @@ x_{3}
 2 & 2 & 2 & 3 & 0 & 0 & 0 & 1 & 0 \\
 0 & 4 & 1 & 3 & 0 & 0 & 0 & 0 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline68}{{%
+\newlabel{@sageinline76}{{%
 \left[\begin{array}{rrrr|rrrrr}
 1 & 0 & 2 & 2 & 0 & 0 & 0 & 3 & 1 \\
 0 & 1 & 4 & 2 & 0 & 0 & 0 & 0 & 4 \\
@@ -430,7 +492,7 @@ x_{3}
 0 & 0 & 0 & 0 & 0 & 1 & 0 & 3 & 3 \\
 0 & 0 & 0 & 0 & 0 & 0 & 1 & 3 & 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline69}{{%
+\newlabel{@sageinline77}{{%
 \left[\begin{array}{rrr}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
@@ -438,23 +500,23 @@ x_{3}
 2 & 3 & 3 \\
 4 & 3 & 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline70}{{%
+\newlabel{@sageinline78}{{%
 \left[\begin{array}{rrrrr}
 4 & 2 & 3 & 4 & 2 \\
 1 & 1 & 3 & 4 & 4
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline71}{{%
+\newlabel{@sageinline79}{{%
 \left[\begin{array}{rrrrr}
 1 & 0 & 0 & 2 & 4 \\
 0 & 1 & 0 & 3 & 3 \\
 0 & 0 & 1 & 3 & 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline72}{{%
+\newlabel{@sageinline80}{{%
 \left[\begin{array}{rrr}
 0 & 0 & 0 \\
 0 & 0 & 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline73}{{%
+\newlabel{@sageinline81}{{%
 \left[\begin{array}{rrrr|rrrrr}
 12 & 30 & 28 & 3 & 1 & 0 & 0 & 0 & 0 \\
 19 & 14 & 14 & 1 & 0 & 1 & 0 & 0 & 0 \\
@@ -462,7 +524,7 @@ x_{3}
 30 & 4 & 29 & 25 & 0 & 0 & 0 & 1 & 0 \\
 0 & 19 & 28 & 13 & 0 & 0 & 0 & 0 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline74}{{%
+\newlabel{@sageinline82}{{%
 \left[\begin{array}{rrrr|rrrrr}
 1 & 0 & 3 & 12 & 0 & 0 & 0 & 30 & 10 \\
 0 & 1 & 8 & 17 & 0 & 0 & 0 & 0 & 18 \\
@@ -471,7 +533,7 @@ x_{3}
 0 & 0 & 0 & 0 & 0 & 1 & 0 & 19 & 23 \\
 0 & 0 & 0 & 0 & 0 & 0 & 1 & 9 & 8
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline75}{{%
+\newlabel{@sageinline83}{{%
 \left[\begin{array}{rrr}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
@@ -479,25 +541,25 @@ x_{3}
 12 & 19 & 9 \\
 22 & 23 & 8
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline76}{{%
+\newlabel{@sageinline84}{{%
 \left[\begin{array}{rrrrr}
 26 & 24 & 4 & 20 & 0 \\
 10 & 6 & 15 & 7 & 4 \\
 22 & 0 & 2 & 25 & 26
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline77}{{%
+\newlabel{@sageinline85}{{%
 \left[\begin{array}{rrrrr}
 1 & 0 & 0 & 12 & 22 \\
 0 & 1 & 0 & 19 & 23 \\
 0 & 0 & 1 & 9 & 8
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline78}{{%
+\newlabel{@sageinline86}{{%
 \left[\begin{array}{rrr}
 18 & 1 & 29 \\
 27 & 14 & 17 \\
 26 & 19 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline79}{{%
+\newlabel{@sageinline87}{{%
 \left[\begin{array}{rr|rrrrr}
 17 & 13 & 1 & 0 & 0 & 0 & 0 \\
 6 & 6 & 0 & 1 & 0 & 0 & 0 \\
@@ -505,7 +567,7 @@ x_{3}
 5 & 4 & 0 & 0 & 0 & 1 & 0 \\
 3 & 0 & 0 & 0 & 0 & 0 & 1
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline80}{{%
+\newlabel{@sageinline88}{{%
 \left[\begin{array}{rr|rrrrr}
 1 & 0 & 0 & 0 & 0 & 0 & 13 \\
 0 & 1 & 0 & 0 & 0 & 5 & 17 \\
@@ -514,7 +576,7 @@ x_{3}
 0 & 0 & 0 & 1 & 0 & 8 & 10 \\
 0 & 0 & 0 & 0 & 1 & 16 & 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline81}{{%
+\newlabel{@sageinline89}{{%
 \left[\begin{array}{rrr}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
@@ -522,7 +584,7 @@ x_{3}
 11 & 8 & 16 \\
 14 & 10 & 0
 \end{array}\right]}{}{}{}{}}
-\newlabel{@sageinline82}{{%
+\newlabel{@sageinline90}{{%
 \left[\begin{array}{rrr|r}
 1 & 0 & 0 & 1 \\
 0 & 1 & 0 & 8 \\
@@ -530,4 +592,42 @@ x_{3}
 11 & 8 & 16 & 0 \\
 14 & 10 & 0 & 18
 \end{array}\right]}{}{}{}{}}
-%b7eff55250f4770058a4c4e1dea0b2c2% md5sum of corresponding .sage file (minus "goboom", "current_tex_line", and pause/unpause lines)
+\newlabel{@sageinline91}{{%
+\left[\begin{array}{rr|rrrrr}
+1 & 5 & 1 & 0 & 0 & 0 & 0 \\
+11 & 15 & 0 & 1 & 0 & 0 & 0 \\
+0 & 9 & 0 & 0 & 1 & 0 & 0 \\
+10 & 2 & 0 & 0 & 0 & 1 & 0 \\
+0 & 4 & 0 & 0 & 0 & 0 & 1
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline92}{{%
+\left[\begin{array}{rr|rrrrr}
+1 & 0 & 0 & 0 & 0 & 2 & 18 \\
+0 & 1 & 0 & 0 & 0 & 0 & 5 \\
+\hline
+ 0 & 0 & 1 & 0 & 0 & 17 & 14 \\
+0 & 0 & 0 & 1 & 0 & 16 & 12 \\
+0 & 0 & 0 & 0 & 1 & 0 & 12
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline93}{{%
+\left[\begin{array}{rrrrr}
+1 & 0 & 0 & 17 & 14 \\
+0 & 1 & 0 & 16 & 12 \\
+0 & 0 & 1 & 0 & 12
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline94}{{%
+\left[\begin{array}{rrrrr}
+1 & 8 & 15 & 2 & 16 \\
+\hline
+ 1 & 0 & 0 & 17 & 14 \\
+0 & 1 & 0 & 16 & 12 \\
+0 & 0 & 1 & 0 & 12
+\end{array}\right]}{}{}{}{}}
+\newlabel{@sageinline95}{{%
+\left[\begin{array}{rrrr|r}
+1 & 0 & 0 & 0 & 8 \\
+0 & 1 & 0 & 0 & 3 \\
+0 & 0 & 1 & 0 & 12 \\
+0 & 0 & 0 & 1 & 16
+\end{array}\right]}{}{}{}{}}
+%d3d9f7d30b98ff048b168d0ecda984fc% md5sum of corresponding .sage file (minus "goboom", "current_tex_line", and pause/unpause lines)
