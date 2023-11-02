@@ -210,11 +210,14 @@ $$
 	n = -14025 + 2100t
 $$
 
-$$
-	n \equiv -14025 \pmod{2100}
-$$
+\begin{align*}
+	n &\equiv -14025 \pmod{2100}
+	n &\equiv -14025 \pmod{2100}
+\end{align*}
 
 % Fin del ejercicio 2
+
+\pagebreak
 
 \begin{ejer}
 Sea $K = {\mathbb Z}_{43}$ y $f:K^4 \to K^3$ la aplicación lineal
@@ -233,17 +236,41 @@ tales que $f\circ g_1 = {\sf id}_{K^3} = f\circ g_2$.
 
 \begin{sageblock}
 	Mf = matrix(Zmod(43), [[24, 23, 11, 26], [9, 17, 33, 22], [16, 16, 13, 4]])
-	Mfp = block_matrix([[Mf, 1]])
-	Mfr = Mfp.echelon_form()
+	Mftp = block_matrix([[Mf.T, 1]])
+	Mftr = Mftp.echelon_form()
+	Mftr = copy(Mftr)
+	Mftr.subdivide([3], [3])
+	g1 = Mftr.subdivision(0, 1).T
+	
+	T = column_matrix(Zmod(43), [1, 24, 14, 5])
+	X = matrix(Zmod(43), [[0, 0, 1]])
+	g2 = g1 + T * X
 \end{sageblock}
 
+Dos inversas por la derecha de $M(f)$, al no ser cuadrada hay infinitas
 $$
-	M(f) \cdot M(g) = I \to M(g) = M(f)^{-1}
+	M(f) \cdot M(g_1) = I \to M(g_1) = M(f)^{-1}_{R_1}
+$$
+
+$$
+	\sage{Mftp} \to \sage{Mftr}
+$$
+
+$$
+	M(g_1) = M(f)^{-1}_{R_1} = \sage{Mftr.subdivision(0, 1).T}
 $$
 
 
 $$
-	\sage{Mfp} \to \sage{Mfr}
+	T = \sage{T}
+$$
+
+$$
+	M(f)^{-1}_{R_x} = M(f)^{-1}_{R_1} + T \cdot x = \sage{g1} + \sage{T} (x)
+$$
+
+$$
+	M(g_2) = \sage{g1} + \sage{T} \sage{X} = \sage{g2}
 $$
 
 % Fin del ejercicio 3
@@ -289,14 +316,14 @@ Dado el vector $v = \left(\begin{array}{r}
 0 \\
 1 \\
 2
-\end{array}\right)_B$, responde a las siguientes preguntas:
+\end{array}\right)_{B_1}$, responde a las siguientes preguntas:
 \begin{itemize}
-\item Calcula la matriz de cambio de base $B$ a la base canónica.
+\item Calcula la matriz de cambio de base $B_1$ a la base canónica.
 \item Utiliza la matriz anterior para calcular las coordenadas de
 $v$ en base canónica.
-\item Calcula la matriz de cambio de base $B$ a $B'$.
+\item Calcula la matriz de cambio de base $B_1$ a $B_2$.
 \item Utiliza la matriz anterior para calcular las coordenadas de
-$v$ en base $B'$.
+$v$ en base $B_2$.
 \item Determina si los vectores $\{w_1,w_2,v\}$ forman una base
 de $K^3$.
 \end{itemize}
@@ -305,6 +332,57 @@ de $K^3$.
 {\it Solución: }
 
 % Escribe tu solución para el Ejercicio 4
+
+\begin{sageblock}
+	B1 = matrix(Zmod(7), [[0, 1, 5], [0, 0, 5], [5, 0, 5]])
+	B2 = matrix(Zmod(7), [[4, 3, 2], [0, 1, 5], [1, 1, 2]])
+	B1B2 = block_matrix([[B1, B2]])
+	B1B2r = B1B2.echelon_form()
+	
+	v = column_matrix(Zmod(7), [0, 1, 2])
+	vC = B1 * v
+	
+	MB1B2 = B2.inverse() * B1
+	vB2 = MB1B2 * v
+	
+	w1w2v = matrix(Zmod(7), [[4, 3, 0], [0, 1, 1], [4, 3, 3]])
+	w1w2vr = w1w2v.echelon_form()
+	
+\end{sageblock}
+
+$$
+	B_1 = \sage{B1}
+$$
+
+$$
+	B_2 = \sage{B2}
+$$
+
+$$
+	[B_1|B_2] = \sage{B1B2} \to \sage{B1B2r}
+$$
+
+$B_1$ y $B_2$ son la misma base
+
+Cualquiera de las matrices $B_1$ y $B_2$ son matrices de cambio de base a canónica.
+
+$$
+	v_{C} = B_1 \cdot v = \sage{B1} \cdot {\sage{v}}_{B_1} = {\sage{vC}}_C
+$$
+
+$$
+	M_{B_1B_2} = B_2^{-1} B_1 = \sage{B2.inverse()} \cdot \sage{B1} = \sage{MB1B2}
+$$
+
+$$
+	v_{B_2} = M_{B_1B_2} \cdot v_{B_1} = \sage{MB1B2} \cdot {\sage{v}}_{B_1} = {\sage{vB2}}_{B2}
+$$
+
+$$
+	{w_1,w_2,v} = \sage{w1w2v} \to \sage{w1w2vr}
+$$
+
+$\{w_1,w_2,v\}$ son en efecto una base, pues el vector $v$ es linealmente independiente de $w_1$ y $w_2$.
 
 % Fin del ejercicio 4
 
@@ -320,19 +398,19 @@ grafo. En caso de existir, calcúlalo:
 \node[vertice] (D) at (0,2) {D};
 \node[vertice] (E) at (2,2) {E};
 \node[vertice] (F) at (4,3) {F};
-\node[vertice] (H) at (6,1) {F};
+\node[vertice] (G) at (6,1) {G};
 
 \draw (A) -- (B);
 \draw (B) -- (C);
-\draw (C) -- (H);
-\draw (H) -- (F);
+\draw (C) -- (G);
+\draw (G) -- (F);
 \draw (F) -- (E);
 \draw (E) -- (D);
 \draw (D) -- (A);
 \draw (E) -- (C);
 \draw (B) -- (F);
-\draw (E) -- (H);
-\draw (B) -- (H);
+\draw (E) -- (G);
+\draw (B) -- (G);
 \end{tikzpicture} 
 \end{center}
 \end{ejer}
@@ -340,6 +418,101 @@ grafo. En caso de existir, calcúlalo:
 {\it Solución: }
 
 % Escribe tu solución para el Ejercicio 5
+
+No existe un camino euleriano cerrado en el grafo, ya que el nodo F y C es de grado impar.
+Pero si abierto ya que solo F y C son impares.
+Para calcularlo juntamos F y C
+
+\begin{center}
+\begin{tikzpicture}[vertice/.style = {fill=white,circle,draw}]
+	\node[vertice] (A) at (0,0) {A};
+	\node[vertice] (B) at (2,0) {B};
+	\node[vertice] (C) at (4,-1) {C};
+	\node[vertice] (D) at (0,2) {D};
+	\node[vertice] (E) at (2,2) {E};
+	\node[vertice] (F) at (4,3) {F};
+	\node[vertice] (G) at (6,1) {G};
+	
+	\draw (A) -- (B);
+	\draw (B) -- (C);
+	\draw (C) -- (G);
+	\draw (G) -- (F);
+	\draw (F) -- (E);
+	\draw (E) -- (D);
+	\draw (D) -- (A);
+	\draw (E) -- (C);
+	\draw (B) -- (F);
+	\draw (E) -- (G);
+	\draw (B) -- (G);
+	\draw[dashed] (F) -- (C);
+\end{tikzpicture} 
+\end{center}
+
+\begin{center}
+	\begin{tikzpicture}[vertice/.style = {fill=white,circle,draw}]
+		\node[vertice] (A) at (0,0) {A};
+		\node[vertice] (B) at (2,0) {B};
+		\node[vertice] (C) at (4,-1) {C};
+		\node[vertice] (D) at (0,2) {D};
+		\node[vertice] (E) at (2,2) {E};
+		\node[vertice] (F) at (4,3) {F};
+		\node[vertice] (G) at (6,1) {G};
+		
+		\draw[very thick, red] (A) -- (B) -- (C) -- (G) -- (F) -- (E) -- (D) -- (A);
+		\draw (A) -- (B);
+		\draw (B) -- (C);
+		\draw (C) -- (G);
+		\draw (G) -- (F);
+		\draw (F) -- (E);
+		\draw (E) -- (D);
+		\draw (D) -- (A);
+		\draw (E) -- (C);
+		\draw (B) -- (F);
+		\draw (E) -- (G);
+		\draw (B) -- (G);
+		\draw[dashed] (F) -- (C);
+	\end{tikzpicture} 
+\end{center}
+
+$$
+	{\color{red}(A) - (D) - (E) - (F) - (G) - (C) - (B)}
+$$
+
+\begin{center}
+	\begin{tikzpicture}[vertice/.style = {fill=white,circle,draw}]
+		\node[vertice] (A) at (0,0) {A};
+		\node[vertice] (B) at (2,0) {B};
+		\node[vertice] (C) at (4,-1) {C};
+		\node[vertice] (D) at (0,2) {D};
+		\node[vertice] (E) at (2,2) {E};
+		\node[vertice] (F) at (4,3) {F};
+		\node[vertice] (G) at (6,1) {G};
+		
+		\draw[very thick, red] (A) -- (B) -- (C) -- (G) -- (F) -- (E) -- (D) -- (A);
+		\draw[very thick, blue] (B) -- (G) -- (E) -- (C) -- (F) -- (B);
+		\draw (A) -- (B);
+		\draw (B) -- (C);
+		\draw (C) -- (G);
+		\draw (G) -- (F);
+		\draw (F) -- (E);
+		\draw (E) -- (D);
+		\draw (D) -- (A);
+		\draw (E) -- (C);
+		\draw (B) -- (F);
+		\draw (E) -- (G);
+		\draw (B) -- (G);
+		\draw[dashed] (F) -- (C);
+	\end{tikzpicture} 
+\end{center}
+
+$$
+	{\color{blue}(B) - (F) -- (C) - (E) - (G)}
+$$
+
+El circuito cerrado virtual
+$$
+	{\color{blue}(B) - (F) -- (C) - (E) - (G)}
+$$
 
 % Fin del ejercicio 5
 

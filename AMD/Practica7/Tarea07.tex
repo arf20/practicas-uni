@@ -108,15 +108,12 @@ El grado de todos los nodos es par, por tanto es euleriano.
 \end{align*}
 
 $$
-	{\color{red}(a) - (b) - (c) - (d) - (e) - (f) - (g) - (h) - (a)} \\
-$$
-
-$$
 	(a) - {\color{green}(c) - (j) - (i)} - (a) - {\color{red}(b) - (c) - (d) - (e) - (f)} - (g) - {\color{yellow}(j) - (e)} - (g) - (h) - {\color{blue}(b) - (i)} - (h) - (a)
 $$
 
 % Fin del ejercicio 1
 
+\pagebreak
 
 \begin{ejer}
 Dado el grafo ponderado
@@ -200,12 +197,9 @@ Se pide
 		\node[vertice] (I) at (4,0) {{\bf i}};
 		\node[vertice] (J) at (8,0) {{\bf j}};
 		
-		\draw (A) -- node[fill=white] {2} (B);
 		\draw (A) .. controls (1,4) and (3.5,3) .. node[fill=white] {1} (C);
 		\draw (A) -- node[fill=white] {1} (I);
-		\draw (B) -- node[fill=white] {2} (C);
 		\draw (B) -- node[fill=white] {1} (I);
-		\draw (C) -- node[fill=white] {2} (I);
 		\draw (D) -- node[fill=white] {2} (E);
 		\draw (D) -- node[fill=white] {1} (J);
 		\draw (E) -- node[fill=white] {1} (F);

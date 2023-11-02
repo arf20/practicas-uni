@@ -1,0 +1,385 @@
+
+
+\documentclass{amsart}
+\usepackage{sagetex}
+\usepackage[utf8]{inputenc}
+\newtheorem{ejer}{Ejercicio}
+
+\def\n{\mathbb{N}}
+\def\r{\mathbb{R}}
+\def\z{\mathbb{Z}}
+\def\q{\mathbb{Q}}
+\def\c{\mathbb{C}}
+
+\begin{document}
+\begin{center}
+\textrm{ \bf {Ejercicios Hoja 2}}
+\vskip 0.3cm
+\textrm{ \bf {Curso 2023/2024} }
+\end{center}
+
+
+\begin{ejer} Hallar una base $\mathcal{B}$ d el espacio $\r ^3$ tal que se verifiquen las siguientes igualdades:
+\[ \left( \begin{array}{r}
+1 \\ -1 \\ 1             
+\end{array} \right) = \left( \begin{array}{r}
+2 \\ 3 \\ -1       
+\end{array} \right)_{\mathcal{B}}, \ \left( \begin{array}{r}
+1 \\ 0 \\ 1             
+\end{array} \right) = \left( \begin{array}{r}
+1 \\ -2 \\ 2       
+\end{array} \right)_{\mathcal{B}}  \hbox{ y } \left( \begin{array}{r}
+0 \\ 1 \\ 1             
+\end{array} \right) = \left( \begin{array}{r}
+-1 \\ 1 \\ 0       
+\end{array} \right)_{\mathcal{B}} \]
+\end{ejer}
+
+\begin{sageblock}
+	AC = matrix(QQ, [[1, 1, 0], [-1, 0, 1], [1, 1, 1]])
+	AB = matrix(QQ, [[2, 1, -1], [3, -2, 1], [-1, 2, 0]])
+	B = AC * AB.inverse()
+\end{sageblock}
+
+$$
+	B \cdot \sage{AB} = \sage{AC}
+$$
+
+$$
+	B = \sage{AC} \cdot {\sage{AB}}^{-1}
+$$
+
+$$
+	B = \sage{B}
+$$
+
+\begin{ejer} Dadas las aplicaciones
+\begin{enumerate}
+\item[a)] $f_1: \r ^2 \longrightarrow \r ^4$ definida por $f_1 \left( \begin{array}{c}
+x_1 \\ x_2             
+\end{array} \right) = \left( \begin{array}{c}
+x_1-x_2 \\ 2x_1+x_2 \\ x_1+2x_2 \\ 3x_1      
+\end{array} \right) $
+\item[b)] $f_2: \z ^4_3 \longrightarrow \z ^2_3$ definida por $f_2 \left( \begin{array}{c}
+x_1 \\ x_2 \\ x_3 \\ x_4            
+\end{array} \right) = \left( \begin{array}{c}
+x_1-2x_2+x_3+2x_4 \\ 2x_1+x_3-x_4             
+\end{array} \right)$ .
+\item[c)] $f_3: \r ^2 \longrightarrow \r ^3$ definida por $f_1 \left( \begin{array}{c}
+x_1 \\ x_2             
+\end{array} \right) = \left( \begin{array}{c}
+x_1-x_2 \\ 2x_1+x_2 \\ 1      
+\end{array} \right) $
+\item[d)] $f_4:\hbox{P}_3(\r ) \longrightarrow  \hbox {P}_2(\r )$ definida por $f_4(a_0+a_1x+a_2x^2+a_3x^3) = a_1+2a_2x+3a_3x^2$.
+\end{enumerate} 
+\vskip 0.2 cm
+Estudiar si son aplicaciones lineales y, en su caso determinar su matriz asociada $\mathcal{M}(f)$.
+\end{ejer}
+
+\begin{sageblock}
+	Mf1 = matrix(QQ, [[1, -1], [2, 1], [1, 2], [3, 0]])
+	Mf2 = matrix(QQ, [[1, -2, 1, 2], [2, 0, 1, -1]])
+	Mf4 = matrix(QQ, [[1, 2, 3, 0]])
+\end{sageblock}
+
+a.
+$$
+	M(f_1) = \sage{Mf1}
+$$
+b.
+$$
+	M(f_2) = \sage{Mf2}
+$$
+c. No es lineal porque tiene elementos no $x$
+d.
+$$
+	M(f_4) = \sage{Mf4}
+$$
+
+
+\begin{ejer} Dado el sistema de vectores, sobre el cuerpo $\z _5$, 
+\[\mathcal{B} = \left\lbrace \left( \begin{array}{r}
+1 \\ 1 \\ -1            
+\end{array} \right), 
+\left( \begin{array}{c}
+           
+1 \\ 1 \\ 1           
+\end{array} \right), 
+\left( \begin{array}{c}
+           
+0 \\ 1 \\ 1           
+\end{array} \right) \right\rbrace \] Comprobar si son base y caso de serlo calcular 
+las matrices de paso $\mathcal{P}_{\mathcal{B}C_{3}}$ y $\mathcal{P}_{C_{3}\mathcal{B}}$
+
+({\bf Nota.-} La matriz $C_3$ denota la base can\'onica de $\z ^3_5$.)
+\end{ejer}
+
+\begin{sageblock}
+	B = matrix(Zmod(5), [[1, 1, 0], [1, 1, 1], [-1, 1, 1]])
+	Br = B.echelon_form()
+	Bi = B.inverse()
+\end{sageblock}
+
+$$
+	B = \sage{B} \to  \sage{Br}
+$$
+B es base.
+
+$$
+	P_{BC_3} = C_3^{-1} B = B = \sage{B}
+$$
+
+$$
+	P_{C_3B} = B^{-1} C_3 = B^{-1} = \sage{Bi}
+$$
+
+\begin{ejer} Dados los siguientes conjuntos de vectores, sobre el cuerpo $\z _5$,  
+
+\[\mathcal{B}_1 = \left\lbrace \left( \begin{array}{c}
+1 \\ 0 \\ 1            
+\end{array} \right), 
+\left( \begin{array}{c}
+           
+1 \\ 1 \\ 0           
+\end{array} \right), 
+\left( \begin{array}{c} 
+           
+0 \\ 1 \\ 1           
+\end{array} \right) \right\rbrace \]
+\[\mathcal{B}_2 = \left\lbrace \left( \begin{array}{c}
+0 \\ 0 \\ 1            
+\end{array} \right), 
+\left( \begin{array}{r}
+           
+-1 \\ 1 \\ 0           
+\end{array} \right), 
+\left( \begin{array}{c}
+           
+1 \\ 1 \\ 1           
+\end{array} \right) \right\rbrace  \]
+
+Comprobar si son base y, caso de serlo calcula la matriz de paso $\mathcal{P}_{B_1B_2}$.
+\end{ejer}
+
+\begin{sageblock}
+	B1 = matrix(Zmod(5), [[1, 1, 0], [0, 1, 1], [1, 0, 1]])
+	B2 = matrix(Zmod(5), [[0, -1, 1], [0, 1, 1], [1, 0, 1]])
+	B1r = B1.echelon_form()
+	B2r = B2.echelon_form()
+	B1i = B1.inverse()
+	B2i = B2.inverse()
+	PB1B2 = B2i * B1
+\end{sageblock}
+
+$$
+	B_1 = \sage{B1} \to \sage{B1r}
+$$
+
+$$
+	B_2 = \sage{B2} \to \sage{B2r}
+$$
+
+Los dos son bases.
+
+$$
+	\mathcal{P}_{B_1B_2} = B_2^{-1} B_1 = \sage{PB1B2}
+$$
+ 
+\begin{ejer} Sea la aplicaci\'on lineal:
+\[ f: \z ^2_5 \longrightarrow \z ^4_5 \ \ \hbox{definida por} \ \
+f \left( \begin{array}{c}
+x_1 \\ x_2             
+\end{array} \right) = \left( \begin{array}{c}
+x_1+2x_2 \\ 2x_1-3x_2 \\ 4x_1+2x_2 \\ 0      
+\end{array} \right) \] y las bases:
+
+ \[\mathcal{B}_1 = \left\lbrace \left( \begin{array}{c}
+1 \\ 1            
+\end{array} \right), 
+\left( \begin{array}{c}
+0 \\ 1            
+\end{array} \right) \right\rbrace  \ \ \hbox{de}  \ \z ^2_5 \]
+
+\[\mathcal{B}_2 = \left\lbrace \left( \begin{array}{c}
+1 \\ 0 \\ 1 \\ 1            
+\end{array} \right), 
+\left( \begin{array}{c}
+0 \\ 1 \\ 0 \\ 1           
+\end{array} \right), 
+\left( \begin{array}{c}
+1 \\ 1 \\ 0 \\ 1           
+\end{array} \right),
+\left( \begin{array}{c}
+0 \\ 0 \\ 0 \\ 1            
+\end{array} \right) \right\rbrace \ \hbox{de}  \ \z ^4_5 \] Calcular las siguientes matrices:
+\begin{itemize}
+\item[a)] $\mathcal{M}_{B_1C_4}(f)$.
+\item[b)] $\mathcal{M}_{C_2B_2}(f)$.
+\item[c)] $\mathcal{M}_{B_1B_2}(f)$.
+\end{itemize}
+
+({\bf Nota.-} Las matrices $C_2$ y $C_4$ denotan las bases can\'onicas de $\z ^2_5$ y $\z ^4_5$ respectivamente.)
+\end{ejer}
+
+\begin{ejer} Dadas las aplicaciones lineales:
+\[\r ^3  \buildrel g \over{\longrightarrow } \r ^2  \ \ \hbox{y} \ \r ^2  \buildrel f \over{\longrightarrow } \r ^3 \] definidas por:
+
+\[g \left( \begin{array}{c}
+x_1 \\ x_2 \\ x_3             
+\end{array} \right) = \left( \begin{array}{c}
+x_1+x_2+x_3 \\ x_1+3x_2-x_3             
+\end{array} \right)  \ \ \hbox{y} \ \ f \left( \begin{array}{c}
+x_1 \\ x_2             
+\end{array} \right) = \left( \begin{array}{c}
+2x_1-x_2 \\ x_1+3x_2 \\ -x_1-x_2             
+\end{array} \right) \] y las bases
+\[\mathcal{B}_1 = \left\lbrace \left( \begin{array}{r}
+1 \\ 1            
+\end{array} \right), 
+\left( \begin{array}{r}
+-1 \\ 1            
+\end{array} \right) \right\rbrace \ \ \hbox{de}  \ \r ^2 \]
+\[\mathcal{B}_2 = \left\lbrace \left( \begin{array}{r}
+1 \\ 1 \\ 1            
+\end{array} \right), 
+\left( \begin{array}{r}
+-1 \\ 1 \\ -1           
+\end{array} \right), 
+\left( \begin{array}{r}
+0 \\ 0 \\ 2         
+\end{array} \right) \right\rbrace \ \ \hbox{de}  \ \r ^3 \]
+\[\mathcal{B}_3 = \left\lbrace \left( \begin{array}{r}
+1 \\ -1 \\ 2            
+\end{array} \right), 
+\left( \begin{array}{r}
+1 \\ 0 \\ -1           
+\end{array} \right), 
+\left( \begin{array}{r}
+2 \\ -3 \\ 2         
+\end{array} \right) \right\rbrace \ \ \hbox{de}  \ \r ^3 \]
+Calcular: 
+\begin{itemize}
+\item[a)] $\mathcal{M}_{B_1B_2}(f)$
+\item[b)] $\mathcal{M}_{B_3B_1}(g)$
+\item[c)] $\mathcal{M}_{B_2B_3}(f\circ g)$
+\end{itemize}
+\end{ejer}
+
+\begin{ejer} Calcular el n\'ucleo, $\hbox{Ker}(f)$, y el espacio imagen, $\hbox{Im}(f)$, de las siguientes aplicaciones lineales:
+\begin{itemize}
+\item[a)] la aplicaci\'on dada por la matriz
+
+\[ \left( \begin{array}{cccc}
+4 & 3 & 3 & 1 \\ 
+2 & 3 & 3 & 1 \\
+2 & 4 & 4 & 2 \\
+4 & 1 & 2 & 3          
+\end{array} \right) \in \hbox{M}_{4\times 4}(\z _5)\]
+
+
+\item[b)] la aplicaci\'on lineal $f: \hbox{P}_2(\r ) \longrightarrow \r ^4$ definida por: 
+\[f(p(x)) = (p(0),p(1),p(2),p(3))\] 
+
+({\bf Nota.} $p(x)$ denota en general al polinomio 
+$p(x) = a_0+a_1x+a_2x^2 \in  \hbox{P}_2(\r )$)
+
+\end{itemize}
+\end{ejer}
+
+\begin{ejer} Sean las bases de $\z ^3_5$, 
+
+\[\mathcal{B}_1 = \left\lbrace \left( \begin{array}{r}
+2 \\ 4 \\ 2            
+\end{array} \right), 
+\left( \begin{array}{c}
+           
+0 \\ 1 \\ 1           
+\end{array} \right), 
+\left( \begin{array}{c}
+           
+4 \\ 4 \\ 3           
+\end{array} \right) \right\rbrace \hbox{ y } 
+\mathcal{B}_2 = \left\lbrace \left( \begin{array}{r}
+1 \\ 1 \\ 1            
+\end{array} \right), 
+\left( \begin{array}{c}
+           
+0 \\ 2 \\ 3           
+\end{array} \right), 
+\left( \begin{array}{c}
+           
+0 \\ 0 \\ 3           
+\end{array} \right) \right\rbrace \] y la aplicaci\'on lineal $f: \z ^3_5 \longrightarrow \z ^3_5$ cuya matriz asociada en bases $\mathcal{B}_2$ y $\mathcal{B}_1$ es:
+\[ \mathcal{M}_{\mathcal{B}_2 \mathcal{B}_1}(f) = \left( \begin{array}{crc}
+1 & 2 & 3  \\ 
+2 & -1 & 1 \\
+1 & 1 & 3           
+\end{array} \right) \]
+\begin{itemize}
+\item[a)] Calcula la matriz del cambio de base $\mathcal{P}_{\mathcal{B}_2 \mathcal{B}_1}$
+
+\item[b)] Dado el espacio $U = \left\lbrace  \left( \begin{array}{r}
+x_1 \\ x_2 \\ x_3            
+\end{array} \right)_{\mathcal{B}_1} | \  x_1-2x_2+x_3 = 0   \right\rbrace $. Hallar una base de $U$ cuyos vectores est\'en expresados en base can\'onica. 
+
+\item[c)] Calcular $f\left( \begin{array}{r}
+1 \\ 2 \\ 3            
+\end{array} \right) $
+
+\end{itemize}
+\end{ejer}
+
+\begin{ejer} Dado el espacio $V = C(B)$ siendo $B$ la matriz, sobre el cuerpo $\r $, 
+\[B = \left( \begin{array}{cccc}
+1 & 2 & 1 & 1 \\            
+2 & 4 & 2 & 4 \\          
+1 & 1 & 0 & 2 \\
+3 & 7 & 4 & 6           
+\end{array} \right) \]
+\begin{itemize}
+\item[a)] Estudia si los vectores son generadores, linealmente independientes o base.
+\item[b)] Si no son base extrae una base de entre ellos.
+\item[c)] Calcula unas ecuaciones impl\'{\i}citas de $V$.
+\item[d)] Ampliar la base del espacio $V$, encontrada en el apartado b), a\~nadi\'endole los vectores que se necesiten para obtener una base del espacio $\r ^4$.
+\end{itemize}
+\end{ejer}
+
+\begin{ejer} Dados los espacios $U = N(B)$ y $V=N(C)$ siendo $B$ y $C$  las matrices, sobre el cuerpo $\z ^5_5 $, 
+\[B = \left( \begin{array}{rrrrr}
+2 & -1 & 2 & 3 & -2 \\            
+1 & 0 & -1 & 2 & 3 \\          
+2 & 1 & 1 & 1 & -2           
+\end{array} \right) \ \hbox{ y } \ C = \left( \begin{array}{rrrrr}
+-3 & 4 & 2 & -2 & 3 \\            
+2 & 0 & 3 & 4 & 1 \\          
+1 & 3 & 3 & 3 & 4           
+\end{array} \right) \] Se pide:
+\begin{itemize}
+\item[a)] Estudiar si ambos espacios son iguales o si alguno est\'a contenido en el otro.
+\item[b)] Ecuaciones impl\'{\i}citas del espacio suma $U+V$ y del espacio intersecci\'on $U\cap V$.
+\item[c)] Bases de los espacios $U+V$ y  $U\cap V$.
+\end{itemize}
+\end{ejer}
+
+
+\begin{ejer} Dados los espacios de ${P}_3(\r )$
+\[U = <1-x+x^2+x^3, x-x^2, -1+x^2, 2+x-2x^2+x^3> \] y 
+\[V = <1-x-x^2+2x^3, 2x-2x^2, 3-3x^2, 3+2x-5x^2> .\] Se pide:
+\begin{itemize}
+\item[a)] Base y dimensi\'on de $U$ y $V$.
+\item[b)] Ecuaciones impl\'{i}citas de $U$ y $V$.
+\item[c)] Estudia si son iguales o si alguno est\'a contenido en el otro.
+\item[d)] Encuentra un polinomio que est\'e en $V$ pero no en $U$. Comprueba que ese polinomio junto con los de la base de $U$ forman una base de $\hbox {P}_3(\r )$.
+\item[e)] Ecuaciones param\'etricas de $U+V$ y de $U\cap V$. 
+
+\end{itemize}
+
+
+\end{ejer}
+
+
+
+
+
+
+\end{document}
