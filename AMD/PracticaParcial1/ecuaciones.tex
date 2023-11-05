@@ -1,0 +1,423 @@
+\documentclass{amsart}
+%\usepackage[usefamily=sage]{pythontex} 
+\usepackage{sagetex}
+\usepackage[utf8]{inputenc}
+\usepackage[margin = 2cm]{geometry}
+%\usepackage[spanish]{babel}
+\usepackage[most]{tcolorbox}
+\newtheorem{ejer}{Ejercicio}
+\newtheorem{ejem}{Ejemplo}
+\newtheorem{defn}{Definición}
+\newtheorem{prop}{Proposición}
+
+\title{Ecuaciones Matriciales}
+\author{Leandro Marín \\ Facultad de Informática. Universidad de Murcia}
+
+\begin{document}
+\maketitle
+
+Vamos a volver a mirar la resolución de sistemas de ecuaciones de una forma más 
+genérica, lo cual nos permitirá resolver problemas de ecuaciones matriciales.
+
+\begin{ejer}
+Resuelve el siguiente sistema de ecuaciones sobre ${\mathbb Z}_5$
+
+\begin{sageblock}
+A = matrix(Zmod(5),[[4,2,1,0,1,4],
+[1,3,4,0,0,1],
+[4,2,2,2,0,4],
+[3,4,3,2,2,3],
+[1,3,1,4,0,1]])
+B = matrix(Zmod(5),[[4],[0],[4],[2],[3]])
+Pol = PolynomialRing(Zmod(5),x,6)
+X = column_matrix(Pol,Pol.gens())
+Ecuaciones = A*X
+\end{sageblock}
+
+
+\begin{align*}
+\sage{Ecuaciones[0,0]} &= \sage{B[0,0]} \\
+\sage{Ecuaciones[1,0]} &= \sage{B[1,0]} \\
+\sage{Ecuaciones[2,0]} &= \sage{B[2,0]} \\
+\sage{Ecuaciones[3,0]} &= \sage{B[3,0]} \\
+\sage{Ecuaciones[4,0]} &= \sage{B[4,0]} \\
+\end{align*}
+\end{ejer}
+
+{\it Solución:}
+
+% Escribe tu solución para el Ejercicio 1
+
+\begin{sageblock}
+	AB = block_matrix([[A, B]])
+	ABr = AB.echelon_form()
+\end{sageblock}
+
+$$
+	[A|B] = \sage{AB} \to \sage{ABr}
+$$
+
+No sale identidad por tanto es un SCI
+
+
+
+% Fin del ejercicio 1
+
+\begin{ejer}
+Calcular todas las matrices $X$ sobre el cuerpo ${\mathbb Z}_5$ tales que 
+$$ \left(\begin{array}{rrrr}
+4 & 2 & 4 & 1 \\
+2 & 4 & 4 & 3 \\
+1 & 3 & 0 & 1
+\end{array}\right) X 
+= \left(\begin{array}{rr}
+0 & 4 \\
+1 & 1 \\
+1 & 0
+\end{array}\right).$$
+\end{ejer}
+
+{\it Solución:} 
+
+% Escribe tu solución para el Ejercicio 2
+
+\begin{sageblock}
+A = matrix(Zmod(5),[[4,2,4,1],[2,4,4,3],[1,3,0,1]])
+B = matrix(Zmod(5),[[0,4],[1,1],[1,0]])
+\end{sageblock}
+
+Lo primero que tenemos que determinar es el tamaño de la matriz $X$, que deberá tener
+$4$ filas para poder multiplicarse por la izquierda con la matriz que nos proponen
+y dos columnas para que el resultado sea una matriz $3 \times 2$. 
+
+\begin{sageblock}
+Pol = PolynomialRing(Zmod(5),8,'x')
+X = matrix(Pol,4,2,Pol.gens())
+\end{sageblock}
+
+El sistema que tenemos es por lo tanto:
+
+$$ \sage{A} \sage{X} = \sage{B}$$
+
+Para resolverlo vamos a reducir la matriz $A$ obteniendo la matriz de paso $P$.
+
+\begin{sageblock}
+M = block_matrix([[A,1]])
+R = M.echelon_form()
+P = R.subdivision(0,1)
+PA = P*A
+PB = P*B
+\end{sageblock}
+
+Lo que nos da el sistema en forma simplificada
+
+$$ \sage{PA} \sage{X} = \sage{PB} $$
+
+A la matriz reducida le falta un pivote y si lo añadimos, tenemos que añadir una
+nueva fila a la parte derecha, eso corresponderá a dos parámetros libres:
+
+\begin{sageblock}
+Pivotes = matrix(Zmod(5),[[0,0,0,1]])
+Pol2.<a,b> = PolynomialRing(Zmod(5))
+Parametros = matrix(Pol2,[[a,b]])
+PAE = block_matrix([[PA],[Pivotes]])
+PBE = block_matrix([[PB],[Parametros]])
+\end{sageblock}
+
+$$ \sage{PAE} \sage{X} = \sage{PBE} $$
+
+La matriz que multiplica a las incóginitas ya es invertible porque tiene todos
+sus pivotes y podemos despejar
+$$ \sage{X} = \sage{PAE}^{-1} \sage{PBE} = \sage{PAE^-1 * PBE}$$
+donde $a,b \in {\mathbb Z}_5$, que es la solución al problema.
+
+% Fin del Ejercicio 2
+
+\begin{ejer}
+Calcula todas las matrices $X$ sobre ${\mathbb Z}_5$ tales que $AXC = B$ siendo
+
+\begin{sageblock}
+A =  matrix(Zmod(5),[[2,1],
+[2,1],
+[2,1],
+[3,4]])
+B =  matrix(Zmod(5),[[4,3,2],
+[4,3,2],
+[4,3,2],
+[1,2,3]])
+C =  matrix(Zmod(5),[[4,3,2],
+[1,3,2],
+[4,1,4],
+[2,3,2],
+[4,3,2]])
+\end{sageblock}
+
+$$ A = \sage{A} \quad C = \sage{C} \quad B = \sage{B} $$
+\end{ejer}
+
+{\it Solución:} 
+
+% Escribe tu solución para el Ejercicio 3
+
+Empecemos determinando el tamaño de $X$. Puesto que $X$ se tiene que poder
+multiplicar por la derecha por $A$ deberá tener $2$ filas y como se tiene que
+poder multiplicar por la izquierda por $C$ tendrá que tener $5$ columnas.
+
+\begin{sageblock}
+Pol = PolynomialRing(Zmod(5),10,'x')
+X = matrix(Pol,2,5,Pol.gens())
+\end{sageblock}
+
+La ecuación nos queda:
+$$ \sage{A} \sage{X} \sage{C} = \sage{B}$$
+
+Empecemos despejando la parte izquierda. Para ello hacemos la reducción
+
+\begin{sageblock}
+M1 = block_matrix([[A,1]])
+R1 = M1.echelon_form()
+P1 = R1.subdivision(0,1)
+P1A = P1*A
+P1B = P1*B
+P1A.subdivide(1,[])
+P1B.subdivide(1,[])
+\end{sageblock}
+
+$$\sage{P1A} \sage{X} \sage{C} = \sage{P1B} $$
+
+Tenemos tres filas de ceros en la primera matriz que se corresponderá con tres 
+fila de ceros en la parte derecha. Como esas filas están efectivamente en la parte
+derecha, el sistema de momento es compatible. 
+Vamos a eliminar esas fila de ceros tanto en la parte
+izquierda como en la derecha puesto que no aportan información adicional.
+
+\begin{sageblock}
+P1A0 = P1A.subdivision(0,0)
+P1B0 = P1B.subdivision(0,0)
+\end{sageblock}
+
+$$\sage{P1A0} \sage{X} \sage{C} = \sage{P1B0} $$
+
+Antes de empezar a meter parámetros libres, debemos despejar también las filas
+de ceros de la parte derecha, para ello tomaremos traspuestas y pondremos
+el sistema de la forma 
+
+$$\sage{C.T} \sage{X.T} \sage{P1A0.T} = \sage{P1B0.T} $$
+
+Repetiremos el proceso por este lado reduciendo la matriz de la izquierda.
+
+\begin{sageblock}
+A = C.T
+B = P1B0.T
+C = P1A0.T
+M1 = block_matrix([[A,1]])
+R1 = M1.echelon_form()
+P1 = R1.subdivision(0,1)
+P1A = P1*A
+P1B = P1*B
+P1A.subdivide(2,[])
+P1B.subdivide(2,[])
+\end{sageblock}
+
+$$\sage{P1A} \sage{X.T} \sage{C} = \sage{P1B} $$
+
+Como podemos observar, en este caso también nos sale una fila de ceros en la 
+parte inferior de ambos miembros (si no fuera así el sistema sería incompatible).
+Vamos a eliminar esta información redundante y dejar la ecuación del siguiente modo:
+
+\begin{sageblock}
+P1A0 = P1A.subdivision(0,0)
+P1B0 = P1B.subdivision(0,0)
+\end{sageblock}
+
+$$\sage{P1A0} \sage{X.T} \sage{C} = \sage{P1B0} $$
+
+Para añadir los pivotes que nos faltan en la parte izquierda necesitamos 
+tres filas nuevas y para añadir los pivotes en la parte derecha necesitaríamos
+una columna nueva. Eso hace que tengamos que convertir la matriz de la parte 
+derecha en una matriz de 5 filas y 2 columnas usando parámetros libres. El 
+número de parámetros es $10-2 = 8$ parámetros. 
+
+\begin{sageblock}
+Pivotes1 = matrix(Zmod(5),[[0,0,1,0,0],[0,0,0,1,0],[0,0,0,0,1]])
+Pivotes2 = matrix(Zmod(5),[[0],[1]])
+Pol2.<a,b,c,d,e,f,g,h> = PolynomialRing(Zmod(5))
+BB = matrix(Pol2,[[P1B0[0,0],a],
+                  [P1B0[1,0],b],
+                  [c,d],
+                  [e,f],
+                  [g,h]])
+BB.subdivide(2,1)
+P1A0E = block_matrix([[P1A0],[Pivotes1]])
+CE = block_matrix([[C,Pivotes2]])
+Sol = (P1A0E^-1 * BB * CE^-1).T
+\end{sageblock}
+
+$$\sage{P1A0E} \sage{X.T} \sage{CE} = \sage{BB} $$
+
+De ahí podemos ya despejar el valor de $X$ que será
+
+$$\sage{X.T} = 
+\sage{P1A0E}^{-1} \sage{BB} \sage{CE}^{-1} $$
+$$ = \sage{Sol.T}$$
+donde $a,b,c,d,e,f,g$ y $h$ son parámetros libres. Tomando traspuestas nos sale
+$$ X = \sage{X} =$$ $$ \sage{Sol} $$
+y podemos comprobar que el resultado es correcto haciendo el producto 
+original:
+
+\begin{sageblock}
+A =  matrix(Zmod(5),[[2,1],
+[2,1],
+[2,1],
+[3,4]])
+B =  matrix(Zmod(5),[[4,3,2],
+[4,3,2],
+[4,3,2],
+[1,2,3]])
+C =  matrix(Zmod(5),[[4,3,2],
+[1,3,2],
+[4,1,4],
+[2,3,2],
+[4,3,2]])
+\end{sageblock}
+
+$$ AX = \sage{A} \sage{Sol}$$ $$ = \sage{A*Sol}; $$
+$$ AXC = \sage{A*Sol} \sage{C} = \sage{A*Sol*C} = B. $$
+% Fin del Ejercicio 3
+
+\begin{ejer}
+Calcula todas las matrices $X$ sobre ${\mathbb Z}_5$ tales que $AX = B$ siendo
+
+\begin{sageblock}
+A =  matrix(Zmod(5),[[4,2,0,1,1],
+[4,2,0,1,1],
+[2,1,3,2,3]])
+B =  matrix(Zmod(5),[[1,3],
+[1,3],
+[2,4]])
+\end{sageblock}
+
+$$ A = \sage{A} \quad B = \sage{B} $$
+\end{ejer}
+
+{\it Solución:} 
+
+% Escribe tu solución para el Ejercicio 4
+
+% Fin del Ejercicio 4
+
+\begin{ejer}
+Calcula todas las matrices $X$ sobre ${\mathbb Z}_5$ tales que $AX = B$ siendo
+
+\begin{sageblock}
+A =  matrix(Zmod(5),[[2,4,1,1,4],
+[0,3,2,2,4],
+[2,4,0,2,0],
+[3,4,1,1,0]])
+B =  matrix(Zmod(5),[[3,0],
+[4,2],
+[0,0],
+[1,2]])
+\end{sageblock}
+
+$$ A = \sage{A} \quad B = \sage{B} $$
+\end{ejer}
+
+{\it Solución:} 
+
+% Escribe tu solución para el Ejercicio 5
+
+% Fin del Ejercicio 5
+
+\begin{ejer}
+Calcula todas las matrices $X$ sobre ${\mathbb Z}_5$ tales que $AX = B$ siendo
+
+\begin{sageblock}
+A =  matrix(Zmod(5),[[3,2,1,1],
+[1,4,0,1],
+[2,3,4,4],
+[4,0,4,4]])
+B =  matrix(Zmod(5),[[4,4],
+[3,1],
+[1,1],
+[1,0]])
+\end{sageblock}
+
+$$ A = \sage{A} \quad B = \sage{B} $$
+\end{ejer}
+
+{\it Solución:} 
+
+% Escribe tu solución para el Ejercicio 6
+
+% Fin del Ejercicio 6
+
+\begin{ejer}
+Calcula todas las matrices $X$ sobre ${\mathbb Z}_5$ tales que $XC = B$ siendo
+
+\begin{sageblock}
+B =  matrix(Zmod(5),[[1,4,1],
+[3,3,0]])
+C =  matrix(Zmod(5),[[0,1,2],
+[1,2,2],
+[1,1,0]])
+\end{sageblock}
+
+$$ C = \sage{C} \quad B = \sage{B} $$
+\end{ejer}
+
+{\it Solución:} 
+
+% Escribe tu solución para el Ejercicio 7
+
+% Fin del Ejercicio 7
+
+\begin{ejer}
+Calcula todas las matrices $X$ sobre ${\mathbb Z}_5$ tales que $XC = B$ siendo
+
+\begin{sageblock}
+B =  matrix(Zmod(5),[[4,3,1],
+[3,1,2],
+[1,4,3]])
+C =  matrix(Zmod(5),[[4,1,2],
+[2,1,2],
+[4,4,3]])
+\end{sageblock}
+
+$$ C = \sage{C} \quad B = \sage{B} $$
+\end{ejer}
+
+{\it Solución:} 
+
+% Escribe tu solución para el Ejercicio 8
+
+% Fin del Ejercicio 8
+
+\begin{ejer}
+Calcula todas las matrices $X$ sobre ${\mathbb Z}_5$ tales que $AXC = B$ siendo
+
+\begin{sageblock}
+A =  matrix(Zmod(5),[[1,4,0,1],
+[4,1,2,1],
+[0,1,3,1],
+[0,3,3,2]])
+B =  matrix(Zmod(5),[[2,0,2],
+[2,2,0],
+[1,3,3],
+[1,3,3]])
+C =  matrix(Zmod(5),[[1,3,3],
+[3,1,2],
+[3,3,0]])
+\end{sageblock}
+
+$$ A = \sage{A} \quad C = \sage{C} \quad B = \sage{B} $$
+\end{ejer}
+
+{\it Solución:} 
+
+% Escribe tu solución para el Ejercicio 9
+
+% Fin del Ejercicio 9
+
+\end{document}
+
