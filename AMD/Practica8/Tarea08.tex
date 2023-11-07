@@ -1,5 +1,6 @@
 \documentclass{amsart}
 \usepackage[usefamily=sage]{pythontex} 
+%\usepackage{sagetex} 
 \usepackage{float}
 \usepackage{tikz}
 \usetikzlibrary{calc}
@@ -28,6 +29,26 @@ Construye la bandera de Chile con la especificaciones indicadas el el siguiente 
 
 % Escribe tu solución para el ejercicio 4
 
+\begin{sageblock}
+beta = 2*pi/5
+r = 0.5
+RM = matrix(RR, [[cos(beta), -sin(beta)], [sin(beta), cos(beta)]])
 
+V = [(RM^i * vector([0, 1]) * r) + vector([1, 3]) for i in range(5)]
+\end{sageblock}
+
+$$
+\sage{V}
+$$
+
+\begin{sagesub}
+\begin{tikzpicture}
+\fill[color = blue] (0, 2) -- (0, 4) -- (2, 4) -- (2, 2);
+\fill[color = white] (2, 2) -- (2, 4) -- (6, 4) -- (6, 2);
+\fill[color = red] (0, 0) -- (6, 0) -- (6, 2) -- (0, 2);
+
+\fill[color = white] !{V[0]} -- !{V[3]} -- !{V[1]} -- !{V[4]} -- !{V[2]} -- !{V[0]} -- cycle;
+\end{tikzpicture}
+\end{sagesub}
 
 \end{document}

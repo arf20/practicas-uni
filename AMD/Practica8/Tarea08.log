@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.10.10)  6 NOV 2023 00:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.10.10)  7 NOV 2023 13:32
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -723,26 +723,26 @@ File: l3backend-pdftex.def 2023-01-16 L3 backend support: PDF output (pdfTeX)
 (./Tarea08.aux)
 \openout1 = `Tarea08.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
-LaTeX Font Info:    ... okay on input line 14.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 14.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 15.
 
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 14.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 15.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
@@ -750,12 +750,12 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package newfloat Info: `float' package detected.
 
-No file pythontex-files-Tarea08/Tarea08.pytxmcr.
-Run PythonTeX to create it.
+(./pythontex-files-Tarea08/Tarea08.pytxmcr)
 Package newfloat Info: New float `listing' with options `fileext=lopytx' on inp
-ut line 14.
+ut line 15.
 \c@listing=\count351
-Package newfloat Info: float type `listing'=4 on input line 14.
+Package newfloat Info: float type `listing'=4 on input line 15.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count352
@@ -817,28 +817,41 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
+(./pythontex-files-Tarea08/Tarea08.pytxpyg)
 <Chile.png, id=41, 1284.8pt x 892.33376pt>
 File: Chile.png Graphic file (type png)
 <use Chile.png>
-Package pdftex.def Info: Chile.png  used on input line 22.
+Package pdftex.def Info: Chile.png  used on input line 23.
 (pdftex.def)             Requested size: 341.43306pt x 237.13449pt.
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./Chile.png>]
-(./Tarea08.aux) ) 
+\c@pytx@sage@default@default@line=\count359
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 38.
+
+Overfull \hbox (386.74011pt too wide) detected at line 42
+[]
+ []
+
+(./pythontex-files-Tarea08/sage_default_default_2.stdout) [1{/var/lib/texmf/fon
+ts/map/pdftex/updmap/pdftex.map} <./Chile.png>] (./Tarea08.aux) ) 
 Here is how much of TeX's memory you used:
- 23773 strings out of 477975
- 507543 string characters out of 5839280
- 1852330 words of memory out of 5000000
- 43353 multiletter control sequences out of 15000+600000
- 516686 words of font info for 49 fonts, out of 8000000 for 9000
+ 24017 strings out of 477975
+ 511377 string characters out of 5839280
+ 1854330 words of memory out of 5000000
+ 43588 multiletter control sequences out of 15000+600000
+ 517908 words of font info for 55 fonts, out of 8000000 for 9000
  220 hyphenation exceptions out of 8191
- 110i,6n,106p,409b,281s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on Tarea08.pdf (1 page, 75247 bytes).
+ 110i,6n,106p,941b,409s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmtt10.pfb>
+Output written on Tarea08.pdf (1 page, 109624 bytes).
 PDF statistics:
- 63 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 78 PDF objects out of 1000 (max. 8388607)
+ 37 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  162 words of extra memory for PDF output out of 10000 (max. 10000000)
 
