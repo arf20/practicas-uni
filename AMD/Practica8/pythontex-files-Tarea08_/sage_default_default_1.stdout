@@ -1,0 +1,13 @@
+	\begin{center}
+		\begin{tikzpicture}[x = 0.25cm, y = 0.25cm]
+			\node (A) at (0, 0) {$A$};
+			\node (B) at (6, 0) {$B$};
+			\node (C) at (6, 2) {$C$};
+			\node (D) at (6, 4) {$D$};
+			\node (E) at (2, 4) {$E$};
+			\node (F) at (0, 4) {$F$};
+			\node (G) at (0, 2) {$G$};
+			\node (H) at (2, 2) {$H$};
+			\draw (A) -- (B) -- (D) -- (F) -- (A);
+		\end{tikzpicture}
+	\end{center}

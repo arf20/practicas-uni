@@ -4,10 +4,8 @@ r = 0.5
 RM = matrix(RR, [[cos(beta), -sin(beta)], [sin(beta), cos(beta)]])
 
 V = [(RM^i * vector([0, 1]) * r) + vector([1, 3]) for i in range(5)]
-=>PYTHONTEX#sage#default#default#1#i#####41#
-V
-=>PYTHONTEX#sage#default#default#2#sub#####44#
-\begin{tikzpicture}
+=>PYTHONTEX#sage#default#default#1#sub#####40#
+\begin{tikzpicture}[x = 2cm, y = 2cm]
 \fill[color = blue] (0, 2) -- (0, 4) -- (2, 4) -- (2, 2);
 \fill[color = white] (2, 2) -- (2, 4) -- (6, 4) -- (6, 2);
 \fill[color = red] (0, 0) -- (6, 0) -- (6, 2) -- (0, 2);

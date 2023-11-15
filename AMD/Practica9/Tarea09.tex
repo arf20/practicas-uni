@@ -1,0 +1,197 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[usefamily=sage]{pythontex} 
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[most]{tcolorbox}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{graphicx}
+\usetikzlibrary{3d}
+\usepackage{tikz-3dplot}
+
+
+\newtheorem{ejer}{Ejercicio}
+
+\def\n{\mathbb{N}}
+\def\r{\mathbb{R}}
+\def\z{\mathbb{Z}}
+\def\q{\mathbb{Q}}
+\def\c{\mathbb{C}}
+
+\title{Tarea 10 AMD. Producto Escalar}
+
+\begin{document}
+
+\maketitle
+
+\begin{sagecode}
+latex.matrix_delimiters("[", "]")
+\end{sagecode}
+
+\begin{ejer}
+Para cada una de las rectas dadas, calcula un vector $v_1$ de la recta y dos vectores 
+$v_2$ y $v_3$ perpendiculares a la recta de forma que la base $B = \{v_1,v_2,v_3\}$ tenga 
+orientación positiva, normalízalos, píntalos en unos ejes coordenados y dibuja un cuadrado de 
+tamaño $4\times 4$ centrado en el origen con lados paralelos a los vectores $v_2$ y $v_3$.
+Para hacer los dibujos usa los siguientes ejes coordenados:
+
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 2, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-2.5,0,0) -- (2.5,0,0); % Eje X
+\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+
+\begin{enumerate}
+\item La recta $r$ dada por $\begin{cases} 2x+2y-z = 0 \\ x-y+3z = 0 \end{cases} $
+\item La recta $r$ dada por $x = 2\lambda, y = 0, z = -\lambda$ con $\lambda \in {\mathbb R}$.
+\end{enumerate}
+\end{ejer}
+
+{\it Solución}
+
+% Inicio Ejercicio 1
+
+$
+\begin{aligned}
+	z &= 0 \\
+	2x + 2y &= 0 \\
+	x - y &= 0 \\
+	x &= -y \\
+	2x + 2x &= 0 \\
+\end{aligned}$
+$P_0 = (0, 0, 0)$
+$\begin{aligned}
+	z &= 1 \\
+	2x + 2y - 1 &= 0 \\
+	x - y + 3 &= 0 \\
+	x &= -2y + 1 \\
+	-3y + 4 &= 0 \\
+	3y &= 4 \\
+	y &= \frac{4}{3} \\
+	x &= \frac{-5}{3}
+\end{aligned}$
+$P_1 = (\frac{-5}{3}, \frac{4}{3}, 1) \equiv (-5, 4, 3)$, $v_r = (-5, 4, 3)$
+
+\begin{sageblock}
+vr1 = vector(RR, [-5, 4, 3]).normalized()
+vr2 = vector(RR, [4, 5, 0]).normalized()
+vr3 = vr1.cross_product(vr2).normalized()
+B = block_matrix([[vr1.column(), vr2.column(), vr3.column()]])
+
+square = matrix(RR, [[0, 2, 2], [0, 2, -2], [0, -2, -2], [0, -2, 2]]).T
+squareB = [B * square.column(i) for i in range(4)]
+\end{sageblock}
+\pagebreak
+
+\begin{sagesub}
+	\begin{center}
+		\tdplotsetmaincoords{70}{110}
+		\begin{tikzpicture}[scale = 2, tdplot_main_coords,
+			cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+			\draw[->,thick,gray] (-2.5,0,0) -- (2.5,0,0); % Eje X
+			\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
+			\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
+			
+			\draw[->,thick,red] (0,0,0) -- !{vr1};
+			\draw[->,thick,black] (0,0,0) -- !{vr2};
+			\draw[->,thick,black] (0,0,0) -- !{vr3};
+			
+			\draw[->,thick,blue] !{squareB[0]} -- !{squareB[1]};
+			\draw[->,thick,blue] !{squareB[1]} -- !{squareB[2]};
+			\draw[->,thick,blue] !{squareB[2]} -- !{squareB[3]};
+			\draw[->,thick,blue] !{squareB[3]} -- !{squareB[0]};
+		\end{tikzpicture}
+	\end{center}
+\end{sagesub}
+
+% Fin del Ejercicio 1
+
+\begin{ejer}
+Dado el espacio $W = N(H) \leq \r^5$, donde
+
+\begin{sageblock}
+H=matrix(QQ,[[-1,-1,1,0,2],[2,0,1,1,0]])
+\end{sageblock}
+
+\[ H = \sage{H}.\] 
+
+Calcula una base de $W$ y obtén una base ortonormal a partir de ella utilizando el método de Gram-Schmidt.
+\end{ejer}
+
+{\it Solución:}
+
+% Inicio Ejercicio 2
+
+\begin{sageblock}
+HtI = block_matrix([[H.T, 1]])
+HtIr = HtI.echelon_form()
+HtIr = copy(HtIr)
+HtIr.subdivide(2, 2)
+A = HtIr.subdivision(1, 1).T
+Ar = A.echelon_form()
+\end{sageblock}
+
+$$
+	[H^T|I] = \sage{HtI} \to \sage{HtIr}
+$$
+
+$$
+	A = \sage{A} \to \sage{Ar}
+$$
+A es una base de $W$
+% Fin Ejercicio 2
+
+
+\begin{ejer} 
+Calcula la parábola que mejor se ajusta a los datos que se proporcionan a continuación:
+\begin{sageblock}
+XY = matrix(RR,[[ 0.9791609077659043 ,  -0.430715356970999 ],
+                [ 1.5250083079649113 ,  0.061165657369748695 ],
+                [ 2.7989027102112827 ,  -0.5015548718775755 ],
+                [ 1.912158417289881 ,  0.24440901271557722 ],
+                [ 0.8205530309864537 ,  -0.42261180235811696 ],
+                [ 1.914008178794904 ,  -0.17482280182386326 ],
+                [ 3.0850261801730925 ,  -1.0104522969296543 ],
+                [ 0.15356067616723457 ,  -1.7711019287922931 ],
+                [ 2.0952887890653016 ,  0.03975209722972092 ],
+                [ 2.514022662217597 ,  -0.6049726172196987 ]])
+
+X = XY.column(0)
+Y = XY.column(1)
+\end{sageblock}
+
+La representación gráfica de estos puntos es:
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+%\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+%  plot(\x,{3.14+2.52*\x+1.22*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+
+\end{ejer} 
+
+{\it Solución:}
+
+% Inicio Ejercicio 3
+
+% Fin Ejercicio 3
+
+
+
+\end{document}

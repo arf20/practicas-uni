@@ -1,0 +1,109 @@
+=>PYTHONTEX#sage#default#default#0#code#####28#
+latex.matrix_delimiters("[", "]")
+=>PYTHONTEX#sage#default#default#1#sub#####39#
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 2, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-2.5,0,0) -- (2.5,0,0); % Eje X
+\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#2#block#####83#
+vr1 = vector(RR, [-5, 4, 3]).normalized()
+vr2 = vector(RR, [4, 5, 0]).normalized()
+vr3 = vr1.cross_product(vr2).normalized()
+B = block_matrix([[vr1.column(), vr2.column(), vr3.column()]])
+
+square = matrix(RR, [[0, 2, 2], [0, 2, -2], [0, -2, -2], [0, -2, 2]]).T
+squareB = [B * square.column(i) for i in range(4)]
+=>PYTHONTEX#sage#default#default#3#sub#####94#
+	\begin{center}
+		\tdplotsetmaincoords{70}{110}
+		\begin{tikzpicture}[scale = 2, tdplot_main_coords,
+			cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+			\draw[->,thick,gray] (-2.5,0,0) -- (2.5,0,0); % Eje X
+			\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
+			\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
+			
+			\draw[->,thick,red] (0,0,0) -- !{vr1};
+			\draw[->,thick,black] (0,0,0) -- !{vr2};
+			\draw[->,thick,black] (0,0,0) -- !{vr3};
+			
+			\draw[->,thick,blue] !{squareB[0]} -- !{squareB[1]};
+			\draw[->,thick,blue] !{squareB[1]} -- !{squareB[2]};
+			\draw[->,thick,blue] !{squareB[2]} -- !{squareB[3]};
+			\draw[->,thick,blue] !{squareB[3]} -- !{squareB[0]};
+		\end{tikzpicture}
+	\end{center}
+=>PYTHONTEX#sage#default#default#4#block#####120#
+H=matrix(QQ,[[-1,-1,1,0,2],[2,0,1,1,0]])
+=>PYTHONTEX#sage#default#default#5#i#####124#
+H
+=>PYTHONTEX#sage#default#default#6#block#####133#
+HtI = block_matrix([[H.T, 1]])
+HtIr = HtI.echelon_form()
+HtIr = copy(HtIr)
+HtIr.subdivide(2, 2)
+A = HtIr.subdivision(1, 1).T
+Ar = A.echelon_form()
+=>PYTHONTEX#sage#default#default#7#i#####143#
+HtI
+=>PYTHONTEX#sage#default#default#8#i#####143#
+HtIr
+=>PYTHONTEX#sage#default#default#9#i#####147#
+A
+=>PYTHONTEX#sage#default#default#10#i#####147#
+Ar
+=>PYTHONTEX#sage#default#default#11#block#####155#
+XY = matrix(RR,[[ 0.9791609077659043 ,  -0.430715356970999 ],
+                [ 1.5250083079649113 ,  0.061165657369748695 ],
+                [ 2.7989027102112827 ,  -0.5015548718775755 ],
+                [ 1.912158417289881 ,  0.24440901271557722 ],
+                [ 0.8205530309864537 ,  -0.42261180235811696 ],
+                [ 1.914008178794904 ,  -0.17482280182386326 ],
+                [ 3.0850261801730925 ,  -1.0104522969296543 ],
+                [ 0.15356067616723457 ,  -1.7711019287922931 ],
+                [ 2.0952887890653016 ,  0.03975209722972092 ],
+                [ 2.514022662217597 ,  -0.6049726172196987 ]])
+
+X = XY.column(0)
+Y = XY.column(1)
+=>PYTHONTEX#sage#default#default#12#sub#####173#
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+%\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+%  plot(\x,{3.14+2.52*\x+1.22*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX:SETTINGS#
+version=0.18
+outputdir=pythontex-files-Tarea09
+workingdir=.
+workingdirset=false
+gobble=none
+rerun=default
+hashdependencies=default
+makestderr=false
+stderrfilename=full
+keeptemps=none
+pyfuture=default
+pyconfuture=none
+pygments=true
+pygglobal=:GLOBAL||
+fvextfile=-1
+pyconbanner=none
+pyconfilename=stdin
+depythontex=false
+pygfamily=py|python3|
+pygfamily=pycon|pycon|
+pygfamily=sympy|python3|
+pygfamily=sympycon|pycon|
+pygfamily=pylab|python3|
+pygfamily=pylabcon|pycon|
+pygfamily=sage|sage|

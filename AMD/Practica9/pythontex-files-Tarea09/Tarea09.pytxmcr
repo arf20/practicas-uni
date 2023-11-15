@@ -1,0 +1,45 @@
+%Last time of file creation:  1700047420.915553
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@5}
+\left[\begin{array}{rrrrr}
+-1 & -1 & 1 & 0 & 2 \\
+2 & 0 & 1 & 1 & 0
+\end{array}\right]\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@7}
+\left[\begin{array}{rr|rrrrr}
+-1 & 2 & 1 & 0 & 0 & 0 & 0 \\
+-1 & 0 & 0 & 1 & 0 & 0 & 0 \\
+1 & 1 & 0 & 0 & 1 & 0 & 0 \\
+0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+2 & 0 & 0 & 0 & 0 & 0 & 1
+\end{array}\right]\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@8}
+\left[\begin{array}{rr|rrrrr}
+1 & 0 & 0 & 0 & 0 & 0 & \frac{1}{2} \\
+0 & 1 & 0 & 0 & 0 & 1 & 0 \\
+\hline
+ 0 & 0 & 1 & 0 & 0 & -2 & \frac{1}{2} \\
+0 & 0 & 0 & 1 & 0 & 0 & \frac{1}{2} \\
+0 & 0 & 0 & 0 & 1 & -1 & -\frac{1}{2}
+\end{array}\right]\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@9}
+\left[\begin{array}{rrr}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+-2 & 0 & -1 \\
+\frac{1}{2} & \frac{1}{2} & -\frac{1}{2}
+\end{array}\right]\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@10}
+\left[\begin{array}{rrr}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{array}\right]\endpytx@SVMCR
+

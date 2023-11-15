@@ -1,0 +1,49 @@
+=>PYTHONTEX#sage#default#default#0#block#####32#
+A = vector([0,0])
+B = vector([6,0])
+C = vector([6,2])
+D = vector([6,4])
+E = vector([2,4])
+F = vector([0,4])
+G = vector([0,2])
+H = vector([2,2])
+=>PYTHONTEX#sage#default#default#1#sub#####43#
+	\begin{center}
+		\begin{tikzpicture}[x = 0.25cm, y = 0.25cm]
+			\node (A) at !{A} {$A$};
+			\node (B) at !{B} {$B$};
+			\node (C) at !{C} {$C$};
+			\node (D) at !{D} {$D$};
+			\node (E) at !{E} {$E$};
+			\node (F) at !{F} {$F$};
+			\node (G) at !{G} {$G$};
+			\node (H) at !{H} {$H$};
+			\draw (A) -- (B) -- (D) -- (F) -- (A);
+		\end{tikzpicture}
+	\end{center}
+=>PYTHONTEX:SETTINGS#
+version=0.18
+outputdir=pythontex-files-Tarea08_
+workingdir=.
+workingdirset=false
+gobble=none
+rerun=default
+hashdependencies=default
+makestderr=false
+stderrfilename=full
+keeptemps=none
+pyfuture=default
+pyconfuture=none
+pygments=true
+pygglobal=:GLOBAL||
+fvextfile=-1
+pyconbanner=none
+pyconfilename=stdin
+depythontex=false
+pygfamily=py|python3|
+pygfamily=pycon|pycon|
+pygfamily=sympy|python3|
+pygfamily=sympycon|pycon|
+pygfamily=pylab|python3|
+pygfamily=pylabcon|pycon|
+pygfamily=sage|sage|
