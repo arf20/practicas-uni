@@ -1,12 +1,15 @@
-%Last time of file creation:  1700047420.915553
+%Last time of file creation:  1700160220.549565
 
-\pytx@SVMCR{pytx@MCR@sage@default@default@5}
+\pytx@SVMCR{pytx@MCR@sage@default@default@3}
+\left(5.00000000000000,\,-7.00000000000000,\,-4.00000000000000\right)\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@6}
 \left[\begin{array}{rrrrr}
 -1 & -1 & 1 & 0 & 2 \\
 2 & 0 & 1 & 1 & 0
 \end{array}\right]\endpytx@SVMCR
 
-\pytx@SVMCR{pytx@MCR@sage@default@default@7}
+\pytx@SVMCR{pytx@MCR@sage@default@default@8}
 \left[\begin{array}{rr|rrrrr}
 -1 & 2 & 1 & 0 & 0 & 0 & 0 \\
 -1 & 0 & 0 & 1 & 0 & 0 & 0 \\
@@ -15,7 +18,7 @@
 2 & 0 & 0 & 0 & 0 & 0 & 1
 \end{array}\right]\endpytx@SVMCR
 
-\pytx@SVMCR{pytx@MCR@sage@default@default@8}
+\pytx@SVMCR{pytx@MCR@sage@default@default@9}
 \left[\begin{array}{rr|rrrrr}
 1 & 0 & 0 & 0 & 0 & 0 & \frac{1}{2} \\
 0 & 1 & 0 & 0 & 0 & 1 & 0 \\
@@ -25,7 +28,7 @@
 0 & 0 & 0 & 0 & 1 & -1 & -\frac{1}{2}
 \end{array}\right]\endpytx@SVMCR
 
-\pytx@SVMCR{pytx@MCR@sage@default@default@9}
+\pytx@SVMCR{pytx@MCR@sage@default@default@10}
 \left[\begin{array}{rrr}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
@@ -34,7 +37,7 @@
 \frac{1}{2} & \frac{1}{2} & -\frac{1}{2}
 \end{array}\right]\endpytx@SVMCR
 
-\pytx@SVMCR{pytx@MCR@sage@default@default@10}
+\pytx@SVMCR{pytx@MCR@sage@default@default@11}
 \left[\begin{array}{rrr}
 1 & 0 & 0 \\
 0 & 1 & 0 \\
@@ -42,4 +45,22 @@
 0 & 0 & 0 \\
 0 & 0 & 0
 \end{array}\right]\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@12}
+\left(1,\,0,\,0,\,-2,\,\frac{1}{2}\right)\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@13}
+\left(0,\,1,\,0,\,0,\,\frac{1}{2}\right)\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@14}
+\left(0,\,0,\,1,\,-1,\,-\frac{1}{2}\right)\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@15}
+\left(1,\,0,\,0,\,-2,\,\frac{1}{2}\right)\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@16}
+\left(-\frac{1}{21},\,1,\,0,\,\frac{2}{21},\,\frac{10}{21}\right)\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@17}
+\left(-\frac{9}{26},\,\frac{7}{26},\,1,\,-\frac{4}{13},\,-\frac{7}{13}\right)\endpytx@SVMCR
 

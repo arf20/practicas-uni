@@ -10,15 +10,21 @@ latex.matrix_delimiters("[", "]")
 \draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
 \end{tikzpicture}
 \end{center}
-=>PYTHONTEX#sage#default#default#2#block#####83#
-vr1 = vector(RR, [-5, 4, 3]).normalized()
-vr2 = vector(RR, [4, 5, 0]).normalized()
-vr3 = vr1.cross_product(vr2).normalized()
-B = block_matrix([[vr1.column(), vr2.column(), vr3.column()]])
+=>PYTHONTEX#sage#default#default#2#block#####62#
+n1 = vector(RR, [2, 2, -1])
+n2 = vector(RR, [1, -1, 3])
+vr = n1.cross_product(n2)
+
+v1 = vr.normalized()
+v2 = vector(RR, [vr[1], -vr[0], 0]).normalized()
+v3 = v1.cross_product(v2).normalized()
+B = block_matrix([[v1.column(), v2.column(), v3.column()]])
 
 square = matrix(RR, [[0, 2, 2], [0, 2, -2], [0, -2, -2], [0, -2, 2]]).T
 squareB = [B * square.column(i) for i in range(4)]
-=>PYTHONTEX#sage#default#default#3#sub#####94#
+=>PYTHONTEX#sage#default#default#3#i#####77#
+vr
+=>PYTHONTEX#sage#default#default#4#sub#####82#
 	\begin{center}
 		\tdplotsetmaincoords{70}{110}
 		\begin{tikzpicture}[scale = 2, tdplot_main_coords,
@@ -27,36 +33,55 @@ squareB = [B * square.column(i) for i in range(4)]
 			\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
 			\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
 			
-			\draw[->,thick,red] (0,0,0) -- !{vr1};
-			\draw[->,thick,black] (0,0,0) -- !{vr2};
-			\draw[->,thick,black] (0,0,0) -- !{vr3};
+			\draw[->,thick,red] (0,0,0) -- !{v1};
+			\draw[->,thick,black] (0,0,0) -- !{v2};
+			\draw[->,thick,black] (0,0,0) -- !{v3};
 			
-			\draw[->,thick,blue] !{squareB[0]} -- !{squareB[1]};
-			\draw[->,thick,blue] !{squareB[1]} -- !{squareB[2]};
-			\draw[->,thick,blue] !{squareB[2]} -- !{squareB[3]};
-			\draw[->,thick,blue] !{squareB[3]} -- !{squareB[0]};
+			%\draw[->,thick,blue] !{squareB[0]} -- !{squareB[1]};
+			%\draw[->,thick,blue] !{squareB[1]} -- !{squareB[2]};
+			%\draw[->,thick,blue] !{squareB[2]} -- !{squareB[3]};
+			%\draw[->,thick,blue] !{squareB[3]} -- !{squareB[0]};
+			\filldraw[cara] !{squareB[0]} -- !{squareB[1]} -- !{squareB[2]} -- !{squareB[3]} -- !{squareB[0]};
 		\end{tikzpicture}
 	\end{center}
-=>PYTHONTEX#sage#default#default#4#block#####120#
+=>PYTHONTEX#sage#default#default#5#block#####109#
 H=matrix(QQ,[[-1,-1,1,0,2],[2,0,1,1,0]])
-=>PYTHONTEX#sage#default#default#5#i#####124#
+=>PYTHONTEX#sage#default#default#6#i#####113#
 H
-=>PYTHONTEX#sage#default#default#6#block#####133#
+=>PYTHONTEX#sage#default#default#7#block#####122#
 HtI = block_matrix([[H.T, 1]])
 HtIr = HtI.echelon_form()
 HtIr = copy(HtIr)
 HtIr.subdivide(2, 2)
 A = HtIr.subdivision(1, 1).T
 Ar = A.echelon_form()
-=>PYTHONTEX#sage#default#default#7#i#####143#
+v1 = A.column(0)
+v2 = A.column(1)
+v3 = A.column(2)
+w1 = v1
+w2 = v2 - (((v2.dot_product(w1))/(w1.dot_product(w1))) * w1)
+w3 = v3 - (((v3.dot_product(w1))/(w1.dot_product(w1))) * w1) - (((v3.dot_product(w2))/(w2.dot_product(w2))) * w2)
+=>PYTHONTEX#sage#default#default#8#i#####138#
 HtI
-=>PYTHONTEX#sage#default#default#8#i#####143#
+=>PYTHONTEX#sage#default#default#9#i#####138#
 HtIr
-=>PYTHONTEX#sage#default#default#9#i#####147#
+=>PYTHONTEX#sage#default#default#10#i#####142#
 A
-=>PYTHONTEX#sage#default#default#10#i#####147#
+=>PYTHONTEX#sage#default#default#11#i#####142#
 Ar
-=>PYTHONTEX#sage#default#default#11#block#####155#
+=>PYTHONTEX#sage#default#default#12#i#####147#
+v1
+=>PYTHONTEX#sage#default#default#13#i#####147#
+v2
+=>PYTHONTEX#sage#default#default#14#i#####147#
+v3
+=>PYTHONTEX#sage#default#default#15#i#####149#
+w1
+=>PYTHONTEX#sage#default#default#16#i#####150#
+w2
+=>PYTHONTEX#sage#default#default#17#i#####151#
+w3
+=>PYTHONTEX#sage#default#default#18#block#####158#
 XY = matrix(RR,[[ 0.9791609077659043 ,  -0.430715356970999 ],
                 [ 1.5250083079649113 ,  0.061165657369748695 ],
                 [ 2.7989027102112827 ,  -0.5015548718775755 ],
@@ -70,7 +95,7 @@ XY = matrix(RR,[[ 0.9791609077659043 ,  -0.430715356970999 ],
 
 X = XY.column(0)
 Y = XY.column(1)
-=>PYTHONTEX#sage#default#default#12#sub#####173#
+=>PYTHONTEX#sage#default#default#19#sub#####176#
 \begin{center}
 \begin{tikzpicture}
 \foreach \p in !{set(XY.rows())}

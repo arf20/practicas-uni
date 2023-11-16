@@ -59,36 +59,24 @@ Para hacer los dibujos usa los siguientes ejes coordenados:
 
 % Inicio Ejercicio 1
 
-$
-\begin{aligned}
-	z &= 0 \\
-	2x + 2y &= 0 \\
-	x - y &= 0 \\
-	x &= -y \\
-	2x + 2x &= 0 \\
-\end{aligned}$
-$P_0 = (0, 0, 0)$
-$\begin{aligned}
-	z &= 1 \\
-	2x + 2y - 1 &= 0 \\
-	x - y + 3 &= 0 \\
-	x &= -2y + 1 \\
-	-3y + 4 &= 0 \\
-	3y &= 4 \\
-	y &= \frac{4}{3} \\
-	x &= \frac{-5}{3}
-\end{aligned}$
-$P_1 = (\frac{-5}{3}, \frac{4}{3}, 1) \equiv (-5, 4, 3)$, $v_r = (-5, 4, 3)$
-
 \begin{sageblock}
-vr1 = vector(RR, [-5, 4, 3]).normalized()
-vr2 = vector(RR, [4, 5, 0]).normalized()
-vr3 = vr1.cross_product(vr2).normalized()
-B = block_matrix([[vr1.column(), vr2.column(), vr3.column()]])
+n1 = vector(RR, [2, 2, -1])
+n2 = vector(RR, [1, -1, 3])
+vr = n1.cross_product(n2)
+
+v1 = vr.normalized()
+v2 = vector(RR, [vr[1], -vr[0], 0]).normalized()
+v3 = v1.cross_product(v2).normalized()
+B = block_matrix([[v1.column(), v2.column(), v3.column()]])
 
 square = matrix(RR, [[0, 2, 2], [0, 2, -2], [0, -2, -2], [0, -2, 2]]).T
 squareB = [B * square.column(i) for i in range(4)]
 \end{sageblock}
+
+Recta definida por dos planos cuyas normales son $n_1 = (2, 2, -1)$ $n_2 = (1, -1, 3)$
+El vector de la recta $v_r$ es perpendicular a las normales, $v_r = n_1 \times n_2 = \sage{vr}$
+
+
 \pagebreak
 
 \begin{sagesub}
@@ -100,14 +88,15 @@ squareB = [B * square.column(i) for i in range(4)]
 			\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
 			\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
 			
-			\draw[->,thick,red] (0,0,0) -- !{vr1};
-			\draw[->,thick,black] (0,0,0) -- !{vr2};
-			\draw[->,thick,black] (0,0,0) -- !{vr3};
+			\draw[->,thick,red] (0,0,0) -- !{v1};
+			\draw[->,thick,black] (0,0,0) -- !{v2};
+			\draw[->,thick,black] (0,0,0) -- !{v3};
 			
-			\draw[->,thick,blue] !{squareB[0]} -- !{squareB[1]};
-			\draw[->,thick,blue] !{squareB[1]} -- !{squareB[2]};
-			\draw[->,thick,blue] !{squareB[2]} -- !{squareB[3]};
-			\draw[->,thick,blue] !{squareB[3]} -- !{squareB[0]};
+			%\draw[->,thick,blue] !{squareB[0]} -- !{squareB[1]};
+			%\draw[->,thick,blue] !{squareB[1]} -- !{squareB[2]};
+			%\draw[->,thick,blue] !{squareB[2]} -- !{squareB[3]};
+			%\draw[->,thick,blue] !{squareB[3]} -- !{squareB[0]};
+			\filldraw[cara] !{squareB[0]} -- !{squareB[1]} -- !{squareB[2]} -- !{squareB[3]} -- !{squareB[0]};
 		\end{tikzpicture}
 	\end{center}
 \end{sagesub}
@@ -137,6 +126,12 @@ HtIr = copy(HtIr)
 HtIr.subdivide(2, 2)
 A = HtIr.subdivision(1, 1).T
 Ar = A.echelon_form()
+v1 = A.column(0)
+v2 = A.column(1)
+v3 = A.column(2)
+w1 = v1
+w2 = v2 - (((v2.dot_product(w1))/(w1.dot_product(w1))) * w1)
+w3 = v3 - (((v3.dot_product(w1))/(w1.dot_product(w1))) * w1) - (((v3.dot_product(w2))/(w2.dot_product(w2))) * w2)
 \end{sageblock}
 
 $$
@@ -147,6 +142,14 @@ $$
 	A = \sage{A} \to \sage{Ar}
 $$
 A es una base de $W$
+
+
+$v_1 = \sage{v1}$ $v_2 = \sage{v2}$ $v_3 = \sage{v3}$
+
+$$w_1 = v_1 = \sage{w1}$$
+$$w_2 = v_2 - \frac{v_2 \cdot w_1}{w_1 \cdot w_1} w1 = \sage{w2}$$
+$$w_3 = v_3 - \frac{v_3 \cdot w_1}{w_1 \cdot w_1} w1 - \frac{v_3 \cdot w_2}{w_2 \cdot w_2} w2 = \sage{w3}$$
+
 % Fin Ejercicio 2
 
 
