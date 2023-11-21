@@ -339,6 +339,73 @@ print(min(Y)-_sage_const_2 )
 print('=>PYTHONTEX:FIELD_DELIM#')
 print(max(Y)+_sage_const_2 )
 pytex.after()
+pytex.command = 'block'
+pytex.set_context('')
+pytex.args = ''
+pytex.instance = '20'
+pytex.line = '197'
+
+print('=>PYTHONTEX:STDOUT#20#block#')
+sys.stderr.write('=>PYTHONTEX:STDERR#20#block#\n')
+pytex.before()
+B = matrix([[_sage_const_1  for x in X],
+[x for x in X],
+[x**_sage_const_2  for x in X]]).T
+
+C = (B.T*B)**-_sage_const_1  * B.T * Y
+pytex.after()
+pytex.command = 'i'
+pytex.set_context('')
+pytex.args = ''
+pytex.instance = '21'
+pytex.line = '207'
+
+print('=>PYTHONTEX:STDOUT#21#i#')
+sys.stderr.write('=>PYTHONTEX:STDERR#21#i#\n')
+pytex.before()
+print(pytex.formatter(B))
+pytex.after()
+pytex.command = 'i'
+pytex.set_context('')
+pytex.args = ''
+pytex.instance = '22'
+pytex.line = '221'
+
+print('=>PYTHONTEX:STDOUT#22#i#')
+sys.stderr.write('=>PYTHONTEX:STDERR#22#i#\n')
+pytex.before()
+print(pytex.formatter(C))
+pytex.after()
+pytex.command = 'sub'
+pytex.set_context('')
+pytex.args = ''
+pytex.instance = '23'
+pytex.line = '225'
+
+print('=>PYTHONTEX:STDOUT#23#sub#')
+sys.stderr.write('=>PYTHONTEX:STDERR#23#sub#\n')
+pytex.before()
+print('=>PYTHONTEX:FIELD_DELIM#')
+print(set(XY.rows()))
+print('=>PYTHONTEX:FIELD_DELIM#')
+print(min(X)-_sage_const_p2 )
+print('=>PYTHONTEX:FIELD_DELIM#')
+print(max(X)+_sage_const_p2 )
+print('=>PYTHONTEX:FIELD_DELIM#')
+print(C[_sage_const_0 ])
+print('=>PYTHONTEX:FIELD_DELIM#')
+print(C[_sage_const_1 ])
+print('=>PYTHONTEX:FIELD_DELIM#')
+print(C[_sage_const_2 ])
+print('=>PYTHONTEX:FIELD_DELIM#')
+print(min(X)-_sage_const_2 )
+print('=>PYTHONTEX:FIELD_DELIM#')
+print(max(X)+_sage_const_2 )
+print('=>PYTHONTEX:FIELD_DELIM#')
+print(min(Y)-_sage_const_2 )
+print('=>PYTHONTEX:FIELD_DELIM#')
+print(max(Y)+_sage_const_2 )
+pytex.after()
 
 
 pytex.cleanup()

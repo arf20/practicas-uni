@@ -106,6 +106,27 @@ Y = XY.column(1)
 \draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
 \end{tikzpicture}
 \end{center}
+=>PYTHONTEX#sage#default#default#20#block#####196#
+B = matrix([[1 for x in X],
+[x for x in X],
+[x^2 for x in X]]).T
+
+C = (B.T*B)^-1 * B.T * Y
+=>PYTHONTEX#sage#default#default#21#i#####207#
+B
+=>PYTHONTEX#sage#default#default#22#i#####218#
+C
+=>PYTHONTEX#sage#default#default#23#sub#####221#
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+\filldraw[blue] \p circle (0.05);
+\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+  plot(\x,{!{C[0]}+!{C[1]}*\x+!{C[2]}*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
 =>PYTHONTEX:SETTINGS#
 version=0.18
 outputdir=pythontex-files-Tarea09

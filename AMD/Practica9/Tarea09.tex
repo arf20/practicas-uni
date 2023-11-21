@@ -193,6 +193,44 @@ La representación gráfica de estos puntos es:
 
 % Inicio Ejercicio 3
 
+\begin{sageblock}
+B = matrix([[1 for x in X],
+[x for x in X],
+[x^2 for x in X]]).T
+
+C = (B.T*B)^-1 * B.T * Y
+\end{sageblock}
+
+Parabola $y = c_0 + c_1 x + c_2 x^2$
+
+$$
+	B = \sage{B}
+$$
+
+$$
+	BC = Y
+$$
+$$
+	C = (B^TB)^{-1}B^TY
+$$
+
+$$
+	C = \sage{C}
+$$
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+\filldraw[blue] \p circle (0.05);
+\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+  plot(\x,{!{C[0]}+!{C[1]}*\x+!{C[2]}*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
 % Fin Ejercicio 3
 
 

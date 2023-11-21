@@ -1,0 +1,33 @@
+%Last time of file creation:  1700572722.2203605
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@2}
+-0.171527754943673 x - 0.886777920259044 y - 0.326362780186830 z\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@3}
+0.0162571041668937 x + 0.923172294747017 y + 0.586214584852305 z\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@4}
+\left[\begin{array}{r}
+0.717434104560504 \\
+0.503600818995866 \\
+0.274834075678966
+\end{array}\right]\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@6}
+\left(-0.218553073675754,\,0.0952463579412589,\,-0.143933230121602\right)\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@7}
+\left[\begin{array}{rr|rrr}
+1.00000000000000 & 0.000000000000000 & 0.000000000000000 & -2.68225275898895 & 4.22401881255003 \\
+0.000000000000000 & 1.00000000000000 & 0.000000000000000 & -1.49328844796309 & 4.05749461833088 \\
+\hline
+ 0.000000000000000 & 0.000000000000000 & 1.00000000000000 & -0.435804248091092 & 0.658573351089730
+\end{array}\right]\endpytx@SVMCR
+
+\pytx@SVMCR{pytx@MCR@sage@default@default@8}
+\left[\begin{array}{r}
+1.00000000000000 \\
+-0.435804248091092 \\
+0.658573351089730
+\end{array}\right]\endpytx@SVMCR
+
