@@ -22,24 +22,24 @@ column_matrix(b)
 w1 = vector(RR, H.row(0))
 w2 = vector(RR, H.row(1))
 vr = w1.cross_product(w2)
-b1 = w1.normalized()
-b2 = vr.normalized()
+b1 = vr.normalized()
+b2 = w1.normalized()
 b3 = vr.cross_product(w1).normalized()
-B = block_matrix([[b1.column(), b2.column(), b3.column()]])
+Bproj = block_matrix([[b1.column(), b2.column(), b3.column()]])
+Brot = block_matrix([[b2.column(), b3.column(), b1.column()]])
 
-HI = block_matrix([[H.T, 1]])
-HIr = HI.echelon_form()
-HIr = copy(HIr)
-HIr.subdivide(2, 2)
-A = HIr.subdivision(1, 1).T
-Av = vector(RR, A.column(0))
-=>PYTHONTEX#sage#default#default#6#i#####114#
+Mprojr = matrix(RR, [[1, 0, 0], [0, 0, 0], [0, 0, 0]])
+O = (Bproj * Mprojr * Bproj^-1) * b
+
+a = 2*pi/6
+Mrot = matrix(RR, [[cos(a), -sin(a), 0], [sin(a), cos(a), 0], [0, 0, 1]])
+V = [((Brot*Mrot^i*Brot^-1)*b) for i in range(6)]
+
+
+
+=>PYTHONTEX#sage#default#default#6#i#####118#
 vr
-=>PYTHONTEX#sage#default#default#7#i#####126#
-HIr
-=>PYTHONTEX#sage#default#default#8#i#####130#
-A
-=>PYTHONTEX#sage#default#default#9#sub#####147#
+=>PYTHONTEX#sage#default#default#7#sub#####134#
 
 
 \tdplotsetmaincoords{70}{110}
@@ -54,9 +54,20 @@ cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},]
 \draw[->,thick,red] (0,0,0) -- !{b2};
 \draw[->,thick,red] (0,0,0) -- !{b3};
 
-\draw[->,thick,blue] (0,0,0) -- !{b};
 
-\draw[->,thick,blue] (0,0,0) -- !{Av};
+\draw[cara] !{V[0]} -- !{V[1]} -- !{V[2]} -- !{V[3]} -- !{V[4]} -- !{V[5]} --cycle;
+
+\draw[fill = white] !{V[0]} circle (0.5mm) node[above right] {$b_0 = b$};
+\draw[fill = white] !{V[1]} circle (0.5mm) node[above right] {$b_1$};
+\draw[fill = white] !{V[2]} circle (0.5mm) node[above right] {$b_2$};
+\draw[fill = white] !{V[3]} circle (0.5mm) node[above right] {$b_3$};
+\draw[fill = white] !{V[4]} circle (0.5mm) node[above right] {$b_4$};
+\draw[fill = white] !{V[5]} circle (0.5mm) node[above right] {$b_5$};
+
+\draw[fill = white] !{O} circle (0.5mm);
+
+
+\draw[fill = gray] (0,0,0) circle (0.5mm);
 \end{tikzpicture}
 =>PYTHONTEX:SETTINGS#
 version=0.18

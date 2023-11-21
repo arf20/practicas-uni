@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.10.10)  21 NOV 2023 14:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.10.9)  21 NOV 2023 18:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -835,21 +835,19 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 (./pythontex-files-Tarea2D3D/Tarea2D3D.pytxpyg)
 \c@pytx@sage@default@default@line=\count359
  [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (29.01129pt too wide) detected at line 127
-\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 H[]\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 I\OT1/c
-mr/m/n/10 ] \OMS/cmsy/m/n/10 ! []
- []
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 114.
 
-(./pythontex-files-Tarea2D3D/sage_default_default_9.stdout) [2]
+(./pythontex-files-Tarea2D3D/sage_default_default_7.stdout) [2]
 (./Tarea2D3D.aux) ) 
 Here is how much of TeX's memory you used:
- 25059 strings out of 477975
- 535485 string characters out of 5839280
+ 25058 strings out of 478051
+ 535471 string characters out of 5840943
  1864330 words of memory out of 5000000
- 44614 multiletter control sequences out of 15000+600000
+ 44604 multiletter control sequences out of 15000+600000
  518076 words of font info for 56 fonts, out of 8000000 for 9000
- 220 hyphenation exceptions out of 8191
- 110i,16n,106p,459b,797s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 175 hyphenation exceptions out of 8191
+ 110i,16n,106p,915b,797s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex
 10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pf
@@ -861,7 +859,7 @@ dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
 ublic/amsfonts/symbols/msbm10.pfb>
-Output written on Tarea2D3D.pdf (2 pages, 133112 bytes).
+Output written on Tarea2D3D.pdf (2 pages, 133275 bytes).
 PDF statistics:
  105 PDF objects out of 1000 (max. 8388607)
  54 compressed objects within 1 object stream
