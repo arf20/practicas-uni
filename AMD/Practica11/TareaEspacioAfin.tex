@@ -1,0 +1,141 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[usefamily=sage]{pythontex} 
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[most]{tcolorbox}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{graphicx}
+\usetikzlibrary{3d}
+\usepackage{tikz-3dplot}
+%\usepackage{pgfplots}
+%\pgfplotsset{compat=1.15}
+
+\newtheorem{ejer}{Ejercicio}
+\def\r{\mathbb{R}}
+
+\author{Nombre Apellido Apellido}
+
+\title{AMD - Tarea de Espacio Afín}
+
+\begin{document}
+
+\begin{sagecode}
+latex.matrix_delimiters("[", "]")
+\end{sagecode}
+
+\maketitle
+
+\begin{ejer}
+Dado el polígono de vértices $C_0,C_1,C_2,C_3,C_4$ en el plano, determina la posición de los $P_0,P_1,\cdots,P_{9}$ con respecto a dicho polígono, es decir,
+para cada uno de ellos determinar si están dentro, fuera o en el borde del
+polígono (Sugerencia: Descomponer el polígono en varios triángulos y resolver cada problema por separado).
+
+\begin{tcolorbox}[title = Datos]
+
+\begin{sageblock}
+C =  column_matrix(RR,[[-0.172651912033068,0.425473646411074],
+[-0.927177836444634,0.730828051174769],
+[-0.455968358491447,-0.920601173524937],
+[0.406985519949459,-0.882736889806611],
+[0.876887465140915,0.916803361839041]]
+CV = P.columns()
+P =  column_matrix(RR,[
+[0.629081226542386,0.741279405121107],
+[-0.448184676007223,-0.303402020267078],
+[-0.541604965947982,0.633876454181660],
+[-0.364100606388708,0.257256981672285],
+[0.429547739604162,0.444885711632425],
+[0.407307318948960,0.762730650438023],
+[-0.992167831095530,-0.468225919921707],
+[0.813501066850795,0.380278966484519],
+[0.194118465888270,-0.947683683347809],
+[0.691495569525582,-0.786581561257583]])
+C0 = vector(C[:,0])
+C1 = vector(C[:,1])
+C2 = vector(C[:,2])
+C3 = vector(C[:,3])
+C4 = vector(C[:,4])
+\end{sageblock}
+
+$$
+C_0 = \sage{C[:,0]},
+C_1 = \sage{C[:,1]},  
+C_2 = \sage{C[:,2]},
+$$
+$$  
+C_3 = \sage{C[:,3]},
+C_4 = \sage{C[:,4]},
+$$
+
+
+$$
+P_0 = \sage{P[:,0]},
+P_1 = \sage{P[:,1]},  
+P_2 = \sage{P[:,2]},
+$$
+$$  
+P_3 = \sage{P[:,3]},
+P_4 = \sage{P[:,4]},
+P_5 = \sage{P[:,5]},
+$$
+$$  
+P_6 = \sage{P[:,6]},  
+P_7 = \sage{P[:,7]},
+$$
+$$
+P_8 = \sage{P[:,8]},
+P_9 = \sage{P[:,9]}
+$$
+\end{tcolorbox}
+\end{ejer}
+
+{\it Solución:}
+
+% Inicio Ejercicio 1
+
+\begin{sagesub}
+	\begin{tikzpicture}[scale = 3, 		cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},]
+		\draw !{C[1]};
+		\draw[fill = white] !{C0} circle (0.5mm) node[above right] {$0$};
+		\draw[fill = white] !{C1} circle (0.5mm) node[above right] {$1$};
+		\draw[fill = white] !{C2} circle (0.5mm) node[above right] {$2$};
+		\draw[fill = white] !{C3} circle (0.5mm) node[above right] {$3$};
+		\draw[fill = white] !{C4} circle (0.5mm) node[above right] {$4$};
+	\end{tikzpicture}
+\end{sagesub}
+
+Triangulos 012, 023 y 034
+
+\begin{sageblock}
+R0 = matrix(RR,  [
+[1, 	1, 		1],
+[C0[0], C1[0], 	C2[0]],
+[C0[1], C1[1], 	C2[1]]]);
+R1 = matrix(RR,  [
+[1, 	1, 		1],
+[C0[0], C2[0], 	C3[0]],
+[C0[1], C2[1], 	C3[1]]]);
+R2 = matrix(RR,  [
+[1, 	1, 		1],
+[C0[0], C3[0], 	C4[0]],
+[C0[1], C3[1], 	C4[1]]]);
+\end{sageblock}
+
+\begin{align*}
+	R_0 &= \sage{R0} \\
+	R_1 &= \sage{R1} \\
+	R_2 &= \sage{R2} \\
+\end{align*}
+
+$$
+	\sage{P.columns()}
+$$
+
+% Fin Ejercicio 1
+
+\end{document}
+
+
+

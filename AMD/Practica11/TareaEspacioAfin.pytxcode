@@ -1,0 +1,116 @@
+=>PYTHONTEX#sage#default#default#0#code#####24#
+latex.matrix_delimiters("[", "]")
+=>PYTHONTEX#sage#default#default#1#block#####37#
+C =  column_matrix(RR,[[-0.172651912033068,0.425473646411074],
+[-0.927177836444634,0.730828051174769],
+[-0.455968358491447,-0.920601173524937],
+[0.406985519949459,-0.882736889806611],
+[0.876887465140915,0.916803361839041]])
+P =  column_matrix(RR,[
+[0.629081226542386,0.741279405121107],
+[-0.448184676007223,-0.303402020267078],
+[-0.541604965947982,0.633876454181660],
+[-0.364100606388708,0.257256981672285],
+[0.429547739604162,0.444885711632425],
+[0.407307318948960,0.762730650438023],
+[-0.992167831095530,-0.468225919921707],
+[0.813501066850795,0.380278966484519],
+[0.194118465888270,-0.947683683347809],
+[0.691495569525582,-0.786581561257583]])
+C0 = vector(C[:,0])
+C1 = vector(C[:,1])
+C2 = vector(C[:,2])
+C3 = vector(C[:,3])
+C4 = vector(C[:,4])
+=>PYTHONTEX#sage#default#default#2#i#####62#
+C[:,0]
+=>PYTHONTEX#sage#default#default#3#i#####63#
+C[:,1]
+=>PYTHONTEX#sage#default#default#4#i#####64#
+C[:,2]
+=>PYTHONTEX#sage#default#default#5#i#####67#
+C[:,3]
+=>PYTHONTEX#sage#default#default#6#i#####68#
+C[:,4]
+=>PYTHONTEX#sage#default#default#7#i#####73#
+P[:,0]
+=>PYTHONTEX#sage#default#default#8#i#####74#
+P[:,1]
+=>PYTHONTEX#sage#default#default#9#i#####75#
+P[:,2]
+=>PYTHONTEX#sage#default#default#10#i#####78#
+P[:,3]
+=>PYTHONTEX#sage#default#default#11#i#####79#
+P[:,4]
+=>PYTHONTEX#sage#default#default#12#i#####80#
+P[:,5]
+=>PYTHONTEX#sage#default#default#13#i#####83#
+P[:,6]
+=>PYTHONTEX#sage#default#default#14#i#####84#
+P[:,7]
+=>PYTHONTEX#sage#default#default#15#i#####87#
+P[:,8]
+=>PYTHONTEX#sage#default#default#16#i#####88#
+P[:,9]
+=>PYTHONTEX#sage#default#default#17#sub#####97#
+	\begin{tikzpicture}[scale = 3, 		cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},]
+		\draw !{C[1]};
+		\draw[fill = white] !{C0} circle (0.5mm) node[above right] {$0$};
+		\draw[fill = white] !{C1} circle (0.5mm) node[above right] {$1$};
+		\draw[fill = white] !{C2} circle (0.5mm) node[above right] {$2$};
+		\draw[fill = white] !{C3} circle (0.5mm) node[above right] {$3$};
+		\draw[fill = white] !{C4} circle (0.5mm) node[above right] {$4$};
+	\end{tikzpicture}
+=>PYTHONTEX#sage#default#default#18#block#####110#
+R0 = matrix(RR,  [
+[1, 	1, 		1],
+[C0[0], C1[0], 	C2[0]],
+[C0[1], C1[1], 	C2[1]]]);
+R1 = matrix(RR,  [
+[1, 	1, 		1],
+[C0[0], C2[0], 	C3[0]],
+[C0[1], C2[1], 	C3[1]]]);
+R2 = matrix(RR,  [
+[1, 	1, 		1],
+[C0[0], C3[0], 	C4[0]],
+[C0[1], C3[1], 	C4[1]]]);
+=>PYTHONTEX#sage#default#default#19#i#####129#
+R0
+=>PYTHONTEX#sage#default#default#20#i#####129#
+R1
+=>PYTHONTEX#sage#default#default#21#i#####129#
+R2
+=>PYTHONTEX#sage#default#default#19#i#####129#
+R0
+=>PYTHONTEX#sage#default#default#20#i#####129#
+R1
+=>PYTHONTEX#sage#default#default#21#i#####129#
+R2
+=>PYTHONTEX#sage#default#default#22#i#####132#
+P.columns()
+=>PYTHONTEX:SETTINGS#
+version=0.18
+outputdir=pythontex-files-TareaEspacioAfin
+workingdir=.
+workingdirset=false
+gobble=none
+rerun=default
+hashdependencies=default
+makestderr=false
+stderrfilename=full
+keeptemps=none
+pyfuture=default
+pyconfuture=none
+pygments=true
+pygglobal=:GLOBAL||
+fvextfile=-1
+pyconbanner=none
+pyconfilename=stdin
+depythontex=false
+pygfamily=py|python3|
+pygfamily=pycon|pycon|
+pygfamily=sympy|python3|
+pygfamily=sympycon|pycon|
+pygfamily=pylab|python3|
+pygfamily=pylabcon|pycon|
+pygfamily=sage|sage|

@@ -1,0 +1,8 @@
+	\begin{tikzpicture}[scale = 3, 		cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},]
+		\draw (0.425473646411074, 0.730828051174769, -0.920601173524937, -0.882736889806611, 0.916803361839041);
+		\draw[fill = white] (-0.172651912033068, 0.425473646411074) circle (0.5mm) node[above right] {$0$};
+		\draw[fill = white] (-0.927177836444634, 0.730828051174769) circle (0.5mm) node[above right] {$1$};
+		\draw[fill = white] (-0.455968358491447, -0.920601173524937) circle (0.5mm) node[above right] {$2$};
+		\draw[fill = white] (0.406985519949459, -0.882736889806611) circle (0.5mm) node[above right] {$3$};
+		\draw[fill = white] (0.876887465140915, 0.916803361839041) circle (0.5mm) node[above right] {$4$};
+	\end{tikzpicture}
