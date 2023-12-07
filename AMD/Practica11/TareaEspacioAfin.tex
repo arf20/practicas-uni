@@ -39,8 +39,7 @@ C =  column_matrix(RR,[[-0.172651912033068,0.425473646411074],
 [-0.927177836444634,0.730828051174769],
 [-0.455968358491447,-0.920601173524937],
 [0.406985519949459,-0.882736889806611],
-[0.876887465140915,0.916803361839041]]
-CV = P.columns()
+[0.876887465140915,0.916803361839041]])
 P =  column_matrix(RR,[
 [0.629081226542386,0.741279405121107],
 [-0.448184676007223,-0.303402020267078],
@@ -52,11 +51,6 @@ P =  column_matrix(RR,[
 [0.813501066850795,0.380278966484519],
 [0.194118465888270,-0.947683683347809],
 [0.691495569525582,-0.786581561257583]])
-C0 = vector(C[:,0])
-C1 = vector(C[:,1])
-C2 = vector(C[:,2])
-C3 = vector(C[:,3])
-C4 = vector(C[:,4])
 \end{sageblock}
 
 $$
@@ -95,45 +89,63 @@ $$
 
 % Inicio Ejercicio 1
 
+\begin{sageblock}
+CV = C.columns()
+PV = P.columns()
+
+h = matrix([1]*10)
+hP = block_matrix(2, 1, [h, P]);
+
+T0 = matrix(RR,  [
+[1, 	1, 		1],
+[CV[0][0], CV[1][0], 	CV[2][0]],
+[CV[0][1], CV[1][1], 	CV[2][1]]]);
+T1 = matrix(RR,  [
+[1, 	1, 		1],
+[CV[0][0], CV[2][0], 	CV[3][0]],
+[CV[0][1], CV[2][1], 	CV[3][1]]]);
+T2 = matrix(RR,  [
+[1, 	1, 		1],
+[CV[0][0], CV[3][0], 	CV[4][0]],
+[CV[0][1], CV[3][1], 	CV[4][1]]]);
+
+T0iP = T0^-1 * hP
+T1iP = T1^-1 * hP
+T2iP = T2^-1 * hP
+\end{sageblock}
+
 \begin{sagesub}
 	\begin{tikzpicture}[scale = 3, 		cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},]
 		\draw !{C[1]};
-		\draw[fill = white] !{C0} circle (0.5mm) node[above right] {$0$};
-		\draw[fill = white] !{C1} circle (0.5mm) node[above right] {$1$};
-		\draw[fill = white] !{C2} circle (0.5mm) node[above right] {$2$};
-		\draw[fill = white] !{C3} circle (0.5mm) node[above right] {$3$};
-		\draw[fill = white] !{C4} circle (0.5mm) node[above right] {$4$};
+		\draw[fill = white] !{CV[0]} circle (0.5mm) node[above right] {$0$};
+		\draw[fill = white] !{CV[1]} circle (0.5mm) node[above right] {$1$};
+		\draw[fill = white] !{CV[2]} circle (0.5mm) node[above right] {$2$};
+		\draw[fill = white] !{CV[3]} circle (0.5mm) node[above right] {$3$};
+		\draw[fill = white] !{CV[4]} circle (0.5mm) node[above right] {$4$};
 	\end{tikzpicture}
 \end{sagesub}
 
-Triangulos 012, 023 y 034
-
-\begin{sageblock}
-R0 = matrix(RR,  [
-[1, 	1, 		1],
-[C0[0], C1[0], 	C2[0]],
-[C0[1], C1[1], 	C2[1]]]);
-R1 = matrix(RR,  [
-[1, 	1, 		1],
-[C0[0], C2[0], 	C3[0]],
-[C0[1], C2[1], 	C3[1]]]);
-R2 = matrix(RR,  [
-[1, 	1, 		1],
-[C0[0], C3[0], 	C4[0]],
-[C0[1], C3[1], 	C4[1]]]);
-\end{sageblock}
+Matrices de triangulos 012, 023 y 034
 
 \begin{align*}
-	R_0 &= \sage{R0} \\
-	R_1 &= \sage{R1} \\
-	R_2 &= \sage{R2} \\
+	T_0 &= \sage{T0} \\
+	T_1 &= \sage{T1} \\
+	T_2 &= \sage{T2} \\
 \end{align*}
 
+Matrices de puntos transpuestas para que no se salgan del papel, cada fila es un punto
 $$
-	\sage{P.columns()}
+(T_0 \cdot P)^T = \sage{T0iP.T}
 $$
-
+$$
+(T_1 \cdot P)^T = \sage{T1iP.T}
+$$
+$$
+(T_2 \cdot P)^T = \sage{T2iP.T}
+$$
 % Fin Ejercicio 1
+
+Puntos que están dentro del poligono (porque sus coordenadas baricentricas están entre 0 y 1 en almenos uno de los triangulos): 0, 1, 3, 4; Por tanto los que están fuera son 2, 5, 6, 7, 8, 9.
 
 \end{document}
 

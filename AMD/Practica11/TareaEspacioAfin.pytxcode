@@ -17,77 +17,86 @@ P =  column_matrix(RR,[
 [0.813501066850795,0.380278966484519],
 [0.194118465888270,-0.947683683347809],
 [0.691495569525582,-0.786581561257583]])
-C0 = vector(C[:,0])
-C1 = vector(C[:,1])
-C2 = vector(C[:,2])
-C3 = vector(C[:,3])
-C4 = vector(C[:,4])
-=>PYTHONTEX#sage#default#default#2#i#####62#
+=>PYTHONTEX#sage#default#default#2#i#####57#
 C[:,0]
-=>PYTHONTEX#sage#default#default#3#i#####63#
+=>PYTHONTEX#sage#default#default#3#i#####58#
 C[:,1]
-=>PYTHONTEX#sage#default#default#4#i#####64#
+=>PYTHONTEX#sage#default#default#4#i#####59#
 C[:,2]
-=>PYTHONTEX#sage#default#default#5#i#####67#
+=>PYTHONTEX#sage#default#default#5#i#####62#
 C[:,3]
-=>PYTHONTEX#sage#default#default#6#i#####68#
+=>PYTHONTEX#sage#default#default#6#i#####63#
 C[:,4]
-=>PYTHONTEX#sage#default#default#7#i#####73#
+=>PYTHONTEX#sage#default#default#7#i#####68#
 P[:,0]
-=>PYTHONTEX#sage#default#default#8#i#####74#
+=>PYTHONTEX#sage#default#default#8#i#####69#
 P[:,1]
-=>PYTHONTEX#sage#default#default#9#i#####75#
+=>PYTHONTEX#sage#default#default#9#i#####70#
 P[:,2]
-=>PYTHONTEX#sage#default#default#10#i#####78#
+=>PYTHONTEX#sage#default#default#10#i#####73#
 P[:,3]
-=>PYTHONTEX#sage#default#default#11#i#####79#
+=>PYTHONTEX#sage#default#default#11#i#####74#
 P[:,4]
-=>PYTHONTEX#sage#default#default#12#i#####80#
+=>PYTHONTEX#sage#default#default#12#i#####75#
 P[:,5]
-=>PYTHONTEX#sage#default#default#13#i#####83#
+=>PYTHONTEX#sage#default#default#13#i#####78#
 P[:,6]
-=>PYTHONTEX#sage#default#default#14#i#####84#
+=>PYTHONTEX#sage#default#default#14#i#####79#
 P[:,7]
-=>PYTHONTEX#sage#default#default#15#i#####87#
+=>PYTHONTEX#sage#default#default#15#i#####82#
 P[:,8]
-=>PYTHONTEX#sage#default#default#16#i#####88#
+=>PYTHONTEX#sage#default#default#16#i#####83#
 P[:,9]
-=>PYTHONTEX#sage#default#default#17#sub#####97#
+=>PYTHONTEX#sage#default#default#17#block#####92#
+CV = C.columns()
+PV = P.columns()
+
+h = matrix([1]*10)
+hP = block_matrix(2, 1, [h, P]);
+
+T0 = matrix(RR,  [
+[1, 	1, 		1],
+[CV[0][0], CV[1][0], 	CV[2][0]],
+[CV[0][1], CV[1][1], 	CV[2][1]]]);
+T1 = matrix(RR,  [
+[1, 	1, 		1],
+[CV[0][0], CV[2][0], 	CV[3][0]],
+[CV[0][1], CV[2][1], 	CV[3][1]]]);
+T2 = matrix(RR,  [
+[1, 	1, 		1],
+[CV[0][0], CV[3][0], 	CV[4][0]],
+[CV[0][1], CV[3][1], 	CV[4][1]]]);
+
+T0iP = T0^-1 * hP
+T1iP = T1^-1 * hP
+T2iP = T2^-1 * hP
+=>PYTHONTEX#sage#default#default#18#sub#####117#
 	\begin{tikzpicture}[scale = 3, 		cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},]
 		\draw !{C[1]};
-		\draw[fill = white] !{C0} circle (0.5mm) node[above right] {$0$};
-		\draw[fill = white] !{C1} circle (0.5mm) node[above right] {$1$};
-		\draw[fill = white] !{C2} circle (0.5mm) node[above right] {$2$};
-		\draw[fill = white] !{C3} circle (0.5mm) node[above right] {$3$};
-		\draw[fill = white] !{C4} circle (0.5mm) node[above right] {$4$};
+		\draw[fill = white] !{CV[0]} circle (0.5mm) node[above right] {$0$};
+		\draw[fill = white] !{CV[1]} circle (0.5mm) node[above right] {$1$};
+		\draw[fill = white] !{CV[2]} circle (0.5mm) node[above right] {$2$};
+		\draw[fill = white] !{CV[3]} circle (0.5mm) node[above right] {$3$};
+		\draw[fill = white] !{CV[4]} circle (0.5mm) node[above right] {$4$};
 	\end{tikzpicture}
-=>PYTHONTEX#sage#default#default#18#block#####110#
-R0 = matrix(RR,  [
-[1, 	1, 		1],
-[C0[0], C1[0], 	C2[0]],
-[C0[1], C1[1], 	C2[1]]]);
-R1 = matrix(RR,  [
-[1, 	1, 		1],
-[C0[0], C2[0], 	C3[0]],
-[C0[1], C2[1], 	C3[1]]]);
-R2 = matrix(RR,  [
-[1, 	1, 		1],
-[C0[0], C3[0], 	C4[0]],
-[C0[1], C3[1], 	C4[1]]]);
-=>PYTHONTEX#sage#default#default#19#i#####129#
-R0
-=>PYTHONTEX#sage#default#default#20#i#####129#
-R1
-=>PYTHONTEX#sage#default#default#21#i#####129#
-R2
-=>PYTHONTEX#sage#default#default#19#i#####129#
-R0
-=>PYTHONTEX#sage#default#default#20#i#####129#
-R1
-=>PYTHONTEX#sage#default#default#21#i#####129#
-R2
-=>PYTHONTEX#sage#default#default#22#i#####132#
-P.columns()
+=>PYTHONTEX#sage#default#default#19#i#####134#
+T0
+=>PYTHONTEX#sage#default#default#20#i#####134#
+T1
+=>PYTHONTEX#sage#default#default#21#i#####134#
+T2
+=>PYTHONTEX#sage#default#default#19#i#####134#
+T0
+=>PYTHONTEX#sage#default#default#20#i#####134#
+T1
+=>PYTHONTEX#sage#default#default#21#i#####134#
+T2
+=>PYTHONTEX#sage#default#default#22#i#####138#
+T0iP.T
+=>PYTHONTEX#sage#default#default#23#i#####141#
+T1iP.T
+=>PYTHONTEX#sage#default#default#24#i#####144#
+T2iP.T
 =>PYTHONTEX:SETTINGS#
 version=0.18
 outputdir=pythontex-files-TareaEspacioAfin

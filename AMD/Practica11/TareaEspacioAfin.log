@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.10.10)  29 NOV 2023 12:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022/Debian) (preloaded format=pdflatex 2023.10.10)  3 DEC 2023 18:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -835,8 +835,8 @@ Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 
 (./pythontex-files-TareaEspacioAfin/TareaEspacioAfin.pytxpyg)
 \c@pytx@sage@default@default@line=\count359
-
-(./pythontex-files-TareaEspacioAfin/sage_default_default_17.stdout
+ [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+(./pythontex-files-TareaEspacioAfin/sage_default_default_18.stdout
 Missing character: There is no - in font nullfont!
 Missing character: There is no 0 in font nullfont!
 Missing character: There is no . in font nullfont!
@@ -877,34 +877,31 @@ Missing character: There is no , in font nullfont!
 )
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (1416.74234pt too wide) detected at line 133
-[]
- []
-
-[2] (./TareaEspacioAfin.aux) ) 
+ [2]
+[3] (./TareaEspacioAfin.aux) ) 
 Here is how much of TeX's memory you used:
- 24963 strings out of 477975
- 533482 string characters out of 5839280
- 1864330 words of memory out of 5000000
- 44518 multiletter control sequences out of 15000+600000
+ 24967 strings out of 477975
+ 533598 string characters out of 5839280
+ 1866330 words of memory out of 5000000
+ 44522 multiletter control sequences out of 15000+600000
  518076 words of font info for 56 fonts, out of 8000000 for 9000
  220 hyphenation exceptions out of 8191
- 110i,14n,106p,593b,594s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 110i,14n,106p,525b,594s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public
 /amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
 nts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
 /cmitt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
-10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on TareaEspacioAfin.pdf (2 pages, 118556 bytes).
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on TareaEspacioAfin.pdf (3 pages, 134388 bytes).
 PDF statistics:
- 100 PDF objects out of 1000 (max. 8388607)
- 51 compressed objects within 1 object stream
+ 108 PDF objects out of 1000 (max. 8388607)
+ 56 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  157 words of extra memory for PDF output out of 10000 (max. 10000000)
 
