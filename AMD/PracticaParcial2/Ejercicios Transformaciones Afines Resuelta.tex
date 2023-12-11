@@ -1,0 +1,1943 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[usefamily=sage]{pythontex} 
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[most]{tcolorbox}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{graphicx}
+\usetikzlibrary{3d}
+\usepackage{tikz-3dplot}
+
+\newtheorem{ejer}{Ejercicio}
+\def\r{\mathbb{R}}
+
+
+
+
+
+\title{ AMD Curso 2023-2024. Prácticas de la Semana 13. Geometría Afín}
+
+\begin{document}
+
+\maketitle
+
+\begin{tcolorbox}[colback = orange!60!white,title = Cuestiones teóricas previas]
+Una aplicación $f:\mathcal{A}^n(\mathbb R) \to \mathcal{A}^n(\mathbb R)$ se dice { \bf afín} si existen una matriz $A$ de orden $n\times n$ y un punto $Q\in \mathbb R^n$ tales que $f(P)=AP+Q$, lo cual se expresa con matrices del siguiente modo: 
+%Su expresión matricial asociada es:
+$$\left[ \frac{1}{f(P)}\right]=\left[ \frac{ \ 1 
+  \ | \  0 \ }{Q \ | \ A}\right] \left[ \frac{1}{Q}\right]$$
+Entre las aplicaciones afines (en el plano y en el espacio), nos interesan especialmente un grupo de transformaciones geométricas que reciben el nombre de  {\bf transformaciones afines}, y son las siguientes:
+\begin{itemize}
+\item Transformaciones afines en el plano:
+\begin{itemize}
+\item Giro alrededor de un punto.
+\item Proyección ortogonal sobre una recta
+\item Simetría ortogonal sobre una recta
+\item Homotecia
+\end{itemize}
+\item Transformaciones afines en el espacio:
+\begin{itemize}
+\item Giro alrededor de un recta.
+\item Proyección ortogonal sobre una recta o un plano
+\item Simetría ortogonal sobre una recta o un plano
+\item Homotecia
+\end{itemize}
+\end{itemize}
+La matriz $M_T$ asociada a cada una de estas transformaciones $T$ tiene una forma especialmente sencilla (su expresión canónica) porque se toma respecto de un sistema de referencia afín $R$ que se adapta especialmente bien a lo que hace la transformación afín $T$. Por ejemplo, si $T=G_{\alpha}$ es un giro en el plano de ángulo $\alpha$, centrado en el punto $Q$, entonces $$R=\left[ \frac{ \ 1 
+  \ | \  0 \ }{Q \ | \ C}\right],$$
+donde $C$ es la base canónica de $\mathbb{R}^2$, y 
+$$M_{G_{\alpha}}= \left[\begin{array}{ccc}  1 & 0 & 0 \\ 0& \cos \alpha & -\sin \alpha \\  0& \sin \alpha & \cos \alpha\end{array}\right]$$
+
+Entonces la matriz asociada, $M(T)$, respecto del sistema de referencia canónico del espacio afín,  se expresa en términos de  $M_{T}$ como:
+$$M(T)=RM_{T}R^{-1}$$
+En lo sucesivo, denotaremos como $M_{RR}(T)$ a la matriz $M_T$ para dejar constancia, en cada caso, de cuál es el sistema de referencia afín especial, $R$, que se ha usado para obtener la expresión canónica de la transformación $T$ -y que luego usamos para obtener la matriz $M(T)$, que es la asociada a $T$ respecto del sistema de referencia canónico de $\mathcal{A}^n(\mathbb R)$.
+%También podemos usar un sistema de referencia afín general (normalmente, tomamos una base vectorial ortogonal u ortonormal $B$ y un punto $Q$),
+%$$R_1=\left[ \frac{ \ 1 
+%  \ | \  0 \ }{Q \ | \ B}\right]$$
+%Y la matriz asociada para ese sistema de referencia será:
+%$$M_{R1R1}(T)=R_1M_{T}R_1^{-1}$$
+
+\end{tcolorbox} 
+\newpage
+
+\begin{ejer}	
+\textcolor{blue}{\begin{enumerate} 
+\item[a)] Calcula la matriz de la aplicación af\'{i}n $g:\mathcal{A}^2(\mathbb R) \to \mathcal{A}^2(\mathbb R)$ correspondiente al {\sc giro} de $30^\circ$ alrededor del punto 
+$\left( \begin{array}{r} 2  \\ -1 \end{array} \right)$.
+\item[b)] Sea $C \subseteq \mathcal{A}^2(\mathbb R)$ el hex\'agono regular centrado en el punto $\left( \begin{array}{r} 4  \\ 4 \end{array} \right)$ tal que uno de sus v\'ertices
+es el punto $\left( \begin{array}{r} 5  \\ 4 \end{array} \right)$. Calcula todos los v\'ertices de $C$ y $g(C)$. Dibuja los hexágonos $C$, $g(C)$ y las líneas que unen los centros de los hexágonos con el centro de giro.
+\end{enumerate}}
+\end{ejer}
+
+{\it Solución:}
+
+% Escribe tu solución para el ejercicio 1
+
+a.
+
+\begin{sageblock}
+R = matrix(RR, [[1, 0, 0], [2, 1, 0], [-1, 0, 1]])
+alpha = pi/6
+MRRg = matrix(RR, [[1, 0, 0], [0, cos(alpha), -sin(alpha)], [0, sin(alpha), cos(alpha)]])
+
+Mg = R * MRRg * R^-1
+\end{sageblock}
+
+$$
+	R = \begin{bmatrix}
+		1 & 0 & 0 \\
+		2 & 1 & 0 \\
+		-1& 0 & 1
+	\end{bmatrix}
+$$
+
+$$
+	M_{RR}(g) = \begin{bmatrix}
+		1 & 0 & 0 \\
+		0 & cos(30) & -sin(30) \\
+		0 & sin(30) & cos(30)
+	\end{bmatrix}
+$$
+
+$$
+	M = R M_{RR}(g) R^{-1} = \sage{Mg}
+$$
+
+b.
+
+\begin{sageblock}
+R1 = matrix(RR, [[1, 0, 0], [4, 1, 0], [4, 0, 1]])
+
+b = pi/3
+MRRg = matrix(RR, [[1, 0, 0], [0, cos(b), -sin(b)], [0, sin(b), cos(b)]])
+
+Mg1 = R1 * MRRg * R1^-1
+
+C = [Mg1^i * vector(RR, [1, 5, 4]) for i in range(6)]
+gC = [Mg * v for v in C]
+gCo = (Mg * vector(RR, [1, 4, 4]))[1:]
+
+C = [v[1:] for v in C]
+gC = [v[1:] for v in gC]
+\end{sageblock}
+
+%\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 1,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20},
+]
+\draw[->,thick,gray] (-1,0) -- (5.5,0); % Eje X
+\draw[->,thick,gray] (0,-2.5) -- (0,5.5); % Eje Y
+
+\draw[cara1] !{C[0]} -- !{C[1]} -- !{C[2]} -- !{C[3]} -- !{C[4]} -- !{C[5]} -- cycle;
+\draw[cara2] !{gC[0]} -- !{gC[1]} -- !{gC[2]} -- !{gC[3]} -- !{gC[4]} -- !{gC[5]} -- cycle;
+\draw[black] (2,-1) -- (4,4);
+\draw[black] (2,-1) -- !{gCo};
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+%\end{verbatim}
+
+
+% Fin del Ejercicio 1
+
+\newpage
+
+
+\begin{ejer}
+\textcolor{blue}{Sea $r \subseteq \mathcal{A}^2(\mathbb R)$ la recta que pasa por los puntos $\left( \begin{array}{r} -1  \\ 0 \end{array} \right)$ y $\left( \begin{array}{r} 2  \\ 2 \end{array} \right)$.
+\begin{enumerate} 
+\item[a)] Calcula las matrices de las aplicaciones afines $p,s:\mathcal{A}^2(\mathbb R) \to \mathcal{A}^2(\mathbb R)$ correspondientes a la {\sc proyección} y a la {\sc simetría} 
+respecto de $r$. 
+\item[b)] Sea $C \subseteq \mathcal{A}^2(\mathbb R)$ el cuadrado centrado en el punto $\left( \begin{array}{r} 3  \\ -3 \end{array} \right)$ y con uno de sus vértices
+en $\left( \begin{array}{r} 4  \\ -2 \end{array} \right)$. 
+\begin{itemize}
+\item Calcula todos los vértices de $C$ y $s(C)$.
+\item Dibuja $r$, $C$, $s(C)$, $p(C)$ y las líneas que unen los vértices del cuadrado $C$ con su simétrico $s(C)$.
+\end{itemize}
+\end{enumerate}}
+\end{ejer}
+
+{\it Solución:}
+
+% Escribe tu solución para el ejercicio 2
+
+\begin{enumerate} 
+\item[a)] La recta $r$ pasa por los puntos $(-1,0)$ y $(2,2)$. El sistema de referencia que tomamos consta de uno de los puntos de la recta, por ejemplo  el punto $$P = (-1,0)$$ y una base formada por un vector de la recta que sería el vector $$v_1 = \vec{PQ} = Q-P = (2,2) - (-1,0) = (3,2),$$ junto con un segundo vector que lo debemos tomar perpendicular a $v_1$ y de igual norma, por ejemplo $$v_2 = (2,-3).$$ La matriz de este sistema de referencia es 
+
+\begin{sageblock}
+R = matrix(RR,[[ 1,0, 0],
+               [-1,3, 2],
+               [ 0,2,-3]])
+R.subdivide(1,1)
+\end{sageblock}
+
+El sistema es:
+\[R = \sage{R}.\]
+
+Utilizando este sistema de referencia,  obtenemos las expresiones canónicas para las matrices de la proyección y la simetría:
+
+\begin{sageblock}
+sRR=matrix(RR,[[1,0, 0],
+              [0,1, 0],
+              [0,0,-1]])
+pRR=matrix(RR,[[1,0,0],
+              [0,1,0],
+              [0,0,0]])
+\end{sageblock}
+
+
+Las matrices asociadas al sistema de referencia canónico son, por tanto: %resultantes son 
+
+\begin{sageblock}
+s=R*sRR*R^-1
+p=R*pRR*R^-1
+s.subdivide(1,1)
+p.subdivide(1,1)
+\end{sageblock}
+
+$$p=RP_{RR}R^{-1} = \sage{p} $$
+y
+$$ s=RS_{RR}R^{-1} = \sage{s}.$$
+
+\item[b)] Los vértices del cuadrado se pueden calcular girando el vértice alrededor del punto central cuatro veces. 
+
+Para ello, comenzamos definiendo el sistema de referencia canónico sobre el punto (3,-3):
+
+\begin{sageblock}
+R1 = matrix(RR,[[ 1,0,0],
+             [ 3,1,0],
+             [-3,0,1]])
+R1.subdivide(1,1)
+\end{sageblock}
+$$R_1=\sage{R1}$$
+y a continuación la matriz de giro
+\begin{sageblock}
+a = 2*pi/4
+gR1R1 = matrix(RR,[[1, 0        ,  0],
+               [0, cos(a), -sin(a)],
+               [0, sin(a),  cos(a)]])
+g=R1*gR1R1*R1^-1
+g.subdivide(1,1)
+\end{sageblock}
+$$g=R_1G_{\frac{2\pi}{4}}R_1^{-1}=\sage{g}$$
+Los vértices del cuadrado $C$ en coordenadas homogéneas:
+$$C_h=\{ (1,4,-2), \ g(1,4,-2), \  g^2(1,4,-2), \ g^3(1,4,-2) \}$$
+
+\begin{sageblock}
+Ch = [g^i*vector(RR,[1,4,-2]) for i in range(4)]
+C = [v[1:] for v in Ch]
+\end{sageblock}
+Por lo que en coordenadas no homogéneas son:
+\[C[0]=\sage{C[0]}\]
+\[C[1]=\sage{C[1]}\]
+\[C[2]=\sage{C[2]}\]
+\[C[3]=\sage{C[3]}\]
+
+Los vértices del simétrico $s(C)$ son 
+
+\begin{sageblock}
+sCh = [s*v for v in Ch]
+sC = [v[1:] for v in sCh]
+\end{sageblock}
+
+\[s(C[0])=\sage{sC[0]}\]
+\[s(C[1])=\sage{sC[1]}\]
+\[s(C[2])=\sage{sC[2]}\]
+\[s(C[3])=\sage{sC[3]}\]
+
+Los vértices proyectados $p(C)$ son 
+
+\begin{sageblock}
+pCh = [p*v for v in Ch]
+pC = [v[1:] for v in pCh]
+\end{sageblock}
+
+\[p(C[0])=\sage{pC[0]}\]
+\[p(C[1])=\sage{pC[1]}\]
+\[p(C[2])=\sage{pC[2]}\]
+\[p(C[3])=\sage{pC[3]}\]
+
+Para hacer los dibujos pintamos los puntos, los polígonos y la recta usamos el siguiente código:
+\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 0.7,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20},
+cara3/.style={thick, color = green, fill opacity = 0.7}]
+\draw[->,thick,gray] (-4,0) -- (5.5,0); % Eje X
+\draw[->,thick,gray] (0,-4) -- (0,6); % Eje Y
+\draw[cara1] !{C[0]} -- !{C[1]} -- !{C[2]} -- !{C[3]} -- cycle;
+\draw[cara2] !{sC[0]} -- !{sC[1]} -- !{sC[2]} -- !{sC[3]} -- cycle;
+\draw[cara3] !{pC[0]} -- !{pC[1]} -- !{pC[2]} -- !{pC[3]} -- cycle;
+\draw[dashed] !{C[0]} -- !{pC[0]} -- !{sC[0]};
+\draw[dashed] !{C[1]} -- !{pC[1]} -- !{sC[1]};
+\draw[dashed] !{C[2]} -- !{pC[2]} -- !{sC[2]};
+\draw[dashed] !{C[3]} -- !{pC[3]} -- !{sC[3]};
+\draw[black] (-4,-2) -- (5,4);
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{verbatim}
+que nos da el siguiente dibujo:
+%%%%%%%%%%%
+%%%sagesub
+%%%%%%%%%%%%
+
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 0.7,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20},
+cara3/.style={thick, color = green, fill opacity = 0.7}]
+\draw[->,thick,gray] (-4,0) -- (5.5,0); % Eje X
+\draw[->,thick,gray] (0,-4) -- (0,6); % Eje Y
+\draw[cara1] !{C[0]} -- !{C[1]} -- !{C[2]} -- !{C[3]} -- cycle;
+\draw[cara2] !{sC[0]} -- !{sC[1]} -- !{sC[2]} -- !{sC[3]} -- cycle;
+\draw[cara3] !{pC[0]} -- !{pC[1]} -- !{pC[2]} -- !{pC[3]} -- cycle;
+\draw[dashed] !{C[0]} -- !{pC[0]} -- !{sC[0]};
+\draw[dashed] !{C[1]} -- !{pC[1]} -- !{sC[1]};
+\draw[dashed] !{C[2]} -- !{pC[2]} -- !{sC[2]};
+\draw[dashed] !{C[3]} -- !{pC[3]} -- !{sC[3]};
+\draw[black] (-4,-2) -- (5,4);
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+
+
+\end{enumerate}
+
+% Fin del Ejercicio 2
+
+\newpage
+
+\begin{ejer}
+\textcolor{blue}{\begin{enumerate} 
+\item[a)] Calcula la matriz de la aplicación afín $h:\mathcal{A}^2(\mathbb R) \to \mathcal{A}^2(\mathbb R)$ correspondiente a la {\sc homotecia} con factor $3$
+y con centro en el punto $P=\left( \begin{array}{r} 1 \\ 1 \end{array} \right)$.
+\item[b)]Sea $C \subseteq \mathcal{A}^2(\mathbb R)$ el triángulo isósceles contenido en el segundo cuadrante que tiene altura $5$ y cuya base 
+es el segmento con extremos $\left( \begin{array}{r} -4 \\ 2 \end{array} \right)$ y $\left( \begin{array}{r} -3 \\ 2 \end{array} \right)$. 
+\begin{itemize}
+\item Calcula todos los vértices de $C$ y $h(C)$. 
+\item Dibuja $P$, $C$ y $h(C)$.
+\end{itemize}
+\end{enumerate}}
+\end{ejer}
+
+{\it Solución:}
+
+% Escribe tu solución para el ejercicio 3
+\begin{enumerate}
+\item[a)] Tomamos el sistema de referencia afín $\{P;e_1,e_2\}$ siendo $P$ el centro de la homotecia y $e_1,e_2$ la base canónica de ${\mathbb R}^2$.
+
+\begin{sageblock}
+R = matrix(RR,[[1, 0, 0],
+            [1, 1, 0],
+            [1, 0, 1]])
+R.subdivide(1,1)
+\end{sageblock}
+
+La matriz del sistema de referencia es \[R=\sage{R}\]
+Definimos la matriz de la homotecia de factor $3$ en este sistema de referencia
+
+\begin{sageblock}
+hRR = matrix(RR,[[1, 0, 0],
+              [0, 3, 0],
+              [0, 0, 3]])
+h = R*hRR*R^-1
+h.subdivide(1,1)
+\end{sageblock}
+
+La homotecia respecto del sistema canónico es
+\[ h = RH_3R^{-1}= \sage{h} \]
+
+\item[b)]
+El punto medio de los extremos $(-4,2)$ y $(-3,2)$ es $(-7/2,2)$. Y como la altura del triángulo es $5$, el vértice que nos falta del triángulo es $(-7/2,7)$. Introducimos entonces estos tres vértices en coordenadas homogéneas.
+
+\begin{sageblock}
+Ch = [vector(RR,[1,-3,2]),vector(RR,[1,-4,2]),vector(RR,[1,-7/2,7])]
+\end{sageblock}
+Aplicamos la homotecia $h$ a los tres vértices del triángulo:
+\begin{sageblock}
+hCh = [h*v for v in Ch]
+\end{sageblock}
+$$h(1,-3,2)=\sage{hCh[0]}$$
+$$h(1,-4,2)=\sage{hCh[1]}$$
+$$h(1,-7/2,7)=\sage{hCh[2]}$$
+Nos quedamos con las coordenadas no homogéneas:
+\begin{sageblock}
+C = [v[1:] for v in Ch]
+hC = [v[1:] for v in hCh]
+\end{sageblock}
+de forma que el triángulo isósceles contenido en el segundo cuadrante y de altura $5$ que tiene como vértices los puntos
+\[ A_1 = \sage{C[0]}\] 
+\[A_2 = \sage{C[1]}\] 
+\[A_3 = \sage{C[2]}\]
+transforma dichos vértices a través de la homotecia de factor $3$ a:
+\[ h(A_1) = \sage{hC[0]}\] 
+\[h(A_2) = \sage{hC[1]}\]  
+\[h(A_3) = \sage{hC[2]}. \]
+
+Para hacer el dibujo pintamos el punto $P$ y los triángulos $C$ y $h(C)$ introduciendo los siguientes comandos:
+\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 0.5,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
+\draw[->,thick,gray] (1,0) -- (-14,0); % Eje X
+\draw[->,thick,gray] (0,-1) -- (0,20); % Eje Y
+\draw[cara1] !{C[0]} -- !{C[1]} -- !{C[2]} -- cycle;
+\draw[cara2] !{hC[0]} -- !{hC[1]} -- !{hC[2]} -- cycle;
+\draw[dashed] (1,1) -- !{C[0]} -- !{hC[0]};
+\draw[dashed] (1,1) -- !{C[1]} -- !{hC[1]};
+\draw[dashed] (1,1) -- !{C[2]} -- !{hC[2]};
+\draw[fill = white] (1,1) circle (0.5mm) node[above right] {$P$}; 
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{verbatim}
+
+%%%%%%%
+%sagesub
+%%%%%%%%
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 0.5,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
+\draw[->,thick,gray] (1,0) -- (-14,0); % Eje X
+\draw[->,thick,gray] (0,-1) -- (0,20); % Eje Y
+\draw[cara1] !{C[0]} -- !{C[1]} -- !{C[2]} -- cycle;
+\draw[cara2] !{hC[0]} -- !{hC[1]} -- !{hC[2]} -- cycle;
+\draw[dashed] (1,1) -- !{C[0]} -- !{hC[0]};
+\draw[dashed] (1,1) -- !{C[1]} -- !{hC[1]};
+\draw[dashed] (1,1) -- !{C[2]} -- !{hC[2]};
+\draw[fill = white] (1,1) circle (0.5mm) node[above right] {$P$}; 
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+
+
+\end{enumerate}
+
+% Fin del Ejercicio 3
+
+
+
+\newpage
+
+
+\begin{ejer}
+\textcolor{blue}{Calcula los vértices de un octógono regular en $\mathcal{A}^2(\mathbb{R})$ centrado en el punto $\left[\begin{array}{c}1\\3
+\end{array}\right]$, sabiendo que el punto $\left[\begin{array}{c}2\\5
+\end{array}\right]$ es un vértice de dicho octógono. Pinta el octógono en color amarillo y sus vértices en color azul.}
+\end{ejer}
+
+{\it Solución:}
+
+% Escribe tu solución para el ejercicio 4
+
+Tomamos como sistema de referencia afín un punto que es el centro $(1,3)$, y como base la canónica $e_1,e_2$:
+
+\begin{sageblock}
+R = matrix(RR,[[1,0,0],
+              [1,1,0],
+              [3,0,1]])
+R.subdivide(1,1)
+\end{sageblock}
+
+La matriz del sistema de referencia es \[R=\sage{R}.\]
+
+
+Calculamos la matriz de giro:
+\begin{sageblock}
+b=2*pi/8
+gRR=column_matrix(RR,[[1, 0,      0],
+                      [0, cos(b), sin(b)],
+                      [0,-sin(b), cos(b)]])
+g=R*gRR*R^-1
+g.subdivide(1,1)
+\end{sageblock}
+$$g=RG_{\frac{2\pi}{8}}R^{-1}=\sage{g}$$
+Obtenemos los vértices del octógono en coordenadas homogéneas:
+\begin{sageblock}
+Vh=[g^k*vector(RR,[1,2,5]) for k in range(8)]
+\end{sageblock}
+Para después obtenerlos sin la coordenada homogénea:
+\begin{sageblock}
+V=[v[1:] for v in Vh]
+\end{sageblock}
+\begin{eqnarray*}
+V[0] &=& \sage{V[0]}\\
+V[1] &=& \sage{V[1]}\\
+V[2] &=& \sage{V[2]}\\
+V[3] &=& \sage{V[3]}\\
+V[4] &=& \sage{V[4]}\\
+V[5] &=& \sage{V[5]}\\
+V[6] &=& \sage{V[6]}\\
+V[7] &=& \sage{V[7]}
+\end{eqnarray*}
+%$$V[3]=\sage{V[3]}$$
+%$$V[4]=\sage{V[4]}$$
+%$$V[5]=\sage{V[5]}$$
+%$$V[6]=\sage{V[6]}$$
+%$$V[7]=\sage{V[7]}$$
+
+Pintamos el octógono usando el siguiente código:
+
+\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 0.7,
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-2,0) -- (3.5,0); % Eje X
+\draw[->,thick,gray] (0,-1) -- (0,6); % Eje Y
+\draw[cara] !{V[0]} -- !{V[1]} -- !{V[2]} -- !{V[3]} -- !{V[4]} -- 
+!{V[5]} -- !{V[6]} -- !{V[7]} -- cycle;
+\draw[fill = white] !{V[0]} circle (0.7mm); 
+\draw[fill = white] !{V[1]} circle (0.7mm); 
+\draw[fill = white] !{V[2]} circle (0.7mm); 
+\draw[fill = white] !{V[3]} circle (0.7mm); 
+\draw[fill = white] !{V[4]} circle (0.7mm); 
+\draw[fill = white] !{V[5]} circle (0.7mm); 
+\draw[fill = white] !{V[6]} circle (0.7mm); 
+\draw[fill = white] !{V[7]} circle (0.7mm); 
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{verbatim}
+
+%%%%%%%%%
+%%%sagesub%%%
+%%%%%%%%%%
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 0.7,
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-2,0) -- (3.5,0); % Eje X
+\draw[->,thick,gray] (0,-1) -- (0,6); % Eje Y
+\draw[cara] !{V[0]} -- !{V[1]} -- !{V[2]} -- !{V[3]} -- !{V[4]} -- !{V[5]} -- !{V[6]} -- !{V[7]} -- cycle;
+\draw[fill = white] !{V[0]} circle (0.7mm); 
+\draw[fill = white] !{V[1]} circle (0.7mm); 
+\draw[fill = white] !{V[2]} circle (0.7mm); 
+\draw[fill = white] !{V[3]} circle (0.7mm); 
+\draw[fill = white] !{V[4]} circle (0.7mm); 
+\draw[fill = white] !{V[5]} circle (0.7mm); 
+\draw[fill = white] !{V[6]} circle (0.7mm); 
+\draw[fill = white] !{V[7]} circle (0.7mm); 
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+
+% Fin del Ejercicio 4
+
+
+\newpage
+
+\begin{ejer}
+\textcolor{blue}{Se dibuja una estrella regular de $5$ puntas con centro en el punto $O_1 = \left[ \begin{array}{r} -4 \\ -1 \end{array} \right]$ y con vértice $A = \left[ \begin{array}{r} -2 \\ 0 \end{array} \right]$. El resto de los vértices se nombran $B, C, D$ y $E$ tal y como indica la figura. Posteriormente, se gira la estrella un ángulo de $48^\circ $ alrededor del punto $P = \left[ \begin{array}{r} -8 \\ 4 \end{array} \right]$ en sentido positivo.}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 12cm]{estrella.png}
+\end{figure}
+
+\textcolor{blue}{Determinar las coordenadas $x$ e $y$ de los vértices $A,B,C,D,E,A',B',C',D',E'$ y dibuja las estrellas y las líneas que unen los centros de dichas estrellas con el centro de giro.}
+\end{ejer}
+
+{\it Solución:}
+% Escribe tu solución para el ejercicio 5
+
+Para determinar las coordenadas de los puntos $A,B,C,D$ y $E$ debemos construir la matriz del giro de $\alpha = 2\pi/5$ grados, centrada en el punto $O_1 = \left[\begin{array}{c} -4 \\ -1 \end{array} \right] $ girando el vértice $A = \left[\begin{array}{c} -2 \\ 0 \end{array} \right] $ cuatro veces. Para ello comenzamos creando el sistema de referencia de punto $O_1$ y base canónica $e_1,e_2$.
+
+\begin{sageblock}
+R = matrix(RR,[[ 1,0,0],
+            [-4,1,0],
+            [-1,0,1]])
+R.subdivide(1,1)
+\end{sageblock}
+$$R=\sage{R}.$$
+La matriz de giro en este sistema de referencia es:
+\begin{sageblock}
+a = 2*pi/5
+gRR = matrix(RR,[[1, 0     ,  0   ],
+            		[0, cos(a), -sin(a)],
+            		[0, sin(a),  cos(a)]])
+\end{sageblock}
+Y la matriz de este giro asociada al sistema de referencia canónico del plano es:
+\begin{sageblock}
+g=R*gRR*R^-1
+g.subdivide(1,1)
+\end{sageblock}
+\[ g=RG_{\frac{2\pi}{5}}R^{-1} = \sage{g} \] 
+Las coordenadas de los vértices de la estrella son:
+\begin{sageblock}
+Vh = [g^i*vector(RR,[1,-2,0]) for i in range(5)]
+V = [v[1:] for v in Vh]
+\end{sageblock}
+En coordenadas homogéneas
+$$A = (1,-2,0)=  \sage{n(Vh[0])} $$
+$$B  =  g(1,-2,0)= \sage{n(Vh[1])} $$
+$$C  = g^2(1,-2,0)=  \sage{n(Vh[2])} $$
+$$D  = g^3(1,-2,0)= \sage{n(Vh[3])} $$
+$$E  = g^4(1,-2,0)= \sage{n(Vh[4])} $$
+Y en coordenadas no homogéneas:
+$$A  = V[0] =  \sage{n(V[0])} $$
+$$B  = V[1]=  \sage{n(V[1])} $$
+$$C  = V[2]= \sage{n(V[2])} $$
+$$D  = V[3]= \sage{n(V[3])} $$
+$$E  = V[4]= \sage{n(V[4])} $$
+Para determinar las coordenadas de los puntos $A',B',C',D'$ y $E'$ debemos construir la matriz del giro de $\beta = 48\pi/180$ grados, alrededor del punto $P = \left[\begin{array}{r} -8 \\ 4 \end{array} \right] $. 
+
+Comenzamos construyendo el sistema de referencia en el punto $P$ y base canónica $e_1,e_2$.
+\begin{sageblock}
+R1 = matrix(RR,[[ 1,0,0],
+             [-8,1,0],
+             [ 4,0,1]])
+R1.subdivide(1,1)
+\end{sageblock}  
+$$R_1=\sage{R1}$$
+\begin{sageblock}           
+b = 48*pi/180
+g1R1R1 = matrix(RR,[[1, 0,       0 ],
+             [0, cos(b), -sin(b)],
+             [0, sin(b),  cos(b)]])
+g1=R1*g1R1R1*R1^-1
+g1.subdivide(1,1)
+\end{sageblock}
+La matriz de giro del sistema de referencia es:
+$$g_1=R_1G_{\frac{48\pi}{180}}R_1^{-1}=\sage{g1}$$
+Las coordenadas de los vértices de la segunda estrella son:
+\begin{sageblock}
+V1h = [g1*v for v in Vh]
+V1= [w[1:] for w in V1h]
+\end{sageblock}
+
+
+En coordenadas homogéneas
+$$A' = g_1(1,-2,0)=  \sage{n(V1h[0])} $$
+$$B'  =  g_1(g(1,-2,0))= \sage{n(V1h[1])} $$
+$$C'  = g_1(g^2(1,-2,0))=  \sage{n(V1h[2])} $$
+$$D'  =g_1( g^3(1,-2,0))= \sage{n(V1h[3])} $$
+$$E'  = g_1(g^4(1,-2,0))= \sage{n(V1h[4])} $$
+Y en coordenadas no homogéneas:
+$$A'  =V_1[0]=  \sage{n(V1[0])} $$
+$$B'  =V_1[1]=  \sage{n(V1[1])} $$
+$$C'  = V_1[2]= \sage{n(V1[2])} $$
+$$D'  = V_1[3]= \sage{n(V1[3])} $$
+$$E'  = V_1[4]= \sage{n(V1[4])} $$
+Por último, el centro de la estrella girada es:
+
+\begin{sageblock}
+centro=(g1*vector(RR,[1,-4,-1]))[1:]  # centro de la estrella girada
+\end{sageblock}
+$$g_1(O_1)=\sage{centro}$$
+Para dibujarlo todo añadimos los siguientes comandos de Sagesub:
+\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 0.7,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
+\draw[->,thick,gray] (1,0) -- (-8,0); % Eje X
+\draw[->,thick,gray] (0,-3) -- (0,5); % Eje Y
+\draw[cara1] !{V[0]} -- !{V[2]} -- !{V[4]} -- !{V[1]} -- !{V[3]} -- cycle; %Estrella 1
+\draw[cara2] !{V1[0]} -- !{V1[2]} -- !{V1[4]} -- !{V1[1]} -- !{V1[3]} -- cycle; %Estrella 2
+\draw[dashed] (-8,4) -- (-4,-1);
+\draw[dashed] (-8,4) -- !{centro};
+\draw[fill = white] (-8,4) circle (0.5mm); 
+\draw[fill = white] (-4,-1) circle (0.5mm); 
+\draw[fill = white] !{centro} circle (0.5mm); 
+\draw[fill = white] (-8,4) circle (0.5mm) node[above left] {$P$}; 
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{verbatim}
+obteniendo:
+%%%%%%%%%%%
+%%dibujosagesub%%
+%%%%%%%%%%%%
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 0.7,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
+\draw[->,thick,gray] (1,0) -- (-8,0); % Eje X
+\draw[->,thick,gray] (0,-3) -- (0,5); % Eje Y
+\draw[cara1] !{V[0]} -- !{V[2]} -- !{V[4]} -- !{V[1]} -- !{V[3]} -- cycle;
+\draw[cara2] !{V1[0]} -- !{V1[2]} -- !{V1[4]} -- !{V1[1]} -- !{V1[3]} -- cycle;
+\draw[dashed] (-8,4) -- (-4,-1);
+\draw[dashed] (-8,4) -- !{centro};
+\draw[fill = white] (-8,4) circle (0.5mm); 
+\draw[fill = white] (-4,-1) circle (0.5mm); 
+\draw[fill = white] !{centro} circle (0.5mm); 
+\draw[fill = white] (-8,4) circle (0.5mm) node[above left] {$P$}; 
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+% Fin del Ejercicio 5
+
+\newpage
+
+\begin{tcolorbox}[colback = orange!60!white,title = Cuestiones teóricas previas]
+La recta en el plano que pasa por los puntos de coordenadas $P(a,b)$ y $Q(c,d)$ se puede calcular de la forma
+
+\[ \left| \begin{array}{rrr}
+1 & 1 & 1  \\            
+x & a & c  \\          
+y & b & d            
+\end{array} \right| = 0\]
+
+La distancia de un punto $P=(x_0,x_1)$ sobre una recta $r$ de ecuación $Ax+By+C = 0$ es
+\[ d(P,r) = \frac{\vert Ax_0+Bx_1+C\vert}{\sqrt{A^2+B^2}}. \] 
+\end{tcolorbox}
+
+\begin{ejer}
+\textcolor{blue}{Determina una estrella regular de $5$ puntas con centro en el punto $O_1 = (5,0)$ y con vértice $A = (6,0)$. El resto de los vértices se nombran $B, C, D$ y $E$ tal y como indica la figura. Posteriormente gira la estrella un ángulo de $39^\circ $ alrededor del punto $P = (1,2)$ en sentido positivo.}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 12cm]{estrella1.png}
+\end{figure}
+
+\textcolor{blue}{Dibujar dicha estrella así como su girada, mostrando además los segmentos $PO_1$ y $PO'_1$. Además calcular los siguientes puntos y valores:
+\begin{enumerate} 
+\item[a)] La ecuación de la recta $PO_1$.
+\item[b)] La distancia de $A$ a la recta $PO_1$
+\item[c)] Las coordenadas del punto $B$.
+\item[d)] Las coordenadas del punto $O'_1$ centro de la estrella girada.
+\item[e)] Las coordenadas del punto $B'$, vértice correspondiente con el vértice $B$ de la estrella girada.
+\end{enumerate}}
+
+\end{ejer}
+
+{\it Solución:}
+
+% Inicio del Ejercicio 6
+
+Introducimos el sistema de referencia canónico con punto (5,0) y base $e_1,e_2$, $R$:
+\begin{sageblock}
+R = matrix(RR,[[1,0,0],
+            [5,1,0],
+            [0,0,1]])
+R.subdivide(1,1)
+\end{sageblock}
+$$R=\sage{R}$$
+El sistema de referencia para realizar el giro y obtener las estrella de vértices $A, B, C, D$ y $E$ será $g$. Para obtener los vértices de la estrella, definimos el ángulo $\beta = 2\pi/5$ y la matriz del giro de ángulo $\beta$ en este sistema de referencia
+\begin{sageblock}
+beta = 2*pi/5
+G = matrix(RR,[[1, 0     ,  0      ],
+            [0, cos(beta), -sin(beta)],
+            [0, sin(beta),  cos(beta)]])
+g=R*G*R^-1
+g.subdivide(1,1)
+\end{sageblock}
+
+La matriz del giro del sistema de referencia que resulta es \[g=RG_{\frac{2 \pi}{5}}R^{-1} = \sage{g}.\]
+Definimos los vértices del pentágono girando el vértice $A = \left( \begin{array}{r} 6  \\ 0 \end{array} \right)$ en coordenadas homogéneas
+
+\begin{sageblock}
+V = [g^i*vector(RR,[1,6,0]) for i in range(5)]
+\end{sageblock}
+Los vértices con coordenada homogénea son:
+$$V[0]=(1,6,0)=\sage{V[0]}$$
+$$V[1]=g(1,6,0)=\sage{V[1]}$$
+$$V[2]=g^2(1,6,0)=\sage{V[2]}$$
+$$V[3]=g^3(1,6,0)=\sage{V[3]}$$
+$$V[4]=g^4(1,6,0)=\sage{V[4]}$$
+Ahora debemos girar dichos vértices un ángulo de $39^\circ$ centrado en el punto $P = (1,2)$. Para eso introducimos como $R_1$ el sistema de referencia canónico en $P$.
+
+\begin{sageblock}
+R1 = matrix(RR,[[1,0,0],
+             [1,1,0],
+             [2,0,1]])
+R1.subdivide(1,1)
+\end{sageblock}
+
+Nuestro sistema de referencia ahora es \[ R_1=\sage{R1} \] Definimos el ángulo $\alpha = 39\pi/180$ y la matriz del giro de ángulo $\alpha$ en este sistema de referencia 
+\begin{sageblock}
+alpha = 39*pi/180
+G1 = matrix(RR,[[1, 0        ,  0        ],
+            [0, cos(alpha), -sin(alpha)],
+            [0, sin(alpha),  cos(alpha)]])
+g1=R1*G1*R1^-1
+g1.subdivide(1,1)
+\end{sageblock}
+
+La matriz del giro que resulta es \[g_1=R_1G_{\frac{39 \pi}{180}}R_1^{-1} = \sage{g1}.\] 
+Los vértices en coordenadas homogéneas de la estrella girada con centro en el punto $P$ son
+
+\begin{sageblock}
+V1 = [g1*v for v in V]
+\end{sageblock}
+$$V_1[0]=g_1(1,6,0)=\sage{V1[0]}$$
+$$V_1[1]=g_1(g(1,6,0))=\sage{V1[1]}$$
+$$V_1[2]=g_1(g^2(1,6,0))=\sage{V1[2]}$$
+$$V_1[3]=g_1(g^3(1,6,0))=\sage{V1[3]}$$
+$$V_1[4]=g_1(g^4(1,6,0))=\sage{V1[4]}$$
+Quitamos la coordenada homogénea para poder representar los puntos en el plano
+
+\begin{sageblock}
+V = [v[1:] for v in V]
+V1 = [v[1:] for v in V1]
+\end{sageblock}
+De esta forma los puntos ahora son
+Dibujamos las estrellas así como los puntos $P$, $O1$, $O'1$ y los segmentos $PO_1$ y $PO'_1$.
+$$V[0]=\sage{V[0]} \quad V_1[0]=\sage{V1[0]}$$
+$$V[1]=\sage{V[1]} \quad V_1[1]=\sage{V1[1]}$$
+$$V[2]=\sage{V[2]} \quad V_1[2]=\sage{V1[2]}$$
+$$V[3]=\sage{V[3]} \quad V_1[3]=\sage{V1[3]}$$
+$$V[4]=\sage{V[4]} \quad V_1[4]=\sage{V1[4]}$$
+
+Para introducir los comandos en Sagesub adecuadamente debemos introducir los siguientes puntos y vectores:
+\begin{sageblock}
+P=vector(RR,[1,2])
+O1=vector(RR,[5,0])
+g1O1=g1*vector(RR,[1,5,0])
+g1O1=g1O1[1:]
+\end{sageblock}
+$$P=\sage{P}$$
+$$O_1=\sage{O1}$$
+$$g_1(O_1)=\sage{g1O1}$$
+Introduciendo los siguientes comandos:
+\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 1.3,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
+\draw[->,thick,gray] (-1,0) -- (7,0); % Eje X
+\draw[->,thick,gray] (0,-1) -- (0,5); % Eje Y
+\draw[cara1] !{V[0]} -- !{V[2]} -- !{V[4]} -- !{V[1]} -- !{V[3]} -- cycle;
+\draw[cara2] !{V1[0]} -- !{V1[2]} -- !{V1[4]} -- !{V1[1]} -- !{V1[3]} -- cycle;
+\draw[dashed] !{P} -- !{O1};
+\draw[dashed] !{P} -- !{g1O1};
+\draw[fill = white] !{P} circle (0.5mm);
+\draw[fill = white] !{P} circle (0.5mm) node[above left] {$P$};  
+\draw[fill = white] !{O1} circle (0.5mm); 
+\draw[fill = white] !{g1O1} circle (0.5mm); 
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{verbatim}
+se obtiene:
+
+%%%%%%%%%%
+%%dibujosagesub%%
+%%%%%%%%%%%
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 1.3,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
+\draw[->,thick,gray] (-1,0) -- (7,0); % Eje X
+\draw[->,thick,gray] (0,-1) -- (0,5); % Eje Y
+\draw[cara1] !{V[0]} -- !{V[2]} -- !{V[4]} -- !{V[1]} -- !{V[3]} -- cycle;
+\draw[cara2] !{V1[0]} -- !{V1[2]} -- !{V1[4]} -- !{V1[1]} -- !{V1[3]} -- cycle;
+\draw[dashed] !{P} -- !{O1};
+\draw[dashed] !{P} -- !{g1O1};
+\draw[fill = white] !{P} circle (0.5mm);
+\draw[fill = white] !{P} circle (0.5mm) node[above left] {$P$};  
+\draw[fill = white] !{O1} circle (0.5mm); 
+\draw[fill = white] !{g1O1} circle (0.5mm); 
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+
+
+Además
+
+\begin{enumerate} 
+\item[a)] Ecuación de la recta $PO_1$.
+
+\begin{sageblock}
+Pol.<x,y> = PolynomialRing(RR)
+A=matrix(Pol,[[1,1,1],
+            [x,1,5],
+            [y,2,0]])
+\end{sageblock}
+
+La ecuación de la recta $PO_1$ es
+\[ \left| \begin{array}{rrr}
+1 & 1 & 1  \\            
+x & 1 & 5  \\          
+y & 2 & 0            
+\end{array} \right| = 0\] Por tanto \[ \sage{det(A)} = 0 \] o equivalentemente \[ x + 2y - 5 = 0 \]
+
+\item[b)] Distancia de $A$ a la recta $PO_1$
+
+
+La distancia del punto $A = (6,0)$ sobre la recta $x+2y-5=0$ por tanto es \[ \frac{\vert 6\cdot 1+2\cdot 0-5\vert}{\sqrt{1^2+2^2}} = \frac{1}{\sqrt{5}} \]
+
+
+\item[c)] Coordenadas del punto $B$.
+
+Las coordenadas del punto $B$ son
+\begin{sageblock}
+B=g*vector(RR,[1,6,0])
+B=B[1:]
+\end{sageblock}
+\[ \sage{n(B)} \] Obtendríamos el mismo resultado tomando $B=V[1]$.
+
+\item[d)] Las coordenadas del punto $O'_1$ centro de la estrella girada.
+ 
+\begin{sageblock}
+g1O1=g1*vector(RR,[1,5,0])
+g1O1=g1O1[1:]
+\end{sageblock}
+Las coordenadas del punto $O'_1$ son
+\[ O'_1 = \sage{n(g1O1)} \]
+
+\item[e)] Las coordenadas del punto $B'$, vértice correspondiente con el vértice $B$ de la estrella girada.
+
+\begin{sageblock}
+Bp=g1*g*vector(RR,[1,6,0])
+Bp=Bp[1:]
+\end{sageblock}
+
+Las coordenadas del punto $B'$ son
+\[ B' = \sage{n(Bp)} \] Obtendríamos el mismo resultado tomando $B'=V_1[1]$.
+
+\end{enumerate}
+
+% Fin del Ejercicio 6
+\newpage
+
+\begin{ejer}
+\textcolor{blue}{Determina una estrella regular de $5$ puntas con centro en el punto $O_1 = (2,-3)$ y con vértice $A = (3,-2)$. El resto de los vértices se nombran $B, C, D$ y $E$ tal y como indica la figura. Posteriormente se hace una simetría ortogonal respecto de la recta que pasa por los puntos $P = (-2,7)$ y $Q = (0,9)$.}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width = 10cm]{estrella2.png}
+\end{figure}
+
+\textcolor{blue}{Dibujar dicha estrella así como su simétrica, mostrando además la recta que une los puntos $P$ y $Q$. Además calcular los siguientes puntos y valores:
+\begin{enumerate} 
+\item[a)] La ecuación de la recta $PQ$.
+\item[b)] La distancia de $A$ a la recta $PQ$
+\item[c)] Las coordenadas del punto $B$.
+\item[d)] Las coordenadas del punto $O'_1$ centro de la estrella simétrica a la dada.
+\item[e)] Las coordenadas del punto $B'$, vértice correspondiente con el vértice $B$ de la estrella simétrica.
+\end{enumerate}}
+
+\end{ejer}
+
+{\it Solución:}
+% Inicio del Ejercicio 7
+
+El sistema de referencia para realizar el giro y obtener las estrella de vértices $A, B, C, D$ y $E$, es el que tiene como punto $O_1$ y base canónica $e_1,e_2$.
+\begin{sageblock}
+R = matrix(RR,[[ 1,0,0],
+            [ 2,1,0],
+            [-3,0,1]])
+R.subdivide(1,1)
+\end{sageblock}
+
+ \[R= \sage{R} \]
+Para obtener los vértices de la estrella, definimos el ángulo $\beta = 2\pi/5$ y la matriz del giro de ángulo $\beta$ en este sistema de referencia
+
+\begin{sageblock}
+beta = 2*pi/5
+G = matrix(RR,[[1, 0        ,  0        ],
+            [0, cos(beta), -sin(beta)],
+            [0, sin(beta),  cos(beta)]])
+g=R*G*R^-1
+g.subdivide(1,1)
+\end{sageblock}
+
+La matriz del giro en sistema de referencia que resulta es \[g=RG_{\frac{2\pi}{5}} R^{-1}= \sage{g}.\]
+Definimos los vértices en homogéneas del pentágono girando el vértice $A = \left( \begin{array}{r} 3  \\ -2 \end{array} \right)$
+$$V=\{(1,3,-2), \ g(1,3,-2), \ g^2(1,3,-2), \ g^3(1,3,-2), \ g^4(1,3,-2) \}$$
+
+\begin{sageblock}
+V = [g^i*vector(RR,[1,3,-2]) for i in range(5)]
+\end{sageblock}
+$$V[0]=\sage{V[0]}$$
+$$V[1]=\sage{V[1]}$$
+$$V[2]=\sage{V[2]}$$
+$$V[3]=\sage{V[3]}$$
+$$V[4]=\sage{V[4]}$$
+Ahora debemos determinar la simetría respecto de la recta que pasa por los puntos $P$ y $Q$ para obtener los vértices simétricos de los ya calculados.
+
+Para ello tomamos como sistema de referencia un punto cualquiera de la recta junto con una base adecuada. Tomamos como punto, por ejemplo, $$P = (-2,7).$$ El primer vector de la base lo tomamos sobre la recta, por ejemplo, $$v_1 = \vec{PQ}= (0,9) - (-2,7) = (2,2)$$ y el segundo vector un ortogonal, por ejemplo $$v_2 = (-2,2).$$
+
+\begin{sageblock}
+P=vector(RR,[-2,7])
+Q=vector(RR,[0,9])
+v1 = Q-P
+v2=vector(RR,[-v1[1],v1[0]])
+R=block_matrix(RR,[[       matrix([1,0,0])],
+                [column_matrix([P,v1,v2])]])
+R.subdivide(1,1)
+\end{sageblock}
+
+El sistema de referencia es \[ R = \sage{R} \]
+Introducimos la matriz de simetría:
+\begin{sageblock}
+sRR = matrix(RR,[[1,0, 0],
+              [0,1, 0],
+              [0,0,-1]])
+sRR.subdivide(1,1)
+s=R*sRR*R^-1
+s.subdivide(1,1)
+\end{sageblock}
+
+Respecto de dicho sistema de referencia la matriz de la simetría es \[ S_{RR} = \sage{sRR} \] Y respecto del sistema canónico es la matriz \[ s = RS_{RR}R^{-1} = \sage{s} \]
+
+Los vértices de la estrella simétrica son
+$$V=\{s(1,3,-2), \ s(g(1,3,-2)), \ s(g^2(1,3,-2)), \ s(g^3(1,3,-2)), \ s(g^4(1,3,-2)) \}$$
+\begin{sageblock}
+V1 = [s*v for v in V]
+\end{sageblock}
+$$V_1[0]=\sage{V1[0]}$$
+$$V_1[1]=\sage{V1[1]}$$
+$$V_1[2]=\sage{V1[2]}$$
+$$V_1[3]=\sage{V1[3]}$$
+$$V_1[4]=\sage{V1[4]}$$
+Quitamos la coordenada homogénea para poder representar los puntos en el plano
+
+\begin{sageblock}
+V = [vector(v[1:]) for v in V]
+V1 = [vector(v[1:]) for v in V1]
+\end{sageblock}
+$$V[0]=\sage{V[0]} \quad V_1[0]=\sage{V1[0]}$$
+$$V[1]=\sage{V[1]} \quad V_1[1]=\sage{V1[1]}$$
+$$V[2]=\sage{V[2]} \quad V_1[2]=\sage{V1[2]}$$
+$$V[3]=\sage{V[3]} \quad V_1[3]=\sage{V1[3]}$$
+$$V[4]=\sage{V[4]} \quad V_1[4]=\sage{V1[4]}$$
+Dibujamos las estrellas así como los puntos $P$ y $Q$, el segmento que los une y los centros $O_1$ y $O'_1$.
+
+\begin{sageblock}
+O1=vector(RR,[2,-3])
+sO1=s*vector(RR,[1,2,-3])
+sO1=sO1[1:]
+\end{sageblock}
+De esta forma,
+$$O_1=\sage{O1}$$
+$$O'_1=s(O_1)=\sage{sO1}$$
+Obteniendo:
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 0.5,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
+\draw[->,thick,gray] (4.5,0) -- (-14,0); % Eje X
+\draw[->,thick,gray] (0,-5) -- (0,14); % Eje Y
+\draw[cara1] !{V[0]} -- !{V[2]} -- !{V[4]} -- !{V[1]} -- !{V[3]} -- cycle;
+\draw[cara2] !{V1[0]} -- !{V1[2]} -- !{V1[4]} -- !{V1[1]} -- !{V1[3]} -- cycle;
+\draw[dashed] (-9,0) -- (2,11);
+\draw[dashed] !{O1} -- !{sO1};
+\draw[fill = white] !{P} circle (0.5mm);
+\draw[fill = white] !{Q} circle (0.5mm);
+\draw[fill = white] !{P} circle (0.5mm) node[above left] {$P$}; 
+\draw[fill = white] !{Q} circle (0.5mm) node[above left] {$Q$};  
+\draw[fill = white] !{O1} circle (0.5mm); 
+\draw[fill = white] !{sO1} circle (0.5mm); 
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+El código que hay tras el dibujo es el siguiente:
+%%%%%%
+%%dibujosagesub
+%%%%%%
+\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 0.5,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
+\draw[->,thick,gray] (4.5,0) -- (-14,0); % Eje X
+\draw[->,thick,gray] (0,-5) -- (0,14); % Eje Y
+\draw[cara1] !{V[0]} -- !{V[2]} -- !{V[4]} -- !{V[1]} -- !{V[3]} -- cycle;
+\draw[cara2] !{V1[0]} -- !{V1[2]} -- !{V1[4]} -- !{V1[1]} -- !{V1[3]} -- cycle;
+\draw[dashed] (-9,0) -- (2,11);
+\draw[dashed] !{O1} -- !{sO1};
+\draw[fill = white] !{P} circle (0.5mm);
+\draw[fill = white] !{Q} circle (0.5mm);
+\draw[fill = white] !{P} circle (0.5mm) node[above left] {$P$}; 
+\draw[fill = white] !{Q} circle (0.5mm) node[above left] {$Q$};  
+\draw[fill = white] !{O1} circle (0.5mm); 
+\draw[fill = white] !{sO1} circle (0.5mm); 
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{verbatim}
+Además
+
+\begin{enumerate} 
+\item[a)] Ecuación de la recta $PQ$.
+
+\begin{sageblock}
+Pol.<x,y>=PolynomialRing(RR)
+A=matrix(Pol,[[1,1,1],
+            [x,-2,0],
+            [y,7,9]])
+\end{sageblock}
+
+La ecuación de la recta $PQ$ es
+\[ \left| \begin{array}{rrr}
+1 & 1 & 1  \\            
+x & -2 & 0  \\          
+y & 7 & 9            
+\end{array} \right| = 0\] Por tanto \[ \sage{det(A)} = 0 \] o equivalentemente \[ -x + y - 9 = 0 \]
+
+\item[b)] Distancia de $A$ a la recta $PQ$
+
+La distancia del punto $A = (3,-2)$ sobre la recta $-x+y-9=0$ por tanto es \[ \frac{\vert -(3)+ (-2)-9\vert}{\sqrt{(-1)^2+1^2}} = \frac{14}{\sqrt{2}}=7\sqrt{2} \]
+
+
+\item[c)] Coordenadas del punto $B$.
+
+Las coordenadas del punto $B$ son
+\begin{sageblock}
+B=g*vector(RR,[1,3,-2])
+B=B[1:]
+\end{sageblock}
+\[ B=\sage{n(B)} \] Obtendríamos el mismo resultado tomando $B=V[1]$.
+
+\item[d)] Las coordenadas del punto $O'_1$ centro de la estrella simétrica a la dada.
+ 
+\begin{sageblock}
+sO1=s*vector(RR,[1,2,-3])
+sO1=sO1[1:]
+\end{sageblock}
+Las coordenadas del punto $O'_1$ son
+\[ O'_1 = \sage{n(sO1)} \] 
+
+\item[e)] Las coordenadas del punto $B'$, vértice correspondiente con el vértice $B$ de la estrella simétrica.
+
+\begin{sageblock}
+Bp=s*g*vector(RR,[1,3,-2])
+Bp=Bp[1:]
+\end{sageblock}
+
+Las coordenadas del punto $B'$ son
+\[ B' = \sage{n(Bp)} \] Obtendríamos el mismo resultado tomando $B'=V_1[1]$.
+
+
+\end{enumerate}
+% Fin del Ejercicio 7
+
+\newpage
+
+\begin{ejer}
+\textcolor{blue}{Calcula la matriz de la transformación afín que corresponde a la simetría ortogonal con respecto al plano que pasa por los puntos $A = \left[ \begin{array}{r} 1 \\ 2 \\ -1 \end{array} \right]$, $B = \left[ \begin{array}{r} 2 \\ 1 \\ 1 \end{array} \right]$ y $C = \left[ \begin{array}{r} -1 \\ 3 \\ 1 \end{array} \right]$.}
+\end{ejer}
+
+{\it Solución:}
+% Inicio del Ejercicio 8
+
+Nuestro objetivo es calcular la matriz de simetría con respecto al plano que pasa por los puntos:
+\begin{sageblock}
+A=vector(RR,[1,2,-1])
+B=vector(RR,[2,1,1])
+C=vector(RR,[-1,3,1])
+\end{sageblock}
+Comenzamos calculando el sistema de referencia que nos proporciona la expresión canónica de la simetría.  Para ello, tomamos un punto cualquiera del plano, por ejemplo $P = A$, como punto base de nuestro sistema de referencia. La base vectorial estará formada por dos vectores linealmente independientes del plano, por ejemplo $$v_1 = \vec{AB} = B - A = \left[ \begin{array}{r} 1 \\ -1 \\ 2 \end{array} \right] \text{ y } v_2 = \vec{AC} = C - A = \left[ \begin{array}{r} -2 \\ 1 \\ 2 \end{array} \right].$$ 
+
+\begin{sageblock}
+v1=B-A
+v2=C-A
+\end{sageblock}
+El tercer vector de la base debe ser perpendicular a ambos, por lo que podemos tomarlo como $v_3 = v_1\times v_2$. 
+\begin{sageblock}
+v3=v1.cross_product(v2)
+\end{sageblock}
+Nuestro sistema de referencia es 
+\begin{sageblock}
+R=block_matrix(RR,[[       matrix([1,0,0,0])],
+                [column_matrix([A,v1,v2,v3])]])
+R.subdivide(1,1)
+\end{sageblock}
+\[ R = \sage{R}\] 
+
+La matriz de la simetría en el sistema de referencia $R$ es
+\begin{sageblock}
+sRR = matrix(RR,[[1,0,0, 0],
+              [0,1,0, 0],
+              [0,0,1, 0],
+              [0,0,0,-1]])
+sRR.subdivide(1,1)
+\end{sageblock}
+ \[ S_{RR} = \sage{sRR} \]
+Para pasar al sistema de referencia canónico, procedemos como siempre:
+\begin{sageblock}
+sRR.subdivide(1,1)
+s=R*sRR*R^-1
+s.subdivide(1,1)
+\end{sageblock}
+ \[ s = R\cdot S_{RR}\cdot R^{-1} = \sage{s}. \]
+
+% Fin del Ejercicio 8
+
+\newpage
+
+\begin{ejer}
+\textcolor{blue}{Calcula la matriz de la homotecia con factor $\frac{1}{2}$ y con centro en el punto $\left[ \begin{array}{r} -2 \\ 2 \\ 1 \end{array} \right]$}
+\end{ejer}
+
+{\it Solución:}
+
+% Inicio del Ejercicio 9
+Para hacer una homotecia con centro en un punto, podremos el origen del sistema de referencia en el centro de la homotecia $\left[ \begin{array}{r} -2 \\ 2 \\ 1 \end{array} \right]$ y  como base la canónica $C=\{e_1,e_2,e_3\}$. La matriz del sistema de referencia es en este caso:
+\begin{sageblock}
+R = matrix(RR,[[ 1,0,0,0],
+            [-2,1,0,0],
+            [ 2,0,1,0],
+            [ 1,0,0,1]])
+R.subdivide(1,1)
+\end{sageblock}
+\[ R = \sage{R} \]
+La matriz de la homotecia afín, respecto del sistema de referencia afín $R$, centrada en el origen y de factor $\frac{1}{2}$ tiene como matriz asociada su expresión canónica:
+\begin{sageblock}
+hRR = matrix(RR,[[1,0,0,0],
+              [0,1/2,0,0],
+              [0,0,1/2,0],
+              [0,0,0,1/2]])
+hRR.subdivide(1,1)
+\end{sageblock}
+\[ H_{1/2} = \sage{hRR} \] 
+Por tanto, la matriz en el sistema canónico del espacio afín es
+\begin{sageblock}
+h=R*hRR*R^-1
+h.subdivide(1,1)
+\end{sageblock}
+
+\[ h = R\cdot H_{1/2}\cdot R^{-1} = \sage{h}   \]
+
+% Fin del Ejercicio 9
+
+
+\newpage
+
+\begin{ejer}
+\textcolor{blue}{Calcula los vértices de un heptágono regular en $\mathcal{A}^3(\mathbb{R})$, sabiendo que 
+están contenidos en el plano $3x+y-z=1$, que su centro está en el punto $P=\left[\begin{array}{c}1\\0\\2
+\end{array}\right]$, y que uno de dichos vértices es el punto $Q=\left[\begin{array}{c}1\\1\\3
+\end{array}\right]$.}
+\end{ejer}
+
+{\it Solución.-}
+
+% Inicio del Ejercicio 10
+Para construir el heptágono regular que nos piden debemos usar el giro de ángulo $2\pi/7$ respecto de la recta perpendicular al plano que pasa por $P$, el centro del heptágono. Procedemos, pues, a calcular la matriz asociada a dicho giro en la referencia canónica del espacio. Como siempre, comenzamos calculando el sistema de referencia afín, $R$, que nos da la expresión canónica del giro. El punto base de dicho sistema de referencia es el centro del giro, 
+ $P = \left[\begin{array}{c}1\\0\\2
+\end{array}\right]$,
+\begin{sageblock}
+P=vector(RR,[1,0,2])
+\end{sageblock}
+La base $\{u,v,w\}$ estará formada una base ortonormal del espacio de direcciones del plano, $\{u,v\}$, y un vector $w$ perpendicular a ambos y de norma $1$. Primero hacemos los cálculos sin normalizar, luego forzamos la ortonormalidad de la base calculada. Por tanto, podemos tomar  $u = \vec{PQ}=\left[\begin{array}{c}0\\1\\1
+\end{array}\right]$ y, utilizando el vector perpendicular del espacio de direcciones $w = \left[\begin{array}{c}3\\1\\-1 \end{array}\right]$,
+\begin{sageblock}
+u=vector(RR,[0,1,1])
+w=vector(RR,[3,1,-1])
+\end{sageblock}
+el segundo vector del plano sería $v=u\times w$.
+\begin{sageblock}
+v=u.cross_product(w)
+\end{sageblock}
+$$v=\sage{v}.$$ El tercer vector (vector perpendicular a ambos) es el propio $$w=\sage{w}.$$
+A continuación, normalizamos la base ortogonal:
+\begin{sageblock}
+u=u/norm(u)
+v=v/norm(v)
+w=w/norm(w)
+\end{sageblock}
+para construir nuestro sistema de referencia
+\begin{sageblock}
+R=block_matrix(RR,[[matrix([1,0,0,0])],
+                  [column_matrix([P,u,v,w])]])
+R.subdivide(1,1)
+\end{sageblock}
+\[ R = \sage{R}\] 
+
+La matriz asociada al giro respecto de este sistema de referencia es, por tanto:
+\begin{sageblock}
+b=2*pi/7
+G=matrix(RR,[[1,0,0,0],
+             [0,cos(b),-sin(b),0],
+             [0,sin(b),cos(b),0],
+             [0,0,0,1]])
+\end{sageblock}
+$$G_{2\pi/7}=\sage{G}$$
+Y la matriz asociada respecto del sistema de referencia canónico del espacio es:
+
+\begin{sageblock}
+g=R*G*R^(-1)
+\end{sageblock}
+$$ g=\sage{g}$$
+Determinamos ahora los vértices del heptágono, girando el vértice dado $Q$. Utilizamos dicho vértice en coordenadas homogéneas para obtener el resto de los vértices.
+
+\begin{sageblock}
+g=R*G*R^(-1)
+V=[g^i*vector(RR,[1,1,1,3]) for i in range(7)]
+W=[v[1:] for v in V]
+\end{sageblock}
+
+Los vértices del héptagono quitando la coordenada homogénea son:
+
+\[ \begin{array}{rrr} v_1 & = & \sage{W[0]} \\
+v_2 & = & \sage{W[1]} \\
+v_3 & = & \sage{W[2]} \\
+v_4 & = & \sage{W[3]} \\
+v_5 & = & \sage{W[4]} \\
+v_6 & = & \sage{W[5]} \\
+v_7 & = & \sage{W[6]}
+\end{array} \]
+Aunque no lo piden, podemos dibujar el heptágono:
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 1, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-5,0,0) -- (5,0,0); % Eje X
+\draw[->,thick,gray] (0,-5,0) -- (0,5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-1) -- (0,0,5); % Eje Z
+
+\draw[cara] !{W[0]} -- !{W[1]} -- !{W[2]} -- !{W[3]} -- !{W[4]} -- !{W[5]} -- !{W[6]} -- cycle;
+\draw[cara] !{P+3*u+3*v} -- !{P+3*u-3*v} -- !{P-3*u-3*v} -- !{P-3*u+3*v} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+El código que hay tras el dibujo es:
+\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 1, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-5,0,0) -- (5,0,0); % Eje X
+\draw[->,thick,gray] (0,-5,0) -- (0,5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-1) -- (0,0,5); % Eje Z
+
+\draw[cara] !{W[0]} -- !{W[1]} -- !{W[2]} -- !{W[3]} -- !{W[4]} -- !{W[5]} 
+-- !{W[6]} -- cycle;
+\draw[cara] !{P+3*u+3*v} -- !{P+3*u-3*v} -- !{P-3*u-3*v} -- !{P-3*u+3*v} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{verbatim}
+% Fin del Ejercicio 10
+
+\newpage
+
+
+\begin{ejer}
+\textcolor{blue}{Calcula el simétrico de cada uno de los puntos
+$$
+	\left[\begin{array}{c}1\\1\\0\end{array}\right] \quad
+	\left[\begin{array}{c}2\\-1\\-3\end{array}\right] \quad
+	\left[\begin{array}{c}3\\3\\-1\end{array}\right] \quad
+	\left[\begin{array}{c}2\\3\\1\end{array}\right] \quad
+	\left[\begin{array}{c}4\\-6\\10\end{array}\right] \quad
+	\left[\begin{array}{c}5\\10\\-15\end{array}\right]
+$$ 
+respecto del plano $x+y=1$. Dibuja todos los puntos, sus simétricos y el plano.}
+\end{ejer}
+
+{\it Solución:}
+
+% Inicio del Ejercicio 11
+
+Para resolver el problema, debemos usar la simetría ortogonal respecto del plano  $x+y=1$. Procedemos, pues, a calcular la matriz asociada a dicha simetría en la referencia canónica del espacio. Como siempre, comenzamos calculando el sistema de referencia afín, $R$, que nos da la expresión canónica de la simetría. El punto base de dicho sistema de referencia es un punto $P$ cualquiera del plano $x+y=1$. Por ejemplo, podemos tomar  $P = \left[\begin{array}{c}1\\0\\0
+\end{array}\right]$, como punto base de nuestro sistema de referencia $R$.
+\begin{sageblock}
+P=vector(RR,[1,0,0])
+\end{sageblock}
+La base estará formada por dos vectores del espacio de direcciones del plano, por ejemplo $u = \left[\begin{array}{c}0\\0\\1
+\end{array}\right]$ y, utilizando el vector perpendicular del espacio de direcciones del plano, $w = \left[\begin{array}{c}1\\1\\0 \end{array}\right]$, el segundo vector del plano sería $v=u\times w $. El tercer vector (vector perpendicular a ambos) es el propio $w$. 
+\begin{sageblock}
+u=vector(RR,[0,0,1])
+w=vector(RR,[1,1,0])
+v=u.cross_product(w)
+\end{sageblock}
+Después, normalizamos la base ortogonal
+\begin{sageblock}
+u=u/norm(u)
+v=v/norm(v)
+w=w/norm(w)
+\end{sageblock}
+Nuestro sistema de referencia es
+\begin{sageblock}
+R=block_matrix(RR,[[matrix([1,0,0,0])],
+                  [column_matrix([P,u,v,w])]])
+R.subdivide(1,1)
+\end{sageblock}
+ \[ R = \sage{R}.\] 
+
+A continuación determinamos la matriz de la simetría respecto del sistema canónico
+
+\begin{sageblock}
+SRR=column_matrix(RR,[[1,0,0,0],
+                   [0,1,0,0],
+                   [0,0,1,0],
+                   [0,0,0,-1]])
+s=R*SRR*R^-1
+s.subdivide(1,1)
+\end{sageblock}
+$$s=RS_{RR}R^{-1}=\sage{s}$$
+Seguidamente obtenemos los simétricos de los puntos dados
+
+\begin{sageblock}
+Dh=[vector(RR,[1,1,1,0]),vector(RR,[1,2,-1,-3]),vector(RR,[1,3,3,-1]),vector(RR,[1,2,3,1]),
+vector(RR,[1,4,-6,10]),vector(RR,[1,5,10,-15])]
+\end{sageblock} 
+Se aplica la simetría a cada uno de los puntos y eliminamos la coordenada homogénea de los puntos para poder representarlos
+
+\begin{sageblock}        
+simeh=[s*A for A in Dh]
+D=[v[1:] for v in Dh]
+sime=[w[1:] for w in simeh]
+\end{sageblock}
+
+Los puntos son
+%$$s\sage{D[0]} \rightarrow $$
+$$\sage{sime[0]}$$
+%$$s\sage{D[1]} \rightarrow $$
+$$\sage{sime[1]}$$
+%$$s\sage{D[2]} \rightarrow $$
+$$\sage{sime[2]}$$
+%$$s\sage{D[3]} \rightarrow $$
+$$\sage{sime[3]}$$
+%$$s\sage{D[4]} \rightarrow $$
+$$\sage{sime[4]}$$
+
+Su representación gráfica es:
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 0.3, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-15,0,0) -- (15,0,0); % Eje X
+\draw[->,thick,gray] (0,-15,0) -- (0,15,0); % Eje Y
+\draw[->,thick,gray] (0,0,-15) -- (0,0,15); % Eje Z
+\draw[fill = blue] !{D[0]} circle (2mm) node[above left] {$P_1$}; 
+\draw[fill = blue] !{D[1]} circle (2mm) node[below right] {$P_2$}; 
+\draw[fill = blue] !{D[2]} circle (2mm) node[below right] {$P_3$}; 
+\draw[fill = blue] !{D[3]} circle (2mm) node[above right] {$P_4$}; 
+\draw[fill = blue] !{D[4]} circle (2mm) node[above right] {$P_5$}; 
+\draw[fill = blue] !{D[5]} circle (2mm) node[above right] {$P_6$}; 
+\draw[fill = red] !{sime[0]} circle (2mm) node[above left] {$P'_1$}; 
+\draw[fill = red] !{sime[1]} circle (2mm) node[below right] {$P'_2$}; 
+\draw[fill = red] !{sime[2]} circle (2mm) node[below right] {$P'_3$}; 
+\draw[fill = red] !{sime[3]} circle (2mm) node[above right] {$P'_4$}; 
+\draw[fill = red] !{sime[4]} circle (2mm) node[above right] {$P'_5$}; 
+\draw[fill = red] !{sime[5]} circle (2mm) node[above right] {$P'_6$}; 
+\draw[cara] !{16*u+16*v} -- !{16*u-16*v} -- !{-16*u-16*v} -- !{-16*u+16*v} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+El código que hay tras el dibujo es:
+%%%%%%%%%%%
+%%%dibujosagesub%%
+%%%%%%%%%
+\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 0.3, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-15,0,0) -- (15,0,0); % Eje X
+\draw[->,thick,gray] (0,-15,0) -- (0,15,0); % Eje Y
+\draw[->,thick,gray] (0,0,-15) -- (0,0,15); % Eje Z
+\draw[fill = blue] !{D[0]} circle (2mm) node[above left] {$P_1$}; 
+\draw[fill = blue] !{D[1]} circle (2mm) node[below right] {$P_2$}; 
+\draw[fill = blue] !{D[2]} circle (2mm) node[below right] {$P_3$}; 
+\draw[fill = blue] !{D[3]} circle (2mm) node[above right] {$P_4$}; 
+\draw[fill = blue] !{D[4]} circle (2mm) node[above right] {$P_5$}; 
+\draw[fill = blue] !{D[5]} circle (2mm) node[above right] {$P_6$}; 
+\draw[fill = red] !{sime[0]} circle (2mm) node[above left] {$P'_1$}; 
+\draw[fill = red] !{sime[1]} circle (2mm) node[below right] {$P'_2$}; 
+\draw[fill = red] !{sime[2]} circle (2mm) node[below right] {$P'_3$}; 
+\draw[fill = red] !{sime[3]} circle (2mm) node[above right] {$P'_4$}; 
+\draw[fill = red] !{sime[4]} circle (2mm) node[above right] {$P'_5$}; 
+\draw[fill = red] !{sime[5]} circle (2mm) node[above right] {$P'_6$}; 
+\draw[cara] !{16*u+16*v} -- !{16*u-16*v} -- !{-16*u-16*v} -- !{-16*u+16*v} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{verbatim}
+% Fin del Ejercicio 11
+
+\newpage
+
+
+\begin{ejer}
+\textcolor{blue}{Sabiendo que la simetría ortogonal $f:\mathcal{A}^3(\mathbb{R}) \to \mathcal{A}^3(\mathbb{R})$
+respecto a un cierto plano cumple 
+$$
+	f\left(\left[\begin{array}{c}1\\3\\-1\end{array}\right]\right)=\left[\begin{array}{c}3\\2\\1\end{array}\right],
+$$ 
+calcula un sistema de referencia af\'in de dicho plano y la matriz de~$f$ respecto del sistema de referencia can\'onico
+de $\mathcal{A}^3(\mathbb{R})$. }
+\end{ejer}
+{\it Solución:}
+
+% Inicio del Ejercicio 12
+Comenzamos calculando la matriz de~$f$ respecto del sistema de referencia can\'onico
+de $\mathcal{A}^3(\mathbb{R})$. Para ello, primero debemos calcular el sistema de referencia $R$ respecto del cual $f$ tiene su expresión canónica. 
+Como el punto $Q = \left[\begin{array}{c} 3\\2\\1 \end{array}\right]$ es el simétrico del punto $T = \left[\begin{array}{c} 1\\3\\-1 \end{array}\right]$, entonces el vector $\vec{TQ}=Q-T$ es el vector normal al plano de simetría. Tomamos como punto base del sistema de referencia $R$ al punto medio entre $Q$ y $T$, punto que está en dicho plano de simetría; esto es, $P = \displaystyle{Q+T \over 2}$
+
+\begin{sageblock}
+Q=vector(RR,[3,2,1])
+T=vector(RR,[1,3,-1])
+P=(Q+T)/2 
+\end{sageblock}
+
+
+
+La base estará formada por el vector ortogonal al plano $w=\vec{TQ}=Q-T$ junto con una base ortogonal de dicho plano. Tomamos el vector $u$ como un ortogonal a $w$ y el $v$ el producto vectorial de $u$ y de $w$
+
+\begin{sageblock}
+w=Q-T
+u=vector(RR,[-w[1],w[0],0])
+v=u.cross_product(w)
+\end{sageblock}
+Normalizamos la base ortogonal
+\begin{sageblock}
+u=u/norm(u)
+v=v/norm(v)
+w=w/norm(w)
+\end{sageblock}
+El sistema de referencia $R$ es, por tanto:
+\begin{sageblock}
+R=block_matrix(RR,[[matrix([1,0,0,0])],
+                  [column_matrix([P,u,v,w])]])
+R.subdivide(1,1)
+\end{sageblock}
+$$R=\sage{R}$$
+La matriz de simetría (es decir, la matriz de $f$ respecto del sistema de referencia $R$) es:
+\begin{sageblock}
+S=column_matrix(RR,[[1,0,0,0],
+                   [0,1,0,0],
+                   [0,0,1,0],
+                   [0,0,0,-1]])
+S.subdivide(1,1)                   
+\end{sageblock}
+$$S_{RR}=\sage{S}$$
+Y, por tanto,  la matriz de la simetría $f$ respecto del sistema de referencia canónico es
+\begin{sageblock}
+s=R*S*R^(-1) 
+s.subdivide(1,1)
+\end{sageblock}
+\[s=RS_{RR}R^{-1}=\sage{s}\]
+
+Ahora, nos han pedido un sistema de referencia afín $R_{\Pi}$ para el plano $\Pi$ respecto del cual se ha hecho la simetría. Obviamente, este está dado por el punto $P$ y la base $\{u,v\}$:
+
+\begin{sageblock}
+Rpi=block_matrix(RR,[[matrix([1,0,0])],
+                  [column_matrix([P,u,v])]])
+Rpi.subdivide(1,1)
+\end{sageblock}
+$$R_{\Pi}=\sage{Rpi}$$
+
+% Fin del Ejercicio 12
+
+\newpage
+
+
+\begin{ejer}\label{ej:prisma}
+\textcolor{blue}{Dibuja un prisma en $\mathcal{A}^3(\mathbb{R})$ con centro de gravedad el origen de coordenadas y bases pentagonales regulares en planos paralelos al plano $\Pi \equiv x+y+2z=0$, y que tenga al punto $A=\left[\begin{array}{c}0.5\\0.1\\0.4\end{array}\right]$ como uno de sus v\'ertices.} 
+\end{ejer}
+
+{\it Solución:}
+
+% Inicio del Ejercicio 13
+
+Lo primero que hacemos es observar que el punto $A$ que nos dan no pertenece al plano $\Pi$ (que es, en realidad evidente: basta sustituir las coordenadas de $A$ en la ecuación del plano y ver que no se satisface), por lo que pertenece a cierto plano $\Pi_1$ paralelo a $\Pi$. Evidentemente, el giro del plano $\Pi$ con centro en $P=(0,0,0)$ y de ángulo $2\pi/5$ nos sirve para calcular el resto de vértices de una de las bases del prisma (la que vive en $\Pi_1$): basta aplicarlo reiteradas veces al punto $A$. Luego, para calcular los vértices de la otra base del prisma, bastará aplicar a estos la simetría ortogonal respecto del plano $\Pi$.   Obsérvese que el sistema de referencia $R$ que nos proporciona la expresión canónica del giro coincide con el sistema de referencia que proporciona la simetría ortogonal que vamos a usar.
+
+  
+
+Calculemos $R$: Tomamos como punto base el punto $P=(0,0,0)$, el origen de coordenadas, que es el centro de la base del prisma, y como base tomamos la normalización de la que se obtiene con el vector ortogonal al plano $x+y+2z = 0$ junto con una base ortogonal de dicho plano.
+
+\begin{sageblock}
+P=vector(RR,[0,0,0])
+\end{sageblock}
+Tomamos el vector $w$ como un vector perpendicular al plano:
+\begin{sageblock}
+w=vector(RR,[1,1,2])
+\end{sageblock}
+$$w=\sage{w}$$
+Tomamos un vector que esté dentro de plano $u$
+\begin{sageblock}
+u=vector(RR,[1,-1,0])
+\end{sageblock}
+$$u=\sage{u}$$
+Se toma $v=u\times w$ como vector ortogonal a ambos vectores
+\begin{sageblock}
+v=u.cross_product(w)
+\end{sageblock}
+$$v=\sage{v}$$
+Normalizamos la base ortogonal:
+\begin{sageblock}
+u=u/norm(u)
+v=v/norm(v)
+w=w/norm(w)
+\end{sageblock}
+El sistema de referencia $R$ es, por tanto:
+\begin{sageblock}
+R=block_matrix(RR,[[matrix([1,0,0,0])],
+                  [column_matrix([P,u,v,w])]])
+R.subdivide(1,1)
+\end{sageblock}
+\[ R = \sage{R}. \]
+Obtenemos la base del prisma usando la matriz de giro de ángulo $\beta=2\pi/5$.
+\begin{sageblock}
+beta=2*pi/5
+G=column_matrix(RR,[[1, 0,        0,        0],
+                   [0, cos(beta),sin(beta),0],
+                   [0,-sin(beta),cos(beta),0],
+                   [0, 0,        0,        1]])
+g=R*G*R^(-1)
+g.subdivide(1,1)
+\end{sageblock}
+$$g=RG_{\frac{2\pi}{5}}R^{-1}=\sage{g}$$
+De esta forma obtenemos los vértices en coordenadas homogéneas del pentágono de la base del prisma:
+$$\{(1,0.5,0.1,0.4), \ g(1,0.5,0.1,0.4), \ g^2(1,0.5,0.1,0.4), \ g^3(1,0.5,0.1,0.4), \ g^4(1,0.5,0.1,0.4) \}$$
+\begin{sageblock}
+vb1h=[g^i*vector(RR,[1,0.5,0.1,0.4]) for i in range(5)]
+\end{sageblock}
+Los vértices de la segunda base del prisma se obtienen aplicando la simetría ortogonal respecto del plano $\Pi$ a los vértices de la primera base
+\begin{sageblock}
+S=column_matrix(RR,[[1,0,0,0],
+                   [0,1,0,0],
+                   [0,0,1,0],
+                   [0,0,0,-1]])
+s=R*S*R^(-1)
+s.subdivide(1,1)
+\end{sageblock}
+$$s=RS_{RR}R^{-1}=\sage{s}$$
+De esta forma obtenemos los vértices en coordenadas homogéneas del segundo pentágono de la otra base del prisma:
+$$\{s(1,0.5,0.1,0.4), \ s(g(1,0.5,0.1,0.4)), \ s(g^2(1,0.5,0.1,0.4)), \ s(g^3(1,0.5,0.1,0.4)), \ s(g^4(1,0.5,0.1,0.4)) \}$$
+\begin{sageblock}
+vb2h=[s*v for v in vb1h] 
+\end{sageblock}
+Eliminamos la coordenada homogénea: 
+\begin{sageblock}
+vb1=[v[1:] for v in vb1h]
+vb2=[w[1:] for w in vb2h]
+\end{sageblock}  
+Los vértices de la primera base son:
+$$v_{base1}[0]=\sage{vb1[0]}$$
+$$v_{base1}[1]=\sage{vb1[1]}$$
+$$v_{base1}[2]=\sage{vb1[2]}$$
+$$v_{base1}[3]=\sage{vb1[3]}$$
+$$v_{base1}[4]=\sage{vb1[4]}$$
+Los vértices de la segunda base son:
+$$v_{base2}[0]=\sage{vb2[0]}$$
+$$v_{base2}[1]=\sage{vb2[1]}$$
+$$v_{base2}[2]=\sage{vb2[2]}$$
+$$v_{base2}[3]=\sage{vb2[3]}$$
+$$v_{base2}[4]=\sage{vb2[4]}$$
+Finalmente escribimos el código en Sagesub
+\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 5, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+  ]
+\draw[->,thick,gray] (-1.5,0,0) -- (2.5,0,0); % Eje X
+\draw[->,thick,gray] (0,-1.5,0) -- (0,1.5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-1.5) -- (0,0,1.5); % Eje Z
+\draw[cara] !{vb1[0]} -- !{vb1[1]} -- !{vb1[2]} -- !{vb1[3]} -- !{vb1[4]}  --cycle;
+\draw[cara] !{vb2[0]} -- !{vb2[1]} -- !{vb2[2]} -- !{vb2[3]} -- !{vb2[4]}  --cycle;
+\draw[cara] !{vb1[0]} -- !{vb2[0]} -- !{vb2[1]} -- !{vb1[1]} -- cycle;
+\draw[cara] !{vb1[1]} -- !{vb2[1]} -- !{vb2[2]} -- !{vb1[2]} -- cycle;
+\draw[cara] !{vb1[2]} -- !{vb2[2]} -- !{vb2[3]} -- !{vb1[3]} -- cycle;
+\draw[cara] !{vb1[3]} -- !{vb2[3]} -- !{vb2[4]} -- !{vb1[4]} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{verbatim}
+%%%%%%%%
+%%dibujosagesub
+%%%%%%%%
+obteniendo
+
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 5, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+  ]
+\draw[->,thick,gray] (-1.5,0,0) -- (2.5,0,0); % Eje X
+\draw[->,thick,gray] (0,-1.5,0) -- (0,1.5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-1.5) -- (0,0,1.5); % Eje Z
+\draw[cara] !{vb1[0]} -- !{vb1[1]} -- !{vb1[2]} -- !{vb1[3]} -- !{vb1[4]}  --cycle;
+\draw[cara] !{vb2[0]} -- !{vb2[1]} -- !{vb2[2]} -- !{vb2[3]} -- !{vb2[4]}  --cycle;
+\draw[cara] !{vb1[0]} -- !{vb2[0]} -- !{vb2[1]} -- !{vb1[1]} -- cycle;
+\draw[cara] !{vb1[1]} -- !{vb2[1]} -- !{vb2[2]} -- !{vb1[2]} -- cycle;
+\draw[cara] !{vb1[2]} -- !{vb2[2]} -- !{vb2[3]} -- !{vb1[3]} -- cycle;
+\draw[cara] !{vb1[3]} -- !{vb2[3]} -- !{vb2[4]} -- !{vb1[4]} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+% Fin del Ejercicio 13
+
+
+\newpage
+
+
+\begin{ejer}
+\textcolor{blue}{Calcula los vértices de una {\sc pirámide} $C \subseteq \mathcal{A}^3(\mathbb R)$ de altura $5$ cuya base 
+sea un pentágono regular inscrito en una circunferencia de radio $1$ que esté contenido en el plano de ecuación $x-y+z=2$.} 
+\end{ejer}
+
+{\it Solución:}
+
+% Inicio del ejercicio 14
+
+Tomamos como punto base, un punto del plano $P = \left( \begin{array}{r} 1 \\ 0 \\ 1 \end{array} \right)$ y como base, una base $B = \{ v_1,v_2,v_3 \}$ donde $\{ v_1,v_2 \}$ sea una base ortonormal del espacio de dirección del plano y el vector $v_3$ un vector unitario ortogonal al plano.
+
+\begin{sageblock}
+P=vector(RR,[1,0,1])
+v3 = vector(RR,[1,-1,1])
+v1 = vector(RR,[1,1,0])
+v2 = v1.cross_product(v3)
+v1=v1/norm(v1)
+v2=v2/norm(v2)
+v3=v3/norm(v3)
+\end{sageblock}
+
+Sistema de referencia $R$:
+
+\begin{sageblock}
+R = block_matrix(RR,[[       matrix([1, 0, 0, 0])],
+                     [column_matrix([P,v1,v2,v3])]])
+R.subdivide(1,1)
+\end{sageblock}
+
+De donde \[ R = \sage{R}. \]
+
+Para calcular los puntos de la base de la pirámide construimos la matriz del 
+giro de ángulo $2\pi/5$ y la pasamos al nuevo sistema de referencia.
+\begin{sageblock}
+a = 2*pi/5
+G = column_matrix(RR,[[1,    0,     0,  0],
+                     [0,cos(a),sin(a), 0],
+                     [0,-sin(a),cos(a),0],
+                     [0,    0,     0,  1]])
+g = R*G*R^-1
+g.subdivide(1,1)
+\end{sageblock}
+$$g=RG_{\frac{2\pi}{5}}R^{-1}=\sage{g}$$
+Los vértices de la pirámide, pentágono regular, está inscrito en una circunferencia de radio $1$. Nuestra base es ortonormal. Por tanto, $||v_1||=1$. Así que podemos suponer por tanto que el punto que debemos girar es aquel que tiene como coordenadas $[1,1,0,0]$ en el sistema de referencia $R$. Dicho punto en el sistema de referencia canónico es $$R*vector(RR,[1,1,0,0])$$  o equivalentemente el punto $P+v_1$.
+
+Los puntos de la base de la pirámide serán los que corresponden a girar dicho punto cinco veces. 
+
+\begin{sageblock}
+puntogiro=R*vector(RR,[1,1,0,0])
+BasePiramideh = [g^i*puntogiro for i in range(5)]
+\end{sageblock}
+
+El vértice de la pirámide, es el punto que tiene como coordenadas $[1,0,0,5]$ respecto del sistema de referencia $R$ (punto de altura $5$). Dicho punto en el sistema de referencia canónico es $$R*vector(RR,[1,0,0,5])$$
+
+\begin{sageblock}
+Verticeh = R*vector(RR,[1,0,0,5])
+\end{sageblock}
+
+Para poder dibujar la pirámide eliminamos la coordenada homogénea y unimos las aristas de la base y las que unen el vértice con los vértices de la base. Finalmente generamos el dibujo.
+
+\begin{sageblock}
+BP = [v[1:] for v in BasePiramideh]
+Vertice = Verticeh[1:]
+\end{sageblock}
+Los vértices base de la pirámide son:
+$$BP[0]=\sage{BP[0]}$$
+$$BP[1]=\sage{BP[1]}$$
+$$BP[2]=\sage{BP[2]}$$
+$$BP[3]=\sage{BP[3]}$$
+$$BP[4]=\sage{BP[4]}$$
+Y el vértice de la pirámide es:
+$$Vertice=\sage{Vertice}$$
+Si ejecutamos el siguiente código de Sagesub:
+\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 1.6, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+  ]
+\draw[->,thick,gray] (-2.5,0,0) -- (3.5,0,0); % Eje X
+\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
+\draw[cara] !{BP[0]} -- !{BP[1]} -- !{BP[2]} -- !{BP[3]} -- !{BP[4]} --cycle;
+\draw[cara] !{BP[0]} -- !{Vertice} -- !{BP[1]} -- cycle;
+\draw[cara] !{BP[1]} -- !{Vertice} -- !{BP[2]} -- cycle;
+\draw[cara] !{BP[2]} -- !{Vertice} -- !{BP[3]} -- cycle;
+\draw[cara] !{BP[3]} -- !{Vertice} -- !{BP[4]} -- cycle;
+\draw[cara] !{BP[4]} -- !{Vertice} -- !{BP[0]} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{verbatim}
+obtenemos:
+%%%%%%%%
+%%dibujosagesub
+%%%%%%%%%
+
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 1.6, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+  ]
+\draw[->,thick,gray] (-2.5,0,0) -- (3.5,0,0); % Eje X
+\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
+\draw[cara] !{BP[0]} -- !{BP[1]} -- !{BP[2]} -- !{BP[3]} -- !{BP[4]} --cycle;
+\draw[cara] !{BP[0]} -- !{Vertice} -- !{BP[1]} -- cycle;
+\draw[cara] !{BP[1]} -- !{Vertice} -- !{BP[2]} -- cycle;
+\draw[cara] !{BP[2]} -- !{Vertice} -- !{BP[3]} -- cycle;
+\draw[cara] !{BP[3]} -- !{Vertice} -- !{BP[4]} -- cycle;
+\draw[cara] !{BP[4]} -- !{Vertice} -- !{BP[0]} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+% Fin del Ejercicio 14
+
+\newpage
+
+
+
+\begin{ejer}
+\textcolor{blue}{Calcula los vértices de una {\sc torre} $C \subseteq \mathcal{A}^3(\mathbb R)$ de altura $3$ cuya base 
+sea un hexágono regular de lado $1$ que esté contenido en el plano de ecuación $2x-y+z=1$. }
+\end{ejer}
+
+{\it Solución.-}
+
+% Escribe tu solución para el ejercicio 15
+
+
+Para construir los vectores de la base, tomaremos $v_3$ el vector normal al plano y
+$\{v_1, v_2\}$ una base ortonormal del espacio de direcciones del plano.
+
+\begin{sageblock}
+v3 = vector(RR,[2,-1,1])
+v1 = vector(RR,[1,2,0])
+v2 = v1.cross_product(v3)
+v1=v1/norm(v1)
+v2=v2/norm(v2)
+v3=v3/norm(v3)
+\end{sageblock}
+
+El sistema de referencia que debemos tomar tiene como punto base, un punto del plano $P = \left( \begin{array}{r} 1 \\ 1 \\ 0 \end{array} \right)$ y como vectores los que hemos calculado, $v_1, v_2$ y $v_3$.
+
+\begin{sageblock}
+P = vector(RR,[1,1,0])
+R = block_matrix(RR,[[       matrix([1, 0, 0, 0])],
+                     [column_matrix([P,v1,v2,v3])]])
+R.subdivide(1,1)
+\end{sageblock}
+$$R=\sage{R}$$
+Para calcular los puntos de la base de la torre construimos la matriz del 
+giro de ángulo $2\pi/6$ y la pasamos al nuevo sistema de referencia.
+\begin{sageblock}
+a = 2*pi/6
+G = column_matrix(RR,[[1,    0,     0,  0],
+                     [0,cos(a),sin(a), 0],
+                     [0,-sin(a),cos(a),0],
+                     [0,    0,     0,  1]])
+g = R*G*R^-1
+g.subdivide(1,1)
+\end{sageblock}
+$$g=RG_{\frac{2\pi}{6}}R^{-1}=\sage{g}$$
+Los vértices de la base de la torre, hexágono regular, está inscrito en una circunferencia de radio $1$. Los hexágonos regulares tienen la propiedad de que la distancia del centro del hexágono a cualquier vértice del mismo mide lo mismo que la arista. Por lo tanto, podemos suponer por tanto que el punto que debemos girar es aquel que tiene como coordenadas $[1,1,0,0]$ en el sistema de referencia $R$. Dicho punto en el sistema de referencia canónico es $$R*vector(RR,[1,1,0,0])$$ o equivalentemente el punto $P+v_1$.
+\begin{sageblock}
+BaseTorreh = [g^i*R*vector(RR,[1,1,0,0]) for i in range(6)]
+\end{sageblock} 
+Los puntos de la base de la torre serán los que corresponden a girar el primero de los puntos seis veces.
+
+
+Para obtener la tapa de la torre, sumamos a cada punto de la base de la torre el vector de coordenadas $[1,0,0,3]$ en el sistema de referencia $R$ (vector de altura $3$). Es decir le sumamos el vector
+ $$R*vector[1,0,0,3]$$
+
+\begin{sageblock}
+TapaTorreh = [v+R*vector(RR,[1,0,0,3]) for v in BaseTorreh] 
+\end{sageblock}
+
+Seguidamente eliminamos la coordenada homogénea y unimos las aristas de la base, las aristas de la tapa además de las aristas laterales de la torre. Finalmente generamos el dibujo.
+
+\begin{sageblock}
+BT = [v[1:] for v in BaseTorreh]
+TT = [w[1:] for w in TapaTorreh] 
+\end{sageblock}
+Podemos entonces introducir el siguiente código en sagesub:
+\begin{verbatim}
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 2.4, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+  ]
+\draw[->,thick,gray] (-2.5,0,0) -- (3.5,0,0); % Eje X
+\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
+\draw[cara] !{BT[0]} -- !{BT[1]} -- !{BT[2]} -- !{BT[3]} -- !{BT[4]} -- !{BT[5]} --cycle;
+\draw[cara] !{TT[0]} -- !{TT[1]} -- !{TT[2]} -- !{TT[3]} -- !{TT[4]} -- !{TT[5]} --cycle;
+\draw[cara] !{BT[0]} -- !{TT[0]} -- !{TT[1]} -- !{BT[1]} -- cycle;
+\draw[cara] !{BT[1]} -- !{TT[1]} -- !{TT[2]} -- !{BT[2]} -- cycle;
+\draw[cara] !{BT[2]} -- !{TT[2]} -- !{TT[3]} -- !{BT[3]} -- cycle;
+\draw[cara] !{BT[3]} -- !{TT[3]} -- !{TT[4]} -- !{BT[4]} -- cycle;
+\draw[cara] !{BT[4]} -- !{TT[4]} -- !{TT[5]} -- !{BT[5]} -- cycle;
+\draw[cara] !{BT[5]} -- !{TT[5]} -- !{TT[0]} -- !{BT[0]} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{verbatim}
+para realizar el dibujo que nos piden:
+%%%%%%%%%%
+%%dibujosagesub%
+%%%%%%%%%%%
+
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 2.4, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+  ]
+\draw[->,thick,gray] (-2.5,0,0) -- (3.5,0,0); % Eje X
+\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
+\draw[cara] !{BT[0]} -- !{BT[1]} -- !{BT[2]} -- !{BT[3]} -- !{BT[4]} -- !{BT[5]} --cycle;
+\draw[cara] !{TT[0]} -- !{TT[1]} -- !{TT[2]} -- !{TT[3]} -- !{TT[4]} -- !{TT[5]} --cycle;
+\draw[cara] !{BT[0]} -- !{TT[0]} -- !{TT[1]} -- !{BT[1]} -- cycle;
+\draw[cara] !{BT[1]} -- !{TT[1]} -- !{TT[2]} -- !{BT[2]} -- cycle;
+\draw[cara] !{BT[2]} -- !{TT[2]} -- !{TT[3]} -- !{BT[3]} -- cycle;
+\draw[cara] !{BT[3]} -- !{TT[3]} -- !{TT[4]} -- !{BT[4]} -- cycle;
+\draw[cara] !{BT[4]} -- !{TT[4]} -- !{TT[5]} -- !{BT[5]} -- cycle;
+\draw[cara] !{BT[5]} -- !{TT[5]} -- !{TT[0]} -- !{BT[0]} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+% Fin del Ejercicio 15
+
+
+
+
+
+\end{document}

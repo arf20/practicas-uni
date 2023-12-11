@@ -1,0 +1,16 @@
+\begin{center}
+\begin{tikzpicture}[scale = 0.7,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
+\draw[->,thick,gray] (1,0) -- (-8,0); % Eje X
+\draw[->,thick,gray] (0,-3) -- (0,5); % Eje Y
+\draw[cara1] (-2.00000000000000, 0.000000000000000) -- (-6.20581924104237, -0.633446489790001) -- (-2.43090949495495, -2.59309603821536) -- (-4.33302252754526, 1.21113002696525) -- (-5.03024873645742, -2.98458749895989) -- cycle;
+\draw[cara2] (-1.01263705993727, 5.78234652742893) -- (-3.35613695782745, 2.23295528774596) -- (0.626074111183405, 3.72699844160628) -- (-3.47377885096203, 4.85897707768416) -- (-0.822288478344630, 1.53335401611108) -- cycle;
+\draw[dashed] (-8,4) -- (-4,-1);
+\draw[dashed] (-8,4) -- (-1.60775344717760, 3.62692627011528);
+\draw[fill = white] (-8,4) circle (0.5mm);
+\draw[fill = white] (-4,-1) circle (0.5mm);
+\draw[fill = white] (-1.60775344717760, 3.62692627011528) circle (0.5mm);
+\draw[fill = white] (-8,4) circle (0.5mm) node[above left] {$P$};
+\end{tikzpicture}
+\end{center}
