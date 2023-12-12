@@ -166,153 +166,79 @@ en $\left( \begin{array}{r} 4  \\ -2 \end{array} \right)$.
 
 % Escribe tu solución para el ejercicio 2
 
-\begin{enumerate} 
-\item[a)] La recta $r$ pasa por los puntos $(-1,0)$ y $(2,2)$. El sistema de referencia que tomamos consta de uno de los puntos de la recta, por ejemplo  el punto $$P = (-1,0)$$ y una base formada por un vector de la recta que sería el vector $$v_1 = \vec{PQ} = Q-P = (2,2) - (-1,0) = (3,2),$$ junto con un segundo vector que lo debemos tomar perpendicular a $v_1$ y de igual norma, por ejemplo $$v_2 = (2,-3).$$ La matriz de este sistema de referencia es 
-
 \begin{sageblock}
-R = matrix(RR,[[ 1,0, 0],
-               [-1,3, 2],
-               [ 0,2,-3]])
-R.subdivide(1,1)
+pr1 = vector(RR, [-1, 0])
+pr2 = vector(RR, [2, 2])
+vr = (pr2 - pr1)
+u1 = vr.normalized()
+u2 = vector(RR, [vr[1], -vr[0]]).normalized()
+
+R = matrix(RR, [[1, 0, 0], [pr1[0], u1[0], u2[0]], [pr1[1], u1[1], u2[1]]])
+MRRp = matrix(RR, [[1, 0, 0], [0, 1, 0], [0, 0, 0]])
+MRRs = matrix(RR, [[1, 0, 0], [0, 1, 0], [0, 0, -1]])
+
+Mp = R * MRRp * R^-1
+Ms = R * MRRs * R^-1
 \end{sageblock}
 
-El sistema es:
-\[R = \sage{R}.\]
+a.
 
-Utilizando este sistema de referencia,  obtenemos las expresiones canónicas para las matrices de la proyección y la simetría:
+$$
+	R = \sage{R}
+$$
 
-\begin{sageblock}
-sRR=matrix(RR,[[1,0, 0],
-              [0,1, 0],
-              [0,0,-1]])
-pRR=matrix(RR,[[1,0,0],
-              [0,1,0],
-              [0,0,0]])
-\end{sageblock}
+$$
+	M_p = \sage{Mp}
+$$
 
+$$
+	M_s = \sage{Ms}
+$$
 
-Las matrices asociadas al sistema de referencia canónico son, por tanto: %resultantes son 
-
-\begin{sageblock}
-s=R*sRR*R^-1
-p=R*pRR*R^-1
-s.subdivide(1,1)
-p.subdivide(1,1)
-\end{sageblock}
-
-$$p=RP_{RR}R^{-1} = \sage{p} $$
-y
-$$ s=RS_{RR}R^{-1} = \sage{s}.$$
-
-\item[b)] Los vértices del cuadrado se pueden calcular girando el vértice alrededor del punto central cuatro veces. 
-
-Para ello, comenzamos definiendo el sistema de referencia canónico sobre el punto (3,-3):
+b.
 
 \begin{sageblock}
-R1 = matrix(RR,[[ 1,0,0],
-             [ 3,1,0],
-             [-3,0,1]])
-R1.subdivide(1,1)
+R = matrix(RR, [[1, 0, 0], [3, 1, 0], [-3, 0, 1]])
+
+a = pi/2
+MRRg = matrix(RR, [[1, 0, 0], [0, cos(a), -sin(a)], [0, sin(a), cos(a)]])
+Mg = R * MRRg * R^-1
+
+cp0 = vector(RR, [1, 4, -2])
+
+C = [Mg^i * cp0 for i in range(4)]
+sC = [Ms * v for v in C]
+pC = [Mp * v for v in C]
+
+C = [v[1:] for v in C]
+sC = [v[1:] for v in sC]
+pC = [v[1:] for v in pC]
 \end{sageblock}
-$$R_1=\sage{R1}$$
-y a continuación la matriz de giro
-\begin{sageblock}
-a = 2*pi/4
-gR1R1 = matrix(RR,[[1, 0        ,  0],
-               [0, cos(a), -sin(a)],
-               [0, sin(a),  cos(a)]])
-g=R1*gR1R1*R1^-1
-g.subdivide(1,1)
-\end{sageblock}
-$$g=R_1G_{\frac{2\pi}{4}}R_1^{-1}=\sage{g}$$
-Los vértices del cuadrado $C$ en coordenadas homogéneas:
-$$C_h=\{ (1,4,-2), \ g(1,4,-2), \  g^2(1,4,-2), \ g^3(1,4,-2) \}$$
-
-\begin{sageblock}
-Ch = [g^i*vector(RR,[1,4,-2]) for i in range(4)]
-C = [v[1:] for v in Ch]
-\end{sageblock}
-Por lo que en coordenadas no homogéneas son:
-\[C[0]=\sage{C[0]}\]
-\[C[1]=\sage{C[1]}\]
-\[C[2]=\sage{C[2]}\]
-\[C[3]=\sage{C[3]}\]
-
-Los vértices del simétrico $s(C)$ son 
-
-\begin{sageblock}
-sCh = [s*v for v in Ch]
-sC = [v[1:] for v in sCh]
-\end{sageblock}
-
-\[s(C[0])=\sage{sC[0]}\]
-\[s(C[1])=\sage{sC[1]}\]
-\[s(C[2])=\sage{sC[2]}\]
-\[s(C[3])=\sage{sC[3]}\]
-
-Los vértices proyectados $p(C)$ son 
-
-\begin{sageblock}
-pCh = [p*v for v in Ch]
-pC = [v[1:] for v in pCh]
-\end{sageblock}
-
-\[p(C[0])=\sage{pC[0]}\]
-\[p(C[1])=\sage{pC[1]}\]
-\[p(C[2])=\sage{pC[2]}\]
-\[p(C[3])=\sage{pC[3]}\]
-
-Para hacer los dibujos pintamos los puntos, los polígonos y la recta usamos el siguiente código:
-\begin{verbatim}
-\begin{sagesub}
-\begin{center}
-\begin{tikzpicture}[scale = 0.7,
-cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
-cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20},
-cara3/.style={thick, color = green, fill opacity = 0.7}]
-\draw[->,thick,gray] (-4,0) -- (5.5,0); % Eje X
-\draw[->,thick,gray] (0,-4) -- (0,6); % Eje Y
-\draw[cara1] !{C[0]} -- !{C[1]} -- !{C[2]} -- !{C[3]} -- cycle;
-\draw[cara2] !{sC[0]} -- !{sC[1]} -- !{sC[2]} -- !{sC[3]} -- cycle;
-\draw[cara3] !{pC[0]} -- !{pC[1]} -- !{pC[2]} -- !{pC[3]} -- cycle;
-\draw[dashed] !{C[0]} -- !{pC[0]} -- !{sC[0]};
-\draw[dashed] !{C[1]} -- !{pC[1]} -- !{sC[1]};
-\draw[dashed] !{C[2]} -- !{pC[2]} -- !{sC[2]};
-\draw[dashed] !{C[3]} -- !{pC[3]} -- !{sC[3]};
-\draw[black] (-4,-2) -- (5,4);
-\end{tikzpicture}
-\end{center}
-\end{sagesub}
-\end{verbatim}
-que nos da el siguiente dibujo:
-%%%%%%%%%%%
-%%%sagesub
-%%%%%%%%%%%%
-
 
 \begin{sagesub}
 \begin{center}
-\begin{tikzpicture}[scale = 0.7,
+\begin{tikzpicture}[scale = 1,
 cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
 cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20},
-cara3/.style={thick, color = green, fill opacity = 0.7}]
-\draw[->,thick,gray] (-4,0) -- (5.5,0); % Eje X
-\draw[->,thick,gray] (0,-4) -- (0,6); % Eje Y
+]
+\draw[->,thick,gray] (-1,0) -- (5.5,0); % Eje X
+\draw[->,thick,gray] (0,-2.5) -- (0,5.5); % Eje Y
+
+\draw[->,thick,red] !{pr1} -- !{pr2}; % recta
+
+\draw[->,thick,yellow] !{pr1} -- !{pr1 + u1}; % recta
+\draw[->,thick,yellow] !{pr1} -- !{pr1 + u2}; % recta
+
+\draw[black] (3, -3) circle (2pt);
+\draw[black] (4, -2) circle (2pt);
+
 \draw[cara1] !{C[0]} -- !{C[1]} -- !{C[2]} -- !{C[3]} -- cycle;
-\draw[cara2] !{sC[0]} -- !{sC[1]} -- !{sC[2]} -- !{sC[3]} -- cycle;
-\draw[cara3] !{pC[0]} -- !{pC[1]} -- !{pC[2]} -- !{pC[3]} -- cycle;
-\draw[dashed] !{C[0]} -- !{pC[0]} -- !{sC[0]};
-\draw[dashed] !{C[1]} -- !{pC[1]} -- !{sC[1]};
-\draw[dashed] !{C[2]} -- !{pC[2]} -- !{sC[2]};
-\draw[dashed] !{C[3]} -- !{pC[3]} -- !{sC[3]};
-\draw[black] (-4,-2) -- (5,4);
+\draw[cara1] !{sC[0]} -- !{sC[1]} -- !{sC[2]} -- !{sC[3]} -- cycle;
+\draw[cara1] !{pC[0]} -- !{pC[1]} -- !{pC[2]} -- !{pC[3]} -- cycle;
+%\draw[black] (2,-1) -- (4,4);
 \end{tikzpicture}
 \end{center}
 \end{sagesub}
-
-
-
-\end{enumerate}
 
 % Fin del Ejercicio 2
 
@@ -334,101 +260,45 @@ es el segmento con extremos $\left( \begin{array}{r} -4 \\ 2 \end{array} \right)
 {\it Solución:}
 
 % Escribe tu solución para el ejercicio 3
-\begin{enumerate}
-\item[a)] Tomamos el sistema de referencia afín $\{P;e_1,e_2\}$ siendo $P$ el centro de la homotecia y $e_1,e_2$ la base canónica de ${\mathbb R}^2$.
+a.
 
 \begin{sageblock}
-R = matrix(RR,[[1, 0, 0],
-            [1, 1, 0],
-            [1, 0, 1]])
-R.subdivide(1,1)
+R = matrix(RR, [[1, 0, 0], [1, 1, 0], [1, 0, 1]])
+f = 3
+MRRh = matrix(RR, [[1, 0, 0], [0, f, 0], [0, 0, f]])
+
+Mf = R * MRRh * R^-1
+
+tp0 = vector(RR, [-4, 2])
+tp1 = vector(RR, [-3, 2])
+tsv = tp1 - tp0
+tsmp = tp0 + tsv/2
+tp2 = tsmp + 5 * vector(RR, [-tsv[1], tsv[0]]).normalized()
+
+C = vector(RR, [1, tp0[0], tp0[1]]), vector(RR, [1, tp1[0], tp1[1]]), vector(RR, [1, tp2[0], tp2[1]])
+hC = [Mf * v for v in C]
+
+C = [v[1:] for v in C]
+hC = [v[1:] for v in hC]
 \end{sageblock}
-
-La matriz del sistema de referencia es \[R=\sage{R}\]
-Definimos la matriz de la homotecia de factor $3$ en este sistema de referencia
-
-\begin{sageblock}
-hRR = matrix(RR,[[1, 0, 0],
-              [0, 3, 0],
-              [0, 0, 3]])
-h = R*hRR*R^-1
-h.subdivide(1,1)
-\end{sageblock}
-
-La homotecia respecto del sistema canónico es
-\[ h = RH_3R^{-1}= \sage{h} \]
-
-\item[b)]
-El punto medio de los extremos $(-4,2)$ y $(-3,2)$ es $(-7/2,2)$. Y como la altura del triángulo es $5$, el vértice que nos falta del triángulo es $(-7/2,7)$. Introducimos entonces estos tres vértices en coordenadas homogéneas.
-
-\begin{sageblock}
-Ch = [vector(RR,[1,-3,2]),vector(RR,[1,-4,2]),vector(RR,[1,-7/2,7])]
-\end{sageblock}
-Aplicamos la homotecia $h$ a los tres vértices del triángulo:
-\begin{sageblock}
-hCh = [h*v for v in Ch]
-\end{sageblock}
-$$h(1,-3,2)=\sage{hCh[0]}$$
-$$h(1,-4,2)=\sage{hCh[1]}$$
-$$h(1,-7/2,7)=\sage{hCh[2]}$$
-Nos quedamos con las coordenadas no homogéneas:
-\begin{sageblock}
-C = [v[1:] for v in Ch]
-hC = [v[1:] for v in hCh]
-\end{sageblock}
-de forma que el triángulo isósceles contenido en el segundo cuadrante y de altura $5$ que tiene como vértices los puntos
-\[ A_1 = \sage{C[0]}\] 
-\[A_2 = \sage{C[1]}\] 
-\[A_3 = \sage{C[2]}\]
-transforma dichos vértices a través de la homotecia de factor $3$ a:
-\[ h(A_1) = \sage{hC[0]}\] 
-\[h(A_2) = \sage{hC[1]}\]  
-\[h(A_3) = \sage{hC[2]}. \]
-
-Para hacer el dibujo pintamos el punto $P$ y los triángulos $C$ y $h(C)$ introduciendo los siguientes comandos:
-\begin{verbatim}
-\begin{sagesub}
-\begin{center}
-\begin{tikzpicture}[scale = 0.5,
-cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
-cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
-\draw[->,thick,gray] (1,0) -- (-14,0); % Eje X
-\draw[->,thick,gray] (0,-1) -- (0,20); % Eje Y
-\draw[cara1] !{C[0]} -- !{C[1]} -- !{C[2]} -- cycle;
-\draw[cara2] !{hC[0]} -- !{hC[1]} -- !{hC[2]} -- cycle;
-\draw[dashed] (1,1) -- !{C[0]} -- !{hC[0]};
-\draw[dashed] (1,1) -- !{C[1]} -- !{hC[1]};
-\draw[dashed] (1,1) -- !{C[2]} -- !{hC[2]};
-\draw[fill = white] (1,1) circle (0.5mm) node[above right] {$P$}; 
-\end{tikzpicture}
-\end{center}
-\end{sagesub}
-\end{verbatim}
-
-%%%%%%%
-%sagesub
-%%%%%%%%
 
 \begin{sagesub}
 \begin{center}
-\begin{tikzpicture}[scale = 0.5,
+\begin{tikzpicture}[scale = 1,
 cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
-cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
-\draw[->,thick,gray] (1,0) -- (-14,0); % Eje X
-\draw[->,thick,gray] (0,-1) -- (0,20); % Eje Y
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20},
+]
+\draw[->,thick,gray] (-5,0) -- (0,0); % Eje X
+\draw[->,thick,gray] (0,0) -- (0,8); % Eje Y
+
 \draw[cara1] !{C[0]} -- !{C[1]} -- !{C[2]} -- cycle;
-\draw[cara2] !{hC[0]} -- !{hC[1]} -- !{hC[2]} -- cycle;
-\draw[dashed] (1,1) -- !{C[0]} -- !{hC[0]};
-\draw[dashed] (1,1) -- !{C[1]} -- !{hC[1]};
-\draw[dashed] (1,1) -- !{C[2]} -- !{hC[2]};
-\draw[fill = white] (1,1) circle (0.5mm) node[above right] {$P$}; 
+\draw[cara1] !{hC[0]} -- !{hC[1]} -- !{hC[2]} -- cycle;
+
+
+\draw[black] (1, 1) circle (2pt);
 \end{tikzpicture}
 \end{center}
 \end{sagesub}
-
-
-
-\end{enumerate}
 
 % Fin del Ejercicio 3
 
@@ -447,99 +317,42 @@ cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
 
 % Escribe tu solución para el ejercicio 4
 
-Tomamos como sistema de referencia afín un punto que es el centro $(1,3)$, y como base la canónica $e_1,e_2$:
-
 \begin{sageblock}
-R = matrix(RR,[[1,0,0],
-              [1,1,0],
-              [3,0,1]])
-R.subdivide(1,1)
+R = matrix(RR, [[1, 0, 0], [1, 1, 0], [3, 0, 1]])
+
+a = pi/4
+MRRg = matrix(RR, [[1, 0, 0], [0, cos(a), -sin(a)], [0, sin(a), cos(a)]])
+Mg = R * MRRg * R^-1
+
+op0 = vector(RR, [1, 2, 5])
+
+C = [Mg^i * op0 for i in range(8)]
+C = [v[1:] for v in C]
 \end{sageblock}
-
-La matriz del sistema de referencia es \[R=\sage{R}.\]
-
-
-Calculamos la matriz de giro:
-\begin{sageblock}
-b=2*pi/8
-gRR=column_matrix(RR,[[1, 0,      0],
-                      [0, cos(b), sin(b)],
-                      [0,-sin(b), cos(b)]])
-g=R*gRR*R^-1
-g.subdivide(1,1)
-\end{sageblock}
-$$g=RG_{\frac{2\pi}{8}}R^{-1}=\sage{g}$$
-Obtenemos los vértices del octógono en coordenadas homogéneas:
-\begin{sageblock}
-Vh=[g^k*vector(RR,[1,2,5]) for k in range(8)]
-\end{sageblock}
-Para después obtenerlos sin la coordenada homogénea:
-\begin{sageblock}
-V=[v[1:] for v in Vh]
-\end{sageblock}
-\begin{eqnarray*}
-V[0] &=& \sage{V[0]}\\
-V[1] &=& \sage{V[1]}\\
-V[2] &=& \sage{V[2]}\\
-V[3] &=& \sage{V[3]}\\
-V[4] &=& \sage{V[4]}\\
-V[5] &=& \sage{V[5]}\\
-V[6] &=& \sage{V[6]}\\
-V[7] &=& \sage{V[7]}
-\end{eqnarray*}
-%$$V[3]=\sage{V[3]}$$
-%$$V[4]=\sage{V[4]}$$
-%$$V[5]=\sage{V[5]}$$
-%$$V[6]=\sage{V[6]}$$
-%$$V[7]=\sage{V[7]}$$
-
-Pintamos el octógono usando el siguiente código:
-
-\begin{verbatim}
-\begin{sagesub}
-\begin{center}
-\begin{tikzpicture}[scale = 0.7,
-cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
-\draw[->,thick,gray] (-2,0) -- (3.5,0); % Eje X
-\draw[->,thick,gray] (0,-1) -- (0,6); % Eje Y
-\draw[cara] !{V[0]} -- !{V[1]} -- !{V[2]} -- !{V[3]} -- !{V[4]} -- 
-!{V[5]} -- !{V[6]} -- !{V[7]} -- cycle;
-\draw[fill = white] !{V[0]} circle (0.7mm); 
-\draw[fill = white] !{V[1]} circle (0.7mm); 
-\draw[fill = white] !{V[2]} circle (0.7mm); 
-\draw[fill = white] !{V[3]} circle (0.7mm); 
-\draw[fill = white] !{V[4]} circle (0.7mm); 
-\draw[fill = white] !{V[5]} circle (0.7mm); 
-\draw[fill = white] !{V[6]} circle (0.7mm); 
-\draw[fill = white] !{V[7]} circle (0.7mm); 
-\end{tikzpicture}
-\end{center}
-\end{sagesub}
-\end{verbatim}
-
-%%%%%%%%%
-%%%sagesub%%%
-%%%%%%%%%%
 
 \begin{sagesub}
 \begin{center}
-\begin{tikzpicture}[scale = 0.7,
-cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
-\draw[->,thick,gray] (-2,0) -- (3.5,0); % Eje X
-\draw[->,thick,gray] (0,-1) -- (0,6); % Eje Y
-\draw[cara] !{V[0]} -- !{V[1]} -- !{V[2]} -- !{V[3]} -- !{V[4]} -- !{V[5]} -- !{V[6]} -- !{V[7]} -- cycle;
-\draw[fill = white] !{V[0]} circle (0.7mm); 
-\draw[fill = white] !{V[1]} circle (0.7mm); 
-\draw[fill = white] !{V[2]} circle (0.7mm); 
-\draw[fill = white] !{V[3]} circle (0.7mm); 
-\draw[fill = white] !{V[4]} circle (0.7mm); 
-\draw[fill = white] !{V[5]} circle (0.7mm); 
-\draw[fill = white] !{V[6]} circle (0.7mm); 
-\draw[fill = white] !{V[7]} circle (0.7mm); 
+\begin{tikzpicture}[scale = 1,
+cara1/.style={thick, color = yellow, fill opacity = 0.3, fill = yellow!20},
+]
+\draw[->,thick,gray] (-3,0) -- (5,0); % Eje X
+\draw[->,thick,gray] (0,-1) -- (0,7); % Eje Y
+
+\draw[cara1] !{C[0]} -- !{C[1]} -- !{C[2]} -- !{C[3]} -- !{C[4]} -- !{C[5]} -- !{C[6]} -- !{C[7]} -- cycle;
+
+\filldraw[blue] !{C[0]} circle (2pt);
+\filldraw[blue] !{C[1]} circle (2pt);
+\filldraw[blue] !{C[2]} circle (2pt);
+\filldraw[blue] !{C[3]} circle (2pt);
+\filldraw[blue] !{C[4]} circle (2pt);
+\filldraw[blue] !{C[5]} circle (2pt);
+\filldraw[blue] !{C[6]} circle (2pt);
+\filldraw[blue] !{C[7]} circle (2pt);
+
+\draw[black] (1, 3) circle (2pt);
 \end{tikzpicture}
 \end{center}
 \end{sagesub}
-
 
 % Fin del Ejercicio 4
 
@@ -560,131 +373,45 @@ cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
 {\it Solución:}
 % Escribe tu solución para el ejercicio 5
 
-Para determinar las coordenadas de los puntos $A,B,C,D$ y $E$ debemos construir la matriz del giro de $\alpha = 2\pi/5$ grados, centrada en el punto $O_1 = \left[\begin{array}{c} -4 \\ -1 \end{array} \right] $ girando el vértice $A = \left[\begin{array}{c} -2 \\ 0 \end{array} \right] $ cuatro veces. Para ello comenzamos creando el sistema de referencia de punto $O_1$ y base canónica $e_1,e_2$.
+\begin{sageblock}
+R = matrix(RR, [[1, 0, 0], [-4, 1, 0], [-1, 0, 1]])
 
-\begin{sageblock}
-R = matrix(RR,[[ 1,0,0],
-            [-4,1,0],
-            [-1,0,1]])
-R.subdivide(1,1)
-\end{sageblock}
-$$R=\sage{R}.$$
-La matriz de giro en este sistema de referencia es:
-\begin{sageblock}
 a = 2*pi/5
-gRR = matrix(RR,[[1, 0     ,  0   ],
-            		[0, cos(a), -sin(a)],
-            		[0, sin(a),  cos(a)]])
-\end{sageblock}
-Y la matriz de este giro asociada al sistema de referencia canónico del plano es:
-\begin{sageblock}
-g=R*gRR*R^-1
-g.subdivide(1,1)
-\end{sageblock}
-\[ g=RG_{\frac{2\pi}{5}}R^{-1} = \sage{g} \] 
-Las coordenadas de los vértices de la estrella son:
-\begin{sageblock}
-Vh = [g^i*vector(RR,[1,-2,0]) for i in range(5)]
-V = [v[1:] for v in Vh]
-\end{sageblock}
-En coordenadas homogéneas
-$$A = (1,-2,0)=  \sage{n(Vh[0])} $$
-$$B  =  g(1,-2,0)= \sage{n(Vh[1])} $$
-$$C  = g^2(1,-2,0)=  \sage{n(Vh[2])} $$
-$$D  = g^3(1,-2,0)= \sage{n(Vh[3])} $$
-$$E  = g^4(1,-2,0)= \sage{n(Vh[4])} $$
-Y en coordenadas no homogéneas:
-$$A  = V[0] =  \sage{n(V[0])} $$
-$$B  = V[1]=  \sage{n(V[1])} $$
-$$C  = V[2]= \sage{n(V[2])} $$
-$$D  = V[3]= \sage{n(V[3])} $$
-$$E  = V[4]= \sage{n(V[4])} $$
-Para determinar las coordenadas de los puntos $A',B',C',D'$ y $E'$ debemos construir la matriz del giro de $\beta = 48\pi/180$ grados, alrededor del punto $P = \left[\begin{array}{r} -8 \\ 4 \end{array} \right] $. 
+MRRg = matrix(RR, [[1, 0, 0], [0, cos(a), -sin(a)], [0, sin(a), cos(a)]])
+Mg = R * MRRg * R^-1
 
-Comenzamos construyendo el sistema de referencia en el punto $P$ y base canónica $e_1,e_2$.
-\begin{sageblock}
-R1 = matrix(RR,[[ 1,0,0],
-             [-8,1,0],
-             [ 4,0,1]])
-R1.subdivide(1,1)
-\end{sageblock}  
-$$R_1=\sage{R1}$$
-\begin{sageblock}           
-b = 48*pi/180
-g1R1R1 = matrix(RR,[[1, 0,       0 ],
-             [0, cos(b), -sin(b)],
-             [0, sin(b),  cos(b)]])
-g1=R1*g1R1R1*R1^-1
-g1.subdivide(1,1)
-\end{sageblock}
-La matriz de giro del sistema de referencia es:
-$$g_1=R_1G_{\frac{48\pi}{180}}R_1^{-1}=\sage{g1}$$
-Las coordenadas de los vértices de la segunda estrella son:
-\begin{sageblock}
-V1h = [g1*v for v in Vh]
-V1= [w[1:] for w in V1h]
-\end{sageblock}
+sp0 = vector(RR, [1, -2, 0])
+
+C = [Mg^i * sp0 for i in range(5)]
+
+R = matrix(RR, [[1, 0, 0], [-8, 1, 0], [4, 0, 1]])
+
+a = pi/180 * 48
+MRRg = matrix(RR, [[1, 0, 0], [0, cos(a), -sin(a)], [0, sin(a), cos(a)]])
+Mg = R * MRRg * R^-1
+
+Cp = [Mg * v for v in C]
+
+C = [v[1:] for v in C]
+Cp = [v[1:] for v in Cp]
 
 
-En coordenadas homogéneas
-$$A' = g_1(1,-2,0)=  \sage{n(V1h[0])} $$
-$$B'  =  g_1(g(1,-2,0))= \sage{n(V1h[1])} $$
-$$C'  = g_1(g^2(1,-2,0))=  \sage{n(V1h[2])} $$
-$$D'  =g_1( g^3(1,-2,0))= \sage{n(V1h[3])} $$
-$$E'  = g_1(g^4(1,-2,0))= \sage{n(V1h[4])} $$
-Y en coordenadas no homogéneas:
-$$A'  =V_1[0]=  \sage{n(V1[0])} $$
-$$B'  =V_1[1]=  \sage{n(V1[1])} $$
-$$C'  = V_1[2]= \sage{n(V1[2])} $$
-$$D'  = V_1[3]= \sage{n(V1[3])} $$
-$$E'  = V_1[4]= \sage{n(V1[4])} $$
-Por último, el centro de la estrella girada es:
-
-\begin{sageblock}
-centro=(g1*vector(RR,[1,-4,-1]))[1:]  # centro de la estrella girada
 \end{sageblock}
-$$g_1(O_1)=\sage{centro}$$
-Para dibujarlo todo añadimos los siguientes comandos de Sagesub:
-\begin{verbatim}
-\begin{sagesub}
-\begin{center}
-\begin{tikzpicture}[scale = 0.7,
-cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
-cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
-\draw[->,thick,gray] (1,0) -- (-8,0); % Eje X
-\draw[->,thick,gray] (0,-3) -- (0,5); % Eje Y
-\draw[cara1] !{V[0]} -- !{V[2]} -- !{V[4]} -- !{V[1]} -- !{V[3]} -- cycle; %Estrella 1
-\draw[cara2] !{V1[0]} -- !{V1[2]} -- !{V1[4]} -- !{V1[1]} -- !{V1[3]} -- cycle; %Estrella 2
-\draw[dashed] (-8,4) -- (-4,-1);
-\draw[dashed] (-8,4) -- !{centro};
-\draw[fill = white] (-8,4) circle (0.5mm); 
-\draw[fill = white] (-4,-1) circle (0.5mm); 
-\draw[fill = white] !{centro} circle (0.5mm); 
-\draw[fill = white] (-8,4) circle (0.5mm) node[above left] {$P$}; 
-\end{tikzpicture}
-\end{center}
-\end{sagesub}
-\end{verbatim}
-obteniendo:
-%%%%%%%%%%%
-%%dibujosagesub%%
-%%%%%%%%%%%%
 
 \begin{sagesub}
 \begin{center}
-\begin{tikzpicture}[scale = 0.7,
+\begin{tikzpicture}[scale = 1,
 cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
-cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20}]
-\draw[->,thick,gray] (1,0) -- (-8,0); % Eje X
-\draw[->,thick,gray] (0,-3) -- (0,5); % Eje Y
-\draw[cara1] !{V[0]} -- !{V[2]} -- !{V[4]} -- !{V[1]} -- !{V[3]} -- cycle;
-\draw[cara2] !{V1[0]} -- !{V1[2]} -- !{V1[4]} -- !{V1[1]} -- !{V1[3]} -- cycle;
-\draw[dashed] (-8,4) -- (-4,-1);
-\draw[dashed] (-8,4) -- !{centro};
-\draw[fill = white] (-8,4) circle (0.5mm); 
-\draw[fill = white] (-4,-1) circle (0.5mm); 
-\draw[fill = white] !{centro} circle (0.5mm); 
-\draw[fill = white] (-8,4) circle (0.5mm) node[above left] {$P$}; 
+]
+\draw[->,thick,gray] (-7,0) -- (1,0); % Eje X
+\draw[->,thick,gray] (0,-5) -- (0,7); % Eje Y
+
+\draw[cara1] !{C[0]} -- !{C[2]} -- !{C[4]} -- !{C[1]} -- !{C[3]} -- !{C[0]} -- cycle;
+\draw[cara1] !{Cp[0]} -- !{Cp[2]} -- !{Cp[4]} -- !{Cp[1]} -- !{Cp[3]} -- !{Cp[0]} -- cycle;
+
+\draw[black] (-2, 0) circle (2pt) node[anchor=west]{O};
+\draw[black] (-4, -1) circle (2pt);
+
 \end{tikzpicture}
 \end{center}
 \end{sagesub}
@@ -1145,46 +872,31 @@ Las coordenadas del punto $B'$ son
 {\it Solución:}
 % Inicio del Ejercicio 8
 
-Nuestro objetivo es calcular la matriz de simetría con respecto al plano que pasa por los puntos:
 \begin{sageblock}
-A=vector(RR,[1,2,-1])
-B=vector(RR,[2,1,1])
-C=vector(RR,[-1,3,1])
-\end{sageblock}
-Comenzamos calculando el sistema de referencia que nos proporciona la expresión canónica de la simetría.  Para ello, tomamos un punto cualquiera del plano, por ejemplo $P = A$, como punto base de nuestro sistema de referencia. La base vectorial estará formada por dos vectores linealmente independientes del plano, por ejemplo $$v_1 = \vec{AB} = B - A = \left[ \begin{array}{r} 1 \\ -1 \\ 2 \end{array} \right] \text{ y } v_2 = \vec{AC} = C - A = \left[ \begin{array}{r} -2 \\ 1 \\ 2 \end{array} \right].$$ 
+A = vector(RR, [1, 2, -1])
+B = vector(RR, [2, 1, 1])
+C = vector(RR, [-1, 3, 1])
 
-\begin{sageblock}
-v1=B-A
-v2=C-A
-\end{sageblock}
-El tercer vector de la base debe ser perpendicular a ambos, por lo que podemos tomarlo como $v_3 = v_1\times v_2$. 
-\begin{sageblock}
-v3=v1.cross_product(v2)
-\end{sageblock}
-Nuestro sistema de referencia es 
-\begin{sageblock}
-R=block_matrix(RR,[[       matrix([1,0,0,0])],
-                [column_matrix([A,v1,v2,v3])]])
-R.subdivide(1,1)
-\end{sageblock}
-\[ R = \sage{R}\] 
+AB = B - A
+AC = C - A
+n = AB.cross_product(AC)
 
-La matriz de la simetría en el sistema de referencia $R$ es
-\begin{sageblock}
-sRR = matrix(RR,[[1,0,0, 0],
-              [0,1,0, 0],
-              [0,0,1, 0],
-              [0,0,0,-1]])
-sRR.subdivide(1,1)
+u1 = AB.normalized()
+u2 = n.cross_product(AB)
+u3 = n.normalized()
+
+R = block_matrix(2, 1, [matrix(RR, [1, 0, 0, 0]), column_matrix([A, u1, u2, u3])])
+R.subdivide(1, 1)
+
+MRRs = matrix(RR, [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, -1]])
+
+Ms = R * MRRs * R^-1
+Ms.subdivide(1, 1)
 \end{sageblock}
- \[ S_{RR} = \sage{sRR} \]
-Para pasar al sistema de referencia canónico, procedemos como siempre:
-\begin{sageblock}
-sRR.subdivide(1,1)
-s=R*sRR*R^-1
-s.subdivide(1,1)
-\end{sageblock}
- \[ s = R\cdot S_{RR}\cdot R^{-1} = \sage{s}. \]
+
+$$
+	M_s = \sage{Ms}
+$$
 
 % Fin del Ejercicio 8
 
@@ -1197,32 +909,18 @@ s.subdivide(1,1)
 {\it Solución:}
 
 % Inicio del Ejercicio 9
-Para hacer una homotecia con centro en un punto, podremos el origen del sistema de referencia en el centro de la homotecia $\left[ \begin{array}{r} -2 \\ 2 \\ 1 \end{array} \right]$ y  como base la canónica $C=\{e_1,e_2,e_3\}$. La matriz del sistema de referencia es en este caso:
+
 \begin{sageblock}
-R = matrix(RR,[[ 1,0,0,0],
-            [-2,1,0,0],
-            [ 2,0,1,0],
-            [ 1,0,0,1]])
-R.subdivide(1,1)
-\end{sageblock}
-\[ R = \sage{R} \]
-La matriz de la homotecia afín, respecto del sistema de referencia afín $R$, centrada en el origen y de factor $\frac{1}{2}$ tiene como matriz asociada su expresión canónica:
-\begin{sageblock}
-hRR = matrix(RR,[[1,0,0,0],
-              [0,1/2,0,0],
-              [0,0,1/2,0],
-              [0,0,0,1/2]])
-hRR.subdivide(1,1)
-\end{sageblock}
-\[ H_{1/2} = \sage{hRR} \] 
-Por tanto, la matriz en el sistema canónico del espacio afín es
-\begin{sageblock}
-h=R*hRR*R^-1
-h.subdivide(1,1)
+R = matrix(RR, [[1, 0, 0, 0], [-2, 1, 0, 0], [2, 0, 1, 0], [1, 0, 0, 1]])
+f = 1/2
+MRRh = matrix(RR, [[1, 0, 0, 0], [0, f, 0, 0], [0, 0, f, 0], [0, 0, 0, f]])
+Mh = R * MRRh * R^-1
+Mh.subdivide(1, 1)
 \end{sageblock}
 
-\[ h = R\cdot H_{1/2}\cdot R^{-1} = \sage{h}   \]
-
+$$
+	M_h = \sage{Mh}
+$$
 % Fin del Ejercicio 9
 
 
@@ -1238,103 +936,45 @@ están contenidos en el plano $3x+y-z=1$, que su centro está en el punto $P=\le
 {\it Solución.-}
 
 % Inicio del Ejercicio 10
-Para construir el heptágono regular que nos piden debemos usar el giro de ángulo $2\pi/7$ respecto de la recta perpendicular al plano que pasa por $P$, el centro del heptágono. Procedemos, pues, a calcular la matriz asociada a dicho giro en la referencia canónica del espacio. Como siempre, comenzamos calculando el sistema de referencia afín, $R$, que nos da la expresión canónica del giro. El punto base de dicho sistema de referencia es el centro del giro, 
- $P = \left[\begin{array}{c}1\\0\\2
-\end{array}\right]$,
 \begin{sageblock}
-P=vector(RR,[1,0,2])
-\end{sageblock}
-La base $\{u,v,w\}$ estará formada una base ortonormal del espacio de direcciones del plano, $\{u,v\}$, y un vector $w$ perpendicular a ambos y de norma $1$. Primero hacemos los cálculos sin normalizar, luego forzamos la ortonormalidad de la base calculada. Por tanto, podemos tomar  $u = \vec{PQ}=\left[\begin{array}{c}0\\1\\1
-\end{array}\right]$ y, utilizando el vector perpendicular del espacio de direcciones $w = \left[\begin{array}{c}3\\1\\-1 \end{array}\right]$,
-\begin{sageblock}
-u=vector(RR,[0,1,1])
-w=vector(RR,[3,1,-1])
-\end{sageblock}
-el segundo vector del plano sería $v=u\times w$.
-\begin{sageblock}
-v=u.cross_product(w)
-\end{sageblock}
-$$v=\sage{v}.$$ El tercer vector (vector perpendicular a ambos) es el propio $$w=\sage{w}.$$
-A continuación, normalizamos la base ortogonal:
-\begin{sageblock}
-u=u/norm(u)
-v=v/norm(v)
-w=w/norm(w)
-\end{sageblock}
-para construir nuestro sistema de referencia
-\begin{sageblock}
-R=block_matrix(RR,[[matrix([1,0,0,0])],
-                  [column_matrix([P,u,v,w])]])
-R.subdivide(1,1)
-\end{sageblock}
-\[ R = \sage{R}\] 
+n = vector(RR, [3, 1, -1])
+P = vector(RR, [1, 0, 2])
+Q = vector(RR, [1, 1, 3])
 
-La matriz asociada al giro respecto de este sistema de referencia es, por tanto:
-\begin{sageblock}
-b=2*pi/7
-G=matrix(RR,[[1,0,0,0],
-             [0,cos(b),-sin(b),0],
-             [0,sin(b),cos(b),0],
-             [0,0,0,1]])
-\end{sageblock}
-$$G_{2\pi/7}=\sage{G}$$
-Y la matriz asociada respecto del sistema de referencia canónico del espacio es:
+PQ = Q - P
 
-\begin{sageblock}
-g=R*G*R^(-1)
-\end{sageblock}
-$$ g=\sage{g}$$
-Determinamos ahora los vértices del heptágono, girando el vértice dado $Q$. Utilizamos dicho vértice en coordenadas homogéneas para obtener el resto de los vértices.
+u1 = PQ.normalized()
+u2 = PQ.cross_product(n).normalized()
+u3 = n.normalized()
 
-\begin{sageblock}
-g=R*G*R^(-1)
-V=[g^i*vector(RR,[1,1,1,3]) for i in range(7)]
-W=[v[1:] for v in V]
+R = block_matrix(2, 1, [matrix(RR, [1, 0, 0, 0]), column_matrix([P, u1, u2, u3])])
+R.subdivide(1, 1)
+
+a = 2*pi/7
+MRRg = matrix(RR, [[1, 0, 0, 0], [0, cos(a), -sin(a), 0], [0, sin(a), cos(a), 0], [0, 0, 0, 1]])
+
+Mg = R * MRRg * R^-1
+
+C = [Mg^i * vector(RR, [1, 1, 1, 3]) for i in range(7)]
+W = [v[1:] for v in C]
 \end{sageblock}
 
-Los vértices del héptagono quitando la coordenada homogénea son:
-
-\[ \begin{array}{rrr} v_1 & = & \sage{W[0]} \\
-v_2 & = & \sage{W[1]} \\
-v_3 & = & \sage{W[2]} \\
-v_4 & = & \sage{W[3]} \\
-v_5 & = & \sage{W[4]} \\
-v_6 & = & \sage{W[5]} \\
-v_7 & = & \sage{W[6]}
-\end{array} \]
-Aunque no lo piden, podemos dibujar el heptágono:
 \begin{sagesub}
 \begin{center}
 \tdplotsetmaincoords{70}{110}
 \begin{tikzpicture}[scale = 1, tdplot_main_coords,
-  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
 \draw[->,thick,gray] (-5,0,0) -- (5,0,0); % Eje X
 \draw[->,thick,gray] (0,-5,0) -- (0,5,0); % Eje Y
 \draw[->,thick,gray] (0,0,-1) -- (0,0,5); % Eje Z
-
-\draw[cara] !{W[0]} -- !{W[1]} -- !{W[2]} -- !{W[3]} -- !{W[4]} -- !{W[5]} -- !{W[6]} -- cycle;
-\draw[cara] !{P+3*u+3*v} -- !{P+3*u-3*v} -- !{P-3*u-3*v} -- !{P-3*u+3*v} -- cycle;
-\end{tikzpicture}
-\end{center}
-\end{sagesub}
-El código que hay tras el dibujo es:
-\begin{verbatim}
-\begin{sagesub}
-\begin{center}
-\tdplotsetmaincoords{70}{110}
-\begin{tikzpicture}[scale = 1, tdplot_main_coords,
-  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
-\draw[->,thick,gray] (-5,0,0) -- (5,0,0); % Eje X
-\draw[->,thick,gray] (0,-5,0) -- (0,5,0); % Eje Y
-\draw[->,thick,gray] (0,0,-1) -- (0,0,5); % Eje Z
-
-\draw[cara] !{W[0]} -- !{W[1]} -- !{W[2]} -- !{W[3]} -- !{W[4]} -- !{W[5]} 
+\draw[cara] !{W[0]} -- !{W[1]} -- !{W[2]} -- !{W[3]} -- !{W[4]} -- !{W[5]}
 -- !{W[6]} -- cycle;
-\draw[cara] !{P+3*u+3*v} -- !{P+3*u-3*v} -- !{P-3*u-3*v} -- !{P-3*u+3*v} -- cycle;
+\draw[cara] !{P+3*u1+3*u2} -- !{P+3*u1-3*u2} -- !{P-3*u1-3*u2} -- !{P-3*u1+3*u2} -- cycle;
+\draw[black] (1, 1, 3) circle (2pt);
+\draw[black] (1, 0, 2) circle (2pt);
 \end{tikzpicture}
 \end{center}
 \end{sagesub}
-\end{verbatim}
 % Fin del Ejercicio 10
 
 \newpage

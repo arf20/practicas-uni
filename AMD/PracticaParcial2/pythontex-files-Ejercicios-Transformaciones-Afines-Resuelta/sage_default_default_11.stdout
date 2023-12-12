@@ -1,0 +1,15 @@
+\begin{center}
+\begin{tikzpicture}[scale = 1,
+cara1/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+cara2/.style={thick, color = red, fill opacity = 0.3, fill = red!20},
+]
+\draw[->,thick,gray] (-5,0) -- (0,0); % Eje X
+\draw[->,thick,gray] (0,0) -- (0,8); % Eje Y
+
+\draw[cara1] (-4.00000000000000, 2.00000000000000) -- (-3.00000000000000, 2.00000000000000) -- (-3.50000000000000, 7.00000000000000) -- cycle;
+\draw[cara1] (-14.0000000000000, 4.00000000000000) -- (-11.0000000000000, 4.00000000000000) -- (-12.5000000000000, 19.0000000000000) -- cycle;
+
+
+\draw[black] (1, 1) circle (2pt);
+\end{tikzpicture}
+\end{center}

@@ -206,6 +206,22 @@
 \PYG{n}{Mg} \PYG{o}{=} \PYG{n}{R} \PYG{o}{*} \PYG{n}{MRRg} \PYG{o}{*} \PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
 \end{pytx@SaveVerbatim}
 
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@2}
+\PYG{n}{R1} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{b} \PYG{o}{=} \PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{3}
+\PYG{n}{MRRg} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{Mg1} \PYG{o}{=} \PYG{n}{R1} \PYG{o}{*} \PYG{n}{MRRg} \PYG{o}{*} \PYG{n}{R1}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+
+\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Mg1}\PYG{o}{\PYGZca{}}\PYG{n}{i} \PYG{o}{*} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{]}
+\PYG{n}{gC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Mg} \PYG{o}{*} \PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
+\PYG{n}{gCo} \PYG{o}{=} \PYG{p}{(}\PYG{n}{Mg} \PYG{o}{*} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{)}\PYG{p}{)}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}
+
+\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
+\PYG{n}{gC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{gC}\PYG{p}{]}
+\end{pytx@SaveVerbatim}
+
 \begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@3}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,}
@@ -224,243 +240,187 @@
 \end{pytx@SaveVerbatim}
 
 \begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@4}
-\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-               \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{,}
-               \PYG{p}{[} \PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{pr1} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{pr2} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{vr} \PYG{o}{=} \PYG{p}{(}\PYG{n}{pr2} \PYG{o}{\PYGZhy{}} \PYG{n}{pr1}\PYG{p}{)}
+\PYG{n}{u1} \PYG{o}{=} \PYG{n}{vr}\PYG{o}{.}\PYG{n}{normalized}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{u2} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{n}{vr}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{vr}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}\PYG{o}{.}\PYG{n}{normalized}\PYG{p}{(}\PYG{p}{)}
+
+\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{n}{pr1}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{n}{u1}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{n}{u2}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{n}{pr1}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{,} \PYG{n}{u1}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{,} \PYG{n}{u2}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{MRRp} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{MRRs} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{Mp} \PYG{o}{=} \PYG{n}{R} \PYG{o}{*} \PYG{n}{MRRp} \PYG{o}{*} \PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+\PYG{n}{Ms} \PYG{o}{=} \PYG{n}{R} \PYG{o}{*} \PYG{n}{MRRs} \PYG{o}{*} \PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@6}
-\PYG{n}{sRR}\PYG{o}{=}\PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{pRR}\PYG{o}{=}\PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@8}
+\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{a} \PYG{o}{=} \PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{2}
+\PYG{n}{MRRg} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{Mg} \PYG{o}{=} \PYG{n}{R} \PYG{o}{*} \PYG{n}{MRRg} \PYG{o}{*} \PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+
+\PYG{n}{cp0} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Mg}\PYG{o}{\PYGZca{}}\PYG{n}{i} \PYG{o}{*} \PYG{n}{cp0} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{]}
+\PYG{n}{sC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Ms} \PYG{o}{*} \PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
+\PYG{n}{pC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Mp} \PYG{o}{*} \PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
+
+\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
+\PYG{n}{sC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{sC}\PYG{p}{]}
+\PYG{n}{pC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{pC}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@7}
-\PYG{n}{s}\PYG{o}{=}\PYG{n}{R}\PYG{o}{*}\PYG{n}{sRR}\PYG{o}{*}\PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
-\PYG{n}{p}\PYG{o}{=}\PYG{n}{R}\PYG{o}{*}\PYG{n}{pRR}\PYG{o}{*}\PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
-\PYG{n}{s}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\PYG{n}{p}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@9}
+\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
+\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,}
+\PYG{n}{cara1}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{blue}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{blue}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
+\PYG{n}{cara2}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{red}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{red}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
+\PYG{p}{]}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mf}{5.5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{X}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mf}{2.5}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mf}{5.5}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{Y}
+
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{red}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pr1}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pr2}\PYG{p}{\PYGZcb{}}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{recta}
+
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{yellow}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pr1}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pr1} \PYG{o}{+} \PYG{n}{u1}\PYG{p}{\PYGZcb{}}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{recta}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{yellow}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pr1}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pr1} \PYG{o}{+} \PYG{n}{u2}\PYG{p}{\PYGZcb{}}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{recta}
+
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{black}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{black}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara1}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara1}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara1}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
+\PYG{o}{\PYGZpc{}}\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{black}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}
+\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \end{pytx@SaveVerbatim}
 
 \begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@10}
-\PYG{n}{R1} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-             \PYG{p}{[} \PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-             \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{R1}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{f} \PYG{o}{=} \PYG{l+m+mi}{3}
+\PYG{n}{MRRh} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{f}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{f}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{Mf} \PYG{o}{=} \PYG{n}{R} \PYG{o}{*} \PYG{n}{MRRh} \PYG{o}{*} \PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+
+\PYG{n}{tp0} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{tp1} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{tsv} \PYG{o}{=} \PYG{n}{tp1} \PYG{o}{\PYGZhy{}} \PYG{n}{tp0}
+\PYG{n}{tsmp} \PYG{o}{=} \PYG{n}{tp0} \PYG{o}{+} \PYG{n}{tsv}\PYG{o}{/}\PYG{l+m+mi}{2}
+\PYG{n}{tp2} \PYG{o}{=} \PYG{n}{tsmp} \PYG{o}{+} \PYG{l+m+mi}{5} \PYG{o}{*} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{tsv}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{,} \PYG{n}{tsv}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}\PYG{o}{.}\PYG{n}{normalized}\PYG{p}{(}\PYG{p}{)}
+
+\PYG{n}{C} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{tp0}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{n}{tp0}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{tp1}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{n}{tp1}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{tp2}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{n}{tp2}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{hC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Mf} \PYG{o}{*} \PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
+
+\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
+\PYG{n}{hC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{hC}\PYG{p}{]}
+\end{pytx@SaveVerbatim}
+
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@11}
+\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
+\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,}
+\PYG{n}{cara1}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{blue}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{blue}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
+\PYG{n}{cara2}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{red}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{red}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
+\PYG{p}{]}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{X}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{8}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{Y}
+
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara1}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara1}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{hC}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{hC}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{hC}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
+
+
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{black}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}
+\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \end{pytx@SaveVerbatim}
 
 \begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@12}
-\PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{4}
-\PYG{n}{gR1R1} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}        \PYG{p}{,}  \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-               \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
-               \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,}  \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{g}\PYG{o}{=}\PYG{n}{R1}\PYG{o}{*}\PYG{n}{gR1R1}\PYG{o}{*}\PYG{n}{R1}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
-\PYG{n}{g}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
+\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{a} \PYG{o}{=} \PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{4}
+\PYG{n}{MRRg} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{Mg} \PYG{o}{=} \PYG{n}{R} \PYG{o}{*} \PYG{n}{MRRg} \PYG{o}{*} \PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+
+\PYG{n}{op0} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Mg}\PYG{o}{\PYGZca{}}\PYG{n}{i} \PYG{o}{*} \PYG{n}{op0} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{)}\PYG{p}{]}
+\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
+\end{pytx@SaveVerbatim}
+
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@13}
+\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
+\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,}
+\PYG{n}{cara1}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{yellow}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{yellow}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
+\PYG{p}{]}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{X}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{7}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{Y}
+
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara1}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
+
+\PYGZbs{}\PYG{n}{filldraw}\PYG{p}{[}\PYG{n}{blue}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{filldraw}\PYG{p}{[}\PYG{n}{blue}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{filldraw}\PYG{p}{[}\PYG{n}{blue}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{filldraw}\PYG{p}{[}\PYG{n}{blue}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{filldraw}\PYG{p}{[}\PYG{n}{blue}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{filldraw}\PYG{p}{[}\PYG{n}{blue}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{filldraw}\PYG{p}{[}\PYG{n}{blue}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{filldraw}\PYG{p}{[}\PYG{n}{blue}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{black}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}
+\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \end{pytx@SaveVerbatim}
 
 \begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@14}
-\PYG{n}{Ch} \PYG{o}{=} \PYG{p}{[}\PYG{n}{g}\PYG{o}{\PYGZca{}}\PYG{n}{i}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{]}
-\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{Ch}\PYG{p}{]}
-\end{pytx@SaveVerbatim}
+\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@19}
-\PYG{n}{sCh} \PYG{o}{=} \PYG{p}{[}\PYG{n}{s}\PYG{o}{*}\PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{Ch}\PYG{p}{]}
-\PYG{n}{sC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{sCh}\PYG{p}{]}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@24}
-\PYG{n}{pCh} \PYG{o}{=} \PYG{p}{[}\PYG{n}{p}\PYG{o}{*}\PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{Ch}\PYG{p}{]}
-\PYG{n}{pC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{pCh}\PYG{p}{]}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@29}
-\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
-\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mf}{0.7}\PYG{p}{,}
-\PYG{n}{cara1}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{blue}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{blue}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{cara2}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{red}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{red}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{cara3}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{green}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.7}\PYG{p}{\PYGZcb{}}\PYG{p}{]}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mf}{5.5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{X}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{Y}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara1}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara2}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara3}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{dashed}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{dashed}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{dashed}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{dashed}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{pC}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{sC}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{black}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}
-\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@30}
-\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-            \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-            \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@32}
-\PYG{n}{hRR} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{h} \PYG{o}{=} \PYG{n}{R}\PYG{o}{*}\PYG{n}{hRR}\PYG{o}{*}\PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
-\PYG{n}{h}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@34}
-\PYG{n}{Ch} \PYG{o}{=} \PYG{p}{[}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{7}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{7}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@35}
-\PYG{n}{hCh} \PYG{o}{=} \PYG{p}{[}\PYG{n}{h}\PYG{o}{*}\PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{Ch}\PYG{p}{]}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@39}
-\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{Ch}\PYG{p}{]}
-\PYG{n}{hC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{hCh}\PYG{p}{]}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@46}
-\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
-\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{p}{,}
-\PYG{n}{cara1}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{blue}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{blue}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{cara2}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{red}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{red}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{]}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{14}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{X}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{20}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{Y}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara1}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara2}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{hC}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{hC}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{hC}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{dashed}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{hC}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{dashed}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{hC}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{dashed}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{hC}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{n}{mm}\PYG{p}{)} \PYG{n}{node}\PYG{p}{[}\PYG{n}{above} \PYG{n}{right}\PYG{p}{]} \PYG{p}{\PYGZob{}}\PYG{err}{\PYGZdl{}}\PYG{n}{P}\PYG{err}{\PYGZdl{}}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}
-\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@47}
-\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@49}
-\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{8}
-\PYG{n}{gRR}\PYG{o}{=}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,}      \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-                      \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
-                      \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{g}\PYG{o}{=}\PYG{n}{R}\PYG{o}{*}\PYG{n}{gRR}\PYG{o}{*}\PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
-\PYG{n}{g}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@51}
-\PYG{n}{Vh}\PYG{o}{=}\PYG{p}{[}\PYG{n}{g}\PYG{o}{\PYGZca{}}\PYG{n}{k}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{k} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{8}\PYG{p}{)}\PYG{p}{]}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@52}
-\PYG{n}{V}\PYG{o}{=}\PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{Vh}\PYG{p}{]}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@61}
-\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
-\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mf}{0.7}\PYG{p}{,}
-\PYG{n}{cara}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{blue}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{blue}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{]}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mf}{3.5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{X}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{Y}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.7}\PYG{n}{mm}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.7}\PYG{n}{mm}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.7}\PYG{n}{mm}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.7}\PYG{n}{mm}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.7}\PYG{n}{mm}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.7}\PYG{n}{mm}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.7}\PYG{n}{mm}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{7}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.7}\PYG{n}{mm}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}
-\PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@62}
-\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-            \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-            \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@64}
 \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{5}
-\PYG{n}{gRR} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}     \PYG{p}{,}  \PYG{l+m+mi}{0}   \PYG{p}{]}\PYG{p}{,}
-            		\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
-            		\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,}  \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{MRRg} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{Mg} \PYG{o}{=} \PYG{n}{R} \PYG{o}{*} \PYG{n}{MRRg} \PYG{o}{*} \PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+
+\PYG{n}{sp0} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Mg}\PYG{o}{\PYGZca{}}\PYG{n}{i} \PYG{o}{*} \PYG{n}{sp0} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{]}
+
+\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{a} \PYG{o}{=} \PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{180} \PYG{o}{*} \PYG{l+m+mi}{48}
+\PYG{n}{MRRg} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{Mg} \PYG{o}{=} \PYG{n}{R} \PYG{o}{*} \PYG{n}{MRRg} \PYG{o}{*} \PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+
+\PYG{n}{Cp} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Mg} \PYG{o}{*} \PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
+
+\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
+\PYG{n}{Cp} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{Cp}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@65}
-\PYG{n}{g}\PYG{o}{=}\PYG{n}{R}\PYG{o}{*}\PYG{n}{gRR}\PYG{o}{*}\PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
-\PYG{n}{g}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@67}
-\PYG{n}{Vh} \PYG{o}{=} \PYG{p}{[}\PYG{n}{g}\PYG{o}{\PYGZca{}}\PYG{n}{i}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{]}
-\PYG{n}{V} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{Vh}\PYG{p}{]}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@78}
-\PYG{n}{R1} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-             \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-             \PYG{p}{[} \PYG{l+m+mi}{4}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{R1}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@80}
-\PYG{n}{b} \PYG{o}{=} \PYG{l+m+mi}{48}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{180}
-\PYG{n}{g1R1R1} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,}       \PYG{l+m+mi}{0} \PYG{p}{]}\PYG{p}{,}
-             \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
-             \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,}  \PYG{n}{cos}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{g1}\PYG{o}{=}\PYG{n}{R1}\PYG{o}{*}\PYG{n}{g1R1R1}\PYG{o}{*}\PYG{n}{R1}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
-\PYG{n}{g1}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@82}
-\PYG{n}{V1h} \PYG{o}{=} \PYG{p}{[}\PYG{n}{g1}\PYG{o}{*}\PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{Vh}\PYG{p}{]}
-\PYG{n}{V1}\PYG{o}{=} \PYG{p}{[}\PYG{n}{w}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{w} \PYG{o+ow}{in} \PYG{n}{V1h}\PYG{p}{]}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@93}
-\PYG{n}{centro}\PYG{o}{=}\PYG{p}{(}\PYG{n}{g1}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}\PYG{p}{)}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}  \PYG{c+c1}{\PYGZsh{} centro de la estrella girada}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@95}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@15}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
-\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mf}{0.7}\PYG{p}{,}
+\PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,}
 \PYG{n}{cara1}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{blue}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{blue}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
-\PYG{n}{cara2}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{red}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{red}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{]}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{X}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{Y}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara1}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara2}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V1}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V1}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V1}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V1}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{V1}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{dashed}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{dashed}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{centro}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{n}{mm}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{n}{mm}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{centro}\PYG{p}{\PYGZcb{}} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{n}{mm}\PYG{p}{)}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{fill} \PYG{o}{=} \PYG{n}{white}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{8}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mf}{0.5}\PYG{n}{mm}\PYG{p}{)} \PYG{n}{node}\PYG{p}{[}\PYG{n}{above} \PYG{n}{left}\PYG{p}{]} \PYG{p}{\PYGZob{}}\PYG{err}{\PYGZdl{}}\PYG{n}{P}\PYG{err}{\PYGZdl{}}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\PYG{p}{]}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{X}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{5}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{7}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{Y}
+
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara1}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{C}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara1}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{Cp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{Cp}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{Cp}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{Cp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{Cp}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{Cp}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
+
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{black}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)} \PYG{n}{node}\PYG{p}{[}\PYG{n}{anchor}\PYG{o}{=}\PYG{n}{west}\PYG{p}{]}\PYG{p}{\PYGZob{}}\PYG{n}{O}\PYG{p}{\PYGZcb{}}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{black}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+
 \PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@96}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@16}
 \PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
             \PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
             \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@98}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@18}
 \PYG{n}{beta} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{5}
 \PYG{n}{G} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}     \PYG{p}{,}  \PYG{l+m+mi}{0}      \PYG{p}{]}\PYG{p}{,}
             \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{beta}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{beta}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
@@ -469,18 +429,18 @@
 \PYG{n}{g}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@100}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@20}
 \PYG{n}{V} \PYG{o}{=} \PYG{p}{[}\PYG{n}{g}\PYG{o}{\PYGZca{}}\PYG{n}{i}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@106}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@26}
 \PYG{n}{R1} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
              \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
              \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{R1}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@108}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@28}
 \PYG{n}{alpha} \PYG{o}{=} \PYG{l+m+mi}{39}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{180}
 \PYG{n}{G1} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}        \PYG{p}{,}  \PYG{l+m+mi}{0}        \PYG{p}{]}\PYG{p}{,}
             \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{alpha}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{alpha}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
@@ -489,23 +449,23 @@
 \PYG{n}{g1}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@110}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@30}
 \PYG{n}{V1} \PYG{o}{=} \PYG{p}{[}\PYG{n}{g1}\PYG{o}{*}\PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{V}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@116}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@36}
 \PYG{n}{V} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{V}\PYG{p}{]}
 \PYG{n}{V1} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{V1}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@127}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@47}
 \PYG{n}{P}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{O1}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{g1O1}\PYG{o}{=}\PYG{n}{g1}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{g1O1}\PYG{o}{=}\PYG{n}{g1O1}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@131}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@51}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mf}{1.3}\PYG{p}{,}
 \PYG{n}{cara1}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{blue}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{blue}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
@@ -524,36 +484,36 @@
 \PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@132}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@52}
 \PYG{n}{Pol}\PYG{o}{.}\PYG{o}{\PYGZlt{}}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{o}{\PYGZgt{}} \PYG{o}{=} \PYG{n}{PolynomialRing}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{)}
 \PYG{n}{A}\PYG{o}{=}\PYG{n}{matrix}\PYG{p}{(}\PYG{n}{Pol}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{,}
             \PYG{p}{[}\PYG{n}{x}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{]}\PYG{p}{,}
             \PYG{p}{[}\PYG{n}{y}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@134}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@54}
 \PYG{n}{B}\PYG{o}{=}\PYG{n}{g}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{B}\PYG{o}{=}\PYG{n}{B}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@136}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@56}
 \PYG{n}{g1O1}\PYG{o}{=}\PYG{n}{g1}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{g1O1}\PYG{o}{=}\PYG{n}{g1O1}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@138}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@58}
 \PYG{n}{Bp}\PYG{o}{=}\PYG{n}{g1}\PYG{o}{*}\PYG{n}{g}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{Bp}\PYG{o}{=}\PYG{n}{Bp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@140}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@60}
 \PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
             \PYG{p}{[} \PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
             \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@142}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@62}
 \PYG{n}{beta} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{5}
 \PYG{n}{G} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}        \PYG{p}{,}  \PYG{l+m+mi}{0}        \PYG{p}{]}\PYG{p}{,}
             \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{beta}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{beta}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
@@ -562,11 +522,11 @@
 \PYG{n}{g}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@144}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@64}
 \PYG{n}{V} \PYG{o}{=} \PYG{p}{[}\PYG{n}{g}\PYG{o}{\PYGZca{}}\PYG{n}{i}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@150}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@70}
 \PYG{n}{P}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{7}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{Q}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{9}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{v1} \PYG{o}{=} \PYG{n}{Q}\PYG{o}{\PYGZhy{}}\PYG{n}{P}
@@ -576,7 +536,7 @@
 \PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@152}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@72}
 \PYG{n}{sRR} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
               \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
               \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
@@ -585,22 +545,22 @@
 \PYG{n}{s}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@155}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@75}
 \PYG{n}{V1} \PYG{o}{=} \PYG{p}{[}\PYG{n}{s}\PYG{o}{*}\PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{V}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@161}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@81}
 \PYG{n}{V} \PYG{o}{=} \PYG{p}{[}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{V}\PYG{p}{]}
 \PYG{n}{V1} \PYG{o}{=} \PYG{p}{[}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{V1}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@172}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@92}
 \PYG{n}{O1}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{sO1}\PYG{o}{=}\PYG{n}{s}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{sO1}\PYG{o}{=}\PYG{n}{sO1}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@175}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@95}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mf}{0.5}\PYG{p}{,}
 \PYG{n}{cara1}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{blue}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{blue}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{,}
@@ -621,165 +581,98 @@
 \PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@176}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@96}
 \PYG{n}{Pol}\PYG{o}{.}\PYG{o}{\PYGZlt{}}\PYG{n}{x}\PYG{p}{,}\PYG{n}{y}\PYG{o}{\PYGZgt{}}\PYG{o}{=}\PYG{n}{PolynomialRing}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{)}
 \PYG{n}{A}\PYG{o}{=}\PYG{n}{matrix}\PYG{p}{(}\PYG{n}{Pol}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{,}
             \PYG{p}{[}\PYG{n}{x}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
             \PYG{p}{[}\PYG{n}{y}\PYG{p}{,}\PYG{l+m+mi}{7}\PYG{p}{,}\PYG{l+m+mi}{9}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@178}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@98}
 \PYG{n}{B}\PYG{o}{=}\PYG{n}{g}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{B}\PYG{o}{=}\PYG{n}{B}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@180}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@100}
 \PYG{n}{sO1}\PYG{o}{=}\PYG{n}{s}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{sO1}\PYG{o}{=}\PYG{n}{sO1}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@182}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@102}
 \PYG{n}{Bp}\PYG{o}{=}\PYG{n}{s}\PYG{o}{*}\PYG{n}{g}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{Bp}\PYG{o}{=}\PYG{n}{Bp}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@184}
-\PYG{n}{A}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{B}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{C}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@104}
+\PYG{n}{A} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{B} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{C} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{AB} \PYG{o}{=} \PYG{n}{B} \PYG{o}{\PYGZhy{}} \PYG{n}{A}
+\PYG{n}{AC} \PYG{o}{=} \PYG{n}{C} \PYG{o}{\PYGZhy{}} \PYG{n}{A}
+\PYG{n}{n} \PYG{o}{=} \PYG{n}{AB}\PYG{o}{.}\PYG{n}{cross\PYGZus{}product}\PYG{p}{(}\PYG{n}{AC}\PYG{p}{)}
+
+\PYG{n}{u1} \PYG{o}{=} \PYG{n}{AB}\PYG{o}{.}\PYG{n}{normalized}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{u2} \PYG{o}{=} \PYG{n}{n}\PYG{o}{.}\PYG{n}{cross\PYGZus{}product}\PYG{p}{(}\PYG{n}{AB}\PYG{p}{)}
+\PYG{n}{u3} \PYG{o}{=} \PYG{n}{n}\PYG{o}{.}\PYG{n}{normalized}\PYG{p}{(}\PYG{p}{)}
+
+\PYG{n}{R} \PYG{o}{=} \PYG{n}{block\PYGZus{}matrix}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{p}{[}\PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,} \PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{p}{[}\PYG{n}{A}\PYG{p}{,} \PYG{n}{u1}\PYG{p}{,} \PYG{n}{u2}\PYG{p}{,} \PYG{n}{u3}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
+
+\PYG{n}{MRRs} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{Ms} \PYG{o}{=} \PYG{n}{R} \PYG{o}{*} \PYG{n}{MRRs} \PYG{o}{*} \PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+\PYG{n}{Ms}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@185}
-\PYG{n}{v1}\PYG{o}{=}\PYG{n}{B}\PYG{o}{\PYGZhy{}}\PYG{n}{A}
-\PYG{n}{v2}\PYG{o}{=}\PYG{n}{C}\PYG{o}{\PYGZhy{}}\PYG{n}{A}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@106}
+\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{f} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{2}
+\PYG{n}{MRRh} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{f}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{f}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{f}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{Mh} \PYG{o}{=} \PYG{n}{R} \PYG{o}{*} \PYG{n}{MRRh} \PYG{o}{*} \PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+\PYG{n}{Mh}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@186}
-\PYG{n}{v3}\PYG{o}{=}\PYG{n}{v1}\PYG{o}{.}\PYG{n}{cross\PYGZus{}product}\PYG{p}{(}\PYG{n}{v2}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@187}
-\PYG{n}{R}\PYG{o}{=}\PYG{n}{block\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}       \PYG{n}{matrix}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
-                \PYG{p}{[}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{p}{[}\PYG{n}{A}\PYG{p}{,}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{v3}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@189}
-\PYG{n}{sRR} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{sRR}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@191}
-\PYG{n}{sRR}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\PYG{n}{s}\PYG{o}{=}\PYG{n}{R}\PYG{o}{*}\PYG{n}{sRR}\PYG{o}{*}\PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
-\PYG{n}{s}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@193}
-\PYG{n}{R} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-            \PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-            \PYG{p}{[} \PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-            \PYG{p}{[} \PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@195}
-\PYG{n}{hRR} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-              \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{o}{/}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{hRR}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@197}
-\PYG{n}{h}\PYG{o}{=}\PYG{n}{R}\PYG{o}{*}\PYG{n}{hRR}\PYG{o}{*}\PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
-\PYG{n}{h}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@199}
-\PYG{n}{P}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@200}
-\PYG{n}{u}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{w}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@201}
-\PYG{n}{v}\PYG{o}{=}\PYG{n}{u}\PYG{o}{.}\PYG{n}{cross\PYGZus{}product}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@204}
-\PYG{n}{u}\PYG{o}{=}\PYG{n}{u}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
-\PYG{n}{v}\PYG{o}{=}\PYG{n}{v}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
-\PYG{n}{w}\PYG{o}{=}\PYG{n}{w}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@205}
-\PYG{n}{R}\PYG{o}{=}\PYG{n}{block\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{n}{matrix}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
-                  \PYG{p}{[}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{p}{[}\PYG{n}{P}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{,}\PYG{n}{w}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@207}
-\PYG{n}{b}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{7}
-\PYG{n}{G}\PYG{o}{=}\PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-             \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-             \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
-             \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@209}
-\PYG{n}{g}\PYG{o}{=}\PYG{n}{R}\PYG{o}{*}\PYG{n}{G}\PYG{o}{*}\PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@211}
-\PYG{n}{g}\PYG{o}{=}\PYG{n}{R}\PYG{o}{*}\PYG{n}{G}\PYG{o}{*}\PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
-\PYG{n}{V}\PYG{o}{=}\PYG{p}{[}\PYG{n}{g}\PYG{o}{\PYGZca{}}\PYG{n}{i}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{7}\PYG{p}{)}\PYG{p}{]}
-\PYG{n}{W}\PYG{o}{=}\PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{V}\PYG{p}{]}
-\end{pytx@SaveVerbatim}
-
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@219}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@109}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{tdplotsetmaincoords}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{70}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{110}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{tdplot\PYGZus{}main\PYGZus{}coords}\PYG{p}{,}
-  \PYG{n}{cara}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{blue}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{blue}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{]}
+\PYG{n}{cara}\PYG{o}{/}\PYG{o}{.}\PYG{n}{style}\PYG{o}{=}\PYG{p}{\PYGZob{}}\PYG{n}{thick}\PYG{p}{,} \PYG{n}{color} \PYG{o}{=} \PYG{n}{blue}\PYG{p}{,} \PYG{n}{fill} \PYG{n}{opacity} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{fill} \PYG{o}{=} \PYG{n}{blue}\PYG{err}{!}\PYG{l+m+mi}{20}\PYG{p}{\PYGZcb{}}\PYG{p}{]}
 \PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{X}
 \PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{Y}
 \PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZgt{}}\PYG{p}{,}\PYG{n}{thick}\PYG{p}{,}\PYG{n}{gray}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{;} \PYG{o}{\PYGZpc{}} \PYG{n}{Eje} \PYG{n}{Z}
-
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
-\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{P}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{v}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{P}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{v}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{P}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{v}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{P}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{v}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{5}\PYG{p}{]}\PYG{p}{\PYGZcb{}}
+\PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{W}\PYG{p}{[}\PYG{l+m+mi}{6}\PYG{p}{]}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{cara}\PYG{p}{]} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{P}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u1}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u2}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{P}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u1}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u2}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{P}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u1}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u2}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{err}{!}\PYG{p}{\PYGZob{}}\PYG{n}{P}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u1}\PYG{o}{+}\PYG{l+m+mi}{3}\PYG{o}{*}\PYG{n}{u2}\PYG{p}{\PYGZcb{}} \PYG{o}{\PYGZhy{}}\PYG{o}{\PYGZhy{}} \PYG{n}{cycle}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{black}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
+\PYGZbs{}\PYG{n}{draw}\PYG{p}{[}\PYG{n}{black}\PYG{p}{]} \PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{)} \PYG{n}{circle} \PYG{p}{(}\PYG{l+m+mi}{2}\PYG{n}{pt}\PYG{p}{)}\PYG{p}{;}
 \PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@220}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@110}
 \PYG{n}{P}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@221}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@111}
 \PYG{n}{u}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{w}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{v}\PYG{o}{=}\PYG{n}{u}\PYG{o}{.}\PYG{n}{cross\PYGZus{}product}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@222}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@112}
 \PYG{n}{u}\PYG{o}{=}\PYG{n}{u}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
 \PYG{n}{v}\PYG{o}{=}\PYG{n}{v}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
 \PYG{n}{w}\PYG{o}{=}\PYG{n}{w}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@223}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@113}
 \PYG{n}{R}\PYG{o}{=}\PYG{n}{block\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{n}{matrix}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
                   \PYG{p}{[}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{p}{[}\PYG{n}{P}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{,}\PYG{n}{w}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@225}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@115}
 \PYG{n}{SRR}\PYG{o}{=}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
                    \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
                    \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
@@ -788,18 +681,18 @@
 \PYG{n}{s}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@227}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@117}
 \PYG{n}{Dh}\PYG{o}{=}\PYG{p}{[}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,}
 \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{4}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{6}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{,}\PYG{l+m+mi}{10}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{15}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@228}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@118}
 \PYG{n}{simeh}\PYG{o}{=}\PYG{p}{[}\PYG{n}{s}\PYG{o}{*}\PYG{n}{A} \PYG{k}{for} \PYG{n}{A} \PYG{o+ow}{in} \PYG{n}{Dh}\PYG{p}{]}
 \PYG{n}{D}\PYG{o}{=}\PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{Dh}\PYG{p}{]}
 \PYG{n}{sime}\PYG{o}{=}\PYG{p}{[}\PYG{n}{w}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{w} \PYG{o+ow}{in} \PYG{n}{simeh}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@234}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@124}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{tdplotsetmaincoords}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{70}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{110}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mf}{0.3}\PYG{p}{,} \PYG{n}{tdplot\PYGZus{}main\PYGZus{}coords}\PYG{p}{,}
@@ -824,31 +717,31 @@
 \PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@235}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@125}
 \PYG{n}{Q}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{T}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{P}\PYG{o}{=}\PYG{p}{(}\PYG{n}{Q}\PYG{o}{+}\PYG{n}{T}\PYG{p}{)}\PYG{o}{/}\PYG{l+m+mi}{2}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@236}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@126}
 \PYG{n}{w}\PYG{o}{=}\PYG{n}{Q}\PYG{o}{\PYGZhy{}}\PYG{n}{T}
 \PYG{n}{u}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{o}{\PYGZhy{}}\PYG{n}{w}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{,}\PYG{n}{w}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{v}\PYG{o}{=}\PYG{n}{u}\PYG{o}{.}\PYG{n}{cross\PYGZus{}product}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@237}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@127}
 \PYG{n}{u}\PYG{o}{=}\PYG{n}{u}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
 \PYG{n}{v}\PYG{o}{=}\PYG{n}{v}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
 \PYG{n}{w}\PYG{o}{=}\PYG{n}{w}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@238}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@128}
 \PYG{n}{R}\PYG{o}{=}\PYG{n}{block\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{n}{matrix}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
                   \PYG{p}{[}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{p}{[}\PYG{n}{P}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{,}\PYG{n}{w}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@240}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@130}
 \PYG{n}{S}\PYG{o}{=}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
                    \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
                    \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
@@ -856,46 +749,46 @@
 \PYG{n}{S}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@242}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@132}
 \PYG{n}{s}\PYG{o}{=}\PYG{n}{R}\PYG{o}{*}\PYG{n}{S}\PYG{o}{*}\PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{)}
 \PYG{n}{s}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@244}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@134}
 \PYG{n}{Rpi}\PYG{o}{=}\PYG{n}{block\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{n}{matrix}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
                   \PYG{p}{[}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{p}{[}\PYG{n}{P}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{Rpi}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@246}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@136}
 \PYG{n}{P}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@247}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@137}
 \PYG{n}{w}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@249}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@139}
 \PYG{n}{u}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@251}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@141}
 \PYG{n}{v}\PYG{o}{=}\PYG{n}{u}\PYG{o}{.}\PYG{n}{cross\PYGZus{}product}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@253}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@143}
 \PYG{n}{u}\PYG{o}{=}\PYG{n}{u}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{u}\PYG{p}{)}
 \PYG{n}{v}\PYG{o}{=}\PYG{n}{v}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{v}\PYG{p}{)}
 \PYG{n}{w}\PYG{o}{=}\PYG{n}{w}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{w}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@254}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@144}
 \PYG{n}{R}\PYG{o}{=}\PYG{n}{block\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{n}{matrix}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
                   \PYG{p}{[}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{p}{[}\PYG{n}{P}\PYG{p}{,}\PYG{n}{u}\PYG{p}{,}\PYG{n}{v}\PYG{p}{,}\PYG{n}{w}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@256}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@146}
 \PYG{n}{beta}\PYG{o}{=}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{5}
 \PYG{n}{G}\PYG{o}{=}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,}        \PYG{l+m+mi}{0}\PYG{p}{,}        \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
                    \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{beta}\PYG{p}{)}\PYG{p}{,}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{beta}\PYG{p}{)}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
@@ -905,11 +798,11 @@
 \PYG{n}{g}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@258}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@148}
 \PYG{n}{vb1h}\PYG{o}{=}\PYG{p}{[}\PYG{n}{g}\PYG{o}{\PYGZca{}}\PYG{n}{i}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mf}{0.5}\PYG{p}{,}\PYG{l+m+mf}{0.1}\PYG{p}{,}\PYG{l+m+mf}{0.4}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@259}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@149}
 \PYG{n}{S}\PYG{o}{=}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
                    \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
                    \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
@@ -918,16 +811,16 @@
 \PYG{n}{s}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@261}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@151}
 \PYG{n}{vb2h}\PYG{o}{=}\PYG{p}{[}\PYG{n}{s}\PYG{o}{*}\PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{vb1h}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@262}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@152}
 \PYG{n}{vb1}\PYG{o}{=}\PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{vb1h}\PYG{p}{]}
 \PYG{n}{vb2}\PYG{o}{=}\PYG{p}{[}\PYG{n}{w}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{w} \PYG{o+ow}{in} \PYG{n}{vb2h}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@273}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@163}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{tdplotsetmaincoords}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{70}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{110}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{n}{tdplot\PYGZus{}main\PYGZus{}coords}\PYG{p}{,}
@@ -946,7 +839,7 @@
 \PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@274}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@164}
 \PYG{n}{P}\PYG{o}{=}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{v3} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{v1} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
@@ -956,13 +849,13 @@
 \PYG{n}{v3}\PYG{o}{=}\PYG{n}{v3}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{v3}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@275}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@165}
 \PYG{n}{R} \PYG{o}{=} \PYG{n}{block\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}       \PYG{n}{matrix}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
                      \PYG{p}{[}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{p}{[}\PYG{n}{P}\PYG{p}{,}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{v3}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@277}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@167}
 \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{5}
 \PYG{n}{G} \PYG{o}{=} \PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}    \PYG{l+m+mi}{0}\PYG{p}{,}     \PYG{l+m+mi}{0}\PYG{p}{,}  \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
                      \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
@@ -972,21 +865,21 @@
 \PYG{n}{g}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@279}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@169}
 \PYG{n}{puntogiro}\PYG{o}{=}\PYG{n}{R}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{BasePiramideh} \PYG{o}{=} \PYG{p}{[}\PYG{n}{g}\PYG{o}{\PYGZca{}}\PYG{n}{i}\PYG{o}{*}\PYG{n}{puntogiro} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@280}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@170}
 \PYG{n}{Verticeh} \PYG{o}{=} \PYG{n}{R}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{5}\PYG{p}{]}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@281}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@171}
 \PYG{n}{BP} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{BasePiramideh}\PYG{p}{]}
 \PYG{n}{Vertice} \PYG{o}{=} \PYG{n}{Verticeh}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@288}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@178}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{tdplotsetmaincoords}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{70}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{110}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mf}{1.6}\PYG{p}{,} \PYG{n}{tdplot\PYGZus{}main\PYGZus{}coords}\PYG{p}{,}
@@ -1005,7 +898,7 @@
 \PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@289}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@179}
 \PYG{n}{v3} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{v1} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{2}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{v2} \PYG{o}{=} \PYG{n}{v1}\PYG{o}{.}\PYG{n}{cross\PYGZus{}product}\PYG{p}{(}\PYG{n}{v3}\PYG{p}{)}
@@ -1014,14 +907,14 @@
 \PYG{n}{v3}\PYG{o}{=}\PYG{n}{v3}\PYG{o}{/}\PYG{n}{norm}\PYG{p}{(}\PYG{n}{v3}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@290}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@180}
 \PYG{n}{P} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{R} \PYG{o}{=} \PYG{n}{block\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}       \PYG{n}{matrix}\PYG{p}{(}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,}
                      \PYG{p}{[}\PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{p}{[}\PYG{n}{P}\PYG{p}{,}\PYG{n}{v1}\PYG{p}{,}\PYG{n}{v2}\PYG{p}{,}\PYG{n}{v3}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
 \PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@292}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@182}
 \PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{6}
 \PYG{n}{G} \PYG{o}{=} \PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}    \PYG{l+m+mi}{0}\PYG{p}{,}     \PYG{l+m+mi}{0}\PYG{p}{,}  \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
                      \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,}
@@ -1031,20 +924,20 @@
 \PYG{n}{g}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{)}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@294}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@184}
 \PYG{n}{BaseTorreh} \PYG{o}{=} \PYG{p}{[}\PYG{n}{g}\PYG{o}{\PYGZca{}}\PYG{n}{i}\PYG{o}{*}\PYG{n}{R}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@295}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@185}
 \PYG{n}{TapaTorreh} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{o}{+}\PYG{n}{R}\PYG{o}{*}\PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{0}\PYG{p}{,}\PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{BaseTorreh}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@296}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@186}
 \PYG{n}{BT} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{BaseTorreh}\PYG{p}{]}
 \PYG{n}{TT} \PYG{o}{=} \PYG{p}{[}\PYG{n}{w}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{w} \PYG{o+ow}{in} \PYG{n}{TapaTorreh}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@297}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@187}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{tdplotsetmaincoords}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{70}\PYG{p}{\PYGZcb{}}\PYG{p}{\PYGZob{}}\PYG{l+m+mi}{110}\PYG{p}{\PYGZcb{}}
 \PYGZbs{}\PYG{n}{begin}\PYG{p}{\PYGZob{}}\PYG{n}{tikzpicture}\PYG{p}{\PYGZcb{}}\PYG{p}{[}\PYG{n}{scale} \PYG{o}{=} \PYG{l+m+mf}{2.4}\PYG{p}{,} \PYG{n}{tdplot\PYGZus{}main\PYGZus{}coords}\PYG{p}{,}
@@ -1065,19 +958,26 @@
 \PYGZbs{}\PYG{n}{end}\PYG{p}{\PYGZob{}}\PYG{n}{center}\PYG{p}{\PYGZcb{}}
 \end{pytx@SaveVerbatim}
 
-\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@2}
-\PYG{n}{R1} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\begin{pytx@SaveVerbatim}[commandchars=\\\{\}]{pytx@sage@default@default@108}
+\PYG{n}{n} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{P} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{2}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{Q} \PYG{o}{=} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{)}
 
-\PYG{n}{b} \PYG{o}{=} \PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{3}
-\PYG{n}{MRRg} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{b}\PYG{p}{)}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{PQ} \PYG{o}{=} \PYG{n}{Q} \PYG{o}{\PYGZhy{}} \PYG{n}{P}
 
-\PYG{n}{Mg1} \PYG{o}{=} \PYG{n}{R1} \PYG{o}{*} \PYG{n}{MRRg} \PYG{o}{*} \PYG{n}{R1}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+\PYG{n}{u1} \PYG{o}{=} \PYG{n}{PQ}\PYG{o}{.}\PYG{n}{normalized}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{u2} \PYG{o}{=} \PYG{n}{PQ}\PYG{o}{.}\PYG{n}{cross\PYGZus{}product}\PYG{p}{(}\PYG{n}{n}\PYG{p}{)}\PYG{o}{.}\PYG{n}{normalized}\PYG{p}{(}\PYG{p}{)}
+\PYG{n}{u3} \PYG{o}{=} \PYG{n}{n}\PYG{o}{.}\PYG{n}{normalized}\PYG{p}{(}\PYG{p}{)}
 
-\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Mg1}\PYG{o}{\PYGZca{}}\PYG{n}{i} \PYG{o}{*} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{6}\PYG{p}{)}\PYG{p}{]}
-\PYG{n}{gC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Mg} \PYG{o}{*} \PYG{n}{v} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
-\PYG{n}{gCo} \PYG{o}{=} \PYG{p}{(}\PYG{n}{Mg} \PYG{o}{*} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{]}\PYG{p}{)}\PYG{p}{)}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]}
+\PYG{n}{R} \PYG{o}{=} \PYG{n}{block\PYGZus{}matrix}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{p}{[}\PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{)}\PYG{p}{,} \PYG{n}{column\PYGZus{}matrix}\PYG{p}{(}\PYG{p}{[}\PYG{n}{P}\PYG{p}{,} \PYG{n}{u1}\PYG{p}{,} \PYG{n}{u2}\PYG{p}{,} \PYG{n}{u3}\PYG{p}{]}\PYG{p}{)}\PYG{p}{]}\PYG{p}{)}
+\PYG{n}{R}\PYG{o}{.}\PYG{n}{subdivide}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{)}
 
-\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
-\PYG{n}{gC} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{gC}\PYG{p}{]}
+\PYG{n}{a} \PYG{o}{=} \PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{pi}\PYG{o}{/}\PYG{l+m+mi}{7}
+\PYG{n}{MRRg} \PYG{o}{=} \PYG{n}{matrix}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{o}{\PYGZhy{}}\PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{sin}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{n}{cos}\PYG{p}{(}\PYG{n}{a}\PYG{p}{)}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{]}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{]}\PYG{p}{]}\PYG{p}{)}
+
+\PYG{n}{Mg} \PYG{o}{=} \PYG{n}{R} \PYG{o}{*} \PYG{n}{MRRg} \PYG{o}{*} \PYG{n}{R}\PYG{o}{\PYGZca{}}\PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+
+\PYG{n}{C} \PYG{o}{=} \PYG{p}{[}\PYG{n}{Mg}\PYG{o}{\PYGZca{}}\PYG{n}{i} \PYG{o}{*} \PYG{n}{vector}\PYG{p}{(}\PYG{n}{RR}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{3}\PYG{p}{]}\PYG{p}{)} \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{7}\PYG{p}{)}\PYG{p}{]}
+\PYG{n}{W} \PYG{o}{=} \PYG{p}{[}\PYG{n}{v}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{p}{]} \PYG{k}{for} \PYG{n}{v} \PYG{o+ow}{in} \PYG{n}{C}\PYG{p}{]}
 \end{pytx@SaveVerbatim}
 
