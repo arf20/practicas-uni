@@ -1,0 +1,883 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[usefamily=sage]{pythontex} 
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[most]{tcolorbox}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{graphicx}
+\usetikzlibrary{3d}
+\usepackage{tikz-3dplot}
+
+
+\newtheorem{ejer}{Ejercicio}
+
+\def\n{\mathbb{N}}
+\def\r{\mathbb{R}}
+\def\z{\mathbb{Z}}
+\def\q{\mathbb{Q}}
+\def\c{\mathbb{C}}
+
+\title{AMD - Práctica de Producto Escalar}
+
+\begin{document}
+
+\maketitle
+
+\begin{sagecode}
+latex.matrix_delimiters("[", "]")
+\end{sagecode}
+
+\section{Ortogonalidad en ${\mathbb R}^2$ y ${\mathbb R}^3$}
+
+\begin{ejer}
+Para cada una de las rectas dadas, calcula un vector $v_1$ de la recta y un vector $v_2$ perpendicular
+a la recta de forma que la base $B = \{v_1,v_2\}$ tenga orientación positiva, normalízalos y pintalos 
+en unos ejes coordenados y dibuja un cuadrado de tamaño $4\times 4$ centrado en el origen con lados 
+paralelos a las base calculada.
+
+\begin{enumerate}
+\item La recta $r$ dada por $2x+y = 0$, es decir $r = N([2\ 1])$.
+\item La recta $r$ dada por $x = 2\lambda, y = -\lambda$ con $\lambda \in {\mathbb R}$, es decir
+$r = C\left(\left[\begin{array}{c} 2 \\ -1 \end{array} \right]\right)$.
+\end{enumerate}
+
+\end{ejer}
+
+{\it Solución:}
+
+% Inicio Ejercicio 1
+
+\begin{enumerate}
+\item La recta $r$ dada por $2x+y = 0$, es decir $r = N([2\ 1])$.
+
+\begin{sageblock}
+v2 = vector(RR,[2,1])
+v1 = vector(RR,[1,-2])
+u1 = v1/norm(v1)
+u2 = v2/norm(v2)
+A = -2*u1-2*u2
+B = -2*u1+2*u2
+C =  2*u1+2*u2
+D =  2*u1-2*u2
+\end{sageblock}
+
+El vector perpendicular a la recta nos lo dan porque la recta nos la dan en implícitas
+por lo que tomamos $v_2 = \sage{v2}$. El vector $v_1$ lo tomamos perpendicular intercambiando
+las coordenadas y cambiando una de signo. Elegimos la que cambiamos de signo para que el determinante
+de la base sea positivo, así nos sale $v_1 = \sage{v1}$. Normalizamos dividiendo por la norma, 
+$u_1 = v_1/\|v_1\|$ y $u_2 = v_2/\|v_2\|$ y calculamos
+los cuatro vértices del cuadrado, que es lo mismo que calcular el cuadrado $(-2,-2) -- (-2,2) -- (2,2) -- (2,-2)$
+en base $\{u_1,u_2\}$.
+
+% El estilo para pintar el cuadrado se llama "cara" porque es el que usaremos para pintar las caras de los poliedros en el espacio.
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 1.25,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-3,0) -- (3,0); % Eje X
+\draw[->,thick,gray] (0,-3) -- (0,3); % Eje Y
+\draw[->,very thick] (0,0) -- !{u1}; 
+\draw[->,very thick] (0,0) -- !{u2};
+\node at !{1.2*u1} {$u_1$};
+\node at !{1.2*u2} {$u_2$};
+\draw[cara] !{A} -- !{B} -- !{C} -- !{D} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+\item La recta $r$ dada por $x = 2\lambda, y = -\lambda$ con $\lambda \in {\mathbb R}$, es decir
+$r = C\left(\left[\begin{array}{c} 2 \\ -1 \end{array} \right]\right)$.
+
+\begin{sageblock}
+v1 = vector(RR,[2,-1])
+v2 = vector(RR,[1,2])
+u1 = v1/norm(v1)
+u2 = v2/norm(v2)
+A = -2*u1-2*u2
+B = -2*u1+2*u2
+C =  2*u1+2*u2
+D =  2*u1-2*u2
+\end{sageblock}
+
+El vector de la recta nos lo dan porque la recta nos la dan en paramétricas
+por lo que tomamos $v_1 = \sage{v1}$. El vector $v_2$ lo tomamos perpendicular intercambiando
+las coordenadas y cambiando una de signo. Elegimos la que cambiamos de signo para que el determinante
+de la base sea positivo, así nos sale $v_2 = \sage{v2}$. Normalizamos dividiendo por la norma, 
+$u_1 = v_1/\|v_1\|$ y $u_2 = v_2/\|v_2\|$ y calculamos
+los cuatro vértices del cuadrado, que es lo mismo que calcular el cuadrado $(-2,-2) -- (-2,2) -- (2,2) -- (2,-2)$
+en base $\{u_1,u_2\}$.
+
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}[scale = 1.25,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-3,0) -- (3,0); % Eje X
+\draw[->,thick,gray] (0,-3) -- (0,3); % Eje Y
+\draw[->,very thick] (0,0) -- !{u1}; 
+\draw[->,very thick] (0,0) -- !{u2};
+\node at !{1.2*u1} {$u_1$};
+\node at !{1.2*u2} {$u_2$};
+\draw[cara] !{A} -- !{B} -- !{C} -- !{D} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+\end{enumerate}
+
+% Fin del Ejercicio 1
+
+\begin{ejer}
+Para cada una de las rectas dadas, calcula un vector $v_1$ de la recta y un vector $v_2$ perpendicular
+a la recta de forma que la base $B = \{v_1,v_2\}$ tenga orientación positiva, normalízalos y pintalos 
+en unos ejes coordenados y dibuja un cuadrado de tamaño $4\times 4$ centrado en el origen con lados 
+paralelos a las base calculada.
+
+\begin{enumerate}
+\item La recta $r$ dada por $3x-y = 0$.
+\item La recta $r$ dada por $x = \lambda, y = 2\lambda$ con $\lambda \in {\mathbb R}$.
+\item La recta $r$ dada por $x+2y = 0$.
+\item La recta $r$ dada por $x = 2\lambda, y = -3\lambda$ con $\lambda \in {\mathbb R}$.
+\item La recta $r$ dada por $x-y = 0$.
+\item La recta $r$ dada por $x = -\lambda, y = \lambda$ con $\lambda \in {\mathbb R}$.
+\item La recta $r$ dada por $-x+2y = 0$.
+\item La recta $r$ dada por $x = -2\lambda, y = \lambda$ con $\lambda \in {\mathbb R}$.
+\end{enumerate}
+\end{ejer}
+
+% Inicio Ejercicio 2
+
+% Fin del Ejercicio 2
+
+\begin{ejer}
+Para cada una de las rectas dadas, calcula un vector $v_1$ de la recta y dos vectores 
+$v_2$ y $v_3$ perpendiculares a la recta de forma que la base $B = \{v_1,v_2,v_3\}$ tenga 
+orientación positiva, normalízalos, píntalos en unos ejes coordenados y dibuja un cuadrado de 
+tamaño $4\times 4$ centrado en el origen con lados paralelos a los vectores $v_2$ y $v_3$.
+
+\begin{enumerate}
+\item La recta $r$ dada por 
+$
+\begin{cases}
+2x+y+z = 0 \\
+x-y+z = 0
+\end{cases}
+$ es decir $r = N\left(\left[\begin{array}{ccc} 2 & 1 & 1 \\ 1 & -1 & 1 \end{array} \right]\right)$.
+\item La recta $r$ dada por $x = 2\lambda, y = -\lambda, z = \lambda$ 
+con $\lambda \in {\mathbb R}$, es decir
+$r = C\left(\left[\begin{array}{c} 2 \\ -1 \\ 1 \end{array} \right]\right)$.
+\end{enumerate}
+\end{ejer}
+
+{\it Solución}
+
+% Inicio Ejercicio 3
+
+\begin{enumerate}
+\item La recta $r$ dada por 
+$
+\begin{cases}
+2x+y+z = 0 \\
+x-y+z = 0
+\end{cases}
+$ es decir $r = N\left(\left[\begin{array}{ccc} 2 & 1 & 1 \\ 1 & -1 & 1 \end{array} \right]\right)$.
+
+Las dos ecuaciones nos proporcionan dos vectores perpendiculares a la recta y el producto vectorial de los
+mismos nos proporcionará un vector $v_1$ perteneciente a la recta:
+
+\begin{sageblock}
+w1 = vector(RR,[2,1,1])
+w2 = vector(RR,[1,-1,1])
+v1 = w1.cross_product(w2)
+\end{sageblock}
+
+El vector $v_2$ se puede tomar uno de los dos perpendiculares a $v_1$ que teníamos desde el principio y 
+$v_3$ se puede tomar el producto vectorial $v_1 \times v_2$ de forma que garantizamos que la base $\{v_1,v_2,v_3\}$
+esté orientada positivamente y todos sus vectores son ortogonales. Dividimos por la norma para hacerlos
+unitarios, calculamos el cuadrado que nos piden y los pintamos:
+
+\begin{sageblock}
+v1 = w1.cross_product(w2)
+v2 = w1
+v3 = v1.cross_product(v2)
+u1 = v1/RR(norm(v1))
+u2 = v2/RR(norm(v2))
+u3 = v3/RR(norm(v3))
+A = -2*u2-2*u3
+B = -2*u2+2*u3
+C =  2*u2+2*u3
+D =  2*u2-2*u3
+\end{sageblock}
+
+La base es $u_1 = \sage{column_matrix(u1)}, u_2 = \sage{column_matrix(u2)},
+u_3 = \sage{column_matrix(u3)}$ que podemos ver que es orientada positiva porque
+el determinante es $\sage{det(matrix([u1,u2,u3]))}$.
+
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 2, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-2.5,0,0) -- (2.5,0,0); % Eje X
+\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
+\node at !{1.2*u1} {$u_1$};
+\node at !{1.2*u2} {$u_2$};
+\node at !{1.2*u3} {$u_3$};
+\draw[->,very thick] (0,0,0) -- !{u1};
+\draw[->,very thick] (0,0,0) -- !{u2};
+\draw[->,very thick] (0,0,0) -- !{u3};
+\draw[cara] !{A} -- !{B} -- !{C} -- !{D} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+\item La recta $r$ dada por $x = 2\lambda, y = -\lambda, z = \lambda$ 
+con $\lambda \in {\mathbb R}$, es decir
+$r = C\left(\left[\begin{array}{c} 2 \\ -1 \\ 1 \end{array} \right]\right)$.
+
+En este caso tenemos un vector de la recta que podemos tomar como $v_1$. Debemos
+sacar otro $v_2$ que nos vale cualquiera que sea perpendicular a él y eso lo 
+podemos hacer intercambiando dos coordenadas y con un cambio de signo y poniendo
+la tercera coordenada a $0$. Para sacar el tercer vector hacemos el producto 
+vectorial $v_3 = v_1 \times v_2$ con lo que obtendremos una base orientada positivamente.
+Normalizamos y pintamos el cuadrado como en el caso anterior.
+
+\begin{sageblock}
+v1 = vector(RR,[2,-1,1])
+v2 = vector(RR,[1,2,0])
+v3 = v1.cross_product(v2)
+u1 = v1/RR(norm(v1))
+u2 = v2/RR(norm(v2))
+u3 = v3/RR(norm(v3))
+A = -2*u2-2*u3
+B = -2*u2+2*u3
+C =  2*u2+2*u3
+D =  2*u2-2*u3
+\end{sageblock}
+
+La base es $u_1 = \sage{column_matrix(u1)}, u_2 = \sage{column_matrix(u2)},
+u_3 = \sage{column_matrix(u3)}$ que podemos ver que es orientada positiva porque
+el determinante es $\sage{det(matrix([u1,u2,u3]))}$.
+
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 2, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-2.5,0,0) -- (2.5,0,0); % Eje X
+\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
+\node at !{1.2*u1} {$u_1$};
+\node at !{1.2*u2} {$u_2$};
+\node at !{1.2*u3} {$u_3$};
+\draw[->,very thick] (0,0,0) -- !{u1};
+\draw[->,very thick] (0,0,0) -- !{u2};
+\draw[->,very thick] (0,0,0) -- !{u3};
+\draw[cara] !{A} -- !{B} -- !{C} -- !{D} -- cycle;
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+\end{enumerate}
+
+% Fin del Ejercicio 3
+
+\begin{ejer}
+Para cada una de las rectas dadas, calcula un vector $v_1$ de la recta y dos vectores 
+$v_2$ y $v_3$ perpendiculares a la recta de forma que la base $B = \{v_1,v_2,v_3\}$ tenga 
+orientación positiva, normalízalos, píntalos en unos ejes coordenados y dibuja un cuadrado de 
+tamaño $4\times 4$ centrado en el origen con lados paralelos a los vectores $v_2$ y $v_3$.
+
+\begin{enumerate}
+\item La recta $r$ dada por $\begin{cases} x-y+z = 0 \\ -x-3y+2z = 0 \end{cases} $
+\item La recta $r$ dada por $x = \lambda, y = \lambda, z = 0$ con $\lambda \in {\mathbb R}$.
+\item La recta $r$ dada por $\begin{cases} x+z = 0 \\ -y+z = 0 \end{cases} $
+\item La recta $r$ dada por $x = 2\lambda, y = -3\lambda, z = -\lambda$ con $\lambda \in {\mathbb R}$.
+\item La recta $r$ dada por $\begin{cases} -x-y+z = 0 \\ x+y = 0 \end{cases} $
+\item La recta $r$ dada por $x = -\lambda, y = \lambda, z = 2\lambda$ con $\lambda \in {\mathbb R}$.
+\item La recta $r$ dada por $\begin{cases} 2x+2y-z = 0 \\ x-y+3z = 0 \end{cases} $
+\item La recta $r$ dada por $x = 2\lambda, y = 0, z = -\lambda$ con $\lambda \in {\mathbb R}$.
+\end{enumerate}
+\end{ejer}
+
+{\it Solución}
+
+% Inicio Ejercicio 4
+
+% Fin del Ejercicio 4
+
+\section{Proyección Ortogonal}
+
+\begin{ejer}
+Dado el espacio $W = N(H)$ y el vector $v$, donde
+
+\begin{sageblock}
+H=matrix(QQ,[[1,-1,0,0],[0,0,1,0]])
+v=column_matrix(QQ,[1,2,0,2])
+\end{sageblock}
+
+\[ H = \sage{H} \quad v = \sage{v}, \]
+expresar el vector $v$ como suma de un vector de $W$ y otro vector de $W^\perp $.
+\end{ejer}
+
+% Inicio Ejercicio 5
+{\it Solución 1:}
+
+Nos piden que expresemos $v = v_1 + v_2$ con $v_1\in W$ y $v_2\in W^\perp $.
+Como $W = N(H)$ entonces tenemos los vectores que generan $W^\perp$ porque 
+sabemos que $W^{\perp} = C(H^T)$. Si llamamos $A = H^T = \sage{H.T}$,   
+usando ese conjunto generador, podemos calcular directamente $v_2$, que es la 
+proyección $v$ sobre el espacio $W^{\perp}$ con la fórmula de la proyección y 
+luego despejar $v_1$ a partir de la fórmula $v = v_1+v_2$.
+
+\begin{sageblock}
+A=H.T
+v2=A*(A.T*A)^-1*A.T*v
+\end{sageblock}
+
+$$
+v_2 = A\cdot(A^T\cdot A)^{-1}\cdot A^T\cdot v = \sage{v2} \quad 
+v_1 = v-v_2 = \sage{v}-\sage{v2} = \sage{v-v2}.
+$$
+
+{\it Solución 2:}
+
+Nos piden que hagamos $v = v_1 + v_2$ donde $v_1\in W$ y $v_2\in W^{\perp}$. 
+Obtenemos una base de $W$ y 
+calculamos en primer lugar la proyección de $v$ sobre $W$. 
+
+\begin{sageblock}
+M=block_matrix(1,2,[H.T,1])
+R=copy(M.echelon_form())
+R.subdivide(2,2)
+D = R.subdivision(1,1).T
+v1 = D*(D.T*D)^-1*D.T*v 
+\end{sageblock}
+
+Como $W = N(H)$ la base la obtenemos reduciendo por filas la matriz $H$ ampliada con la identidad:
+$$ \sage{M} \to \sage{R} $$
+La base de $W$ es $D= \sage{D}$ y entonces podemos calcular $v_1$ con la 
+fórmula de la proyección sobre $W$ y despejar $v_2$ de la igualdad $v = v_1+v_2$: 
+$$
+v_1 = D\cdot (D^T\cdot D)^{-1}\cdot D^T\cdot v = \sage{v1} \qquad 
+v_2 = v-v_1 = \sage{v}-\sage{v1} = \sage{v-v1}.
+$$
+
+% Fin Ejercicio 5
+
+\section{Método de Gram-Schmidt}
+
+\begin{ejer}
+Dado el espacio $W = N(H) \leq \r^4$, donde
+
+\begin{sageblock}
+H=matrix(QQ,[[2,1,0,2],[1,-1,1,0],[2,0,1,-1]])
+\end{sageblock}
+
+\[ H = \sage{H}.\] 
+
+Determinar una base ortogonal del espacio $W^\perp$.
+\end{ejer}
+{\it Solución:}
+
+% Inicio Ejercicio 6
+
+Como $W = N (H)$ entonces $W^\perp = C(H^T)$, las columnas de $H^T$ son generadoras de $W^\perp$. 
+Reduciendo la matriz también vemos que son linealmente independientes por lo que son una base $\{u_1,u_2,u_3\}$
+a la que le aplicaremos Gram-Schmidt. 
+
+$$ H^T = \sage{H.T} \to \sage{H.T.echelon_form()} $$
+
+\begin{sageblock}
+u1,u2,u3 = H.T.columns() # Nos las da en formato vector y ahí podemos usar el producto escalar.
+v1=u1
+v2=u2-((u2*v1)/(v1*v1))*v1
+v3=u3-((u3*v1)/(v1*v1))*v1-((u3*v2)/(v2*v2))*v2
+B=column_matrix([v1,v2,v3])
+\end{sageblock}
+
+El método de Gram-Schmidt nos dice que la base ortonormal es 
+\begin{align*}
+v_1 &= u_1 \\
+v_2 &= u_2-\frac{u_2\cdot v_1}{v_1\cdot v_1} \ v_1 \\
+v_3 &= u_3-\frac{u_3\cdot v_1}{v_1\cdot v_1} \ v_1 - \frac{u_3\cdot v_2}{v_2\cdot v_2} \ v_2 \\
+\end{align*}
+
+$$ v_1=\sage{B[:,0]} \qquad v_2=\sage{B[:,1]} \qquad v_3=\sage{B[:,2]} $$
+
+% Fin Ejercicio 6
+
+\vspace{0.5cm}
+\begin{ejer} Calcula una base ortonormal del subespacio $U=C(B) \leq \r^5$ y la proyección ortogonal sobre $U$ del vector 
+$v\in \r^5$ siendo
+$$
+    B=
+    \left[
+    \begin{array}{rrr}
+    2 & 1 & 1 \\
+    1 & 1 & -1 \\
+    1 & 1 & 0 \\
+    1 & 3 & 1 \\
+    0 & 1 & 0
+    \end{array}
+    \right],
+    \qquad\qquad
+    v=
+    \left[
+    \begin{array}{r}
+    1 \\
+    0 \\
+    1 \\
+    -1 \\
+    1
+    \end{array}
+    \right].
+$$
+\end{ejer}
+{\it Solución:}
+
+% Inicio Ejercicio 7
+
+\begin{sageblock}
+B=matrix(QQ,[[2,1,1],[1,1,-1],[1,1,0],[1,3,1],[0,1,0]])
+v=vector([1,0,1,-1,1])
+R=B.echelon_form()
+\end{sageblock}
+
+En primer lugar, comprobamos que las columnas de $B$ son linealmente independientes
+(y, por tanto, una base de $U=C(B)$). Para ello calculamos la reducida completa por filas de~$B$, que es:
+
+$$ \sage{R}.$$
+
+Como hay $3$ pivotes, el rango de $B$ es $3$ y las columnas son independientes.
+
+\begin{sageblock}
+v1=B.column(0)
+v2=B.column(1)
+v3=B.column(2)
+u1=v1
+u2=v2-((v2*u1)/(u1*u1))*u1
+u3=v3-((v3*u1)/(u1*u1))*u1-((v3*u2)/(u2*u2))*u2
+w1=u1/norm(u1)
+w2=u2/norm(u2)
+w3=u3/norm(u3)
+B1=column_matrix([u1,u2,u3])
+B2=column_matrix([w1,w2,w3])
+\end{sageblock}
+
+Aplicamos el método de Gram-Schmidt a los vectores
+
+$$ v_1=\sage{B[:,0]} \qquad v_2=\sage{B[:,1]} \qquad v_3=\sage{B[:,2]} $$
+
+
+Obteniendo una base ortogonal formada por las columnas de la matriz
+
+$$ B_1 = \sage{B1} $$
+	
+Una vez normalizada se obtiene la base ortonormal dada por las columnas de la matriz:
+
+$$ B_2 = \sage{B2} $$
+
+Como mera comprobación $B_2$ es una matriz ortogonal:
+
+$$ B_2^T\cdot B_2 = \sage{B2.T*B2}.$$
+
+La proyección de $v$ sobre $U$ es
+
+$$ {\rm proy}_U(v) = B\cdot ((B^T\cdot B)^{-1}\cdot B^T)\cdot v = \sage{B*(B.T*B)^-1*B.T*column_matrix([v])}$$
+
+Si utilizamos la base ortonormal $B_2$ en vez de la base $B$, de manera alternativa también se puede calcular la proyección así:
+
+$$
+	{\rm proy}_U(v) = B_2\cdot B_2^T\cdot v = (v*w_1)w_1+(v*w_2)w_2+(v*w_3)w_3 = \sage{B2*B2.T*column_matrix([v])}.
+$$
+
+% Fin Ejercicio 7
+
+\vspace{0.5cm}
+\begin{ejer}
+Calcula una base ortonormal del subespacio $U=N(H) \leq \mathbb{R}^6$ y la proyección ortogonal sobre $U$ del vector $v\in \mathbb{R}^6$ siendo
+$$
+    H=
+    \left[
+    \begin{array}{rrrrrr}
+    1 & 0 & 0 & 0 & 1 & 1 \\
+    0 & 1 & -1 & 1 & 0 & 0
+    \end{array}
+    \right],
+    \qquad\qquad
+    v=
+    \left[
+    \begin{array}{r}
+    1 \\
+    2 \\
+    0 \\
+    1 \\
+    0 \\
+    -1 
+    \end{array}
+    \right].
+$$
+\end{ejer}
+
+{\it Solución:}
+
+% Inicio Ejercicio 8
+
+\begin{sageblock}
+H=matrix(QQ,[[1,0,0,0,1,1],[0,1,-1,1,0,0]])
+HTI=block_matrix(1,2,[H.T,1])
+R=HTI.echelon_form()
+R=copy(R)
+R.subdivide(2,2)
+B=R.subdivision(1,1).T
+\end{sageblock}
+
+Debemos obtener una base del espacio $U = N(H)$, para ello obtenemos unas ecuaciones paramétricas de $U$. Ampliamos la traspuesta de $H$ con la matriz identidad
+
+$$ [H^T | I] = \sage{HTI} $$
+
+Reducimos por filas y obtenemos
+
+$$ \sage{R} $$
+
+Una base del espacio $U$ son las columnas de la matriz
+
+$$ B = \sage{B} $$
+
+\begin{sageblock}
+v1=B.column(0)
+v2=B.column(1)
+v3=B.column(2)
+v4=B.column(3)
+u1=v1
+u2=v2-((v2*u1)/(u1*u1))*u1
+u3=v3-((v3*u1)/(u1*u1))*u1-((v3*u2)/(u2*u2))*u2
+u4=v4-((v4*u1)/(u1*u1))*u1-((v4*u2)/(u2*u2))*u2-((v4*u3)/(u3*u3))*u3
+w1=u1/norm(u1)
+w2=u2/norm(u2)
+w3=u3/norm(u3)
+w4=u4/norm(u4)
+B1=column_matrix([u1,u2,u3,u4])
+B2=column_matrix([w1,w2,w3,w4])
+v=vector([1,2,0,1,0,-1])
+\end{sageblock}
+
+Aplicamos el método de Gram-Schmidt a los vectores
+
+$$ v_1=\sage{B[:,0]} \qquad v_2=\sage{B[:,1]} \qquad v_3=\sage{B[:,2]} \qquad v_4=\sage{B[:,3]} $$
+
+y obtenemos la base ortogonal dada por las columnas de la matriz
+
+$$ B_1 = \sage{B1} $$
+	
+Una vez normalizada se obtiene la base ortonormal dada por las columnas de la matriz:
+
+$$ B_2 = \sage{B2} $$
+
+Como mera comprobación $B_2$ es una matriz ortogonal:
+
+$$ B_2^T\cdot B_2 = \sage{B2.T*B2}.$$
+
+La proyección de $v$ sobre $U$ es
+
+$$ {\rm proy}_U(v) = B\cdot ((B^T\cdot B)^{-1}\cdot B^T)\cdot v = \sage{B*(B.T*B)^-1*B.T*column_matrix([v])}$$
+
+Si utilizamos la base ortonormal $B_2$ en vez de la base $B$, de manera alternativa también se puede calcular la proyección así:
+
+$$
+	{\rm proy}_U(v) = B_2\cdot B_2^T\cdot v = (v*w_1)w_1+(v*w_2)w_2+(v*w_3)w_3+(v*w_4)w_4  = \sage{B2*B2.T*column_matrix([v])}.
+$$
+
+% Fin Ejercicio 8
+
+\section{Mínimos Cuadrados}
+
+\begin{ejer} 
+Calcula la recta de regresión asociada a los datos que se proporcionan a continuación:
+\begin{sageblock}
+XY = matrix(RR,[[ 2.385560477076296 ,  -2.395822899318959 ],
+                [ 1.905248601109367 ,  -1.6229129728676281 ],
+                [ 2.1431869782379556 ,  -2.0645676597180205 ],
+                [ 1.3544213528768796 ,  -0.7196308967482228 ],
+                [ 1.523305672725867 ,  -0.5993214201342096 ],
+                [ 1.9786571047006658 ,  -1.6669634951798296 ],
+                [ 2.6018225949955114 ,  -2.866463639001059 ],
+                [ 2.000064502538637 ,  -1.9491976003788676 ],
+                [ 2.018559544597864 ,  -1.5956613748963764 ],
+                [ 2.2810102232428395 ,  -2.5347565098507556 ]])
+
+X = XY.column(0)
+Y = XY.column(1)
+\end{sageblock}
+
+La representación gráfica de estos puntos es:
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+%\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+%  plot(\x,{3.14+2.52*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+
+\end{ejer} 
+
+{\it Solución:}
+
+% Escribe su solución para el Ejercicio 9
+
+\begin{sageblock}
+B = matrix([[1 for x in X],
+            [x for x in X]]).T
+C = (B.T*B)^-1 * B.T * Y
+\end{sageblock}
+
+Vamos a construir una solución del tipo $y = c_0 + c_1 x$, para ello tomamos
+la matriz que tiene como columnas $1$ y $x$, es decir
+$$ B = \sage{B} $$
+Si tomamos $C$ la columna con las variables $c_0$ y $c_1$, tenemos un sistema 
+de ecuaciones $B C = Y$ que podemos resolver por mínimos cuadrados con la fórmula
+$C = (B^T B)^{-1} B^T Y$. De esta forma obtenemos 
+$$ C = \sage{C}.$$
+Si representamos gráficamente la solución obtenemos:
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+  plot(\x,{!{C[0]}+!{C[1]}*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+% Fin del Ejercicio 9
+
+\begin{ejer} 
+Calcula la recta de regresión asociada a los datos que se proporcionan a continuación:
+\begin{sageblock}
+XY = matrix(RR,[[ 0.577634973301552 ,  -0.021892353516998586 ],
+                [ 2.2346179266047286 ,  0.4344125028412995 ],
+                [ 3.4846606572341514 ,  -0.3181800856916049 ],
+                [ 0.8085216507157904 ,  0.3558535279864201 ],
+                [ 2.436171618880355 ,  -0.011007029039438766 ],
+                [ 2.529682379873726 ,  0.11015658313238955 ],
+                [ 4.303663555225892 ,  0.13678910258637164 ],
+                [ 4.434181331472274 ,  -0.09759478810728146 ],
+                [ 2.1031791958182837 ,  0.2667520474182835 ],
+                [ 0.5662953947120373 ,  0.12428487018538861 ]])
+
+X = XY.column(0)
+Y = XY.column(1)
+\end{sageblock}
+
+La representación gráfica de estos puntos es:
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+%\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+%  plot(\x,{3.14+2.52*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+
+\end{ejer} 
+
+{\it Solución:}
+
+% Escribe su solución para el Ejercicio 10
+
+\begin{sageblock}
+B = matrix([[1 for x in X],
+            [x for x in X]]).T
+C = (B.T*B)^-1 * B.T * Y
+\end{sageblock}
+
+Vamos a construir una solución del tipo $y = c_0 + c_1 x$, para ello tomamos
+la matriz que tiene como columnas $1$ y $x$, es decir
+$$ B = \sage{B} $$
+Si tomamos $C$ la columna con las variables $c_0$ y $c_1$, tenemos un sistema 
+de ecuaciones $B C = Y$ que podemos resolver por mínimos cuadrados con la fórmula
+$C = (B^T B)^{-1} B^T Y$. De esta forma obtenemos 
+$$ C = \sage{C}.$$
+Si representamos gráficamente la solución obtenemos:
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+  plot(\x,{!{C[0]}+!{C[1]}*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+% Fin del Ejercicio 10
+
+\begin{ejer} 
+Calcula la parábola que mejor se ajusta a los datos que se proporcionan a continuación:
+\begin{sageblock}
+XY = matrix(RR,[[ 2.7612642659418345 ,  -1.1156708175321115 ],
+                [ 2.103443783724906 ,  0.31383231157572405 ],
+                [ 1.902670552753022 ,  0.25032326843590824 ],
+                [ 2.1869201945783363 ,  0.24762559905865678 ],
+                [ 1.6648725595631342 ,  0.5985413716434942 ],
+                [ 2.180936578280802 ,  0.10312969275192364 ],
+                [ 2.166571283712363 ,  0.47415888561041936 ],
+                [ 1.4134229078250833 ,  0.05736296276262719 ],
+                [ 1.895504173706609 ,  -0.036508422559938136 ],
+                [ 2.2224525503221937 ,  -0.03560723558130427 ]])
+
+X = XY.column(0)
+Y = XY.column(1)
+\end{sageblock}
+
+La representación gráfica de estos puntos es:
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+%\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+%  plot(\x,{3.14+2.52*\x+1.22*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+
+\end{ejer} 
+
+{\it Solución:}
+
+% Escribe su solución para el Ejercicio 11
+
+\begin{sageblock}
+B = matrix([[1 for x in X],
+            [x for x in X],
+            [x^2 for x in X]]).T
+C = (B.T*B)^-1 * B.T * Y
+\end{sageblock}
+
+Vamos a construir una solución del tipo $y = c_0 + c_1 x + c_2 x^2$, para ello tomamos
+la matriz que tiene como columnas $1,x$ y $x^2$, es decir
+$$ B = \sage{B} $$
+Si tomamos $C$ la columna con las variables $c_0,c_1$ y $c_2$, tenemos un sistema 
+de ecuaciones $B C = Y$ que podemos resolver por mínimos cuadrados con la fórmula
+$C = (B^T B)^{-1} B^T Y$. De esta forma obtenemos 
+$$ C = \sage{C}.$$
+Si representamos gráficamente la solución obtenemos:
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+  plot(\x,{!{C[0]}+!{C[1]}*\x+!{C[2]}*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+% Fin del Ejercicio 11
+
+\begin{ejer} 
+Calcula el polinomio cúbico que mejor se ajusta a los datos que se proporcionan a 
+continuación:
+\begin{sageblock}
+XY = matrix(RR,[[ 2.4287087204306785 ,  -0.43197724654693614 ],
+                [ 2.5890848700434073 ,  -0.1594124267242222 ],
+                [ 3.818747862986166 ,  2.2687403350956052 ],
+                [ 2.884116866851538 ,  -0.019315878916267435 ],
+                [ 3.890299468309755 ,  2.8459293720843775 ],
+                [ 3.219690337713705 ,  0.09004858390854256 ],
+                [ 2.023838230298453 ,  -0.7236683135884444 ],
+                [ 1.728399800189709 ,  -1.719850517119307 ],
+                [ 3.830415822389739 ,  2.4528159160605782 ],
+                [ 1.94577565082535 ,  -0.5302661204039961 ]])
+
+X = XY.column(0)
+Y = XY.column(1)
+\end{sageblock}
+
+La representación gráfica de estos puntos es:
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+%\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+%  plot(\x,{3.14+2.52*\x+1.22*\x*\x-0.22*\x*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+
+\end{ejer} 
+
+{\it Solución:}
+
+% Escribe su solución para el Ejercicio 12
+
+\begin{sageblock}
+B = matrix([[1 for x in X],
+            [x for x in X],
+            [x^2 for x in X],
+            [x^3 for x in X]]).T
+C = (B.T*B)^-1 * B.T * Y
+\end{sageblock}
+
+Vamos a construir una solución del tipo $y = c_0 + c_1 x + c_2 x^2 + c_3 x^3$, para 
+ello tomamos la matriz que tiene como columnas $1,x,x^2$ y $x^3$, es decir
+$$ B = \sage{B} $$
+Si tomamos $C$ la columna con las variables $c_0,c_1,c_2$ y $c_3$, tenemos un sistema 
+de ecuaciones $B C = Y$ que podemos resolver por mínimos cuadrados con la fórmula
+$C = (B^T B)^{-1} B^T Y$. De esta forma obtenemos 
+$$ C = \sage{C}.$$
+Si representamos gráficamente la solución obtenemos:
+
+\begin{sagesub}
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+  plot(\x,{!{C[0]}+!{C[1]}*\x+!{C[2]}*\x*\x+!{C[3]}*\x*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
+
+% Fin del Ejercicio 12
+
+\end{document}
