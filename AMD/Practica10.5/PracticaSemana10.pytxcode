@@ -1,0 +1,452 @@
+=>PYTHONTEX#sage#default#default#0#code#####28#
+latex.matrix_delimiters("[", "]")
+=>PYTHONTEX#sage#default#default#1#block#####54#
+n = vector(RR, [2, 1])
+v = vector(RR, [-n[1], n[0]])
+v1 = v.normalized()
+v2 = n.normalized()
+B = column_matrix([v1, v2])
+
+P1 = B * vector(RR, [-2, -2])
+P2 = B * vector(RR, [2, -2])
+P3 = B * vector(RR, [2, 2])
+P4 = B * vector(RR, [-2, 2])
+=>PYTHONTEX#sage#default#default#2#sub#####67#
+\begin{center}
+\begin{tikzpicture}[scale = 1.25,
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-3,0) -- (3,0); % Eje X
+\draw[->,thick,gray] (0,-3) -- (0,3); % Eje Y
+\draw[->,very thick] (0,0) -- !{v1};
+\draw[->,very thick] (0,0) -- !{v2};
+\node at !{1.2*v1} {$u_1$};
+\node at !{1.2*v2} {$u_2$};
+\draw[cara] !{P1} -- !{P2} -- !{P3} -- !{P4} -- cycle;
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#3#block#####82#
+v = vector(RR, [2, -1])
+n = vector(RR, [-v[1], v[0]])
+v1 = v.normalized()
+v2 = n.normalized()
+B = column_matrix([v1, v2])
+
+P1 = B * vector(RR, [-2, -2])
+P2 = B * vector(RR, [2, -2])
+P3 = B * vector(RR, [2, 2])
+P4 = B * vector(RR, [-2, 2])
+=>PYTHONTEX#sage#default#default#4#sub#####95#
+\begin{center}
+\begin{tikzpicture}[scale = 1.25,
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-3,0) -- (3,0); % Eje X
+\draw[->,thick,gray] (0,-3) -- (0,3); % Eje Y
+\draw[->,very thick] (0,0) -- !{v1};
+\draw[->,very thick] (0,0) -- !{v2};
+\node at !{1.2*v1} {$u_1$};
+\node at !{1.2*v2} {$u_2$};
+\draw[cara] !{P1} -- !{P2} -- !{P3} -- !{P4} -- cycle;
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#5#block#####157#
+n1 = vector(RR, [2, 1, 1])
+n2 = vector(RR, [1, -1, 1])
+v = n1.cross_product(n2)
+v1 = v.normalized()
+v2 = n1.normalized()
+v3 = v.cross_product(v2).normalized()
+B = column_matrix([v1, v2, v3])
+
+P1 = B * vector(RR, [0, -2, -2])
+P2 = B * vector(RR, [0, 2, -2])
+P3 = B * vector(RR, [0, 2, 2])
+P4 = B * vector(RR, [0, -2, 2])
+=>PYTHONTEX#sage#default#default#6#sub#####172#
+\begin{center}
+\begin{tikzpicture}[scale = 1.25,
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-3,0) -- (3,0); % Eje X
+\draw[->,thick,gray] (0,-3) -- (0,3); % Eje Y
+\draw[->,very thick] (0,0) -- !{v1};
+\draw[->,very thick] (0,0) -- !{v2};
+\draw[->,very thick] (0,0) -- !{v3};
+\node at !{1.2*v1} {$v_1$};
+\node at !{1.2*v2} {$v_2$};
+\node at !{1.2*v3} {$v_3$};
+\draw[cara] !{P1} -- !{P2} -- !{P3} -- !{P4} -- cycle;
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#7#block#####189#
+v = vector(RR, [2, -1, 1])
+n1 = vector(RR, [-v[1], v[0], 0])
+n2 = v.cross_product(n1)
+v1 = v.normalized()
+v2 = n1.normalized()
+v3 = n2.normalized()
+B = column_matrix([v1, v2, v3])
+
+P1 = B * vector(RR, [0, -2, -2])
+P2 = B * vector(RR, [0, 2, -2])
+P3 = B * vector(RR, [0, 2, 2])
+P4 = B * vector(RR, [0, -2, 2])
+=>PYTHONTEX#sage#default#default#8#sub#####204#
+\begin{center}
+\begin{tikzpicture}[scale = 1.25,
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-3,0) -- (3,0); % Eje X
+\draw[->,thick,gray] (0,-3) -- (0,3); % Eje Y
+\draw[->,very thick] (0,0) -- !{v1};
+\draw[->,very thick] (0,0) -- !{v2};
+\draw[->,very thick] (0,0) -- !{v3};
+\node at !{1.2*v1} {$v_1$};
+\node at !{1.2*v2} {$v_2$};
+\node at !{1.2*v3} {$v_3$};
+\draw[cara] !{P1} -- !{P2} -- !{P3} -- !{P4} -- cycle;
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#9#block#####253#
+H=matrix(QQ,[[1,-1,0,0],[0,0,1,0]])
+v=column_matrix(QQ,[1,2,0,2])
+=>PYTHONTEX#sage#default#default#10#i#####258#
+H
+=>PYTHONTEX#sage#default#default#11#i#####258#
+v
+=>PYTHONTEX#sage#default#default#12#i#####267#
+H.T
+=>PYTHONTEX#sage#default#default#13#block#####272#
+A=H.T
+v2=A*(A.T*A)^-1*A.T*v
+=>PYTHONTEX#sage#default#default#14#i#####278#
+v2
+=>PYTHONTEX#sage#default#default#15#i#####279#
+v
+=>PYTHONTEX#sage#default#default#16#i#####279#
+v2
+=>PYTHONTEX#sage#default#default#17#i#####279#
+v-v2
+=>PYTHONTEX#sage#default#default#18#block#####288#
+M=block_matrix(1,2,[H.T,1])
+R=copy(M.echelon_form())
+R.subdivide(2,2)
+D = R.subdivision(1,1).T
+v1 = D*(D.T*D)^-1*D.T*v
+=>PYTHONTEX#sage#default#default#19#i#####297#
+M
+=>PYTHONTEX#sage#default#default#20#i#####297#
+R
+=>PYTHONTEX#sage#default#default#21#i#####298#
+D
+=>PYTHONTEX#sage#default#default#22#i#####301#
+v1
+=>PYTHONTEX#sage#default#default#23#i#####302#
+v
+=>PYTHONTEX#sage#default#default#24#i#####302#
+v1
+=>PYTHONTEX#sage#default#default#25#i#####302#
+v-v1
+=>PYTHONTEX#sage#default#default#26#block#####312#
+H=matrix(QQ,[[2,1,0,2],[1,-1,1,0],[2,0,1,-1]])
+=>PYTHONTEX#sage#default#default#27#i#####316#
+H
+=>PYTHONTEX#sage#default#default#28#i#####328#
+H.T
+=>PYTHONTEX#sage#default#default#29#i#####328#
+H.T.echelon_form()
+=>PYTHONTEX#sage#default#default#30#block#####330#
+u1,u2,u3 = H.T.columns() # Nos las da en formato vector y ahí podemos usar el producto escalar.
+v1=u1
+v2=u2-((u2*v1)/(v1*v1))*v1
+v3=u3-((u3*v1)/(v1*v1))*v1-((u3*v2)/(v2*v2))*v2
+B=column_matrix([v1,v2,v3])
+=>PYTHONTEX#sage#default#default#31#i#####345#
+B[:,0]
+=>PYTHONTEX#sage#default#default#32#i#####345#
+B[:,1]
+=>PYTHONTEX#sage#default#default#33#i#####345#
+B[:,2]
+=>PYTHONTEX#sage#default#default#34#block#####380#
+B=matrix(QQ,[[2,1,1],[1,1,-1],[1,1,0],[1,3,1],[0,1,0]])
+v=vector([1,0,1,-1,1])
+R=B.echelon_form()
+=>PYTHONTEX#sage#default#default#35#i#####389#
+R
+=>PYTHONTEX#sage#default#default#36#block#####393#
+v1=B.column(0)
+v2=B.column(1)
+v3=B.column(2)
+u1=v1
+u2=v2-((v2*u1)/(u1*u1))*u1
+u3=v3-((v3*u1)/(u1*u1))*u1-((v3*u2)/(u2*u2))*u2
+w1=u1/norm(u1)
+w2=u2/norm(u2)
+w3=u3/norm(u3)
+B1=column_matrix([u1,u2,u3])
+B2=column_matrix([w1,w2,w3])
+=>PYTHONTEX#sage#default#default#37#i#####409#
+B[:,0]
+=>PYTHONTEX#sage#default#default#38#i#####409#
+B[:,1]
+=>PYTHONTEX#sage#default#default#39#i#####409#
+B[:,2]
+=>PYTHONTEX#sage#default#default#40#i#####414#
+B1
+=>PYTHONTEX#sage#default#default#41#i#####418#
+B2
+=>PYTHONTEX#sage#default#default#42#i#####422#
+B2.T*B2
+=>PYTHONTEX#sage#default#default#43#i#####426#
+B*(B.T*B)^-1*B.T*column_matrix([v])
+=>PYTHONTEX#sage#default#default#44#i#####431#
+B2*B2.T*column_matrix([v])
+=>PYTHONTEX#sage#default#default#45#block#####466#
+H=matrix(QQ,[[1,0,0,0,1,1],[0,1,-1,1,0,0]])
+HTI=block_matrix(1,2,[H.T,1])
+R=HTI.echelon_form()
+R=copy(R)
+R.subdivide(2,2)
+B=R.subdivision(1,1).T
+=>PYTHONTEX#sage#default#default#46#i#####477#
+HTI
+=>PYTHONTEX#sage#default#default#47#i#####481#
+R
+=>PYTHONTEX#sage#default#default#48#i#####485#
+B
+=>PYTHONTEX#sage#default#default#49#block#####487#
+v1=B.column(0)
+v2=B.column(1)
+v3=B.column(2)
+v4=B.column(3)
+u1=v1
+u2=v2-((v2*u1)/(u1*u1))*u1
+u3=v3-((v3*u1)/(u1*u1))*u1-((v3*u2)/(u2*u2))*u2
+u4=v4-((v4*u1)/(u1*u1))*u1-((v4*u2)/(u2*u2))*u2-((v4*u3)/(u3*u3))*u3
+w1=u1/norm(u1)
+w2=u2/norm(u2)
+w3=u3/norm(u3)
+w4=u4/norm(u4)
+B1=column_matrix([u1,u2,u3,u4])
+B2=column_matrix([w1,w2,w3,w4])
+v=vector([1,2,0,1,0,-1])
+=>PYTHONTEX#sage#default#default#50#i#####507#
+B[:,0]
+=>PYTHONTEX#sage#default#default#51#i#####507#
+B[:,1]
+=>PYTHONTEX#sage#default#default#52#i#####507#
+B[:,2]
+=>PYTHONTEX#sage#default#default#53#i#####507#
+B[:,3]
+=>PYTHONTEX#sage#default#default#54#i#####511#
+B1
+=>PYTHONTEX#sage#default#default#55#i#####515#
+B2
+=>PYTHONTEX#sage#default#default#56#i#####519#
+B2.T*B2
+=>PYTHONTEX#sage#default#default#57#i#####523#
+B*(B.T*B)^-1*B.T*column_matrix([v])
+=>PYTHONTEX#sage#default#default#58#i#####528#
+B2*B2.T*column_matrix([v])
+=>PYTHONTEX#sage#default#default#59#block#####537#
+XY = matrix(RR,[[ 2.385560477076296 ,  -2.395822899318959 ],
+                [ 1.905248601109367 ,  -1.6229129728676281 ],
+                [ 2.1431869782379556 ,  -2.0645676597180205 ],
+                [ 1.3544213528768796 ,  -0.7196308967482228 ],
+                [ 1.523305672725867 ,  -0.5993214201342096 ],
+                [ 1.9786571047006658 ,  -1.6669634951798296 ],
+                [ 2.6018225949955114 ,  -2.866463639001059 ],
+                [ 2.000064502538637 ,  -1.9491976003788676 ],
+                [ 2.018559544597864 ,  -1.5956613748963764 ],
+                [ 2.2810102232428395 ,  -2.5347565098507556 ]])
+
+X = XY.column(0)
+Y = XY.column(1)
+=>PYTHONTEX#sage#default#default#60#sub#####555#
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+%\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+%  plot(\x,{3.14+2.52*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#61#block#####575#
+B = matrix([[1 for x in X],
+            [x for x in X]]).T
+C = (B.T*B)^-1 * B.T * Y
+=>PYTHONTEX#sage#default#default#62#i#####583#
+B
+=>PYTHONTEX#sage#default#default#63#i#####587#
+C
+=>PYTHONTEX#sage#default#default#64#sub#####590#
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+  plot(\x,{!{C[0]}+!{C[1]}*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#65#block#####607#
+XY = matrix(RR,[[ 0.577634973301552 ,  -0.021892353516998586 ],
+                [ 2.2346179266047286 ,  0.4344125028412995 ],
+                [ 3.4846606572341514 ,  -0.3181800856916049 ],
+                [ 0.8085216507157904 ,  0.3558535279864201 ],
+                [ 2.436171618880355 ,  -0.011007029039438766 ],
+                [ 2.529682379873726 ,  0.11015658313238955 ],
+                [ 4.303663555225892 ,  0.13678910258637164 ],
+                [ 4.434181331472274 ,  -0.09759478810728146 ],
+                [ 2.1031791958182837 ,  0.2667520474182835 ],
+                [ 0.5662953947120373 ,  0.12428487018538861 ]])
+
+X = XY.column(0)
+Y = XY.column(1)
+=>PYTHONTEX#sage#default#default#66#sub#####625#
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+%\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+%  plot(\x,{3.14+2.52*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#67#block#####645#
+B = matrix([[1 for x in X],
+            [x for x in X]]).T
+C = (B.T*B)^-1 * B.T * Y
+=>PYTHONTEX#sage#default#default#68#i#####653#
+B
+=>PYTHONTEX#sage#default#default#69#i#####657#
+C
+=>PYTHONTEX#sage#default#default#70#sub#####660#
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+  plot(\x,{!{C[0]}+!{C[1]}*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#71#block#####677#
+XY = matrix(RR,[[ 2.7612642659418345 ,  -1.1156708175321115 ],
+                [ 2.103443783724906 ,  0.31383231157572405 ],
+                [ 1.902670552753022 ,  0.25032326843590824 ],
+                [ 2.1869201945783363 ,  0.24762559905865678 ],
+                [ 1.6648725595631342 ,  0.5985413716434942 ],
+                [ 2.180936578280802 ,  0.10312969275192364 ],
+                [ 2.166571283712363 ,  0.47415888561041936 ],
+                [ 1.4134229078250833 ,  0.05736296276262719 ],
+                [ 1.895504173706609 ,  -0.036508422559938136 ],
+                [ 2.2224525503221937 ,  -0.03560723558130427 ]])
+
+X = XY.column(0)
+Y = XY.column(1)
+=>PYTHONTEX#sage#default#default#72#sub#####695#
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+%\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+%  plot(\x,{3.14+2.52*\x+1.22*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#73#block#####715#
+B = matrix([[1 for x in X],
+            [x for x in X],
+            [x^2 for x in X]]).T
+C = (B.T*B)^-1 * B.T * Y
+=>PYTHONTEX#sage#default#default#74#i#####724#
+B
+=>PYTHONTEX#sage#default#default#75#i#####728#
+C
+=>PYTHONTEX#sage#default#default#76#sub#####731#
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+  plot(\x,{!{C[0]}+!{C[1]}*\x+!{C[2]}*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#77#block#####749#
+XY = matrix(RR,[[ 2.4287087204306785 ,  -0.43197724654693614 ],
+                [ 2.5890848700434073 ,  -0.1594124267242222 ],
+                [ 3.818747862986166 ,  2.2687403350956052 ],
+                [ 2.884116866851538 ,  -0.019315878916267435 ],
+                [ 3.890299468309755 ,  2.8459293720843775 ],
+                [ 3.219690337713705 ,  0.09004858390854256 ],
+                [ 2.023838230298453 ,  -0.7236683135884444 ],
+                [ 1.728399800189709 ,  -1.719850517119307 ],
+                [ 3.830415822389739 ,  2.4528159160605782 ],
+                [ 1.94577565082535 ,  -0.5302661204039961 ]])
+
+X = XY.column(0)
+Y = XY.column(1)
+=>PYTHONTEX#sage#default#default#78#sub#####767#
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+%\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+%  plot(\x,{3.14+2.52*\x+1.22*\x*\x-0.22*\x*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#79#block#####787#
+B = matrix([[1 for x in X],
+            [x for x in X],
+            [x^2 for x in X],
+            [x^3 for x in X]]).T
+C = (B.T*B)^-1 * B.T * Y
+=>PYTHONTEX#sage#default#default#80#i#####797#
+B
+=>PYTHONTEX#sage#default#default#81#i#####801#
+C
+=>PYTHONTEX#sage#default#default#82#sub#####804#
+\begin{center}
+\begin{tikzpicture}
+\foreach \p in !{set(XY.rows())}
+  \filldraw[blue] \p circle (0.05);
+\draw[red, domain = !{min(X)-.2}:!{max(X)+.2}, very thick]
+  plot(\x,{!{C[0]}+!{C[1]}*\x+!{C[2]}*\x*\x+!{C[3]}*\x*\x*\x});
+\draw[->] (!{min(X)-2},0)--(!{max(X)+2},0) node[right]{$x$};
+\draw[->] (0,!{min(Y)-2})--(0,!{max(Y)+2}) node[above]{$y$};
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX:SETTINGS#
+version=0.18
+outputdir=pythontex-files-PracticaSemana10
+workingdir=.
+workingdirset=false
+gobble=none
+rerun=default
+hashdependencies=default
+makestderr=false
+stderrfilename=full
+keeptemps=none
+pyfuture=default
+pyconfuture=none
+pygments=true
+pygglobal=:GLOBAL||
+fvextfile=-1
+pyconbanner=none
+pyconfilename=stdin
+depythontex=false
+pygfamily=py|python3|
+pygfamily=pycon|pycon|
+pygfamily=sympy|python3|
+pygfamily=sympycon|pycon|
+pygfamily=pylab|python3|
+pygfamily=pylabcon|pycon|
+pygfamily=sage|sage|

@@ -49,84 +49,63 @@ $r = C\left(\left[\begin{array}{c} 2 \\ -1 \end{array} \right]\right)$.
 
 % Inicio Ejercicio 1
 
-\begin{enumerate}
-\item La recta $r$ dada por $2x+y = 0$, es decir $r = N([2\ 1])$.
+1.
 
 \begin{sageblock}
-v2 = vector(RR,[2,1])
-v1 = vector(RR,[1,-2])
-u1 = v1/norm(v1)
-u2 = v2/norm(v2)
-A = -2*u1-2*u2
-B = -2*u1+2*u2
-C =  2*u1+2*u2
-D =  2*u1-2*u2
+n = vector(RR, [2, 1])
+v = vector(RR, [-n[1], n[0]])
+v1 = v.normalized()
+v2 = n.normalized()
+B = column_matrix([v1, v2])
+
+P1 = B * vector(RR, [-2, -2])
+P2 = B * vector(RR, [2, -2])
+P3 = B * vector(RR, [2, 2])
+P4 = B * vector(RR, [-2, 2])
 \end{sageblock}
-
-El vector perpendicular a la recta nos lo dan porque la recta nos la dan en implícitas
-por lo que tomamos $v_2 = \sage{v2}$. El vector $v_1$ lo tomamos perpendicular intercambiando
-las coordenadas y cambiando una de signo. Elegimos la que cambiamos de signo para que el determinante
-de la base sea positivo, así nos sale $v_1 = \sage{v1}$. Normalizamos dividiendo por la norma, 
-$u_1 = v_1/\|v_1\|$ y $u_2 = v_2/\|v_2\|$ y calculamos
-los cuatro vértices del cuadrado, que es lo mismo que calcular el cuadrado $(-2,-2) -- (-2,2) -- (2,2) -- (2,-2)$
-en base $\{u_1,u_2\}$.
-
-% El estilo para pintar el cuadrado se llama "cara" porque es el que usaremos para pintar las caras de los poliedros en el espacio.
 
 \begin{sagesub}
 \begin{center}
 \begin{tikzpicture}[scale = 1.25,
-  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
 \draw[->,thick,gray] (-3,0) -- (3,0); % Eje X
 \draw[->,thick,gray] (0,-3) -- (0,3); % Eje Y
-\draw[->,very thick] (0,0) -- !{u1}; 
-\draw[->,very thick] (0,0) -- !{u2};
-\node at !{1.2*u1} {$u_1$};
-\node at !{1.2*u2} {$u_2$};
-\draw[cara] !{A} -- !{B} -- !{C} -- !{D} -- cycle;
+\draw[->,very thick] (0,0) -- !{v1}; 
+\draw[->,very thick] (0,0) -- !{v2};
+\node at !{1.2*v1} {$u_1$};
+\node at !{1.2*v2} {$u_2$};
+\draw[cara] !{P1} -- !{P2} -- !{P3} -- !{P4} -- cycle;
 \end{tikzpicture}
 \end{center}
 \end{sagesub}
 
-\item La recta $r$ dada por $x = 2\lambda, y = -\lambda$ con $\lambda \in {\mathbb R}$, es decir
-$r = C\left(\left[\begin{array}{c} 2 \\ -1 \end{array} \right]\right)$.
-
 \begin{sageblock}
-v1 = vector(RR,[2,-1])
-v2 = vector(RR,[1,2])
-u1 = v1/norm(v1)
-u2 = v2/norm(v2)
-A = -2*u1-2*u2
-B = -2*u1+2*u2
-C =  2*u1+2*u2
-D =  2*u1-2*u2
+v = vector(RR, [2, -1])
+n = vector(RR, [-v[1], v[0]])
+v1 = v.normalized()
+v2 = n.normalized()
+B = column_matrix([v1, v2])
+
+P1 = B * vector(RR, [-2, -2])
+P2 = B * vector(RR, [2, -2])
+P3 = B * vector(RR, [2, 2])
+P4 = B * vector(RR, [-2, 2])
 \end{sageblock}
-
-El vector de la recta nos lo dan porque la recta nos la dan en paramétricas
-por lo que tomamos $v_1 = \sage{v1}$. El vector $v_2$ lo tomamos perpendicular intercambiando
-las coordenadas y cambiando una de signo. Elegimos la que cambiamos de signo para que el determinante
-de la base sea positivo, así nos sale $v_2 = \sage{v2}$. Normalizamos dividiendo por la norma, 
-$u_1 = v_1/\|v_1\|$ y $u_2 = v_2/\|v_2\|$ y calculamos
-los cuatro vértices del cuadrado, que es lo mismo que calcular el cuadrado $(-2,-2) -- (-2,2) -- (2,2) -- (2,-2)$
-en base $\{u_1,u_2\}$.
-
 
 \begin{sagesub}
 \begin{center}
 \begin{tikzpicture}[scale = 1.25,
-  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
 \draw[->,thick,gray] (-3,0) -- (3,0); % Eje X
 \draw[->,thick,gray] (0,-3) -- (0,3); % Eje Y
-\draw[->,very thick] (0,0) -- !{u1}; 
-\draw[->,very thick] (0,0) -- !{u2};
-\node at !{1.2*u1} {$u_1$};
-\node at !{1.2*u2} {$u_2$};
-\draw[cara] !{A} -- !{B} -- !{C} -- !{D} -- cycle;
+\draw[->,very thick] (0,0) -- !{v1}; 
+\draw[->,very thick] (0,0) -- !{v2};
+\node at !{1.2*v1} {$u_1$};
+\node at !{1.2*v2} {$u_2$};
+\draw[cara] !{P1} -- !{P2} -- !{P3} -- !{P4} -- cycle;
 \end{tikzpicture}
 \end{center}
 \end{sagesub}
-\end{enumerate}
-
 % Fin del Ejercicio 1
 
 \begin{ejer}
@@ -175,113 +154,70 @@ $r = C\left(\left[\begin{array}{c} 2 \\ -1 \\ 1 \end{array} \right]\right)$.
 
 % Inicio Ejercicio 3
 
-\begin{enumerate}
-\item La recta $r$ dada por 
-$
-\begin{cases}
-2x+y+z = 0 \\
-x-y+z = 0
-\end{cases}
-$ es decir $r = N\left(\left[\begin{array}{ccc} 2 & 1 & 1 \\ 1 & -1 & 1 \end{array} \right]\right)$.
-
-Las dos ecuaciones nos proporcionan dos vectores perpendiculares a la recta y el producto vectorial de los
-mismos nos proporcionará un vector $v_1$ perteneciente a la recta:
-
 \begin{sageblock}
-w1 = vector(RR,[2,1,1])
-w2 = vector(RR,[1,-1,1])
-v1 = w1.cross_product(w2)
+n1 = vector(RR, [2, 1, 1])
+n2 = vector(RR, [1, -1, 1])
+v = n1.cross_product(n2)
+v1 = v.normalized()
+v2 = n1.normalized()
+v3 = v.cross_product(v2).normalized()
+B = column_matrix([v1, v2, v3])
+
+P1 = B * vector(RR, [0, -2, -2])
+P2 = B * vector(RR, [0, 2, -2])
+P3 = B * vector(RR, [0, 2, 2])
+P4 = B * vector(RR, [0, -2, 2])
 \end{sageblock}
-
-El vector $v_2$ se puede tomar uno de los dos perpendiculares a $v_1$ que teníamos desde el principio y 
-$v_3$ se puede tomar el producto vectorial $v_1 \times v_2$ de forma que garantizamos que la base $\{v_1,v_2,v_3\}$
-esté orientada positivamente y todos sus vectores son ortogonales. Dividimos por la norma para hacerlos
-unitarios, calculamos el cuadrado que nos piden y los pintamos:
-
-\begin{sageblock}
-v1 = w1.cross_product(w2)
-v2 = w1
-v3 = v1.cross_product(v2)
-u1 = v1/RR(norm(v1))
-u2 = v2/RR(norm(v2))
-u3 = v3/RR(norm(v3))
-A = -2*u2-2*u3
-B = -2*u2+2*u3
-C =  2*u2+2*u3
-D =  2*u2-2*u3
-\end{sageblock}
-
-La base es $u_1 = \sage{column_matrix(u1)}, u_2 = \sage{column_matrix(u2)},
-u_3 = \sage{column_matrix(u3)}$ que podemos ver que es orientada positiva porque
-el determinante es $\sage{det(matrix([u1,u2,u3]))}$.
 
 \begin{sagesub}
 \begin{center}
-\tdplotsetmaincoords{70}{110}
-\begin{tikzpicture}[scale = 2, tdplot_main_coords,
-  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
-\draw[->,thick,gray] (-2.5,0,0) -- (2.5,0,0); % Eje X
-\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
-\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
-\node at !{1.2*u1} {$u_1$};
-\node at !{1.2*u2} {$u_2$};
-\node at !{1.2*u3} {$u_3$};
-\draw[->,very thick] (0,0,0) -- !{u1};
-\draw[->,very thick] (0,0,0) -- !{u2};
-\draw[->,very thick] (0,0,0) -- !{u3};
-\draw[cara] !{A} -- !{B} -- !{C} -- !{D} -- cycle;
+\begin{tikzpicture}[scale = 1.25,
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-3,0) -- (3,0); % Eje X
+\draw[->,thick,gray] (0,-3) -- (0,3); % Eje Y
+\draw[->,very thick] (0,0) -- !{v1}; 
+\draw[->,very thick] (0,0) -- !{v2};
+\draw[->,very thick] (0,0) -- !{v3};
+\node at !{1.2*v1} {$v_1$};
+\node at !{1.2*v2} {$v_2$};
+\node at !{1.2*v3} {$v_3$};
+\draw[cara] !{P1} -- !{P2} -- !{P3} -- !{P4} -- cycle;
 \end{tikzpicture}
 \end{center}
 \end{sagesub}
 
-\item La recta $r$ dada por $x = 2\lambda, y = -\lambda, z = \lambda$ 
-con $\lambda \in {\mathbb R}$, es decir
-$r = C\left(\left[\begin{array}{c} 2 \\ -1 \\ 1 \end{array} \right]\right)$.
-
-En este caso tenemos un vector de la recta que podemos tomar como $v_1$. Debemos
-sacar otro $v_2$ que nos vale cualquiera que sea perpendicular a él y eso lo 
-podemos hacer intercambiando dos coordenadas y con un cambio de signo y poniendo
-la tercera coordenada a $0$. Para sacar el tercer vector hacemos el producto 
-vectorial $v_3 = v_1 \times v_2$ con lo que obtendremos una base orientada positivamente.
-Normalizamos y pintamos el cuadrado como en el caso anterior.
-
 \begin{sageblock}
-v1 = vector(RR,[2,-1,1])
-v2 = vector(RR,[1,2,0])
-v3 = v1.cross_product(v2)
-u1 = v1/RR(norm(v1))
-u2 = v2/RR(norm(v2))
-u3 = v3/RR(norm(v3))
-A = -2*u2-2*u3
-B = -2*u2+2*u3
-C =  2*u2+2*u3
-D =  2*u2-2*u3
-\end{sageblock}
+v = vector(RR, [2, -1, 1])
+n1 = vector(RR, [-v[1], v[0], 0])
+n2 = v.cross_product(n1)
+v1 = v.normalized()
+v2 = n1.normalized()
+v3 = n2.normalized()
+B = column_matrix([v1, v2, v3])
 
-La base es $u_1 = \sage{column_matrix(u1)}, u_2 = \sage{column_matrix(u2)},
-u_3 = \sage{column_matrix(u3)}$ que podemos ver que es orientada positiva porque
-el determinante es $\sage{det(matrix([u1,u2,u3]))}$.
+P1 = B * vector(RR, [0, -2, -2])
+P2 = B * vector(RR, [0, 2, -2])
+P3 = B * vector(RR, [0, 2, 2])
+P4 = B * vector(RR, [0, -2, 2])
+\end{sageblock}
 
 \begin{sagesub}
 \begin{center}
-\tdplotsetmaincoords{70}{110}
-\begin{tikzpicture}[scale = 2, tdplot_main_coords,
-  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
-\draw[->,thick,gray] (-2.5,0,0) -- (2.5,0,0); % Eje X
-\draw[->,thick,gray] (0,-2.5,0) -- (0,2.5,0); % Eje Y
-\draw[->,thick,gray] (0,0,-2.5) -- (0,0,2.5); % Eje Z
-\node at !{1.2*u1} {$u_1$};
-\node at !{1.2*u2} {$u_2$};
-\node at !{1.2*u3} {$u_3$};
-\draw[->,very thick] (0,0,0) -- !{u1};
-\draw[->,very thick] (0,0,0) -- !{u2};
-\draw[->,very thick] (0,0,0) -- !{u3};
-\draw[cara] !{A} -- !{B} -- !{C} -- !{D} -- cycle;
+\begin{tikzpicture}[scale = 1.25,
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-3,0) -- (3,0); % Eje X
+\draw[->,thick,gray] (0,-3) -- (0,3); % Eje Y
+\draw[->,very thick] (0,0) -- !{v1}; 
+\draw[->,very thick] (0,0) -- !{v2};
+\draw[->,very thick] (0,0) -- !{v3};
+\node at !{1.2*v1} {$v_1$};
+\node at !{1.2*v2} {$v_2$};
+\node at !{1.2*v3} {$v_3$};
+\draw[cara] !{P1} -- !{P2} -- !{P3} -- !{P4} -- cycle;
 \end{tikzpicture}
 \end{center}
 \end{sagesub}
 
-\end{enumerate}
 
 % Fin del Ejercicio 3
 

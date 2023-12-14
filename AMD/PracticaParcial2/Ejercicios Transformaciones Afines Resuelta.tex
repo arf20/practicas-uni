@@ -996,95 +996,24 @@ respecto del plano $x+y=1$. Dibuja todos los puntos, sus simétricos y el plano.
 {\it Solución:}
 
 % Inicio del Ejercicio 11
-
-Para resolver el problema, debemos usar la simetría ortogonal respecto del plano  $x+y=1$. Procedemos, pues, a calcular la matriz asociada a dicha simetría en la referencia canónica del espacio. Como siempre, comenzamos calculando el sistema de referencia afín, $R$, que nos da la expresión canónica de la simetría. El punto base de dicho sistema de referencia es un punto $P$ cualquiera del plano $x+y=1$. Por ejemplo, podemos tomar  $P = \left[\begin{array}{c}1\\0\\0
-\end{array}\right]$, como punto base de nuestro sistema de referencia $R$.
 \begin{sageblock}
-P=vector(RR,[1,0,0])
-\end{sageblock}
-La base estará formada por dos vectores del espacio de direcciones del plano, por ejemplo $u = \left[\begin{array}{c}0\\0\\1
-\end{array}\right]$ y, utilizando el vector perpendicular del espacio de direcciones del plano, $w = \left[\begin{array}{c}1\\1\\0 \end{array}\right]$, el segundo vector del plano sería $v=u\times w $. El tercer vector (vector perpendicular a ambos) es el propio $w$. 
-\begin{sageblock}
-u=vector(RR,[0,0,1])
-w=vector(RR,[1,1,0])
-v=u.cross_product(w)
-\end{sageblock}
-Después, normalizamos la base ortogonal
-\begin{sageblock}
-u=u/norm(u)
-v=v/norm(v)
-w=w/norm(w)
-\end{sageblock}
-Nuestro sistema de referencia es
-\begin{sageblock}
-R=block_matrix(RR,[[matrix([1,0,0,0])],
-                  [column_matrix([P,u,v,w])]])
-R.subdivide(1,1)
-\end{sageblock}
- \[ R = \sage{R}.\] 
+P = vector(RR, [1, 1, 1, 0]), vector(RR, [1, 2, -1, -3]), vector(RR, [1, 3, -3, -1]), vector(RR, [1, 2, 3, 1]), vector(RR, [1, 4, -6, 10]), vector(RR, [1, 5, 10, -15])
 
-A continuación determinamos la matriz de la simetría respecto del sistema canónico
+n = vector(RR, [1, 1, 0])
+v1 = vector(RR, [1, -n[1], n[0], 0])
+v2 = n.cross_product(v1)
 
-\begin{sageblock}
-SRR=column_matrix(RR,[[1,0,0,0],
-                   [0,1,0,0],
-                   [0,0,1,0],
-                   [0,0,0,-1]])
-s=R*SRR*R^-1
-s.subdivide(1,1)
+
+R = column_matrix(RR, [n.normalize(), v1.normalize(), v2.normalize()])
+
+MRRs = matrix(RR, [[1, 0, 0, 0], [0, -1, 0, 0],  [0, 0, 1, 0], [0, 0, 0, 1]])
+
+Ms = R * MRRs * R^-1
+
+D = [Ms * v for v in P]
+
+
 \end{sageblock}
-$$s=RS_{RR}R^{-1}=\sage{s}$$
-Seguidamente obtenemos los simétricos de los puntos dados
-
-\begin{sageblock}
-Dh=[vector(RR,[1,1,1,0]),vector(RR,[1,2,-1,-3]),vector(RR,[1,3,3,-1]),vector(RR,[1,2,3,1]),
-vector(RR,[1,4,-6,10]),vector(RR,[1,5,10,-15])]
-\end{sageblock} 
-Se aplica la simetría a cada uno de los puntos y eliminamos la coordenada homogénea de los puntos para poder representarlos
-
-\begin{sageblock}        
-simeh=[s*A for A in Dh]
-D=[v[1:] for v in Dh]
-sime=[w[1:] for w in simeh]
-\end{sageblock}
-
-Los puntos son
-%$$s\sage{D[0]} \rightarrow $$
-$$\sage{sime[0]}$$
-%$$s\sage{D[1]} \rightarrow $$
-$$\sage{sime[1]}$$
-%$$s\sage{D[2]} \rightarrow $$
-$$\sage{sime[2]}$$
-%$$s\sage{D[3]} \rightarrow $$
-$$\sage{sime[3]}$$
-%$$s\sage{D[4]} \rightarrow $$
-$$\sage{sime[4]}$$
-
-Su representación gráfica es:
-\begin{sagesub}
-\begin{center}
-\tdplotsetmaincoords{70}{110}
-\begin{tikzpicture}[scale = 0.3, tdplot_main_coords,
-  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
-\draw[->,thick,gray] (-15,0,0) -- (15,0,0); % Eje X
-\draw[->,thick,gray] (0,-15,0) -- (0,15,0); % Eje Y
-\draw[->,thick,gray] (0,0,-15) -- (0,0,15); % Eje Z
-\draw[fill = blue] !{D[0]} circle (2mm) node[above left] {$P_1$}; 
-\draw[fill = blue] !{D[1]} circle (2mm) node[below right] {$P_2$}; 
-\draw[fill = blue] !{D[2]} circle (2mm) node[below right] {$P_3$}; 
-\draw[fill = blue] !{D[3]} circle (2mm) node[above right] {$P_4$}; 
-\draw[fill = blue] !{D[4]} circle (2mm) node[above right] {$P_5$}; 
-\draw[fill = blue] !{D[5]} circle (2mm) node[above right] {$P_6$}; 
-\draw[fill = red] !{sime[0]} circle (2mm) node[above left] {$P'_1$}; 
-\draw[fill = red] !{sime[1]} circle (2mm) node[below right] {$P'_2$}; 
-\draw[fill = red] !{sime[2]} circle (2mm) node[below right] {$P'_3$}; 
-\draw[fill = red] !{sime[3]} circle (2mm) node[above right] {$P'_4$}; 
-\draw[fill = red] !{sime[4]} circle (2mm) node[above right] {$P'_5$}; 
-\draw[fill = red] !{sime[5]} circle (2mm) node[above right] {$P'_6$}; 
-\draw[cara] !{16*u+16*v} -- !{16*u-16*v} -- !{-16*u-16*v} -- !{-16*u+16*v} -- cycle;
-\end{tikzpicture}
-\end{center}
-\end{sagesub}
 
 El código que hay tras el dibujo es:
 %%%%%%%%%%%
