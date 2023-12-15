@@ -1,0 +1,15 @@
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 1, tdplot_main_coords,
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-5,0,0) -- (5,0,0); % Eje X
+\draw[->,thick,gray] (0,-5,0) -- (0,5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-5) -- (0,0,5); % Eje Z
+\draw[->,thick,red] (2.00000000000000, 2.50000000000000, 0.000000000000000) -- (2.89442719099992, 4.28885438199983, 0.000000000000000) node[below right] {$u_1$};
+\draw[->,thick,red] (2.00000000000000, 2.50000000000000, 0.000000000000000) -- (0.807430412000112, 3.09628479399994, 1.49071198499986) node[below right] {$u_2$};
+\draw[->,thick,red] (2.00000000000000, 2.50000000000000, 0.000000000000000) -- (3.33333333333333, 1.83333333333333, 1.33333333333333) node[below right] {$u_3$};
+\draw[fill = blue] (1.00000000000000, 3.00000000000000, -1.00000000000000) circle (1mm) node[above left] {$A$};
+\draw[fill = blue] (3.00000000000000, 2.00000000000000, 1.00000000000000) circle (1mm) node[below right] {$B$};
+\draw[fill = blue] (2.00000000000000, 2.50000000000000, 0.000000000000000) circle (1mm) node[below right] {$PM$};
+\end{tikzpicture}
+\end{center}

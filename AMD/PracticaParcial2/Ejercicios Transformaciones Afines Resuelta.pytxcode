@@ -527,131 +527,147 @@ cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
 \draw[black] (1, 0, 2) circle (2pt);
 \end{tikzpicture}
 \end{center}
-=>PYTHONTEX#sage#default#default#110#block#####1052#
-Q=vector(RR,[3,2,1])
-T=vector(RR,[1,3,-1])
-P=(Q+T)/2
-=>PYTHONTEX#sage#default#default#111#block#####1062#
-w=Q-T
-u=vector(RR,[-w[1],w[0],0])
-v=u.cross_product(w)
-=>PYTHONTEX#sage#default#default#112#block#####1068#
-u=u/norm(u)
-v=v/norm(v)
-w=w/norm(w)
-=>PYTHONTEX#sage#default#default#113#block#####1074#
-R=block_matrix(RR,[[matrix([1,0,0,0])],
-                  [column_matrix([P,u,v,w])]])
-R.subdivide(1,1)
-=>PYTHONTEX#sage#default#default#114#i#####1079#
-R
-=>PYTHONTEX#sage#default#default#115#block#####1081#
-S=column_matrix(RR,[[1,0,0,0],
-                   [0,1,0,0],
-                   [0,0,1,0],
-                   [0,0,0,-1]])
-S.subdivide(1,1)
-=>PYTHONTEX#sage#default#default#116#i#####1088#
-S
-=>PYTHONTEX#sage#default#default#117#block#####1090#
-s=R*S*R^(-1)
-s.subdivide(1,1)
-=>PYTHONTEX#sage#default#default#118#i#####1094#
-s
-=>PYTHONTEX#sage#default#default#119#block#####1098#
-Rpi=block_matrix(RR,[[matrix([1,0,0])],
-                  [column_matrix([P,u,v])]])
-Rpi.subdivide(1,1)
-=>PYTHONTEX#sage#default#default#120#i#####1103#
-Rpi
-=>PYTHONTEX#sage#default#default#121#block#####1124#
-P=vector(RR,[0,0,0])
-=>PYTHONTEX#sage#default#default#122#block#####1128#
-w=vector(RR,[1,1,2])
-=>PYTHONTEX#sage#default#default#123#i#####1131#
-w
-=>PYTHONTEX#sage#default#default#124#block#####1133#
-u=vector(RR,[1,-1,0])
-=>PYTHONTEX#sage#default#default#125#i#####1136#
-u
-=>PYTHONTEX#sage#default#default#126#block#####1138#
-v=u.cross_product(w)
-=>PYTHONTEX#sage#default#default#127#i#####1141#
-v
-=>PYTHONTEX#sage#default#default#128#block#####1143#
-u=u/norm(u)
-v=v/norm(v)
-w=w/norm(w)
-=>PYTHONTEX#sage#default#default#129#block#####1149#
-R=block_matrix(RR,[[matrix([1,0,0,0])],
-                  [column_matrix([P,u,v,w])]])
-R.subdivide(1,1)
-=>PYTHONTEX#sage#default#default#130#i#####1154#
-R
-=>PYTHONTEX#sage#default#default#131#block#####1156#
-beta=2*pi/5
-G=column_matrix(RR,[[1, 0,        0,        0],
-                   [0, cos(beta),sin(beta),0],
-                   [0,-sin(beta),cos(beta),0],
-                   [0, 0,        0,        1]])
-g=R*G*R^(-1)
-g.subdivide(1,1)
-=>PYTHONTEX#sage#default#default#132#i#####1165#
-g
-=>PYTHONTEX#sage#default#default#133#block#####1168#
-vb1h=[g^i*vector(RR,[1,0.5,0.1,0.4]) for i in range(5)]
-=>PYTHONTEX#sage#default#default#134#block#####1172#
-S=column_matrix(RR,[[1,0,0,0],
-                   [0,1,0,0],
-                   [0,0,1,0],
-                   [0,0,0,-1]])
-s=R*S*R^(-1)
-s.subdivide(1,1)
-=>PYTHONTEX#sage#default#default#135#i#####1180#
-s
-=>PYTHONTEX#sage#default#default#136#block#####1183#
-vb2h=[s*v for v in vb1h]
-=>PYTHONTEX#sage#default#default#137#block#####1187#
-vb1=[v[1:] for v in vb1h]
-vb2=[w[1:] for w in vb2h]
-=>PYTHONTEX#sage#default#default#138#i#####1192#
-vb1[0]
-=>PYTHONTEX#sage#default#default#139#i#####1193#
-vb1[1]
-=>PYTHONTEX#sage#default#default#140#i#####1194#
-vb1[2]
-=>PYTHONTEX#sage#default#default#141#i#####1195#
-vb1[3]
-=>PYTHONTEX#sage#default#default#142#i#####1196#
-vb1[4]
-=>PYTHONTEX#sage#default#default#143#i#####1198#
-vb2[0]
-=>PYTHONTEX#sage#default#default#144#i#####1199#
-vb2[1]
-=>PYTHONTEX#sage#default#default#145#i#####1200#
-vb2[2]
-=>PYTHONTEX#sage#default#default#146#i#####1201#
-vb2[3]
-=>PYTHONTEX#sage#default#default#147#i#####1202#
-vb2[4]
-=>PYTHONTEX#sage#default#default#148#sub#####1229#
+=>PYTHONTEX#sage#default#default#110#block#####999#
+D = vector(RR, [1, 1, 1, 0]), vector(RR, [1, 2, -1, -3]), vector(RR, [1, 3, -3, -1]), vector(RR, [1, 2, 3, 1]), vector(RR, [1, 4, -6, 10]), vector(RR, [1, 5, 10, -15])
+
+n = vector(RR, [1, 1, 0])
+v1 = vector(RR, [-n[1], n[0], 0])
+v2 = n.cross_product(v1)
+
+u1, u2, u3 = v1.normalized(), v2.normalized(), n.normalized()
+
+# x = 0, y = 1
+R = block_matrix(2, 1, [matrix(RR, [1, 0, 0, 0]), column_matrix(RR, [vector(RR, [0, 1, 0]), u1, u2, u3])])
+
+MRRs = matrix(RR, [[1, 0, 0, 0], [0, 1, 0, 0],  [0, 0, 1, 0], [0, 0, 0, -1]])
+
+Ms = R * MRRs * R^-1
+
+sime = [Ms * v for v in D]
+=>PYTHONTEX#sage#default#default#111#i#####1021#
+Ms
+=>PYTHONTEX#sage#default#default#112#sub#####1024#
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 0.3, tdplot_main_coords,
+  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-15,0,0) -- (15,0,0); % Eje X
+\draw[->,thick,gray] (0,-15,0) -- (0,15,0); % Eje Y
+\draw[->,thick,gray] (0,0,-15) -- (0,0,15); % Eje Z
+\draw[->,thick,gray] (0,0,0) -- !{5*u1} node[below right] {$u_1$};
+\draw[->,thick,gray] (0,0,0) -- !{5*u2} node[below right] {$u_2$};
+\draw[->,thick,gray] (0,0,0) -- !{5*u3} node[below right] {$u_3$};
+\draw[fill = blue] !{D[0]} circle (2mm) node[above left] {$P_1$};
+\draw[fill = blue] !{D[1]} circle (2mm) node[below right] {$P_2$};
+\draw[fill = blue] !{D[2]} circle (2mm) node[below right] {$P_3$};
+\draw[fill = blue] !{D[3]} circle (2mm) node[above right] {$P_4$};
+\draw[fill = blue] !{D[4]} circle (2mm) node[above right] {$P_5$};
+\draw[fill = blue] !{D[5]} circle (2mm) node[above right] {$P_6$};
+\draw[fill = red] !{sime[0]} circle (2mm) node[above left] {$P'_1$};
+\draw[fill = red] !{sime[1]} circle (2mm) node[below right] {$P'_2$};
+\draw[fill = red] !{sime[2]} circle (2mm) node[below right] {$P'_3$};
+\draw[fill = red] !{sime[3]} circle (2mm) node[above right] {$P'_4$};
+\draw[fill = red] !{sime[4]} circle (2mm) node[above right] {$P'_5$};
+\draw[fill = red] !{sime[5]} circle (2mm) node[above right] {$P'_6$};
+\draw[cara] !{16*u1+16*u2} -- !{16*u1-16*u2} -- !{-16*u1-16*u2} -- !{-16*u1+16*u2} -- cycle;
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#113#block#####1072#
+A = vector(RR, [1, 3, -1])
+B = vector(RR, [3, 2, 1])
+AB = B - A
+PM = A + (AB / 2)
+
+n = AB
+v1 = vector(RR, [-n[1], n[0], 0])
+v2 = n.cross_product(v1)
+
+
+u1 = v1.normalized()
+u2 = v2.normalized()
+u3 = n.normalized()
+
+R = block_matrix(2, 1, [matrix(RR, [1, 0, 0, 0]), column_matrix([PM, u1, u2, u3])])
+
+MRRs = matrix(RR, [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, -1]])
+
+Ms = R * MRRs * R^-1
+=>PYTHONTEX#sage#default#default#114#i#####1095#
+Ms
+=>PYTHONTEX#sage#default#default#115#sub#####1098#
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 1, tdplot_main_coords,
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-5,0,0) -- (5,0,0); % Eje X
+\draw[->,thick,gray] (0,-5,0) -- (0,5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-5) -- (0,0,5); % Eje Z
+\draw[->,thick,red] !{PM} -- !{PM+2*u1} node[below right] {$u_1$};
+\draw[->,thick,red] !{PM} -- !{PM+2*u2} node[below right] {$u_2$};
+\draw[->,thick,red] !{PM} -- !{PM+2*u3} node[below right] {$u_3$};
+\draw[fill = blue] !{A} circle (1mm) node[above left] {$A$};
+\draw[fill = blue] !{B} circle (1mm) node[below right] {$B$};
+\draw[fill = blue] !{PM} circle (1mm) node[below right] {$PM$};
+\end{tikzpicture}
+\end{center}
+=>PYTHONTEX#sage#default#default#116#block#####1129#
+# plano
+pn = vector(RR, [1, 1, 2])
+v1 = vector(RR, [-pn[1], pn[0], 0])
+v2 = pn.cross_product(v1)
+
+A = vector(RR, [0.5, 0.1, 0.4])
+Ah = vector(RR, [1, 00.5, 0.1, 0.4])
+
+# proyectar A en la normal del plano obteniendo centro de cara
+u1, u2, u3 = pn.normalized(), v1.normalized(), v2.normalized()
+pB = column_matrix([u1, u2, u3])
+MBBpv = matrix(RR, [[1, 0, 0], [0, 0, 0], [0, 0, 0]])
+Mpn = pB * MBBpv * pB^-1
+cO = Mpn * A
+
+# rotar A en el centro de la cara obteniendo puntos de cara
+cR = block_matrix(2, 1, [matrix(RR, [1, 0, 0, 0]), column_matrix([cO, u2, u3, u1])])
+a = 2*pi/5
+McRcRr = matrix(RR, [[1, 0, 0, 0], [0, cos(a), -sin(a), 0], [0, sin(a), cos(a), 0], [0, 0, 0, 1]])
+Mcr = cR * McRcRr * cR^-1
+cAP = [Mcr^i * Ah for i in range(5)]
+cAP = [v[1:] for v in cAP]
+
+# simetria de cara por el plano obteniendo la otra cara
+MBBsp = matrix(RR, [[-1, 0, 0], [0, 1, 0], [0, 0, 1]])
+Msp = pB * MBBsp * pB^-1
+cBP = [Msp * v for v in cAP]
+=>PYTHONTEX#sage#default#default#117#sub#####1160#
 \begin{center}
 \tdplotsetmaincoords{70}{110}
 \begin{tikzpicture}[scale = 5, tdplot_main_coords,
   cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+  cara2/.style={thick, color = purple, fill opacity = 0.2, fill = purple!20},
   ]
 \draw[->,thick,gray] (-1.5,0,0) -- (2.5,0,0); % Eje X
 \draw[->,thick,gray] (0,-1.5,0) -- (0,1.5,0); % Eje Y
 \draw[->,thick,gray] (0,0,-1.5) -- (0,0,1.5); % Eje Z
-\draw[cara] !{vb1[0]} -- !{vb1[1]} -- !{vb1[2]} -- !{vb1[3]} -- !{vb1[4]}  --cycle;
-\draw[cara] !{vb2[0]} -- !{vb2[1]} -- !{vb2[2]} -- !{vb2[3]} -- !{vb2[4]}  --cycle;
-\draw[cara] !{vb1[0]} -- !{vb2[0]} -- !{vb2[1]} -- !{vb1[1]} -- cycle;
-\draw[cara] !{vb1[1]} -- !{vb2[1]} -- !{vb2[2]} -- !{vb1[2]} -- cycle;
-\draw[cara] !{vb1[2]} -- !{vb2[2]} -- !{vb2[3]} -- !{vb1[3]} -- cycle;
-\draw[cara] !{vb1[3]} -- !{vb2[3]} -- !{vb2[4]} -- !{vb1[4]} -- cycle;
+\draw[->,thick,red] (0, 0, 0) -- !{0.5*u1} node[below right] {$u_1$};
+\draw[->,thick,red] (0, 0, 0) -- !{0.5*u2} node[below right] {$u_2$};
+\draw[->,thick,red] (0, 0, 0) -- !{0.5*u3} node[below right] {$u_3$};
+\draw[->,thick,green] !{cO} -- !{cO + 0.5*u2} node[below right] {$r_1$};
+\draw[->,thick,green] !{cO} -- !{cO + 0.5*u3} node[below right] {$r_2$};
+\draw[->,thick,green] !{cO} -- !{cO + 0.5*u1} node[below right] {$r_3$};
+\draw[cara2] !{-0.5*u2 -0.5*u3} -- !{0.5*u2 -0.5*u3} -- !{0.5*u2 +0.5*u3} -- !{-0.5*u2 +0.5*u3} -- cycle;
+
+\draw[cara] !{cAP[0]} -- !{cAP[1]} -- !{cAP[2]} -- !{cAP[3]} -- !{cAP[4]} -- cycle;
+\draw[cara] !{cBP[0]} -- !{cBP[1]} -- !{cBP[2]} -- !{cBP[3]} -- !{cBP[4]} -- cycle;
+\draw[cara] !{cAP[0]} -- !{cBP[0]} -- !{cBP[1]} -- !{cAP[1]} -- cycle;
+\draw[cara] !{cAP[1]} -- !{cBP[1]} -- !{cBP[2]} -- !{cAP[2]} -- cycle;
+\draw[cara] !{cAP[2]} -- !{cBP[2]} -- !{cBP[3]} -- !{cAP[3]} -- cycle;
+\draw[cara] !{cAP[3]} -- !{cBP[3]} -- !{cBP[4]} -- !{cAP[4]} -- cycle;
+\draw[cara] !{cAP[4]} -- !{cBP[4]} -- !{cBP[0]} -- !{cAP[0]} -- cycle;
+\draw[fill = blue] !{A} circle (0.1mm) node[above left] {$A$};
+\draw[fill = blue] !{cO} circle (0.1mm) node[above left] {$O_c$};
 \end{tikzpicture}
 \end{center}
-=>PYTHONTEX#sage#default#default#149#block#####1265#
+=>PYTHONTEX#sage#default#default#118#block#####1208#
 P=vector(RR,[1,0,1])
 v3 = vector(RR,[1,-1,1])
 v1 = vector(RR,[1,1,0])
@@ -659,13 +675,13 @@ v2 = v1.cross_product(v3)
 v1=v1/norm(v1)
 v2=v2/norm(v2)
 v3=v3/norm(v3)
-=>PYTHONTEX#sage#default#default#150#block#####1277#
+=>PYTHONTEX#sage#default#default#119#block#####1220#
 R = block_matrix(RR,[[       matrix([1, 0, 0, 0])],
                      [column_matrix([P,v1,v2,v3])]])
 R.subdivide(1,1)
-=>PYTHONTEX#sage#default#default#151#i#####1283#
+=>PYTHONTEX#sage#default#default#120#i#####1226#
 R
-=>PYTHONTEX#sage#default#default#152#block#####1287#
+=>PYTHONTEX#sage#default#default#121#block#####1230#
 a = 2*pi/5
 G = column_matrix(RR,[[1,    0,     0,  0],
                      [0,cos(a),sin(a), 0],
@@ -673,29 +689,29 @@ G = column_matrix(RR,[[1,    0,     0,  0],
                      [0,    0,     0,  1]])
 g = R*G*R^-1
 g.subdivide(1,1)
-=>PYTHONTEX#sage#default#default#153#i#####1296#
+=>PYTHONTEX#sage#default#default#122#i#####1239#
 g
-=>PYTHONTEX#sage#default#default#154#block#####1301#
+=>PYTHONTEX#sage#default#default#123#block#####1244#
 puntogiro=R*vector(RR,[1,1,0,0])
 BasePiramideh = [g^i*puntogiro for i in range(5)]
-=>PYTHONTEX#sage#default#default#155#block#####1308#
+=>PYTHONTEX#sage#default#default#124#block#####1251#
 Verticeh = R*vector(RR,[1,0,0,5])
-=>PYTHONTEX#sage#default#default#156#block#####1314#
+=>PYTHONTEX#sage#default#default#125#block#####1257#
 BP = [v[1:] for v in BasePiramideh]
 Vertice = Verticeh[1:]
-=>PYTHONTEX#sage#default#default#157#i#####1319#
+=>PYTHONTEX#sage#default#default#126#i#####1262#
 BP[0]
-=>PYTHONTEX#sage#default#default#158#i#####1320#
+=>PYTHONTEX#sage#default#default#127#i#####1263#
 BP[1]
-=>PYTHONTEX#sage#default#default#159#i#####1321#
+=>PYTHONTEX#sage#default#default#128#i#####1264#
 BP[2]
-=>PYTHONTEX#sage#default#default#160#i#####1322#
+=>PYTHONTEX#sage#default#default#129#i#####1265#
 BP[3]
-=>PYTHONTEX#sage#default#default#161#i#####1323#
+=>PYTHONTEX#sage#default#default#130#i#####1266#
 BP[4]
-=>PYTHONTEX#sage#default#default#162#i#####1325#
+=>PYTHONTEX#sage#default#default#131#i#####1268#
 Vertice
-=>PYTHONTEX#sage#default#default#163#sub#####1352#
+=>PYTHONTEX#sage#default#default#132#sub#####1295#
 \begin{center}
 \tdplotsetmaincoords{70}{110}
 \begin{tikzpicture}[scale = 1.6, tdplot_main_coords,
@@ -712,21 +728,21 @@ Vertice
 \draw[cara] !{BP[4]} -- !{Vertice} -- !{BP[0]} -- cycle;
 \end{tikzpicture}
 \end{center}
-=>PYTHONTEX#sage#default#default#164#block#####1390#
+=>PYTHONTEX#sage#default#default#133#block#####1333#
 v3 = vector(RR,[2,-1,1])
 v1 = vector(RR,[1,2,0])
 v2 = v1.cross_product(v3)
 v1=v1/norm(v1)
 v2=v2/norm(v2)
 v3=v3/norm(v3)
-=>PYTHONTEX#sage#default#default#165#block#####1401#
+=>PYTHONTEX#sage#default#default#134#block#####1344#
 P = vector(RR,[1,1,0])
 R = block_matrix(RR,[[       matrix([1, 0, 0, 0])],
                      [column_matrix([P,v1,v2,v3])]])
 R.subdivide(1,1)
-=>PYTHONTEX#sage#default#default#166#i#####1407#
+=>PYTHONTEX#sage#default#default#135#i#####1350#
 R
-=>PYTHONTEX#sage#default#default#167#block#####1410#
+=>PYTHONTEX#sage#default#default#136#block#####1353#
 a = 2*pi/6
 G = column_matrix(RR,[[1,    0,     0,  0],
                      [0,cos(a),sin(a), 0],
@@ -734,16 +750,16 @@ G = column_matrix(RR,[[1,    0,     0,  0],
                      [0,    0,     0,  1]])
 g = R*G*R^-1
 g.subdivide(1,1)
-=>PYTHONTEX#sage#default#default#168#i#####1419#
+=>PYTHONTEX#sage#default#default#137#i#####1362#
 g
-=>PYTHONTEX#sage#default#default#169#block#####1421#
+=>PYTHONTEX#sage#default#default#138#block#####1364#
 BaseTorreh = [g^i*R*vector(RR,[1,1,0,0]) for i in range(6)]
-=>PYTHONTEX#sage#default#default#170#block#####1430#
+=>PYTHONTEX#sage#default#default#139#block#####1373#
 TapaTorreh = [v+R*vector(RR,[1,0,0,3]) for v in BaseTorreh]
-=>PYTHONTEX#sage#default#default#171#block#####1436#
+=>PYTHONTEX#sage#default#default#140#block#####1379#
 BT = [v[1:] for v in BaseTorreh]
 TT = [w[1:] for w in TapaTorreh]
-=>PYTHONTEX#sage#default#default#172#sub#####1468#
+=>PYTHONTEX#sage#default#default#141#sub#####1411#
 \begin{center}
 \tdplotsetmaincoords{70}{110}
 \begin{tikzpicture}[scale = 2.4, tdplot_main_coords,

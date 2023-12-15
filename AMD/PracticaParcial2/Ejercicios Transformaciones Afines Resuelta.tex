@@ -997,29 +997,30 @@ respecto del plano $x+y=1$. Dibuja todos los puntos, sus simétricos y el plano.
 
 % Inicio del Ejercicio 11
 \begin{sageblock}
-P = vector(RR, [1, 1, 1, 0]), vector(RR, [1, 2, -1, -3]), vector(RR, [1, 3, -3, -1]), vector(RR, [1, 2, 3, 1]), vector(RR, [1, 4, -6, 10]), vector(RR, [1, 5, 10, -15])
+D = vector(RR, [1, 1, 1, 0]), vector(RR, [1, 2, -1, -3]), vector(RR, [1, 3, -3, -1]), vector(RR, [1, 2, 3, 1]), vector(RR, [1, 4, -6, 10]), vector(RR, [1, 5, 10, -15])
 
 n = vector(RR, [1, 1, 0])
-v1 = vector(RR, [1, -n[1], n[0], 0])
+v1 = vector(RR, [-n[1], n[0], 0])
 v2 = n.cross_product(v1)
 
+u1, u2, u3 = v1.normalized(), v2.normalized(), n.normalized()
 
-R = column_matrix(RR, [n.normalize(), v1.normalize(), v2.normalize()])
+# x = 0, y = 1
+R = block_matrix(2, 1, [matrix(RR, [1, 0, 0, 0]), column_matrix(RR, [vector(RR, [0, 1, 0]), u1, u2, u3])])
 
-MRRs = matrix(RR, [[1, 0, 0, 0], [0, -1, 0, 0],  [0, 0, 1, 0], [0, 0, 0, 1]])
+MRRs = matrix(RR, [[1, 0, 0, 0], [0, 1, 0, 0],  [0, 0, 1, 0], [0, 0, 0, -1]])
 
 Ms = R * MRRs * R^-1
 
-D = [Ms * v for v in P]
-
-
+sime = [Ms * v for v in D]
 \end{sageblock}
 
 El código que hay tras el dibujo es:
-%%%%%%%%%%%
-%%%dibujosagesub%%
-%%%%%%%%%
-\begin{verbatim}
+
+$$
+\sage{Ms}
+$$
+
 \begin{sagesub}
 \begin{center}
 \tdplotsetmaincoords{70}{110}
@@ -1028,6 +1029,9 @@ El código que hay tras el dibujo es:
 \draw[->,thick,gray] (-15,0,0) -- (15,0,0); % Eje X
 \draw[->,thick,gray] (0,-15,0) -- (0,15,0); % Eje Y
 \draw[->,thick,gray] (0,0,-15) -- (0,0,15); % Eje Z
+\draw[->,thick,gray] (0,0,0) -- !{5*u1} node[below right] {$u_1$};
+\draw[->,thick,gray] (0,0,0) -- !{5*u2} node[below right] {$u_2$};
+\draw[->,thick,gray] (0,0,0) -- !{5*u3} node[below right] {$u_3$};
 \draw[fill = blue] !{D[0]} circle (2mm) node[above left] {$P_1$}; 
 \draw[fill = blue] !{D[1]} circle (2mm) node[below right] {$P_2$}; 
 \draw[fill = blue] !{D[2]} circle (2mm) node[below right] {$P_3$}; 
@@ -1040,11 +1044,11 @@ El código que hay tras el dibujo es:
 \draw[fill = red] !{sime[3]} circle (2mm) node[above right] {$P'_4$}; 
 \draw[fill = red] !{sime[4]} circle (2mm) node[above right] {$P'_5$}; 
 \draw[fill = red] !{sime[5]} circle (2mm) node[above right] {$P'_6$}; 
-\draw[cara] !{16*u+16*v} -- !{16*u-16*v} -- !{-16*u-16*v} -- !{-16*u+16*v} -- cycle;
+\draw[cara] !{16*u1+16*u2} -- !{16*u1-16*u2} -- !{-16*u1-16*u2} -- !{-16*u1+16*u2} -- cycle;
 \end{tikzpicture}
 \end{center}
 \end{sagesub}
-\end{verbatim}
+
 % Fin del Ejercicio 11
 
 \newpage
@@ -1062,62 +1066,52 @@ de $\mathcal{A}^3(\mathbb{R})$. }
 {\it Solución:}
 
 % Inicio del Ejercicio 12
-Comenzamos calculando la matriz de~$f$ respecto del sistema de referencia can\'onico
-de $\mathcal{A}^3(\mathbb{R})$. Para ello, primero debemos calcular el sistema de referencia $R$ respecto del cual $f$ tiene su expresión canónica. 
-Como el punto $Q = \left[\begin{array}{c} 3\\2\\1 \end{array}\right]$ es el simétrico del punto $T = \left[\begin{array}{c} 1\\3\\-1 \end{array}\right]$, entonces el vector $\vec{TQ}=Q-T$ es el vector normal al plano de simetría. Tomamos como punto base del sistema de referencia $R$ al punto medio entre $Q$ y $T$, punto que está en dicho plano de simetría; esto es, $P = \displaystyle{Q+T \over 2}$
+
+Calcular plano
 
 \begin{sageblock}
-Q=vector(RR,[3,2,1])
-T=vector(RR,[1,3,-1])
-P=(Q+T)/2 
-\end{sageblock}
+A = vector(RR, [1, 3, -1])
+B = vector(RR, [3, 2, 1])
+AB = B - A
+PM = A + (AB / 2)
+
+n = AB
+v1 = vector(RR, [-n[1], n[0], 0])
+v2 = n.cross_product(v1)
 
 
+u1 = v1.normalized()
+u2 = v2.normalized()
+u3 = n.normalized()
 
-La base estará formada por el vector ortogonal al plano $w=\vec{TQ}=Q-T$ junto con una base ortogonal de dicho plano. Tomamos el vector $u$ como un ortogonal a $w$ y el $v$ el producto vectorial de $u$ y de $w$
+R = block_matrix(2, 1, [matrix(RR, [1, 0, 0, 0]), column_matrix([PM, u1, u2, u3])])
 
-\begin{sageblock}
-w=Q-T
-u=vector(RR,[-w[1],w[0],0])
-v=u.cross_product(w)
-\end{sageblock}
-Normalizamos la base ortogonal
-\begin{sageblock}
-u=u/norm(u)
-v=v/norm(v)
-w=w/norm(w)
-\end{sageblock}
-El sistema de referencia $R$ es, por tanto:
-\begin{sageblock}
-R=block_matrix(RR,[[matrix([1,0,0,0])],
-                  [column_matrix([P,u,v,w])]])
-R.subdivide(1,1)
-\end{sageblock}
-$$R=\sage{R}$$
-La matriz de simetría (es decir, la matriz de $f$ respecto del sistema de referencia $R$) es:
-\begin{sageblock}
-S=column_matrix(RR,[[1,0,0,0],
-                   [0,1,0,0],
-                   [0,0,1,0],
-                   [0,0,0,-1]])
-S.subdivide(1,1)                   
-\end{sageblock}
-$$S_{RR}=\sage{S}$$
-Y, por tanto,  la matriz de la simetría $f$ respecto del sistema de referencia canónico es
-\begin{sageblock}
-s=R*S*R^(-1) 
-s.subdivide(1,1)
-\end{sageblock}
-\[s=RS_{RR}R^{-1}=\sage{s}\]
+MRRs = matrix(RR, [[1, 0, 0, 0], [0, 1, 0, 0], [0, 0, 1, 0], [0, 0, 0, -1]])
 
-Ahora, nos han pedido un sistema de referencia afín $R_{\Pi}$ para el plano $\Pi$ respecto del cual se ha hecho la simetría. Obviamente, este está dado por el punto $P$ y la base $\{u,v\}$:
-
-\begin{sageblock}
-Rpi=block_matrix(RR,[[matrix([1,0,0])],
-                  [column_matrix([P,u,v])]])
-Rpi.subdivide(1,1)
+Ms = R * MRRs * R^-1
 \end{sageblock}
-$$R_{\Pi}=\sage{Rpi}$$
+
+$$
+\sage{Ms}
+$$
+
+\begin{sagesub}
+\begin{center}
+\tdplotsetmaincoords{70}{110}
+\begin{tikzpicture}[scale = 1, tdplot_main_coords,
+cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20}]
+\draw[->,thick,gray] (-5,0,0) -- (5,0,0); % Eje X
+\draw[->,thick,gray] (0,-5,0) -- (0,5,0); % Eje Y
+\draw[->,thick,gray] (0,0,-5) -- (0,0,5); % Eje Z
+\draw[->,thick,red] !{PM} -- !{PM+2*u1} node[below right] {$u_1$};
+\draw[->,thick,red] !{PM} -- !{PM+2*u2} node[below right] {$u_2$};
+\draw[->,thick,red] !{PM} -- !{PM+2*u3} node[below right] {$u_3$};
+\draw[fill = blue] !{A} circle (1mm) node[above left] {$A$}; 
+\draw[fill = blue] !{B} circle (1mm) node[below right] {$B$};
+\draw[fill = blue] !{PM} circle (1mm) node[below right] {$PM$}; 
+\end{tikzpicture}
+\end{center}
+\end{sagesub}
 
 % Fin del Ejercicio 12
 
@@ -1132,132 +1126,64 @@ $$R_{\Pi}=\sage{Rpi}$$
 
 % Inicio del Ejercicio 13
 
-Lo primero que hacemos es observar que el punto $A$ que nos dan no pertenece al plano $\Pi$ (que es, en realidad evidente: basta sustituir las coordenadas de $A$ en la ecuación del plano y ver que no se satisface), por lo que pertenece a cierto plano $\Pi_1$ paralelo a $\Pi$. Evidentemente, el giro del plano $\Pi$ con centro en $P=(0,0,0)$ y de ángulo $2\pi/5$ nos sirve para calcular el resto de vértices de una de las bases del prisma (la que vive en $\Pi_1$): basta aplicarlo reiteradas veces al punto $A$. Luego, para calcular los vértices de la otra base del prisma, bastará aplicar a estos la simetría ortogonal respecto del plano $\Pi$.   Obsérvese que el sistema de referencia $R$ que nos proporciona la expresión canónica del giro coincide con el sistema de referencia que proporciona la simetría ortogonal que vamos a usar.
+\begin{sageblock}
+# plano
+pn = vector(RR, [1, 1, 2])
+v1 = vector(RR, [-pn[1], pn[0], 0])
+v2 = pn.cross_product(v1)
 
-  
+A = vector(RR, [0.5, 0.1, 0.4])
+Ah = vector(RR, [1, 00.5, 0.1, 0.4])
 
-Calculemos $R$: Tomamos como punto base el punto $P=(0,0,0)$, el origen de coordenadas, que es el centro de la base del prisma, y como base tomamos la normalización de la que se obtiene con el vector ortogonal al plano $x+y+2z = 0$ junto con una base ortogonal de dicho plano.
+# proyectar A en la normal del plano obteniendo centro de cara
+u1, u2, u3 = pn.normalized(), v1.normalized(), v2.normalized()
+pB = column_matrix([u1, u2, u3])
+MBBpv = matrix(RR, [[1, 0, 0], [0, 0, 0], [0, 0, 0]])
+Mpn = pB * MBBpv * pB^-1
+cO = Mpn * A
 
-\begin{sageblock}
-P=vector(RR,[0,0,0])
+# rotar A en el centro de la cara obteniendo puntos de cara
+cR = block_matrix(2, 1, [matrix(RR, [1, 0, 0, 0]), column_matrix([cO, u2, u3, u1])])
+a = 2*pi/5
+McRcRr = matrix(RR, [[1, 0, 0, 0], [0, cos(a), -sin(a), 0], [0, sin(a), cos(a), 0], [0, 0, 0, 1]])
+Mcr = cR * McRcRr * cR^-1
+cAP = [Mcr^i * Ah for i in range(5)]
+cAP = [v[1:] for v in cAP]
+
+# simetria de cara por el plano obteniendo la otra cara
+MBBsp = matrix(RR, [[-1, 0, 0], [0, 1, 0], [0, 0, 1]])
+Msp = pB * MBBsp * pB^-1
+cBP = [Msp * v for v in cAP]
 \end{sageblock}
-Tomamos el vector $w$ como un vector perpendicular al plano:
-\begin{sageblock}
-w=vector(RR,[1,1,2])
-\end{sageblock}
-$$w=\sage{w}$$
-Tomamos un vector que esté dentro de plano $u$
-\begin{sageblock}
-u=vector(RR,[1,-1,0])
-\end{sageblock}
-$$u=\sage{u}$$
-Se toma $v=u\times w$ como vector ortogonal a ambos vectores
-\begin{sageblock}
-v=u.cross_product(w)
-\end{sageblock}
-$$v=\sage{v}$$
-Normalizamos la base ortogonal:
-\begin{sageblock}
-u=u/norm(u)
-v=v/norm(v)
-w=w/norm(w)
-\end{sageblock}
-El sistema de referencia $R$ es, por tanto:
-\begin{sageblock}
-R=block_matrix(RR,[[matrix([1,0,0,0])],
-                  [column_matrix([P,u,v,w])]])
-R.subdivide(1,1)
-\end{sageblock}
-\[ R = \sage{R}. \]
-Obtenemos la base del prisma usando la matriz de giro de ángulo $\beta=2\pi/5$.
-\begin{sageblock}
-beta=2*pi/5
-G=column_matrix(RR,[[1, 0,        0,        0],
-                   [0, cos(beta),sin(beta),0],
-                   [0,-sin(beta),cos(beta),0],
-                   [0, 0,        0,        1]])
-g=R*G*R^(-1)
-g.subdivide(1,1)
-\end{sageblock}
-$$g=RG_{\frac{2\pi}{5}}R^{-1}=\sage{g}$$
-De esta forma obtenemos los vértices en coordenadas homogéneas del pentágono de la base del prisma:
-$$\{(1,0.5,0.1,0.4), \ g(1,0.5,0.1,0.4), \ g^2(1,0.5,0.1,0.4), \ g^3(1,0.5,0.1,0.4), \ g^4(1,0.5,0.1,0.4) \}$$
-\begin{sageblock}
-vb1h=[g^i*vector(RR,[1,0.5,0.1,0.4]) for i in range(5)]
-\end{sageblock}
-Los vértices de la segunda base del prisma se obtienen aplicando la simetría ortogonal respecto del plano $\Pi$ a los vértices de la primera base
-\begin{sageblock}
-S=column_matrix(RR,[[1,0,0,0],
-                   [0,1,0,0],
-                   [0,0,1,0],
-                   [0,0,0,-1]])
-s=R*S*R^(-1)
-s.subdivide(1,1)
-\end{sageblock}
-$$s=RS_{RR}R^{-1}=\sage{s}$$
-De esta forma obtenemos los vértices en coordenadas homogéneas del segundo pentágono de la otra base del prisma:
-$$\{s(1,0.5,0.1,0.4), \ s(g(1,0.5,0.1,0.4)), \ s(g^2(1,0.5,0.1,0.4)), \ s(g^3(1,0.5,0.1,0.4)), \ s(g^4(1,0.5,0.1,0.4)) \}$$
-\begin{sageblock}
-vb2h=[s*v for v in vb1h] 
-\end{sageblock}
-Eliminamos la coordenada homogénea: 
-\begin{sageblock}
-vb1=[v[1:] for v in vb1h]
-vb2=[w[1:] for w in vb2h]
-\end{sageblock}  
-Los vértices de la primera base son:
-$$v_{base1}[0]=\sage{vb1[0]}$$
-$$v_{base1}[1]=\sage{vb1[1]}$$
-$$v_{base1}[2]=\sage{vb1[2]}$$
-$$v_{base1}[3]=\sage{vb1[3]}$$
-$$v_{base1}[4]=\sage{vb1[4]}$$
-Los vértices de la segunda base son:
-$$v_{base2}[0]=\sage{vb2[0]}$$
-$$v_{base2}[1]=\sage{vb2[1]}$$
-$$v_{base2}[2]=\sage{vb2[2]}$$
-$$v_{base2}[3]=\sage{vb2[3]}$$
-$$v_{base2}[4]=\sage{vb2[4]}$$
-Finalmente escribimos el código en Sagesub
-\begin{verbatim}
-\begin{sagesub}
-\begin{center}
-\tdplotsetmaincoords{70}{110}
-\begin{tikzpicture}[scale = 5, tdplot_main_coords,
-  cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
-  ]
-\draw[->,thick,gray] (-1.5,0,0) -- (2.5,0,0); % Eje X
-\draw[->,thick,gray] (0,-1.5,0) -- (0,1.5,0); % Eje Y
-\draw[->,thick,gray] (0,0,-1.5) -- (0,0,1.5); % Eje Z
-\draw[cara] !{vb1[0]} -- !{vb1[1]} -- !{vb1[2]} -- !{vb1[3]} -- !{vb1[4]}  --cycle;
-\draw[cara] !{vb2[0]} -- !{vb2[1]} -- !{vb2[2]} -- !{vb2[3]} -- !{vb2[4]}  --cycle;
-\draw[cara] !{vb1[0]} -- !{vb2[0]} -- !{vb2[1]} -- !{vb1[1]} -- cycle;
-\draw[cara] !{vb1[1]} -- !{vb2[1]} -- !{vb2[2]} -- !{vb1[2]} -- cycle;
-\draw[cara] !{vb1[2]} -- !{vb2[2]} -- !{vb2[3]} -- !{vb1[3]} -- cycle;
-\draw[cara] !{vb1[3]} -- !{vb2[3]} -- !{vb2[4]} -- !{vb1[4]} -- cycle;
-\end{tikzpicture}
-\end{center}
-\end{sagesub}
-\end{verbatim}
-%%%%%%%%
-%%dibujosagesub
-%%%%%%%%
-obteniendo
+
 
 \begin{sagesub}
 \begin{center}
 \tdplotsetmaincoords{70}{110}
 \begin{tikzpicture}[scale = 5, tdplot_main_coords,
   cara/.style={thick, color = blue, fill opacity = 0.3, fill = blue!20},
+  cara2/.style={thick, color = purple, fill opacity = 0.2, fill = purple!20},
   ]
 \draw[->,thick,gray] (-1.5,0,0) -- (2.5,0,0); % Eje X
 \draw[->,thick,gray] (0,-1.5,0) -- (0,1.5,0); % Eje Y
 \draw[->,thick,gray] (0,0,-1.5) -- (0,0,1.5); % Eje Z
-\draw[cara] !{vb1[0]} -- !{vb1[1]} -- !{vb1[2]} -- !{vb1[3]} -- !{vb1[4]}  --cycle;
-\draw[cara] !{vb2[0]} -- !{vb2[1]} -- !{vb2[2]} -- !{vb2[3]} -- !{vb2[4]}  --cycle;
-\draw[cara] !{vb1[0]} -- !{vb2[0]} -- !{vb2[1]} -- !{vb1[1]} -- cycle;
-\draw[cara] !{vb1[1]} -- !{vb2[1]} -- !{vb2[2]} -- !{vb1[2]} -- cycle;
-\draw[cara] !{vb1[2]} -- !{vb2[2]} -- !{vb2[3]} -- !{vb1[3]} -- cycle;
-\draw[cara] !{vb1[3]} -- !{vb2[3]} -- !{vb2[4]} -- !{vb1[4]} -- cycle;
+\draw[->,thick,red] (0, 0, 0) -- !{0.5*u1} node[below right] {$u_1$};
+\draw[->,thick,red] (0, 0, 0) -- !{0.5*u2} node[below right] {$u_2$};
+\draw[->,thick,red] (0, 0, 0) -- !{0.5*u3} node[below right] {$u_3$};
+\draw[->,thick,green] !{cO} -- !{cO + 0.5*u2} node[below right] {$r_1$};
+\draw[->,thick,green] !{cO} -- !{cO + 0.5*u3} node[below right] {$r_2$};
+\draw[->,thick,green] !{cO} -- !{cO + 0.5*u1} node[below right] {$r_3$};
+\draw[cara2] !{-0.5*u2 -0.5*u3} -- !{0.5*u2 -0.5*u3} -- !{0.5*u2 +0.5*u3} -- !{-0.5*u2 +0.5*u3} -- cycle;
+
+\draw[cara] !{cAP[0]} -- !{cAP[1]} -- !{cAP[2]} -- !{cAP[3]} -- !{cAP[4]} -- cycle;
+\draw[cara] !{cBP[0]} -- !{cBP[1]} -- !{cBP[2]} -- !{cBP[3]} -- !{cBP[4]} -- cycle;
+\draw[cara] !{cAP[0]} -- !{cBP[0]} -- !{cBP[1]} -- !{cAP[1]} -- cycle;
+\draw[cara] !{cAP[1]} -- !{cBP[1]} -- !{cBP[2]} -- !{cAP[2]} -- cycle;
+\draw[cara] !{cAP[2]} -- !{cBP[2]} -- !{cBP[3]} -- !{cAP[3]} -- cycle;
+\draw[cara] !{cAP[3]} -- !{cBP[3]} -- !{cBP[4]} -- !{cAP[4]} -- cycle;
+\draw[cara] !{cAP[4]} -- !{cBP[4]} -- !{cBP[0]} -- !{cAP[0]} -- cycle;
+\draw[fill = blue] !{A} circle (0.1mm) node[above left] {$A$};
+\draw[fill = blue] !{cO} circle (0.1mm) node[above left] {$O_c$}; 
 \end{tikzpicture}
 \end{center}
 \end{sagesub}
