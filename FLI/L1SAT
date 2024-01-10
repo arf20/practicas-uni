@@ -1,0 +1,7 @@
+tableaux puede trabajar sobre fbf tal cual
+	alpha > beta > delta > gamma
+	gamma no desaparece nunca
+
+resolucion requiere forma normal de skollen
+	funcion de skollen reemplaza variables que son alcanzadas por "para todos" en el orden que aparecen
+
