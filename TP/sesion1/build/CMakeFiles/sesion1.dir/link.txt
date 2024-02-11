@@ -1,0 +1,1 @@
+/usr/bin/cc -g -rdynamic CMakeFiles/sesion1.dir/sesion1.c.o -o sesion1 
