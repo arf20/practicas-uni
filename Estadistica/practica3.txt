@@ -1,0 +1,53 @@
+1.
+a.
+setwd("Downloads")
+datos = read.table("Juegos.dat")
+attach(datos)
+summary(datos)
+boxplot(VentasEEUU) // mal
+cuartiles=quantile(VentasEEUU, c(0.25, 0.5, 0.75))
+b.
+datos = VentasEEUU[VentasEEUU >= 0.1 && VentasEEUU <= 1]
+c.
+deciles = quantile(datos, seq(0.1, 0.9, 0.1))
+Q1 = as.numeric(quantile(datos, 0.25))
+Q2 = as.numeric(quantile(datos, 0.5))
+Q3 = as.numeric(quantile(datos, 0.75))
+d.
+RIC = Q3 - Q1
+e.
+atipicos = datos[datos < Q1-1.5*RIC | datos > Q3+1.5*RIC]
+f.
+boxplot(datos)
+g.
+datos_cat1 = datos[datos < quantile(datos, 0.2)]
+datos_cat2 = datos[datos >= quantile(datos, 0.2) & datos <= quantile(datos, 0.8)]
+datos_cat3 = datos[datos > quantile(datos, 0.2)]
+// no es exactamente 20% porque hay muchos datos repetidos
+
+2.
+datos2 = VentasJP[VentasJP >= 0.5 & VentasJP <= 1]
+// estudio de datos
+histograma = hist(datos2)
+// (por definicion)
+media = sum(datos2)/length(datos2)
+media = mean(datos2) // normal
+// (cuasivarianza por definicion)
+varianza = sum((datos2-media)^2)/length(datos2)
+varianza = var(datos2) // normal, difiere un poquito
+datos2_intervalos = cut(datos2, breaks=histograma$breaks, include.lowest=TRUE)
+nombres = names(table(datos2_intervalos))
+ni = as.numeric(table(datos2_intervalos))
+fi = ni/sum(ni)
+Ni = cumsum(ni)
+Fi = cumsum(fi)
+tabla = data.frame(ni, fi, Ni, Fi)
+Q1 = as.numeric(quantile(datos2, 0.25)
+Q2 = as.numeric(quantile(datos2, 0.5)
+Q3 = as.numeric(quantile(datos2, 0.75)
+RIC = Q3 - Q1
+atipicos = datos2[datos2 < Q1-1.5*RIC | datos2 > Q3+1.5*RIC]
+boxplot(datos2)
+
+
+
