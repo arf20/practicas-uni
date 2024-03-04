@@ -1,0 +1,11 @@
+datos = read.table("file");
+attach(datos)
+
+ni = table(Fecha)
+Ni = cumsum(ni)
+fi = ni / length(ni)
+Fi = cumsum(fi)
+
+media = sum(VentasEU) / length(VentasEU)
+varianza = sum((VentasEU - media)^2)/length(VentasEU)
+
