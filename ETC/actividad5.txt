@@ -1,0 +1,28 @@
+1.
+add	R
+beq	I
+lw	I
+add	R
+sw	I
+addi	I
+addi	I
+j	J
+sw	I
+
+2.
+add	$1 w, $0 r, $0 r	registro
+beq	$1 r, $2 r, fin i	relativo PC
+lw	$10 w, ($3)		base registro
+add	$10 w, $10 r, $4 r	registro
+sw	$10 r, ($3)		base registro
+addi	$3 w, $3 r, 4		inmediato
+sddi	$1 w, $1 r, 1		inmediato
+j	bucle			pseudodirecto
+sw	$1, ($3)		base registro
+
+3.
+36B
+
+4.
+10 veces
+$1 de 0 a 9
