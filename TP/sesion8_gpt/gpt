@@ -1,0 +1,394 @@
+Prompt: write a program in C that reads numbers n a and b, and then constructs a linked list of n random numbers between a and b
+
+Output:
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Define a structure for a node in the linked list
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to generate a random number between a and b
+int getRandomNumber(int a, int b) {
+    return rand() % (b - a + 1) + a;
+}
+
+// Function to create a new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert a node at the end of the linked list
+void insertAtEnd(struct Node** headRef, int data) {
+    struct Node* newNode = createNode(data);
+    if (*headRef == NULL) {
+        *headRef = newNode;
+        return;
+    }
+    struct Node* temp = *headRef;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+// Function to print the linked list
+void printList(struct Node* head) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    int n, a, b;
+    
+    // Seed the random number generator
+    srand(time(NULL));
+    
+    printf("Enter the number of elements (n): ");
+    scanf("%d", &n);
+    printf("Enter the range (a and b): ");
+    scanf("%d %d", &a, &b);
+
+    // Initialize head of the linked list
+    struct Node* head = NULL;
+
+    // Construct the linked list with random numbers
+    for (int i = 0; i < n; i++) {
+        int randomNumber = getRandomNumber(a, b);
+        insertAtEnd(&head, randomNumber);
+    }
+
+    // Print the linked list
+    printf("Linked List: ");
+    printList(head);
+
+    return 0;
+}
+```
+
+This program will ask the user for the number of elements (n) and the range (a and b), then it will generate a linked list of n random numbers between a and b, and finally, it will print the constructed linked list.
+
+Prompt: now transfer the linked list generation to a function that takes the size and random range as arguments, and make use of it in the main function with the variables read from user input
+
+Ouput:
+Sure, here's the modified program where the linked list generation logic is moved to a separate function that takes the size and random range as arguments
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Define a structure for a node in the linked list
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to generate a random number between a and b
+int getRandomNumber(int a, int b) {
+    return rand() % (b - a + 1) + a;
+}
+
+// Function to create a new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert a node at the end of the linked list
+void insertAtEnd(struct Node** headRef, int data) {
+    struct Node* newNode = createNode(data);
+    if (*headRef == NULL) {
+        *headRef = newNode;
+        return;
+    }
+    struct Node* temp = *headRef;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+// Function to generate a linked list of n random numbers between a and b
+struct Node* generateRandomList(int n, int a, int b) {
+    struct Node* head = NULL;
+    for (int i = 0; i < n; i++) {
+        int randomNumber = getRandomNumber(a, b);
+        insertAtEnd(&head, randomNumber);
+    }
+    return head;
+}
+
+// Function to print the linked list
+void printList(struct Node* head) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    int n, a, b;
+
+    // Seed the random number generator
+    srand(time(NULL));
+
+    printf("Enter the number of elements (n): ");
+    scanf("%d", &n);
+    printf("Enter the range (a and b): ");
+    scanf("%d %d", &a, &b);
+
+    // Generate the linked list
+    struct Node* head = generateRandomList(n, a, b);
+
+    // Print the linked list
+    printf("Linked List: ");
+    printList(head);
+
+    return 0;
+}
+
+```
+
+This program does the same as before, but now the logic for generating the linked list is encapsulated within the `generateRandomList` function.
+
+Prompt: good, now read another size and range from input and generate a second list in the same way, and then create a function to concatenate both linked lists one after the other
+
+Output:
+Sure, here's the modified program that reads another size and range from input, generates a second list, and then concatenates both linked lists:
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Define a structure for a node in the linked list
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to generate a random number between a and b
+int getRandomNumber(int a, int b) {
+    return rand() % (b - a + 1) + a;
+}
+
+// Function to create a new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert a node at the end of the linked list
+void insertAtEnd(struct Node** headRef, int data) {
+    struct Node* newNode = createNode(data);
+    if (*headRef == NULL) {
+        *headRef = newNode;
+        return;
+    }
+    struct Node* temp = *headRef;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+// Function to generate a linked list of n random numbers between a and b
+struct Node* generateRandomList(int n, int a, int b) {
+    struct Node* head = NULL;
+    for (int i = 0; i < n; i++) {
+        int randomNumber = getRandomNumber(a, b);
+        insertAtEnd(&head, randomNumber);
+    }
+    return head;
+}
+
+// Function to concatenate two linked lists
+struct Node* concatenateLists(struct Node* list1, struct Node* list2) {
+    if (list1 == NULL) {
+        return list2;
+    }
+    struct Node* temp = list1;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = list2;
+    return list1;
+}
+
+// Function to print the linked list
+void printList(struct Node* head) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    int n1, a1, b1, n2, a2, b2;
+
+    // Seed the random number generator
+    srand(time(NULL));
+
+    printf("Enter the size and range for the first list (n1, a1, b1): ");
+    scanf("%d %d %d", &n1, &a1, &b1);
+    printf("Enter the size and range for the second list (n2, a2, b2): ");
+    scanf("%d %d %d", &n2, &a2, &b2);
+
+    // Generate the first linked list
+    struct Node* list1 = generateRandomList(n1, a1, b1);
+    printf("First List: ");
+    printList(list1);
+
+    // Generate the second linked list
+    struct Node* list2 = generateRandomList(n2, a2, b2);
+    printf("Second List: ");
+    printList(list2);
+
+    // Concatenate the two lists
+    struct Node* concatenatedList = concatenateLists(list1, list2);
+    printf("Concatenated List: ");
+    printList(concatenatedList);
+
+    return 0;
+}
+```
+
+This program first generates two linked lists based on user input for their sizes and ranges. Then, it concatenates the two lists using the `concatenateLists` function and prints the concatenated list.
+
+Prompt: sorry, i forgot to mention the concatenated list must be a new list with copies of the elements from the two argument lists, that can't be modified
+
+Output:
+No problem! Here's the modified program where the concatenated list is created as a new list with copies of the elements from the two argument lists:
+
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Define a structure for a node in the linked list
+struct Node {
+    int data;
+    struct Node* next;
+};
+
+// Function to generate a random number between a and b
+int getRandomNumber(int a, int b) {
+    return rand() % (b - a + 1) + a;
+}
+
+// Function to create a new node
+struct Node* createNode(int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert a node at the end of the linked list
+void insertAtEnd(struct Node** headRef, int data) {
+    struct Node* newNode = createNode(data);
+    if (*headRef == NULL) {
+        *headRef = newNode;
+        return;
+    }
+    struct Node* temp = *headRef;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+// Function to generate a linked list of n random numbers between a and b
+struct Node* generateRandomList(int n, int a, int b) {
+    struct Node* head = NULL;
+    for (int i = 0; i < n; i++) {
+        int randomNumber = getRandomNumber(a, b);
+        insertAtEnd(&head, randomNumber);
+    }
+    return head;
+}
+
+// Function to create a new list with copies of the elements from the two argument lists
+struct Node* concatenateLists(struct Node* list1, struct Node* list2) {
+    struct Node* result = NULL;
+    struct Node* temp1 = list1;
+    struct Node* temp2 = list2;
+
+    // Copy elements from list1
+    while (temp1 != NULL) {
+        insertAtEnd(&result, temp1->data);
+        temp1 = temp1->next;
+    }
+
+    // Copy elements from list2
+    while (temp2 != NULL) {
+        insertAtEnd(&result, temp2->data);
+        temp2 = temp2->next;
+    }
+
+    return result;
+}
+
+// Function to print the linked list
+void printList(struct Node* head) {
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
+}
+
+int main() {
+    int n1, a1, b1, n2, a2, b2;
+
+    // Seed the random number generator
+    srand(time(NULL));
+
+    printf("Enter the size and range for the first list (n1, a1, b1): ");
+    scanf("%d %d %d", &n1, &a1, &b1);
+    printf("Enter the size and range for the second list (n2, a2, b2): ");
+    scanf("%d %d %d", &n2, &a2, &b2);
+
+    // Generate the first linked list
+    struct Node* list1 = generateRandomList(n1, a1, b1);
+    printf("First List: ");
+    printList(list1);
+
+    // Generate the second linked list
+    struct Node* list2 = generateRandomList(n2, a2, b2);
+    printf("Second List: ");
+    printList(list2);
+
+    // Concatenate the two lists
+    struct Node* concatenatedList = concatenateLists(list1, list2);
+    printf("Concatenated List: ");
+    printList(concatenatedList);
+
+    return 0;
+}
+```
+
+This program now creates a new list with copies of the elements from the two argument lists using the `concatenateLists` function. The original lists remain unchanged.
+
+
