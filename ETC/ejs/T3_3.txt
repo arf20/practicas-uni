@@ -1,0 +1,70 @@
+3.
+a.
+
+
+main:
+s0 = 0x12345678
+t0 = array
+t1 = 10
+t1 = t1 << 2 = t1 * 4 = 10 * 4 = 40
+t1 = t1 + t0 = array + 40 = &array[10]
+t2 = t0 = array
+
+inicializa s0 a una constante 12345678 hex, t1 = array + 40, t2 = array
+
+buc:
+t3 = *t2 = array[0]
+t3 = t3 & 1
+if t3 == 0 goto zer
+s0 += 1
+
+zer:
+t2 += 4
+if t2 == t1 goto fin
+
+goto buc
+
+fin:
+return
+
+
+for (t2 = array; t2 != t1; t2 += 4) {
+	if (*t2 & 1 != 0)
+		s0++;
+}
+
+recorre todo el array, y si el elemento es impar, suma 1 a 12345678
+s0 acaba en 12345678+7 = 1234567e
+t0 acaba en array, no se ha cambiado
+t1 acaba en array + 40, direccion del siguiente al ultimo elemento, no se ha cambiado
+t2 acaba en el ultimo elemento, array + 36
+t3 acaba como el LSB del ultimo elemento, 1
+
+array = 10010000
+main =  00400000
+
+
+
+b.
+
+LINE	N ejec	C/I	C	lbl	inst
+1					.data
+2				array:	.word 11,13,14,15,17
+3					.word 19,21,22,24,27
+4					.text
+5	1	4+4	8	main:	li $s0, 0x12345678
+6	1	4	4		la $t0, array
+7	1	4+4	8		li $t1, 10
+8	1	4	4		sll $t1, $t1, 2
+9	1	4	4		add $t1, $t1, $t0
+10	1	4	4		move $t2, $t0
+11	10	5	50	buc:	lw $t3, 0($t2)
+12	10	4	40		andi $t3, $t3, 1
+13	10	3	30		beq $t3, $0, zer
+14	7	4	28		addi $s0, $s0, 1
+15	10	4	40	zer:	addi $t2, $t2, 4
+16	10	3	30		beq $t2, $t1, fin
+17	9	3	27		j buc
+18	1	3	3	fin:	jr $ra
+----------------------------------------------------
+			280 ciclos
