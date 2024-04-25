@@ -1,0 +1,147 @@
+=>PYTHONTEX#sage#default#default#0#block#####25#
+	f(x) = tan(x) - x/(x-1)
+=>PYTHONTEX#sage#default#default#1#i#####29#
+plot(f(x), (x,-10,10))
+=>PYTHONTEX#sage#default#default#2#block#####37#
+		f(x) = sin(x) * (x-1)- cos(x)
+=>PYTHONTEX#sage#default#default#3#i#####41#
+plot(f(x), (x,-5,0))
+=>PYTHONTEX#sage#default#default#4#i#####42#
+plot(f(x), (x,-3.5,-3))
+=>PYTHONTEX#sage#default#default#5#i#####43#
+plot(f(x), (x,-1,-0.5))
+=>PYTHONTEX#sage#default#default#6#block#####47#
+		a = -0.6
+		b = -0.5
+		a0 = a
+		b0 = b
+		c0 = (a0+b0)/2
+		
+		a1 = a0
+		b1 = c0
+		c1 = (a1+b1)/2
+		
+		a2 = c1
+		b2 = b1
+		c2 = (a2+b2)/2
+		
+		a3 = a2
+		b3 = c2
+		c3 = (a3+b3)/2
+=>PYTHONTEX#sage#default#default#7#i#####76#
+c0
+=>PYTHONTEX#sage#default#default#8#i#####76#
+f(a0)
+=>PYTHONTEX#sage#default#default#9#i#####76#
+f(c0)
+=>PYTHONTEX#sage#default#default#10#i#####76#
+f(b0)
+=>PYTHONTEX#sage#default#default#11#i#####76#
+c1
+=>PYTHONTEX#sage#default#default#12#i#####76#
+f(a1)
+=>PYTHONTEX#sage#default#default#13#i#####76#
+f(c1)
+=>PYTHONTEX#sage#default#default#14#i#####76#
+f(b1)
+=>PYTHONTEX#sage#default#default#15#i#####76#
+c2
+=>PYTHONTEX#sage#default#default#16#i#####76#
+f(a2)
+=>PYTHONTEX#sage#default#default#17#i#####76#
+f(c2)
+=>PYTHONTEX#sage#default#default#18#i#####76#
+f(b2)
+=>PYTHONTEX#sage#default#default#19#i#####76#
+c3
+=>PYTHONTEX#sage#default#default#20#i#####76#
+f(a3)
+=>PYTHONTEX#sage#default#default#21#i#####76#
+f(c3)
+=>PYTHONTEX#sage#default#default#22#i#####76#
+f(b3)
+=>PYTHONTEX#sage#default#default#7#i#####76#
+c0
+=>PYTHONTEX#sage#default#default#8#i#####76#
+f(a0)
+=>PYTHONTEX#sage#default#default#9#i#####76#
+f(c0)
+=>PYTHONTEX#sage#default#default#10#i#####76#
+f(b0)
+=>PYTHONTEX#sage#default#default#11#i#####76#
+c1
+=>PYTHONTEX#sage#default#default#12#i#####76#
+f(a1)
+=>PYTHONTEX#sage#default#default#13#i#####76#
+f(c1)
+=>PYTHONTEX#sage#default#default#14#i#####76#
+f(b1)
+=>PYTHONTEX#sage#default#default#15#i#####76#
+c2
+=>PYTHONTEX#sage#default#default#16#i#####76#
+f(a2)
+=>PYTHONTEX#sage#default#default#17#i#####76#
+f(c2)
+=>PYTHONTEX#sage#default#default#18#i#####76#
+f(b2)
+=>PYTHONTEX#sage#default#default#19#i#####76#
+c3
+=>PYTHONTEX#sage#default#default#20#i#####76#
+f(a3)
+=>PYTHONTEX#sage#default#default#21#i#####76#
+f(c3)
+=>PYTHONTEX#sage#default#default#22#i#####76#
+f(b3)
+=>PYTHONTEX#sage#default#default#23#block#####86#
+		epsilon = 10^-8
+		cota = numerical_approx((log((b-a)/epsilon)/log(2)) - 1)
+=>PYTHONTEX#sage#default#default#24#i#####91#
+cota
+=>PYTHONTEX#py#default#default#0#code#####93#
+a0 = a
+b0 = b
+c0 = (a0+b0)/2
+N = 23
+i = 0
+while i <= N:
+	if (f(a0)*f(c0) < 0):
+		b0 = c0
+		c0 = (a0+b0)/2
+	else:
+		a0 = c0
+		c0 = (a0+b0)/2
+	i++
+=>PYTHONTEX#sage#default#default#25#i#####112#
+N
+=>PYTHONTEX#sage#default#default#26#i#####112#
+c0
+=>PYTHONTEX#sage#default#default#25#i#####112#
+N
+=>PYTHONTEX#sage#default#default#26#i#####112#
+c0
+=>PYTHONTEX:SETTINGS#
+version=0.18
+outputdir=pythontex-files-newton
+workingdir=.
+workingdirset=false
+gobble=none
+rerun=default
+hashdependencies=default
+makestderr=false
+stderrfilename=full
+keeptemps=none
+pyfuture=default
+pyconfuture=none
+pygments=true
+pygglobal=:GLOBAL||
+fvextfile=-1
+pyconbanner=none
+pyconfilename=stdin
+depythontex=false
+pygfamily=py|python3|
+pygfamily=pycon|pycon|
+pygfamily=sympy|python3|
+pygfamily=sympycon|pycon|
+pygfamily=pylab|python3|
+pygfamily=pylabcon|pycon|
+pygfamily=sage|sage|

@@ -1,0 +1,114 @@
+\documentclass{amsart}
+\usepackage[utf8]{inputenc}
+\usepackage[usefamily=sage]{pythontex} 
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[most]{tcolorbox}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{graphicx}
+\usetikzlibrary{3d}
+\usepackage{tikz-3dplot}
+
+\title{Ejemplo SageTeX}
+
+\begin{document}
+	\section{Ej 1}
+	
+	a. prepara
+	
+	\begin{align*}
+		\tan(x) &= \frac{x}{x-1} \\
+		\tan(x) - \frac{x}{x-1} &= 0\\
+	\end{align*}
+	
+	\begin{sageblock}
+	f(x) = tan(x) - x/(x-1)
+	\end{sageblock}
+	
+	\sage{plot(f(x), (x,-10,10))}
+	
+	\begin{align*}
+		\frac{\sin x}{\cos x} &= \frac{x}{x-1} \\
+		\sin (x) (x-1) &= \cos x \\
+		\sin (x) (x-1) - \cos x &= 0 \\
+	\end{align*}
+
+	\begin{sageblock}
+		f(x) = sin(x) * (x-1)- cos(x)
+	\end{sageblock}
+	
+	\sage{plot(f(x), (x,-5,0))}
+	\sage{plot(f(x), (x,-3.5,-3))}
+	\sage{plot(f(x), (x,-1,-0.5))}
+	
+	b.
+	
+	\begin{sageblock}
+		a = -0.6
+		b = -0.5
+		a0 = a
+		b0 = b
+		c0 = (a0+b0)/2
+		
+		a1 = a0
+		b1 = c0
+		c1 = (a1+b1)/2
+		
+		a2 = c1
+		b2 = b1
+		c2 = (a2+b2)/2
+		
+		a3 = a2
+		b3 = c2
+		c3 = (a3+b3)/2
+	\end{sageblock}
+
+	\begin{align*}
+		c_0 &= \sage{c0} \\
+		f(a_0),f(c_0),f(b_0) &= \sage{f(a0)},\sage{f(c0)},\sage{f(b0)} \\
+		c_1 &= \sage{c1} \\
+		f(a_1),f(c_1),f(b_1) &= \sage{f(a1)},\sage{f(c1)},\sage{f(b1)} \\
+		c_2 &= \sage{c2} \\
+		f(a_2),f(c_2),f(b_2) &= \sage{f(a2)},\sage{f(c2)},\sage{f(b2)} \\
+		c_3 &= \sage{c3} \\
+		f(a_3),f(c_3),f(b_3) &= \sage{f(a3)},\sage{f(c3)},\sage{f(b3)} \\
+	\end{align*}
+	
+	c.
+	
+	Cota de error
+	
+	$$
+		N > \frac{\log (\frac{b-a}{\varepsilon})}{\log 2} - 1
+	$$
+	
+	\begin{sageblock}
+		epsilon = 10^-8
+		cota = numerical_approx((log((b-a)/epsilon)/log(2)) - 1)
+	\end{sageblock}
+
+	$$ N = \sage{cota} $$
+	
+	\begin{pycode}
+a0 = a
+b0 = b
+c0 = (a0+b0)/2
+N = 23
+i = 0
+while i <= N:
+	if (f(a0)*f(c0) < 0):
+		b0 = c0
+		c0 = (a0+b0)/2
+	else:
+		a0 = c0
+		c0 = (a0+b0)/2
+	i+=1
+	\end{pycode}
+
+	\begin{align*}
+		N &= \sage{N} \\
+		c_N &= \sage{c0} \\
+	\end{align*}
+	
+\end{document}

@@ -1,0 +1,92 @@
+\documentclass{amsart}
+\usepackage{sagetex}
+\usepackage[utf8]{inputenc}
+\usepackage{float}
+
+\title{Ejemplo SageTeX}
+
+\begin{document}
+	\section{Ej 1}
+		
+	\begin{sageblock}
+		f(x) = cos(x) + sin(x)
+	\end{sageblock}
+
+	i.
+	
+	\begin{sageblock}
+		P(x) = taylor(f, x, 0, 5)
+	\end{sageblock}
+	
+	$$
+		\sage{P}
+	$$
+
+	ii.
+	\sageplot{plot(f,(x,-3,3),legend_label='$f(x)$',color='red')+plot(P,(x,-3,3),legend_label='$P(x)$')}
+	
+	iii.
+	\begin{sageblock}
+		A = P(0.1)
+	\end{sageblock}
+	
+	$$ 	A = \sage{A} $$
+	
+	iv.
+	
+	\sageplot{plot(abs(diff(f(x),x,6)),(x,0,0.1),legend_label='$fd6(x)$',color='red')+plot(1.1,(x,0,0.1),legend_label='$M$')}
+	
+	$$ M = 1.1 $$
+	
+	\begin{align*}
+		cota &= \frac{M \cdot |x - a|^{n+1}}{(n+1)!} \\
+		cota &= \frac{1.45 \cdot |0.1 - 0|^6}{6!} \\
+		cota &= \sage{(1.1*0.1^6)/factorial(6)}
+	\end{align*}
+
+	\section{Ej 4}
+	
+	\begin{sageblock}
+		f(x) = log(x)
+	\end{sageblock}
+	
+	a.
+	
+	\begin{sageblock}
+		P(x) = taylor(f, x, 2, 4);
+	\end{sageblock}
+
+	$$ \sage{P} $$
+	
+	b.
+	
+	\sageplot{plot(f(x),(x,0.1,6),legend_label='$f(x)$',color='red')+plot(P(x),(x,0.1,6),legend_label='$P(x)$')}
+	
+	c.
+	
+	\begin{sageblock}
+		A = P(2.5)
+	\end{sageblock}
+
+	$$ A = \sage{A} $$
+
+	d.
+	
+	\sageplot{plot(abs(diff(f(x),x,5)),(x,2,2.5),legend_label='$fd5(x)$',color='red')+plot(0.8,(x,2,2.5),legend_label='$M$')}
+
+	$$ M = 0.8 $$
+	
+	\begin{align*}
+		cota &= \frac{M \cdot |x - a|^{n+1}}{(n+1)!} \\
+		cota &= \frac{0.8 \cdot |2 - 2.5|^{5}}{5!} \\
+		cota &= \sage{(0.8*(2-2.5)^5)/factorial(5)}
+	\end{align*}
+
+	e.
+	
+	\sageplot{plot(abs(f(x)-P(x)),(x,1.5,2.8),legend_label='$|f(x)-P(x)|$',color='red')+plot(0.000208,(x,1.5,2.8),legend_label='$cota$')+point((2.5,0))}
+	
+	Entre $1.5$ y $2.45$
+	
+	
+\end{document}
