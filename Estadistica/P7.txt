@@ -1,0 +1,89 @@
+
+f <- function(x) sum(prob[val==x]
+f=Vectorize(f)
+
+F <- function(x) sum(prob[val<=x])
+F=Vectorize(F)
+
+plot(val,f(val),type="h")
+points(val,f(val),pch=20)
+
+x <- c(min(val)-1,val,max(val)+1)
+plot(x,F(x),type="s")
+points(val,F(val),pch=20)
+
+media<-sum(val*f(val))
+var<-sum((val-media)^2*f(val))
+sd<-sqrt(var)
+
+datos<-sample(val,1000,prob=prob,replace=TRUE)
+
+tabla_frecuencia=table(datos)/length(datos)
+
+tablaFrecAcum=cumsum(tabla_frecuencia)
+
+c(mean(datos), media.X)
+c(var(datos),var.X)
+c(sd(datos), dt.X)
+
+
+percentil=function(p){
+for(a in val){
+if(F(a)>=p){return(a)}
+	}
+}
+percentil=Vectorize(percentil)
+
+Q1=percentil(0.25)
+Q3=percentil(0.75)
+atipicos=val[val>Q3+1.5*RIC | val<Q1-1.5*RIC]
+
+
+
+
+// PARTE JODIDA
+
+
+f <- function(x){
+if(x<=2){return(0)}
+if(x>=4.5){return(0)}
+return(x)
+}
+
+f=Vectorize(f)
+
+suma=integrate(f,2,4.5)$value 			// 2 Y 4.5 SON LOS VALORES ENTRE LOS QUE ESTÁ 2<x<4.5
+
+f <- function(x){
+if(x<=2){return(0)}
+if(x>=4.5){return(0)}
+return(x/suma)
+}
+
+f=Vectorize(f)
+
+integrate(f,2,4.5)$value
+
+F <- function(x){
+if(x<=2){return(0)}
+if(x>=4.5){return(1)}
+return(integrate(f,2,x)$value)
+}
+
+F=Vectorize(F)
+
+plot(f,1,5)
+plot(F,1,5)
+
+percentil=function(p){
+per=uniroot(function(x) F(x)-p,c(2,4.5))$root
+return(per)
+}
+percentil=Vectorize(percentil)
+
+datos=percentil(runif(10000,0,1))
+
+hist(datos,breaks=seq(2,4.5,0.1),freq=FALSE)
+
+
+/////
