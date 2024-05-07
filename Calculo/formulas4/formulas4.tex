@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[usefamily=sage]{pythontex} 
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage[most]{tcolorbox}
+\usepackage[margin = 2cm]{geometry}
+\usepackage{graphicx}
+\usetikzlibrary{3d}
+\usepackage{tikz-3dplot}
+
+\begin{document}
+	\section{Interpolación}
+
+	\subsection{Polinomio de Taylor}
+	
+	\begin{verbatim}
+		# nodos
+		X = [ k/5 for k in [0..n] ]
+		# puntos
+		XY = [ (X[i], f(X[i])) for i in [0..n] ]
+		# funcion interpolacion
+		p(x) = RR['x'].lagrange_polynomial(XY)       # magia
+	\end{verbatim}
+
+	Error
+	$$
+		|f^{(n+1)}(x)| \le M \ x \in [a, b]
+	$$
+	$$
+		\varepsilon = \frac{M}{(n+1)!}
+	$$
+	
+	\subsection{Lineal a trozos}
+	
+	$$
+		r(a, b, x) = f(a) + \frac{f(b) - f(a)}{b - a} \cdot (x - a)
+	$$
+	
+	\begin{verbatim}
+		# [nodos] puntos
+		XY = [ (X[i], f(X[i])) for i in [0..n] ]
+		# funcion lineal
+		r(a, b, x) = f(a) + ((f(b) - f(a))/(b - a)) * (x - a)
+		# trozos de funciones lineales
+		L = piecewise([[(X[i], X[i+1]), r(X[i], X[i+1], x)] for i in [0..n-1]], var = x)     # feardo
+	\end{verbatim}
+	
+	Error
+	$$
+		|f''(x)| \le M \ x \in [a, b]
+	$$
+	$$
+		\varepsilon = \frac{M}{8} \cdot max(\Delta x)
+	$$
+	
+	\section{Integración numérica}
+	
+	\subsection{Trapecios}
+	
+	$$
+		\int_a^b f(x) \, dx \approx \frac{b-a}{n} \cdot \sum_{i=0}^{n-1} \frac{f(x_i) + f(x_{i+1})}{2}
+	$$
+	
+	\begin{verbatim}
+		# nodos
+		X = [ (a + k*((b-a)/n)) for k in [0..n] ]
+		# trapecios
+		trap = ((b-a)/n) * sum( (f(X[i]) + f(X[i+1]))/2 for i in [0..n-1] )
+	\end{verbatim}
+
+	Error
+	$$
+		|f''(x)| \le M \ x \in [a, b]
+	$$
+	$$
+		\varepsilon = \frac{M(b-a)^3}{12n^2}
+	$$
+
+	\pagebreak
+
+	\subsection{Simpson}
+	
+	$$
+		\int_a^b f(x) \, dx \approx \frac{b-a}{6n} \cdot \left( f(a) + 4 \sum_{i=1}^{n} f(x_{2i-1}) + 2 \sum_{i=1}^{n-1} f(x_{2i}) + f(b) \right)
+	$$
+	
+	\begin{verbatim}
+		# nodos (2n+1)
+		X = [ (a + k*(b-a)/(2*n)) for k in [0..2*n] ]
+		# simpson
+		simpson = ((b-a)/(6*n))*( f(a) + 4*sum(f(X[2*i-1]) for i in [1..n]) +
+		    2*sum(f(X[2*i]) for i in [1..n-1]) + f(b) )
+	\end{verbatim}
+	
+	Error
+	$$
+		|f''''(x)| \le M \ x \in [a, b]
+	$$
+	$$
+		\varepsilon = \frac{M(b-a)^5}{180(2n)^4}
+	$$
+	
+	\section{Integrales útiles}
+	
+	\subsection{Área entre funciones}
+	
+	$$
+		\int_a^b g(x) - f(x) \, dx
+	$$
+	
+	\subsection{Longitud de curva}
+	
+	$$
+		\int_a^b \sqrt{1 + |f'(x)|^2} \, dx
+	$$
+	
+	\section{Plotting}
+	
+	Para funciones dadas y interpoladas
+	
+	\begin{verbatim}
+		plot(x, a, b)
+	\end{verbatim}
+
+	Composición
+	
+	\begin{verbatim}
+		plot(x, a, b) + plot(g, a, b, color='red')
+	\end{verbatim}
+
+	Cota
+	
+	\begin{verbatim}
+		plot(x, a, b) + plot(12, a, b)
+	\end{verbatim}
+
+	Cota de absoluto de derivada
+
+	\begin{verbatim}
+		plot(abs(diff(f, x)), a, b) + plot(12, a, b)
+	\end{verbatim}
+
+	Error real entre función y su interpolada $g$ por debajo de cota de error $e$
+	
+	\begin{verbatim}
+		plot(abs(f(x) - g(x)), (x, a, b)) + plot(e, a, b)
+	\end{verbatim}
+
+	Función, interpolada y nodos
+	
+	\begin{verbatim}
+		plot(x, a, b) + plot(g, a, b, color='red') + points(XY, color='magenta')
+	\end{verbatim}
+
+\end{document}
+
+
+
