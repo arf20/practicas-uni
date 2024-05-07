@@ -1,0 +1,83 @@
+f(x) = loquesea
+
+
+# INTERPOLACION POLINOMICA
+#   POLINOMIO DE LAGRANGE
+# a. interpolacion de grado n=5
+# nodos [0..1]
+X = [ k/5 for k in [0..5] ]
+# mesh
+XY = [ (X[i], f(X[i])) for i in [0..5] ]
+# interpolacion RR es real field con x
+p(x) = RR['x'].lagrange_polynomial(XY)
+
+# plot
+plot(f, 0, 1) + plot(P, 0, 1) + point2d(XY)
+
+# b. cota de error
+# cota derivada grado n+1 -> 1
+plot(abs(diff(f, x, 5+1)), 0, 1) + plot(1, 0, 1)
+# error = cota/n+1!
+error = 1/6!
+
+plot(cota, 0, 1) + plot(abs(f(x) - P(x)), x, 0, 1)
+
+# INTERPOLACION LINEAL A TROZOS
+# a. 
+# nodos
+p_k = te lo dan nodos en el rango
+# puntos
+X = [ p_k(k) for k in [...] ]
+XY = [ (X[i], f(X[i])) for i in [...] ]
+
+# r es y en x de recta que pasa por (a, f(a)) y (b, f(b))
+r(a, b, x) = f(a) + ((f(b) - f(a))/(b - a)) * (x - a)
+# funcion a trozos
+#L = piecewise(lista de (rango, funcion), var=x)
+L = piecewise([[(X[i], X[i+1]), r(X[i], X[i+1], x)] for i in [...-1]], var = x)
+
+plot(L, loquesea) + plot(f, ...) + point2d(XY)
+
+# b. cota de error
+# segunda derivada (siempre) de f
+plot(abs(diff(f, x, 2)), ...) # cota M = 4.1
+# cota de error
+cota = M/8 * max((X[i+1] - X[i]) for i in [...-1]
+
+# INTEGRACION NUMERICA
+#   TRAPECIOS
+# a.
+# nodos
+X = [ (a + k*((b-a)/n)) for k in [0..n] ]
+# aprox
+trap = ((b-a)/n) * sum( (f(X[i]) + f(X[i+1]))/2 for i in [0..n-1] )
+
+# b. cota de error
+# segunda derividada siempre
+plot(abs(diff(f, x, 2)), a, b) # -> M
+# cota
+cota = (M*(b-a)^3)/12*n^2
+
+
+# INTEGRACION NUMERICA
+#   SIMPSON
+# a.
+# nodos (2n+1)
+X = [ (a + k*(b-a)/(2*n)) for k in [0..2*n] ]
+# simpson
+simpson = ((b-a)/(6*n))*(f(a) + 4*sum(f(X[2*i-1]) for i in [1..n]) + 2*sum(f(X[2*i]) for i in [1..n-1]) + f(b))
+
+# b. cota de error
+# cuarta derivada siempre
+plot(abs(diff(f, x, 4)), a, b) # => M
+# cota
+cota = M * (b-a)^5/180*(2*n)^4
+
+
+# AREA ENTE FUNCIONES
+A = integral(g(x) - f(x), x, a, b)
+
+# LONGITUD DE CURVA
+L = integrate(sqrt(1 + abs(diff(f, x))^2), x, a, b)
+
+
