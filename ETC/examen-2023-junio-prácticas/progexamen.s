@@ -337,32 +337,49 @@ for:	bge 	$s0, $s1, forend
 #      if (paciente_ya_visto(estadisticas,
 #                            consultas[i].paciente_id)) {
 	move	$a0, $s7	# $a0 = estadisticas
-	add	$s2, $s2, -4	# $s2 = consultas + (168*i)
+	add	$s2, $s2, -4	# $s2 = consultas + (168*i) = &consultas[i]
 	lw	$a1, ($s2)	# $a1 = consultas[i].paciente_id   -> $a1 = *(consultas + (168*i))
 	jal	paciente_ya_visto
 	beqz	$v0, if2end
 #        int indice = estadisticas->num_pacientes_id_vistos;
 	add	$s3, $s7, 4	# $s2 = estadisticas + 4
-	lw	$s4, ($s3)	# $s3 = *(estadisticas + 4) = estadisticas->num_pacientes_id_vistos
+	lw	$s4, ($s3)	# $s3 = *(estadisticas + 4) = estadisticas->num_pacientes_id_vistos (indice)
 #        estadisticas->num_pacientes_id_vistos = indice + 1;
 	add	$s4, $s4, 1
 #        estadisticas->pacientes_id_vistos[indice] = consultas[i].paciente_id;
-	
+	sw	$s4, ($s3)
 #        Paciente *p = buscar_paciente_por_id(consultas[i].paciente_id);
+	lw	$a0, ($s2)	# $a0 = consultas[i].paciente_id
+	jal	buscar_paciente_por_id	# $v0 p
 #        estadisticas->altura_media_pacientes_cm = estadisticas->altura_media_pacientes_cm + p->altura_cm;
+	addiu	$s2, $s7, 88	# $s2 = &estadisticas->altura_media_pacientes_cm
+	lw	$s3, ($s2)	# $s3 = estadisticas->altura_media_pacientes_cm
+	addiu	$s4, $v0, 52	# $s4 = &p->altura_cm
+	lw	$s1, ($s4)	# $s1 = p->altura_cm
+	add	$s3, $s3, $s1 	# $s3 = estadisticas->altura_media_pacientes_cm + p->altura_cm;
+	sw	$s3, ($s2)	# estadisticas->altura_media_pacientes_cm = estadisticas->altura_media_pacientes_cm + p->altura_cm;
 #      }
 if2end:
 #    }
 ifend:
 #  }
+	addi	$s0, $s0, 1	# i++
 	j	for
 forend:
 
 #  if (estadisticas->num_pacientes_id_vistos > 0) {
+	addiu	$s0, $s7, 4	# $s0 = &estadisticas->num_pacientes_id_vistos
+	lw	$s1, ($s0)	# $s1 = estadisticas->num_pacientes_id_vistos
+	blez	$s1, if3end
 #      estadisticas->altura_media_pacientes_cm = estadisticas->altura_media_pacientes_cm / estadisticas->num_pacientes_id_vistos;
+	addiu	$s2, $s7, 88	# $s2 = &estadisticas->altura_media_pacientes_cm
+	lw	$s3, ($s2)	# $s3 = estadisticas->altura_media_pacientes_cm
+	div	$s3, $s3, $s1
+	sw	$s3, ($s2)
 #  }
+if3end:
 #}
-        # deapiar
+        # desapilar
         jr	$ra
 
 # EJERCICIO 3
