@@ -30,11 +30,11 @@ struct FechaRep {
 };
 
 struct PacienteRep {  // (4)
-  int id;                       // 0
+  int id;                       // 0 (4)
   char nombre[MAX_LEN_NOMBRE];  // 4 (35+1)
   Fecha nacimiento;             // 40 (12)
-  int altura_cm;                // 52
-  char sexo; // «H»ombre | «M»u // 56
+  int altura_cm;                // 52 (4)
+  char sexo; // «H»ombre | «M»u // 56 (4)
                                 // 60
 };
 
@@ -48,8 +48,8 @@ struct ConsultaMedicaRep {        // 168 total con padding
 struct EstadisticasRep {
   int num_consultas_totales;              // 0 (4)
   int num_pacientes_id_vistos;            // 4 (4)
-  int pacientes_id_vistos[MAX_PACIENTES]; // 8 (4)
-  int altura_media_pacientes_cm;          // 12 (4)
+  int pacientes_id_vistos[MAX_PACIENTES]; // 8 (80)
+  int altura_media_pacientes_cm;          // 88 (4)
 };
 
 Paciente pacientes[MAX_PACIENTES] = {
