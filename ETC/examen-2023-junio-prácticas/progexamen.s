@@ -244,7 +244,7 @@ str018:
 	.asciiz		"Opción incorrecta. Pulse cualquier tecla para seguir.\n"
 
 	.text	
-
+	j main
 # EJERCICIO 1
 ordenar_pacientes_por_nacimiento:
 	addiu	$sp, $sp, -4
