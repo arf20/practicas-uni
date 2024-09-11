@@ -1,0 +1,130 @@
+1.
+1.1. Resolucion del problema
+
+Un ingieniero informatico resuelve problemas.
+
+Las herramientas que usa son las estructuras de datos y algoritmos.
+
+Las estructuras de datos son la parte estatica del problema, representan los datos de entrada, salida e intermedio (estado). 
+
+Los algoritmos son la parte dinamica, que manipula los datos para obtener la solucion.
+
+
+1.1.1. Analisis de problema
+ - analisis de requisitos (ambiguos...)
+
+1.1.2. Modelado del problema y algoritmos abstractos
+ - modelo abstracto del problema, mental
+ - analogía con algo conocido previamente
+ - algoritmos informales, idea vaga
+
+1.1.3. Diseño de la solucion
+ - siempre previo a implementacion
+ - tipos de datos abstractos, no como se representan
+ - algoritmos en pseudocodigo
+
+1.1.4. Implementación del diseño
+ - especificación, parte de diseño
+ - que, como, donde programar las cosas
+ - de tipos a estructuras de datos especificas en el lenguaje
+ - implementacion de algoritmos en un lenguage concreto
+
+1.1.5. Verificacion y evaluacion
+ - verificar, corregir, repetir
+ - todos los pasos de la resolucion
+ - analisis de eficiencia
+
+1.2. Tipos de datos
+Definiciones
+
+1.2.1. Tipo de datos, tipo abstracto y estructura
+ - Tipo de datos abstracto (TAD): dominio abstracto de valores y conjunto de operaciones sobre ellas. Ocultacion de implementacion.
+ - Tipo de datos: conjunto de posibles valores de una variable y operaciones sobre ella
+ - Estructura de datos: representacion en memoria de datos
+
+1.2.2. Tipos de tipos
+ - Primitivos: definidos por el lenguaje (int)
+ - Definidos por el usuario
+
+ - Tipo simple: unico valor en instante
+ - Compuesto: union de varios tipos
+
+ - Mutables
+ - Inmutables: su valor no puede cambiar
+
+
+1.2.3. Repaso de tipos
+ - enteros
+ - reales
+ - caracteres
+ - cadenas
+ - booleanos
+
+ - listas
+ - pilas
+ - colas
+
+ - puntero: direccion a una variable (valor especial nulo)
+    - indirección
+    - dirección
+    - aritmetica
+
+1.3. Algoritmos y algoritmica
+Serie de reglas que con datos de entrada produce una salida que cumple:
+ - definibilidad
+ - finitud
+
+ - determinista
+ - indeterminista
+
+1.3.2. Analisis de algoritmos
+Eficiencia: resultados/consumidos
+
+ - Por calidad del resultado
+ - Por recursos consumidos
+
+Recursos
+ - Factores externos
+ - Tamaño del problema
+ - Contenido de los datos de entrada
+
+Notacion
+ - tiempos de ejecucion
+ - N instrucciones...
+
+ - O-grande: cota superior asintotica...
+
+1.3.3. Diseño de algoritmos
+ - Interpretacion a partir de elementos genericos
+ - Solcuionar elementos genericos
+ - Esquema algoritmico combinando estos elementos
+
+Tecnicas:
+ - Divide y vencerás
+ - Voraces
+ - Programacion dinamica
+ - Backtracking
+ - Ramificacion y poda
+ - Minimax y alfa-beta
+
+1.3.4. Descripcion del pseudocodigo utilizado
+...
+
+1.4. Consejos para una buena programación
+Evitar codigo spaghetti, gigante monolitico
+
+1.4.1. Importancia de diseño y analisis [redundante]
+Ingienería del software
+
+1.4.2. Modularidad: encapsulación y ocultamiento
+Utilizar modulos, paqutes, clases, etc
+que agrupan funcionalidades relacionadas: encapsulación
+
+Ocultación: interface opaca a operaciones
+
+1.4.3. Otros
+ - Reulitizar programas
+ - Resolver casos generales
+ - Repartir bien funcionalidad en todos los niveles
+ - Simplificar
+
