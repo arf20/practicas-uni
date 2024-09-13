@@ -128,3 +128,91 @@ Ocultación: interface opaca a operaciones
  - Repartir bien funcionalidad en todos los niveles
  - Simplificar
 
+
+2. Abstracciones y especificaciones
+2.1. Las abstracciones en programación
+Los niveles de abstracción
+
+2.1.1. Diseño mediante abstracciones
+Pasos
+ - Identificar subproblemas
+ - Especificar subproblemas de forma abstracta
+ - Resolver cada subproblema
+ - Unir las soluciones y verificar problema
+
+2.1.2. Mecanismos de abstracción: especificacion y parametrización
+
+Las funciones y tipos de datos son descritas en especificaciones opcionalmente parametrizadas
+(que se den en funcion de parametros). Especificación y parametrizacion no tienen por que ir
+juntas.
+
+ - Especificación: Distinguir lo relevante de lo que no. Descripción del efecto o resultado.
+    No el como. (la mas usada)
+   
+    - Principio de la ocultación de la implementación.
+    - Encapsulación: Operaciones y tipos relacionados son agrupados en modulos o paquetes.
+       - Modulo: abstraccion de abstracciones, mas alto nivel
+
+ - Parametrización: Parametrizado de manera que el significado no es fijo
+    - Parametrizacion de tipo: templates
+
+2.1.3. Tipos de abstracciones: funcional, de datos e iteradores
+
+ - Abstracciones funcionales (funciones, trozos de codigo). 
+   Especifica parametros de entrada, salida, y efecto. No se indica implementación.
+   
+ - Abstracciones de datos.
+   Dominio de valores y sus operaciones. 
+   Tipo abstracto de datos (TAD). Especificaciones de TADs.
+   
+    - Tipos contenedores y parametrizados.
+      Clase de TAD: contenedores y colecciones, contienen valores de otros tipos.
+      Arrays, colas, listas, arboles...
+
+ - Abstracciones de iteradores.
+   Recorrer (TADs) de forma abstracta (como en C++) (foreach...)
+
+2.1.4. Mecanismos de abstraccion en los lenguajes de programacion
+
+ - Tipos definidos por el usuario (typedef)
+ - Modulos y encapsulamiento (archivos?) (ocultación de implementación)
+ - Clases y objetos
+    - Lo mas usado hoy en dia TADs, en POO.
+    - Clase: tipo definido por el usuario y modulo que encapsula datos y operaciones.
+    - Objecto: Instancia de clase
+    - Ocultación de información con los atributos de acceso (public, private, etc)
+    - Acceso uniforme con el operador '.'.
+    - Parametrizacion con templates (genericos).
+
+
+2.2. Especificaciones informales
+
+Lenguaje natural (ambiguo, impreciso
+
+ - Notación de especificación formal o informal: 
+   define partes, opcionalidad, significado, tipo...
+   gran variedad adaptada a lenguajes de programacion concretos.
+
+2.2.1. Especificacion informal de abstracciones funcionales
+
+ - Nombre de la función
+ - Parametros de entrad
+ - Requisitos para ejecutarla
+ - Descripcion del resultado
+
+2.2.2. Especificacion informal de abstracciones de datos
+
+ - Nombre del TAD
+ - Parametrizaciones
+ - Lista de operaciones sobre el TAD
+ - Especificacion de cada operacion
+
+2.2.3. Especificacion informal de abstracciones de iteradores
+No existe consenso sobre este
+
+En caso de que el lenguaje acepte pasar funciones como parametros,
+el iterador puede definirse como una abstracción funcional
+
+
+
+
