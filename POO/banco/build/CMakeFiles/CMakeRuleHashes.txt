@@ -1,0 +1,5 @@
+# Hashes of file build rules.
+df4414fddf5ccb375cb615a9b09c775d CMakeFiles/banco
+f308bd01886683de16fe09455585963d CMakeFiles/banco.dir/java_class_filelist
+fbac00a725d01d984c9272f3876b3ab6 CMakeFiles/banco.dir/java_compiled_banco
+a51bdd384c7f257770ff55e6c92a3e7b banco.jar
