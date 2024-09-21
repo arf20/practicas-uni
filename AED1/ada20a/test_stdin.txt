@@ -1,0 +1,5 @@
+4
+naranjas 333
+pistachos 0
+naranjas 99
+pistachos 105
