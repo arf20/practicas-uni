@@ -55,6 +55,14 @@
         "__split_buffer": "cpp",
         "__tuple": "cpp",
         "ios": "cpp",
-        "locale": "cpp"
-    }
+        "locale": "cpp",
+        "hash_map": "cpp",
+        "unordered_set": "cpp",
+        "__hash_table": "cpp",
+        "__string": "cpp",
+        "__tree": "cpp",
+        "map": "cpp",
+        "set": "cpp"
+    },
+    "editor.fontFamily": "'terminus'"
 }
