@@ -20,11 +20,6 @@ fmod NATURAL is
    op cuadrado : N -> N .
    op factorial : N -> N .
 
-   op predecesor : N -> N .
-   op resta : N N -> N .
-   op diferencia : N N -> N .
-   op difUno : N N -> Bool .
-
    op NODEFINIDO : -> NoN .
    op INFINITO : -> NoN .
    op NEGATIVO : -> NoN .
@@ -53,22 +48,4 @@ fmod NATURAL is
    eq factorial(sucesor(cero)) = sucesor(cero) .
    eq factorial(sucesor(n)) = producto(factorial(n), sucesor(n)) .
 
-   eq predecesor(sucesor(n)) = n .
-   eq predecesor(cero) = NEGATIVO .
-   eq resta(n, cero) = n .
-   eq resta(cero, n) = NEGATIVO .
-   eq resta(sucesor(n), cero) = sucesor(n) .
-   eq resta(cero, sucesor(n)) = NEGATIVO .
-   eq resta(sucesor(n), sucesor(m)) = resta(n, m) .
-
-   eq diferencia(cero, n) = n .
-   eq diferencia(n, cero) = n .
-   eq diferencia(sucesor(n), sucesor(m)) = diferencia(m, n) .
-
-   eq difUno(cero, cero) = true .
-   eq difUno(sucesor(cero), cero) = true .
-   eq difUno(cero, sucesor(cero)) = true .
-   eq difUno(sucesor(sucesor(n)), cero) = false .
-   eq difUno(cero, sucesor(sucesor(n))) = false .
-   eq difUno(sucesor(n), sucesor(m)) = difUno(n, m) .
 endfm
