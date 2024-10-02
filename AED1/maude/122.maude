@@ -87,6 +87,11 @@ fmod CONJUNTO is
     op diferencia : C C -> C .
     op eliminar : V C -> C .
 
+    op esIgual : C C -> Bool .
+    op esMenor : C C -> Bool .
+    op esMenorIgual : C C -> Bool .
+    op disjuntos : C C -> Bool .
+
 ***************** SEMANTICA ****************
     var v w : V .
     var c d : C .
@@ -120,4 +125,15 @@ fmod CONJUNTO is
     eq eliminar(v, insertar(v, cjtoVacio)) = cjtoVacio .
     eq eliminar(v, c) = diferencia(c, insertar(v, cjtoVacio)) .
 
+    eq esIgual(cjtoVacio, cjtoVacio) = true .
+    eq esIgual(insertar(v, cjtoVacio), cjtoVacio) = false .
+    eq esIgual(cjtoVacio, insertar(v, cjtoVacio)) = false .
+    eq esIgual(c, d) = if esIgual(tamano(union(c, d)), tamano(c)) then if esIgual(tamano(union(c, d)), tamano(d)) then true else false fi else false fi .
+    eq esMenor(cjtoVacio, insertar(v, cjtoVacio)) = true .
+    eq esMenor(c, d) = if not esIgual(tamano(union(c, d)), tamano(c)) then if esIgual(interseccion(c, d), c) then true else false fi else false fi .
+    eq esMenorIgual(cjtoVacio, cjtoVacio) = true .
+    eq esMenorIgual(cjtoVacio, insertar(v, cjtoVacio)) = true .
+    eq esMenorIgual(insertar(v, cjtoVacio), cjtoVacio) = false .
+    eq esMenorIgual(c, d) = if esIgual(c, d) then true else if esIgual(interseccion(c, d), c) then true else false fi fi .
+    eq disjuntos(c, d) = if esIgual(tamano(interseccion(c, d)), cero) then true else false fi .
 endfm
