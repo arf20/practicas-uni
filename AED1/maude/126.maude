@@ -82,6 +82,11 @@ fmod BOLSA is
     op contar : V B -> N .
     op eliminar : V B -> B .
 
+    op esMiembro : V B -> Bool .
+
+    op union : B B -> B .
+    op interseccion : B B -> B .
+
 
 ***************** SEMANTICA ****************
     var v w : V .
@@ -95,6 +100,19 @@ fmod BOLSA is
     eq eliminar(v, insertar(v, c)) = c .
     eq eliminar(v, insertar(w, c)) = insertar(w, eliminar(v, c)) .
 
+    eq union(bolsaVacia, bolsaVacia) = bolsaVacia .
+    eq union(bolsaVacia, insertar(v, bolsaVacia)) = insertar(v, bolsaVacia) .
+    eq union(insertar(v, bolsaVacia), bolsaVacia) = insertar(v, bolsaVacia) .
+    eq union(insertar(v, b), insertar(v, c)) = insertar(v, insertar(v, union(b, c))) .
+    eq union(insertar(v, b), c) = insertar(v, union(b, c)) .
+    eq union(b, insertar(v, c)) = insertar(v, union(b, c)) .
+
+    eq esMiembro(v, bolsaVacia) = false .
+    eq esMiembro(v, insertar(w, c)) = esIgual(v, w) or esMiembro(v, c) .
     
+    eq interseccion(bolsaVacia, bolsaVacia) = bolsaVacia .
+    eq interseccion(bolsaVacia, c) = bolsaVacia .
+    eq interseccion(c, bolsaVacia) = bolsaVacia .
+    eq interseccion(b, insertar(v, c)) = if esMayor(contar(v, b), contar(v, c)) then 
 
 endfm
