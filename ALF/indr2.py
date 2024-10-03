@@ -15,7 +15,8 @@ def genera(n):
         num = random.randrange(0, 99999999)
         dni = ""
         if random.randint % 2:
-            
+            dni += str(random.randrange(0, 2))
+        dni += str()
         nifs.append(format(num, "08") + letra(num))
     return nifs
 

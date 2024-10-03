@@ -70,14 +70,16 @@ CMakeFiles/sesion1: sesion1.jar
 
 sesion1.jar: CMakeFiles/sesion1.dir/java_class_filelist
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/arf20/practicas-uni/POO/sesion1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Creating Java archive sesion1.jar"
-	cd /home/arf20/practicas-uni/POO/sesion1/build/CMakeFiles/sesion1.dir && /usr/bin/jar -cfe /home/arf20/practicas-uni/POO/sesion1/build/sesion1.jar pruebas.PruebaPunto @java_class_filelist
+	cd /home/arf20/practicas-uni/POO/sesion1/build/CMakeFiles/sesion1.dir && /usr/bin/jar -cfe /home/arf20/practicas-uni/POO/sesion1/build/sesion1.jar pruebas.PruebaCirculo @java_class_filelist
 	cd /home/arf20/practicas-uni/POO/sesion1/build/CMakeFiles/sesion1.dir && /usr/bin/cmake -D_JAVA_TARGET_DIR=/home/arf20/practicas-uni/POO/sesion1/build -D_JAVA_TARGET_OUTPUT_NAME=sesion1.jar -D_JAVA_TARGET_OUTPUT_LINK= -P /usr/share/cmake-3.25/Modules/UseJava/Symlinks.cmake
 
 CMakeFiles/sesion1.dir/java_class_filelist: CMakeFiles/sesion1.dir/java_compiled_sesion1
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/arf20/practicas-uni/POO/sesion1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating CMakeFiles/sesion1.dir/java_class_filelist"
 	cd /home/arf20/practicas-uni/POO/sesion1 && /usr/bin/cmake -DCMAKE_JAVA_CLASS_OUTPUT_PATH=/home/arf20/practicas-uni/POO/sesion1/build/CMakeFiles/sesion1.dir -DCMAKE_JAR_CLASSES_PREFIX= -P /usr/share/cmake-3.25/Modules/UseJava/ClassFilelist.cmake
 
+CMakeFiles/sesion1.dir/java_compiled_sesion1: /home/arf20/practicas-uni/POO/sesion1/src/geometria/Circulo.java
 CMakeFiles/sesion1.dir/java_compiled_sesion1: /home/arf20/practicas-uni/POO/sesion1/src/geometria/Punto.java
+CMakeFiles/sesion1.dir/java_compiled_sesion1: /home/arf20/practicas-uni/POO/sesion1/src/pruebas/PruebaCirculo.java
 CMakeFiles/sesion1.dir/java_compiled_sesion1: /home/arf20/practicas-uni/POO/sesion1/src/pruebas/PruebaPunto.java
 CMakeFiles/sesion1.dir/java_compiled_sesion1: CMakeFiles/sesion1.dir/java_sources
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/arf20/practicas-uni/POO/sesion1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building Java objects for sesion1.jar"

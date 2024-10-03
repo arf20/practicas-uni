@@ -8,8 +8,13 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
+<<<<<<< Updated upstream
             "program": "${workspaceFolder}/omp13a/omp13a",
             "args": ["<", "${workspaceFolder}/omp13a/test_stdin.txt"],
+=======
+            "program": "/home/arf20/projects/a.out",
+            "args": [],
+>>>>>>> Stashed changes
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
@@ -28,6 +33,10 @@
                 }
             ]
         }
+<<<<<<< Updated upstream
+=======
+        
+>>>>>>> Stashed changes
 
     ]
 }

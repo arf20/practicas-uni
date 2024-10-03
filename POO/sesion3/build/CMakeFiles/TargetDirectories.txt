@@ -1,0 +1,3 @@
+/home/arf20/practicas-uni/POO/sesion3/build/CMakeFiles/sesion3.dir
+/home/arf20/practicas-uni/POO/sesion3/build/CMakeFiles/edit_cache.dir
+/home/arf20/practicas-uni/POO/sesion3/build/CMakeFiles/rebuild_cache.dir
