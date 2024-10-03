@@ -19,7 +19,11 @@ fmod NATURAL is
    op potencia : N N -> N .
    op cuadrado : N -> N .
    op factorial : N -> N .
+<<<<<<< Updated upstream
 
+=======
+   
+>>>>>>> Stashed changes
    op NODEFINIDO : -> NoN .
    op INFINITO : -> NoN .
    op NEGATIVO : -> NoN .
@@ -48,4 +52,8 @@ fmod NATURAL is
    eq factorial(sucesor(cero)) = sucesor(cero) .
    eq factorial(sucesor(n)) = producto(factorial(n), sucesor(n)) .
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 endfm

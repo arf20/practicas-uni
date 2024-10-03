@@ -1,10 +1,12 @@
 package banco.pruebas;
 
+import banco.productos.*;
+
 public class Banco {
     
 
     public static void main(String[] args) {
-        banco.productos.Cuenta c2 = new banco.productos.Cuenta("arf20");
+        Cuenta c2 = new Cuenta("arf20");
         //Cuenta c2 = new Cuenta("pedro", 100);
 
         c2.ingreso(100);

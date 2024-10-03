@@ -57,6 +57,7 @@ fmod NATURAL is
    eq predecesor(cero) = NEGATIVO .
    eq resta(n, cero) = n .
    eq resta(cero, n) = NEGATIVO .
+<<<<<<< Updated upstream
    eq resta(sucesor(n), cero) = sucesor(n) .
    eq resta(cero, sucesor(n)) = NEGATIVO .
    eq resta(sucesor(n), sucesor(m)) = resta(n, m) .
@@ -71,4 +72,16 @@ fmod NATURAL is
    eq difUno(sucesor(sucesor(n)), cero) = false .
    eq difUno(cero, sucesor(sucesor(n))) = false .
    eq difUno(sucesor(n), sucesor(m)) = difUno(n, m) .
+=======
+   eq resta(n, sucesor(m)) = predecesor(resta(n, m)) .
+   eq diferencia(n, n) = cero .
+   eq diferencia(n, m) = diferencia(m, n) . 
+   eq diferencia(n, m) = resta(m, n) .
+   eq difUno(n, n) = true .
+   eq difUno(n, m) = difUno(m, n) .
+   eq difUno(n, sucesor(n)) = true .
+   eq difUno(n, sucesor(sucesor(n))) = false .
+
+
+>>>>>>> Stashed changes
 endfm
