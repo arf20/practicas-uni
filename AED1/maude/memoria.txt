@@ -1,0 +1,77 @@
+PID     SID     Comentario
+============================
+101     2298    Ya estaba hecho; sirvió para aprender de que va la programación axiomatica
+102     85      Definir casos base ok, lo dificil es hacer la recursión, un poco como en TP
+                hay que pensar que tiene sentido que sea el reemplazo, el interior.
+                Al principio es bastante prueba y error, sobretodo la potencia.
+                Y como solo dan ciertos casos de prueba, cuando vas a entregar te
+                das cuenta de que te faltan casos base.
+
+103     2733    La resta es rara, aqui me di cuenta de como se hace la recursion de
+                forma medio metodica. La diferencia me costó y salió algo que pensaba
+                que no funcionaría.
+
+104     2841    Las comparaciones, una vez sacas una, el resto son iguales cambiando
+                el resultado. Maximo y minimo también. Facil.
+
+105     4190    División casos base ok, pero intentaba hacer la recursión y me fué imposible
+                hasta que me dijeron que hay que hacerlo con un if, primera vez que veo
+                if en este lenguaje.
+                El modulo me lo inventé hasta que funcionó. Pero esPar me salió por logica
+                a la primera :)
+
+110     3033    Al principio pensé que tendría que definir si es menor cada caso, con
+                todas las permutaciones, pero dije, no puede ser eso es super tonto.
+                Fui probando a quitar casos hasta que resulta que puedes definir casos
+                como hacia delante o atrás dependiendo de la posición del argumento
+                no sé como funciona. Y luego un caso especial de wrap around.
+
+111     3043    Este estaba hecho, sirve como base para conocer como se hace un 
+                contenedor en este morbido lenguaje.
+
+112     3044    Estoy seguro de que me sobran ecuaciones de esIgual pero tengo miedo
+                de hecho me acabo de dar cuenta de que no recurso lol wtf como funciona
+                El resto eran mas sencillos
+
+113     3071    Cola muy similar a la pila, easy
+
+114     3377    Operaciones parecidas a la pila, derivadas.
+
+115     3379    Ya hecho, la definicion de insertar y insertarFinal me choca de compacto
+
+116     3387    El acceso de listas era sencillo
+
+120     4238    Ya hecho. Entiendo los conjuntos pero este lenguaje es contranatura.
+                Será bonito matematicamente, logicamente, pero es lo peor computacionalmente.
+                Informatica no es lugar para este lenguaje. Se medio entiende.
+
+121     4438    Esto fue bastante jodido, un absoluto cristo, y lo que me quedó.
+                Casos base ok, pero la recursión con condicionales hubo que pensar mucho,
+                sobretodo que se me ocurriese cosas, condiciones, en las que un elemento
+                es miembro de la union o interseccion. La unión mas o menos bien pero
+                el verdadero problema fue la intersección, y su recursión.
+                Usar la diferencia para eliminar fue un momento big brain que no volverá a repetirse
+
+122     4938    Usando la union se podia hacer esto, si el tamaño es igual al tamaño de
+                los dos conjuntos, el problema es que intenté usar `and` y no funcionaba.
+                Lenguaje de mierda de verdad.
+                Tuve que hacer un workaround con un if nesteado, absolutamente fuck,
+                cursed, sinful
+
+125     5222    Estaba hecho. Las bolsas son aun mas dificiles porque los elementos
+                no son unicos, con lo cual los trucos como los de union no valen como en conjuntos
+                
+126     6049    Este fue el peor de todos con diferencia. Fue el mismo problema que
+                con los conjuntos que ya fue jodido, pero peor porque no hay trucos.
+                En la union solo hay que insertar todo y ya I guess pero
+                En interseccion, al final pensé en reimplementar contar y usarlo
+                con comparacion de natural para ver cuantas veces insertar en la interseccion.
+                Eso dependia de esMiebro y tamano también. Odio odio odio programar
+                en español y no poder usar la ñ. Programar en otro idioma que no sea
+                inglés debería estar prohibido. La carrera debería de estar en inglés
+                entera porque es el idioma de la informatica.
+                Anyway la diferencia se podia hacer con eliminar y tal, y
+                esIgual con la diferencia pero `and` sigue sin puto ir :sob:
+
+140     4935
+                // CARLA
