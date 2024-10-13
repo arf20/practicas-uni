@@ -1,0 +1,3 @@
+Case 1: 2 planets
+Case 2: 1 planets
+Case 3: 3 planets

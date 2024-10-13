@@ -1,0 +1,9 @@
+i 5
+http://www.um.es
+Universidad de Murcia
+La Universidad de Murcia del tercer milenio tiene como eje central de su
+actividad la consecución de la excelencia académica y científica.
+Todo ello queda recogido en esta Web que pretende satisfacer las
+necesidades no solo de la comunidad universitaria sino de la Sociedad en
+general.
+FINDEPAGINA
