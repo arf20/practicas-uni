@@ -1,0 +1,364 @@
+u http://www.um.es
+i 53
+http://www.um.es
+Universidad de Murcia
+La Universidad de Murcia del tercer milenio tiene como eje central
+de su actividad la consecución de la excelencia académica y científica.
+Todo ello queda recogido en esta Web que pretende satisfacer
+las necesidades no solo de la comunidad universitaria sino de
+la Sociedad en general.
+FINDEPAGINA
+u http://dis.um.es/index.html
+b PROGRAMACIÓN
+u http://www.um.es
+i 76
+http://dis.um.es/index.html
+Departamento de Informática y Sistemas
+Universidad Estudios Investigación Internacional Comunicación 
+Texto a buscar Buscar Normativa FinDePágina
+a PROGRAMACION i Meyer
+o TROYANO o TROYA
+p AUTOCOM
+u http://WWW.UM.ES
+u http://dis.um.es/index.html
+i 53
+http://www.um.es
+Universidad de Murcia 2
+Página actualizada de la Universidad de Murcia findepagina
+u http://dis.um.es/index.htm
+u http://www.um.es
+b condición
+i 53
+http://www.um.es
+Universidad de Murcia
+La Universidad de Murcia del tercer milenio tiene como eje central
+de su actividad la consecución de la excelencia académica y científica.
+Todo ello queda recogido en esta Web que pretende satisfacer
+las necesidades no solo de la comunidad universitaria sino de
+la Sociedad en general.
+FINDEPAGINA
+u http://dis.um.es/index.html
+b PROGRAMACIÓN
+a llevo la Condición
+i 76
+http://dis.um.es/index.html
+Departamento de Informática y Sistemas
+Universidad Estudios Investigación Internacional Comunicación 
+Texto a buscar Buscar Normativa FinDePágina
+a la PROGRAMACION de Meyer
+o PÁGINA CIGÜEÑA
+o TROYANO TROYA
+p AUTOCOM
+u http://WWW.UM.ES
+p Universi
+i 5
+http://www.wikipedia.com
+La enciclopedia libre
+La portada de la wikipedia tiene
+hoy la noticia de que... 
+Y ademas aqui repito la palabra
+portada para ver que no sale
+dos veces esta pagina.
+FINDEPAGINA
+i 11
+http://www.um.es
+Pagina de la UMU
+La pagina de la Universidad de Murcia ha reformado
+o su portada ultimamente. Sin embargo
+el buscador no ha sido mejorado.
+FINDEPAGINA
+i 10
+http://www.google.es
+El buscador GOOGLE
+Esta es una pagina simple
+porque un buscador no tiene
+i mucho texto asi que la portada
+es muy simple, insisto en repetir SIMPLE 
+Si pongo "dic" en el google me sale sobre todo
+diccionario, pero no me sale dicotomía. FínDÉPágina
+i 3
+http://www.as.com
+Periodico deportivo AS
+El as le ha copiado la PórTADA
+al marca ultimamente. Findepaginá
+b copiado
+b portada
+u http://www.góogle.és
+b simple
+o portada buscadór
+a portada buscador
+i 3
+http://WWW.MARCA.COM
+El periódico deportivo MARCA
+Ha mantenido su portada desde hace tiempo,
+y dicen que el AS la ha copiado
+FINDEPAGINA
+i 7
+http://www.dis.um.es/~ginesgm
+Prácticas de AED
+Haremos un buscador...
+Ponle una PORTADA bonita a la práctica. 
+Utilizaré el cañón de vídeo para la presentación.
+Se hara uso de diccionarios para almacenar cosas
+de forma eficiente.
+findepagina
+o copiado portada
+o tiene pagina
+a portada buscador
+b vacío
+a vacío
+b findepagina
+a simple copiado
+a buscador simple texto
+u http://www.dis.um.es/~ginesgm
+a portada pagina
+u www.cigüeña.com
+b pagína
+a pagína
+a PáGiNá
+u http://www.góogle.és
+u http://www.google.es
+u httpwww.google.es
+u http://www.um.és
+a universidad
+u http://www.üm.es
+b universidad
+u http://www.wikipedia.com
+u i
+a PráctiCa caÑon cañóN
+o cañón Üniversidad
+p pore
+p dic
+p noexiste
+i 38
+http://www.url0.es
+Titulo El 
+Miróle el ventero, y no le pareció tan bueno como Don Quijote decía, ni aun la mitad; y acomodándole en la caballeriza, volvió a ver lo que su huésped mandaba; al cual estaban desarmando las doncellas (que ya se habían reconciliado con él), las cuales, aunque le habían quitado el peto y el espaldar, jamás supieron ni pudieron desencajarle la gola, ni quitarle la contrahecha celada, que traía atada con unas cintas verdes, y era menester cortarlas, por no poderse queitar los nudos; mas él no lo quiso consentir en ninguna manera; y así se quedó toda aquella noche con la celada puesta, que era la más graciosa y extraña figura que se pudiera pensar; y al desarmarle (como él se imaginaba que aquellas traídas y llevadas que le desarmaban, eran algunas principales señoras y damas de aquel castillo), les dijo con mucho donaire:
+Nunc eu massa mauris, sit amet ultricies elit. Nam congue lorem at mi aliquam ac imperdiet sem dignissim. Integer lectus purus, posuere id adipiscing nec, consequat at ante. Integer tincidunt sodales lacus vulputate porta. Nam eu turpis sed sem pellentesque accumsan. Aliquam erat volutpat. Suspendisse fermentum mi sed ipsum pretium nec accumsan magna fermentum. Proin mi tellus, pellentesque in iaculis quis, rhoncus vel velit. Fusce tincidunt, lacus vitae posuere ultrices, urna purus faucibus sapien, eu egestas purus dui ut enim. Cras at neque eget odio mollis eleifend id quis dui. In semper, leo non mollis rhoncus, nisl orci pellentesque dolor, quis ultricies quam dolor in eros. Morbi nec purus dolor, ut sagittis enim. Vestibulum quis ultrices augue. Donec sed sagittis magna. Nullam eu fringilla libero. Sed ornare placerat mauris, non ullamcorper erat tempus molestie. Morbi sodales adipiscing massa ut feugiat. Sed posuere sodales lacus. Fusce eget orci id libero venenatis vehicula eget id sem.
+Hechas, pues, de galope y aprisa las hasta allí nunca vistas ceremonias, no vió la hora Don Quijote de verse a caballo y salir buscando las aventuras; y ensillando luego a Rocinante, subió en él, y abrazando a su huésped, le dijo cosas tan extrañas, agradeciéndole la merced de haberle armado caballero, que no es posible acertar a referirlas. El ventero, por verle ya fuera de la venta, con no menos retóricas, aunque con más breves palabras, respondió a las suyas, y sin pedirle la costa de la posada, le dejó ir a la buena hora.
+Apenas les divisó Don Quijote, cuando se imaginó ser cosa de nueva aventura, y por imitar en todo, cuanto a él le parecía posible, los pasos que había leído en su s libros, le pareció venir allí de molde uno que pensaba hacer; y así con gentil continente y denuedo se afirmó bien en los estribos, apretó la lanza, llegó la adarga al pecho, y puesto en la mitad del camino estuvo esperando que aquellos caballeros andantes llegasen (que ya él por tales los tenía y juzgaba); y cuando llegaron a trecho que se pudieron ver y oír, levantó Don Quijote la voz, y con ademán arrogante dijo: todo el mundo se tenga, si todo el mundo no confiesa que no hay en el mundo todo doncella más hermosa que la emperatriz de la Mancha, la sin par Dulcinea del Toboso.
+Nam et dolor nec dui venenatis scelerisque quis a orci. Ut malesuada consectetur tincidunt. Suspendisse sit amet augue metus, eu sollicitudin orci. Nunc et nibh porttitor ante ornare consectetur at at lacus. Vestibulum id odio quis dolor posuere viverra in quis odio. Etiam nisl felis, blandit sit amet lobortis ut, feugiat vel quam. Aliquam molestie placerat justo, nec semper massa condimentum non. Fusce ultricies ullamcorper dapibus. Etiam tristique dictum mauris, at rhoncus dui rutrum at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus non metus ac urna viverra adipiscing. Mauris sed ipsum diam, sit amet accumsan nibh. Cras eu eros nec nibh condimentum tincidunt in et orci. Morbi quis sem tellus. Sed dignissim dui eu mauris aliquet viverra. Suspendisse potenti. Praesent neque sem, tristique in consequat a, mattis non nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+Por el momento, el laboratorio está trabajando con corazones y el procedimiento consiste en "eliminar todo contenido celular" del órgano de un donante cadáver para luego "sembrar" en él células madre del receptor que lo necesite.
+"Sakineh es un chivo expiatorio de los partidarios de la lapidación en Irán"
+FinDePagina
+i 16
+http://www.url1.es
+Titulo Con estos iba ensartando otros 
+princesas de su Rocino.
+así, fatigado de este pensamiento, abrevió su venteril y limitada cena, la cual acabada llamó al ventero, y encerrándose con él en la caballeriza, se hincó de rodillas ante él, diciéndole, no me levantaré jamás de donde estoy, valeroso caballero, fasta que la vuestra cortesía, me otorgue un don que pedirle quiero, el cual redundará en alabanza vuestra y en pro del género humano. El ventero que vió a su huésped a sus pies, y oyó semejantes razones, estaba confuso mirándole, sin saber qué hacerse ni decirle, y porfiaba con él que se levantase; y jamás quiso, hasta que le hubo de decir que él le otorgaba el don que le pedía. No esperaba yo menos de la gran magnificencia vuestra, señor mío, respondió D. Quijote; y así os digo que el don que os he pedido, y de vuestra liberalidad me ha sido otorgado, es que mañana, en aquel día, me habéis de armar caballero, y esta noche en la capilla de este vuestro castillo velaré las armas; y mañana, como tengo dicho, se cumplirá lo que tanto deseo, para poder, como se debe, ir por todas las cuatro partes del mundo buscando las aventuras en pro de los menesterosos, como está a cargo de la caballería y de los caballeros andantes, como yo soy, cuyo deseo a semejantes fazañas es inclinado. El ventero, que como está dicho, era un poco socarrón, y ya tenía algunos barruntos de la falta de juicio de su huésped, acabó de creerlo cuando acabó de oír semejantes razones, y por tener que reír aquella noche, determinó seguirle el humor; así le dijo que andaba muy acertado en lo qeu deseaba y pedía, y que tal prosupuesto era propio y natural de los caballeros tan principales como él parecía, y como su gallarda presencia mostraba, y que él ansimesmo, en los años de su mocedad se había dado a aquel honroso ejercicio, andando por diversas partes del mundo buscando sus aventuras, sin que hubiese dejado los percheles de Málaga, islas de Riarán, compás de Sevilla, azoguejo de Segovia, la olivera de Valencia, rondilla de Granada, playa de Sanlúcar, potro de Córdoba, y las ventillas de Toledo, y otras diversas partes donde había ejercitado la ligereza de sus pies y sutileza de sus manos, haciendo muchos tuertos, recuestando muchas viudas, deshaciendo algunas doncellas, y engañando a muchos pupilos, y finalmente, dándose a conocer por cuantas audiencias y tribunales hay casi en toda España; y que a lo último se había venido a recoger a aquel su castillo, donde vivía con toda su hacienda y con las ajenas, recogiendo en él a todos los caballeros andantes de cualquiera calidad y condición que fuesen, sólo por la mucha afición que les tenía, y porque partiesen con él de su shaberes en pago de su buen deseo. Díjole también que en aquel su castillo no había capilla alguna donde poder velar las armas, porque estaba derribada para hacerla de nuevo; pero en caso de necesidad él sabía que se podían velar donde quiera, y que aquella noche las podría velar en un patio del castillo; que a la mañana, siendo Dios servido, se harían las debidas ceremonias de manera que él quedase armado caballero, y tan caballero que no pudiese ser más en el mundo. Preguntóle si traía dineros: respondió Don Quijote que no traía blanca, porque él nunca había leído en las historias de los caballeros andantes que ninguno los hubiese traído. A esto dijo el ventero que se engañaba: que puesto caso que en las historias no se escribía, por haberles parecido a los autores de ellas que no era menester escribir una cosa tan clara y tan necesaria de traerse, como eran dineros y camisas limpias, no por eso se había de creer que no los trajeron; y así tuviese por cierto y averiguado que todos los caballeros andantes (de que tantos libros están llenos y atestados) llevaban bien erradas las bolsas por lo que pudiese sucederles, y que asimismo llevaban camisas y una arqueta pequeña llena de ungüentos para curar las heridas que recibían, porque no todas veces en los campos y desiertos, donde se combatían y salían heridos, había quien los curase, si ya no era que tenían algún sabio encantador por amigo que luego los socorría, trayendo por el aire, en alguna nube, alguna doncella o enano con alguna redoma de agua de tal virtud, que en gustando alguna gota de ella, luego al punto quedaban sanos de sus llagas y heridas, como si mal alguno no hubiesen tenido; mas que en tanto que esto no hubiese, tuvieron los pasados caballeros por cosa acertada que sus escuderos fuesen proveídos de dineros y de otras cosas necesarias, como eran hilas y ungüentos para curarse; y cuando sucedía que los tales caballeros no tenían escuderos (que eran pocas y raras veces), ellos mismos lo llevaban todo en unas alforjas muy sutiles, que casi no se parecían a las ancas del caballo, como que era otra cosa de más importancia; porque no siendo por ocasión semejante, esto de llevar alforjas no fue muy admitido entre los caballeros andantes; y por esto le daba por consejo (pues aún se lo podía mandar como a su ahijado, que tan presto lo había de ser), que no caminase de allí adelante sn dineros y sin las prevenciones referidas, y que vería cuán bien se hallaba con ellas cuando menos se pensase. Prometióle don Quijote de hacer lo que se le aconsejaba con toda puntualidad; y así se dió luego orden como velase las armas en un corral grande, que a un lado de la venta estaba, y recogiéndolas Don Quijote todas, las puso sobre una pila que junto a un pozo estaba, y embrazando su adarga, asió de su lanza, y con gentil continente se comenzó a pasear delante de la pila; y cuando comenzó el paseo, comenzaba a cerrar la noche.
+Phasellus ante mi, semper ac consectetur vel, commodo eu justo. Quisque pulvinar eros ac neque pharetra non iaculis mi viverra. Sed lectus erat, pharetra nec mollis nec, scelerisque in magna. Aenean accumsan tortor vel orci gravida semper. Curabitur justo lorem, tristique id venenatis ut, ullamcorper et arcu. Donec eleifend nisl id tellus semper in lobortis velit fringilla. Proin vitae lacus ac nunc porta facilisis. Ut sit amet aliquam felis. Sed eros tortor, placerat non consequat quis, mattis nec diam. Nullam mauris massa, varius eget posuere sed, vehicula sed sem. In hac habitasse platea dictumst.
+mi tío y señor Carnal.
+Gobierno:República Teocrática.
+FinDePagina
+i 9
+http://www.url2.com
+Titulo en otros 
+Contó el ventero a todos cuantos estaban en la venta la locura de su huésped, la vela de las armas y la armazón de caballería que esperaba. Admirándose de tan extraño género de locura, fuéronselo a mirar desde lejos, y vieron que, con sosegado ademán, unas veces se paseaba, otras arrimado a su lanza ponía los ojos en las armas sin quitarlos por un buen espacio de ellas. Acabó de cerrar la noche; pero con tanta claridad de la luna, que podía competir con el que se le prestaba, de manera que cuanto el novel caballero hacía era bien visto de todos.
+No obstante la movilización internacional generada por la posibilidad de que tal castigo se aplique en pleno siglo XXI ha puesto a las autoridades iraníes a la defensiva. Desde el pasado verano, y a raíz de que el poder judicial aceptara la revisión del caso, responsables políticos y judiciales han hecho declaraciones confusas y contradictorias, dando la impresión de que Ashtianí fue cómplice del asesinato de su marido y que iba a ser ejecutada por ese motivo.
+Aliquam erat volutpat. Donec sagittis convallis semper. Ut at augue euismod enim pretium tristique non eu lorem. Praesent sodales sagittis ipsum, ac bibendum lorem scelerisque vel. Aliquam facilisis fringilla dolor vel egestas. Ut lectus neque, eleifend eget mattis ut, hendrerit quis justo. Integer libero metus, vulputate vel vehicula ut, posuere eu justo. Nulla tortor dui, cursus id hendrerit rutrum, mattis ut risus. Quisque porttitor condimentum sapien, dapibus accumsan sapien porta quis. Vivamus bibendum purus eu ipsum gravida ut tincidunt lacus euismod. Aenean bibendum lacus ac turpis ultricies viverra. Sed arcu nibh, aliquam vel consectetur non, placerat eu odio. Fusce tristique auctor venenatis. Donec bibendum varius ante, a tincidunt leo luctus feugiat. Donec tempor fringilla accumsan. Etiam a velit eu neque tincidunt pretium tempor in elit.
+FinDePagina
+i 83
+http://www.url3.com
+Titulo España, líder mundial en materia 
+Oh noble marquás de Mantua,
+Suspendisse tempus, quam et ullamcorper pellentesque, eros lectus feugiat nibh, eget aliquet lacus magna non sem. Duis eget risus neque. Aliquam enim odio, egestas eget adipiscing a, commodo non nunc. Cras ac nisi metus, sed molestie leo. Fusce id molestie dolor. Donec leo orci, feugiat quis iaculis sit amet, laoreet a arcu. Fusce sed massa nunc, et convallis sem. Cras ac velit diam. Morbi porttitor est ut sem malesuada aliquam vel eget sapien. Duis venenatis turpis ut dui malesuada venenatis. Vivamus id metus et libero viverra hendrerit et eget urna. Vivamus a lacus augue, at tempor quam. Nullam justo urna, condimentum consectetur bibendum non, aliquet sed neque.
+El Servicio de Cardiología del Hospital Gregorio Marañón de Madrid es pionero en la utilización de terapias celulares de regeneración cardiaca, con innovaciones como el uso de células derivadas de la médula ósea en pacientes con infarto de miocardio y el uso, por primera vez en la historia de la medicina, de células derivadas de la grasa en pacientes con fallo cardiaco crónico.
+Estos pensamientos le hicieron titubear en su propósito; mas pudiendo más su locura que otra razón alguna, propuso de hacerse armar caballero del primero que topase, a imitación de otros muchos que así lo hicieron, según él había leído en los libros que tal le tenían. En lo de las armas blancas pensaba limpiarlas de manera, en teniendo lugar, que lo fuesen más que un armiño: y con esto se quietó y prosiguió su camino, sin llevar otro que el que su caballo quería, creyendo que en aquello consistía la fuerza de las aventuras. Yendo, pues, caminando nuestro flamante aventurero, iba hablando consigo mismo, y diciendo: ¿Quién duda sino que en los venideros tiempos, ciando salga a luz la verdadera historia de mis famosos hechos, que el sabio que los escribiere, no ponga, cuando llegue a contar esta mi primera salida tan de mañana, de esta manera? "Apenas había el rubicundo Apolo tendido por la faz de la ancha y espaciosa tierra las doradas hebras de sus hermosos cabellos, y apenas los pequeños y pintados pajarillos con sus arpadas lenguas habían saludado con dulce y meliflua armonía la venida de la rosada aurora que dejando la blanda cama del celoso marido, por las puertas y balcones del manchego horizonte a los mortales se mostraba, cuando el famoso caballero D. Quijote de la Mancha, dejando las ociosas plumas, subió sobre su famoso caballo Rocinante, y comenzó a caminar por el antiguo y conocido campo de Montiel." (Y era la verdad que por él caminaba) y añadió diciendo: "dichosa edad, y siglo dichoso aquel adonde saldrán a luz las famosas hazañas mías, dignas de entallarse en bronce, esculpirse en mármoles y esculpirse en mármoles y pintarse en tablas para memoria en lo futuro. ¡Oh tú, sabio encantador, quienquiera que seas, a quien ha de tocar el ser coronista de esta peregrina historia! Ruégote que no te olvides de mi buen Rocinante compañero eterno mío en todos mis caminos y carreras." Luego volvía diciendo, como si verdaderamente fuera enamorado: "¡Oh, princesa Dulcinea, señora de este cautivo corazón! Mucho agravio me habedes fecho en despedirme y reprocharme con el riguroso afincamiento de mandarme no parecer ante la vuestra fermosura. Plégaos, señora, de membraros de este vuestro sujeto corazón, que tantas cuitas por vuestro amor padece."
+Contó el ventero a todos cuantos estaban en la venta la locura de su huésped, la vela de las armas y la armazón de caballería que esperaba. Admirándose de tan extraño género de locura, fuéronselo a mirar desde lejos, y vieron que, con sosegado ademán, unas veces se paseaba, otras arrimado a su lanza ponía los ojos en las armas sin quitarlos por un buen espacio de ellas. Acabó de cerrar la noche; pero con tanta claridad de la luna, que podía competir con el que se le prestaba, de manera que cuanto el novel caballero hacía era bien visto de todos.
+FinDePagina
+i 58
+http://www.url4.es
+Titulo que 
+Quisque ac enim sed lectus blandit consectetur at sed risus. Mauris quam lacus, faucibus volutpat pellentesque vitae, egestas sed magna. Nullam metus diam, iaculis sed aliquam eu, vehicula nec ante. Donec est elit, fringilla ut ultrices ut, commodo eu leo. Mauris condimentum, augue at pretium porttitor, ipsum ipsum ultricies eros, ac consequat urna nibh sit amet velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed libero leo, auctor a sollicitudin et, vestibulum eu massa. Cras non nisl et ante faucibus commodo. Vivamus nisi velit, mattis eget tincidunt in, congue a elit. Donec egestas odio vel dolor pharetra feugiat.
+Cras nunc mauris, hendrerit in aliquam at, imperdiet vitae sem. Quisque nec mi odio. Donec sed nunc nibh, vitae convallis risus. Duis suscipit, erat bibendum faucibus consectetur, urna augue pharetra sapien, nec euismod metus leo sit amet turpis. Quisque pharetra purus et lorem condimentum vitae feugiat arcu dictum. Aliquam erat ligula, porttitor quis vestibulum id, adipiscing eget odio. Cras id fringilla justo. Mauris risus turpis, laoreet nec adipiscing at, mattis vitae purus. Praesent a tempor mauris. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Phasellus nec mauris varius enim commodo consectetur. Pellentesque ligula mi, tempus vitae adipiscing sit amet, aliquam a mauris. Pellentesque quis diam tellus, sit amet sollicitudin turpis.
+Y de esta manera fue prosiguiendo el romance hasta aquellos versos que dicen: 
+FinDePagina
+i 48
+http://www.url5.es
+Titulo Gobierno:República Teocrática. 
+Vivamus lobortis nulla justo. Vivamus nisl lacus, imperdiet sed lobortis a, ultrices vitae turpis. Pellentesque commodo diam vitae velit commodo euismod id at nulla. Aenean gravida, est id viverra sodales, est nunc vulputate lectus, vitae tempus ante eros sit amet mauris. Quisque bibendum, mauris quis sodales rutrum, mauris sem fringilla neque, in sagittis augue libero vel nunc. Ut eu purus pretium leo commodo ultrices. Vestibulum orci metus, congue ac accumsan sit amet, fringilla sed quam. Nulla tempor porta nulla sed tristique. Ut nec lobortis orci. Nam id orci lorem, ut dignissim ligula. Nullam posuere, justo sed molestie volutpat, sapien leo pulvinar augue, non suscipit ligula dolor et tortor. Duis pellentesque, nunc vel imperdiet semper, tortor lectus suscipit tellus, ut rhoncus mauris ligula sit amet elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Cras vel porta orci. Donec egestas, sapien in laoreet sagittis, ante erat tristique diam, non imperdiet odio mi vel leo.
+Sed semper vulputate libero, sed pulvinar mauris porttitor nec. Nam tincidunt varius risus ac sagittis. Quisque interdum dolor mattis elit posuere molestie. Aliquam venenatis dignissim libero vitae aliquam. Nunc facilisis molestie urna, fermentum scelerisque neque malesuada eu. Etiam auctor volutpat leo quis porttitor. Aliquam scelerisque, erat sit amet pulvinar volutpat, urna lacus ullamcorper orci, in molestie dui neque sed quam. Pellentesque tincidunt consectetur mi, a pulvinar urna rutrum et. Praesent eu sapien sed tellus fringilla mollis non sed sem. Integer nibh diam, sodales in eleifend eget, posuere vitae orci. Morbi eleifend sem ut metus egestas consequat. Ut nisi nibh, eleifend ac laoreet eget, scelerisque at arcu.
+Sed in tempus ligula. Sed sed libero sem, quis gravida ante. Pellentesque tincidunt venenatis ullamcorper. Nulla sapien dui, dignissim ac vestibulum id, feugiat a augue. Cras convallis aliquam aliquet. In eget turpis ac diam tincidunt facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi tempus urna a dolor tempus eu porttitor magna vestibulum. Maecenas ut sapien quis leo consectetur faucibus in non erat. Duis porttitor ultricies porta. Aliquam nisi libero, ultricies eu condimentum ut, venenatis vitae lacus. Pellentesque vulputate lacus et erat ultrices semper. Duis vitae dictum metus. Integer eget magna et metus dignissim commodo vel a risus.
+Pero al fin le desató, y le dió licencia que fuese a buscar a su juez para que ejecutase la pronunciada sentencia. Andrés se partió algo mohino, jurando de ir a buscar al valeroso Don Quijote de la Mancha, y contarle punto por punto lo que había pasado, y que se lo había de pagar con setenas, pero con todo esto, él se partió llorando y su amo se quedó riendo.
+FinDePagina
+i 88
+http://www.url6.es
+Titulo Morbi adipiscing laoreet 
+Nam et dolor nec dui venenatis scelerisque quis a orci. Ut malesuada consectetur tincidunt. Suspendisse sit amet augue metus, eu sollicitudin orci. Nunc et nibh porttitor ante ornare consectetur at at lacus. Vestibulum id odio quis dolor posuere viverra in quis odio. Etiam nisl felis, blandit sit amet lobortis ut, feugiat vel quam. Aliquam molestie placerat justo, nec semper massa condimentum non. Fusce ultricies ullamcorper dapibus. Etiam tristique dictum mauris, at rhoncus dui rutrum at. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vivamus non metus ac urna viverra adipiscing. Mauris sed ipsum diam, sit amet accumsan nibh. Cras eu eros nec nibh condimentum tincidunt in et orci. Morbi quis sem tellus. Sed dignissim dui eu mauris aliquet viverra. Suspendisse potenti. Praesent neque sem, tristique in consequat a, mattis non nulla. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+¿Donde estáis, señora mía,
+Donec placerat tempor arcu, eu facilisis purus vehicula eu. Quisque laoreet vestibulum lobortis. Donec venenatis consectetur nibh, vitae porta massa auctor dignissim. Maecenas aliquam vestibulum magna in rutrum. Aenean lorem sapien, vestibulum eu euismod aliquet, semper ut lacus. Quisque quis tortor tempus risus vehicula semper quis id diam. Nullam auctor varius imperdiet. Pellentesque auctor porta ligula, eu volutpat metus porttitor at. Integer ultrices aliquet tincidunt. Aliquam aliquam urna ac nibh tempor eu porttitor est tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam eget luctus nulla. Morbi a diam et felis tincidunt lacinia et ut orci. Vestibulum in nibh nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec vel nisi justo. Suspendisse a metus dui, nec dictum augue. Aenean quis arcu in velit tincidunt tincidunt. Nullam iaculis fermentum magna. Sed rutrum euismod tristique.
+Este centro pionero se encuentra ubicado en el hospital Gregorio Marañón de Madrid y ha sido inaugurado por la ministra de Ciencia e Innovación, Cristina Garmendia y la presidenta de la Comunidad, Esperanza Aguirre. Contará con un banco de matrices para producir nuevos órganos como corazones, hígados, riñones o piel, que a largo plazo puede resolver el problema de la escasez de donantes.
+Contó el ventero a todos cuantos estaban en la venta la locura de su huésped, la vela de las armas y la armazón de caballería que esperaba. Admirándose de tan extraño género de locura, fuéronselo a mirar desde lejos, y vieron que, con sosegado ademán, unas veces se paseaba, otras arrimado a su lanza ponía los ojos en las armas sin quitarlos por un buen espacio de ellas. Acabó de cerrar la noche; pero con tanta claridad de la luna, que podía competir con el que se le prestaba, de manera que cuanto el novel caballero hacía era bien visto de todos.
+FinDePagina
+i 3
+http://www.url7.com
+Titulo Phasellus ante mi, semper ac 
+La ministra Garmendia ha destacado que este proyecto, que cuenta con financiación de los fondos para Cooperación Internacional del Ministerio, coloca a nuestro país en la vanguardia internacional de los órganos bioartificiales y constata la importancia de la cooperación entre instituciones. Su ministerio invirtió en la Comunidad de Madrid 1.200 millones de euros en 2009 para la promoción y fomento de la investigación científica y el desarrollo tecnológico.
+webs en español
+Integer rhoncus ipsum metus, ac tincidunt est. Sed sit amet metus magna, a viverra mauris. Nulla facilisi. Pellentesque nec diam eget arcu imperdiet dictum et ac nibh. Ut adipiscing porta dui, vel convallis nibh vestibulum in. Sed ante metus, sagittis a venenatis non, sodales eu odio. Donec ligula velit, lobortis sit amet sagittis non, vehicula vel lectus. Aliquam erat volutpat. Duis et sem enim. Nulla metus libero, tincidunt a luctus ac, posuere quis orci. In eleifend diam et enim aliquam ornare. Aenean ut nisl mauris, vel adipiscing ante. Pellentesque ultricies magna nec mi posuere pulvinar. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+Durante el juicio se descubrió que los motivos que movían las amenazas eran más económicos que religiosos. Según fuentes policiales, municipales, de la Generalitat y de entornos de trabajadores marroquíes, desde la mezquita de Cunit se controla un negocio que tiene que ver con la regularización de papeles, obtención de viviendas y trámites por los que cobran a los desorientados recién llegados del Magreu y que menguó desde la intervención de la mujer en la labor de orientar gratis desde un servicio municipal.
+Ashtianí, de 43 años, fue condenada a esa cruel pena en 2006 por haber cometido adulterio, que en Irán es un delito. Tras agotar todos los recursos posibles, su entonces abogado, Mohammad Mostafeí, hizo pública su situación el pasado julio atrayendo la atención mundial. En una entrevista concedida entonces a EL PAÍS, Mostafeí explicó que, al margen de cuál fuera la valoración de cada cual sobre el asunto, el caso de la mujer había estado "plagado de irregularidades".
+Pellentesque sem enim, pulvinar quis feugiat in, tempor in purus. Donec pellentesque magna in massa consectetur at gravida diam facilisis. Maecenas in erat in magna ornare mattis a quis leo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin placerat tempor rhoncus. Quisque elit sem, auctor in elementum sed, porttitor quis quam. Nunc non leo id urna suscipit volutpat. Donec pharetra nulla metus. Etiam porta rhoncus odio eu rutrum. Sed vitae diam purus.
+FinDePagina
+i 68
+http://www.url8.es
+Titulo "Sentí odio 
+Nam vitae nunc in metus luctus bibendum ut a mauris. Donec nec augue enim. Praesent purus lorem, volutpat non euismod nec, tincidunt vitae libero. Donec varius luctus porta. Duis congue libero ut ante luctus adipiscing. Sed metus nulla, congue id aliquet vitae, tempor sit amet ipsum. Cras at adipiscing arcu. Sed eget ipsum eu ante hendrerit eleifend eget in dolor. Aliquam a sem lorem, a malesuada arcu. Duis a velit dolor. Pellentesque non quam in nulla semper dapibus sed at diam. In rhoncus adipiscing erat, vitae fermentum felis lobortis eget.
+Varias decenas de personas, convocadas por el Comité Internacional contra la Lapidación, están concentradas desde las dos de la tarde de hoy ante la Embajada de Irán en París para protestar e intentar impedir la inminente ejecución de la mujer iraní Sakineh Mohammadi Ashtiani. De acuerdo con esa organización, "las autoridades en Teherán han autorizado a la prisión de Tabriz para que lleve a cabo la lapidación", que ha sido prevista para mañana miércoles.
+Suspendisse tempus, quam et ullamcorper pellentesque, eros lectus feugiat nibh, eget aliquet lacus magna non sem. Duis eget risus neque. Aliquam enim odio, egestas eget adipiscing a, commodo non nunc. Cras ac nisi metus, sed molestie leo. Fusce id molestie dolor. Donec leo orci, feugiat quis iaculis sit amet, laoreet a arcu. Fusce sed massa nunc, et convallis sem. Cras ac velit diam. Morbi porttitor est ut sem malesuada aliquam vel eget sapien. Duis venenatis turpis ut dui malesuada venenatis. Vivamus id metus et libero viverra hendrerit et eget urna. Vivamus a lacus augue, at tempor quam. Nullam justo urna, condimentum consectetur bibendum non, aliquet sed neque.
+cuando de su aldea vino; 
+Praesent placerat egestas fringilla. Vestibulum ullamcorper nisi vitae nunc aliquam faucibus. Phasellus tincidunt malesuada vulputate. Etiam eget erat dolor, eget pharetra massa. Vivamus consequat molestie condimentum. Vivamus augue mi, ornare vel tempor vel, semper in odio. Donec rhoncus euismod ornare. Suspendisse in erat nulla, sit amet cursus nunc. Ut eros quam, tristique et condimentum sed, vulputate in nunc. Pellentesque sed bibendum orci. Donec lorem lorem, mattis vel rutrum sit amet, egestas in nulla. Donec auctor urna ac tortor consequat id feugiat ipsum bibendum. Maecenas venenatis suscipit neque. Pellentesque dapibus ante non nisi varius tincidunt. Nulla mattis arcu vitae massa porttitor hendrerit. Sed sit amet rutrum erat. Pellentesque ornare semper arcu, quis vehicula mauris malesuada sit amet.
+El pasado mes de septiembre, el Consejo de Ministros, a propuesta de los ministerios de Asuntos Exteriores y Cooperación y de Igualdad, ya aprobó una declaración de apoyo en la que pedía a Irán que no llevara a cabo la ejecución. El Ejecutivo solicitaba además a ese país que teniendo en cuenta el Pacto Internacional de los Derechos Civiles y Políticos eliminase la lapidación de su legislación y planeaba impulsar una acción internacional en el seno de las Naciones Unidas para acabar con este modo de ejecución.
+Hechas, pues, estas prevenciones, no quiso aguardar más tiempo a poner en efecto su pensamiento, apretándole a ello la falta que él pensaba que hacía en el mundo su tardanza, según eran los agravios que pensaba deshacer, tuertos que enderezar, sinrazones que enmendar, y abusos que mejorar, y deudas que satisfacer; y así, sin dar parte a persona alguna de su intención, y sin que nadie le viese, una mañana, antes del día (que era uno de los calurosos del mes de Julio), se armó de todas sus armas, subió sobre Rocinante, puesta su mal compuesta celada, embrazó su adarga, tomó su lanza, y por la puerta falsa de un corral, salió al campo con grandísimo contento y alborozo de ver con cuánta facilidad había dado principio a su buen deseo. Mas apenas se vió en el campo, cuando le asaltó un pensamiento terrible, y tal, que por poco le hiciera dejar la comenzada empresa: y fue que le vino a la memoria que no era armado caballero, y que, conforme a la ley de caballería, ni podía ni debía tomar armas con ningún caballero; y puesto qeu lo fuera, había de llevar armas blancas, como novel caballero, sin empresa en el escudo, hasta que por su esfuerzo la ganase.
+FinDePagina
+i 70
+http://www.url9.es
+Titulo Nullam lorem ligula, luctus in 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae hendrerit odio. Curabitur nisl ipsum, rutrum vitae vehicula eget, accumsan nec augue. Duis at dapibus erat. Cras vel risus sapien. Nullam condimentum auctor elit, nec luctus elit pellentesque ac. Donec pulvinar nisl augue. Cras purus ante, accumsan non viverra in, aliquam ac tellus. Phasellus pellentesque semper euismod. In quam ipsum, eleifend at fringilla a, mollis sodales est. Donec nec adipiscing nulla. Vestibulum libero orci, eleifend non lacinia eu, aliquam at neque. Morbi convallis molestie leo, sed laoreet urna ullamcorper id. Sed tristique vehicula sem eu congue. Duis mattis purus ut libero rutrum eget tristique nisl dictum. Etiam vitae ligula nec nibh viverra pulvinar sit amet eget orci. In hac habitasse platea dictumst. Vestibulum nunc mi, posuere vel consequat a, posuere et urna. Sed urna nunc, adipiscing nec cursus ut, blandit et quam.
+de damas tan bien servido, 
+España, líder mundial en materia de trasplantes, es también el único país del mundo que cuenta con un laboratorio destinado a la creación de órganos bioartificiales con células madre para usarlos en quienes necesiten un órgano nuevo.
+Quisque ac enim sed lectus blandit consectetur at sed risus. Mauris quam lacus, faucibus volutpat pellentesque vitae, egestas sed magna. Nullam metus diam, iaculis sed aliquam eu, vehicula nec ante. Donec est elit, fringilla ut ultrices ut, commodo eu leo. Mauris condimentum, augue at pretium porttitor, ipsum ipsum ultricies eros, ac consequat urna nibh sit amet velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed libero leo, auctor a sollicitudin et, vestibulum eu massa. Cras non nisl et ante faucibus commodo. Vivamus nisi velit, mattis eget tincidunt in, congue a elit. Donec egestas odio vel dolor pharetra feugiat.
+Pero al fin le desató, y le dió licencia que fuese a buscar a su juez para que ejecutase la pronunciada sentencia. Andrés se partió algo mohino, jurando de ir a buscar al valeroso Don Quijote de la Mancha, y contarle punto por punto lo que había pasado, y que se lo había de pagar con setenas, pero con todo esto, él se partió llorando y su amo se quedó riendo.
+Nunc eu massa mauris, sit amet ultricies elit. Nam congue lorem at mi aliquam ac imperdiet sem dignissim. Integer lectus purus, posuere id adipiscing nec, consequat at ante. Integer tincidunt sodales lacus vulputate porta. Nam eu turpis sed sem pellentesque accumsan. Aliquam erat volutpat. Suspendisse fermentum mi sed ipsum pretium nec accumsan magna fermentum. Proin mi tellus, pellentesque in iaculis quis, rhoncus vel velit. Fusce tincidunt, lacus vitae posuere ultrices, urna purus faucibus sapien, eu egestas purus dui ut enim. Cras at neque eget odio mollis eleifend id quis dui. In semper, leo non mollis rhoncus, nisl orci pellentesque dolor, quis ultricies quam dolor in eros. Morbi nec purus dolor, ut sagittis enim. Vestibulum quis ultrices augue. Donec sed sagittis magna. Nullam eu fringilla libero. Sed ornare placerat mauris, non ullamcorper erat tempus molestie. Morbi sodales adipiscing massa ut feugiat. Sed posuere sodales lacus. Fusce eget orci id libero venenatis vehicula eget id sem.
+Nunc pulvinar, arcu eu semper volutpat, risus enim imperdiet ante, a condimentum lorem orci nec magna. Nulla facilisi. Donec id metus tellus, vitae luctus massa. Quisque ullamcorper tempus sodales. Curabitur aliquam consequat enim, sagittis pulvinar erat varius porttitor. Praesent at lacus ante, a euismod mi. Nam tempus viverra blandit. Sed id justo dui, vitae volutpat diam. Duis dapibus, libero a pretium rutrum, eros nisl elementum arcu, sit amet rutrum felis lectus sit amet libero. Integer tempor diam a erat venenatis ut mattis erat gravida. Integer euismod odio et mi pretium commodo. Donec laoreet ultrices sapien quis facilisis. Sed in nulla ac velit eleifend gravida nec in libero. Etiam pharetra venenatis feugiat. Proin mauris nisl, ornare non vulputate eget, posuere quis tortor. Proin lacus ligula, vulputate vitae volutpat vel, posuere a odio. Duis faucibus, magna vitae accumsan dapibus, magna erat posuere urna, quis vehicula odio leo quis odio.
+FinDePagina
+i 78
+http://www.url10.es
+Titulo Con 
+Para empezar, la mujer, que se quedó viuda en 2004, ya había sido previamente juzgada por "relaciones ilícitas" (que en Irán son todas las relaciones sexuales fuera del matrimonio) y condenada a 99 latigazos. Fue sólo durante el juicio por el asesinato de su marido, en el que ella no estuvo imputada, cuando un juez suscitó la posibilidad de que las "relaciones ilícitas" se hubieran producido antes de la muerte del marido y por lo tanto fueran constitutivas del delito de adulterio, que el Código Penal iraní castiga con la lapidación.
+Nam porta sapien id ante pulvinar molestie. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Proin metus orci, auctor et rutrum nec, bibendum at ligula. Donec in erat at leo molestie sodales. Sed gravida lacus quis nibh pulvinar at rutrum nisi ornare. Morbi ac dolor vitae mauris consectetur pharetra ut tempor magna. In hac habitasse platea dictumst. Proin tempus elit in tellus venenatis vehicula commodo risus convallis. Nulla tellus felis, scelerisque id sagittis in, euismod id lacus. Curabitur elit elit, condimentum vitae aliquam ac, convallis vitae sapien. Sed malesuada pretium metus sit amet lobortis. In gravida iaculis metus at consequat.
+cuando de su aldea vino; 
+El hijo y el abogado de Sakineh Ashtiani, detenidos
+In ut magna vel nulla vestibulum blandit. Duis tortor purus, luctus et euismod non, viverra et risus. Curabitur scelerisque consequat quam, nec rutrum metus luctus vel. Vestibulum placerat, nunc in gravida tempus, mauris ante semper libero, et imperdiet ante purus in tellus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae nibh diam. Nulla volutpat gravida dui, eget commodo turpis facilisis vel. Fusce mattis, dui eu accumsan gravida, odio massa varius sapien, eu gravida augue magna a justo. Nullam quis ipsum sed diam dignissim mollis id nec leo. Aenean eget odio a lacus pharetra convallis. Morbi quis sapien ut lectus mattis venenatis. Fusce id malesuada libero. Etiam non elementum nisl. Vivamus elementum urna id lorem molestie a blandit est mattis.
+El presidente de la asociación cultural islámica de Cunit también ha sido condenado, en su caso a nueve meses de prisión. El juzgado ha impuesto a la hija del imam, además, una multa de 730 euros.
+Población:65,875,224 (est. 2008)
+FinDePagina
+u http://www.url9.es
+u http://www.url.es
+u http://www.url29.es
+u http://www.url8.es
+u http://www.url0.es
+u http://www.url.es
+u http://www.url17.es
+u http://www.url14.es
+b PROGRAMACIÓN
+u http://www.um.es
+i 76
+http://dis.um.es/index.html
+Departamento de Informática y Sistemas
+Universidad Estudios Investigación Internacional Comunicación 
+Texto a buscar Buscar Normativa FinDePágina
+a PROGRAMACION i Meyer
+o TROYANO o TROYA
+p AUTOCOM
+u http://WWW.UM.ES
+u http://dis.um.es/index.html
+i 53
+http://www.um.es
+Universidad de Murcia 2
+Página actualizada de la Universidad de Murcia findepagina
+u http://dis.um.es/index.htm
+u http://www.um.es
+b condición
+i 531
+http://www.um.es
+Universidad Murcia
+La Universidad de Murcia del tercer milenio tiene como eje central
+de su actividad la consecución de la excelencia académica y científica.
+Todo ello en general. FINDEPAGINA
+u http://dis.um.es/index.html
+b PROGRAMACIÓN
+a llevo la Condición
+i 763
+http://dis.um.es/index.html
+Departamento de Informatica y Sistemas
+i Universidad Estudios Investigación Internacional Comunicación 
+Texto a buscar Buscar Normativa FinDePágina
+a la PROGRAMACION de Meyer
+o PÁGINA CIGÜEÑA
+o TROYANO TROYA
+p AUTOCOM
+u http://WWW.UM.ES
+p Universi
+i 5
+http://www.wikipedia.com
+La enciclopedia libre
+La portada de la wikipedia tiene
+hoy la noticia de que... 
+Y ademas aqui repito la palabra
+portada para ver que no sale
+dos veces esta pagina.
+FINDEPAGINA
+i 101
+http://www.um.es
+UMU
+La pagina de la Universidad de Murcia ha reformado
+o Sin embargo
+el buscador no ha sido mejorado.
+FINDEPAGINA
+i 10
+http://Www.google.es
+El buscador GOOGLE
+Esta es una pagina simple
+porque un buscador no tiene
+i mucho texto asi que la portada
+es muy simple, insisto en repetir SIMPLE 
+Si pongo "dic" en el google me sale sobre todo
+diccionario, pero no me sale dicotomía. FínDÉPágina
+u http://www.as.com
+i 31
+http://www.as.com
+Periodico deportivo AS
+El as le ha copiado la
+al marca ultimamente. FiNdepaginá
+b copiado
+b portada
+u http://www.góogle.és
+u http://www.as.com
+b simple
+o portada buscadór
+a portada buscador
+i 3
+http://WWW.MARCA.COM
+El periódico deportivo MARCA
+Ha mantenido su portada desde hace tiempo,
+y dicen que el AS la ha copiado
+FINDEPAGINA
+i 7
+http://www.dis.um.es/~ginesgm
+Prácticas de AED
+Haremos un buscador...
+Ponle una PORTADA bonita a la práctica. 
+Utilizaré el cañón de vídeo para la presentación.
+Se hara uso de diccionarios para almacenar cosas
+de forma eficiente.
+findepagina
+o copiado portada
+o tiene pagina
+a portada buscador
+b vacío
+a vacío
+b findepagina
+a simple copiado
+a buscador simple texto
+u http://www.dis.um.es/~ginesgm
+a portada pagina
+u www.cigüeña.com
+b pagína
+a pagína
+a PáGiNá
+u http://www.góogle.és
+u http://www.google.es
+u httpwww.google.es
+u http://www.um.és
+a universidad
+u http://www.üm.es
+b universidad
+u http://www.wikipedia.com
+u http://www.as.com
+u i
+a PráctiCa caÑon cañóN a o i u s i o
+o cañón Üniversidad a o i u s i o
+p pore
+p dic
+p noexiste
