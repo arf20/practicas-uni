@@ -1,0 +1,96 @@
+b condición
+i 53
+http://www.um.es
+Universidad de Murcia
+La Universidad de Murcia del tercer milenio tiene como eje central
+de su actividad la consecución de la excelencia académica y científica.
+Todo ello queda recogido en esta Web que pretende satisfacer
+las necesidades no solo de la comunidad universitaria sino de
+la Sociedad en general.
+FINDEPAGINA
+u http://dis.um.es/index.html
+b PROGRAMACIÓN
+a llevo la Condición
+i 76
+http://dis.um.es/index.html
+Departamento de Informática y Sistemas
+Universidad Estudios Investigación Internacional Comunicación 
+Texto a buscar Buscar Normativa FinDePágina
+a la PROGRAMACION de Meyer
+o PÁGINA CIGÜEÑA
+o TROYANO TROYA
+p AUTOCOM
+u http://WWW.UM.ES
+p Universi
+i 5
+http://www.wikipedia.com
+La enciclopedia libre
+La portada de la wikipedia tiene
+hoy la noticia de que... 
+Y ademas aqui repito la palabra
+portada para ver que no sale
+dos veces esta pagina.
+FINDEPAGINA
+i 11
+http://www.um.es
+Pagina de la UMU
+La pagina de la Universidad de Murcia ha reformado
+o su portada ultimamente. Sin embargo
+el buscador no ha sido mejorado.
+FINDEPAGINA
+i 10
+http://www.google.es
+El buscador GOOGLE
+Esta es una pagina simple
+porque un buscador no tiene
+i mucho texto asi que la portada
+es muy simple, insisto en repetir SIMPLE 
+Si pongo "dic" en el google me sale sobre todo
+diccionario, pero no me sale dicotomía. FínDÉPágina
+i 3
+http://www.as.com
+Periodico deportivo AS
+El as le ha copiado la PórTADA
+al marca ultimamente. Findepaginá
+b copiado
+b portada
+u http://www.góogle.és
+b simple
+o portada buscadór
+a portada buscador
+i 3
+http://WWW.MARCA.COM
+El periódico deportivo MARCA
+Ha mantenido su portada desde hace tiempo,
+y dicen que el AS la ha copiado
+FINDEPAGINA
+i 7
+http://www.dis.um.es/~ginesgm
+Prácticas de AED
+Haremos un buscador...
+Ponle una PORTADA bonita a la práctica. 
+Utilizaré el cañón de vídeo para la presentación.
+Se hara uso de diccionarios para almacenar cosas
+de forma eficiente.
+findepagina
+o copiado portada
+o tiene pagina
+a portada buscador
+b vacío
+a vacío
+b findepagina
+a simple copiado
+a buscador simple texto
+a PORTADA página
+a portada pagina
+u www.cigüeña.com
+b pagína
+a pagína
+a PáGiNá
+a universidad
+b universidad
+a PráctiCa caÑon cañóN
+o cañón Üniversidad
+p pore
+p dic
+p noexiste
