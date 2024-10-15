@@ -50,6 +50,15 @@
         "__nullptr": "cpp",
         "deque": "cpp",
         "__split_buffer": "cpp",
-        "list": "cpp"
+        "list": "cpp",
+        "__bit_reference": "cpp",
+        "__bits": "cpp",
+        "__config": "cpp",
+        "__debug": "cpp",
+        "__errc": "cpp",
+        "__locale": "cpp",
+        "__threading_support": "cpp",
+        "ios": "cpp",
+        "locale": "cpp"
     }
 }
