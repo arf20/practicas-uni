@@ -1,0 +1,322 @@
+u http://www.um.es
+Total: 0 resultados
+1. http://www.um.es, Universidad de Murcia, Rel. 53
+46 palabras
+u http://dis.um.es/index.html
+Total: 0 resultados
+b programacion
+Total: 0 resultados
+u http://www.um.es
+1. http://www.um.es, Universidad de Murcia, Rel. 53
+Total: 1 resultados
+2. http://dis.um.es/index.html, Departamento de Informática y Sistemas, Rel. 76
+10 palabras
+a  programacion i meyer
+Total: 0 resultados
+o  troyano o troya
+Total: 0 resultados
+p autocom
+Total: 0 resultados
+u http://WWW.UM.ES
+Total: 0 resultados
+u http://dis.um.es/index.html
+1. http://dis.um.es/index.html, Departamento de Informática y Sistemas, Rel. 76
+Total: 1 resultados
+2. http://www.um.es, Universidad de Murcia 2, Rel. 53
+7 palabras
+u http://dis.um.es/index.htm
+Total: 0 resultados
+u http://www.um.es
+1. http://www.um.es, Universidad de Murcia 2, Rel. 53
+Total: 1 resultados
+b condicion
+Total: 0 resultados
+2. http://www.um.es, Universidad de Murcia, Rel. 53
+46 palabras
+u http://dis.um.es/index.html
+1. http://dis.um.es/index.html, Departamento de Informática y Sistemas, Rel. 76
+Total: 1 resultados
+b programacion
+Total: 0 resultados
+a  llevo la condicion
+Total: 0 resultados
+2. http://dis.um.es/index.html, Departamento de Informática y Sistemas, Rel. 76
+10 palabras
+a  la programacion de meyer
+Total: 0 resultados
+o  pagina cigueña
+Total: 0 resultados
+o  troyano troya
+Total: 0 resultados
+p autocom
+Total: 0 resultados
+u http://WWW.UM.ES
+Total: 0 resultados
+p universi
+Total: 0 resultados
+3. http://www.wikipedia.com, La enciclopedia libre, Rel. 5
+27 palabras
+3. http://www.um.es, Pagina de la UMU, Rel. 11
+21 palabras
+4. http://www.google.es, El buscador GOOGLE, Rel. 10
+40 palabras
+5. http://www.as.com, Periodico deportivo AS, Rel. 3
+10 palabras
+b copiado
+Total: 0 resultados
+b portada
+Total: 0 resultados
+u http://www.góogle.és
+Total: 0 resultados
+b simple
+Total: 0 resultados
+o  portada buscador
+Total: 0 resultados
+a  portada buscador
+Total: 0 resultados
+6. http://WWW.MARCA.COM, El periódico deportivo MARCA, Rel. 3
+15 palabras
+7. http://www.dis.um.es/~ginesgm, Prácticas de AED, Rel. 7
+29 palabras
+o  copiado portada
+Total: 0 resultados
+o  tiene pagina
+Total: 0 resultados
+a  portada buscador
+Total: 0 resultados
+b vacio
+Total: 0 resultados
+a  vacio
+Total: 0 resultados
+b findepagina
+Total: 0 resultados
+a  simple copiado
+Total: 0 resultados
+a  buscador simple texto
+Total: 0 resultados
+u http://www.dis.um.es/~ginesgm
+1. http://www.dis.um.es/~ginesgm, Prácticas de AED, Rel. 7
+Total: 1 resultados
+a  portada pagina
+Total: 0 resultados
+u www.cigüeña.com
+Total: 0 resultados
+b pagina
+Total: 0 resultados
+a  pagina
+Total: 0 resultados
+a  pagina
+Total: 0 resultados
+u http://www.góogle.és
+Total: 0 resultados
+u http://www.google.es
+1. http://www.google.es, El buscador GOOGLE, Rel. 10
+Total: 1 resultados
+u httpwww.google.es
+Total: 0 resultados
+u http://www.um.és
+Total: 0 resultados
+a  universidad
+Total: 0 resultados
+u http://www.üm.es
+Total: 0 resultados
+b universidad
+Total: 0 resultados
+u http://www.wikipedia.com
+1. http://www.wikipedia.com, La enciclopedia libre, Rel. 5
+Total: 1 resultados
+u i
+Total: 0 resultados
+a  practica cañon cañon
+Total: 0 resultados
+o  cañon universidad
+Total: 0 resultados
+p pore
+Total: 0 resultados
+p dic
+Total: 0 resultados
+p noexiste
+Total: 0 resultados
+8. http://www.url0.es, Titulo El , Rel. 38
+732 palabras
+9. http://www.url1.es, Titulo Con estos iba ensartando otros , Rel. 16
+1089 palabras
+10. http://www.url2.com, Titulo en otros , Rel. 9
+304 palabras
+11. http://www.url3.com, Titulo España, líder mundial en materia , Rel. 83
+658 palabras
+12. http://www.url4.es, Titulo que , Rel. 58
+232 palabras
+13. http://www.url5.es, Titulo Gobierno:República Teocrática. , Rel. 48
+447 palabras
+14. http://www.url6.es, Titulo Morbi adipiscing laoreet , Rel. 88
+462 palabras
+15. http://www.url7.com, Titulo Phasellus ante mi, semper ac , Rel. 3
+418 palabras
+16. http://www.url8.es, Titulo "Sentí odio , Rel. 68
+689 palabras
+17. http://www.url9.es, Titulo Nullam lorem ligula, luctus in , Rel. 70
+660 palabras
+18. http://www.url10.es, Titulo Con , Rel. 78
+370 palabras
+u http://www.url9.es
+1. http://www.url9.es, Titulo Nullam lorem ligula, luctus in , Rel. 70
+Total: 1 resultados
+u http://www.url.es
+Total: 0 resultados
+u http://www.url29.es
+Total: 0 resultados
+u http://www.url8.es
+1. http://www.url8.es, Titulo "Sentí odio , Rel. 68
+Total: 1 resultados
+u http://www.url0.es
+1. http://www.url0.es, Titulo El , Rel. 38
+Total: 1 resultados
+u http://www.url.es
+Total: 0 resultados
+u http://www.url17.es
+Total: 0 resultados
+u http://www.url14.es
+Total: 0 resultados
+b programacion
+Total: 0 resultados
+u http://www.um.es
+1. http://www.um.es, Pagina de la UMU, Rel. 11
+Total: 1 resultados
+18. http://dis.um.es/index.html, Departamento de Informática y Sistemas, Rel. 76
+10 palabras
+a  programacion i meyer
+Total: 0 resultados
+o  troyano o troya
+Total: 0 resultados
+p autocom
+Total: 0 resultados
+u http://WWW.UM.ES
+Total: 0 resultados
+u http://dis.um.es/index.html
+1. http://dis.um.es/index.html, Departamento de Informática y Sistemas, Rel. 76
+Total: 1 resultados
+18. http://www.um.es, Universidad de Murcia 2, Rel. 53
+7 palabras
+u http://dis.um.es/index.htm
+Total: 0 resultados
+u http://www.um.es
+1. http://www.um.es, Universidad de Murcia 2, Rel. 53
+Total: 1 resultados
+b condicion
+Total: 0 resultados
+18. http://www.um.es, Universidad Murcia, Rel. 531
+26 palabras
+u http://dis.um.es/index.html
+1. http://dis.um.es/index.html, Departamento de Informática y Sistemas, Rel. 76
+Total: 1 resultados
+b programacion
+Total: 0 resultados
+a  llevo la condicion
+Total: 0 resultados
+18. http://dis.um.es/index.html, Departamento de Informatica y Sistemas, Rel. 763
+11 palabras
+a  la programacion de meyer
+Total: 0 resultados
+o  pagina cigueña
+Total: 0 resultados
+o  troyano troya
+Total: 0 resultados
+p autocom
+Total: 0 resultados
+u http://WWW.UM.ES
+Total: 0 resultados
+p universi
+Total: 0 resultados
+18. http://www.wikipedia.com, La enciclopedia libre, Rel. 5
+27 palabras
+18. http://www.um.es, UMU, Rel. 101
+18 palabras
+19. http://Www.google.es, El buscador GOOGLE, Rel. 10
+40 palabras
+u http://www.as.com
+1. http://www.as.com, Periodico deportivo AS, Rel. 3
+Total: 1 resultados
+19. http://www.as.com, Periodico deportivo AS, Rel. 31
+9 palabras
+b copiado
+Total: 0 resultados
+b portada
+Total: 0 resultados
+u http://www.góogle.és
+Total: 0 resultados
+u http://www.as.com
+1. http://www.as.com, Periodico deportivo AS, Rel. 31
+Total: 1 resultados
+b simple
+Total: 0 resultados
+o  portada buscador
+Total: 0 resultados
+a  portada buscador
+Total: 0 resultados
+19. http://WWW.MARCA.COM, El periódico deportivo MARCA, Rel. 3
+15 palabras
+19. http://www.dis.um.es/~ginesgm, Prácticas de AED, Rel. 7
+29 palabras
+o  copiado portada
+Total: 0 resultados
+o  tiene pagina
+Total: 0 resultados
+a  portada buscador
+Total: 0 resultados
+b vacio
+Total: 0 resultados
+a  vacio
+Total: 0 resultados
+b findepagina
+Total: 0 resultados
+a  simple copiado
+Total: 0 resultados
+a  buscador simple texto
+Total: 0 resultados
+u http://www.dis.um.es/~ginesgm
+1. http://www.dis.um.es/~ginesgm, Prácticas de AED, Rel. 7
+Total: 1 resultados
+a  portada pagina
+Total: 0 resultados
+u www.cigüeña.com
+Total: 0 resultados
+b pagina
+Total: 0 resultados
+a  pagina
+Total: 0 resultados
+a  pagina
+Total: 0 resultados
+u http://www.góogle.és
+Total: 0 resultados
+u http://www.google.es
+1. http://www.google.es, El buscador GOOGLE, Rel. 10
+Total: 1 resultados
+u httpwww.google.es
+Total: 0 resultados
+u http://www.um.és
+Total: 0 resultados
+a  universidad
+Total: 0 resultados
+u http://www.üm.es
+Total: 0 resultados
+b universidad
+Total: 0 resultados
+u http://www.wikipedia.com
+1. http://www.wikipedia.com, La enciclopedia libre, Rel. 5
+Total: 1 resultados
+u http://www.as.com
+1. http://www.as.com, Periodico deportivo AS, Rel. 31
+Total: 1 resultados
+u i
+Total: 0 resultados
+a  practica cañon cañon a o i u s i o
+Total: 0 resultados
+o  cañon universidad a o i u s i o
+Total: 0 resultados
+p pore
+Total: 0 resultados
+p dic
+Total: 0 resultados
+p noexiste
+Total: 0 resultados
