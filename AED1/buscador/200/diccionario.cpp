@@ -20,36 +20,53 @@ std::wstring Pagina::getTitulo() const {
     return titulo;
 }
 
+void Pagina::setTitulo(const std::wstring& titulo) {
+    this->titulo = titulo;
+}
+
 int Pagina::getRelevancia() const {
     return relevancia;
+}
+
+void Pagina::setRelevancia(int rel) {
+    this->relevancia = rel;
 }
 
 int Pagina::getContSize() const {
     return contenido.size();
 }
 
+// Diccionario
 
-// Comparador
-bool comparador_paginas_url::operator()(const std::wstring& i,
-    const std::wstring& d) const
-{
-    return i.compare(d) < 0;
+int Diccionario::hash(const std::wstring& key) {
+    int t = 0;
+    for (auto c : key)
+        t += c;
+    return t % N;
 }
 
-
-// Diccionario
-void Diccionario::insertar(const Pagina& p) {
-    paginas.insert_or_assign(p.getUrl(), p);
+void Diccionario::insertar(const Pagina& np) {
+    auto& vec = tabla[hash(np.getUrl())];
+    for (auto it = vec.begin(); it != vec.end(); it++) {
+        if (it->getUrl() == np.getUrl()) {
+            auto& p = *it;
+            p.setTitulo(np.getTitulo());
+            p.setRelevancia(np.getRelevancia());
+            return;
+        }
+    }
+    tabla[hash(np.getUrl())].push_back(np);
+    size++;
 }
 
 std::vector<Pagina> Diccionario::consultar(const std::wstring& url) {
     std::vector<Pagina> resultado;
-    for (const auto& p : paginas)
-        if (p.first == url)
-            resultado.push_back(p.second);
+    for (const auto& p : tabla[hash(url)])
+        if (p.getUrl() == url)
+            resultado.push_back(p);
     return resultado;
 }
 
-size_t Diccionario::size() {
-    return paginas.size();
+size_t Diccionario::getTam() {
+    return size;
 }

@@ -72,7 +72,7 @@ int interpretar(char cmd, Diccionario& dic) {
         case 'i': {
             Pagina np = leerpagina();
             dic.insertar(np);
-            std::wcout << dic.size() << ". " << np.getUrl() << ", "
+            std::wcout << dic.getTam() << ". " << np.getUrl() << ", "
                 << np.getTitulo() << ", Rel. " << np.getRelevancia()
                 << std::endl << np.getContSize() << " palabras" << std::endl;
         } break;
