@@ -1,7 +1,7 @@
 PROJECT := buscador
 BINARY := a.out
 CXX := g++
-CFLAGS := --std=c++17 -Wall -pedantic -g -O0
+CFLAGS := --std=c++17 -Wall -pedantic -g -O3
 
 SRC := $(wildcard *.cpp)
 
@@ -12,12 +12,12 @@ $(BINARY): $(SRC)
 
 .PHONY: test
 test: $(BINARY)
-	./$(PROJECT) < test_stdin.txt > run_stdout.txt
+	./$(BINARY) < test_stdin.txt > run_stdout.txt
 	cmp -s test_stdout.txt run_stdout.txt && echo "PASS" || echo "FAIL"
 
 .PHONY: clean
 clean:
-	rm $(BINARY) run* 
+	rm $(BINARY) run* *.tar
 
 .PHONY: tar
 tar: $(PROJECT).tar

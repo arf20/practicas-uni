@@ -1,12 +1,17 @@
 package maquinas;
 
-import maquinas.Moneda;
-
 public class Monedero {
     private int[] cantidades;
 
     public Monedero() {
         cantidades = new int[Moneda.values().length];
+    }
+
+    public Monedero(Monedero mon) {
+        this();
+        for (int i = 0; i < cantidades.length; i++) {
+            cantidades[i] = mon.get(Moneda.values()[i]);
+        }
     }
 
     public Monedero(Moneda m, int cant) {

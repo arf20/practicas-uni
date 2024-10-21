@@ -63,3 +63,7 @@ parser.feed(res.text)
 #    print("SUBMIT ERROR: " + res.text)
 #else:
 #    print("SUCCESS")
+
+# LOGOUT
+res = s.get(url + "?logout")
+print("LISTING: " + str(res.status_code))

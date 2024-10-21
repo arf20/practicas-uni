@@ -4,6 +4,8 @@
 #include <vector>
 #include <map>
 
+constexpr int N = 65535;
+
 class Pagina {
     private:
     std::wstring url, titulo;
@@ -15,21 +17,20 @@ class Pagina {
         const std::vector<std::wstring>& _cont);
     std::wstring getUrl() const;
     std::wstring getTitulo() const;
+    void setTitulo(const std::wstring& titulo);
     int getRelevancia() const;
+    void setRelevancia(int rel);
     int getContSize() const;
-};
-
-
-struct comparador_paginas_url {
-    bool operator() (const std::wstring& i, const std::wstring& d) const;
 };
 
 class Diccionario {
     private:
-    std::map<std::wstring, Pagina, comparador_paginas_url> paginas;
+    std::vector<Pagina> tabla[N];
+    int hash(const std::wstring& key);
+    int size = 0;
 
     public:
     void insertar(const Pagina& p);
     std::vector<Pagina> consultar(const std::wstring& url);
-    size_t size();
+    size_t getTam();
 };

@@ -5,7 +5,7 @@ JAVAC := javac
 JAVAFLAGS := 
 
 SRC := $(wildcard src/maquinas/*.java)
-CLASS := class/maquinas/Moneda.class class/maquinas/Monedero.class
+#CLASS := class/maquinas/Moneda.class class/maquinas/Monedero.class
 
 all: test
 
@@ -13,17 +13,17 @@ test: $(PROJECT).jar
 	java -jar $(PROJECT).jar
 
 $(PROJECT).jar: classes
-	$(JAR) -cf $(PROJECT).jar class/* META-INF/
+	$(JAR) -cf $(PROJECT).jar maquinas/ META-INF/
 
 .PHONY: classes
-classes: class/maquinas/ $(SRC)
-	$(JAVAC) -d class/maquinas/ $(SRC)
+classes: maquinas/ $(SRC)
+	$(JAVAC) -d . $(SRC)
 
-class/maquinas/:
-	mkdir -p class/maquinas/
+maquinas/:
+	mkdir -p maquinas/
 
 .PHONY: clean
 clean:
-	rm -rf class
+	rm -rf maquinas
 	rm *.jar
 	

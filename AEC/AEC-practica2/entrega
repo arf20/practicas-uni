@@ -1,0 +1,14 @@
+init:
+2 stalls antes de add r4, r1, #64 pues r1 se escribe en add r1, r0, x
+loop:
+2 stalls antes de add r12, r10, r12 pues r12 se escribe en lw r12, 0(r1)
+2 stalls antes de add r14, r12, r14 pues r14 se escribe en lw r14, 0(r2)
+2 stalls antes de add sw 0(r3), r14 pues r14 se escribe en add r14, r12, r14
+5 stalls antes de lw r12, 0(r1) pues se ejecuta un salto beqz r5, loop antes
+
+init:   5I
+loop_0: 11I
+
+init:   11C
+loop_0: 23C
+
