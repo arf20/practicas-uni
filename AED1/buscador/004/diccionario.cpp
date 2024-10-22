@@ -12,11 +12,11 @@ Pagina::Pagina(const std::wstring& _url, const std::wstring& _titulo, int _rel,
     contenido = _cont;
 }
 
-std::wstring Pagina::getUrl() const {
+const std::wstring& Pagina::getUrl() const {
     return url;
 }
 
-std::wstring Pagina::getTitulo() const {
+const std::wstring& Pagina::getTitulo() const {
     return titulo;
 }
 
@@ -42,12 +42,11 @@ void Diccionario::insertar(const Pagina& p) {
     paginas.insert_or_assign(p.getUrl(), p);
 }
 
-std::vector<Pagina> Diccionario::consultar(const std::wstring& url) {
-    std::vector<Pagina> resultado;
-    for (const auto& p : paginas)
-        if (p.first == url)
-            resultado.push_back(p.second);
-    return resultado;
+std::optional<Pagina>
+Diccionario::consultar(const std::wstring& url) {
+    auto it = paginas.find(url);
+    if (it == paginas.end()) return {};
+    return it->second;
 }
 
 size_t Diccionario::size() {
