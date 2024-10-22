@@ -59,9 +59,6 @@
         "__locale": "cpp",
         "__threading_support": "cpp",
         "ios": "cpp",
-        "locale": "cpp",
-        "variant": "cpp",
-        "map": "cpp",
-        "unordered_map": "cpp"
+        "locale": "cpp"
     }
 }

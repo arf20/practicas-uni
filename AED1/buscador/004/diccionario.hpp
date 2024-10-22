@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <optional>
 
 class Pagina {
     private:
@@ -13,8 +14,8 @@ class Pagina {
     public:
     Pagina(const std::wstring& _url, const std::wstring& _titulo, int _rel,
         const std::vector<std::wstring>& _cont);
-    std::wstring getUrl() const;
-    std::wstring getTitulo() const;
+    const std::wstring& getUrl() const;
+    const std::wstring& getTitulo() const;
     int getRelevancia() const;
     int getContSize() const;
 };
@@ -30,6 +31,6 @@ class Diccionario {
 
     public:
     void insertar(const Pagina& p);
-    std::vector<Pagina> consultar(const std::wstring& url);
+    std::optional<Pagina> consultar(const std::wstring& url);
     size_t size();
 };
