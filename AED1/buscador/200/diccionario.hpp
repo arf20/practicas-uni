@@ -26,7 +26,7 @@ class Pagina {
 class Diccionario {
     private:
     std::vector<Pagina> tabla[N];
-    int hash(const std::wstring& key);
+    size_t hash(const std::wstring& key);
     int size = 0;
 
     public:

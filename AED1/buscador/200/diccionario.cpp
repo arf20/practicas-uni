@@ -1,6 +1,7 @@
 #include "diccionario.hpp"
 
 #include <algorithm>
+#include <iostream>
 
 // Pagina
 Pagina::Pagina(const std::wstring& _url, const std::wstring& _titulo, int _rel,
@@ -38,15 +39,18 @@ int Pagina::getContSize() const {
 
 // Diccionario
 
-int Diccionario::hash(const std::wstring& key) {
-    int t = 0;
+size_t Diccionario::hash(const std::wstring& key) {
+    size_t t = 0;
     for (auto c : key)
         t += c;
     return t % N;
 }
 
 void Diccionario::insertar(const Pagina& np) {
-    auto& vec = tabla[hash(np.getUrl())];
+    auto nhash = hash(np.getUrl());
+    std::cout << "hash: " << nhash << std::endl;
+
+    auto& vec = tabla[nhash];
     for (auto it = vec.begin(); it != vec.end(); it++) {
         if (it->getUrl() == np.getUrl()) {
             auto& p = *it;
@@ -55,7 +59,7 @@ void Diccionario::insertar(const Pagina& np) {
             return;
         }
     }
-    tabla[hash(np.getUrl())].push_back(np);
+    tabla[nhash].push_back(np);
     size++;
 }
 

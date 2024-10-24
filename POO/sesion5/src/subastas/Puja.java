@@ -1,8 +1,8 @@
 package subastas;
 
 public class Puja {
-    private String pujador;
-    private double cantidad;
+    final private String pujador;
+    final private double cantidad;
 
     public Puja(String pujador, double cantidad) {
         this.pujador = pujador;
