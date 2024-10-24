@@ -1,0 +1,6 @@
+ordenador 600 euros
+impresora 250 euros
+monitor 300 euros
+mesa 100 euros
+silla 150 euros
+lampara 20 euros
