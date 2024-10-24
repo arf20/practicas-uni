@@ -30,7 +30,6 @@ problem = "P004"
 filename = "buscador.tar"
 
 url = scheme + host + endpoint
-#url = "http://arf20.com"
 
 s = requests.Session() 
 # all cookies received will be stored in the session object
