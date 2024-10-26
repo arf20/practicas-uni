@@ -25,20 +25,18 @@ public class Subasta {
 
         abierta = true;
         pujas = new ArrayList<Puja>();
-        pujaMayor = 0.0;
     }
 
     public boolean pujar(String usuario, double puja) {
-        if (!abierta || (propietario == usuario) || (puja <= pujaMayor))
+        if (!abierta || (propietario == usuario) || (puja <= getPujaMayor()))
             return false;
         
         pujas.add(new Puja(usuario, puja));
-        pujaMayor = puja;
         return true;
     }
 
     public boolean pujar(String usuario) {
-        return pujar(usuario, pujaMayor + 1.0);
+        return pujar(usuario, getPujaMayor() + 1.0);
     }
 
     public boolean ejecutar() {

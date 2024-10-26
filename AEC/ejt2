@@ -1,0 +1,9 @@
+				1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19
+loop:	add	r4, r2, r3	IF ID EX ME WB
+	sub	r1, r2, r1	   IF ID EX ME WB
+	sw	0(r1), r1	      IF S  S  ID EX ME WB
+	subi	r2, r2, #4	               IF ID EX ME WB
+	sub	r4, r3, r2	                  IF S  S  ID EX ME WB
+	bnez	r4, loop	                           IF S  S  ID EX ME WB
+loop:	add	r4, r2, r3	                                          IF ID EX ME WB
+
