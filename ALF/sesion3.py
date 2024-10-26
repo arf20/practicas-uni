@@ -1,4 +1,5 @@
 import random
+import math
 
 def genera_nif(n):
     nifs = list()
@@ -68,48 +69,48 @@ def genera_coord(n):
             if lat < 0:
                 latdir = "S"
                 lat *= -1
-            if lat < 0:
+            if long < 0:
                 longdir = "E"
                 long *= -1
-            latsex = str(round(lat)) + "º "
-            lat -= round(lat)
+            latsex = str(math.floor(lat)) + "° "
+            lat -= math.floor(lat)
             lat *= 60
-            latsex += str(round(lat)) + "' "
-            lat -= round(lat)
+            latsex += str(math.floor(lat)) + "' "
+            lat -= math.floor(lat)
             lat *= 60
-            latsex += str(round(lat)) + "\" " + latdir
+            latsex += str(math.floor(lat)) + "\" " + latdir
 
-            longsex = str(round(long)) + "º "
-            long -= round(long)
+            longsex = str(math.floor(long)) + "° "
+            long -= math.floor(long)
             long *= 60
-            longsex += str(round(long)) + "' "
-            long -= round(long)
+            longsex += str(math.floor(long)) + "' "
+            long -= math.floor(long)
             long *= 60
-            longsex += str(round(long)) + "\" " + longdir
+            longsex += str(math.floor(long)) + "\" " + longdir
 
             coords.append(latsex + ", " + longsex)
         if fmt == 3:
             if lat < 0:
                 latdir = "S"
                 lat *= -1
-            if lat < 0:
+            if long < 0:
                 longdir = "E"
                 long *= -1
-            latsex = str(round(lat))
-            lat -= round(lat)
+            latsex = "{:03d}".format(math.floor(lat))
+            lat -= math.floor(lat)
             lat *= 60
-            latsex += str(round(lat))
-            lat -= round(lat)
+            latsex += "{:02d}".format(math.floor(lat))
+            lat -= math.floor(lat)
             lat *= 60
-            latsex += str(round(lat)) + latdir
+            latsex += "{:07.4f}".format(math.floor(lat)) + latdir
 
-            longsex = str(round(long))
-            long -= round(long)
+            longsex = "{:03d}".format(math.floor(long))
+            long -= math.floor(long)
             long *= 60
-            longsex += str(round(long))
-            long -= round(long)
+            longsex += "{:02d}".format(math.floor(long))
+            long -= math.floor(long)
             long *= 60
-            longsex += str(round(long)) + longdir
+            longsex += "{:07.4f}".format(math.floor(long)) + longdir
 
             coords.append(latsex + longsex)
     return coords

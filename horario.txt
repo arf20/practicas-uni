@@ -1,0 +1,51 @@
++------+-------------------------------------------------+
+| TIME | MON     | TUE     | WED     | THU     | FRI     |
++------+---------+---------+---------+---------+---------+
+| 0900 | AED1-LM | ISO-LM  | ISO-LM  | AEC-LAB |          
+| 0910 | B-01    | B-01    | B-01    | LAB 2.2 |          
+| 0920 |         |         |         |         |          
+| 0930 |         |         |         |         |          
+| 0940 |         |         |         |         |          
+| 0950 |         +---------+---------+         |          
+| 1000 |         | AEC-LM  | ALF-LM  |         |          
+| 1010 |         | B-01    | B-01    |         |          
+| 1020 |         |         |         |         |          
+| 1030 |         |         |         |         |          
+| 1040 |         |         |         |         |          
+| 1050 +---------+         |         +---------+          
+| 1100 | POO-LM  |         |         | POO-LAB |          
+| 1110 | B-01    |         |         | LAB 2.2 |          
+| 1120 |         |         |         |         |          
+| 1130 |         |         |         |         |          
+| 1140 |         |         |         |         |          
+| 1150 |         +---------+---------+         |          
+| 1200 |         |         |         |         |          
+| 1210 |         +---------+---------+---------+          
+| 1220 |         | AED1-LAB| ISO-LAB | ALF-LAB |          
+| 1230 |         | LAB 2.2 | LAB 2.2 | LAB 2.2 |          
+| 1240 |         |         |         |         |          
+| 1250 +---------+         |         |         |          
+| 1300 |         |         |         |         |          
+| 1310 |         |         |         |         |          
+| 1320 |         |         |         |         |          
+| 1330 |         |         |         |         |          
+| 1340 |         |         |         |         |          
+| 1350 |         +---------+---------+---------+          
+| 1400 |                                                  
++------+
+
+AED-LM  Ginés García Mateos
+AED-LAB José Alberto García Berna
+
+POO-LM  Marcos Menárguez Tortosa
+POO-LAB Marcos Menárguez Tortosa (baja) -> 
+
+ALF-LM  Juan Antonio Sánchez Laguna
+ALF-LAB Juan Antonio Sánchez Laguna
+
+AEC-LM  Juan Luis Aragón Alcaraz
+AEC-LAB Arturo Vicente Jaén
+
+ISO-LM  Manuel E. Acacio Sánchez
+ISO-LAB Adrián Fenollar Navarro
+
