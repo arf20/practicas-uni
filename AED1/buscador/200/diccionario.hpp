@@ -4,7 +4,7 @@
 #include <vector>
 #include <map>
 
-constexpr int N = 65535;
+constexpr int N = 20000;
 
 class Pagina {
     private:

@@ -40,9 +40,9 @@ int Pagina::getContSize() const {
 // Diccionario
 
 size_t Diccionario::hash(const std::wstring& key) {
-    size_t t = 0;
+    size_t t = 5381;
     for (auto c : key)
-        t += c;
+        t = ((t << 5) + t) + c;
     return t % N;
 }
 

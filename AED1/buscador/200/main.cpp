@@ -16,6 +16,6 @@ int main() {
     while (std::wcin >> in) {
         if (in.length() != 1) continue;
         int r = interpretar(in[0], dic);
-        if (r < 0) return 0;
+        if (r < 0) return 1;
     }
 }

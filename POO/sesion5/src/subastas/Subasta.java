@@ -7,13 +7,12 @@ public class Subasta {
     private String propietario;
     private boolean abierta;
     private ArrayList<Puja> pujas;
-    //private double pujaMayor;
 
     public double getPujaMayor() {
         double c = 0.0;
         for (Puja e : pujas) {
-            if (e.getCantidad() > c) 
-                c = e.getCantidad();
+            if (e.cantidad() > c) 
+                c = e.cantidad();
         }
 
         return c;
