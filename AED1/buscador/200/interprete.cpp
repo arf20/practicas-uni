@@ -122,9 +122,9 @@ int interpretar(char cmd, Diccionario& dic) {
         } break;
         case 's': {
             std::wcout << "Saliendo..." << std::endl;
-            return -1;
+            return 0;
         } break;
-        default: return 1;
+        default: return -1;
     }
     return 0;
 }
