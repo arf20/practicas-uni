@@ -5,23 +5,11 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python Debugger: Current File",
-            "type": "debugpy",
-            "request": "launch",
-            "program": "${file}",
-            "cwd": "${fileDirname}",
-            "console": "integratedTerminal",
-            "justMyCode": false
-        },
-        {
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/300/a.out",
-            "args": [
-                "<",
-                "${workspaceFolder}/300/test_stdin.txt"
-            ],
+            "program": "${workspaceFolder}/a.out",
+            "args": ["<", "test_stdin.txt"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
@@ -40,5 +28,6 @@
                 }
             ]
         }
+
     ]
 }

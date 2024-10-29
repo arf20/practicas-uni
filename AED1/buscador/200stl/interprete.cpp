@@ -72,7 +72,7 @@ int interpretar(char cmd, Diccionario& dic) {
         case 'i': {
             Pagina np = leerpagina();
             dic.insertar(np);
-            std::wcout << dic.getTam() << ". " << np.getUrl() << ", "
+            std::wcout << dic.size() << ". " << np.getUrl() << ", "
                 << np.getTitulo() << ", Rel. " << np.getRelevancia()
                 << std::endl << np.getContSize() << " palabras" << std::endl;
         } break;
@@ -81,13 +81,17 @@ int interpretar(char cmd, Diccionario& dic) {
             std::wcin >> url;
 
             auto p = dic.consultar(url);
-
-            std::wcout << "u " << url << std::endl;
-            for (size_t i = 0; i < p.size(); i++)
-                std::wcout << i + 1 << ". " << p[i].getUrl() << ", "
-                    << p[i].getTitulo() << ", Rel. " << p[i].getRelevancia()
-                    << std::endl;
-            std::wcout << "Total: " << p.size() << " resultados" << std::endl;
+            
+            if (p.has_value()) {
+                std::wcout << "u " << url << std::endl;
+                    std::wcout << "1. " << p.value().getUrl() << ", "
+                        << p.value().getTitulo() << ", Rel. "
+                        << p.value().getRelevancia() << std::endl;
+                std::wcout << "Total: 1 resultados" << std::endl;
+            } else {
+                std::wcout << "u " << url << std::endl 
+                    << "Total: 0 resultados" << std::endl;
+            }
             
         } break;
         case 'b': {
@@ -122,9 +126,9 @@ int interpretar(char cmd, Diccionario& dic) {
         } break;
         case 's': {
             std::wcout << "Saliendo..." << std::endl;
-            return 0;
+            return -1;
         } break;
-        default: return -1;
+        default: return 1;
     }
     return 0;
 }
