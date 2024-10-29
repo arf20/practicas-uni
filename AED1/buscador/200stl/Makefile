@@ -12,12 +12,12 @@ $(BINARY): $(SRC)
 
 .PHONY: test
 test: $(BINARY)
-	/bin/time ./$(BINARY) < test_stdin.txt > run_stdout.txt
+	./$(BINARY) < test_stdin.txt > run_stdout.txt
 	cmp -s test_stdout.txt run_stdout.txt && echo "PASS" || echo "FAIL"
 
 .PHONY: clean
 clean:
-	rm $(BINARY) run* *.tar
+	rm $(BINARY) run* 
 
 .PHONY: tar
 tar: $(PROJECT).tar

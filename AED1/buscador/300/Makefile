@@ -1,7 +1,7 @@
 PROJECT := buscador
 BINARY := a.out
 CXX := g++
-CFLAGS := --std=c++17 -Wall -pedantic -g -O3
+CFLAGS := --std=c++17 -Wall -pedantic -g -O0
 
 SRC := $(wildcard *.cpp)
 
