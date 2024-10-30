@@ -16,8 +16,8 @@ class Pagina {
     public:
     Pagina(const std::wstring& _url, const std::wstring& _titulo, int _rel,
         const std::vector<std::wstring>& _cont);
-    std::wstring getUrl() const;
-    std::wstring getTitulo() const;
+    const std::wstring& getUrl() const;
+    const std::wstring& getTitulo() const;
     void setTitulo(const std::wstring& titulo);
     int getRelevancia() const;
     void setRelevancia(int rel);
@@ -35,7 +35,10 @@ class Arbol {
     std::map<char, nodo_trie_t> raiz;
 
     public:
-    void insertar(const std::wstring& palabra, std::vector<Pagina>::iterator paginaref);
+    void insertar(const std::wstring& palabra,
+        std::vector<Pagina>::iterator paginaref);
+    std::vector<std::vector<Pagina>::iterator>
+        buscar(const std::wstring& palabra);
 };
 
 class Diccionario {
@@ -48,5 +51,7 @@ class Diccionario {
     public:
     void insertar(const Pagina& p);
     std::vector<Pagina> consultar(const std::wstring& url);
+    std::vector<std::vector<Pagina>::iterator>
+        buscarPalabra(const std::wstring& palabra);
     size_t getTam();
 };

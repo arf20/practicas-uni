@@ -14,11 +14,11 @@ Pagina::Pagina(const std::wstring& _url, const std::wstring& _titulo, int _rel,
     contenido = _cont;
 }
 
-std::wstring Pagina::getUrl() const {
+const std::wstring& Pagina::getUrl() const {
     return url;
 }
 
-std::wstring Pagina::getTitulo() const {
+const std::wstring& Pagina::getTitulo() const {
     return titulo;
 }
 
@@ -64,7 +64,7 @@ void Diccionario::insertar(const Pagina& np) {
             return;
         }
     }
-    tabla[nhash].push_back(np);
+    tabla[nhash].push_back(Pagina(np));
     size++;
 
     // insertar palabras
@@ -81,14 +81,21 @@ std::vector<Pagina> Diccionario::consultar(const std::wstring& url) {
     return resultado;
 }
 
+std::vector<std::vector<Pagina>::iterator>
+Diccionario::buscarPalabra(const std::wstring& palabra) {
+    return arbol.buscar(palabra);
+}
+
 size_t Diccionario::getTam() {
     return size;
 }
 
 // Arbol
 
-void Arbol::insertar(const std::wstring& palabra, std::vector<Pagina>::iterator paginaref) {
-    auto subarbol = &raiz;
+void Arbol::insertar(const std::wstring& palabra,
+    std::vector<Pagina>::iterator paginaref)
+{
+    auto subarbol = &raiz; // puntero porque referencia rebindeable
     std::map<char, nodo_trie_t>::iterator it;
 
     // extensa
@@ -108,9 +115,30 @@ void Arbol::insertar(const std::wstring& palabra, std::vector<Pagina>::iterator 
     // concisa
     for (wchar_t c : palabra) {
         auto nuevonodo = nodo_trie_t();
-        it = subarbol->insert({c, nuevonodo}).first; // solo inserta si c no existe
+        // solo inserta si c no existe
+        it = subarbol->insert({c, nuevonodo}).first;
         subarbol = &it->second.hijos;
     }
     
     it->second.paginas.push_back(paginaref);
+}
+
+// no const ref return porque si no se encuentra resultado,
+// retorna nuevo vector vacio
+std::vector<std::vector<Pagina>::iterator>
+Arbol::buscar(const std::wstring& palabra) {
+    auto subarbol = &raiz;
+    std::map<char, nodo_trie_t>::iterator it;
+
+    for (wchar_t c : palabra) {
+        auto nuevonodo = nodo_trie_t();
+        it = subarbol->find(c);
+        if (it == subarbol->end())
+            // retornar vector vacio si no hay resultados
+            return std::vector<std::vector<Pagina>::iterator>();
+        
+        subarbol = &it->second.hijos;
+    }
+
+    return it->second.paginas;
 }
