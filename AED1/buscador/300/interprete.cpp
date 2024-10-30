@@ -93,9 +93,18 @@ int interpretar(char cmd, Diccionario& dic) {
         case 'b': {
             std::wstring palabra;
             std::wcin >> palabra;
+            palabra = normalizarstr(palabra);
 
-            std::wcout << "b " << normalizarstr(palabra) << std::endl
-                    << "Total: 0 resultados" << std::endl;
+            auto paginas = dic.buscarPalabra(palabra);
+
+            std::wcout << "b " << palabra << std::endl;
+            for (size_t i = 0; i < paginas.size(); i++) {
+                std::wcout << i + 1 << ". " <<  paginas[i]->getUrl() << ", "
+                    << paginas[i]->getTitulo() << ", Rel. "
+                    << paginas[i]->getRelevancia() << std::endl;
+            }
+            std::wcout << "Total: " << paginas.size() << " resultados"
+                << std::endl;
         } break;
         case 'a': {
             std::vector<std::wstring> palabras = leerpalabras();
