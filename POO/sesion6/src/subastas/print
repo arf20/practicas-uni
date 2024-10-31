@@ -1,0 +1,78 @@
+----------
+Puja.java:
+
+package subastas;
+
+public record Puja(String pujador, double cantidad) {
+    
+}
+
+-------------
+Subasta.java:
+
+package subastas;
+
+import java.util.ArrayList;
+
+public class Subasta {
+    private String nombre;
+    private String propietario;
+    private boolean abierta;
+    private ArrayList<Puja> pujas;
+
+    public double getPujaMayor() {
+        double c = 0.0;
+        for (Puja e : pujas) {
+            if (e.cantidad() > c) 
+                c = e.cantidad();
+        }
+
+        return c;
+    }
+
+    public Subasta(String nombre, String propietario) {
+        this.nombre = nombre;
+        this.propietario = propietario;
+
+        abierta = true;
+        pujas = new ArrayList<Puja>();
+    }
+
+    public boolean pujar(String usuario, double puja) {
+        if (!abierta || (propietario == usuario) || (puja <= getPujaMayor()))
+            return false;
+        
+        pujas.add(new Puja(usuario, puja));
+        return true;
+    }
+
+    public boolean pujar(String usuario) {
+        return pujar(usuario, getPujaMayor() + 1.0);
+    }
+
+    public boolean ejecutar() {
+        if (pujas.isEmpty() || !abierta) return false;
+
+        abierta = false;
+        return true;
+    }
+}
+
+--------------
+Programa.java:
+
+package subastas;
+
+public class Programa {
+    public static void main(String[] args) {
+        Subasta subasta = new Subasta("Teléfono Móvil", "Juan");
+        subasta.pujar("Pedro", 100.0);
+        System.out.println("Puja mayor: " + subasta.getPujaMayor());
+        subasta.pujar("Enrique", 50.0);
+        System.out.println("Puja mayor: " + subasta.getPujaMayor());
+        subasta.ejecutar();
+        subasta.pujar("Enrique", 200.0);
+        System.out.println("Puja mayor: " + subasta.getPujaMayor());
+    }
+}
+

@@ -3,13 +3,14 @@ import math
 
 months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
 
-def normalize(fname):
-    date2prog = re.compile("([a-zA-Z]+) ([0-9]{2}), ([0-9]{4}) ([0-9]{2}):([0-9]{2}) (AM|PM)")
-    date3prog = re.compile("([0-9]{2}):([0-9]{2}):([0-9]{2}) ([0-9]{2})\/([0-9]{2})\/([0-9]{4})")
-    geo2prog  = re.compile("(\d*)\° (\d*)\' (\d*)\" ([NS]), (\d*)\° (\d*)\' (\d*)\" ([WE])")
-    geo1prog  = re.compile("([+-]?\d*\.\d+), ([+-]?\d*\.\d+)")
+date2prog = re.compile("([a-zA-Z]+) ([0-9]{2}), ([0-9]{4}) ([0-9]{2}):([0-9]{2}) (AM|PM)")
+date3prog = re.compile("([0-9]{2}):([0-9]{2}):([0-9]{2}) ([0-9]{2})\/([0-9]{2})\/([0-9]{4})")
+geo2prog  = re.compile("(\d*)\° (\d*)\' (\d*)\" ([NS]), (\d*)\° (\d*)\' (\d*)\" ([WE])")
+geo1prog  = re.compile("([+-]?\d*\.\d+), ([+-]?\d*\.\d+)")
 
+def normalize(fname):
     file = open(fname, "r")
+    
     for line in file:
         m = re.search(date2prog, line)
         if (m != None):

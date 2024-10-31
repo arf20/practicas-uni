@@ -17,10 +17,10 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/300/a.out",
+            "program": "${workspaceFolder}/300stl/a.out",
             "args": [
                 "<",
-                "${workspaceFolder}/300/test_stdin.txt"
+                "${workspaceFolder}/300stl/test_stdin.txt"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
