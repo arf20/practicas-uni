@@ -109,7 +109,7 @@ int interpretar(char cmd, Diccionario& dic) {
         case 'a': {
             std::vector<std::wstring> palabras = leerpalabras();
 
-            std::wcout << "a ";
+            std::wcout << "a";
             for (auto p : palabras)
                 std::wcout << " " << p;
             std::wcout << std::endl << "Total: 0 resultados" << std::endl;
@@ -117,7 +117,7 @@ int interpretar(char cmd, Diccionario& dic) {
         case 'o': {
             std::vector<std::wstring> palabras = leerpalabras();
 
-            std::wcout << "o ";
+            std::wcout << "o";
             for (auto p : palabras)
                 std::wcout << " " << p;
             std::wcout << std::endl << "Total: 0 resultados" << std::endl;

@@ -2,6 +2,7 @@
 
 #include <string>
 #include <vector>
+#include <list>
 #include <map>
 #include <memory>
 
@@ -23,10 +24,11 @@ class Pagina {
     void setRelevancia(int rel);
     int getContSize() const;
     const std::vector<std::wstring>& getContenido() const;
+    void setContenido(const std::vector<std::wstring>& palabras);
 };
 
 struct nodo_trie_t {
-    std::vector<std::vector<Pagina>::iterator> paginas;
+    std::vector<std::list<Pagina>::iterator> paginas;
     std::map<char, nodo_trie_t> hijos;
 };
 
@@ -36,14 +38,14 @@ class Arbol {
 
     public:
     void insertar(const std::wstring& palabra,
-        std::vector<Pagina>::iterator paginaref);
-    std::vector<std::vector<Pagina>::iterator>
+        std::list<Pagina>::iterator paginaref);
+    std::vector<std::list<Pagina>::iterator>
         buscar(const std::wstring& palabra);
 };
 
 class Diccionario {
     private:
-    std::vector<Pagina> tabla[N];
+    std::list<Pagina> tabla[N];
     Arbol arbol;
     size_t hash(const std::wstring& key);
     int size = 0;
@@ -51,7 +53,7 @@ class Diccionario {
     public:
     void insertar(const Pagina& p);
     std::vector<Pagina> consultar(const std::wstring& url);
-    std::vector<std::vector<Pagina>::iterator>
+    std::vector<std::list<Pagina>::iterator>
         buscarPalabra(const std::wstring& palabra);
     size_t getTam();
 };
