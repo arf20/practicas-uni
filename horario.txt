@@ -38,7 +38,7 @@ AED-LM  Ginés García Mateos
 AED-LAB José Alberto García Berna
 
 POO-LM  Marcos Menárguez Tortosa
-POO-LAB Marcos Menárguez Tortosa (baja) -> 
+POO-LAB Marcos Menárguez Tortosa (baja) -> Jose Antonio Miñarro
 
 ALF-LM  Juan Antonio Sánchez Laguna
 ALF-LAB Juan Antonio Sánchez Laguna
