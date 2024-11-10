@@ -391,7 +391,7 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Java
-FIND_PACKAGE_MESSAGE_DETAILS_Java:INTERNAL=[/usr/bin/java][/usr/bin/jar][/usr/bin/javac][/usr/bin/javadoc][v21.0.2()]
+FIND_PACKAGE_MESSAGE_DETAILS_Java:INTERNAL=[/usr/bin/java][/usr/bin/jar][/usr/bin/javac][/usr/bin/javadoc][v17.0.10()]
 //ADVANCED property for variable: Java_IDLJ_EXECUTABLE
 Java_IDLJ_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Java_JARSIGNER_EXECUTABLE

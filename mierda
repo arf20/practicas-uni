@@ -1,0 +1,34 @@
+INSTRUCCIONES
+LINEA	TIPO	DIR		S	A/F
+9	I	0x00400424	2	A	; en el C2 ya está metido
+9	I	0x00400428	2	A
+10	I	0x0040042c	2	A
+10	I	0X00400430	3	F	; aqui metemos same etiq en C3
+11	I	0x00400434	3	A
+12	I	0x00400438	3	A
+13	I	0x0040043c	3	A
+14	I	0x00400440	4	F	; aqui metemos same etiq en C4
+15	I	0x00400444	4	A
+16	I	0x00400448	4	A
+17	I	0x0040044c	4	A
+18	I	0x00400450	5	F	; aqui metemos same etiq en C5
+19	I	0x00400454	5	A
+; a partir de aqui ya no hay fallos de cache de instrucciones
+
+
+DATOS
+LINEA	TIPO	DIR		S	A/F	IT
+14	LD	0x10010220	4	F	0	; inicialmente vacio, guardamos en C4 V0
+15	ED	0x10010828	5	F	0	; guardamos en C5 V0
+14	LD	0x10010221	4	A	1
+15	ED	0x10010830	7	F	1	; guardamos en C7 V0
+14	LD	0x10010222	4	
+
+
+etiqueta	0x100108
+	0x30
+	0010 0010
+	00100 010
+indice	4
+desp	0
+

@@ -1,0 +1,21 @@
+Programa P3-codigo2.s
+Ejecución: "Segmentado"
+           "Salto fijo"
+
+Número de instrucciones: 259
+Número de ciclos: 337
+CPI: 1.3011583
+
+Numero de ciclos de uso y porcentaje de uso de:
+Memoria de instrucciones 268 Ciclos; 79,53%
+Memoria de datos 104 Ciclos; 30,86%
+ALU 601 Ciclos; 178,34%
+  -U.F. enteros (1): 185 Ciclos; 54,9%
+  -U.F. suma P.F. (4): 136 Ciclos; 40,36%
+  -U.F. mult P.F. (7): 280 Ciclos; 83,09%
+  -U.F. div P.F. (10): 0 Ciclos; 0%
+
+Detenciones 73 Ciclos; 21,66%
+  -Riesgos estructurales 0 Ciclos; 0%
+  -Riesgos de datos 64 Ciclos; 18,99%
+  -Riesgos de control 9 Ciclos; 2,67%

@@ -34,3 +34,4 @@ class Diccionario {
     std::optional<Pagina> consultar(const std::wstring& url);
     size_t size();
 };
+

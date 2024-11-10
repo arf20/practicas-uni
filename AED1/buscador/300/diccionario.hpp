@@ -57,3 +57,4 @@ class Diccionario {
         buscarPalabra(const std::wstring& palabra);
     size_t getTam();
 };
+
