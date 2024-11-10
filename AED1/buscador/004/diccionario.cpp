@@ -52,3 +52,4 @@ Diccionario::consultar(const std::wstring& url) {
 size_t Diccionario::size() {
     return paginas.size();
 }
+

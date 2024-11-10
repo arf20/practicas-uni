@@ -1,0 +1,166 @@
+Usando: traces/605.mcf.xz (MCF)
+
+	NOT_TAKEN (605)
+	MCF = 40.2889%
+	IPC = 0.12582
+
+----------
+
+	TAKEN (605)
+	MCF = 59.7097%
+	IPC = 0.177316
+	Se toman la mayoria de los saltos
+
+
+Usando: traces/602.gcc.xz (GCC)
+
+	NOT_TAKEN (602)
+	GCC = 65.5334%
+	IPC = 0.0957135 
+
+	TAKEN (602)
+	GCC = 34.4666%
+	IPC = 0.0732953
+
+	No se toman la mayoria de los casos
+
+
+605 (2-bits)
+	MCF = 39.8232%
+	IPC = 0.171401
+
+602 (2-bits)
+	GCC = 65.596% 
+	IPC = 0.0956453 
+	
+En el primero si hemos mejorado un poco, en cambio en el segundo no ha mejorado.
+
+
+No podemos tener un numero infinito de contadores, que seria lo ideal. Entonces, tenemos q crear algo que con un PC de un numero grande nos de un número mas pequeño, eso es la funcion HASH.
+605 (64 entries 2-bits)
+	MCF = 99.9556%
+	IPC = 0.172323
+
+602 (64 entries 2-bits)
+	GCC = 98.863% 
+	IPC = 0.120949
+	
+Ahora si es mejor la proyeccion de ambos.
+TOTAL BITS = 128 bits
+
+
+
+Usando: traces/621.wrf.xz (WRF)
+
+	64 entries
+		WRF = 85.0038% 
+		IPC = 0.527388
+
+
+	128 entries
+		WRF = 92.0997%
+		IPC = 0.548863
+	256 entries
+		WRF = 93.7457%
+		IPC = 0.553319
+	512 entries
+		WRF = 93.9203%
+		IPC = 0.553975
+	1024 entries
+		WRF = 93.9285%
+		IPC = 0.554027
+		
+
+Usando: traces/621.wrf.xz (WRF)
+
+	64 entries
+		LBM = 94.918%
+		IPC = 0.367734
+
+	128 entries
+		LBM = 94.918%
+		IPC = 0.367734
+
+	256 entries
+		LBM = 94.918%
+		IPC = 0.367734
+
+	512 entries
+		LBM = 94.918%
+		IPC = 0.367734
+	1024 entries
+		LBM = 94.918%
+		IPC = 0.367734
+
+
+gshare
+
+MCF = 99.9614%
+IPC = 0.172381 
+
+GCC = 99.4271%
+IPC = 0.121819
+
+WRF = 94.8463%
+IPC = 0.556324
+
+LBM = 96.6566%
+IPC = 0.36785
+
+
+NOT_TAKEN (WRF)
+WRF = 57.6643%
+IPC = 0.441044 
+
+NOT_TAKEN (LBM)
+LBM = 9.99453%
+IPC = 0.361905
+
+
+IPC(gshare)/IPC(NOT_TAKEN)
+
+
+MEDIA ARMÓNICA es la que hay que utilizar
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

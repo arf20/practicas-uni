@@ -1,0 +1,15 @@
+ABRIR SIMULADOR EJERCICIO 1
+
+wine DLXide.exe
+
+
+ABRIR SIMULADOR EJERCICIO 2
+
+make
+
+./run_champsim.sh traces/605.mcf.xz
+
+
+ABRIR SIMULADOR EJERCICIO 3
+
+java -jar Simula3MSv5.01.jar 

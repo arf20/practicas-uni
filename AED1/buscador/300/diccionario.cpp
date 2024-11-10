@@ -65,7 +65,6 @@ void insertar_palabras(const std::vector<std::wstring>& palabras,
 
 void Diccionario::insertar(const Pagina& np) {
     auto nhash = hash(np.getUrl());
-    std::cout << "hash: " << nhash << std::endl;
 
     std::list<Pagina>::iterator it;
 
@@ -169,3 +168,4 @@ Arbol::buscar(const std::wstring& palabra) {
 
     return it->second.paginas;
 }
+
