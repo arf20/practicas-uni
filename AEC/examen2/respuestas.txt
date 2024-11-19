@@ -22,3 +22,18 @@ PARTE 2
 11. C
     {aliasing = hash colisions -> mas bins menos colisiones mejor prediccion}
 
+12. i. div.d $f10, $f10, $f2
+    ii. 1
+    iii. datos
+
+13. i. add.d $f16, $f8, $f10
+    ii. 3
+    iii. datos
+
+14. i. swc1 $f16, -8($t5)
+    ii. 2
+    iii. datos
+
+15. 16+(10*13)+2
+
+16. 1+(10*7)=72
