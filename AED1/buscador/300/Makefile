@@ -1,14 +1,19 @@
 PROJECT := buscador
 BINARY := a.out
 CXX := g++
-CFLAGS := --std=c++17 -Wall -pedantic -g -O0
+CXXFLAGS := --std=c++17 -Wall -pedantic -g -O0
+LDFLAGS := 
 
 SRC := $(wildcard *.cpp)
+OBJ := $(patsubst %.cpp,%.o,$(SRC))
 
 all: $(BINARY)
 
-$(BINARY): $(SRC)
-	$(CXX) $(CFLAGS) *.cpp
+$(BINARY): $(OBJ)
+	$(CXX) -o $(BINARY) $(OBJ) $(LDFLAGS)
+
+%.o: %.cpp %.hpp
+	$(CXX) -c $(CXXFLAGS) $<
 
 .PHONY: test
 test: $(BINARY)
@@ -17,7 +22,7 @@ test: $(BINARY)
 
 .PHONY: clean
 clean:
-	rm $(BINARY) run* *.tar
+	rm $(BINARY) *.o run* *.tar
 
 .PHONY: tar
 tar: $(PROJECT).tar
