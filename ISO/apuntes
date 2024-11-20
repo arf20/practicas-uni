@@ -1,0 +1,256 @@
+Introducción a los Sistemas Operativos           Angel R. Fernandez, G2.2, 2024
+
+TEMA 1: Introducción
+
+
+TEMA 2: Gestion de Procesos
+
+INTRODUCCIÓN
+
+Instancia de programa, recursos asociados (stack, heap)
+Pseudoparalelismo
+
+Cambios
+ - Cambio de proceso:  Cambiar de proceso a otro
+ - Cambio de contexto: Cada vez que se intercambia el estado de la CPU
+   Implicado por cambio de proceso, cambio de modo y cambio de hilo
+ - Cambio de modo:     Entre kernel y user mode
+
+Creacion
+ - fork():   Clonar proceso
+ - execve(): Reemplazar imagen del proceso actual por otro programa
+   Conserva archivos abiertos, handlers de señales y PID... etc
+
+Destrucción
+ - Por excepción (i.e. div 0) o señal (SIGSEGV, SIGINT, SIGTERM, SIGKILL...)
+ - exit():  Terminación voluntaria propia
+ - kill():  Terminación por otro proceso involuntaria, envía señal
+
+ESTADOS
+ - Listo:       Esperando ser planificado
+ - Bloqueado:   Esperando I/O
+ - Ejecución
+
+IMPLEMENTACIÓN
+
+Tabla PCB (Process Control Block) con toda la info
+
+Creación
+ - fork()
+ - Kernel crea entrada en PCB con PID
+ - Copia del proceso padre (menos PID, segmentos, heap+stack...)
+ - Se asigna heap, copia segmento de datos, se comparte seg de datos con padre
+ - Incrementar contadores de archivos abiertos del padre
+ - Estado listo, devuelve PID al padre, 0 al hijo
+
+Estructura
+Como las interrupciones son dentro del mismo proceso, se considera que
+tienen parte usuario y parte kernel, compartida entre todos los procesos
+
+Cambio de proceso
+ - push PC al stack
+ - kernel mode, carga PC desde el vector de interrupciones (IVT)
+ - en ensamblador, guardar contexto a la PCB (registros, etc) y mas metadatos
+ - configurar stack del kernel (cada proceso tiene stack para kernel mode)
+ - comprobar syscall, leer IDT, ejecutar ISR, llama a handler en C
+   posible bloqueo (cambio de estado)
+ - se decide si es necesario llamar al planificador, se llama y decide cual
+   de los listos ejecutar mirando PCB
+ - restauración de contexto del proceso a ejecutar (incluye PC)
+ - cambio a modo usuario, return de llamada, pop de la siguiente instruccion
+
+HILOS (threads)
+
+Unidad de planificación y ejecución
+No hay protección entre hilos
+ - Estado
+ - Contexto
+ - Pila (variables locales)
+ - Memoria compartida
+(Procesos: Unidad de Propiedad de Recursos)
+ - Zona de memoria (espacio de direcciones
+ - Acceso protegido
+ - Globales, procesos hijos, señales...
+ - Info contable
+
+Aplicaciones
+ - Multiprogramación concurrente
+ - Comunicación rapida
+ - Bloquear
+ - Rapido de crear destruir
+ - Aprovechar planificador
+ - Faciles
+
+Hilos en modo usuario vs modo nucleo (habitual)
+ ...
+
+PLANIFICACIÓN
+ - Equidad
+ - Eficiencia: E = T_util / (Tutil + Tociosa + Tgestion)
+ - Tiempo de espera: Tiempo desde que entra hasta que se ejecuta
+ - Tiempo de respuesta: Tiempo entre que solicita y llegan resultados
+ - Tiempo de regreso: Tiempo entre ejecución y resultados (lotes)
+ - Rendimiento
+
+Apropiativo: la CPU se le puede arrebatar al proceso
+
+Algoritmos de Planificación
+ - FCFS First Come First Served; No apropiativo
+   Si entran a la vez, menor PID
+ - SJF: El trabajo mas corto primero; No apropiativo
+   Estimar por proceso: E_t = a*E_{t-1} + (1-a)*T_{t-1}
+     a: credibilidad, E_{t-1} estimación anterior, T_{t-1}: duración rafaga
+     anterior, E_t: estimación
+ - SRTF: El menor tiempo restante primero
+   SJF pero apropiativo
+ - RR (Round Robin, "Circular"): apropiativo, basado en quantum
+   Se cambia de proceso cuando
+    * se consume el quantum
+    * Termina
+    * Bloquea
+ - Prioridad: procesos con mayor prioridad toman la CPU
+ - Multiples colas & Realimentación: por tipo, prioridad, etc
+   Reglas especificas
+   
+Plazo
+ - Corto: Procesos en memoria
+ - Medio: Intercambio entre memoria y disco (suspension y reanudación)
+ - Largo: Decidir entre trabajos por lotes
+
+
+TEMA 3: Seguridad y Protección
+
+SEGURIDAD
+Ha de tener 3 cosas:
+ - Confidencialidad: Elementos información leible solo por usuarios autorizados
+ - Integridad: Elementos mutable solo por usuarios autorizados
+ - Disponibilidad: Elementos disponibles solo para usuarios autorizados
+
+Amenazas: tipos
+ - Interrupción (DoS)
+ - Intercepción (Spyware)
+ - Modificación (MitM)
+ - Invención (Ingienería social)
+
+Amenazas: elementos
+ - Hardware:        Disponibilidad
+ - Software:        Disponibilidad, Confidencialidad, Integridad
+ - Datos:           Disponibilidad, Confidencialidad, Integridad
+ - Comunicaciones:  Disponibilidad, Confidencialidad, Integridad
+
+Ataques genericos (pentesting)
+i.e.
+ - Leer memoria reservada
+ - Hacer cosas invalidas, parametros, no razonables
+ - Hacer cosas no previstas o prohibidas
+ - Engañar a personas
+
+Ataques especificos
+ - Bomba logica
+ - Backdoor
+ - Buffer overflow
+ - Troyanos
+ - Gusanos
+ - Spyware
+ - Rootkit
+
+Diseño
+ - Publico
+ - Default NO ACCESO
+ - Verificación de autorización actual, no solo al abrir
+ - Minimo privilegio posible
+ - Mecanismo de protección simple, uniforme, integrado
+ - Psicologicamente aceptable
+
+PROTECCIÓN
+Ha de tener 3 cosas:
+ - Modos de ejecución
+   kernel mode (x86 real), user mode (protected)
+ - Protección de memoria
+    - Memoria virtual: Paginación, cada proceso tiene su espacio de
+      direccionamiento privado
+ - Interrupciones
+   Para que
+    - los procesos llamen al S.O. a traves de syscalls
+    - el S.O. pueda interrumpir los procesos
+
+Política: operaciones posibles
+Mecanismo: como se hará cumplir lapolitica, generales
+
+Dominios de protección
+ Cada objeto tienen un nombre de referencia, y conjunto de operaciones posibles
+ Elementos sin ningún acceso no necesitan ser posibles de acceder
+ Mecanismo: conjunto de parejas (objeto, derechos) i.e. fname y rwx
+ Un mismo objeto puede estar en varios dominios    i.e. usuarios y grupos
+
+Matriz de acceso: ineficiente
+            FICHEROS[]
+DOMINIOS[]  permisos
+
+Listas de Control de Acceso (ACLs)
+ Cada objeto tiene una lista de pares (dominio, derechos (rwx y más especificos)
+ Guardado en el FS
+ Operaciones en el kernel
+ Aplicable a grupos, criterio grupo-usuario
+ Solo se comprueba cuando se abre el archivo
+
+Lista de posibilidades
+ Matriz que asocia por filas dominio con lista de objetos accesibles y derechos
+ Cada proceso tiene una lista actual
+ Indexado por fd
+ Cuando se abre un archivo, se consula ACL, y se crea una posibilidad; 
+ que se destruye cuando se cierra
+
+ACL: necesidades de usuario
+Posibilidades: que objetos puede acceder un proceso
+ Unix combina ambas
+
+Registro con posibilidades de cada objeto consume mucha MEMORIA, soluciones:
+ -> Cada posibilidad apunta a un objeto indirecto, para poder romper conexiones
+ -> Asignar numero aleatorio a cada objeto y almacenarlo en posibilidad
+
+AUTENTICACIÓN DE USUARIOS
+
+Validación, identificación, autentificación -> autorización
+identificador + contraseña
+ -> autorizado al sistema
+ -> privilegios acordados con usuario o grupo
+
+Contraseñas
+ crypt(): $tipo$salt$hash
+ i.e. MD5, SHA512, bcrypt: unidireccionales
+ guardadas en /etc/shadow (historicamente en /etc/passwd)
+
+Elección de contraseñas
+ - Instrucción de usuario
+ - Inspección proactiva
+
+PROTECCIÓN EN UNIX
+
+Dominios
+ uid + gid: /etc/group
+ pueden haber varios usuarios con mismo uid y gid
+ uid y gid 0 es root (sudo...)
+
+ACLs restringidas
+ Todo es un archivo
+ Todos los archivos pertenecen a un uid y gid
+ ACLs: propietario, grupo y otros
+ Algunos FS implementan ACLs completas para usuarios y grupos concretos
+ Comprobación
+  - uid eq -> propietario
+  - gid eq -> grupo
+  - else   -> otros
+
+Cambio de dominio
+ Procesos se ejecutan con uid,gid del usuario que lo lanza pero
+ setuid,setgid permiten iniciar con el uid y gid del propietario del ejecutable
+ euid,ugid: efectivas
+
+
+TEMA 4: Sistemas de Ficheros
+
+
+
+
+
