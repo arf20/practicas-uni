@@ -117,6 +117,11 @@ size_t Diccionario::getTam() {
     return size;
 }
 
+std::vector<std::pair<std::wstring, int>>
+Diccionario::palabrasPrefijo(const std::wstring& palabra) {
+    return arbol.palabrasPrefijo(palabra); 
+}
+
 // Arbol
 
 bool comparar_pagref(const PagListIt& l,
@@ -131,7 +136,7 @@ void Arbol::insertar(const std::wstring& palabra,
     PagListIt paginaref)
 {
     auto subarbol = &raiz; // puntero porque referencia rebindeable
-    std::map<char, nodo_trie_t>::iterator it;
+    std::map<wchar_t, nodo_trie_t>::iterator it;
 
     for (wchar_t c : palabra) {
         auto nuevonodo = nodo_trie_t {};
@@ -152,7 +157,7 @@ void Arbol::insertar(const std::wstring& palabra,
 std::set<PagListIt>
 Arbol::buscar(const std::wstring& palabra) {
     auto subarbol = &raiz;
-    std::map<char, nodo_trie_t>::iterator it;
+    std::map<wchar_t, nodo_trie_t>::iterator it;
 
     for (wchar_t c : palabra) {
         auto nuevonodo = nodo_trie_t();
@@ -166,4 +171,45 @@ Arbol::buscar(const std::wstring& palabra) {
 
     return it->second.paginas;
 }
+
+void palabrasPrefijoRecursar(const std::map<wchar_t, nodo_trie_t>& a, 
+    std::wstring p, std::vector<std::pair<std::wstring, int>>& palabras)
+{
+    for (auto n : a) {
+        if (n.second.paginas.size() > 0)
+            palabras.push_back({p + n.first, n.second.paginas.size()});
+        palabrasPrefijoRecursar(n.second.hijos, p + n.first, palabras);
+    }
+}
+
+bool comparadorPalabrasPrefijo(const std::pair<std::wstring, int>& l,
+    const std::pair<std::wstring, int>& r)
+{
+    if (l.second != r.second) return l.second > r.second;
+    else return l.first < r.first;
+}
+
+std::vector<std::pair<std::wstring, int>>
+Arbol::palabrasPrefijo(const std::wstring& prefijo) {
+    auto subarbol = &raiz;
+    std::map<wchar_t, nodo_trie_t>::iterator it;
+
+    for (wchar_t c : prefijo) {
+        auto nuevonodo = nodo_trie_t();
+        it = subarbol->find(c);
+        if (it == subarbol->end())
+            return std::vector<std::pair<std::wstring, int>>();
+        
+        subarbol = &it->second.hijos;
+    }
+
+    std::vector<std::pair<std::wstring, int>> palabras;
+
+    if (it->second.paginas.size() > 0)
+        palabras.push_back({prefijo, it->second.paginas.size()});
+    palabrasPrefijoRecursar(*subarbol, prefijo, palabras);
+    std::sort(palabras.begin(), palabras.end(), comparadorPalabrasPrefijo);
+    return palabras;
+}
+
 

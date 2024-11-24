@@ -8,7 +8,8 @@
 #include "interprete.hpp"
 
 int main() {
-    std::setlocale(LC_ALL, "es_ES.UTF-8"); // trabajar con UTF-8 y caracteres anchos
+    // trabajar con UTF-8 y caracteres anchos
+    std::setlocale(LC_ALL, "es_ES.UTF-8"); 
 
     Diccionario dic;
 
@@ -19,3 +20,4 @@ int main() {
         if (r < 0) return 1;
     }
 }
+

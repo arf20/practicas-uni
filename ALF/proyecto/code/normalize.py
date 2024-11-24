@@ -8,32 +8,41 @@ date3prog = re.compile("([0-9]{2}):([0-9]{2}):([0-9]{2}) ([0-9]{2})\/([0-9]{2})\
 geo2prog  = re.compile("(\d*)\° (\d*)\' (\d*)\" ([NS]), (\d*)\° (\d*)\' (\d*)\" ([WE])")
 geo1prog  = re.compile("([+-]?\d*\.\d+), ([+-]?\d*\.\d+)")
 
+def normalize_date(line):
+    m = re.search(date2prog, line)
+    if (m != None):
+        grps = m.groups()
+
+        newdate = grps[2] + "-"
+        newdate += "{:02d}".format(months.index(grps[0]) + 1) + "-"
+        newdate += grps[1] + " "
+        if (grps[5] == "AM"):
+            newdate += str(grps[3]) + ":"
+        else:
+            newdate += str(int(grps[3]) + 12) + ":"
+        newdate += grps[4]
+
+        return line.replace(line[m.start():m.end()], newdate)
+
+    m = re.search(date3prog, line)
+    if (m != None):
+        grps = m.groups()
+
+        newdate = grps[5] + "-" + grps[4] + "-" + grps[3] + " " + grps[0] + ":" + grps[1]
+
+        return line.replace(line[m.start():m.end()], newdate)
+
+    return line
+
+
+
+
+
 def normalize(fname):
     file = open(fname, "r")
     
     for line in file:
-        m = re.search(date2prog, line)
-        if (m != None):
-            grps = m.groups()
-
-            newdate = grps[2] + "-"
-            newdate += "{:02d}".format(months.index(grps[0]) + 1) + "-"
-            newdate += grps[1] + " "
-            if (grps[5] == "AM"):
-                newdate += str(grps[3]) + ":"
-            else:
-                newdate += str(int(grps[3]) + 12) + ":"
-            newdate += grps[4]
-
-            line = line.replace(line[m.start():m.end()], newdate)
-
-        m = re.search(date3prog, line)
-        if (m != None):
-            grps = m.groups()
-
-            newdate = grps[5] + "-" + grps[4] + "-" + grps[3] + " " + grps[0] + ":" + grps[1]
-
-            line = line.replace(line[m.start():m.end()], newdate)
+        line = normalize_date(line)
 
         m = re.search(geo2prog, line)
         if (m != None):

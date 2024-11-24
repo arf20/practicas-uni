@@ -176,9 +176,21 @@ int interpretar(char cmd, Diccionario& dic) {
         case 'p': {
             std::wstring prefijo;
             std::wcin >> prefijo;
+            prefijo = normalizarstr(prefijo);
+            
+            auto palabras = dic.palabrasPrefijo(prefijo);
 
-            std::wcout << "p " << normalizarstr(prefijo) << std::endl
-                    << "Total: 0 resultados" << std::endl;
+            std::wcout << "p " << prefijo << std::endl;
+
+            int i = 1;
+            for (auto& p : palabras) {
+                std::wcout << i << ". " << p.first << ", " << p.second
+                    << std::endl;
+                i++;
+            }
+
+            std::wcout << "Total: " << palabras.size()
+                << " resultados" << std::endl;
         } break;
         case 's': {
             std::wcout << "Saliendo..." << std::endl;
