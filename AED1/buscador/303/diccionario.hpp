@@ -39,17 +39,19 @@ public:
 
 struct nodo_trie_t {
     std::set<PagListIt> paginas;
-    std::map<char, nodo_trie_t> hijos;
+    std::map<wchar_t, nodo_trie_t> hijos;
 };
 
 class Arbol {
     private:
-    std::map<char, nodo_trie_t> raiz;
+    std::map<wchar_t, nodo_trie_t> raiz;
 
     public:
     void insertar(const std::wstring& palabra,
         PagListIt paginaref);
     std::set<PagListIt> buscar(const std::wstring& palabra);
+    std::vector<std::pair<std::wstring, int>>
+        palabrasPrefijo(const std::wstring& palabra);
 };
 
 class Diccionario {
@@ -64,6 +66,7 @@ class Diccionario {
     std::vector<Pagina> consultar(const std::wstring& url);
     std::set<PagListIt> buscarPalabra(const std::wstring& palabra);
     size_t getTam();
-    std::vector<std::wstring> palabrasPrefijo(const std::wstring& palabra);
+    std::vector<std::pair<std::wstring, int>>
+        palabrasPrefijo(const std::wstring& palabra);
 };
 
