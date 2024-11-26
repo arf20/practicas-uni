@@ -113,6 +113,11 @@ Diccionario::buscarPalabra(const std::wstring& palabra) {
     return arbol.buscar(palabra);
 }
 
+void Diccionario::pseudoDestructor() {
+    for (int i = 0; i < N; i++)
+        tabla[i].clear();
+}
+
 size_t Diccionario::getTam() {
     return size;
 }
@@ -211,5 +216,4 @@ Arbol::palabrasPrefijo(const std::wstring& prefijo) {
     std::sort(palabras.begin(), palabras.end(), comparadorPalabrasPrefijo);
     return palabras;
 }
-
 

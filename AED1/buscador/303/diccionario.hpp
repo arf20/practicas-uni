@@ -7,8 +7,6 @@
 #include <map>
 #include <memory>
 
-constexpr int N = 20000;
-
 class Pagina {
     private:
     std::wstring url, titulo;
@@ -56,6 +54,7 @@ class Arbol {
 
 class Diccionario {
     private:
+    static constexpr int N = 20000;
     std::list<Pagina> tabla[N];
     Arbol arbol;
     size_t hash(const std::wstring& key);
@@ -65,6 +64,7 @@ class Diccionario {
     void insertar(const Pagina& p);
     std::vector<Pagina> consultar(const std::wstring& url);
     std::set<PagListIt> buscarPalabra(const std::wstring& palabra);
+    void pseudoDestructor();
     size_t getTam();
     std::vector<std::pair<std::wstring, int>>
         palabrasPrefijo(const std::wstring& palabra);
