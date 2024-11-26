@@ -55,6 +55,7 @@ class Diccionario {
     std::vector<Pagina> consultar(const std::wstring& url);
     std::vector<std::list<Pagina>::iterator>
         buscarPalabra(const std::wstring& palabra);
+    void pseudoDestructor();
     size_t getTam();
 };
 

@@ -11,3 +11,4 @@ Pagina leerpagina();
 std::vector<std::wstring> leerpalabras();
 
 int interpretar(char cmd, Diccionario& dic);
+

@@ -1,0 +1,557 @@
+     TITLE                                                                                                        PROYECTO AED1 PAGE 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                               PROYECTO AED1                                                           
+                                                         Angel Ruiz Fernandez, G2.2                                                    
+                                                             21:58 nov 21, 2024                                                        
+     INDEX                                                                                                        PROYECTO AED1 PAGE 2
+
+     PROYECTO AED1: 6 files                                                                                                   PAGE    
+         diccionario.hpp 69L 1760B ............................................................................................   3
+         interprete.hpp 13L 260B ..............................................................................................   5
+         diccionario.cpp 169L 4084B ...........................................................................................   6
+         interprete.cpp 191L 5676B ............................................................................................   9
+         main.cpp 21L 438B ....................................................................................................  13
+         Makefile 35L 640B ....................................................................................................  14
+     diccionario.hpp 35L 640B                                                                                     PROYECTO AED1 PAGE 3
+
+   1 #pragma once
+   2 
+   3 #include <string>
+   4 #include <vector>
+   5 #include <set>
+   6 #include <list>
+   7 #include <map>
+   8 #include <memory>
+   9 
+  10 constexpr int N = 20000;
+  11 
+  12 class Pagina {
+  13     private:
+  14     std::wstring url, titulo;
+  15     int relevancia;
+  16     std::vector<std::wstring> contenido;
+  17 
+  18     public:
+  19     Pagina(const std::wstring& _url, const std::wstring& _titulo, int _rel,
+  20         const std::vector<std::wstring>& _cont);
+  21     const std::wstring& getUrl() const;
+  22     const std::wstring& getTitulo() const;
+  23     void setTitulo(const std::wstring& titulo);
+  24     int getRelevancia() const;
+  25     void setRelevancia(int rel);
+  26     int getContSize() const;
+  27     const std::vector<std::wstring>& getContenido() const;
+  28     void setContenido(const std::vector<std::wstring>& palabras);
+  29 };
+  30 
+  31 //bool comparar_pagref(const std::list<Pagina>::iterator& l,
+  32 //    const std::list<Pagina>::iterator& r);
+  33 
+  34 class PagListIt : public std::list<Pagina>::iterator {
+  35 public:
+  36     PagListIt(std::list<Pagina>::iterator& it);
+  37     bool operator<(const PagListIt& right) const;
+  38 };
+  39 
+  40 struct nodo_trie_t {
+  41     std::set<PagListIt> paginas;
+  42     std::map<char, nodo_trie_t> hijos;
+  43 };
+  44 
+  45 class Arbol {
+  46     private:
+  47     std::map<char, nodo_trie_t> raiz;
+  48 
+  49     public:
+  50     void insertar(const std::wstring& palabra,
+  51         PagListIt paginaref);
+  52     std::set<PagListIt> buscar(const std::wstring& palabra);
+  53 };
+  54 
+  55 class Diccionario {
+  56     private:
+  57     std::list<Pagina> tabla[N];
+  58     Arbol arbol;
+  59     size_t hash(const std::wstring& key);
+  60     int size = 0;
+  61 
+  62     public:
+     diccionario.hpp 35L 640B                                                                                     PROYECTO AED1 PAGE 4
+
+  63     void insertar(const Pagina& p);
+  64     std::vector<Pagina> consultar(const std::wstring& url);
+  65     std::set<PagListIt> buscarPalabra(const std::wstring& palabra);
+  66     size_t getTam();
+  67     std::vector<std::wstring> palabrasPrefijo(const std::wstring& palabra);
+  68 };
+  69 
+     interprete.hpp 35L 640B                                                                                      PROYECTO AED1 PAGE 5
+
+   1 #pragma once
+   2 
+   3 #include <string>
+   4 #include <vector>
+   5 
+   6 #include "diccionario.hpp"
+   7 
+   8 auto normalizarc(wchar_t c);
+   9 auto normalizarstr(const std::wstring& s);
+  10 Pagina leerpagina();
+  11 std::vector<std::wstring> leerpalabras();
+  12 
+  13 int interpretar(char cmd, Diccionario& dic);
+     diccionario.cpp 35L 640B                                                                                     PROYECTO AED1 PAGE 6
+
+   1 #include "diccionario.hpp"
+   2 
+   3 #include <algorithm>
+   4 #include <iostream>
+   5 #include <memory>
+   6 
+   7 // Pagina
+   8 Pagina::Pagina(const std::wstring& _url, const std::wstring& _titulo, int _rel,
+   9     const std::vector<std::wstring>& _cont)
+  10 {
+  11     url = _url;
+  12     titulo = _titulo;
+  13     relevancia = _rel;
+  14     contenido = _cont;
+  15 }
+  16 
+  17 const std::wstring& Pagina::getUrl() const {
+  18     return url;
+  19 }
+  20 
+  21 const std::wstring& Pagina::getTitulo() const {
+  22     return titulo;
+  23 }
+  24 
+  25 void Pagina::setTitulo(const std::wstring& titulo) {
+  26     this->titulo = titulo;
+  27 }
+  28 
+  29 int Pagina::getRelevancia() const {
+  30     return relevancia;
+  31 }
+  32 
+  33 void Pagina::setRelevancia(int rel) {
+  34     this->relevancia = rel;
+  35 }
+  36 
+  37 int Pagina::getContSize() const {
+  38     return contenido.size();
+  39 }
+  40 
+  41 const std::vector<std::wstring>& Pagina::getContenido() const {
+  42     return contenido;
+  43 }
+  44 
+  45 void Pagina::setContenido(const std::vector<std::wstring>& palabras) {
+  46     contenido = palabras;
+  47 }
+  48 
+  49 
+  50 // Clase referencia a pagina
+  51 
+  52 PagListIt::PagListIt(std::list<Pagina>::iterator& it)
+  53     : std::list<Pagina>::iterator(it)
+  54 {
+  55 
+  56 }
+  57 
+  58 bool PagListIt::operator<(const PagListIt& r) const {
+  59     if ((*this)->getRelevancia() != r->getRelevancia())
+  60         return (*this)->getRelevancia() > r->getRelevancia();
+  61     else return (*this)->getUrl() < r->getUrl();
+  62 }
+     diccionario.cpp 35L 640B                                                                                     PROYECTO AED1 PAGE 7
+
+  63 
+  64 // Diccionario
+  65 
+  66 size_t Diccionario::hash(const std::wstring& key) {
+  67     size_t t = 5381;
+  68     for (auto c : key)
+  69         t = ((t << 5) + t) + c;
+  70     return t % N;
+  71 }
+  72 
+  73 void insertar_palabras(const std::vector<std::wstring>& palabras,
+  74     const std::list<Pagina>::iterator& pagref, Arbol& arbol)
+  75 {
+  76     for (const std::wstring& p : palabras) {
+  77         arbol.insertar(p, (const PagListIt&)pagref);
+  78     }
+  79 }
+  80 
+  81 void Diccionario::insertar(const Pagina& np) {
+  82     auto nhash = hash(np.getUrl());
+  83 
+  84     std::list<Pagina>::iterator it;
+  85 
+  86     auto& vec = tabla[nhash];
+  87     for (it = vec.begin(); it != vec.end(); it++) {
+  88         if (it->getUrl() == np.getUrl()) {
+  89             auto& p = *it;
+  90             p.setTitulo(np.getTitulo());
+  91             p.setRelevancia(np.getRelevancia());
+  92             p.setContenido(np.getContenido());
+  93             insertar_palabras(np.getContenido(), it, arbol);
+  94             return;
+  95         }
+  96     }
+  97 
+  98     it = tabla[nhash].insert(tabla[nhash].end(), Pagina(np));
+  99     insertar_palabras(np.getContenido(), it, arbol);
+ 100     size++;
+ 101 }
+ 102 
+ 103 std::vector<Pagina> Diccionario::consultar(const std::wstring& url) {
+ 104     std::vector<Pagina> resultado;
+ 105     for (const auto& p : tabla[hash(url)])
+ 106         if (p.getUrl() == url)
+ 107             resultado.push_back(p);
+ 108     return resultado;
+ 109 }
+ 110 
+ 111 std::set<PagListIt>
+ 112 Diccionario::buscarPalabra(const std::wstring& palabra) {
+ 113     return arbol.buscar(palabra);
+ 114 }
+ 115 
+ 116 size_t Diccionario::getTam() {
+ 117     return size;
+ 118 }
+ 119 
+ 120 // Arbol
+ 121 
+ 122 bool comparar_pagref(const PagListIt& l,
+ 123     const PagListIt& r)
+ 124 {
+     diccionario.cpp 35L 640B                                                                                     PROYECTO AED1 PAGE 8
+
+ 125     if (l->getRelevancia() != r->getRelevancia())
+ 126         return l->getRelevancia() > r->getRelevancia();
+ 127     else return l->getUrl() < r->getUrl();
+ 128 }
+ 129 
+ 130 void Arbol::insertar(const std::wstring& palabra,
+ 131     PagListIt paginaref)
+ 132 {
+ 133     auto subarbol = &raiz; // puntero porque referencia rebindeable
+ 134     std::map<char, nodo_trie_t>::iterator it;
+ 135 
+ 136     for (wchar_t c : palabra) {
+ 137         auto nuevonodo = nodo_trie_t {};
+ 138         // solo inserta si c no existe
+ 139         it = subarbol->insert({c, nuevonodo}).first;
+ 140         subarbol = &it->second.hijos;
+ 141     }
+ 142     
+ 143     if (std::find(it->second.paginas.begin(),
+ 144         it->second.paginas.end(), paginaref) == it->second.paginas.end())
+ 145     {
+ 146         it->second.paginas.insert(paginaref);
+ 147     }
+ 148 }
+ 149 
+ 150 // no const ref return porque si no se encuentra resultado,
+ 151 // retorna nuevo vector vacio
+ 152 std::set<PagListIt>
+ 153 Arbol::buscar(const std::wstring& palabra) {
+ 154     auto subarbol = &raiz;
+ 155     std::map<char, nodo_trie_t>::iterator it;
+ 156 
+ 157     for (wchar_t c : palabra) {
+ 158         auto nuevonodo = nodo_trie_t();
+ 159         it = subarbol->find(c);
+ 160         if (it == subarbol->end())
+ 161             // retornar vector vacio si no hay resultados
+ 162             return std::set<PagListIt>();
+ 163         
+ 164         subarbol = &it->second.hijos;
+ 165     }
+ 166 
+ 167     return it->second.paginas;
+ 168 }
+ 169 
+     interprete.cpp 35L 640B                                                                                      PROYECTO AED1 PAGE 9
+
+   1 #include "interprete.hpp"
+   2 
+   3 #include <iostream>
+   4 #include <limits>
+   5 #include <sstream>
+   6 #include <algorithm>
+   7 #include <iterator>
+   8 
+   9 #include "diccionario.hpp"
+  10 
+  11 auto normalizarc(wchar_t c) {
+  12     c = std::tolower(c); // convierte solo ASCII-7
+  13     
+  14     if (c == L'Ñ') c = L'ñ';
+  15 
+  16     if (c == L'Á') c = 'a';
+  17     if (c == L'É') c = 'e';
+  18     if (c == L'Í') c = 'i';
+  19     if (c == L'Ó') c = 'o';
+  20     if (c == L'Ú') c = 'u';
+  21     if (c == L'Ü') c = 'u';
+  22 
+  23     if (c == L'á') c = 'a';
+  24     if (c == L'é') c = 'e';
+  25     if (c == L'í') c = 'i';
+  26     if (c == L'ó') c = 'o';
+  27     if (c == L'ú') c = 'u';
+  28     if (c == L'ü') c = 'u';
+  29     return c;
+  30 }
+  31 
+  32 auto normalizarstr(const std::wstring& s) {
+  33     std::wstring o;
+  34     for (auto c : s)
+  35         o += normalizarc(c);
+  36     return o;
+  37 }
+  38 
+  39 Pagina leerpagina() {
+  40     int rel;
+  41     std::wstring url, titulo;
+  42     std::vector<std::wstring> contenido;
+  43 
+  44     std::wcin >> rel;
+  45     std::wcin >> url;
+  46     std::wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+  47     std::getline(std::wcin, titulo);
+  48 
+  49     std::wstring in;
+  50     while ((std::wcin >> in) && (normalizarstr(in) != L"findepagina"))
+  51         contenido.push_back(normalizarstr(in));
+  52 
+  53     return Pagina(url, titulo, rel, contenido);
+  54 }
+  55 
+  56 std::vector<std::wstring> leerpalabras() {
+  57     std::vector<std::wstring> palabras;
+  58     std::wstring palabrasstr;
+  59     std::getline(std::wcin, palabrasstr);
+  60 
+  61     palabrasstr = normalizarstr(palabrasstr);
+  62 
+     interprete.cpp 35L 640B                                                                                     PROYECTO AED1 PAGE 10
+
+  63     auto ss = std::wstringstream(palabrasstr);
+  64     std::wstring palabra;
+  65     
+  66     while (ss >> palabra)
+  67         palabras.push_back(palabra);
+  68 
+  69     return palabras;
+  70 }
+  71 
+  72 int interpretar(char cmd, Diccionario& dic) {
+  73     switch (cmd) {
+  74         case 'i': {
+  75             Pagina np = leerpagina();
+  76             dic.insertar(np);
+  77             std::wcout << dic.getTam() << ". " << np.getUrl() << ", "
+  78                 << np.getTitulo() << ", Rel. " << np.getRelevancia()
+  79                 << std::endl << np.getContSize() << " palabras" << std::endl;
+  80         } break;
+  81         case 'u': {
+  82             std::wstring url;
+  83             std::wcin >> url;
+  84 
+  85             auto p = dic.consultar(url);
+  86 
+  87             std::wcout << "u " << url << std::endl;
+  88             for (size_t i = 0; i < p.size(); i++)
+  89                 std::wcout << i + 1 << ". " << p[i].getUrl() << ", "
+  90                     << p[i].getTitulo() << ", Rel. " << p[i].getRelevancia()
+  91                     << std::endl;
+  92             std::wcout << "Total: " << p.size() << " resultados" << std::endl;
+  93             
+  94         } break;
+  95         case 'b': {
+  96             std::wstring palabra;
+  97             std::wcin >> palabra;
+  98             palabra = normalizarstr(palabra);
+  99 
+ 100             auto paginas = dic.buscarPalabra(palabra);
+ 101 
+ 102             std::wcout << "b " << palabra << std::endl;
+ 103             int i = 1;
+ 104             for (auto& p : paginas) {
+ 105                 std::wcout << i << ". " <<  p->getUrl() << ", "
+ 106                     << p->getTitulo() << ", Rel. "
+ 107                     << p->getRelevancia() << std::endl;
+ 108                 i++;
+ 109             }
+ 110             std::wcout << "Total: " << paginas.size() << " resultados"
+ 111                 << std::endl;
+ 112         } break;
+ 113         case 'a': {
+ 114             std::vector<std::wstring> palabras = leerpalabras();
+ 115 
+ 116             std::wcout << "a";
+ 117             for (auto p : palabras)
+ 118                 std::wcout << " " << p;
+ 119             std::wcout << std::endl;
+ 120 
+ 121             std::set<PagListIt> interseccion;
+ 122 
+ 123             if (!palabras.empty()) {
+ 124                 interseccion = dic.buscarPalabra(palabras[0]);
+     interprete.cpp 35L 640B                                                                                     PROYECTO AED1 PAGE 11
+
+ 125                 palabras.erase(palabras.begin());
+ 126             }
+ 127 
+ 128             for (auto& p : palabras) {
+ 129                 std::set<PagListIt> paginas = dic.buscarPalabra(p), nuevo;
+ 130 
+ 131                 std::set_intersection(interseccion.begin(), interseccion.end(),
+ 132                     paginas.begin(), paginas.end(),
+ 133                     std::inserter(nuevo, nuevo.begin()));
+ 134 
+ 135                 interseccion = nuevo;
+ 136             }
+ 137 
+ 138             int i = 1;
+ 139             for (auto& p : interseccion) {
+ 140                 std::wcout << i << ". " <<  p->getUrl() << ", "
+ 141                     << p->getTitulo() << ", Rel. "
+ 142                     << p->getRelevancia() << std::endl;
+ 143                 i++;
+ 144             }
+ 145             std::wcout << "Total: " << interseccion.size()
+ 146                 << " resultados" << std::endl;
+ 147         } break;
+ 148         case 'o': {
+ 149             std::vector<std::wstring> palabras = leerpalabras();
+ 150 
+ 151             std::wcout << "o";
+ 152             for (auto p : palabras)
+ 153                 std::wcout << " " << p;
+ 154             std::wcout << std::endl;
+ 155 
+ 156             std::set<PagListIt> unionp;
+ 157 
+ 158             for (auto& p : palabras) {
+ 159                 std::set<PagListIt> paginas = dic.buscarPalabra(p), nuevo;
+ 160 
+ 161                 std::set_union(unionp.begin(), unionp.end(),
+ 162                     paginas.begin(), paginas.end(),
+ 163                     std::inserter(unionp, unionp.begin()));
+ 164             }
+ 165 
+ 166             int i = 1;
+ 167             for (auto& p : unionp) {
+ 168                 std::wcout << i << ". " <<  p->getUrl() << ", "
+ 169                     << p->getTitulo() << ", Rel. "
+ 170                     << p->getRelevancia() << std::endl;
+ 171                 i++;
+ 172             }
+ 173             
+ 174             std::wcout << "Total: " << unionp.size() << " resultados" << std::endl;
+ 175         } break;
+ 176         case 'p': {
+ 177             std::wstring prefijo;
+ 178             std::wcin >> prefijo;
+ 179 
+ 180             std::wcout << "p " << normalizarstr(prefijo) << std::endl
+ 181                     << "Total: 0 resultados" << std::endl;
+ 182         } break;
+ 183         case 's': {
+ 184             std::wcout << "Saliendo..." << std::endl;
+ 185             return 0;
+ 186         } break;
+     interprete.cpp 35L 640B                                                                                     PROYECTO AED1 PAGE 12
+
+ 187         default: return -1;
+ 188     }
+ 189     return 0;
+ 190 }
+ 191 
+     main.cpp 35L 640B                                                                                           PROYECTO AED1 PAGE 13
+
+   1 #include <iostream>
+   2 #include <vector>
+   3 #include <string>
+   4 #include <sstream>
+   5 #include <limits>
+   6 
+   7 #include "diccionario.hpp"
+   8 #include "interprete.hpp"
+   9 
+  10 int main() {
+  11     std::setlocale(LC_ALL, "es_ES.UTF-8"); // trabajar con UTF-8 y caracteres anchos
+  12 
+  13     Diccionario dic;
+  14 
+  15     std::wstring in;
+  16     while (std::wcin >> in) {
+  17         if (in.length() != 1) continue;
+  18         int r = interpretar(in[0], dic);
+  19         if (r < 0) return 1;
+  20     }
+  21 }
+     Makefile 35L 640B                                                                                           PROYECTO AED1 PAGE 14
+
+   1 PROJECT := buscador
+   2 BINARY := a.out
+   3 CXX := g++
+   4 CXXFLAGS := --std=c++17 -Wall -pedantic -g -O0
+   5 LDFLAGS := 
+   6 
+   7 SRC := $(wildcard *.cpp)
+   8 OBJ := $(patsubst %.cpp,%.o,$(SRC))
+   9 
+  10 all: $(BINARY)
+  11 
+  12 $(BINARY): $(OBJ)
+  13 	$(CXX) -o $(BINARY) $(OBJ) $(LDFLAGS)
+  14 
+  15 %.o: %.cpp %.hpp
+  16 	$(CXX) -c $(CXXFLAGS) $<
+  17 
+  18 .PHONY: test
+  19 test: $(BINARY)
+  20 	./$(BINARY) < test_stdin.txt > run_stdout.txt
+  21 	cmp -s test_stdout.txt run_stdout.txt && echo "PASS" || echo "FAIL"
+  22 
+  23 .PHONY: clean
+  24 clean:
+  25 	rm $(BINARY) *.o run* *.tar
+  26 
+  27 .PHONY: tar
+  28 tar: $(PROJECT).tar
+  29 
+  30 $(PROJECT).tar: $(SRC) Makefile
+  31 	tar cf $(PROJECT).tar *.cpp *.hpp Makefile
+  32 
+  33 .PHONY: submit
+  34 submit: tar
+  35 	python3 submit.py
+

@@ -98,13 +98,13 @@ PLANIFICACIÓN
 Apropiativo: la CPU se le puede arrebatar al proceso
 
 Algoritmos de Planificación
- - FCFS First Come First Served; No apropiativo
+ - FCFS (First Come First Served); No apropiativo
    Si entran a la vez, menor PID
- - SJF: El trabajo mas corto primero; No apropiativo
+ - SJF (Shortest Job First): El trabajo mas corto primero; No apropiativo
    Estimar por proceso: E_t = a*E_{t-1} + (1-a)*T_{t-1}
      a: credibilidad, E_{t-1} estimación anterior, T_{t-1}: duración rafaga
      anterior, E_t: estimación
- - SRTF: El menor tiempo restante primero
+ - SRTF (Shortest Remaining Time First): El menor tiempo restante primero
    SJF pero apropiativo
  - RR (Round Robin, "Circular"): apropiativo, basado en quantum
    Se cambia de proceso cuando
