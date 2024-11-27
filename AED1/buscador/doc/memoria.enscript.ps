@@ -2,7 +2,7 @@
 %%BoundingBox: 18 36 577 806
 %%Title: Enscript Output
 %%Creator: GNU Enscript 1.6.5.90
-%%CreationDate: Sun Nov 24 02:31:50 2024
+%%CreationDate: Wed Nov 27 08:43:05 2024
 %%Orientation: Portrait
 %%Pages: (atend)
 %%DocumentMedia: A4 595 842 0 () ()
@@ -442,7 +442,7 @@ _S
 5 471 M
 (                           \303\\201ngel Ruiz Fernandez) s
 5 460 M
-(                           Carla Ramos ) s
+(                            Carla Ramos Garc\303\255a) s
 5 449 M
 (                                G2.2 B117) s
 _R
@@ -463,45 +463,45 @@ _S
 5 735 M
 (MEMORIA) s
 5 724 M
-(    1. Analisis del programa) s
+(    1. Analisis del programa .........................................   3) s
 5 713 M
-(        1.1. Clases) s
+(        1.1. Clases ..................................................   3) s
 5 702 M
-(        1.2. Modulos) s
+(        1.2. Modulos .................................................   4) s
 5 691 M
-(        1.3. Makefile) s
+(        1.3. Makefile ................................................   5) s
 5 680 M
-(        1.4. Normalizaci\303\263n) s
+(        1.4. Normalizaci\303\263n ...........................................   5) s
 5 669 M
-(        1.5. Tabla de dispersi\303\263n) s
+(        1.5. Tabla de dispersi\303\263n .....................................   5) s
 5 658 M
-(            1.5.1. Tipo) s
+(            1.5.1. Tipo ..............................................   5) s
 5 647 M
-(            1.5.2. Funci\303\263n de dispersi\303\263n - comparativa) s
+(            1.5.2. Funci\303\263n de dispersi\303\263n .............................   5) s
 5 636 M
-(            1.5.3. Liberar \(spoiler: est\303\241 en el stack, RAII\)) s
+(            1.5.4. Reestructuraci\303\263n ..................................   6) s
 5 625 M
-(        1.6. Arbol) s
+(            1.5.3. Liberaci\303\263n ........................................   6) s
 5 614 M
-(            1.6.1. Tipo) s
+(        1.6. Arbol ...................................................   6) s
 5 603 M
-(            1.6.2. Definici\303\263n de arbol y nodo) s
+(            1.6.1. Tipo ..............................................   6) s
 5 592 M
-(            1.6.3. Referencia a paginas) s
+(            1.6.2. Definici\303\263n de arbol y nodo ........................   6) s
 5 581 M
-(            1.6.3. \(AVL - no\)) s
+(            1.6.3. Referencia a paginas ..............................   6) s
 5 570 M
-(            1.6.5. Liberar) s
+(            1.6.4. Liberar ...........................................   6) s
 5 559 M
-(        1.7. Globales \(no\)) s
+(        1.7. Globales ................................................   6) s
 5 548 M
-(        1.8. ChatGPT \(no\)) s
+(        1.8. ChatGPT .................................................   6) s
 5 537 M
-(    2. Listado del c\303\263digo \(adjunto - documento siguiente\)) s
+(    2. Listado del c\303\263digo ............................................   7) s
 5 526 M
-(    3. Informe de desarrollo) s
+(    3. Informe de desarrollo .........................................   7) s
 5 515 M
-(    4. Conclusiones y valoraciones personales) s
+(    4. Conclusiones y valoraciones personales ........................   ) s
 _R
 S
 %%Page: (3) 3
@@ -570,61 +570,61 @@ _S
 5 405 M
 (    ) s
 5 394 M
-(    Diagrama de clases) s
+(                +--------+) s
+5 383 M
+(                | Pagina |) s
 5 372 M
 (                +--------+) s
 5 361 M
-(                | Pagina |) s
-5 350 M
-(                +--------+) s
-5 339 M
 (                     |) s
-5 328 M
+5 350 M
 (         +-----------+-------------+) s
-5 317 M
+5 339 M
 (         V                         |) s
+5 328 M
+(   +-----------+                   |) s
+5 317 M
+(   | PagListIt |                   |) s
 5 306 M
 (   +-----------+                   |) s
 5 295 M
-(   | PagListIt |                   |) s
-5 284 M
-(   +-----------+                   |) s
-5 273 M
 (     |       |                     |) s
-5 262 M
+5 284 M
 (     |       |       +----+        |) s
-5 251 M
+5 273 M
 (     |       V       V    |        |) s
+5 262 M
+(     |   +-------------+  |        |) s
+5 251 M
+(     |   | nodo_trie_t |  |        |) s
 5 240 M
 (     |   +-------------+  |        |) s
 5 229 M
-(     |   | nodo_trie_t |  |        |) s
-5 218 M
-(     |   +-------------+  |        |) s
-5 207 M
 (     |       |       |    |        |) s
-5 196 M
+5 218 M
 (     +---+---+       +----+        |) s
-5 185 M
+5 207 M
 (         V                         |) s
+5 196 M
+(     +-------+                     |) s
+5 185 M
+(     | Arbol |                     |) s
 5 174 M
 (     +-------+                     |) s
 5 163 M
-(     | Arbol |                     |) s
-5 152 M
-(     +-------+                     |) s
-5 141 M
 (         |                         |) s
-5 130 M
+5 152 M
 (         +------------+------------+) s
-5 119 M
+5 141 M
 (                      V) s
+5 130 M
+(               +-------------+) s
+5 119 M
+(               + Diccionario |) s
 5 108 M
 (               +-------------+) s
-5 97 M
-(               + Diccionario |) s
 5 86 M
-(               +-------------+) s
+(    Fig. 1 Diagrama de clases) s
 _R
 S
 %%Page: (4) 4
@@ -679,43 +679,43 @@ _S
 5 471 M
 (    almacenan todos los datos de la aplicaci\303\263n.) s
 5 438 M
-(Diagrama de modulos y unidades de compilaci\303\263n) s
+(                                                    +-----------------+) s
+5 427 M
+(                                                    | diccionario.hpp |) s
 5 416 M
 (                                                    +-----------------+) s
 5 405 M
-(                                                    | diccionario.hpp |) s
-5 394 M
-(                                                    +-----------------+) s
-5 383 M
 (                                                            ^) s
-5 372 M
+5 394 M
 (                                                            |) s
-5 361 M
+5 383 M
 (              +---------------------+-----------------------+) s
-5 350 M
+5 372 M
 (              |                     |                       |) s
+5 361 M
+(              |             +----------------+      +-----------------+) s
+5 350 M
+(              |             | interprete.hpp |      | diccionario.cpp |) s
 5 339 M
 (              |             +----------------+      +-----------------+) s
 5 328 M
-(              |             | interprete.hpp |      | diccionario.cpp |) s
-5 317 M
-(              |             +----------------+      +-----------------+) s
-5 306 M
 (              |                     ^) s
+5 317 M
+(              |                     |) s
+5 306 M
+(              +---------------------+) s
 5 295 M
 (              |                     |) s
 5 284 M
-(              +---------------------+) s
+(        +----------+        +----------------+) s
 5 273 M
-(              |                     |) s
+(        | main.cpp |        | interprete.cpp |) s
 5 262 M
 (        +----------+        +----------------+) s
-5 251 M
-(        | main.cpp |        | interprete.cpp |) s
 5 240 M
-(        +----------+        +----------------+) s
-5 218 M
 (        main.o              interprete.o            diccionario.o) s
+5 218 M
+(        Fig 2. Diagrama de modulos y unidades de compilaci\303\263n) s
 _R
 S
 %%Page: (5) 5
@@ -733,9 +733,455 @@ _S
 (MEMORIA PROYECTO BUSCADOR                                                  PAG 5) s
 5 735 M
 (1.3. Makefile) s
+5 713 M
+(    En la Makefile, primero defino variables tales como el nombre del proyecto,) s
+5 702 M
+(el nombre de la salida, el compilador, y los parametros de compilador y linker;) s
+5 691 M
+(adem\303\241s de automaticamente guardar en SRC los archivos .cpp, de los cuales se) s
+5 680 M
+(saca el nombre de los archivos de objeto con un patsubst.) s
+5 658 M
+(    La regla all depende del binario de salida, que se crea en una regla de) s
+5 647 M
+(link que depende de los archivos de objeto. Los archivos de objeto se compilan) s
+5 636 M
+(en una regla patr\303\263n: para cada ".o" que depende de un ".cpp" y/o ".hpp", con el) s
+5 625 M
+(mismo nombre base.) s
+5 603 M
+(    Adicionalmente tengo reglas PHONY para realizar el test con la entrada) s
+5 592 M
+(de prueba, limpiar, crear el tarball, y subir a Mooshak con un script en python) s
+5 581 M
+(automatizado \(no incluido en el listado adjunto\).) s
+5 570 M
+(    ) s
+5 559 M
+(    La makefile contiene todas las dependencias existentes.) s
+5 526 M
+(1.4. Normalizaci\303\263n) s
+5 504 M
+(    Al parecer la gente no se da cuenta de que el lenguaje C++ soporta) s
+5 493 M
+(UTF-8 nativamente. Usando las variantes 'wide' o 'multibyte' de tipos y) s
+5 482 M
+(operaciones de la STL que soportan operar con estos caracteres Unicode) s
+5 471 M
+(como std::wcin/wcout, std::wstring \(std::basic_string<wchar_t>,) s
+5 460 M
+(y std::towlower\(\). Usando estas caracteristicas, la normalizaci\303\263n ser\303\255a trivial,) s
+5 449 M
+(el problema es que la especificaci\303\263n del programa requiere unas conversiones muy) s
+5 438 M
+(especificas que difieren del comportamiento de std::towlower\(\).) s
+5 416 M
+(    wchar_t std::towlower\(wchar_t\) convierte todos los caracteres con variante) s
+5 405 M
+(mayuscula a su variante minuscula, de todos los idiomas. La especificaci\303\263n) s
+5 394 M
+(indica que debemos normalizar solo los caracteres del Espa\303\261ol, ignorando el) s
+5 383 M
+(resto, por tanto primero se usa std::tolower\(\) que trabaja solo sobre ASCII) s
+5 372 M
+(\(ignorando Unicode\), y entonces despues, se manejan los casos para los) s
+5 361 M
+(caracteres especificos del espa\303\261ol, como las tildes y la '\303\261'.) s
+5 328 M
+(1.5. Tabla de dispersi\303\263n) s
+5 306 M
+(1.5.1. Tipo) s
+5 284 M
+(    El tipo elegido para la tabla de dispersi\303\263n es abierta, ya que es muy) s
+5 273 M
+(sencilla de implementar, y realmente porque las tablas cerradas no ofrecen) s
+5 262 M
+(ventajas significativas: con sets grandes, la optimizaci\303\263n de memoria es) s
+5 251 M
+(insignificante, y para tablas del mismo tama\303\261o, la cerrada es casi siempre m\303\241s) s
+5 240 M
+(lenta.) s
+5 218 M
+(1.5.2. Funci\303\263n de dispersi\303\263n) s
+5 196 M
+(    Al principio mientras probaba, sumaba todos los caracteres en un entero) s
+5 185 M
+(y aplicaba el modulo, esto conlleva una dispersi\303\263n bastante mala ya que las) s
+5 174 M
+(cadenas son de longitudes parecidas.) s
+5 152 M
+(    As\303\255 que se reemplaz\303\263 por una variante de un hash iterativo, donde el valor) s
+5 141 M
+(inicial t es un primo \(5381\), y por cada caracter de la cadena a hashear, se) s
+5 130 M
+(le suma a t desplazado 5 bits a la izquierda \(para aumentar la dispersi\303\263n\),) s
+5 119 M
+(con t, con el caracter. Finalmente se retorna t modulo tama\303\261o de la tabla. As\303\255) s
+5 108 M
+(la dispersi\303\263n es mucho m\303\241s uniforme.) s
+_R
+S
+%%Page: (6) 6
+%%BeginPageSetup
+_S
+18 36 translate
+/pagenum 6 def
+/fname (memoria.txt) def
+/fdir (.) def
+/ftail (memoria.txt) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+5 757 M
+(MEMORIA PROYECTO BUSCADOR                                                  PAG 6) s
+5 735 M
+(1.5.3. Reestructuraci\303\263n) s
+5 713 M
+(    No se realiza reestructuraci\303\263n, se considera que el tama\303\261o de la tabla) s
+5 702 M
+(es suficiente para el numero de elementos.) s
+5 680 M
+(1.5.4. Liberaci\303\263n) s
+5 658 M
+(    No hay liberaci\303\263n explicita. Gracias a que la tabla es una propiedad array) s
+5 647 M
+(de un contenedor de la STL en la clase Diccionario, esta se elimina) s
+5 636 M
+(profundamente \(llamando automaticamente al destructor de cada contenedor\)) s
+5 625 M
+(al destruirse la instancia, que al estar siendo instanciada en la funci\303\263n) s
+5 614 M
+(main en el stack, se destruiye automaticamente al llegar al final de main\(\),) s
+5 603 M
+(antes de salir del programa, gracias a RAII de C++.) s
+5 570 M
+(1.6. Arbol) s
+5 548 M
+(1.6.1. Tipo) s
+5 537 M
+(    ) s
+5 526 M
+(    Se ha implementado un arbol Trie, ya que es muy simple de implementar, y lo) s
+5 515 M
+(bastante rapido para la aplicaci\303\263n. Buscar como maximo 26 elementos por) s
+5 504 M
+(caracter de palabra, usualmente menor que 15, es computacinalmente poco costoso.) s
+5 493 M
+(Implementar AVL no ofrecer\303\255a una ventaja clara en velocidad, costar\303\255a mas de) s
+5 482 M
+(implementar y el balanceo es computaci\303\263n extra.) s
+5 460 M
+(1.6.2. Definici\303\263n de arbol y nodo) s
+5 438 M
+(    El nodo es un struct, que contiene un std::set ordenado de referencias a) s
+5 427 M
+(paginas, y un diccionario de <wchar_t, nodo> hijos, para hacer el arbol.) s
+5 405 M
+(    La clase Arbol esconde en privado un diccionario como <wchar_t, nodo> como) s
+5 394 M
+(raiz de donde cuelgan todos los hijos, y expone solo 2 operaciones, insertar y) s
+5 383 M
+(buscar.) s
+5 361 M
+(1.6.3. Referencia a paginas) s
+5 339 M
+(    Las referencias a las paginas en los nodos del arbol son iteradores estandar) s
+5 328 M
+(de la STL, que usan punteros internamente.) s
+5 306 M
+(1.6.4. Liberaci\303\263n) s
+5 284 M
+(    Al igual que en la tabla de dispersi\303\263n, los diccionarios y conjuntos de los) s
+5 273 M
+(nodos se liberan automaticamente al destruirse la raiz, al destruirse la) s
+5 262 M
+(instancia de Arbol, al destruirse la instancia del Diccionario al final de) s
+5 251 M
+(main\(\).) s
+5 229 M
+(1.7. Globales) s
+5 207 M
+(    No se usa ning\303\272n tipo de variable ni constante global.) s
+5 185 M
+(1.8. ChatGPT) s
+5 163 M
+(    En ning\303\272n momento se ha usado ChatGPT para ninguna parte del proyecto,) s
+5 152 M
+(solo se han usado herramientas de depuraci\303\263n serias como gdb y valgrind, y) s
+5 141 M
+(recursos deterministas convencionales como investigar documentacion y posts en) s
+5 130 M
+(foros de desarrollo tales como StackoOverflow, escritos por el conocimiento,) s
+5 119 M
+(experiencia y sabidur\303\255a de personas humanas usadas a C++, gcc y sus) s
+5 108 M
+(intricaciones.) s
+_R
+S
+%%Page: (7) 7
+%%BeginPageSetup
+_S
+18 36 translate
+/pagenum 7 def
+/fname (memoria.txt) def
+/fdir (.) def
+/ftail (memoria.txt) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+5 757 M
+(MEMORIA PROYECTO BUSCADOR                                                  PAG 7) s
+5 735 M
+(2. Listado completo del c\303\263digo) s
+5 713 M
+(    Veas\303\251 documento adjunto.) s
+5 691 M
+(3. Informe de desarrollo) s
+5 669 M
+(    El problema 001 fue muy trivial usando std::cin en un bucle.) s
+5 647 M
+(    Para el 002, como descrito en 1.4., me acord\303\251 de que C++ soporta Unicode) s
+5 636 M
+(nativamente, y usamos casos de caracteres unicode sobre wchar_t en vez de) s
+5 625 M
+(sobrecomplicarnos intentando decodificar caracteres multibyte manualmente, una) s
+5 614 M
+(practica poco recomendable.) s
+5 592 M
+(    En el siguiente, 003, se empez\303\263 a modularizar, creando el modulo interprete.) s
+5 581 M
+(En el main\(\) de la aplicaci\303\263n entonces, se abri\303\263 un bucle donde se lee un token) s
+5 570 M
+(mientras haya entrada disponible, y se llama al interprete para procesarlo.) s
+5 559 M
+(    El interprete, seg\303\272n el primer token en un switch, lee diferentes datos) s
+5 548 M
+(correspondiendose a los diferentes comandos, para los que hay que dar salidas de) s
+5 537 M
+(placeholder.) s
+5 515 M
+(    En el 004, se abre el modulo de diccionario, que se implementa con una \303\272nica) s
+5 504 M
+(gran lista ordenada en una nueva clase, Diccionario, que expone las apropiadas) s
+5 493 M
+(operaciones que se llaman desde el interprete.) s
+5 482 M
+(    En nuestro caso, decidimos usar un contenedor diccionario ordenado de la) s
+5 471 M
+(STL, std::map<std::wstring, Pagina> para simplificar las operaciones, .find\(\)) s
+5 460 M
+(para buscar a modo de lista, y .insert_or_assign\(\) para insertar o modificar) s
+5 449 M
+(cuando coincida la url.) s
+5 438 M
+(    El contenedor se ordena mediante un concepto un tanto extra\303\261o de C++,) s
+5 427 M
+(un objeto Compare de un contenedor ordenado. El struct comparador_paginas_url,) s
+5 416 M
+(que implementa un operator\(\), que recibe dos std::wstring y las compara usando) s
+5 405 M
+(el metodo indicado en la especificaci\303\263n \(.compare\(\) < 0\). De esta forma, al) s
+5 394 M
+(insertar en el diccionario, este se encarga de ordenar los elementos) s
+5 383 M
+(automaticamente. Otro concepto de C++ que se usa es std::optional<>, para cuando) s
+5 372 M
+(no se encuentra una pagina por url, no devolver nada.) s
+5 361 M
+(    Finalmente se implemnta el comando 'u' en el interprete usando las) s
+5 350 M
+(operaciones del diccionario, siendo pasado por referencia desde main\(\), el) s
+5 339 M
+(propietario del diccionario.) s
+5 317 M
+(    Para el 200, se nos pide implementar el diccionario con una tabla de) s
+5 306 M
+(dispersi\303\263n. Elegimos usar abierta por practicalidad, descrito en 1.5.1.) s
+5 295 M
+(Primero definimos la tabla como un array de cubetas de tipo std::vector \(esto) s
+5 284 M
+(cost\303\263 varias horas de depuraci\303\263n en el siguiente problema\) tal que) s
+5 273 M
+(std::vector<Pagina> tabla[N] siendo N el tama\303\261o de la tabla.) s
+5 262 M
+(    Despu\303\251s se implement\303\263 la funci\303\263n de hash de suma secuencial \(tambi\303\251n cost\303\263) s
+5 251 M
+(optimizaci\303\263n que tuvimos que hacer despues al mooshak reportar "Time limit) s
+5 240 M
+(exceeded"\), y las operaciones de insertar y consultar en la tabla usando esa) s
+5 229 M
+(funci\303\263n de hash. Corregimos el excesivo tiempo escogiendo una funci\303\263n de hash) s
+5 218 M
+(de mas calidad, cuyas caracteristicas son descritas en 1.5.1., y para optimizar) s
+5 207 M
+(el maximo posible, se revisaron ciertas cosas indicadas por la herramienta) s
+5 196 M
+(callgrind de valgrind, muy util.) s
+5 185 M
+(    Solo se tuvo que modificar el modulo diccionario para este problema.) s
+5 163 M
+(    En el 300, se defini\303\263 el nodo del arbol, y la clase Arbol, de tipo trie) s
+5 152 M
+(\(descrito en 1.6.1.\). el struct nodo_trie_t tiene 2 miembros, un vector de) s
+5 141 M
+(referencias \(iteradores, ya que son algo menos peligrosos que punteros de C, que) s
+5 130 M
+(no es buena practica usarlos en C++\) a paginas tal que) s
+5 119 M
+(std::vector<std::list<Pagina>::iterator>; notese std::list<Pagina>, pues tuvimos) s
+5 108 M
+(que cambiar las cubetas de la tabla de dispersi\303\263n a std::list en vez de) s
+5 97 M
+(std::vector \(el contenedor de referencias cambia en el problema siguiente\).) s
+_R
+S
+%%Page: (8) 8
+%%BeginPageSetup
+_S
+18 36 translate
+/pagenum 8 def
+/fname (memoria.txt) def
+/fdir (.) def
+/ftail (memoria.txt) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+5 757 M
+(MEMORIA PROYECTO BUSCADOR                                                  PAG 8) s
+5 735 M
+(    El programa sufr\303\255a de fallos de segmento \(p\303\241gina, en realidad\), que ocurr\303\255an) s
+5 724 M
+(accediendo a las paginas mediante la referencia del arbol. gdb reportaba que las) s
+5 713 M
+(referencias al vector se volv\303\255an invalidas, tras un tiempo despu\303\251s de) s
+5 702 M
+(insertarlas. Tardamos un tiempo embarazoso en darnos cuenta de que, cuando se ) s
+5 691 M
+(inserta a un std::vector, todos los punteros y iteradores a sus elementos pueden) s
+5 680 M
+(ser invalidados, al sufrir un realloc. De manera que decidimos usar un) s
+5 669 M
+(std::list, cuyas referencias no se invalidan al insertar.) s
+5 658 M
+(    El otro miembro del nodo es un diccionario de otros nodos hijos formando el) s
+5 647 M
+(arbol, con clave wchar_t, de forma std::map<wchar_t, nodo_trie_t>.) s
+5 636 M
+(    La nueva clase Arbol, en privado tiene la raiz del arbol, que es) s
+5 625 M
+(directamente un std::map<wchar_t, nodo_trie_t>, y expone las dos operaciones) s
+5 614 M
+(\(descrito en 1.6.2.\) usadas por la clase Diccionario propietaria de su) s
+5 603 M
+(instancia, que wrapea las operaciones en su propia interfaz. Al insertar) s
+5 592 M
+(al arbol, las referencias se ordenan mediante std::sort y una funci\303\263n de) s
+5 581 M
+(comparaci\303\263n que toma iteradores a std::list<Pagina>.) s
+5 570 M
+(    En el interprete, se implementa el comando 'b' usando estas nuevas) s
+5 559 M
+(operaciones.) s
+5 537 M
+(    Decidimos realizar los problemas opcionales 301 y 302 por completitud.) s
+5 515 M
+(    Para realizar el 301 decidimos cambiar el contenedor de las referencias) s
+5 504 M
+(en el nodo del arbol a std::set, ya que as\303\255 podiamos aprovechar las funciones) s
+5 493 M
+(std::set_intersection \(y mas tarde std::set_union \(aunque este es muy facil) s
+5 482 M
+(de implementar insertando\)\) de la STL en la implementaci\303\263n del comando 'a',) s
+5 471 M
+(a partir del cual es trivial, iterando sobre los diferentes conjuntos de) s
+5 460 M
+(referencias, e irlos intersecando, de manera que queden solo los que est\303\241n en) s
+5 449 M
+(todos, implementando as\303\255 AND.) s
+5 438 M
+(    std::set al ser ordenado, ya no es necesario el uso de std::sort, pero si) s
+5 427 M
+(es necesario por ejemplo que el tipo del contenedor \(iterador\) tenga operator<\(\)) s
+5 416 M
+(definido con el fin comparar y ordenar. Para ello creamos otra clase, PagListIt,) s
+5 405 M
+(heredada de std::list<Pagina>::iterator, que implementa un constructor default) s
+5 394 M
+(del padre, necesario, y el operador, y se cambia el contenedor de refeencias de) s
+5 383 M
+(paginas en el nodo a std::set<PagListIt>.) s
+5 361 M
+(    Para el 302 fue trivial entonces usar std::set_union, uniendo los conjuntos) s
+5 350 M
+(de referencias en el comando 'o', mismo metodo que en el 301.) s
+5 328 M
+(    En el problema 303 se tuvo que implementar una nueva operaci\303\263n en el) s
+5 317 M
+(Arbol para buscar todas las palabras con un prefijo. Este m\303\251todo, llama a una) s
+5 306 M
+(funci\303\263n recursiva para recorrer todas las palabras que cuelgan de la secuencia) s
+5 295 M
+(de prefijo y insertarlas a un vector de tuplas de las palabras y el numero) s
+5 284 M
+(de referencias que contienen, tal que std::vector<std::pair<std::wstring, int>>.) s
+5 273 M
+(En el caller, ese vector resultante finalmente se ordena mediante std::sort) s
+5 262 M
+(y otra funci\303\263n de ordenaci\303\263n, y se devuelve.) s
+_R
+S
+%%Page: (9) 9
+%%BeginPageSetup
+_S
+18 36 translate
+/pagenum 9 def
+/fname (memoria.txt) def
+/fdir (.) def
+/ftail (memoria.txt) def
+/user_header_p false def
+/user_footer_p false def
+%%EndPageSetup
+5 757 M
+(MEMORIA PROYECTO BUSCADOR                                                  PAG 9) s
+5 735 M
+(    Proyecto: Buscador              Fecha de inicio: 14/10) s
+5 724 M
+(    Programadores: Angel, Carla     Fecha de finalizaci\303\263n: 19/11) s
+5 702 M
+(    +-------+----------+----------+--------+----------------+------------+) s
+5 691 M
+(    | D\303\\215A*  | PROBLEMA | ANALISIS | DISE\303\\221O | IMPLEMENTACI\303\\223N | VALIDACI\303\\223N |) s
+5 680 M
+(    +-------+----------+----------+--------+----------------+------------+) s
+5 669 M
+(    | 14/10 | 001      |        3 |      1 |              3 |          2 |) s
+5 658 M
+(    | 14/10 | 002      |        5 |     15 |             12 |          5 |) s
+5 647 M
+(    | 14/10 | 003      |        5 |      3 |             10 |          7 |) s
+5 636 M
+(    | 15/10 | 004      |       10 |     15 |             50 |         40 |) s
+5 625 M
+(    | 25/10 | 200      |        7 |     25 |             80 |         30 |) s
+5 614 M
+(    | 12/11 | 300      |       15 |     45 |            120 |         60 |) s
+5 603 M
+(    | 19/11 | 301      |        6 |     20 |             40 |          5 |) s
+5 592 M
+(    | 19/11 | 302      |        2 |      5 |              7 |          5 |) s
+5 581 M
+(    | 19/11 | 303      |       10 |     10 |             25 |          7 |) s
+5 570 M
+(    +-------+----------+----------+--------+----------------+------------+) s
+5 548 M
+(    Tabla 1. Dedicaci\303\263n temporal. Los tiempos est\303\241n en minutos y est\303\241n basados) s
+5 537 M
+(    en datos estimados. *D\303\\215A de finalizaci\303\263n de implementaci\303\263n del problema.) s
+5 482 M
+(4. Conclusiones y valoraciones personales) s
 _R
 S
 %%Trailer
-%%Pages: 5
+%%Pages: 9
 %%DocumentNeededResources: font Courier-Bold Courier 
 %%EOF
