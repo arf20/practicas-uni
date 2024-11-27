@@ -24,8 +24,8 @@ MEMORIA PROYECTO BUSCADOR                                                  PAG 1
 
                         MEMORIA PROYECTO BUSCADOR
                             AED1    Nov, 2024
-                           √Ångel Ruiz Fernandez
-                            Carla Ramos Garc√≠a
+                           ¡ngel Ruiz Fernandez
+                            Carla Ramos GarcÌa
                                 G2.2 B117
 
 MEMORIA PROYECTO BUSCADOR                                                  PAG 2
@@ -35,20 +35,20 @@ MEMORIA
         1.1. Clases ..................................................   3
         1.2. Modulos .................................................   4
         1.3. Makefile ................................................   5
-        1.4. Normalizaci√≥n ...........................................   5
-        1.5. Tabla de dispersi√≥n .....................................   5
+        1.4. NormalizaciÛn ...........................................   5
+        1.5. Tabla de dispersiÛn .....................................   5
             1.5.1. Tipo ..............................................   5
-            1.5.2. Funci√≥n de dispersi√≥n .............................   5
-            1.5.4. Reestructuraci√≥n ..................................   6
-            1.5.3. Liberaci√≥n ........................................   6
+            1.5.2. FunciÛn de dispersiÛn .............................   5
+            1.5.4. ReestructuraciÛn ..................................   6
+            1.5.3. LiberaciÛn ........................................   6
         1.6. Arbol ...................................................   6
             1.6.1. Tipo ..............................................   6
-            1.6.2. Definici√≥n de arbol y nodo ........................   6
+            1.6.2. DefiniciÛn de arbol y nodo ........................   6
             1.6.3. Referencia a paginas ..............................   6
             1.6.4. Liberar ...........................................   6
         1.7. Globales ................................................   6
         1.8. ChatGPT .................................................   6
-    2. Listado del c√≥digo ............................................   7
+    2. Listado del cÛdigo ............................................   7
     3. Informe de desarrollo .........................................   7
     4. Conclusiones y valoraciones personales ........................   
 
@@ -80,11 +80,12 @@ MEMORIA
 
  -  class Diccionario
         Usa Pagina, PagListIt y Arbol
-    Contiene la estructura de tabla de dispersi√≥n (std::list<Pagina>[N]),
-    su funci√≥n de hash, y una instancia de Arbol.
-    Expone las posibles operaciones sobre la tabla, adem√°s de pasar las
+    Contiene la estructura de tabla de dispersiÛn (std::list<Pagina>[N]),
+    su funciÛn de hash, y una instancia de Arbol.
+    Expone las posibles operaciones sobre la tabla, adem·s de pasar las
     operaciones del arbol.
    
+    
                 +--------+
                 | Pagina |
                 +--------+
@@ -122,26 +123,26 @@ MEMORIA
 Cada modulo (menos main) tiene un header asociado
 
  -  diccionario.hpp
-    Contiene la declaraci√≥n de todas las clases y structs, interfaz para ser
+    Contiene la declaraciÛn de todas las clases y structs, interfaz para ser
     usada por el interprete.
 
     diccionario.cpp
-    Contiene la definici√≥n de todos los metodos de las clases, que especifican
+    Contiene la definiciÛn de todos los metodos de las clases, que especifican
     la estructura de datos y las operaciones asociadas de la base de datos.
 
  -  interprete.hpp
-    Contiene la declaraci√≥n de las funciones que se encargan de interpretar
+    Contiene la declaraciÛn de las funciones que se encargan de interpretar
     los comandos de la entrada.
 
     interprete.cpp
-    Contiene la definici√≥n de las funciones de interpretaci√≥n de comandos,
+    Contiene la definiciÛn de las funciones de interpretaciÛn de comandos,
     que llaman a operaciones sobre el diccionario, que se le es pasado por
     referencia.
 
  -  main.cpp
     Contiene el bucle principal del programa, que lee comandos y llama al
-    interprete. Es propietario de la instanciaci√≥n del dicionario, donde se
-    almacenan todos los datos de la aplicaci√≥n.
+    interprete. Es propietario de la instanciaciÛn del dicionario, donde se
+    almacenan todos los datos de la aplicaciÛn.
 
 
                                                     +-----------------+
@@ -164,7 +165,7 @@ Cada modulo (menos main) tiene un header asociado
 
         main.o              interprete.o            diccionario.o
 
-        Fig 2. Diagrama de modulos y unidades de compilaci√≥n
+        Fig 2. Diagrama de modulos y unidades de compilaciÛn
 
 MEMORIA PROYECTO BUSCADOR                                                  PAG 5
 
@@ -172,12 +173,12 @@ Cada modulo (menos main) tiene un header asociado
 
     En la Makefile, primero defino variables tales como el nombre del proyecto,
 el nombre de la salida, el compilador, y los parametros de compilador y linker;
-adem√°s de automaticamente guardar en SRC los archivos .cpp, de los cuales se
+adem·s de automaticamente guardar en SRC los archivos .cpp, de los cuales se
 saca el nombre de los archivos de objeto con un patsubst.
 
     La regla all depende del binario de salida, que se crea en una regla de
 link que depende de los archivos de objeto. Los archivos de objeto se compilan
-en una regla patr√≥n: para cada ".o" que depende de un ".cpp" y/o ".hpp", con el
+en una regla patrÛn: para cada ".o" que depende de un ".cpp" y/o ".hpp", con el
 mismo nombre base.
 
     Adicionalmente tengo reglas PHONY para realizar el test con la entrada
@@ -187,60 +188,60 @@ automatizado (no incluido en el listado adjunto).
     La makefile contiene todas las dependencias existentes.
 
 
-1.4. Normalizaci√≥n
+1.4. NormalizaciÛn
 
     Al parecer la gente no se da cuenta de que el lenguaje C++ soporta
 UTF-8 nativamente. Usando las variantes 'wide' o 'multibyte' de tipos y
 operaciones de la STL que soportan operar con estos caracteres Unicode
 como std::wcin/wcout, std::wstring (std::basic_string<wchar_t>,
-y std::towlower(). Usando estas caracteristicas, la normalizaci√≥n ser√≠a trivial,
-el problema es que la especificaci√≥n del programa requiere unas conversiones muy
+y std::towlower(). Usando estas caracteristicas, la normalizaciÛn serÌa trivial,
+el problema es que la especificaciÛn del programa requiere unas conversiones muy
 especificas que difieren del comportamiento de std::towlower().
 
     wchar_t std::towlower(wchar_t) convierte todos los caracteres con variante
-mayuscula a su variante minuscula, de todos los idiomas. La especificaci√≥n
-indica que debemos normalizar solo los caracteres del Espa√±ol, ignorando el
+mayuscula a su variante minuscula, de todos los idiomas. La especificaciÛn
+indica que debemos normalizar solo los caracteres del EspaÒol, ignorando el
 resto, por tanto primero se usa std::tolower() que trabaja solo sobre ASCII
 (ignorando Unicode), y entonces despues, se manejan los casos para los
-caracteres especificos del espa√±ol, como las tildes y la '√±'.
+caracteres especificos del espaÒol, como las tildes y la 'Ò'.
 
 
-1.5. Tabla de dispersi√≥n
+1.5. Tabla de dispersiÛn
 
 1.5.1. Tipo
 
-    El tipo elegido para la tabla de dispersi√≥n es abierta, ya que es muy
+    El tipo elegido para la tabla de dispersiÛn es abierta, ya que es muy
 sencilla de implementar, y realmente porque las tablas cerradas no ofrecen
-ventajas significativas: con sets grandes, la optimizaci√≥n de memoria es
-insignificante, y para tablas del mismo tama√±o, la cerrada es casi siempre m√°s
+ventajas significativas: con sets grandes, la optimizaciÛn de memoria es
+insignificante, y para tablas del mismo tamaÒo, la cerrada es casi siempre m·s
 lenta.
 
-1.5.2. Funci√≥n de dispersi√≥n
+1.5.2. FunciÛn de dispersiÛn
 
     Al principio mientras probaba, sumaba todos los caracteres en un entero
-y aplicaba el modulo, esto conlleva una dispersi√≥n bastante mala ya que las
+y aplicaba el modulo, esto conlleva una dispersiÛn bastante mala ya que las
 cadenas son de longitudes parecidas.
 
-    As√≠ que se reemplaz√≥ por una variante de un hash iterativo, donde el valor
+    AsÌ que se reemplazÛ por una variante de un hash iterativo, donde el valor
 inicial t es un primo (5381), y por cada caracter de la cadena a hashear, se
-le suma a t desplazado 5 bits a la izquierda (para aumentar la dispersi√≥n),
-con t, con el caracter. Finalmente se retorna t modulo tama√±o de la tabla. As√≠
-la dispersi√≥n es mucho m√°s uniforme.
+le suma a t desplazado 5 bits a la izquierda (para aumentar la dispersiÛn),
+con t, con el caracter. Finalmente se retorna t modulo tamaÒo de la tabla. AsÌ
+la dispersiÛn es mucho m·s uniforme.
 
 
 MEMORIA PROYECTO BUSCADOR                                                  PAG 6
 
-1.5.3. Reestructuraci√≥n
+1.5.3. ReestructuraciÛn
 
-    No se realiza reestructuraci√≥n, se considera que el tama√±o de la tabla
+    No se realiza reestructuraciÛn, se considera que el tamaÒo de la tabla
 es suficiente para el numero de elementos.
 
-1.5.4. Liberaci√≥n
+1.5.4. LiberaciÛn
 
-    No hay liberaci√≥n explicita. Gracias a que la tabla es una propiedad array
+    No hay liberaciÛn explicita. Gracias a que la tabla es una propiedad array
 de un contenedor de la STL en la clase Diccionario, esta se elimina
 profundamente (llamando automaticamente al destructor de cada contenedor)
-al destruirse la instancia, que al estar siendo instanciada en la funci√≥n
+al destruirse la instancia, que al estar siendo instanciada en la funciÛn
 main en el stack, se destruiye automaticamente al llegar al final de main(),
 antes de salir del programa, gracias a RAII de C++.
 
@@ -250,12 +251,12 @@ antes de salir del programa, gracias a RAII de C++.
 1.6.1. Tipo
     
     Se ha implementado un arbol Trie, ya que es muy simple de implementar, y lo
-bastante rapido para la aplicaci√≥n. Buscar como maximo 26 elementos por
+bastante rapido para la aplicaciÛn. Buscar como maximo 26 elementos por
 caracter de palabra, usualmente menor que 15, es computacinalmente poco costoso.
-Implementar AVL no ofrecer√≠a una ventaja clara en velocidad, costar√≠a mas de
-implementar y el balanceo es computaci√≥n extra.
+Implementar AVL no ofrecerÌa una ventaja clara en velocidad, costarÌa mas de
+implementar y el balanceo es computaciÛn extra.
 
-1.6.2. Definici√≥n de arbol y nodo
+1.6.2. DefiniciÛn de arbol y nodo
 
     El nodo es un struct, que contiene un std::set ordenado de referencias a
 paginas, y un diccionario de <wchar_t, nodo> hijos, para hacer el arbol.
@@ -269,59 +270,60 @@ buscar.
     Las referencias a las paginas en los nodos del arbol son iteradores estandar
 de la STL, que usan punteros internamente.
 
-1.6.4. Liberaci√≥n
+1.6.4. LiberaciÛn
 
-    Al igual que en la tabla de dispersi√≥n, los diccionarios y conjuntos de los
+    Al igual que en la tabla de dispersiÛn, los diccionarios y conjuntos de los
 nodos se liberan automaticamente al destruirse la raiz, al destruirse la
 instancia de Arbol, al destruirse la instancia del Diccionario al final de
 main().
 
 1.7. Globales
 
-    No se usa ning√∫n tipo de variable ni constante global.
+    No se usa ning˙n tipo de variable ni constante global.
 
 1.8. ChatGPT
 
-    En ning√∫n momento se ha usado ChatGPT para ninguna parte del proyecto,
-solo se han usado herramientas de depuraci√≥n serias como gdb y valgrind, y
+    En ning˙n momento se ha usado ChatGPT para ninguna parte del proyecto,
+solo se han usado herramientas de depuraciÛn serias como gdb y valgrind, y
 recursos deterministas convencionales como investigar documentacion y posts en
 foros de desarrollo tales como StackoOverflow, escritos por el conocimiento,
-experiencia y sabidur√≠a de personas humanas usadas a C++, gcc y sus
+experiencia y sabidurÌa de personas humanas usadas a C++, gcc y sus
 intricaciones.
+
 
 MEMORIA PROYECTO BUSCADOR                                                  PAG 7
 
-2. Listado completo del c√≥digo
+2. Listado completo del cÛdigo
 
-    Veas√© documento adjunto.
+    VeasÈ documento adjunto.
 
 3. Informe de desarrollo
 
     El problema 001 fue muy trivial usando std::cin en un bucle.
 
-    Para el 002, como descrito en 1.4., me acord√© de que C++ soporta Unicode
+    Para el 002, como descrito en 1.4., me acordÈ de que C++ soporta Unicode
 nativamente, y usamos casos de caracteres unicode sobre wchar_t en vez de
 sobrecomplicarnos intentando decodificar caracteres multibyte manualmente, una
 practica poco recomendable.
 
-    En el siguiente, 003, se empez√≥ a modularizar, creando el modulo interprete.
-En el main() de la aplicaci√≥n entonces, se abri√≥ un bucle donde se lee un token
+    En el siguiente, 003, se empezÛ a modularizar, creando el modulo interprete.
+En el main() de la aplicaciÛn entonces, se abriÛ un bucle donde se lee un token
 mientras haya entrada disponible, y se llama al interprete para procesarlo.
-    El interprete, seg√∫n el primer token en un switch, lee diferentes datos
+    El interprete, seg˙n el primer token en un switch, lee diferentes datos
 correspondiendose a los diferentes comandos, para los que hay que dar salidas de
 placeholder.
 
-    En el 004, se abre el modulo de diccionario, que se implementa con una √∫nica
+    En el 004, se abre el modulo de diccionario, que se implementa con una ˙nica
 gran lista ordenada en una nueva clase, Diccionario, que expone las apropiadas
 operaciones que se llaman desde el interprete.
     En nuestro caso, decidimos usar un contenedor diccionario ordenado de la
 STL, std::map<std::wstring, Pagina> para simplificar las operaciones, .find()
 para buscar a modo de lista, y .insert_or_assign() para insertar o modificar
 cuando coincida la url.
-    El contenedor se ordena mediante un concepto un tanto extra√±o de C++,
+    El contenedor se ordena mediante un concepto un tanto extraÒo de C++,
 un objeto Compare de un contenedor ordenado. El struct comparador_paginas_url,
 que implementa un operator(), que recibe dos std::wstring y las compara usando
-el metodo indicado en la especificaci√≥n (.compare() < 0). De esta forma, al
+el metodo indicado en la especificaciÛn (.compare() < 0). De esta forma, al
 insertar en el diccionario, este se encarga de ordenar los elementos
 automaticamente. Otro concepto de C++ que se usa es std::optional<>, para cuando
 no se encuentra una pagina por url, no devolver nada.
@@ -330,32 +332,33 @@ operaciones del diccionario, siendo pasado por referencia desde main(), el
 propietario del diccionario.
 
     Para el 200, se nos pide implementar el diccionario con una tabla de
-dispersi√≥n. Elegimos usar abierta por practicalidad, descrito en 1.5.1.
+dispersiÛn. Elegimos usar abierta por practicalidad, descrito en 1.5.1.
 Primero definimos la tabla como un array de cubetas de tipo std::vector (esto
-cost√≥ varias horas de depuraci√≥n en el siguiente problema) tal que
-std::vector<Pagina> tabla[N] siendo N el tama√±o de la tabla.
-    Despu√©s se implement√≥ la funci√≥n de hash de suma secuencial (tambi√©n cost√≥
-optimizaci√≥n que tuvimos que hacer despues al mooshak reportar "Time limit
+costÛ varias horas de depuraciÛn en el siguiente problema) tal que
+std::vector<Pagina> tabla[N] siendo N el tamaÒo de la tabla.
+    DespuÈs se implementÛ la funciÛn de hash de suma secuencial (tambiÈn costÛ
+optimizaciÛn que tuvimos que hacer despues al mooshak reportar "Time limit
 exceeded"), y las operaciones de insertar y consultar en la tabla usando esa
-funci√≥n de hash. Corregimos el excesivo tiempo escogiendo una funci√≥n de hash
+funciÛn de hash. Corregimos el excesivo tiempo escogiendo una funciÛn de hash
 de mas calidad, cuyas caracteristicas son descritas en 1.5.1., y para optimizar
 el maximo posible, se revisaron ciertas cosas indicadas por la herramienta
 callgrind de valgrind, muy util.
     Solo se tuvo que modificar el modulo diccionario para este problema.
 
-    En el 300, se defini√≥ el nodo del arbol, y la clase Arbol, de tipo trie
+    En el 300, se definiÛ el nodo del arbol, y la clase Arbol, de tipo trie
 (descrito en 1.6.1.). el struct nodo_trie_t tiene 2 miembros, un vector de
 referencias (iteradores, ya que son algo menos peligrosos que punteros de C, que
 no es buena practica usarlos en C++) a paginas tal que
 std::vector<std::list<Pagina>::iterator>; notese std::list<Pagina>, pues tuvimos
-que cambiar las cubetas de la tabla de dispersi√≥n a std::list en vez de
+que cambiar las cubetas de la tabla de dispersiÛn a std::list en vez de
 std::vector (el contenedor de referencias cambia en el problema siguiente).
+
 
 MEMORIA PROYECTO BUSCADOR                                                  PAG 8
 
-    El programa sufr√≠a de fallos de segmento (p√°gina, en realidad), que ocurr√≠an
+    El programa sufrÌa de fallos de segmento (p·gina, en realidad), que ocurrÌan
 accediendo a las paginas mediante la referencia del arbol. gdb reportaba que las
-referencias al vector se volv√≠an invalidas, tras un tiempo despu√©s de
+referencias al vector se volvÌan invalidas, tras un tiempo despuÈs de
 insertarlas. Tardamos un tiempo embarazoso en darnos cuenta de que, cuando se 
 inserta a un std::vector, todos los punteros y iteradores a sus elementos pueden
 ser invalidados, al sufrir un realloc. De manera que decidimos usar un
@@ -366,20 +369,20 @@ arbol, con clave wchar_t, de forma std::map<wchar_t, nodo_trie_t>.
 directamente un std::map<wchar_t, nodo_trie_t>, y expone las dos operaciones
 (descrito en 1.6.2.) usadas por la clase Diccionario propietaria de su
 instancia, que wrapea las operaciones en su propia interfaz. Al insertar
-al arbol, las referencias se ordenan mediante std::sort y una funci√≥n de
-comparaci√≥n que toma iteradores a std::list<Pagina>.
+al arbol, las referencias se ordenan mediante std::sort y una funciÛn de
+comparaciÛn que toma iteradores a std::list<Pagina>.
     En el interprete, se implementa el comando 'b' usando estas nuevas
 operaciones.
 
     Decidimos realizar los problemas opcionales 301 y 302 por completitud.
 
     Para realizar el 301 decidimos cambiar el contenedor de las referencias
-en el nodo del arbol a std::set, ya que as√≠ podiamos aprovechar las funciones
+en el nodo del arbol a std::set, ya que asÌ podiamos aprovechar las funciones
 std::set_intersection (y mas tarde std::set_union (aunque este es muy facil
-de implementar insertando)) de la STL en la implementaci√≥n del comando 'a',
+de implementar insertando)) de la STL en la implementaciÛn del comando 'a',
 a partir del cual es trivial, iterando sobre los diferentes conjuntos de
-referencias, e irlos intersecando, de manera que queden solo los que est√°n en
-todos, implementando as√≠ AND.
+referencias, e irlos intersecando, de manera que queden solo los que est·n en
+todos, implementando asÌ AND.
     std::set al ser ordenado, ya no es necesario el uso de std::sort, pero si
 es necesario por ejemplo que el tipo del contenedor (iterador) tenga operator<()
 definido con el fin comparar y ordenar. Para ello creamos otra clase, PagListIt,
@@ -390,21 +393,24 @@ paginas en el nodo a std::set<PagListIt>.
     Para el 302 fue trivial entonces usar std::set_union, uniendo los conjuntos
 de referencias en el comando 'o', mismo metodo que en el 301.
 
-    En el problema 303 se tuvo que implementar una nueva operaci√≥n en el
-Arbol para buscar todas las palabras con un prefijo. Este m√©todo, llama a una
-funci√≥n recursiva para recorrer todas las palabras que cuelgan de la secuencia
+    En el problema 303 se tuvo que implementar una nueva operaciÛn en el
+Arbol para buscar todas las palabras con un prefijo. Este mÈtodo, llama a una
+funciÛn recursiva para recorrer todas las palabras que cuelgan de la secuencia
 de prefijo y insertarlas a un vector de tuplas de las palabras y el numero
 de referencias que contienen, tal que std::vector<std::pair<std::wstring, int>>.
 En el caller, ese vector resultante finalmente se ordena mediante std::sort
-y otra funci√≥n de ordenaci√≥n, y se devuelve.
+y otra funciÛn de ordenaciÛn, y se devuelve.
+
+
+
 
 MEMORIA PROYECTO BUSCADOR                                                  PAG 9
 
     Proyecto: Buscador              Fecha de inicio: 14/10
-    Programadores: Angel, Carla     Fecha de finalizaci√≥n: 19/11
+    Programadores: Angel, Carla     Fecha de finalizaciÛn: 19/11
 
     +-------+----------+----------+--------+----------------+------------+
-    | D√çA*  | PROBLEMA | ANALISIS | DISE√ëO | IMPLEMENTACI√ìN | VALIDACI√ìN |
+    | DÕA*  | PROBLEMA | ANALISIS | DISE—O | IMPLEMENTACI”N | VALIDACI”N |
     +-------+----------+----------+--------+----------------+------------+
     | 14/10 | 001      |        3 |      1 |              3 |          2 |
     | 14/10 | 002      |        5 |     15 |             12 |          5 |
@@ -420,31 +426,31 @@ y otra funci√≥n de ordenaci√≥n, y se devuelve.
     | 705m  |          |          |        |                |            |
     +-------+----------+----------+--------+----------------+------------+
 
-    Tabla 1. Dedicaci√≥n temporal. Los tiempos est√°n en minutos y est√°n
-    basados en datos estimados. *D√çA de finalizaci√≥n de implementaci√≥n del
+    Tabla 1. DedicaciÛn temporal. Los tiempos est·n en minutos y est·n
+    basados en datos estimados. *DÕA de finalizaciÛn de implementaciÛn del
     problema.
 
 4. Conclusiones y valoraciones personales
 
    Al principio los problemas resultaron faciles, pero a partir de la tabla
-de dispersi√≥n y el arbol, hubo que emplear bastante tiempo depurando y
-optimizando. Pensar√≠as que no es posible tener segfaults usando solo la STL pero
+de dispersiÛn y el arbol, hubo que emplear bastante tiempo depurando y
+optimizando. PensarÌas que no es posible tener segfaults usando solo la STL pero
 si. Si lo miras con valgrind, la STL comete memory leaks insalvables por su
-dise√±o y uso de templates. Si querian que usaramos punteros para los arboles y
+diseÒo y uso de templates. Si querian que usaramos punteros para los arboles y
 listas, el lenguaje para eso es C, no C++. 
 
     Sin embargo, para usar C++, no se explican bien toda la funcionalidad que
-C++ ofrece. Parece que la mayor√≠a no conoce si quiera que C++ soporta UTF-8;
-inmensamente √∫til para la normalizaci√≥n. No se explican los contenedores de la
+C++ ofrece. Parece que la mayorÌa no conoce si quiera que C++ soporta UTF-8;
+inmensamente ˙til para la normalizaciÛn. No se explican los contenedores de la
 STL, cuando usarlos, sus propiedades y operaciones, tales como std::vector,
 std::list, std::deque, std::set, std::map...
 
-    Y tampoco se ense√±a el uso de depuradores como gdb y valgrind, herramientas
-inmensamente √∫tiles y indispensables para desarrollo de cualquier software mas
+    Y tampoco se enseÒa el uso de depuradores como gdb y valgrind, herramientas
+inmensamente ˙tiles y indispensables para desarrollo de cualquier software mas
 grande que una prueba.
 
     Finalmente, este proyecto, cuyo objetivo era el uso practico de tablas de
-dispersi√≥n y arboles, no es representativo del funcionamiento de un motor de
+dispersiÛn y arboles, no es representativo del funcionamiento de un motor de
 busqueda real.
 
     
