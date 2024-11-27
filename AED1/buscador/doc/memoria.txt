@@ -422,13 +422,36 @@ y otra función de ordenación, y se devuelve.
     | 19/11 | 302      |        2 |      5 |              7 |          5 |
     | 19/11 | 303      |       10 |     10 |             25 |          7 |
     +-------+----------+----------+--------+----------------+------------+
+    | TOTAL |          |       58 |    139 |            347 |        161 |
+    | 705m  |          |          |        |                |            |
+    +-------+----------+----------+--------+----------------+------------+
 
-    Tabla 1. Dedicación temporal. Los tiempos están en minutos y están basados
-    en datos estimados. *DÍA de finalización de implementación del problema.
-
-
-
+    Tabla 1. Dedicación temporal. Los tiempos están en minutos y están
+    basados en datos estimados. *DÍA de finalización de implementación del
+    problema.
 
 4. Conclusiones y valoraciones personales
 
+   Al principio los problemas resultaron faciles, pero a partir de la tabla
+de dispersión y el arbol, hubo que emplear bastante tiempo depurando y
+optimizando. Pensarías que no es posible tener segfaults usando solo la STL pero
+si. Si lo miras con valgrind, la STL comete memory leaks insalvables por su
+diseño y uso de templates. Si querian que usaramos punteros para los arboles y
+listas, el lenguaje para eso es C, no C++. 
+
+    Sin embargo, para usar C++, no se explican bien toda la funcionalidad que
+C++ ofrece. Parece que la mayoría no conoce si quiera que C++ soporta UTF-8;
+inmensamente útil para la normalización. No se explican los contenedores de la
+STL, cuando usarlos, sus propiedades y operaciones, tales como std::vector,
+std::list, std::deque, std::set, std::map...
+
+    Y tampoco se enseña el uso de depuradores como gdb y valgrind, herramientas
+inmensamente útiles y indispensables para desarrollo de cualquier software mas
+grande que una prueba.
+
+    Finalmente, este proyecto, cuyo objetivo era el uso practico de tablas de
+dispersión y arboles, no es representativo del funcionamiento de un motor de
+busqueda real.
+
+    
 
