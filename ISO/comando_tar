@@ -1,0 +1,1 @@
+tar cvzf alumno.tar.gz --newer-mtime=/home/alumno /home/alumno
