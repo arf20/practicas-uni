@@ -6,15 +6,15 @@ u http://dis.um.es/index.html
 Total: 0 resultados
 b programacion
 Total: 0 resultados
-a  llevo la condicion
+a llevo la condicion
 Total: 0 resultados
 2. http://dis.um.es/index.html, Departamento de Informática y Sistemas, Rel. 76
 10 palabras
-a  la programacion de meyer
+a la programacion de meyer
 Total: 0 resultados
-o  pagina cigueña
+o pagina cigueña
 Total: 0 resultados
-o  troyano troya
+o troyano troya
 Total: 0 resultados
 p autocom
 Total: 0 resultados
@@ -38,49 +38,49 @@ u http://www.góogle.és
 Total: 0 resultados
 b simple
 Total: 0 resultados
-o  portada buscador
+o portada buscador
 Total: 0 resultados
-a  portada buscador
+a portada buscador
 Total: 0 resultados
 7. http://WWW.MARCA.COM, El periódico deportivo MARCA, Rel. 3
 15 palabras
 8. http://www.dis.um.es/~ginesgm, Prácticas de AED, Rel. 7
 29 palabras
-o  copiado portada
+o copiado portada
 Total: 0 resultados
-o  tiene pagina
+o tiene pagina
 Total: 0 resultados
-a  portada buscador
+a portada buscador
 Total: 0 resultados
 b vacio
 Total: 0 resultados
-a  vacio
+a vacio
 Total: 0 resultados
 b findepagina
 Total: 0 resultados
-a  simple copiado
+a simple copiado
 Total: 0 resultados
-a  buscador simple texto
+a buscador simple texto
 Total: 0 resultados
-a  portada pagina
+a portada pagina
 Total: 0 resultados
-a  portada pagina
+a portada pagina
 Total: 0 resultados
 u www.cigüeña.com
 Total: 0 resultados
 b pagina
 Total: 0 resultados
-a  pagina
+a pagina
 Total: 0 resultados
-a  pagina
+a pagina
 Total: 0 resultados
-a  universidad
+a universidad
 Total: 0 resultados
 b universidad
 Total: 0 resultados
-a  practica cañon cañon
+a practica cañon cañon
 Total: 0 resultados
-o  cañon universidad
+o cañon universidad
 Total: 0 resultados
 p pore
 Total: 0 resultados
