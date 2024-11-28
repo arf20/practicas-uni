@@ -10,23 +10,16 @@
 
 auto normalizarc(wchar_t c) {
     c = std::tolower(c); // convierte solo ASCII-7
-    
-    if (c == L'Ñ') c = L'ñ';
-
-    if (c == L'Á') c = 'a';
-    if (c == L'É') c = 'e';
-    if (c == L'Í') c = 'i';
-    if (c == L'Ó') c = 'o';
-    if (c == L'Ú') c = 'u';
-    if (c == L'Ü') c = 'u';
-
-    if (c == L'á') c = 'a';
-    if (c == L'é') c = 'e';
-    if (c == L'í') c = 'i';
-    if (c == L'ó') c = 'o';
-    if (c == L'ú') c = 'u';
-    if (c == L'ü') c = 'u';
-    return c;
+   
+    switch (c) {
+        case L'Ñ': return L'ñ'; break;
+        case L'Á': case L'á': return L'a'; break;
+        case L'É': case L'é': return L'e'; break;
+        case L'Í': case L'í': return L'i'; break;
+        case L'Ó': case L'ó': return L'o'; break;
+        case L'Ú': case L'ú': case L'Ü': case L'ü': return L'u'; break;
+        default: return c;
+    }
 }
 
 auto normalizarstr(const std::wstring& s) {

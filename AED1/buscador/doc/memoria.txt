@@ -114,7 +114,6 @@ MEMORIA
                +-------------+
 
     Fig. 1 Diagrama de clases
-
 MEMORIA PROYECTO BUSCADOR                                                  PAG 4
 
 1.2. Módulos
@@ -227,7 +226,6 @@ le suma a t desplazado 5 bits a la izquierda (para aumentar la dispersión),
 con t, con el carácter. Finalmente se retorna t módulo tamaño de la tabla. Así
 la dispersión es mucho más uniforme.
 
-
 MEMORIA PROYECTO BUSCADOR                                                  PAG 6
 
 1.5.3. Reestructuración
@@ -310,6 +308,8 @@ mientras haya entrada disponible, y se llama al interprete para procesarlo.
     El interprete, según el primer token en un switch, lee diferentes datos
 correspondiéndose a los diferentes comandos, para los que hay que dar salidas de
 placeholder.
+    Decidimos no implementar comprobaciones de errores de sintaxis ya que no se
+contempla como una entrada erronea debería manejarse en la especificación.
 
     En el 004, se abre el módulo de diccionario, que se implementa con una única
 gran lista ordenada en una nueva clase, Diccionario, que expone las apropiadas
@@ -343,6 +343,8 @@ el máximo posible, se revisaron ciertas cosas indicadas por la herramienta
 callgrind de valgrind, muy util.
     Solo se tuvo que modificar el módulo diccionario para este problema.
 
+MEMORIA PROYECTO BUSCADOR                                                  PAG 8
+
     En el 300, se definió el nodo del árbol, y la clase Árbol, de tipo trie
 (descrito en 1.6.1.). el struct nodo_trie_t tiene 2 miembros, un vector de
 referencias (iteradores, ya que son algo menos peligrosos que punteros de C, que
@@ -350,8 +352,6 @@ no es buena practica usarlos en C++) a páginas tal que
 std::vector<std::list<Pagina>::iterator>; nótese std::list<Pagina>, pues tuvimos
 que cambiar las cubetas de la tabla de dispersión a std::list en vez de
 std::vector (el contenedor de referencias cambia en el problema siguiente).
-
-MEMORIA PROYECTO BUSCADOR                                                  PAG 8
 
     El programa sufría de fallos de segmento (página, en realidad), que ocurrían
 accediendo a las páginas mediante la referencia del árbol. gdb reportaba que las

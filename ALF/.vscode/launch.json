@@ -6,12 +6,12 @@
     "configurations": [
         
         {
-            "name": "Python Debugger: Current File",
+            "name": "py",
             "type": "debugpy",
             "request": "launch",
-            "program": "${file}",
+            "program": "${workspaceFolder}/proyecto/code/main.py",
             "console": "integratedTerminal",
-            "args": "-n compras.txt"
+            "args": "-stime \"2000-01-01 00:00\" \"2001-01-01 00:00\" compras.txt"
         }
     ]
 }
