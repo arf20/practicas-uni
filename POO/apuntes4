@@ -1,0 +1,113 @@
+POO APUNTES
+===========
+
+TEMA 3
+======
+
+TEMA 4
+======
+
+Genericidad = templates
+    usar contenedor con cualquier tipo
+    parametrizar <T>
+
+Tipos abstractos -> interfaces
+Clases abstractas -> factorizar comportamiento a varias implementaciones
+
+listas usan equals()
+hashcosas usan hashCode() y equals()
+
+Collection interface
+    Operaciones sobre colecciones
+    -> List
+    -> Set
+
+    int size()
+    bool isEmpty()
+    bool contains(Object e)
+    bool add(T e)
+    bool remove(Object e)
+    clear()
+    addAll(otra)
+    removeAll(otra)
+
+
+SequencedCollection
+    
+
+List
+    secuencial [0, size()-1]
+    -> LinkedList<T>
+    -> ArrayList<T>
+    
+    implementa
+    add() al final de la lista, siempre succeed
+    
+    añade
+    T get(int index)
+    T set(int index)
+    void add(int index, T nuevo)
+    T remove(int index)
+
+    LinkedList<T>
+        nodos doblemente enlazados
+        añade
+        addFirst
+        addLast
+        removeFirst
+        removeLast
+        getFirst
+        getLast
+        : util pilas y colas
+
+    ArrayList<T>
+        array dinamico, capacidad (inicial 10)
+
+Set
+    conjunto
+    -> HashSet<T>
+    -> TreeSet<T>
+
+    add() puede fallar
+
+    HashSet<T> usa hashCode()/equals()
+        necesario recorrido con iterador o foreach en orden random
+    TreeSet<T>
+        ordenado
+
+JAVA 21
+    unifica acceder a primer y ultimo elemento de secuenciales
+
+        
+
+SortedSet
+    mismo pero sobre Comparable o con Comparator
+
+Map
+
+HashMap
+
+
+Comparable
+
+Comparator
+
+    TreeSet
+
+    TreeMap
+
+Iterable
+
+Iterator
+
+
+static Collections.addAll(contenedor, arg1, arg2..)
+static Collections.sort(contenedor)
+
+
+En colecciones, usar tipo wrapper de primitivos
+    Integer en vez de int
+
+En metodos, devolver contenedores abstractos, sin implementación
+    List<T> de LinkedList<T> o ArrayList<T>
+
