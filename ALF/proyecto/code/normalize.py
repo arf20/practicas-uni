@@ -34,8 +34,50 @@ def normalize_date(line):
 
     return line
 
+def normalize_coord(line):
+    m = re.search(geo2prog, line)
+    if (m != None):
+        grps = m.groups()
+        
+        gps =  "{:03d}".format(int(grps[0])) + "{:02d}".format(int(grps[1]))
+        gps += "{:07.4f}".format(float(grps[2])) + grps[3]
+        gps += "{:03d}".format(int(grps[4])) + "{:02d}".format(int(grps[5]))
+        gps += "{:07.4f}".format(float(grps[6])) + grps[7]
 
+        line = line.replace(line[m.start():m.end()], gps)
 
+    m = re.search(geo1prog, line)
+    if (m != None):
+        grps = m.groups()
+        lat = float(grps[0])
+        lon = float(grps[1])
+        latdir = "N"
+        londir = "W"
+        if lat < 0:
+            latdir = "S"
+            lat *= -1
+        if lon < 0:
+            londir = "E"
+            lon *= -1
+        gps  = "{:03d}".format(math.floor(lat))
+        lat -= math.floor(lat)
+        lat *= 60
+        gps += "{:02d}".format(math.floor(lat))
+        lat -= math.floor(lat)
+        lat *= 60
+        gps += "{:07.4f}".format(math.floor(lat)) + latdir
+
+        gps  += "{:03d}".format(math.floor(lon))
+        lon  -= math.floor(lon)
+        lon  *= 60
+        gps  += "{:02d}".format(math.floor(lon))
+        lon  -= math.floor(lon)
+        lon  *= 60
+        gps  += "{:07.4f}".format(math.floor(lon)) + londir
+
+        line = line.replace(line[m.start():m.end()], gps)
+
+    return line
 
 
 def normalize(fname):
@@ -43,49 +85,10 @@ def normalize(fname):
     
     for line in file:
         line = normalize_date(line)
-
-        m = re.search(geo2prog, line)
-        if (m != None):
-            grps = m.groups()
-            
-            gps =  "{:03d}".format(int(grps[0])) + "{:02d}".format(int(grps[1]))
-            gps += "{:07.4f}".format(float(grps[2])) + grps[3]
-            gps += "{:03d}".format(int(grps[4])) + "{:02d}".format(int(grps[5]))
-            gps += "{:07.4f}".format(float(grps[6])) + grps[7]
-
-            line = line.replace(line[m.start():m.end()], gps)
-
-        m = re.search(geo1prog, line)
-        if (m != None):
-            grps = m.groups()
-            lat = float(grps[0])
-            lon = float(grps[1])
-            latdir = "N"
-            londir = "W"
-            if lat < 0:
-                latdir = "S"
-                lat *= -1
-            if lon < 0:
-                londir = "E"
-                lon *= -1
-            gps  = "{:03d}".format(math.floor(lat))
-            lat -= math.floor(lat)
-            lat *= 60
-            gps += "{:02d}".format(math.floor(lat))
-            lat -= math.floor(lat)
-            lat *= 60
-            gps += "{:07.4f}".format(math.floor(lat)) + latdir
-
-            gps  += "{:03d}".format(math.floor(lon))
-            lon  -= math.floor(lon)
-            lon  *= 60
-            gps  += "{:02d}".format(math.floor(lon))
-            lon  -= math.floor(lon)
-            lon  *= 60
-            gps  += "{:07.4f}".format(math.floor(lon)) + londir
-
-            line = line.replace(line[m.start():m.end()], gps)
+        line = normalize_coord(line)
 
         print(line, end='')
+
+
     file.close()
 
