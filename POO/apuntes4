@@ -7,6 +7,8 @@ TEMA 3
 TEMA 4
 ======
 
+COLECCIONES
+
 Genericidad = templates
     usar contenedor con cualquier tipo
     parametrizar <T>
@@ -48,6 +50,7 @@ List
     T set(int index)
     void add(int index, T nuevo)
     T remove(int index)
+    sort(Comparator<T> c)?
 
     LinkedList<T>
         nodos doblemente enlazados
@@ -77,37 +80,208 @@ Set
 
 JAVA 21
     unifica acceder a primer y ultimo elemento de secuenciales
+    SequencedCollection<E> extends Collection<E>
+        void addFirst(E)
+        void addLast(E)
+        E getFirst()
+        E getLast();
+        E removeFirst()
+        E removeLast()
+        SequencedCollection<E> reversed()   
 
+    SequencedCollection<E> extends Collection<E>
+        SequencedSet<E> reversed()
         
 
 SortedSet
     mismo pero sobre Comparable o con Comparator
 
-Map
-
-HashMap
-
-
 Comparable
+    tiene orden natural
+    objeto que implementa
+    public interface Comparable<T> {
+        int compareTo(T o);
+    }
 
 Comparator
+    criterio de ordenación
+    objeto aparte que implementa
+    public interface Comparator<T> {
+        int compare(T o1, T o2);  // devuelve >0 si o1 es mayor que o2
+    }
 
-    TreeSet
+Conjuntos ordenados
+    TreeSet<T> implements SortedSet<T>
+        require T implements Comparable o dado un Comparator<T>
+        first(), last()
+        headSet(T elem), tailSet(T elem)
 
-    TreeMap
+Iterator<T>
+    objeto que permite recorrer elementos de coleccion genericamente
+
+    bool hasNext()
+    T next()
+    void remove()
 
 Iterable
+    
+    public interface Iterable<T> {
+        Iterator<T> iterator();
+    }
 
-Iterator
+    for each
+    cosaiterable<T> elems;
+    for (T elem : elems) {}
+
+
+Map<K, V>
+    diccionario
+
+    int size(), bool isEmpty()
+    bool containsKey()
+    bool containsValue()
+    V get(K key)
+    bool put(K key, V value)
+    bool remove(K key)
+    void clear(), putAll(Map<K, V> other)
+    bool putIfAbsent()
+    V getOrDefault(K key, V value)
+
+
+    HashMap<K, V> implements Map<K, V>
+        tabla de dispersion
+        usa hashCode()/equals()
+    
+    TreeMap<K, V> implements SortedMap<K, V>
+        ABB balanceado, ordenado
+        solo usan Comparable o Comparator
+
+    para borrar, hay que recorrer usando iterador explicito:
+
+    Iterator<String> iterador = mapa.keySet().iterator();
+    while (iterador.hasNext()) {
+        String clave = iterador.next();
+        if (mapa.get(clave) == 1)
+        iterador.remove();
+    }
+
+    SequencedMap<E>
+        SequencedMap<K,V> reversed();
+        SequencedSet<K> sequencedKeySet();
+        SequencedCollection<V> sequencedValues();
+        SequencedSet<Entry<K,V>> sequencedEntrySet();
+        V putFirst(K, V);
+        V putLast(K, V);
+        Entry<K, V> firstEntry();
+        Entry<K, V> lastEntry();
+        Entry<K, V> pollFirstEntry();
+        Entry<K, V> pollLastEntry();
+
+Object
+    equals()
+        List<T>
+            mismo tamaño, cada posicion equals()
+        Set<T>
+            mismo tamaño, todos los elementos estan contains() en el otro
+    toString()
+        muestra el contenido de .toString() de sus elementos
+    clone()
+        solo de una clase (LinkedList<>) no de interfaz (List<T>)
+
+todas las colecciones ofrecen constructor copia y .clone()
 
 
 static Collections.addAll(contenedor, arg1, arg2..)
 static Collections.sort(contenedor)
+static Collections.sort(contenedor, comparador)
+static Collections.unmodifiableList()
 
+
+
+
+CONSEJOS
+
+Evitar compartir referencias a colecciones
+    al recibirlas como parametros
+    en metodos consulta
+    solucion1: clone() copiar
+    solucion2: Collections.unmodifiableList(List<T>) vista no modificable
+        eficiente. otros metodos analogos unmodifiable
+
+    .of() devuelve cosa no modificable con referencias a elementos como args
+
+    .copyOf() copia no modificable
 
 En colecciones, usar tipo wrapper de primitivos
     Integer en vez de int
 
-En metodos, devolver contenedores abstractos, sin implementación
+En metodos, devolver interfaz, contenedores abstractos, sin implementación
     List<T> de LinkedList<T> o ArrayList<T>
+
+Evitar arrays
+
+
+GENERICIDAD
+
+Definir cosas parametrizadas
+
+Clase generica
+
+public class Contenedor<T> {
+    private T contenido;
+    public T getContenido() { return contenido;
+    public void set Contenido(T contenido) { this.contenido = contenido }
+}
+
+T tiene que ser de Object -> no se pueden usar primitivos como int
+    -> wrapper Integer -> el compiador transforma automaticamente entre wrapper
+    y primitivo (autoboxing)
+Solo se pueden usar metodos de clase Object sobre objetos T
+Se pueden comparar
+No se puede contruir un new T
+
+
+Metodo generico
+
+public static <T> List<T> asList(T... datos) {
+    List<T> lista = new ArrayList<T>(datos.length);
+    for (T e : datos)
+        lista.add(e);
+    return lista;
+}
+
+String[] arrpal = {"sjklfhdkfj", "jksdfh", "aaaaa"};
+asList(arrpal) -> T se infiere a String de arrpal
+
+
+Clave
+
+cualquier tipo se puede definir generico
+un tipo generico puede tener varios parametros template
+una clase generica puede heredar de otra clase generica
+una clase generica puede implementar una interfaz generica
+al heredar o implementar se puede establecer el tipo
+    class OrdenInverso implements Comparator<String>
+
+en una asignacion polimorfica no esta permitido que se tengan templates
+    instanciadas a tipos diferentes
+    List<Cosa> cosa = LinkedList<OtraCosa>(uifhsdukf) aunque OtraCosa sean
+    compatibles
+
+tipo comodin
+    private static void simular(List<? extends Burbuja> burbujas){
+
+    no se puede usar para construir objetos, ni meter objetos
+    <?> = cualquier tipo
+
+genericidad restringida
+    public class Escenario<T extends Animable>
+    public class Escenario<T extends Animable & Atrapable>
+
+    limitar T a cosas que hereden de Animable, para poder usar metodos de este
+    no solo de Object
+
+
+
+
 
