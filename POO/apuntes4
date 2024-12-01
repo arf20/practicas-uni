@@ -4,8 +4,156 @@ POO APUNTES
 TEMA 3
 ======
 
+Extensión, especialización (herencia) y combinación
+
+Herencia (extends)
+    definir una clase a partir de otra
+    jerarquía de clases
+    consistente sistema de tipos
+
+    incorpora atributos y metodos de clase padre
+    puede incluir nuevos atributos y tipos y
+    redefinir metodos existentes
+
+    una clase puede heredar de varias clases
+
+
+    Constructores
+        los constructores no se heredan
+        para llamar a constructor padre, super(), OBLIGATORIO
+            si se omite y no hay constructor default, no compila
+
+    Redefinir metodos
+        misma signatura
+        @Override opcional
+        super.metodo() tb llama a padre, refinar metodo
+        se puede cambiar la visibilidad, incrementarla
+        se puede especificar el tipo de retorno, a uno descendiente
+
+    
+    Visibilidad
+        siempre la misma clase +:
+        private:    subclases no acceden
+        (nada):     clases del mismo paquete
+        protected:  subclases y clases del mismo paquete (why?) acceden
+        public:     cualquiera
+
+        protected: discutible uso para atributos, en contra de ocultacion de
+            informacion; para metodos, es util
+
+    Restringir herencia
+        hacer que subclases no puedan redefinir metodo
+        -> atributo final para metodo o clase (hace no heredable)
+
+Polimorfismo
+    Capacidad de referenciar en runtime objetos de diferentes clases
+    Por herencia
+    Tipo
+        estatico (declaración)
+        tipo dinamico (clase del objeto conectado en runtime)
+    B es compatible (se puede asignar) con A si B es descendiente de A
+    herencia consistente con sistema de tipos
+        -> solo se pueden usar propiedades y metodos de tipo estatico
+
+    dynamic linking: se ejecuta la version redefinida de metodo asociada a tipo
+        dinamico
+
+    casting: el tipo dinamico es compatible con el cast
+        (puede fallar en runtime)
+        -> para usar metodos del cast
+
+        operador instanceof para saber si es compatible en runtime para
+        castear
+
+        if (burbuja instaceof BurbujaDebil)
+            BurbujaDebil debil = (BurbujaDebil)burbuja;
+
+        a partir de v14
+        if (burbuja instanceof BurbujaDebil debil)
+
+        tb funciona con registros, se spueden extrare atributos directamente 
+    
+Object
+    public boolean equals(Object obj)
+        == comprueba si referencias iguales
+        equals comprueba igualdad, redefinir semantica
+
+        if (this == obj) return true;
+        if (obj == null) return false;
+        if (getClass() != obj.getClass()) return false;
+        Cosa otra = (Cosa)obj;
+        return this.algo == otra.algo)  
+
+        herencia: if (super.equals(obj) == false) return false; ...
+
+    protected Object clone()
+        si implements Cloneable no throws
+        clone() throws CloneNotSupportedException
+        copia superficial: solo copia objeto (aliasing)
+        copia profunda: copia objeto y subobjetos
+        copia adaptada: depende
+        en herencia conviene redefinirlo (regla covariante) y llamar
+        super.clone()
+    public String toString()
+    public final Class getClass()
+        retorna tipo dinamico de referencia, no recomendado
+    public int hashCode()
+        consistente con equals()
+        combina hash de cada propiedad
+
+
+Abstract (virtual)
+    herencia es factorizar
+    metodo herecia: generalización
+
+    problema: funcionalidad vacia o por defecto en el padre de una operacion
+    común, que tiene que implementarse en los descendientes
+
+    para no dejarla vacía, no permitir la instanciación de esta clase,
+    declarando la clase como abstracta, declarando metodos sin cuerpo, solo
+    signatura (puede contener metodos normales)
+
+    public abstract class Clase {
+        protected abstract int metodo(int a)
+    }
+
+Interfaces
+    definir tipo sin implementación
+    una clase puede heredar cualquier numero de interfaces
+        -> resuelve problema de herencia simple (solo 1 padre)
+    en vez de "heredar", "implementa"
+
+    public interface Atrapable {
+        void atrapar();
+    }
+
+    public class BurbujaLimitada extends burbuja implements Atrapable {
+        ...
+        public void atrapar() {
+
+        }
+        ...
+    }
+
+    interfaz puede extender otras interfaces
+    public interface Trazable extends Atrapable, Puntable {}
+
+    si clase implements interfaz no implementa algun metodo, debe ser abstracta
+
+    a partir de java 8: interfaces pueden tener metodos definidos (default)
+        y metodos estaticos
+
+    default void algo() {
+
+    }
+
+    a partir de java 9 se pueden hacer metodos privados en interfaces, instancia
+        o estaticos, solo accesibles dentro de la interfaz
+    
+    interfaz Cloneable: no declara nada, marca clsae como copiable
+
 TEMA 4
-======
+================================================================================
 
 COLECCIONES
 
@@ -24,7 +172,7 @@ Collection interface
     -> List
     -> Set
 
-    int size()
+    int size()3
     bool isEmpty()
     bool contains(Object e)
     bool add(T e)
