@@ -49,8 +49,8 @@ void Pagina::setContenido(const std::vector<std::wstring>& palabras) {
 
 // Clase referencia a pagina
 
-PagListIt::PagListIt(std::list<Pagina>::iterator& it)
-    : std::list<Pagina>::iterator(it)
+PagListIt::PagListIt(std::list<Pagina>::const_iterator& it)
+    : std::list<Pagina>::const_iterator(it)
 {
 
 }

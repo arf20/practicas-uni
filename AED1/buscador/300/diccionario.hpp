@@ -28,7 +28,7 @@ class Pagina {
 };
 
 struct nodo_trie_t {
-    std::vector<std::list<Pagina>::iterator> paginas;
+    std::vector<std::list<Pagina>::const_iterator> paginas;
     std::map<char, nodo_trie_t> hijos;
 };
 
