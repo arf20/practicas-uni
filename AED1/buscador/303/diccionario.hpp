@@ -29,9 +29,9 @@ class Pagina {
 //bool comparar_pagref(const std::list<Pagina>::iterator& l,
 //    const std::list<Pagina>::iterator& r);
 
-class PagListIt : public std::list<Pagina>::iterator {
+class PagListIt : public std::list<Pagina>::const_iterator {
 public:
-    PagListIt(std::list<Pagina>::iterator& it);
+    PagListIt(std::list<Pagina>::const_iterator& it);
     bool operator<(const PagListIt& right) const;
 };
 
