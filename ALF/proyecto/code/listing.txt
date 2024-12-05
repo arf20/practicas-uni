@@ -1,0 +1,336 @@
+     TITLE                                                                                                         PROYECTO ALF PAGE 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                PROYECTO ALF                                                           
+                                                         Ángel Ruiz Fernandez, G2.2                                                    
+                                                             11:20 Dec 04, 2024                                                        
+     INDEX                                                                                                         PROYECTO ALF PAGE 2
+
+     PROYECTO ALF: 6 files                                                                                                    PAGE    
+         main.py 64L 2036B ....................................................................................................   3
+         normalize.py 94L 2771B ...............................................................................................   5
+         sphone.py 14L 402B ...................................................................................................   7
+         snif.py 6L 146B ......................................................................................................   8
+         stime.py 49L 1404B ...................................................................................................   9
+         slocation.py 56L 1459B ...............................................................................................  10
+     main.py 56L 1459B                                                                                             PROYECTO ALF PAGE 3
+
+   1 import sys
+   2 import re
+   3 
+   4 import normalize
+   5 import sphone
+   6 import snif
+   7 import stime
+   8 import slocation
+   9 
+  10 strippedphoneprog = re.compile("^[+]?\d{9,15}$")
+  11 nifprog = re.compile("[0-9]{8}[A-Z]")
+  12 normdateprog = re.compile("([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2})")
+  13 normgeoprog = re.compile("^(\d{7}.\d{4}[NS])(\d{7}.\d{4}[WE])$")
+  14 
+  15 def isnumeric(string):
+  16     try:
+  17         float(string)
+  18         return True
+  19     except ValueError:
+  20         return False
+  21 
+  22 if (len(sys.argv) == 1):
+  23     print("Argumentos incorrectos")
+  24     exit(1)
+  25 
+  26 if sys.argv[1] == "-n" and len(sys.argv) == 3:
+  27     normalize.normalize(sys.argv[2])
+  28 elif sys.argv[1] == "-sphone":
+  29     if (len(sys.argv) != 4):
+  30         print("Numero de argumentos invalido")
+  31         exit(1)
+  32     if (strippedphoneprog.match(sys.argv[2].replace(" ", "")) == None):
+  33         print("Telefono invalido")
+  34         exit(1)
+  35     sphone.sphone(sys.argv[3], sys.argv[2])
+  36 elif sys.argv[1] == "-snif":
+  37     if (len(sys.argv) != 4):
+  38         print("Numero de argumentos invalido")
+  39         exit(1)
+  40     if (nifprog.match(sys.argv[2]) == None):
+  41         print("NIF invalido")
+  42         exit(1)
+  43     snif.snif(sys.argv[3], sys.argv[2])
+  44 elif sys.argv[1] == "-stime":
+  45     if (len(sys.argv) != 5):
+  46         print("Numero de argumentos invalido")
+  47         exit(1)
+  48     if (normdateprog.match(normalize.normalize_date(sys.argv[2])) == None or normdateprog.match(normalize.normalize_date(sys.argv[
+     3])) == None):
+  49         print("Fecha invalida")
+  50         exit(1)
+  51     stime.stime(sys.argv[4], normdateprog, normalize.normalize_date(sys.argv[2]), normalize.normalize_date(sys.argv[3]))
+  52 elif sys.argv[1] == "-slocation":
+  53     if (len(sys.argv) != 5):
+  54         print("Numero de argumentos invalido")
+  55         exit(1)
+  56     if (normgeoprog.match(normalize.normalize_coord(sys.argv[2])) == None or not isnumeric(sys.argv[3])):
+  57         print("Coordenadas invalidas")
+  58         exit(1)
+  59     slocation.slocation(sys.argv[4], normgeoprog, normalize.normalize_coord(sys.argv[2]), sys.argv[3])
+  60 else:
+  61     print("Argumentos invalidos")
+     main.py 56L 1459B                                                                                             PROYECTO ALF PAGE 4
+
+  62     exit(1)
+  63 
+  64     
+     normalize.py 56L 1459B                                                                                        PROYECTO ALF PAGE 5
+
+   1 import re
+   2 import math
+   3 
+   4 months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciemb
+     re"]
+   5 
+   6 date2prog = re.compile("([a-zA-Z]+) ([0-9]{2}), ([0-9]{4}) ([0-9]{2}):([0-9]{2}) (AM|PM)")
+   7 date3prog = re.compile("([0-9]{2}):([0-9]{2}):([0-9]{2}) ([0-9]{2})\/([0-9]{2})\/([0-9]{4})")
+   8 geo2prog  = re.compile("(\d*)\° (\d*)\' (\d*)\" ([NS]), (\d*)\° (\d*)\' (\d*)\" ([WE])")
+   9 geo1prog  = re.compile("([+-]?\d*\.\d+), ([+-]?\d*\.\d+)")
+  10 
+  11 def normalize_date(line):
+  12     m = re.search(date2prog, line)
+  13     if (m != None):
+  14         grps = m.groups()
+  15 
+  16         newdate = grps[2] + "-"
+  17         newdate += "{:02d}".format(months.index(grps[0]) + 1) + "-"
+  18         newdate += grps[1] + " "
+  19         if (grps[5] == "AM"):
+  20             newdate += str(grps[3]) + ":"
+  21         else:
+  22             newdate += str(int(grps[3]) + 12) + ":"
+  23         newdate += grps[4]
+  24 
+  25         return line.replace(line[m.start():m.end()], newdate)
+  26 
+  27     m = re.search(date3prog, line)
+  28     if (m != None):
+  29         grps = m.groups()
+  30 
+  31         newdate = grps[5] + "-" + grps[4] + "-" + grps[3] + " " + grps[0] + ":" + grps[1]
+  32 
+  33         return line.replace(line[m.start():m.end()], newdate)
+  34 
+  35     return line
+  36 
+  37 def normalize_coord(line):
+  38     m = re.search(geo2prog, line)
+  39     if (m != None):
+  40         grps = m.groups()
+  41         
+  42         gps =  "{:03d}".format(int(grps[0])) + "{:02d}".format(int(grps[1]))
+  43         gps += "{:07.4f}".format(float(grps[2])) + grps[3]
+  44         gps += "{:03d}".format(int(grps[4])) + "{:02d}".format(int(grps[5]))
+  45         gps += "{:07.4f}".format(float(grps[6])) + grps[7]
+  46 
+  47         line = line.replace(line[m.start():m.end()], gps)
+  48 
+  49     m = re.search(geo1prog, line)
+  50     if (m != None):
+  51         grps = m.groups()
+  52         lat = float(grps[0])
+  53         lon = float(grps[1])
+  54         latdir = "N"
+  55         londir = "W"
+  56         if lat < 0:
+  57             latdir = "S"
+  58             lat *= -1
+  59         if lon < 0:
+  60             londir = "E"
+  61             lon *= -1
+     normalize.py 56L 1459B                                                                                        PROYECTO ALF PAGE 6
+
+  62         gps  = "{:03d}".format(math.floor(lat))
+  63         lat -= math.floor(lat)
+  64         lat *= 60
+  65         gps += "{:02d}".format(math.floor(lat))
+  66         lat -= math.floor(lat)
+  67         lat *= 60
+  68         gps += "{:07.4f}".format(math.floor(lat)) + latdir
+  69 
+  70         gps  += "{:03d}".format(math.floor(lon))
+  71         lon  -= math.floor(lon)
+  72         lon  *= 60
+  73         gps  += "{:02d}".format(math.floor(lon))
+  74         lon  -= math.floor(lon)
+  75         lon  *= 60
+  76         gps  += "{:07.4f}".format(math.floor(lon)) + londir
+  77 
+  78         line = line.replace(line[m.start():m.end()], gps)
+  79 
+  80     return line
+  81 
+  82 
+  83 def normalize(fname):
+  84     file = open(fname, "r")
+  85     
+  86     for line in file:
+  87         line = normalize_date(line)
+  88         line = normalize_coord(line)
+  89 
+  90         print(line, end='')
+  91 
+  92 
+  93     file.close()
+  94 
+     sphone.py 56L 1459B                                                                                           PROYECTO ALF PAGE 7
+
+   1 def sphone(fname, phone):
+   2     stripfilter = phone.replace(" ", "")
+   3     if stripfilter[0] != "+":
+   4         stripfilter = "+34" + stripfilter
+   5 
+   6     file = open(fname, "r")
+   7     for line in file:
+   8         stripnum = line.split(";")[0].replace(" ", "")
+   9         if stripnum[0] != "+":
+  10             stripnum = "+34" + stripnum
+  11 
+  12         if stripfilter == stripnum:
+  13             print(line, end='')
+  14     file.close()
+     snif.py 56L 1459B                                                                                             PROYECTO ALF PAGE 8
+
+   1 def snif(fname, nif):
+   2     file = open(fname, "r")
+   3     for line in file:
+   4         if nif in line:
+   5             print(line, end=' ')
+   6     file.close()
+     stime.py 56L 1459B                                                                                            PROYECTO ALF PAGE 9
+
+   1 import re
+   2 
+   3 def comparar(A1, M1, D1, h1, m1, A2, M2, D2, h2, m2):
+   4     if A1 > A2:
+   5         return 1
+   6     elif A1 < A2:
+   7         return -1
+   8     elif A1 == A2:
+   9         if M1 > M2:
+  10             return 1
+  11         elif M1 < M2:
+  12             return -1
+  13         elif M1 == M2:
+  14             if D1 > D2:
+  15                 return 1
+  16             elif D1 < D2:
+  17                 return -1
+  18             elif D1 == D2:
+  19                 if h1 > h2:
+  20                     return 1
+  21                 elif h1 < h2:
+  22                     return -1
+  23                 elif h1 == h2:
+  24                     if m1 > m2:
+  25                         return 1
+  26                     elif m1 < m2:
+  27                         return -1
+  28                     elif m1 == m2:
+  29                         return 0
+  30 
+  31 
+  32 def stime(fname, normdateprog, t1, t2):
+  33     t1grps = re.search(normdateprog, t1).groups()
+  34     t2grps = re.search(normdateprog, t2).groups()
+  35 
+  36     file = open(fname, "r")
+  37     for line in file:
+  38         m = re.search(normdateprog, line)
+  39 
+  40         if (m != None):
+  41             grps = m.groups()
+  42 
+  43             if ((comparar(grps[0], grps[1], grps[2], grps[3], grps[4],
+  44                          t1grps[0], t1grps[1], t1grps[2], t1grps[3], t1grps[4]) == 1) and
+  45                 (comparar(grps[0], grps[1], grps[2], grps[3], grps[4],
+  46                          t2grps[0], t2grps[1], t2grps[2], t2grps[3], t2grps[4]) == -1)):
+  47                 print(line, end='')
+  48     file.close()
+  49 
+     slocation.py 56L 1459B                                                                                       PROYECTO ALF PAGE 10
+
+   1 import re
+   2 import math
+   3 
+   4 import normalize
+   5 
+   6 def sextodec(deg, min, sec):
+   7     return (sec + min * 60 + deg * 3600)/3600
+   8 
+   9 def coordtofloat(gps):
+  10     lat = sextodec(float(gps[0:2]), float(gps[3:4]), float(gps[5:11]))
+  11     if (gps[12] == "S"):
+  12         lat = -lat
+  13     lon = sextodec(float(gps[13:16]), float(gps[17:18]), float(gps[19:25]))
+  14     if (gps[25] == "S"):
+  15         lon = -lon
+  16 
+  17     return lat, lon
+  18 
+  19 def distance(lat1, lon1, lat2, lon2):
+  20     lat1 = math.radians(lat1)
+  21     lon1 = math.radians(lon1)
+  22     lat2 = math.radians(lat2)
+  23     lon2 = math.radians(lon2)
+  24     dlat = lat2 - lat1
+  25     dlon = lon2 - lon1
+  26     a = math.sin(dlat/2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon/2)**2
+  27     c = 2 * math.atan2(math.sqrt(a),  math.sqrt(1-a))
+  28     return 6371 * c
+  29 
+  30 
+  31 def slocation(fname, normgeoprog, orggps, range):
+  32     file = open(fname, "r")
+  33 
+  34     orggps = normalize.normalize_coord(orggps)
+  35 
+  36     if re.match(normgeoprog, orggps) == None or len(orggps) != 26:
+  37         print("Invalid location argument")
+  38         return
+  39     
+  40     org = coordtofloat(orggps)
+  41     range = float(range)
+  42 
+  43     for line in file:
+  44         linenorm = normalize.normalize_coord(line)
+  45         locgps = linenorm.split(";")[3].strip()
+  46         if re.match(normgeoprog, locgps) == None or len(locgps) != 26:
+  47             continue
+  48 
+  49         loc = coordtofloat(locgps)
+  50         
+  51         d = distance(loc[0], loc[1], org[0], org[1])
+  52 
+  53         if d < range:
+  54             print(line, end='')
+  55 
+  56     file.close()
+
