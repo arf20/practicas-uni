@@ -1,0 +1,83 @@
+INFORME PROYECTO DE PROGRAMACIÓN                                           PAG 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                INFORME
+                        PROYECTO DE PROGRAMACIÓN
+                     AUTOMATAS Y LENGUAGES FORMALES
+                  Ángel Ruiz Fernández, 23836363Z, G2.2
+                        2024/25     10 nov, 2024
+                    
+INFORME PROYECTO DE PROGRAMACIÓN                                           PAG 2
+
+MEMORIA
+    1. Descripción de la aplicación ..................................   3
+    2. Manual de usuario .............................................   4
+    3. Formato de los datos ..........................................   5
+        1. Telefonos
+        2. NIF
+        3. Fecha y hora
+        4. Coordenadas
+        5.    
+    4. Aspectos principales ..........................................   6
+    6. Conclusiones ..................................................   7
+
+
+INFORME PROYECTO DE PROGRAMACIÓN                                           PAG 3
+
+1. Descripción de la aplicación
+
+    El objetivo de la aplicación es analizar un fichero de registro de eventos
+de compras realizadas desde un teléfono movil. Es una aplicación de interfaz de
+linea de comandos, invocandose con argumentos.
+
+    La aplicación espera un argumento que especifique la acción a realizar,
+con los pertinentes parametros que sean necesarios para realizarla, y un nombre
+de fichero de registro sobre el cual realizar la acción.
+
+    Las acciones son las siguientes:
+     - Normalizar: Imprime a stdout el fichero, con los formatos de cada entrada
+       unificados bajo un formato unico por campos.
+     - Filtrar (por cada campo): Imprime a stdout las entradas que concuerdan
+       con un filtro, en cualquier formato si aplica.
+
+
+INFORME PROYECTO DE PROGRAMACIÓN                                           PAG 4
+
+2. Manual de usuario
+    
+usage: python3 main.py <action [args]> <file>
+
+actions:
+    -n                              normalizar a formato defecto, vease 3
+    -sphone <phone>                 filtrar por telefono, vease 3.
+    -snif <nif>                     filtrar por NIF, vease 3
+    -stime <start time> <end time>  filtrar por rango de tiempo, vease 3
+    -slocation <origin> <range>     fittrar por distancia a una coordenada
+                                        origen
+
+INFORME PROYECTO DE PROGRAMACIÓN                                           PAG 5
+
+3. Formato de los datos
+
+
+
+

@@ -1,14 +1,11 @@
+import normalize
+
 def sphone(fname, phone):
-    stripfilter = phone.replace(" ", "")
-    if stripfilter[0] != "+":
-        stripfilter = "+34" + stripfilter
+    filter = normalize.normalize_phone(phone)
 
     file = open(fname, "r")
     for line in file:
-        stripnum = line.split(";")[0].replace(" ", "")
-        if stripnum[0] != "+":
-            stripnum = "+34" + stripnum
-
-        if stripfilter == stripnum:
+        num = normalize.normalize_phone(line.split(";")[0])
+        if filter == num:
             print(line, end='')
     file.close()
