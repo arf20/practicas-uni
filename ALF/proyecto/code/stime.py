@@ -1,5 +1,8 @@
 import re
 
+import normalize
+
+
 def comparar(A1, M1, D1, h1, m1, A2, M2, D2, h2, m2):
     if A1 > A2:
         return 1
@@ -35,7 +38,12 @@ def stime(fname, normdateprog, t1, t2):
 
     file = open(fname, "r")
     for line in file:
-        m = re.search(normdateprog, line)
+        if line == "\n":
+            continue
+        
+        normline = normalize.normalize_date(line)
+
+        m = re.search(normdateprog, normline)
 
         if (m != None):
             grps = m.groups()

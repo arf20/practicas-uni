@@ -29,10 +29,10 @@ elif sys.argv[1] == "-sphone":
     if (len(sys.argv) != 4):
         print("Numero de argumentos invalido")
         exit(1)
-    if (strippedphoneprog.match(sys.argv[2].replace(" ", "")) == None):
+    if (strippedphoneprog.match(normalize.normalize_phone(sys.argv[2])) == None):
         print("Telefono invalido")
         exit(1)
-    sphone.sphone(sys.argv[3], sys.argv[2])
+    sphone.sphone(sys.argv[3], normalize.normalize_phone(sys.argv[2]))
 elif sys.argv[1] == "-snif":
     if (len(sys.argv) != 4):
         print("Numero de argumentos invalido")

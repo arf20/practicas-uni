@@ -1,4 +1,4 @@
-INFORME PROYECTO DE PROGRAMACI√ìN                                           PAG 1
+INFORME PROYECTO DE PROGRAMACI”N                                           PAG 1
 
 
 
@@ -21,15 +21,15 @@ INFORME PROYECTO DE PROGRAMACI√ìN                                           PAG 
 
 
                                 INFORME
-                        PROYECTO DE PROGRAMACI√ìN
+                        PROYECTO DE PROGRAMACI”N
                      AUTOMATAS Y LENGUAGES FORMALES
-                  √Ångel Ruiz Fern√°ndez, 23836363Z, G2.2
+                  ¡ngel Ruiz Fern·ndez, 23836363Z, G2.2
                         2024/25     10 nov, 2024
                     
-INFORME PROYECTO DE PROGRAMACI√ìN                                           PAG 2
+INFORME PROYECTO DE PROGRAMACI”N                                           PAG 2
 
 MEMORIA
-    1. Descripci√≥n de la aplicaci√≥n ..................................   3
+    1. DescripciÛn de la aplicaciÛn ..................................   3
     2. Manual de usuario .............................................   3
     3. Formato de los datos ..........................................   3
         1. Telefonos .................................................   3
@@ -40,17 +40,17 @@ MEMORIA
     6. Conclusiones ..................................................   4
 
 
-INFORME PROYECTO DE PROGRAMACI√ìN                                           PAG 3
+INFORME PROYECTO DE PROGRAMACI”N                                           PAG 3
 
-1. Descripci√≥n de la aplicaci√≥n
+1. DescripciÛn de la aplicaciÛn
 
-    El objetivo de la aplicaci√≥n es analizar un fichero de registro de eventos
-de compras realizadas desde un tel√©fono movil. Es una aplicaci√≥n de interfaz de
+    El objetivo de la aplicaciÛn es analizar un fichero de registro de eventos
+de compras realizadas desde un telÈfono movil. Es una aplicaciÛn de interfaz de
 linea de comandos, invocandose con argumentos.
 
-    La aplicaci√≥n espera un argumento que especifique la acci√≥n a realizar,
+    La aplicaciÛn espera un argumento que especifique la acciÛn a realizar,
 con los pertinentes parametros que sean necesarios para realizarla, y un nombre
-de fichero de registro sobre el cual realizar la acci√≥n.
+de fichero de registro sobre el cual realizar la acciÛn.
 
     Las acciones son las siguientes:
      - Normalizar: Imprime a stdout el fichero, con los formatos de cada entrada
@@ -96,7 +96,7 @@ grupos por espacios.
 
     Se normaliza al primero
 
-INFORME PROYECTO DE PROGRAMACI√ìN                                           PAG 4
+INFORME PROYECTO DE PROGRAMACI”N                                           PAG 4
 
 3.4. Coordenadas
 
@@ -104,7 +104,7 @@ grupos por espacios.
      - Decimal: dos numeros (latitud, longitud) de coma flotante separados
        por `,` con un espacio opcional
      - Sexagesimal: dos conjuntos de grados minutos y segundos seguidos
-       respectivamente por `¬∞`, `'` y `"`; separados por `,` con un espacio
+       respectivamente por `∞`, `'` y `"`; separados por `,` con un espacio
        opcional
      - GPS: GGGMMSS.SSSSHGGMMSS.SSSSH; dos conjuntos de G:grados, M:minutos,
        S:segundos (coma flotante), H:hemisferio (N o S, E o W en el segundo)
@@ -113,20 +113,20 @@ grupos por espacios.
 
 4. Aspectos principales
 
-    Para la normalizaci√≥n, para cada linea, primero se eliminan todos los
-espacios innecesarios al rededor de los separadores CSV usando una substituci√≥n
+    Para la normalizaciÛn, para cada linea, primero se eliminan todos los
+espacios innecesarios al rededor de los separadores CSV usando una substituciÛn
 regex.
-    A continuaci√≥n, se busca en cada linea cada patron de formatos a convertir a
+    A continuaciÛn, se busca en cada linea cada patron de formatos a convertir a
 al corresponeiente formato unificado para ese grupo de formatos. Los que no se
-conforman con ning√∫n formato reconocido, son ignorados.
-    Esto est√° organizado en funciones que se encargan de normalizar cada grupo
+conforman con ning˙n formato reconocido, son ignorados.
+    Esto est· organizado en funciones que se encargan de normalizar cada grupo
 de formatos, toman una string, y la retorna con el campo correspondiente
 substituido si se ha encontrado unformato a convertir.
     
     De esta forma, en las funciones de busqueda por numero, NIF, fecha, y
-localizaci√≥n, se puede normalizar el formato para as√≠ poder buscar todos los
+localizaciÛn, se puede normalizar el formato para asÌ poder buscar todos los
 formatos reconocidos haciendo una unica busqueda por el formato normal usando
-su patr√≥n, y si esta resulta positiva, se imprime la linea sin modificaci√≥n.
+su patrÛn, y si esta resulta positiva, se imprime la linea sin modificaciÛn.
 
 5. Conclusiones
 
@@ -141,9 +141,9 @@ Los errores en ocasiones son muy vagos, y debuggear no es trivial.
 
     En cuanto la asignatura, me parece bastante util para entender como funciona
 regex, pero realmente hay cosas que solo son utiles saber para hacer lenguajes
-formales, que en mi opini√≥n son un nicho que no se practica lo suficiente para
+formales, que en mi opiniÛn son un nicho que no se practica lo suficiente para
 justificarlo.
 
     Veremos en que consiste la asignatura de compiladores, y de si se necesita
-tanta teor√≠a y formalidad para hacer un lenguaje y un compilador, uno para C.
+tanta teorÌa y formalidad para hacer un lenguaje y un compilador, uno para C.
 
