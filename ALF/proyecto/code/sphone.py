@@ -5,7 +5,10 @@ def sphone(fname, phone):
 
     file = open(fname, "r")
     for line in file:
+        if line == "\n":
+            continue
+
         num = normalize.normalize_phone(line.split(";")[0])
-        if filter == num:
+        if filter in num:
             print(line, end='')
     file.close()

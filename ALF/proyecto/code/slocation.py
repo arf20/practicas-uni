@@ -41,8 +41,11 @@ def slocation(fname, normgeoprog, orggps, range):
     range = float(range)
 
     for line in file:
-        linenorm = normalize.normalize_coord(line)
-        locgps = linenorm.split(";")[3].strip()
+        if line == "\n":
+            continue
+
+        normline = normalize.normalize_coord(line)
+        locgps = normline.split(";")[3].strip()
         if re.match(normgeoprog, locgps) == None or len(locgps) != 26:
             continue
 

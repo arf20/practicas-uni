@@ -6,7 +6,8 @@ months = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agost
 date2prog = re.compile("([a-zA-Z]+) ([0-9]{2}), ([0-9]{4}) ([0-9]{2}):([0-9]{2}) (AM|PM)")
 date3prog = re.compile("([0-9]{2}):([0-9]{2}):([0-9]{2}) ([0-9]{2})\/([0-9]{2})\/([0-9]{4})")
 geo2prog  = re.compile("(\d*)\° (\d*)\' (\d*)\" ([NS]), (\d*)\° (\d*)\' (\d*)\" ([WE])")
-geo1prog  = re.compile("([+-]?\d*\.\d+), ([+-]?\d*\.\d+)")
+geo1prog  = re.compile("([+-]?\d*\.\d+),[ ]?([+-]?\d*\.\d+)")
+extrasprog = re.compile("[ ]*;[ ]*")
 
 def normalize_phone(line):
     phone_org = line.split(";")[0].strip()
@@ -94,6 +95,9 @@ def normalize(fname):
     file = open(fname, "r")
     
     for line in file:
+        if line == "\n":
+            continue
+        line = re.sub(extrasprog, ";", line)
         line = normalize_date(line)
         line = normalize_coord(line)
         line = normalize_phone(line)
