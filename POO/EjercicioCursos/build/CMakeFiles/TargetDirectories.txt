@@ -1,3 +1,0 @@
-/home/arf20/practicas-uni/POO/EjercicioCursos/build/CMakeFiles/ejerciciocursos.dir
-/home/arf20/practicas-uni/POO/EjercicioCursos/build/CMakeFiles/edit_cache.dir
-/home/arf20/practicas-uni/POO/EjercicioCursos/build/CMakeFiles/rebuild_cache.dir

@@ -1,3 +1,0 @@
-/home/arf20/practicas-uni/POO/banco/build/CMakeFiles/banco.dir
-/home/arf20/practicas-uni/POO/banco/build/CMakeFiles/edit_cache.dir
-/home/arf20/practicas-uni/POO/banco/build/CMakeFiles/rebuild_cache.dir
