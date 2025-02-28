@@ -27,7 +27,10 @@ public class DirMessage {
 	 * todos los campos que pueden aparecer en los mensajes de este protocolo
 	 * (formato campo:valor)
 	 */
-
+	private static final String FIELDNAME_SERVERPORT = "serverport";
+	private static final String FIELDNAME_FILES = "files";
+	private static final String FIELDNAME_FILE = "file";
+	
 
 
 	/**
