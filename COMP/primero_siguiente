@@ -1,0 +1,48 @@
+ascendente: derivaiones por la derecha
+descendente: derivaciones por la izquierda
+
+1.
+
+A -> B e | a
+B -> C D | b
+C -> c | d
+D -> d | d
+
+SIGUIENTE(A) = {$}
+SIGUIENTE(B) = { e }
+SIGUIENTE(C) = ( PRIMERO(D) - {lambda}) U SIG(B) = { d, e }
+
+2.
+
+S -> A B C D
+A -> a
+B -> b | λ
+C -> c | λ
+D -> d | λ
+
+PRI(D) = PRI(d) v PRI(λ) = { d, λ }
+PRI(C) = PRI(c) v PRI(λ) = { c, λ }
+PRI(B) = PRI(b) v PRI(λ) = { b, λ }
+PRI(A) = PRI(a) = { a }
+PRI(S) = PRI(A) = { a }
+
+SIG(S) = { $ }
+SIG(A) = (PRI(B C D) - { }) U SIG(S) = ({ b, c, d, λ } - { λ }) U { $ } = { b. c. d. $ }
+SIG(B) = (PRI(C D) - { λ }) U SIλG(S) = ({ c, d, λ } - { λ }) U { $ } = { c, d, $ }
+SIG(C) = (PRI(D) - { λ }) U SIG(S) = ({ d, λ } - { λ }) U { $ } = { d, $ }
+SIG(D) = SIG(S) = ( $ }
+
+3. 
+
+A -> a | B C
+B -> b | λ
+C -> b | c | λ
+
+PRI(B) = {b, λ}
+PRI(C} = {b, c, λ}
+PRI(A) = PRI(a) U PRI(B C) = PRI(a) U PRI(B) U PRI(C) = {a, b, c, λ}
+
+
+S -> X Y
+X -> Y | λ
+Y -> y X | λ

@@ -244,7 +244,7 @@ public class DirectoryConnector {
 
 		// TODO: Ver TODOs en pingDirectory y seguir esquema similar
 
-		DirMessage msg = new DirMessage(DirMessageOps.OPERATION_PING);
+		DirMessage msg = new DirMessage(DirMessageOps.OPERATION_REGISTER);
 		byte[] resbytes = sendAndReceiveDatagrams(msg.toString().getBytes());
 		DirMessage res = DirMessage.fromString(resbytes.toString());
 
