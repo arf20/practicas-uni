@@ -1,6 +1,10 @@
 %{
 #include "lexer.h"
 #include <limits.h>
+
+int check_id();
+int check_lint();
+
 %}
 
 digit               [[:digit:]]
@@ -10,7 +14,10 @@ escape              (\\.)
 
 %x MULTICOM
 
+%option yylineno
+
 %%
+
 [ \n\t]+                                    ;
 "//"(.*)[\n]                                ;
 
@@ -31,7 +38,7 @@ read                                        return RREAD;
 ({letter}|_|$)({letter}|{digit}|_|$)*       return check_id();
 
 {integer}                                   return check_lint();
-\"([^"\n\\]|{escape})*\"                      return LSTR; /* any string between " " that doesnt have " or \n */
+\"([^\"\n\\]|{escape})*\"                   return LSTR; /* any string between " " that doesnt have " or \n */
 
 ";"                                         return OSEMICOLON;
 ","                                         return OCOMMA;
@@ -46,6 +53,8 @@ read                                        return RREAD;
 "}"                                         return OBRACKETR;
 "?"                                         return OQUESTIONMARK;
 ":"                                         return OCOLON;
+[^a-zA-Z0-9;,+\-*/=(){}?:\"]+                  printf("%d: Lexical2 error %s\n", yylineno, yytext);
+
 .                                           printf("%d: Lexical error %s\n", yylineno, yytext);
 %%
 
@@ -65,7 +74,7 @@ check_id()
     if (yyleng > 32) {
         fprintf(stderr, "%d: Lexical error: identifier exceeds maximum length: %s\n", yylineno, yytext);
         return -1;
-    } else return LSTR;
+    } else return ID;
 }
 
 /*[^a-zA-Z0-9;,+\-/=(){}?:]+                  printf("%d: Lexical error %s\n", yylineno, yytext);*/
