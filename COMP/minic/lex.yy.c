@@ -523,7 +523,7 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "lexer.l"
 #line 2 "lexer.l"
-#include "lexer.h"
+#include "minic.tab.h"
 #include <limits.h>
 
 int check_id();
@@ -911,12 +911,12 @@ return LSTR; /* any string between " " that doesnt have " or \n */
 case 18:
 YY_RULE_SETUP
 #line 43 "lexer.l"
-return OSEMICOLON;
+return SEMICOLON;
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 44 "lexer.l"
-return OCOMMA;
+return COMMA;
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
@@ -941,37 +941,37 @@ return OSLASH;
 case 24:
 YY_RULE_SETUP
 #line 49 "lexer.l"
-return OPEQUAL;
+return OEQUALS;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
 #line 50 "lexer.l"
-return OPARENL;
+return PARENL;
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 51 "lexer.l"
-return OPARENR;
+return PARENR;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
 #line 52 "lexer.l"
-return OBRACKETL;
+return BRACKETL;
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
 #line 53 "lexer.l"
-return OBRACKETR;
+return BRACKETR;
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
 #line 54 "lexer.l"
-return OQUESTIONMARK;
+return QUESTIONMARK;
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
 #line 55 "lexer.l"
-return OCOLON;
+return COLON;
 	YY_BREAK
 case 31:
 /* rule 31 can match eol */

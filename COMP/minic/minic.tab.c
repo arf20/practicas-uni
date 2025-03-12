@@ -530,10 +530,10 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    13,    13,    16,    17,    18,    21,    24,    25,    28,
-      29,    32,    33,    36,    37,    38,    39,    40,    41,    42,
-      45,    46,    49,    50,    53,    54,    57,    58,    59,    60,
-      61,    62,    63,    64,    65
+       0,    17,    17,    20,    21,    22,    25,    28,    29,    32,
+      33,    36,    37,    40,    41,    42,    43,    44,    45,    46,
+      49,    50,    53,    54,    57,    58,    61,    62,    63,    64,
+      65,    66,    67,    68,    69
 };
 #endif
 
@@ -1342,7 +1342,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 70 "minic.y"
+#line 74 "minic.y"
 
 
 void

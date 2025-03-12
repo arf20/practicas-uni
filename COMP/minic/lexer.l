@@ -1,5 +1,5 @@
 %{
-#include "lexer.h"
+#include "minic.tab.h"
 #include <limits.h>
 
 int check_id();
@@ -40,19 +40,19 @@ read                                        return RREAD;
 {integer}                                   return check_lint();
 \"([^\"\n\\]|{escape})*\"                   return LSTR; /* any string between " " that doesnt have " or \n */
 
-";"                                         return OSEMICOLON;
-","                                         return OCOMMA;
+";"                                         return SEMICOLON;
+","                                         return COMMA;
 "+"                                         return OPLUS;
 "-"                                         return OMINUS;
 "*"                                         return OASTERISK;
 "/"                                         return OSLASH;
-"="                                         return OPEQUAL;
-"("                                         return OPARENL;
-")"                                         return OPARENR;
-"{"                                         return OBRACKETL;
-"}"                                         return OBRACKETR;
-"?"                                         return OQUESTIONMARK;
-":"                                         return OCOLON;
+"="                                         return OEQUALS;
+"("                                         return PARENL;
+")"                                         return PARENR;
+"{"                                         return BRACKETL;
+"}"                                         return BRACKETR;
+"?"                                         return QUESTIONMARK;
+":"                                         return COLON;
 [^a-zA-Z0-9;,+\-*/=(){}?:\"]+                  printf("%d: Lexical2 error %s\n", yylineno, yytext);
 
 .                                           printf("%d: Lexical error %s\n", yylineno, yytext);
