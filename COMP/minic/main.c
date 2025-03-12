@@ -2,41 +2,10 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
-#include "lexer.h"
 
-extern char *yytext;
-extern int  yyleng;
-extern int  yylineno;
-extern FILE *yyin;
-extern int yylex();
+#include "minic.tab.h"
 
-const char *strings[] = {
-    "RVAR",
-    "RCONST",
-    "RINT",
-    "RIF",
-    "RELSE",
-    "RWHILE",
-    "RPRINT",
-    "RREAD",
-    "ID",
-    "LINT",
-    "LSTR",
-    "OSEMICOLON",
-    "OCOMMA",
-    "OPLUS",
-    "OMINUS",
-    "OASTERISK",
-    "OSLASH",
-    "OPEQUAL",
-    "OPARENL",
-    "OPARENR",
-    "OBRACKETL",
-    "OBRACKETR",
-    "OQUESTIONMARK",
-    "OCOLON"
-};
-
+extern FILE* yyin;
 
 void
 usage()
@@ -61,17 +30,8 @@ main(int argc, char **argv)
     }
 
     yyin = file;
-    int code;
-    while (code = yylex()) {
-        if (code < 0) continue;
-        printf("%s", strings[code-1]);
-        switch (code) {
-            case ID: printf("(%d): %s\n", yyleng, yytext); break;
-            case LINT: printf("(%d): %s\n", yyleng, yytext); break;
-            case LSTR: printf("(%d): %s\n", yyleng, yytext); break;
-            default: printf("\n");
-        }
-    }
+
+    yyparse();
 
     fclose(file);
     return 0;

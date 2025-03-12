@@ -1,0 +1,40 @@
+a. 
+cliente:  192.168.1.100:56188
+servidor: 192.168.2.100:8000
+
+b.
+seq=0 (3245593912)
+bit de SYN
+
+c.
+seq=0
+ack=1
+
+d.
+t=9.922211
+len=17
+t_ack=9.927449
+
+e.
+enviado por servidor
+seq=1
+timeout=0.486381ms
+
+f.
+seq=17
+
+g.
+lo envia el servidor
+seq=61
+
+h.
+c: hola, qué tal?
+s: bien, todo bien
+c: no has notado nada raro?
+s: creo que se están perdiendo segmentos, sí
+c: menos mal que esto va por TCP
+s: sí, menos mal
+c: bueno, te dejo que tengo que cerrar
+s: vale, ciao
+c: ciao
+
