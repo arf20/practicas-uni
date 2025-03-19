@@ -1,0 +1,38 @@
+2.
+a.
+155.54.205.185
+b.
+Porque no los necesita. ICMP no es un protocolo de transporte como lo es TCP o UDP, sino que es parte del funcionamiento del protocolo IP subyacente, como un metaprotocolo.
+c.
+type=8 (Echo request)
+code=0
+d.
+type=0 (Echo reply)
+code=0
+identifier identifica una trama de echoes, y sequence identifica cada par request-reply con un numero secuencial
+
+3.
+e.
+155.54.210.185 (oberon.inf.um.es)
+155.54.1.1 (dns1.um.es)
+f.
+UDP, TCP, UDP
+g.
+type=3 (Destination unreachable)
+code=10 (Host administratively prohibited)
+h.
+Contiene encapsulado dentro una copia del paquete IP que generó el datagrama de error ICMP.
+
+4.
+i.
+155.54.210.1
+j.
+UDP
+k.
+type=11 (Time-to-live exceeded)
+code=0 (TIme to live exceeded in transit)
+l.
+Contiene una copia del paquete UDP que origina el error.
+
+
+
