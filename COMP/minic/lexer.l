@@ -1,4 +1,5 @@
 %{
+#include "listaCodigo.h"
 #include "minic.tab.h"
 #include <limits.h>
 
@@ -15,6 +16,8 @@ escape              (\\.)
 %x MULTICOM
 
 %option yylineno
+%option nounput
+%option noinput
 
 %%
 
@@ -61,7 +64,7 @@ read                                        return RREAD;
 int
 check_lint()
 {
-    long long int v = strtol(yytext, NULL, 0);
+    long long int v = strtoll(yytext, NULL, 0);
     if (v >= INT_MAX || v <= INT_MIN) {
         fprintf(stderr, "%d: Lexical error: int literal out of range: %s\n", yylineno, yytext);
         return -1;

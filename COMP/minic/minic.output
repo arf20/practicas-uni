@@ -1,88 +1,90 @@
-State 54 conflicts: 4 shift/reduce
-State 70 conflicts: 4 shift/reduce
+State 55 conflicts: 4 shift/reduce
 State 71 conflicts: 4 shift/reduce
 State 72 conflicts: 4 shift/reduce
 State 73 conflicts: 4 shift/reduce
-State 74 conflicts: 1 shift/reduce
+State 74 conflicts: 4 shift/reduce
+State 75 conflicts: 1 shift/reduce
 
 
 Grammar
 
     0 $accept: program $end
 
-    1 program: ID PARENL PARENR BRACKETL decls statement_list BRACKETR
+    1 $@1: ε
 
-    2 decls: decls RVAR type var_list SEMICOLON
-    3      | decls RCONST type const_list SEMICOLON
-    4      | ε
+    2 program: $@1 ID PARENL PARENR BRACKETL decls statement_list BRACKETR
 
-    5 type: RINT
+    3 decls: decls RVAR type var_list SEMICOLON
+    4      | decls RCONST type const_list SEMICOLON
+    5      | ε
 
-    6 var_list: ID
-    7         | var_list COMMA ID
+    6 type: RINT
 
-    8 const_list: ID OEQUALS expr
-    9           | const_list COMMA ID OEQUALS expr
+    7 var_list: ID
+    8         | var_list COMMA ID
 
-   10 statement_list: statement_list statement
-   11               | ε
+    9 const_list: ID OEQUALS expr
+   10           | const_list COMMA ID OEQUALS expr
 
-   12 statement: ID OEQUALS expr SEMICOLON
-   13          | BRACKETL statement_list BRACKETR
-   14          | RIF PARENL expr PARENR statement RELSE statement
-   15          | RIF PARENL expr PARENR statement
-   16          | RWHILE PARENL expr PARENR statement
-   17          | RPRINT PARENL print_list PARENR SEMICOLON
-   18          | RREAD PARENL read_list PARENR SEMICOLON
+   11 statement_list: statement_list statement
+   12               | ε
 
-   19 print_list: print_item
-   20           | print_list COMMA print_item
+   13 statement: ID OEQUALS expr SEMICOLON
+   14          | BRACKETL statement_list BRACKETR
+   15          | RIF PARENL expr PARENR statement RELSE statement
+   16          | RIF PARENL expr PARENR statement
+   17          | RWHILE PARENL expr PARENR statement
+   18          | RPRINT PARENL print_list PARENR SEMICOLON
+   19          | RREAD PARENL read_list PARENR SEMICOLON
 
-   21 print_item: expr
-   22           | LSTR
+   20 print_list: print_item
+   21           | print_list COMMA print_item
 
-   23 read_list: ID
-   24          | read_list COMMA ID
+   22 print_item: expr
+   23           | LSTR
 
-   25 expr: expr OPLUS expr
-   26     | expr OMINUS expr
-   27     | expr OASTERISK expr
-   28     | expr OSLASH expr
-   29     | PARENL expr QUESTIONMARK expr COLON expr PARENR
-   30     | OMINUS expr
-   31     | PARENL expr PARENR
-   32     | ID
-   33     | LINT
+   24 read_list: ID
+   25          | read_list COMMA ID
+
+   26 expr: expr OPLUS expr
+   27     | expr OMINUS expr
+   28     | expr OASTERISK expr
+   29     | expr OSLASH expr
+   30     | PARENL expr QUESTIONMARK expr COLON expr PARENR
+   31     | OMINUS expr
+   32     | PARENL expr PARENR
+   33     | ID
+   34     | LINT
 
 
 Terminals, with rules where they appear
 
     $end (0) 0
     error (256)
-    RVAR (258) 2
-    RCONST (259) 3
-    RINT (260) 5
-    RIF (261) 14 15
-    RELSE (262) 14
-    RWHILE (263) 16
-    RPRINT (264) 17
-    RREAD (265) 18
-    ID (266) 1 6 7 8 9 12 23 24 32
-    LINT (267) 33
-    LSTR (268) 22
-    SEMICOLON (269) 2 3 12 17 18
-    COMMA (270) 7 9 20 24
-    OPLUS (271) 25
-    OMINUS (272) 26 30
-    OASTERISK (273) 27
-    OSLASH (274) 28
-    OEQUALS (275) 8 9 12
-    PARENL (276) 1 14 15 16 17 18 29 31
-    PARENR (277) 1 14 15 16 17 18 29 31
-    BRACKETL (278) 1 13
-    BRACKETR (279) 1 13
-    QUESTIONMARK (280) 29
-    COLON (281) 29
+    RVAR <lexem> (258) 3
+    RCONST <lexem> (259) 4
+    RINT <lexem> (260) 6
+    RIF <lexem> (261) 15 16
+    RELSE <lexem> (262) 15
+    RWHILE <lexem> (263) 17
+    RPRINT <lexem> (264) 18
+    RREAD <lexem> (265) 19
+    ID <lexem> (266) 2 7 8 9 10 13 24 25 33
+    LINT <lexem> (267) 34
+    LSTR <lexem> (268) 23
+    SEMICOLON <lexem> (269) 3 4 13 18 19
+    COMMA <lexem> (270) 8 10 21 25
+    OPLUS <lexem> (271) 26
+    OMINUS <lexem> (272) 27 31
+    OASTERISK <lexem> (273) 28
+    OSLASH <lexem> (274) 29
+    OEQUALS <lexem> (275) 9 10 13
+    PARENL <lexem> (276) 2 15 16 17 18 19 30 32
+    PARENR <lexem> (277) 2 15 16 17 18 19 30 32
+    BRACKETL <lexem> (278) 2 14
+    BRACKETR <lexem> (279) 2 14
+    QUESTIONMARK <lexem> (280) 30
+    COLON <lexem> (281) 30
 
 
 Nonterminals, with rules where they appear
@@ -90,770 +92,761 @@ Nonterminals, with rules where they appear
     $accept (27)
         on left: 0
     program (28)
-        on left: 1
+        on left: 2
         on right: 0
-    decls (29)
-        on left: 2 3 4
-        on right: 1 2 3
-    type (30)
-        on left: 5
-        on right: 2 3
-    var_list (31)
-        on left: 6 7
-        on right: 2 7
-    const_list (32)
-        on left: 8 9
-        on right: 3 9
-    statement_list (33)
-        on left: 10 11
-        on right: 1 10 13
-    statement (34)
-        on left: 12 13 14 15 16 17 18
-        on right: 10 14 15 16
-    print_list (35)
-        on left: 19 20
-        on right: 17 20
-    print_item (36)
-        on left: 21 22
-        on right: 19 20
-    read_list (37)
-        on left: 23 24
-        on right: 18 24
-    expr (38)
-        on left: 25 26 27 28 29 30 31 32 33
-        on right: 8 9 12 14 15 16 21 25 26 27 28 29 30 31
+    $@1 (29)
+        on left: 1
+        on right: 2
+    decls (30)
+        on left: 3 4 5
+        on right: 2 3 4
+    type (31)
+        on left: 6
+        on right: 3 4
+    var_list (32)
+        on left: 7 8
+        on right: 3 8
+    const_list (33)
+        on left: 9 10
+        on right: 4 10
+    statement_list (34)
+        on left: 11 12
+        on right: 2 11 14
+    statement (35)
+        on left: 13 14 15 16 17 18 19
+        on right: 11 15 16 17
+    print_list (36)
+        on left: 20 21
+        on right: 18 21
+    print_item (37)
+        on left: 22 23
+        on right: 20 21
+    read_list (38)
+        on left: 24 25
+        on right: 19 25
+    expr <code> (39)
+        on left: 26 27 28 29 30 31 32 33 34
+        on right: 9 10 13 15 16 17 22 26 27 28 29 30 31 32
 
 
 State 0
 
     0 $accept: • program $end
 
-    ID  shift, and go to state 1
+    $default  reduce using rule 1 ($@1)
 
-    program  go to state 2
+    program  go to state 1
+    $@1      go to state 2
 
 
 State 1
 
-    1 program: ID • PARENL PARENR BRACKETL decls statement_list BRACKETR
+    0 $accept: program • $end
 
-    PARENL  shift, and go to state 3
+    $end  shift, and go to state 3
 
 
 State 2
 
-    0 $accept: program • $end
+    2 program: $@1 • ID PARENL PARENR BRACKETL decls statement_list BRACKETR
 
-    $end  shift, and go to state 4
+    ID  shift, and go to state 4
 
 
 State 3
-
-    1 program: ID PARENL • PARENR BRACKETL decls statement_list BRACKETR
-
-    PARENR  shift, and go to state 5
-
-
-State 4
 
     0 $accept: program $end •
 
     $default  accept
 
 
+State 4
+
+    2 program: $@1 ID • PARENL PARENR BRACKETL decls statement_list BRACKETR
+
+    PARENL  shift, and go to state 5
+
+
 State 5
 
-    1 program: ID PARENL PARENR • BRACKETL decls statement_list BRACKETR
+    2 program: $@1 ID PARENL • PARENR BRACKETL decls statement_list BRACKETR
 
-    BRACKETL  shift, and go to state 6
+    PARENR  shift, and go to state 6
 
 
 State 6
 
-    1 program: ID PARENL PARENR BRACKETL • decls statement_list BRACKETR
+    2 program: $@1 ID PARENL PARENR • BRACKETL decls statement_list BRACKETR
 
-    $default  reduce using rule 4 (decls)
-
-    decls  go to state 7
+    BRACKETL  shift, and go to state 7
 
 
 State 7
 
-    1 program: ID PARENL PARENR BRACKETL decls • statement_list BRACKETR
-    2 decls: decls • RVAR type var_list SEMICOLON
-    3      | decls • RCONST type const_list SEMICOLON
+    2 program: $@1 ID PARENL PARENR BRACKETL • decls statement_list BRACKETR
 
-    RVAR    shift, and go to state 8
-    RCONST  shift, and go to state 9
+    $default  reduce using rule 5 (decls)
 
-    $default  reduce using rule 11 (statement_list)
-
-    statement_list  go to state 10
+    decls  go to state 8
 
 
 State 8
 
-    2 decls: decls RVAR • type var_list SEMICOLON
+    2 program: $@1 ID PARENL PARENR BRACKETL decls • statement_list BRACKETR
+    3 decls: decls • RVAR type var_list SEMICOLON
+    4      | decls • RCONST type const_list SEMICOLON
 
-    RINT  shift, and go to state 11
+    RVAR    shift, and go to state 9
+    RCONST  shift, and go to state 10
 
-    type  go to state 12
+    $default  reduce using rule 12 (statement_list)
+
+    statement_list  go to state 11
 
 
 State 9
 
-    3 decls: decls RCONST • type const_list SEMICOLON
+    3 decls: decls RVAR • type var_list SEMICOLON
 
-    RINT  shift, and go to state 11
+    RINT  shift, and go to state 12
 
     type  go to state 13
 
 
 State 10
 
-    1 program: ID PARENL PARENR BRACKETL decls statement_list • BRACKETR
-   10 statement_list: statement_list • statement
+    4 decls: decls RCONST • type const_list SEMICOLON
 
-    RIF       shift, and go to state 14
-    RWHILE    shift, and go to state 15
-    RPRINT    shift, and go to state 16
-    RREAD     shift, and go to state 17
-    ID        shift, and go to state 18
-    BRACKETL  shift, and go to state 19
-    BRACKETR  shift, and go to state 20
+    RINT  shift, and go to state 12
 
-    statement  go to state 21
+    type  go to state 14
 
 
 State 11
 
-    5 type: RINT •
+    2 program: $@1 ID PARENL PARENR BRACKETL decls statement_list • BRACKETR
+   11 statement_list: statement_list • statement
 
-    $default  reduce using rule 5 (type)
+    RIF       shift, and go to state 15
+    RWHILE    shift, and go to state 16
+    RPRINT    shift, and go to state 17
+    RREAD     shift, and go to state 18
+    ID        shift, and go to state 19
+    BRACKETL  shift, and go to state 20
+    BRACKETR  shift, and go to state 21
+
+    statement  go to state 22
 
 
 State 12
 
-    2 decls: decls RVAR type • var_list SEMICOLON
+    6 type: RINT •
 
-    ID  shift, and go to state 22
-
-    var_list  go to state 23
+    $default  reduce using rule 6 (type)
 
 
 State 13
 
-    3 decls: decls RCONST type • const_list SEMICOLON
+    3 decls: decls RVAR type • var_list SEMICOLON
 
-    ID  shift, and go to state 24
+    ID  shift, and go to state 23
 
-    const_list  go to state 25
+    var_list  go to state 24
 
 
 State 14
 
-   14 statement: RIF • PARENL expr PARENR statement RELSE statement
-   15          | RIF • PARENL expr PARENR statement
+    4 decls: decls RCONST type • const_list SEMICOLON
 
-    PARENL  shift, and go to state 26
+    ID  shift, and go to state 25
+
+    const_list  go to state 26
 
 
 State 15
 
-   16 statement: RWHILE • PARENL expr PARENR statement
+   15 statement: RIF • PARENL expr PARENR statement RELSE statement
+   16          | RIF • PARENL expr PARENR statement
 
     PARENL  shift, and go to state 27
 
 
 State 16
 
-   17 statement: RPRINT • PARENL print_list PARENR SEMICOLON
+   17 statement: RWHILE • PARENL expr PARENR statement
 
     PARENL  shift, and go to state 28
 
 
 State 17
 
-   18 statement: RREAD • PARENL read_list PARENR SEMICOLON
+   18 statement: RPRINT • PARENL print_list PARENR SEMICOLON
 
     PARENL  shift, and go to state 29
 
 
 State 18
 
-   12 statement: ID • OEQUALS expr SEMICOLON
+   19 statement: RREAD • PARENL read_list PARENR SEMICOLON
 
-    OEQUALS  shift, and go to state 30
+    PARENL  shift, and go to state 30
 
 
 State 19
 
-   13 statement: BRACKETL • statement_list BRACKETR
+   13 statement: ID • OEQUALS expr SEMICOLON
 
-    $default  reduce using rule 11 (statement_list)
-
-    statement_list  go to state 31
+    OEQUALS  shift, and go to state 31
 
 
 State 20
 
-    1 program: ID PARENL PARENR BRACKETL decls statement_list BRACKETR •
+   14 statement: BRACKETL • statement_list BRACKETR
 
-    $default  reduce using rule 1 (program)
+    $default  reduce using rule 12 (statement_list)
+
+    statement_list  go to state 32
 
 
 State 21
 
-   10 statement_list: statement_list statement •
+    2 program: $@1 ID PARENL PARENR BRACKETL decls statement_list BRACKETR •
 
-    $default  reduce using rule 10 (statement_list)
+    $default  reduce using rule 2 (program)
 
 
 State 22
 
-    6 var_list: ID •
+   11 statement_list: statement_list statement •
 
-    $default  reduce using rule 6 (var_list)
+    $default  reduce using rule 11 (statement_list)
 
 
 State 23
 
-    2 decls: decls RVAR type var_list • SEMICOLON
-    7 var_list: var_list • COMMA ID
+    7 var_list: ID •
 
-    SEMICOLON  shift, and go to state 32
-    COMMA      shift, and go to state 33
+    $default  reduce using rule 7 (var_list)
 
 
 State 24
 
-    8 const_list: ID • OEQUALS expr
+    3 decls: decls RVAR type var_list • SEMICOLON
+    8 var_list: var_list • COMMA ID
 
-    OEQUALS  shift, and go to state 34
+    SEMICOLON  shift, and go to state 33
+    COMMA      shift, and go to state 34
 
 
 State 25
 
-    3 decls: decls RCONST type const_list • SEMICOLON
-    9 const_list: const_list • COMMA ID OEQUALS expr
+    9 const_list: ID • OEQUALS expr
 
-    SEMICOLON  shift, and go to state 35
-    COMMA      shift, and go to state 36
+    OEQUALS  shift, and go to state 35
 
 
 State 26
 
-   14 statement: RIF PARENL • expr PARENR statement RELSE statement
-   15          | RIF PARENL • expr PARENR statement
+    4 decls: decls RCONST type const_list • SEMICOLON
+   10 const_list: const_list • COMMA ID OEQUALS expr
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
-
-    expr  go to state 41
+    SEMICOLON  shift, and go to state 36
+    COMMA      shift, and go to state 37
 
 
 State 27
 
-   16 statement: RWHILE PARENL • expr PARENR statement
+   15 statement: RIF PARENL • expr PARENR statement RELSE statement
+   16          | RIF PARENL • expr PARENR statement
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
 
     expr  go to state 42
 
 
 State 28
 
-   17 statement: RPRINT PARENL • print_list PARENR SEMICOLON
+   17 statement: RWHILE PARENL • expr PARENR statement
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    LSTR    shift, and go to state 43
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
 
-    print_list  go to state 44
-    print_item  go to state 45
-    expr        go to state 46
+    expr  go to state 43
 
 
 State 29
 
-   18 statement: RREAD PARENL • read_list PARENR SEMICOLON
+   18 statement: RPRINT PARENL • print_list PARENR SEMICOLON
 
-    ID  shift, and go to state 47
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    LSTR    shift, and go to state 44
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
 
-    read_list  go to state 48
+    print_list  go to state 45
+    print_item  go to state 46
+    expr        go to state 47
 
 
 State 30
 
-   12 statement: ID OEQUALS • expr SEMICOLON
+   19 statement: RREAD PARENL • read_list PARENR SEMICOLON
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
+    ID  shift, and go to state 48
 
-    expr  go to state 49
+    read_list  go to state 49
 
 
 State 31
 
-   10 statement_list: statement_list • statement
-   13 statement: BRACKETL statement_list • BRACKETR
+   13 statement: ID OEQUALS • expr SEMICOLON
 
-    RIF       shift, and go to state 14
-    RWHILE    shift, and go to state 15
-    RPRINT    shift, and go to state 16
-    RREAD     shift, and go to state 17
-    ID        shift, and go to state 18
-    BRACKETL  shift, and go to state 19
-    BRACKETR  shift, and go to state 50
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
 
-    statement  go to state 21
+    expr  go to state 50
 
 
 State 32
 
-    2 decls: decls RVAR type var_list SEMICOLON •
+   11 statement_list: statement_list • statement
+   14 statement: BRACKETL statement_list • BRACKETR
 
-    $default  reduce using rule 2 (decls)
+    RIF       shift, and go to state 15
+    RWHILE    shift, and go to state 16
+    RPRINT    shift, and go to state 17
+    RREAD     shift, and go to state 18
+    ID        shift, and go to state 19
+    BRACKETL  shift, and go to state 20
+    BRACKETR  shift, and go to state 51
+
+    statement  go to state 22
 
 
 State 33
 
-    7 var_list: var_list COMMA • ID
-
-    ID  shift, and go to state 51
-
-
-State 34
-
-    8 const_list: ID OEQUALS • expr
-
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
-
-    expr  go to state 52
-
-
-State 35
-
-    3 decls: decls RCONST type const_list SEMICOLON •
+    3 decls: decls RVAR type var_list SEMICOLON •
 
     $default  reduce using rule 3 (decls)
 
 
+State 34
+
+    8 var_list: var_list COMMA • ID
+
+    ID  shift, and go to state 52
+
+
+State 35
+
+    9 const_list: ID OEQUALS • expr
+
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
+
+    expr  go to state 53
+
+
 State 36
 
-    9 const_list: const_list COMMA • ID OEQUALS expr
+    4 decls: decls RCONST type const_list SEMICOLON •
 
-    ID  shift, and go to state 53
+    $default  reduce using rule 4 (decls)
 
 
 State 37
 
-   32 expr: ID •
+   10 const_list: const_list COMMA • ID OEQUALS expr
 
-    $default  reduce using rule 32 (expr)
+    ID  shift, and go to state 54
 
 
 State 38
 
-   33 expr: LINT •
+   33 expr: ID •
 
     $default  reduce using rule 33 (expr)
 
 
 State 39
 
-   30 expr: OMINUS • expr
+   34 expr: LINT •
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
-
-    expr  go to state 54
+    $default  reduce using rule 34 (expr)
 
 
 State 40
 
-   29 expr: PARENL • expr QUESTIONMARK expr COLON expr PARENR
-   31     | PARENL • expr PARENR
+   31 expr: OMINUS • expr
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
 
     expr  go to state 55
 
 
 State 41
 
-   14 statement: RIF PARENL expr • PARENR statement RELSE statement
-   15          | RIF PARENL expr • PARENR statement
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
+   30 expr: PARENL • expr QUESTIONMARK expr COLON expr PARENR
+   32     | PARENL • expr PARENR
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
-    PARENR     shift, and go to state 60
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
+
+    expr  go to state 56
 
 
 State 42
 
-   16 statement: RWHILE PARENL expr • PARENR statement
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
+   15 statement: RIF PARENL expr • PARENR statement RELSE statement
+   16          | RIF PARENL expr • PARENR statement
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
     PARENR     shift, and go to state 61
 
 
 State 43
 
-   22 print_item: LSTR •
+   17 statement: RWHILE PARENL expr • PARENR statement
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
 
-    $default  reduce using rule 22 (print_item)
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
+    PARENR     shift, and go to state 62
 
 
 State 44
 
-   17 statement: RPRINT PARENL print_list • PARENR SEMICOLON
-   20 print_list: print_list • COMMA print_item
+   23 print_item: LSTR •
 
-    COMMA   shift, and go to state 62
-    PARENR  shift, and go to state 63
+    $default  reduce using rule 23 (print_item)
 
 
 State 45
 
-   19 print_list: print_item •
+   18 statement: RPRINT PARENL print_list • PARENR SEMICOLON
+   21 print_list: print_list • COMMA print_item
 
-    $default  reduce using rule 19 (print_list)
+    COMMA   shift, and go to state 63
+    PARENR  shift, and go to state 64
 
 
 State 46
 
-   21 print_item: expr •
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
+   20 print_list: print_item •
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
-
-    $default  reduce using rule 21 (print_item)
+    $default  reduce using rule 20 (print_list)
 
 
 State 47
 
-   23 read_list: ID •
+   22 print_item: expr •
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
 
-    $default  reduce using rule 23 (read_list)
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
+
+    $default  reduce using rule 22 (print_item)
 
 
 State 48
 
-   18 statement: RREAD PARENL read_list • PARENR SEMICOLON
-   24 read_list: read_list • COMMA ID
+   24 read_list: ID •
 
-    COMMA   shift, and go to state 64
-    PARENR  shift, and go to state 65
+    $default  reduce using rule 24 (read_list)
 
 
 State 49
 
-   12 statement: ID OEQUALS expr • SEMICOLON
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
+   19 statement: RREAD PARENL read_list • PARENR SEMICOLON
+   25 read_list: read_list • COMMA ID
 
-    SEMICOLON  shift, and go to state 66
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
+    COMMA   shift, and go to state 65
+    PARENR  shift, and go to state 66
 
 
 State 50
 
-   13 statement: BRACKETL statement_list BRACKETR •
+   13 statement: ID OEQUALS expr • SEMICOLON
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
 
-    $default  reduce using rule 13 (statement)
+    SEMICOLON  shift, and go to state 67
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
 
 
 State 51
 
-    7 var_list: var_list COMMA ID •
+   14 statement: BRACKETL statement_list BRACKETR •
 
-    $default  reduce using rule 7 (var_list)
+    $default  reduce using rule 14 (statement)
 
 
 State 52
 
-    8 const_list: ID OEQUALS expr •
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
+    8 var_list: var_list COMMA ID •
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
-
-    $default  reduce using rule 8 (const_list)
+    $default  reduce using rule 8 (var_list)
 
 
 State 53
 
-    9 const_list: const_list COMMA ID • OEQUALS expr
+    9 const_list: ID OEQUALS expr •
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
 
-    OEQUALS  shift, and go to state 67
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
+
+    $default  reduce using rule 9 (const_list)
 
 
 State 54
 
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
-   30     | OMINUS expr •
+   10 const_list: const_list COMMA ID • OEQUALS expr
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
-
-    OPLUS      [reduce using rule 30 (expr)]
-    OMINUS     [reduce using rule 30 (expr)]
-    OASTERISK  [reduce using rule 30 (expr)]
-    OSLASH     [reduce using rule 30 (expr)]
-    $default   reduce using rule 30 (expr)
+    OEQUALS  shift, and go to state 68
 
 
 State 55
 
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
-   29     | PARENL expr • QUESTIONMARK expr COLON expr PARENR
-   31     | PARENL expr • PARENR
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
+   31     | OMINUS expr •
 
-    OPLUS         shift, and go to state 56
-    OMINUS        shift, and go to state 57
-    OASTERISK     shift, and go to state 58
-    OSLASH        shift, and go to state 59
-    PARENR        shift, and go to state 68
-    QUESTIONMARK  shift, and go to state 69
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
+
+    OPLUS      [reduce using rule 31 (expr)]
+    OMINUS     [reduce using rule 31 (expr)]
+    OASTERISK  [reduce using rule 31 (expr)]
+    OSLASH     [reduce using rule 31 (expr)]
+    $default   reduce using rule 31 (expr)
 
 
 State 56
 
-   25 expr: expr OPLUS • expr
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
+   30     | PARENL expr • QUESTIONMARK expr COLON expr PARENR
+   32     | PARENL expr • PARENR
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
-
-    expr  go to state 70
+    OPLUS         shift, and go to state 57
+    OMINUS        shift, and go to state 58
+    OASTERISK     shift, and go to state 59
+    OSLASH        shift, and go to state 60
+    PARENR        shift, and go to state 69
+    QUESTIONMARK  shift, and go to state 70
 
 
 State 57
 
-   26 expr: expr OMINUS • expr
+   26 expr: expr OPLUS • expr
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
 
     expr  go to state 71
 
 
 State 58
 
-   27 expr: expr OASTERISK • expr
+   27 expr: expr OMINUS • expr
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
 
     expr  go to state 72
 
 
 State 59
 
-   28 expr: expr OSLASH • expr
+   28 expr: expr OASTERISK • expr
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
 
     expr  go to state 73
 
 
 State 60
 
-   14 statement: RIF PARENL expr PARENR • statement RELSE statement
-   15          | RIF PARENL expr PARENR • statement
+   29 expr: expr OSLASH • expr
 
-    RIF       shift, and go to state 14
-    RWHILE    shift, and go to state 15
-    RPRINT    shift, and go to state 16
-    RREAD     shift, and go to state 17
-    ID        shift, and go to state 18
-    BRACKETL  shift, and go to state 19
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
 
-    statement  go to state 74
+    expr  go to state 74
 
 
 State 61
 
-   16 statement: RWHILE PARENL expr PARENR • statement
+   15 statement: RIF PARENL expr PARENR • statement RELSE statement
+   16          | RIF PARENL expr PARENR • statement
 
-    RIF       shift, and go to state 14
-    RWHILE    shift, and go to state 15
-    RPRINT    shift, and go to state 16
-    RREAD     shift, and go to state 17
-    ID        shift, and go to state 18
-    BRACKETL  shift, and go to state 19
+    RIF       shift, and go to state 15
+    RWHILE    shift, and go to state 16
+    RPRINT    shift, and go to state 17
+    RREAD     shift, and go to state 18
+    ID        shift, and go to state 19
+    BRACKETL  shift, and go to state 20
 
     statement  go to state 75
 
 
 State 62
 
-   20 print_list: print_list COMMA • print_item
+   17 statement: RWHILE PARENL expr PARENR • statement
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    LSTR    shift, and go to state 43
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
+    RIF       shift, and go to state 15
+    RWHILE    shift, and go to state 16
+    RPRINT    shift, and go to state 17
+    RREAD     shift, and go to state 18
+    ID        shift, and go to state 19
+    BRACKETL  shift, and go to state 20
 
-    print_item  go to state 76
-    expr        go to state 46
+    statement  go to state 76
 
 
 State 63
 
-   17 statement: RPRINT PARENL print_list PARENR • SEMICOLON
+   21 print_list: print_list COMMA • print_item
 
-    SEMICOLON  shift, and go to state 77
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    LSTR    shift, and go to state 44
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
+
+    print_item  go to state 77
+    expr        go to state 47
 
 
 State 64
 
-   24 read_list: read_list COMMA • ID
+   18 statement: RPRINT PARENL print_list PARENR • SEMICOLON
 
-    ID  shift, and go to state 78
+    SEMICOLON  shift, and go to state 78
 
 
 State 65
 
-   18 statement: RREAD PARENL read_list PARENR • SEMICOLON
+   25 read_list: read_list COMMA • ID
 
-    SEMICOLON  shift, and go to state 79
+    ID  shift, and go to state 79
 
 
 State 66
 
-   12 statement: ID OEQUALS expr SEMICOLON •
+   19 statement: RREAD PARENL read_list PARENR • SEMICOLON
 
-    $default  reduce using rule 12 (statement)
+    SEMICOLON  shift, and go to state 80
 
 
 State 67
 
-    9 const_list: const_list COMMA ID OEQUALS • expr
+   13 statement: ID OEQUALS expr SEMICOLON •
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
-
-    expr  go to state 80
+    $default  reduce using rule 13 (statement)
 
 
 State 68
 
-   31 expr: PARENL expr PARENR •
+   10 const_list: const_list COMMA ID OEQUALS • expr
 
-    $default  reduce using rule 31 (expr)
-
-
-State 69
-
-   29 expr: PARENL expr QUESTIONMARK • expr COLON expr PARENR
-
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
 
     expr  go to state 81
 
 
+State 69
+
+   32 expr: PARENL expr PARENR •
+
+    $default  reduce using rule 32 (expr)
+
+
 State 70
 
-   25 expr: expr • OPLUS expr
-   25     | expr OPLUS expr •
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
+   30 expr: PARENL expr QUESTIONMARK • expr COLON expr PARENR
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
 
-    OPLUS      [reduce using rule 25 (expr)]
-    OMINUS     [reduce using rule 25 (expr)]
-    OASTERISK  [reduce using rule 25 (expr)]
-    OSLASH     [reduce using rule 25 (expr)]
-    $default   reduce using rule 25 (expr)
+    expr  go to state 82
 
 
 State 71
 
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   26     | expr OMINUS expr •
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
+   26 expr: expr • OPLUS expr
+   26     | expr OPLUS expr •
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
 
     OPLUS      [reduce using rule 26 (expr)]
     OMINUS     [reduce using rule 26 (expr)]
@@ -864,16 +857,16 @@ State 71
 
 State 72
 
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   27     | expr OASTERISK expr •
-   28     | expr • OSLASH expr
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   27     | expr OMINUS expr •
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
 
     OPLUS      [reduce using rule 27 (expr)]
     OMINUS     [reduce using rule 27 (expr)]
@@ -884,16 +877,16 @@ State 72
 
 State 73
 
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
-   28     | expr OSLASH expr •
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   28     | expr OASTERISK expr •
+   29     | expr • OSLASH expr
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
 
     OPLUS      [reduce using rule 28 (expr)]
     OMINUS     [reduce using rule 28 (expr)]
@@ -904,131 +897,151 @@ State 73
 
 State 74
 
-   14 statement: RIF PARENL expr PARENR statement • RELSE statement
-   15          | RIF PARENL expr PARENR statement •
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
+   29     | expr OSLASH expr •
 
-    RELSE  shift, and go to state 82
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
 
-    RELSE     [reduce using rule 15 (statement)]
-    $default  reduce using rule 15 (statement)
+    OPLUS      [reduce using rule 29 (expr)]
+    OMINUS     [reduce using rule 29 (expr)]
+    OASTERISK  [reduce using rule 29 (expr)]
+    OSLASH     [reduce using rule 29 (expr)]
+    $default   reduce using rule 29 (expr)
 
 
 State 75
 
-   16 statement: RWHILE PARENL expr PARENR statement •
+   15 statement: RIF PARENL expr PARENR statement • RELSE statement
+   16          | RIF PARENL expr PARENR statement •
 
+    RELSE  shift, and go to state 83
+
+    RELSE     [reduce using rule 16 (statement)]
     $default  reduce using rule 16 (statement)
 
 
 State 76
 
-   20 print_list: print_list COMMA print_item •
-
-    $default  reduce using rule 20 (print_list)
-
-
-State 77
-
-   17 statement: RPRINT PARENL print_list PARENR SEMICOLON •
+   17 statement: RWHILE PARENL expr PARENR statement •
 
     $default  reduce using rule 17 (statement)
 
 
+State 77
+
+   21 print_list: print_list COMMA print_item •
+
+    $default  reduce using rule 21 (print_list)
+
+
 State 78
 
-   24 read_list: read_list COMMA ID •
-
-    $default  reduce using rule 24 (read_list)
-
-
-State 79
-
-   18 statement: RREAD PARENL read_list PARENR SEMICOLON •
+   18 statement: RPRINT PARENL print_list PARENR SEMICOLON •
 
     $default  reduce using rule 18 (statement)
 
 
+State 79
+
+   25 read_list: read_list COMMA ID •
+
+    $default  reduce using rule 25 (read_list)
+
+
 State 80
 
-    9 const_list: const_list COMMA ID OEQUALS expr •
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
+   19 statement: RREAD PARENL read_list PARENR SEMICOLON •
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
-
-    $default  reduce using rule 9 (const_list)
+    $default  reduce using rule 19 (statement)
 
 
 State 81
 
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
-   29     | PARENL expr QUESTIONMARK expr • COLON expr PARENR
+   10 const_list: const_list COMMA ID OEQUALS expr •
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
-    COLON      shift, and go to state 83
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
+
+    $default  reduce using rule 10 (const_list)
 
 
 State 82
 
-   14 statement: RIF PARENL expr PARENR statement RELSE • statement
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
+   30     | PARENL expr QUESTIONMARK expr • COLON expr PARENR
 
-    RIF       shift, and go to state 14
-    RWHILE    shift, and go to state 15
-    RPRINT    shift, and go to state 16
-    RREAD     shift, and go to state 17
-    ID        shift, and go to state 18
-    BRACKETL  shift, and go to state 19
-
-    statement  go to state 84
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
+    COLON      shift, and go to state 84
 
 
 State 83
 
-   29 expr: PARENL expr QUESTIONMARK expr COLON • expr PARENR
+   15 statement: RIF PARENL expr PARENR statement RELSE • statement
 
-    ID      shift, and go to state 37
-    LINT    shift, and go to state 38
-    OMINUS  shift, and go to state 39
-    PARENL  shift, and go to state 40
+    RIF       shift, and go to state 15
+    RWHILE    shift, and go to state 16
+    RPRINT    shift, and go to state 17
+    RREAD     shift, and go to state 18
+    ID        shift, and go to state 19
+    BRACKETL  shift, and go to state 20
 
-    expr  go to state 85
+    statement  go to state 85
 
 
 State 84
 
-   14 statement: RIF PARENL expr PARENR statement RELSE statement •
+   30 expr: PARENL expr QUESTIONMARK expr COLON • expr PARENR
 
-    $default  reduce using rule 14 (statement)
+    ID      shift, and go to state 38
+    LINT    shift, and go to state 39
+    OMINUS  shift, and go to state 40
+    PARENL  shift, and go to state 41
+
+    expr  go to state 86
 
 
 State 85
 
-   25 expr: expr • OPLUS expr
-   26     | expr • OMINUS expr
-   27     | expr • OASTERISK expr
-   28     | expr • OSLASH expr
-   29     | PARENL expr QUESTIONMARK expr COLON expr • PARENR
+   15 statement: RIF PARENL expr PARENR statement RELSE statement •
 
-    OPLUS      shift, and go to state 56
-    OMINUS     shift, and go to state 57
-    OASTERISK  shift, and go to state 58
-    OSLASH     shift, and go to state 59
-    PARENR     shift, and go to state 86
+    $default  reduce using rule 15 (statement)
 
 
 State 86
 
-   29 expr: PARENL expr QUESTIONMARK expr COLON expr PARENR •
+   26 expr: expr • OPLUS expr
+   27     | expr • OMINUS expr
+   28     | expr • OASTERISK expr
+   29     | expr • OSLASH expr
+   30     | PARENL expr QUESTIONMARK expr COLON expr • PARENR
 
-    $default  reduce using rule 29 (expr)
+    OPLUS      shift, and go to state 57
+    OMINUS     shift, and go to state 58
+    OASTERISK  shift, and go to state 59
+    OSLASH     shift, and go to state 60
+    PARENR     shift, and go to state 87
+
+
+State 87
+
+   30 expr: PARENL expr QUESTIONMARK expr COLON expr PARENR •
+
+    $default  reduce using rule 30 (expr)
