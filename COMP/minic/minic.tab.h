@@ -86,11 +86,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 11 "minic.y"
+#line 22 "minic.y"
 
     char *lex;
+    ListaC code;
 
-#line 94 "minic.tab.h"
+#line 95 "minic.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

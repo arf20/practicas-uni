@@ -1,20 +1,32 @@
 %{
 #include <stdio.h>
+#include "listaSimbolos.h"
+#include "listaCodigo.h"
+
+void print_symtable();
+
 extern int yylineno;
 extern char *yytext;
 extern int yylex();
 void yyerror();
+
+Lista symtable;
+
 %}
 
-%token RVAR RCONST RINT RIF RELSE RWHILE RPRINT RREAD ID LINT LSTR SEMICOLON COMMA OPLUS OMINUS OASTERISK OSLASH OEQUALS PARENL PARENR BRACKETL BRACKETR QUESTIONMARK COLON
+%token <lexem> RVAR RCONST RINT RIF RELSE RWHILE RPRINT RREAD ID LINT LSTR SEMICOLON COMMA OPLUS OMINUS OASTERISK OSLASH OEQUALS PARENL PARENR BRACKETL BRACKETR QUESTIONMARK COLON
+
+%type <code> expr
+
 
 %union {
     char *lex;
+    ListaC code;
 }
 
 %%
 
-program : ID PARENL PARENR BRACKETL decls statement_list BRACKETR
+program : {symtable = creaLS();} ID PARENL PARENR BRACKETL decls statement_list BRACKETR { print_symtable(); liberaLS(symtable);}
         ;
 
 decls : decls RVAR type var_list SEMICOLON
@@ -58,15 +70,15 @@ read_list : ID
           | read_list COMMA ID
           ;
 
-expr : expr OPLUS expr
-     | expr OMINUS expr
-     | expr OASTERISK expr
-     | expr OSLASH expr
-     | PARENL expr QUESTIONMARK expr COLON expr PARENR
-     | OMINUS expr
-     | PARENL expr PARENR
-     | ID
-     | LINT
+expr : expr OPLUS expr {}
+     | expr OMINUS expr {}
+     | expr OASTERISK expr {}
+     | expr OSLASH expr {}
+     | PARENL expr QUESTIONMARK expr COLON expr PARENR {}
+     | OMINUS expr {}
+     | PARENL expr PARENR {}
+     | ID {}
+     | LINT {}
      ;
 
 
@@ -78,5 +90,25 @@ yyerror()
 {
     fprintf(stderr, "%d: Syntax error: %s\n", yylineno, yytext);
 }
-  
+
+void
+print_code(ListaC code)
+{
+    PosicionListaC end = finalLC(code);
+    for (PosicionListaC it = inicioLC(code); it != end; it = siguienteLC(code, it)) {
+        Operacion op = recuperaLC(code, it);
+        printf("%s", op.op);
+        if (op.res)
+            printf(" %s", op.res);
+        if (op.arg1)
+            printf(", %s", op.arg1);
+        if (op.arg2)
+            printf(", %s", op.arg2);
+    }
+} 
+
+void
+print_symtable() {
+
+}
 

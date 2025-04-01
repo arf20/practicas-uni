@@ -3,9 +3,8 @@
 #include <errno.h>
 #include <string.h>
 
-#include "minic.tab.h"
-
 extern FILE* yyin;
+extern int yyparse();
 
 void
 usage()
