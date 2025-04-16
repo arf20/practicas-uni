@@ -1,102 +1,168 @@
 %{
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "listaSimbolos.h"
 #include "listaCodigo.h"
-
-void print_symtable();
 
 extern int yylineno;
 extern char *yytext;
 extern int yylex();
 void yyerror();
 
-Lista symtable;
+void print_code(ListaC code);
+void symtable_print();
+void setup_program();
+void symtable_push(const char *id);
+void ds_push_word(char *id);
+const char* ds_push_asciiz(const char *lstr);
+void cl_program(const char *id, ListaC decls, ListaC statements);
+ListaC cl_push_const_list(ListaC constl, const char *id, ListaC vl);
+ListaC cl_push_lint(const char *lint);
+ListaC cl_push_id(const char *id);
+ListaC cl_push_ominus_expr(ListaC l);
+ListaC cl_push_condop(ListaC cond, ListaC tl, ListaC fl);
+ListaC cl_push_binop(const char *inst, ListaC ll, ListaC rl);
+ListaC cl_push_assign(const char *id, ListaC l);
+ListaC cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel);
+ListaC cl_push_if(ListaC cond, ListaC ifl);
+ListaC cl_push_while(ListaC cond, ListaC statementl);
+ListaC cl_push_print_expr(ListaC exprl);
+ListaC cl_push_print_str(const char *lstr);
+ListaC cl_push_read(const char *id);
+
+Lista symtable = NULL;
+ListaC dataseg = NULL;
+int regs[10] = { 0 };
+const char reg_strs[][10] = {
+    "$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t6", "$t7", "$t8", "$t9"
+};
+
+int string_counter = 0;
+int label_counter = 0;
+
+#define _DEBUG_
+
+#ifdef _DEBUG_
+#define insertaLC(l, p, op) { \
+    if (op.arg2) \
+        printf("==%d: pushing `%s %s, %s, %s'\n", \
+            yylineno, op.op, op.res, op.arg1, op.arg2); \
+    else \
+        printf("==%d: pushing `%s %s, %s'\n", \
+            yylineno, op.op, op.res, op.arg1); \
+    insertaLC(l, p, op); \
+}
+
+#define insertaLS(l, p, s) { \
+    printf("==%d: pushing symbol '%s'\n", yylineno, s.nombre); \
+    insertaLS(l, p, s); \
+}
+#endif
+
 
 %}
 
-%token <lexem> RVAR RCONST RINT RIF RELSE RWHILE RPRINT RREAD ID LINT LSTR SEMICOLON COMMA OPLUS OMINUS OASTERISK OSLASH OEQUALS PARENL PARENR BRACKETL BRACKETR QUESTIONMARK COLON
+%token RVAR RCONST RINT RIF RELSE RWHILE RPRINT RREAD SEMICOLON COMMA OPLUS OMINUS OASTERISK OSLASH OEQUALS PARENL PARENR BRACKETL BRACKETR QUESTIONMARK COLON
 
-%type <code> expr
+%token <lex> ID LSTR LINT
 
+%left OMINUS
+%left OPLUS
+%left OSLASH
+%left OASTERISK
+
+%expect 1
+
+%define parse.trace
 
 %union {
     char *lex;
     ListaC code;
 }
 
+%type <code> expr statement statement_list const_list print_list read_list print_item decls
+
 %%
 
-program : {symtable = creaLS();} ID PARENL PARENR BRACKETL decls statement_list BRACKETR { print_symtable(); liberaLS(symtable);}
+program : { setup_program(); } ID PARENL PARENR BRACKETL decls statement_list BRACKETR { cl_program($2, $6, $7);  }
         ;
 
-decls : decls RVAR type var_list SEMICOLON
-      | decls RCONST type const_list SEMICOLON
-      |
+decls : decls RVAR type var_list SEMICOLON { $$ = $1; }
+      | decls RCONST type const_list SEMICOLON { concatenaLC($1, $4); $$ = $1; }
+      | { $$ = creaLC(); }
       ;
 
 type : RINT
      ;
 
-var_list : ID
-         | var_list COMMA ID
+var_list : ID { symtable_push($1); ds_push_word($1); }
+         | var_list COMMA ID { symtable_push($3); ds_push_word($3); }
          ;
 
-const_list : ID OEQUALS expr
-         | const_list COMMA ID OEQUALS expr
-         ;
+const_list : ID OEQUALS expr { symtable_push($1); ds_push_word($1); $$ = cl_push_const_list(creaLC(), $1, $3); }
+           | const_list COMMA ID OEQUALS expr { symtable_push($3); ds_push_word($3); $$ = cl_push_const_list($1, $3, $5); }
+           ;
 
-statement_list : statement_list statement
-               |
+statement_list : statement_list statement { concatenaLC($1, $2); $$ = $1; }
+               | {$$ = creaLC();}
                ;
 
-statement : ID OEQUALS expr SEMICOLON
-          | BRACKETL statement_list BRACKETR
-          | RIF PARENL expr PARENR statement RELSE statement
-          | RIF PARENL expr PARENR statement
-          | RWHILE PARENL expr PARENR statement
-          | RPRINT PARENL print_list PARENR SEMICOLON
-          | RREAD PARENL read_list PARENR SEMICOLON
+statement : ID OEQUALS expr SEMICOLON { $$ = cl_push_assign($1, $3); }
+          | BRACKETL statement_list BRACKETR { $$ = $2; }
+          | RIF PARENL expr PARENR statement RELSE statement { $$ = cl_push_if_else($3, $5, $7); }
+          | RIF PARENL expr PARENR statement { $$ = cl_push_if($3, $5); }
+          | RWHILE PARENL expr PARENR statement { $$ = cl_push_while($3, $5); }
+          | RPRINT PARENL print_list PARENR SEMICOLON { $$ = $3; }
+          | RREAD PARENL read_list PARENR SEMICOLON { $$ = $3; }
           ;
 
-print_list : print_item
-           | print_list COMMA print_item
+print_list : print_item { $$ = $1; }
+           | print_list COMMA print_item { concatenaLC($1, $3); $$ = $1; }
            ;
 
-print_item : expr
-           | LSTR
+print_item : expr { $$ = cl_push_print_expr($1); }
+           | LSTR { $$ = cl_push_print_str($1); }
            ;
 
-read_list : ID
-          | read_list COMMA ID
+read_list : ID { $$ = cl_push_read($1); }
+          | read_list COMMA ID { concatenaLC($1, cl_push_read($3)); $$ = $1; }
           ;
 
-expr : expr OPLUS expr {}
-     | expr OMINUS expr {}
-     | expr OASTERISK expr {}
-     | expr OSLASH expr {}
-     | PARENL expr QUESTIONMARK expr COLON expr PARENR {}
-     | OMINUS expr {}
-     | PARENL expr PARENR {}
-     | ID {}
-     | LINT {}
+expr : expr OPLUS expr { $$ = cl_push_binop("add", $1, $3); }
+     | expr OMINUS expr { $$ = cl_push_binop("sub", $1, $3); }
+     | expr OASTERISK expr { $$ = cl_push_binop("mul", $1, $3); }
+     | expr OSLASH expr { $$ = cl_push_binop("div", $1, $3); }
+     | PARENL expr QUESTIONMARK expr COLON expr PARENR { $$ = cl_push_condop($2, $4, $6); }
+     | OMINUS expr { $$ = cl_push_ominus_expr($2); }
+     | PARENL expr PARENR { $$ = $2; }
+     | ID { $$ = cl_push_id($1); }
+     | LINT { $$ = cl_push_lint($1); }
      ;
 
 
 
 %%
 
+
+/* =================================== util ================================= */
+
 void
 yyerror()
 {
-    fprintf(stderr, "%d: Syntax error: %s\n", yylineno, yytext);
+    fprintf(stderr, "%d: syntax error at `%s'\n", yylineno, yytext);
 }
 
 void
 print_code(ListaC code)
 {
+    printf("listing:\n========\n");
     PosicionListaC end = finalLC(code);
     for (PosicionListaC it = inicioLC(code); it != end; it = siguienteLC(code, it)) {
         Operacion op = recuperaLC(code, it);
+        if (op.op[0] == '.' || op.op[strlen(op.op)-1] != ':')
+            printf("\t");
         printf("%s", op.op);
         if (op.res)
             printf(" %s", op.res);
@@ -104,11 +170,362 @@ print_code(ListaC code)
             printf(", %s", op.arg1);
         if (op.arg2)
             printf(", %s", op.arg2);
+        printf("\n");
     }
+    printf("\n");
 } 
 
 void
-print_symtable() {
+symtable_print() {
+    PosicionLista end = finalLS(symtable);
+    printf("symbol table:\nsymbol\n======\n");
+    for (PosicionLista t = inicioLS(symtable); t != end; t = siguienteLS(symtable, t)) {
+        Simbolo s = recuperaLS(symtable, t);
+        printf("%s\n", s.nombre);
+    }
+    printf("\n");
+}
 
+const char*
+alloc_reg()
+{
+    for (int i = 0; i < 10; i++) {
+        if (regs[i] == 0) {
+            regs[i] = 1;
+            return reg_strs[i];
+        }
+    }
+
+    printf("error: ran out of registers\n");
+    return "";
+}
+
+void
+free_reg(const char *reg)
+{
+    if (!reg)
+        return;
+    int i = (reg - (const char*)reg_strs) / sizeof(char*);
+    regs[i] = 0;
+}
+
+char*
+next_label()
+{
+    static char buff[32];
+    snprintf(buff, 32, "$l%d", label_counter++);
+    return strdup(buff);
+}
+
+char*
+next_string_label()
+{
+    static char buff[32];
+    snprintf(buff, 32, "$str%d", string_counter++);
+    return strdup(buff);
+}
+
+
+char*
+label_colon(const char *label)
+{
+    int len = strlen(label);
+    char *labelc = malloc(len + 2);
+    strcpy(labelc, label);
+    labelc[len] = ':';
+    labelc[len + 1] = '\0';
+    return labelc;
+}
+
+/* =================================== main ================================= */
+
+void
+symtable_push(const char *id)
+{
+    if (buscaLS(symtable, id) == finalLS(symtable)) {
+        insertaLS(symtable, finalLS(symtable), ((Simbolo){strdup(id), VARIABLE, 0}));
+    }
+    else
+        fprintf(stderr, "%d: error: symbol `%s' redefined\n", yylineno, id);
+}
+
+
+void
+setup_program()
+{
+    symtable = creaLS();
+    dataseg = creaLC();
+    
+    Operacion op = { ".data" };
+    insertaLC(dataseg, finalLC(dataseg), op);
+}
+
+
+void
+ds_push_word(char *id)
+{
+    Operacion op = { label_colon(id) };
+    insertaLC(dataseg, finalLC(dataseg), op);
+
+    op = (Operacion){ ".word 0" };
+    insertaLC(dataseg, finalLC(dataseg), op);
+}
+
+const char*
+ds_push_asciiz(const char *lstr)
+{
+    const char *label = next_string_label();
+    Operacion op = { label_colon(label) };
+    insertaLC(dataseg, finalLC(dataseg), op);
+
+    op = (Operacion){ ".asciiz", lstr };
+    insertaLC(dataseg, finalLC(dataseg), op);
+
+    return label;
+}
+
+void
+cl_program(const char *id, ListaC decls, ListaC statements)
+{
+    symtable_print();
+    liberaLS(symtable);
+
+    ListaC textseg = creaLC();
+    Operacion op = { ".text" };
+    insertaLC(textseg, finalLC(textseg), op);
+    concatenaLC(textseg, decls);
+    concatenaLC(textseg, statements);
+
+    ListaC program = creaLC();
+    concatenaLC(program, dataseg);
+    concatenaLC(program, textseg);
+
+    print_code(program);
+}
+
+ListaC
+cl_push_const_list(ListaC constl, const char *id, ListaC vl)
+{
+    concatenaLC(constl, vl);
+    Operacion op = { "sw", recuperaResLC(vl), strdup(id) };
+    insertaLC(constl, finalLC(constl), op);
+    free_reg(recuperaResLC(vl));
+    return constl;
+}
+
+
+ListaC
+cl_push_read(const char *id)
+{
+    if (buscaLS(symtable, id) == finalLS(symtable))
+        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, id);
+    
+    ListaC rl = creaLC();
+    Operacion op = { "li", "$v0", "5" };
+    insertaLC(rl, finalLC(rl), op);
+    op = (Operacion){ "syscall" };
+    insertaLC(rl, finalLC(rl), op);
+    op = (Operacion){ "sw", "$v0", id };
+    insertaLC(rl, finalLC(rl), op);
+
+    return rl;
+}
+
+ListaC
+cl_push_print_expr(ListaC exprl)
+{
+    Operacion op = { "li", "$v0", "1" };
+    insertaLC(exprl, finalLC(exprl), op);
+    op = (Operacion){ "move", "$a0", recuperaResLC(exprl) };
+    insertaLC(exprl, finalLC(exprl), op);
+    op = (Operacion){ "syscall" };
+    insertaLC(exprl, finalLC(exprl), op);
+
+    return exprl;
+}
+
+ListaC
+cl_push_print_str(const char *lstr)
+{
+    const char *strlbl = ds_push_asciiz(lstr);
+   
+    ListaC pl = creaLC();   
+    Operacion op = { "li", "$v0", "4" };
+    insertaLC(pl, finalLC(pl), op);
+    op = (Operacion){ "la", "$a0", strlbl };
+    insertaLC(pl, finalLC(pl), op);
+    op = (Operacion){ "syscall" };
+    insertaLC(pl, finalLC(pl), op);
+
+    return pl;
+}
+
+ListaC
+cl_push_while(ListaC cond, ListaC statementl)
+{
+    const char *looplbl = next_label();
+    const char *loopendlbl = next_label();
+
+    ListaC ll = creaLC();
+    // loop start label
+    Operacion op = { label_colon(looplbl) };
+    insertaLC(ll, finalLC(ll), op);
+    // condition
+    concatenaLC(ll, statementl);
+    op = (Operacion){ "beqz", recuperaResLC(cond), loopendlbl };
+    insertaLC(ll, finalLC(ll), op);
+    // body
+    concatenaLC(ll, statementl);
+    // loop over
+    op = (Operacion){ "j", looplbl };
+    insertaLC(ll, finalLC(ll), op);
+    // loop end label
+    op = (Operacion){ label_colon(loopendlbl) };
+    insertaLC(ll, finalLC(ll), op);
+
+    return ll;
+}
+
+ListaC
+cl_push_if(ListaC cond, ListaC ifl)
+{
+    ListaC res = creaLC();
+    concatenaLC(res, cond);
+
+    char *endiflabel = next_label();
+    
+    // continue to if or go to else
+    Operacion op = { "beqz", recuperaResLC(cond), endiflabel };
+    insertaLC(res, finalLC(res), op);
+    // if block
+    concatenaLC(res, ifl);
+    // end label
+    op = (Operacion){ label_colon(endiflabel) };
+    insertaLC(res, finalLC(res), op);
+
+    return res;
+}
+
+ListaC
+cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel)
+{
+    ListaC res = creaLC();
+    concatenaLC(res, cond);
+
+    char *elselabel = next_label();
+    char *endiflabel = next_label();
+    
+    // continue to if or go to else
+    Operacion op = { "beqz", recuperaResLC(cond), endiflabel };
+    insertaLC(res, finalLC(res), op);
+    // if block
+    concatenaLC(res, ifl);
+    // prevent fall through
+    op = (Operacion){ "j", endiflabel };
+    insertaLC(res, finalLC(res), op);
+    // else label
+    op = (Operacion){ label_colon(elselabel) };
+    insertaLC(res, finalLC(res), op);
+    // else block
+    concatenaLC(res, elsel);
+    // end label
+    op = (Operacion){ label_colon(endiflabel) };
+    insertaLC(res, finalLC(res), op);
+
+    return res;
+}
+
+ListaC
+cl_push_assign(const char *id, ListaC l)
+{
+    Operacion op = { "sw", recuperaResLC(l), strdup(id) };
+    insertaLC(l, finalLC(l), op);
+    free_reg(recuperaResLC(l));
+    return l; 
+}
+
+ListaC
+cl_push_binop(const char *inst, ListaC ll, ListaC rl)
+{
+    ListaC res = creaLC();
+    concatenaLC(res, ll);
+    concatenaLC(res, rl);
+
+    const char *reg = alloc_reg();
+
+    Operacion op = { inst, reg, recuperaResLC(ll), recuperaResLC(rl) };
+    insertaLC(res, finalLC(res), op);
+    
+    guardaResLC(res, reg);
+    free_reg(recuperaResLC(ll));
+    free_reg(recuperaResLC(rl));
+
+    return res;
+}
+
+ListaC
+cl_push_condop(ListaC cond, ListaC tl, ListaC fl)
+{
+    ListaC res = creaLC();
+    concatenaLC(res, tl);
+    concatenaLC(res, fl);
+    concatenaLC(res, cond);
+
+    const char *reg = alloc_reg();
+    const char *falselabel = next_label();
+    const char *endlabel = next_label();
+    Operacion op = { "beqz", recuperaResLC(cond), falselabel };
+    insertaLC(res, finalLC(res), op);
+    op = (Operacion){ "move", reg, recuperaResLC(tl) };
+    insertaLC(res, finalLC(res), op);
+    op = (Operacion){ "j", endlabel };
+    insertaLC(res, finalLC(res), op);
+    op = (Operacion){ falselabel };
+    insertaLC(res, finalLC(res), op);
+    op = (Operacion){ "move", reg, recuperaResLC(fl) };
+    insertaLC(res, finalLC(res), op);
+    op = (Operacion){ endlabel };
+    insertaLC(res, finalLC(res), op);
+
+    guardaResLC(res, reg);
+
+    free_reg(recuperaResLC(cond));
+    free_reg(recuperaResLC(tl));
+    free_reg(recuperaResLC(fl));
+
+    return res;
+}
+
+ListaC
+cl_push_ominus_expr(ListaC l)
+{
+    const char *reg = recuperaResLC(l);
+    Operacion op = { "neg", reg, reg };
+    insertaLC(l, finalLC(l), op);
+    return l;
+}
+
+ListaC
+cl_push_id(const char *id)
+{
+    ListaC l = creaLC();
+    if (buscaLS(symtable, id) == finalLS(symtable))
+        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, id);
+    const char *reg = alloc_reg();
+    Operacion op = { "lw", reg, strdup(id) };
+    insertaLC(l, finalLC(l), op);
+    guardaResLC(l, reg);
+    return l;
+}
+
+ListaC
+cl_push_lint(const char *lint)
+{
+    ListaC l = creaLC();
+    const char *reg = alloc_reg();
+    Operacion op = { "li", reg, strdup(lint) };
+    insertaLC(l, finalLC(l), op);
+    guardaResLC(l, reg);
+    return l;
 }
 

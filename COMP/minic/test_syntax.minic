@@ -1,14 +1,30 @@
 program () {
-    var int var1, var2;
-    const int constant = 69;
+    var int var1, var2, var4;
+    var int var3;
+    const int const1 = 69;
+    const int const2 = 420, const3 = 1234;
 
 
     var1 = 420;
 
-    var2 = var1 + 2 * constant;
+    var2 = var1 + 2 * const1 + const2 + const3 + kjsdhak;
+
+    var3 = var1 * 2 * var1 + var2 + 123 - 321;
 
     if (var1) {
         print("lol");
     }
+
+    if (var2 + 3) {
+        print("por su puesto que ", var2 + 3);
+    } else {
+        print("obviamente no ", var2);
+    }
+
+    while (var3) {
+        var3 = var3 - 1;
+    }
+
+    read(var4);
 }
 

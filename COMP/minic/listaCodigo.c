@@ -12,7 +12,7 @@ struct ListaCRep {
   PosicionListaC cabecera;
   PosicionListaC ultimo;
   int n;
-  char *res;
+  const char *res;
 };
 
 typedef struct PosicionListaCRep *NodoPtr;
@@ -54,7 +54,7 @@ Operacion recuperaLC(ListaC codigo, PosicionListaC p) {
 
 PosicionListaC buscaLC(ListaC codigo, PosicionListaC p, char *clave, Campo campo) {
   NodoPtr aux = p;
-  char *info;
+  const char *info;
   while (aux->sig != NULL) {
     switch (campo) {
       case OPERACION: 
@@ -106,11 +106,11 @@ PosicionListaC siguienteLC(ListaC codigo, PosicionListaC p) {
   return p->sig;
 }
 
-void guardaResLC(ListaC codigo, char *res) {
+void guardaResLC(ListaC codigo, const char *res) {
   codigo->res = res;
 }
 
 /* Recupera el registro resultado de una lista de codigo */
-char * recuperaResLC(ListaC codigo) {
+const char * recuperaResLC(ListaC codigo) {
   return codigo->res;
 }
