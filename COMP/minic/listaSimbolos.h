@@ -14,7 +14,7 @@ Lista creaLS();
 void liberaLS(Lista lista);
 void insertaLS(Lista lista, PosicionLista p, Simbolo s);
 Simbolo recuperaLS(Lista lista, PosicionLista p);
-PosicionLista buscaLS(Lista lista, char *nombre);
+PosicionLista buscaLS(Lista lista, const char *nombre);
 void asignaLS(Lista lista, PosicionLista p, Simbolo s);
 int longitudLS(Lista lista);
 PosicionLista inicioLS(Lista lista);

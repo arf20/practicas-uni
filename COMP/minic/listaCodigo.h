@@ -11,10 +11,10 @@ typedef enum { OPERACION, ARGUMENTO1, ARGUMENTO2, RESULTADO } Campo;
 Si algún campo no se usa, se marca con NULL.
 */
 typedef struct {
-	char * op;
-	char * res;
-	char * arg1;
-	char * arg2;
+	const char *op;
+	const char *res;
+	const char *arg1;
+	const char *arg2;
 } Operacion;
 
 /* ListaC es una lista enlazada de código, que contiene instancias de Operacion */
@@ -44,8 +44,8 @@ PosicionListaC finalLC(ListaC codigo);
 /* Posición siguiente de una dada en una lista de código */
 PosicionListaC siguienteLC(ListaC codigo, PosicionListaC p);
 /* Almacena el registro resultado de una lista de código */
-void guardaResLC(ListaC codigo, char *res);
+void guardaResLC(ListaC codigo, const char *res);
 /* Recupera el registro resultado de una lista de código */
-char * recuperaResLC(ListaC codigo);
+const char * recuperaResLC(ListaC codigo);
 
 #endif

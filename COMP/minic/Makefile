@@ -4,7 +4,7 @@ FLEX := flex
 all: minicc
 
 minic.tab.c minic.tab.h: minic.y
-	bison -v -d minic.y
+	bison -v -d --graph minic.y
 
 lex.yy.c: lexer.l minic.tab.h
 	flex lexer.l

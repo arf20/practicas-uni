@@ -38,10 +38,10 @@ while                                       return RWHILE;
 print                                       return RPRINT;
 read                                        return RREAD;
 
-({letter}|_|$)({letter}|{digit}|_|$)*       return check_id();
+({letter}|_|$)({letter}|{digit}|_|$)*       { yylval.lex = strdup(yytext); return check_id(); }
 
-{integer}                                   return check_lint();
-\"([^\"\n\\]|{escape})*\"                   return LSTR; /* any string between " " that doesnt have " or \n */
+{integer}                                   { yylval.lex = strdup(yytext); return check_lint(); }
+\"([^\"\n\\]|{escape})*\"                   { yylval.lex = strdup(yytext); return LSTR; } /* any string between " " that doesnt have " or \n */
 
 ";"                                         return SEMICOLON;
 ","                                         return COMMA;

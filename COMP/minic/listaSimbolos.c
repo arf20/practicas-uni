@@ -61,9 +61,9 @@ Simbolo recuperaLS(Lista lista, PosicionLista p) {
   return p->sig->dato;
 }
 
-PosicionLista buscaLS(Lista lista, char *nombre) {
+PosicionLista buscaLS(Lista lista, const char *nombre) {
   NodoPtr aux = lista->cabecera;
-  while (aux->sig != NULL && strcmp(aux->sig->dato.nombre,nombre) != 0) {
+  while (aux->sig != NULL && strcmp(aux->sig->dato.nombre, nombre) != 0) {
     aux = aux->sig;
   }
   return aux;

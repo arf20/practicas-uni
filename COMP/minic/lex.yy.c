@@ -896,17 +896,17 @@ return RREAD;
 case 15:
 YY_RULE_SETUP
 #line 41 "lexer.l"
-return check_id();
+{ yylval.lex = strdup(yytext); return check_id(); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 43 "lexer.l"
-return check_lint();
+{ yylval.lex = strdup(yytext); return check_lint(); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 44 "lexer.l"
-return LSTR; /* any string between " " that doesnt have " or \n */
+{ yylval.lex = strdup(yytext); return LSTR; } /* any string between " " that doesnt have " or \n */
 	YY_BREAK
 case 18:
 YY_RULE_SETUP

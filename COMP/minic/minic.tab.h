@@ -39,7 +39,7 @@
 # define YY_YY_MINIC_TAB_H_INCLUDED
 /* Debug traces.  */
 #ifndef YYDEBUG
-# define YYDEBUG 0
+# define YYDEBUG 1
 #endif
 #if YYDEBUG
 extern int yydebug;
@@ -62,22 +62,22 @@ extern int yydebug;
     RWHILE = 263,                  /* RWHILE  */
     RPRINT = 264,                  /* RPRINT  */
     RREAD = 265,                   /* RREAD  */
-    ID = 266,                      /* ID  */
-    LINT = 267,                    /* LINT  */
-    LSTR = 268,                    /* LSTR  */
-    SEMICOLON = 269,               /* SEMICOLON  */
-    COMMA = 270,                   /* COMMA  */
-    OPLUS = 271,                   /* OPLUS  */
-    OMINUS = 272,                  /* OMINUS  */
-    OASTERISK = 273,               /* OASTERISK  */
-    OSLASH = 274,                  /* OSLASH  */
-    OEQUALS = 275,                 /* OEQUALS  */
-    PARENL = 276,                  /* PARENL  */
-    PARENR = 277,                  /* PARENR  */
-    BRACKETL = 278,                /* BRACKETL  */
-    BRACKETR = 279,                /* BRACKETR  */
-    QUESTIONMARK = 280,            /* QUESTIONMARK  */
-    COLON = 281                    /* COLON  */
+    SEMICOLON = 266,               /* SEMICOLON  */
+    COMMA = 267,                   /* COMMA  */
+    OPLUS = 268,                   /* OPLUS  */
+    OMINUS = 269,                  /* OMINUS  */
+    OASTERISK = 270,               /* OASTERISK  */
+    OSLASH = 271,                  /* OSLASH  */
+    OEQUALS = 272,                 /* OEQUALS  */
+    PARENL = 273,                  /* PARENL  */
+    PARENR = 274,                  /* PARENR  */
+    BRACKETL = 275,                /* BRACKETL  */
+    BRACKETR = 276,                /* BRACKETR  */
+    QUESTIONMARK = 277,            /* QUESTIONMARK  */
+    COLON = 278,                   /* COLON  */
+    ID = 279,                      /* ID  */
+    LSTR = 280,                    /* LSTR  */
+    LINT = 281                     /* LINT  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -86,7 +86,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 22 "minic.y"
+#line 80 "minic.y"
 
     char *lex;
     ListaC code;
