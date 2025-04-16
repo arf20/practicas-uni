@@ -6,6 +6,8 @@
 #include "listaSimbolos.h"
 #include "listaCodigo.h"
 
+FILE *out = NULL;
+
 extern int yylineno;
 extern char *yytext;
 extern int yylex();
@@ -40,25 +42,37 @@ const char reg_strs[][10] = {
 };
 
 int string_counter = 0;
-int label_counter = 0;
+int cond_counter = 0;
+int if_counter = 0;
+int while_counter = 0;
 
 #define _DEBUG_
 
 #ifdef _DEBUG_
-#define insertaLC(l, p, op) { \
-    if (op.arg2) \
+#define insertaLC(l, p, o) { \
+    if (o.arg2) \
         printf("==%d: pushing `%s %s, %s, %s'\n", \
-            yylineno, op.op, op.res, op.arg1, op.arg2); \
+            yylineno, o.op, o.res, o.arg1, o.arg2); \
     else \
         printf("==%d: pushing `%s %s, %s'\n", \
-            yylineno, op.op, op.res, op.arg1); \
-    insertaLC(l, p, op); \
+            yylineno, o.op, o.res, o.arg1); \
+    insertaLC(l, p, o); \
 }
 
 #define insertaLS(l, p, s) { \
     printf("==%d: pushing symbol '%s'\n", yylineno, s.nombre); \
     insertaLS(l, p, s); \
 }
+
+#define comment(l) { \
+    static char buff[16]; \
+    snprintf(buff, 16, "# L%d", yylineno); \
+    Operacion com = (Operacion){ buff }; \
+    insertaLC(l, inicioLC(l), com); \
+} \
+
+#else
+#define 
 #endif
 
 
@@ -90,7 +104,7 @@ program : { setup_program(); } ID PARENL PARENR BRACKETL decls statement_list BR
         ;
 
 decls : decls RVAR type var_list SEMICOLON { $$ = $1; }
-      | decls RCONST type const_list SEMICOLON { concatenaLC($1, $4); $$ = $1; }
+      | decls RCONST type const_list SEMICOLON { concatenaLC($1, $4); $$ = $1; comment($$); }
       | { $$ = creaLC(); }
       ;
 
@@ -114,8 +128,8 @@ statement : ID OEQUALS expr SEMICOLON { $$ = cl_push_assign($1, $3); }
           | RIF PARENL expr PARENR statement RELSE statement { $$ = cl_push_if_else($3, $5, $7); }
           | RIF PARENL expr PARENR statement { $$ = cl_push_if($3, $5); }
           | RWHILE PARENL expr PARENR statement { $$ = cl_push_while($3, $5); }
-          | RPRINT PARENL print_list PARENR SEMICOLON { $$ = $3; }
-          | RREAD PARENL read_list PARENR SEMICOLON { $$ = $3; }
+          | RPRINT PARENL print_list PARENR SEMICOLON { $$ = $3; comment($$); }
+          | RREAD PARENL read_list PARENR SEMICOLON { $$ = $3; comment($$); }
           ;
 
 print_list : print_item { $$ = $1; }
@@ -157,22 +171,21 @@ yyerror()
 void
 print_code(ListaC code)
 {
-    printf("listing:\n========\n");
     PosicionListaC end = finalLC(code);
     for (PosicionListaC it = inicioLC(code); it != end; it = siguienteLC(code, it)) {
         Operacion op = recuperaLC(code, it);
-        if (op.op[0] == '.' || op.op[strlen(op.op)-1] != ':')
-            printf("\t");
-        printf("%s", op.op);
+        if (op.op[0] != '#' && (op.op[0] == '.' || op.op[strlen(op.op)-1] != ':'))
+            fprintf(out, "\t");
+        fprintf(out, "%s", op.op);
         if (op.res)
-            printf(" %s", op.res);
+            fprintf(out, " %s", op.res);
         if (op.arg1)
-            printf(", %s", op.arg1);
+            fprintf(out, ", %s", op.arg1);
         if (op.arg2)
-            printf(", %s", op.arg2);
-        printf("\n");
+            fprintf(out, ", %s", op.arg2);
+        fprintf(out, "\n");
     }
-    printf("\n");
+    fprintf(out, "\n");
 } 
 
 void
@@ -210,10 +223,50 @@ free_reg(const char *reg)
 }
 
 char*
-next_label()
+if_end_label()
 {
     static char buff[32];
-    snprintf(buff, 32, "$l%d", label_counter++);
+    snprintf(buff, 32, "if%dend", if_counter);
+    return strdup(buff);
+}
+
+char*
+if_else_label()
+{
+    static char buff[32];
+    snprintf(buff, 32, "if%delse", if_counter);
+    return strdup(buff);
+}
+
+char*
+cond_false_label()
+{
+    static char buff[32];
+    snprintf(buff, 32, "cond%dfalse", cond_counter);
+    return strdup(buff);
+}
+
+char*
+cond_end_label()
+{
+    static char buff[32];
+    snprintf(buff, 32, "cond%dend", cond_counter);
+    return strdup(buff);
+}
+
+char*
+while_label()
+{
+    static char buff[32];
+    snprintf(buff, 32, "while%d", while_counter);
+    return strdup(buff);
+}
+
+char*
+while_end_label()
+{
+    static char buff[32];
+    snprintf(buff, 32, "while%dend", while_counter);
     return strdup(buff);
 }
 
@@ -295,6 +348,13 @@ cl_program(const char *id, ListaC decls, ListaC statements)
     insertaLC(textseg, finalLC(textseg), op);
     concatenaLC(textseg, decls);
     concatenaLC(textseg, statements);
+    
+    op = (Operacion){ "# program end" };
+    insertaLC(textseg, finalLC(textseg), op);
+    op = (Operacion){ "li", "$v0", "10" };
+    insertaLC(textseg, finalLC(textseg), op);
+    op = (Operacion){ "syscall" };
+    insertaLC(textseg, finalLC(textseg), op);
 
     ListaC program = creaLC();
     concatenaLC(program, dataseg);
@@ -363,10 +423,12 @@ cl_push_print_str(const char *lstr)
 ListaC
 cl_push_while(ListaC cond, ListaC statementl)
 {
-    const char *looplbl = next_label();
-    const char *loopendlbl = next_label();
+    const char *looplbl = while_label();
+    const char *loopendlbl = while_end_label();
 
     ListaC ll = creaLC();
+    comment(ll);   
+    
     // loop start label
     Operacion op = { label_colon(looplbl) };
     insertaLC(ll, finalLC(ll), op);
@@ -383,6 +445,8 @@ cl_push_while(ListaC cond, ListaC statementl)
     op = (Operacion){ label_colon(loopendlbl) };
     insertaLC(ll, finalLC(ll), op);
 
+    while_counter++;
+
     return ll;
 }
 
@@ -390,18 +454,23 @@ ListaC
 cl_push_if(ListaC cond, ListaC ifl)
 {
     ListaC res = creaLC();
+    comment(res); 
+
     concatenaLC(res, cond);
 
-    char *endiflabel = next_label();
+
+    char *ifendlabel = if_end_label(); 
     
     // continue to if or go to else
-    Operacion op = { "beqz", recuperaResLC(cond), endiflabel };
+    Operacion op = { "beqz", recuperaResLC(cond), ifendlabel };
     insertaLC(res, finalLC(res), op);
     // if block
     concatenaLC(res, ifl);
     // end label
-    op = (Operacion){ label_colon(endiflabel) };
+    op = (Operacion){ label_colon(ifendlabel) };
     insertaLC(res, finalLC(res), op);
+
+    if_counter++;
 
     return res;
 }
@@ -410,18 +479,20 @@ ListaC
 cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel)
 {
     ListaC res = creaLC();
+    comment(res); 
+
     concatenaLC(res, cond);
 
-    char *elselabel = next_label();
-    char *endiflabel = next_label();
+    char *elselabel = if_else_label();
+    char *ifendlabel = if_end_label();
     
     // continue to if or go to else
-    Operacion op = { "beqz", recuperaResLC(cond), endiflabel };
+    Operacion op = { "beqz", recuperaResLC(cond), ifendlabel };
     insertaLC(res, finalLC(res), op);
     // if block
     concatenaLC(res, ifl);
     // prevent fall through
-    op = (Operacion){ "j", endiflabel };
+    op = (Operacion){ "j", ifendlabel };
     insertaLC(res, finalLC(res), op);
     // else label
     op = (Operacion){ label_colon(elselabel) };
@@ -429,8 +500,10 @@ cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel)
     // else block
     concatenaLC(res, elsel);
     // end label
-    op = (Operacion){ label_colon(endiflabel) };
+    op = (Operacion){ label_colon(ifendlabel) };
     insertaLC(res, finalLC(res), op);
+
+    if_counter++;
 
     return res;
 }
@@ -438,6 +511,7 @@ cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel)
 ListaC
 cl_push_assign(const char *id, ListaC l)
 {
+    comment(l); 
     Operacion op = { "sw", recuperaResLC(l), strdup(id) };
     insertaLC(l, finalLC(l), op);
     free_reg(recuperaResLC(l));
@@ -472,8 +546,8 @@ cl_push_condop(ListaC cond, ListaC tl, ListaC fl)
     concatenaLC(res, cond);
 
     const char *reg = alloc_reg();
-    const char *falselabel = next_label();
-    const char *endlabel = next_label();
+    const char *falselabel = cond_false_label();
+    const char *endlabel = cond_end_label();
     Operacion op = { "beqz", recuperaResLC(cond), falselabel };
     insertaLC(res, finalLC(res), op);
     op = (Operacion){ "move", reg, recuperaResLC(tl) };
@@ -492,6 +566,8 @@ cl_push_condop(ListaC cond, ListaC tl, ListaC fl)
     free_reg(recuperaResLC(cond));
     free_reg(recuperaResLC(tl));
     free_reg(recuperaResLC(fl));
+
+    cond_counter++;
 
     return res;
 }

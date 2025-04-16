@@ -1,0 +1,116 @@
+	.data
+var1:
+	.word 0
+var2:
+	.word 0
+var4:
+	.word 0
+var3:
+	.word 0
+const1:
+	.word 0
+const2:
+	.word 0
+const3:
+	.word 0
+$str0:
+	.asciiz "lol"
+$str1:
+	.asciiz "por su puesto que "
+$str2:
+	.asciiz "obviamente no "
+	.text
+# L5
+# L5
+	li $t0, 69
+	sw $t0, const1
+	li $t0, 420
+	sw $t0, const2
+	li $t0, 1234
+	sw $t0, const3
+# L25
+	li $t0, 420
+	sw $t0, var1
+# L25
+	lw $t0, var1
+	li $t1, 2
+	lw $t2, const1
+	mul $t3, $t1, $t2
+	add $t1, $t0, $t3
+	lw $t0, const2
+	add $t2, $t1, $t0
+	lw $t0, const3
+	add $t1, $t2, $t0
+	lw $t0, kjsdhak
+	add $t2, $t1, $t0
+	sw $t2, var2
+# L25
+	lw $t0, var1
+	li $t1, 2
+	mul $t2, $t0, $t1
+	lw $t0, var1
+	mul $t1, $t2, $t0
+	lw $t0, var2
+	add $t2, $t1, $t0
+	li $t0, 123
+	add $t1, $t2, $t0
+	li $t0, 321
+	sub $t2, $t1, $t0
+	sw $t2, var3
+# L18
+	lw $t0, var1
+	beqz $t0, if0end
+# L21
+	li $v0, 4
+	la $a0, $str0
+	syscall
+if0end:
+# L22
+	lw $t1, var2
+	li $t2, 3
+	add $t3, $t1, $t2
+	beqz $t3, if1end
+# L21
+	li $v0, 4
+	la $a0, $str1
+	syscall
+	lw $t1, var2
+	li $t2, 3
+	add $t4, $t1, $t2
+	li $v0, 1
+	move $a0, $t4
+	syscall
+	j if1end
+if1else:
+# L21
+	li $v0, 4
+	la $a0, $str2
+	syscall
+	lw $t1, var2
+	li $v0, 1
+	move $a0, $t1
+	syscall
+if1end:
+# L26
+while0:
+# L25
+	lw $t5, var3
+	li $t6, 1
+	sub $t7, $t5, $t6
+	sw $t7, var3
+	beqz $t2, while0end
+# L25
+	lw $t5, var3
+	li $t6, 1
+	sub $t7, $t5, $t6
+	sw $t7, var3
+	j while0
+while0end:
+# L28
+	li $v0, 5
+	syscall
+	sw $v0, var4
+# program end
+	li $v0, 10
+	syscall
+
