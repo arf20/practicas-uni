@@ -77,7 +77,8 @@ extern int yydebug;
     COLON = 278,                   /* COLON  */
     ID = 279,                      /* ID  */
     LSTR = 280,                    /* LSTR  */
-    LINT = 281                     /* LINT  */
+    LINT = 281,                    /* LINT  */
+    OUMINUS = 282                  /* OUMINUS  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -86,12 +87,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 94 "minic.y"
+#line 93 "minic.y"
 
     char *lex;
     ListaC code;
 
-#line 95 "minic.tab.h"
+#line 96 "minic.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

@@ -56,9 +56,7 @@ read                                        return RREAD;
 "}"                                         return BRACKETR;
 "?"                                         return QUESTIONMARK;
 ":"                                         return COLON;
-[^a-zA-Z0-9;,+\-*/=(){}?:\"]+                  printf("%d: Lexical2 error %s\n", yylineno, yytext);
-
-.                                           printf("%d: Lexical error %s\n", yylineno, yytext);
+[^a-zA-Z0-9;,+\-*\=(){}?:!\n\t ]+           fprintf(stderr, "%d: lexical error \"%s\"\n", yylineno, yytext);
 %%
 
 int
@@ -81,4 +79,6 @@ check_id()
 }
 
 /*[^a-zA-Z0-9;,+\-/=(){}?:]+                  printf("%d: Lexical error %s\n", yylineno, yytext);*/
+//[^a-zA-Z0-9;,+\-*/=(){}?:\"]+                  printf("%d: Lexical2 error %s\n", yylineno, yytext);
+//.                                           printf("%d: Lexical error %s\n", yylineno, yytext);
 
