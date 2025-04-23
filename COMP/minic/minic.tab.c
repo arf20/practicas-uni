@@ -121,16 +121,16 @@ int while_counter = 0;
 #ifdef _DEBUG_
 #define insertaLC(l, p, o) { \
     if (o.arg2) \
-        printf("==%d: pushing `%s %s, %s, %s'\n", \
+        fprintf(stderr, "==%d: pushing `%s %s, %s, %s'\n", \
             yylineno, o.op, o.res, o.arg1, o.arg2); \
     else \
-        printf("==%d: pushing `%s %s, %s'\n", \
+        fprintf(stderr, "==%d: pushing `%s %s, %s'\n", \
             yylineno, o.op, o.res, o.arg1); \
     insertaLC(l, p, o); \
 }
 
 #define insertaLS(l, p, s) { \
-    printf("==%d: pushing symbol '%s'\n", yylineno, s.nombre); \
+    fprintf(stderr, "==%d: pushing symbol '%s'\n", yylineno, s.nombre); \
     insertaLS(l, p, s); \
 }
 
@@ -142,7 +142,7 @@ int while_counter = 0;
 } \
 
 #else
-#define 
+#define comment(l)
 #endif
 
 
@@ -202,19 +202,20 @@ enum yysymbol_kind_t
   YYSYMBOL_ID = 24,                        /* ID  */
   YYSYMBOL_LSTR = 25,                      /* LSTR  */
   YYSYMBOL_LINT = 26,                      /* LINT  */
-  YYSYMBOL_YYACCEPT = 27,                  /* $accept  */
-  YYSYMBOL_program = 28,                   /* program  */
-  YYSYMBOL_29_1 = 29,                      /* $@1  */
-  YYSYMBOL_decls = 30,                     /* decls  */
-  YYSYMBOL_type = 31,                      /* type  */
-  YYSYMBOL_var_list = 32,                  /* var_list  */
-  YYSYMBOL_const_list = 33,                /* const_list  */
-  YYSYMBOL_statement_list = 34,            /* statement_list  */
-  YYSYMBOL_statement = 35,                 /* statement  */
-  YYSYMBOL_print_list = 36,                /* print_list  */
-  YYSYMBOL_print_item = 37,                /* print_item  */
-  YYSYMBOL_read_list = 38,                 /* read_list  */
-  YYSYMBOL_expr = 39                       /* expr  */
+  YYSYMBOL_OUMINUS = 27,                   /* OUMINUS  */
+  YYSYMBOL_YYACCEPT = 28,                  /* $accept  */
+  YYSYMBOL_program = 29,                   /* program  */
+  YYSYMBOL_30_1 = 30,                      /* $@1  */
+  YYSYMBOL_decls = 31,                     /* decls  */
+  YYSYMBOL_type = 32,                      /* type  */
+  YYSYMBOL_var_list = 33,                  /* var_list  */
+  YYSYMBOL_const_list = 34,                /* const_list  */
+  YYSYMBOL_statement_list = 35,            /* statement_list  */
+  YYSYMBOL_statement = 36,                 /* statement  */
+  YYSYMBOL_print_list = 37,                /* print_list  */
+  YYSYMBOL_print_item = 38,                /* print_item  */
+  YYSYMBOL_read_list = 39,                 /* read_list  */
+  YYSYMBOL_expr = 40                       /* expr  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -542,10 +543,10 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  3
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   121
+#define YYLAST   117
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  27
+#define YYNTOKENS  28
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  13
 /* YYNRULES -- Number of rules.  */
@@ -554,7 +555,7 @@ union yyalloc
 #define YYNSTATES  88
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   281
+#define YYMAXUTOK   282
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -596,17 +597,17 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
-      25,    26
+      25,    26,    27
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   103,   103,   103,   106,   107,   108,   111,   114,   115,
-     118,   119,   122,   123,   126,   127,   128,   129,   130,   131,
-     132,   135,   136,   139,   140,   143,   144,   147,   148,   149,
-     150,   151,   152,   153,   154,   155
+       0,   102,   102,   102,   105,   106,   107,   110,   113,   114,
+     117,   118,   121,   122,   125,   126,   127,   128,   129,   130,
+     131,   134,   135,   138,   139,   142,   143,   146,   147,   148,
+     149,   150,   151,   152,   153,   154
 };
 #endif
 
@@ -626,9 +627,9 @@ static const char *const yytname[] =
   "RINT", "RIF", "RELSE", "RWHILE", "RPRINT", "RREAD", "SEMICOLON",
   "COMMA", "OPLUS", "OMINUS", "OASTERISK", "OSLASH", "OEQUALS", "PARENL",
   "PARENR", "BRACKETL", "BRACKETR", "QUESTIONMARK", "COLON", "ID", "LSTR",
-  "LINT", "$accept", "program", "$@1", "decls", "type", "var_list",
-  "const_list", "statement_list", "statement", "print_list", "print_item",
-  "read_list", "expr", YY_NULLPTR
+  "LINT", "OUMINUS", "$accept", "program", "$@1", "decls", "type",
+  "var_list", "const_list", "statement_list", "statement", "print_list",
+  "print_item", "read_list", "expr", YY_NULLPTR
 };
 
 static const char *
@@ -653,13 +654,13 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 static const yytype_int8 yypact[] =
 {
      -60,     4,   -17,   -60,    -4,     1,     9,   -60,    55,    18,
-      18,    28,   -60,    23,    26,    88,    89,    90,    91,   -60,
-     -60,    59,   -60,   -60,    71,    84,    93,    -5,    -5,    -8,
-      86,    45,    -5,   -60,    92,    -5,   -60,    94,    -5,    -5,
+      18,    28,   -60,    23,    26,    84,    85,    86,    87,   -60,
+     -60,    59,   -60,   -60,    71,    90,    89,    -5,    -5,    -8,
+      82,    45,    -5,   -60,    88,    -5,   -60,    91,    -5,    -5,
      -60,   -60,    58,    65,   -60,     3,   -60,    83,   -60,    56,
-     -60,    79,   -60,    83,    95,    87,    48,    -5,    -5,    -5,
-      -5,    36,    36,    -8,    78,    96,   100,   -60,    -5,   -60,
-      -5,    24,    87,   -60,    98,   107,   -60,   -60,   -60,   -60,
+     -60,    79,   -60,    83,    92,   -60,    48,    -5,    -5,    -5,
+      -5,    36,    36,    -8,    78,    93,    97,   -60,    -5,   -60,
+      -5,    24,    24,   -60,   -60,   103,   -60,   -60,   -60,   -60,
      -60,    83,    12,    36,    -5,   -60,    72,   -60
 };
 
@@ -682,8 +683,8 @@ static const yytype_int8 yydefact[] =
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -60,   -60,   -60,   -60,   105,   -60,   -60,   102,   -59,   -60,
-      54,   -60,   -27
+     -60,   -60,   -60,   -60,   101,   -60,   -60,    94,   -59,   -60,
+      51,   -60,   -27
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -708,9 +709,8 @@ static const yytype_int8 yytable[] =
       70,    57,    58,    59,    60,    66,    32,    61,    57,    58,
       59,    60,    33,    34,    62,    57,    58,    59,    60,    78,
       67,    87,    57,    58,    59,    60,    57,    58,    59,    60,
-      57,    35,    59,    60,    36,    37,    27,    28,    29,    30,
-      48,    80,    68,    59,    83,    14,    52,    77,    54,     0,
-      79,    31
+      36,    37,    27,    28,    29,    30,    48,    35,    80,    68,
+      83,    14,    52,    31,    77,    54,     0,    79
 };
 
 static const yytype_int8 yycheck[] =
@@ -725,33 +725,32 @@ static const yytype_int8 yycheck[] =
       22,    13,    14,    15,    16,    19,    17,    19,    13,    14,
       15,    16,    11,    12,    19,    13,    14,    15,    16,    11,
       11,    19,    13,    14,    15,    16,    13,    14,    15,    16,
-      13,    17,    15,    16,    11,    12,    18,    18,    18,    18,
-      24,    11,    17,    15,     7,    10,    24,    63,    24,    -1,
-      24,    19
+      11,    12,    18,    18,    18,    18,    24,    17,    11,    17,
+       7,    10,    24,    19,    63,    24,    -1,    24
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    28,    29,     0,    24,    18,    19,    20,    30,     3,
-       4,    34,     5,    31,    31,     6,     8,     9,    10,    20,
-      21,    24,    35,    24,    32,    24,    33,    18,    18,    18,
-      18,    34,    17,    11,    12,    17,    11,    12,    14,    18,
-      24,    26,    39,    39,    25,    36,    37,    39,    24,    38,
-      21,    39,    24,    39,    24,    39,    39,    13,    14,    15,
+       0,    29,    30,     0,    24,    18,    19,    20,    31,     3,
+       4,    35,     5,    32,    32,     6,     8,     9,    10,    20,
+      21,    24,    36,    24,    33,    24,    34,    18,    18,    18,
+      18,    35,    17,    11,    12,    17,    11,    12,    14,    18,
+      24,    26,    40,    40,    25,    37,    38,    40,    24,    39,
+      21,    40,    24,    40,    24,    40,    40,    13,    14,    15,
       16,    19,    19,    12,    19,    12,    19,    11,    17,    19,
-      22,    39,    39,    39,    39,    35,    35,    37,    11,    24,
-      11,    39,    39,     7,    23,    35,    39,    19
+      22,    40,    40,    40,    40,    36,    36,    38,    11,    24,
+      11,    40,    40,     7,    23,    36,    40,    19
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    27,    29,    28,    30,    30,    30,    31,    32,    32,
-      33,    33,    34,    34,    35,    35,    35,    35,    35,    35,
-      35,    36,    36,    37,    37,    38,    38,    39,    39,    39,
-      39,    39,    39,    39,    39,    39
+       0,    28,    30,    29,    31,    31,    31,    32,    33,    33,
+      34,    34,    35,    35,    36,    36,    36,    36,    36,    36,
+      36,    37,    37,    38,    38,    39,    39,    40,    40,    40,
+      40,    40,    40,    40,    40,    40
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
@@ -1224,205 +1223,205 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* $@1: %empty  */
-#line 103 "minic.y"
+#line 102 "minic.y"
           { setup_program(); }
-#line 1230 "minic.tab.c"
+#line 1229 "minic.tab.c"
     break;
 
   case 3: /* program: $@1 ID PARENL PARENR BRACKETL decls statement_list BRACKETR  */
-#line 103 "minic.y"
+#line 102 "minic.y"
                                                                                        { cl_program((yyvsp[-6].lex), (yyvsp[-2].code), (yyvsp[-1].code));  }
-#line 1236 "minic.tab.c"
+#line 1235 "minic.tab.c"
     break;
 
   case 4: /* decls: decls RVAR type var_list SEMICOLON  */
-#line 106 "minic.y"
+#line 105 "minic.y"
                                            { (yyval.code) = (yyvsp[-4].code); }
-#line 1242 "minic.tab.c"
+#line 1241 "minic.tab.c"
     break;
 
   case 5: /* decls: decls RCONST type const_list SEMICOLON  */
-#line 107 "minic.y"
+#line 106 "minic.y"
                                                { concatenaLC((yyvsp[-4].code), (yyvsp[-1].code)); (yyval.code) = (yyvsp[-4].code); comment((yyval.code)); }
-#line 1248 "minic.tab.c"
+#line 1247 "minic.tab.c"
     break;
 
   case 6: /* decls: %empty  */
-#line 108 "minic.y"
+#line 107 "minic.y"
         { (yyval.code) = creaLC(); }
-#line 1254 "minic.tab.c"
+#line 1253 "minic.tab.c"
     break;
 
   case 8: /* var_list: ID  */
-#line 114 "minic.y"
+#line 113 "minic.y"
               { symtable_push((yyvsp[0].lex)); ds_push_word((yyvsp[0].lex)); }
-#line 1260 "minic.tab.c"
+#line 1259 "minic.tab.c"
     break;
 
   case 9: /* var_list: var_list COMMA ID  */
-#line 115 "minic.y"
+#line 114 "minic.y"
                              { symtable_push((yyvsp[0].lex)); ds_push_word((yyvsp[0].lex)); }
-#line 1266 "minic.tab.c"
+#line 1265 "minic.tab.c"
     break;
 
   case 10: /* const_list: ID OEQUALS expr  */
-#line 118 "minic.y"
+#line 117 "minic.y"
                              { symtable_push((yyvsp[-2].lex)); ds_push_word((yyvsp[-2].lex)); (yyval.code) = cl_push_const_list(creaLC(), (yyvsp[-2].lex), (yyvsp[0].code)); }
-#line 1272 "minic.tab.c"
+#line 1271 "minic.tab.c"
     break;
 
   case 11: /* const_list: const_list COMMA ID OEQUALS expr  */
-#line 119 "minic.y"
+#line 118 "minic.y"
                                               { symtable_push((yyvsp[-2].lex)); ds_push_word((yyvsp[-2].lex)); (yyval.code) = cl_push_const_list((yyvsp[-4].code), (yyvsp[-2].lex), (yyvsp[0].code)); }
-#line 1278 "minic.tab.c"
+#line 1277 "minic.tab.c"
     break;
 
   case 12: /* statement_list: statement_list statement  */
-#line 122 "minic.y"
+#line 121 "minic.y"
                                           { concatenaLC((yyvsp[-1].code), (yyvsp[0].code)); (yyval.code) = (yyvsp[-1].code); }
-#line 1284 "minic.tab.c"
+#line 1283 "minic.tab.c"
     break;
 
   case 13: /* statement_list: %empty  */
-#line 123 "minic.y"
+#line 122 "minic.y"
                  {(yyval.code) = creaLC();}
-#line 1290 "minic.tab.c"
+#line 1289 "minic.tab.c"
     break;
 
   case 14: /* statement: ID OEQUALS expr SEMICOLON  */
-#line 126 "minic.y"
+#line 125 "minic.y"
                                       { (yyval.code) = cl_push_assign((yyvsp[-3].lex), (yyvsp[-1].code)); }
-#line 1296 "minic.tab.c"
+#line 1295 "minic.tab.c"
     break;
 
   case 15: /* statement: BRACKETL statement_list BRACKETR  */
-#line 127 "minic.y"
+#line 126 "minic.y"
                                              { (yyval.code) = (yyvsp[-1].code); }
-#line 1302 "minic.tab.c"
+#line 1301 "minic.tab.c"
     break;
 
   case 16: /* statement: RIF PARENL expr PARENR statement RELSE statement  */
-#line 128 "minic.y"
+#line 127 "minic.y"
                                                              { (yyval.code) = cl_push_if_else((yyvsp[-4].code), (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1308 "minic.tab.c"
+#line 1307 "minic.tab.c"
     break;
 
   case 17: /* statement: RIF PARENL expr PARENR statement  */
-#line 129 "minic.y"
+#line 128 "minic.y"
                                              { (yyval.code) = cl_push_if((yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1314 "minic.tab.c"
+#line 1313 "minic.tab.c"
     break;
 
   case 18: /* statement: RWHILE PARENL expr PARENR statement  */
-#line 130 "minic.y"
+#line 129 "minic.y"
                                                 { (yyval.code) = cl_push_while((yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1320 "minic.tab.c"
+#line 1319 "minic.tab.c"
     break;
 
   case 19: /* statement: RPRINT PARENL print_list PARENR SEMICOLON  */
-#line 131 "minic.y"
+#line 130 "minic.y"
                                                       { (yyval.code) = (yyvsp[-2].code); comment((yyval.code)); }
-#line 1326 "minic.tab.c"
+#line 1325 "minic.tab.c"
     break;
 
   case 20: /* statement: RREAD PARENL read_list PARENR SEMICOLON  */
-#line 132 "minic.y"
+#line 131 "minic.y"
                                                     { (yyval.code) = (yyvsp[-2].code); comment((yyval.code)); }
-#line 1332 "minic.tab.c"
+#line 1331 "minic.tab.c"
     break;
 
   case 21: /* print_list: print_item  */
-#line 135 "minic.y"
+#line 134 "minic.y"
                         { (yyval.code) = (yyvsp[0].code); }
-#line 1338 "minic.tab.c"
+#line 1337 "minic.tab.c"
     break;
 
   case 22: /* print_list: print_list COMMA print_item  */
-#line 136 "minic.y"
+#line 135 "minic.y"
                                          { concatenaLC((yyvsp[-2].code), (yyvsp[0].code)); (yyval.code) = (yyvsp[-2].code); }
-#line 1344 "minic.tab.c"
+#line 1343 "minic.tab.c"
     break;
 
   case 23: /* print_item: expr  */
-#line 139 "minic.y"
+#line 138 "minic.y"
                   { (yyval.code) = cl_push_print_expr((yyvsp[0].code)); }
-#line 1350 "minic.tab.c"
+#line 1349 "minic.tab.c"
     break;
 
   case 24: /* print_item: LSTR  */
-#line 140 "minic.y"
+#line 139 "minic.y"
                   { (yyval.code) = cl_push_print_str((yyvsp[0].lex)); }
-#line 1356 "minic.tab.c"
+#line 1355 "minic.tab.c"
     break;
 
   case 25: /* read_list: ID  */
-#line 143 "minic.y"
+#line 142 "minic.y"
                { (yyval.code) = cl_push_read((yyvsp[0].lex)); }
-#line 1362 "minic.tab.c"
+#line 1361 "minic.tab.c"
     break;
 
   case 26: /* read_list: read_list COMMA ID  */
-#line 144 "minic.y"
+#line 143 "minic.y"
                                { concatenaLC((yyvsp[-2].code), cl_push_read((yyvsp[0].lex))); (yyval.code) = (yyvsp[-2].code); }
-#line 1368 "minic.tab.c"
+#line 1367 "minic.tab.c"
     break;
 
   case 27: /* expr: expr OPLUS expr  */
-#line 147 "minic.y"
+#line 146 "minic.y"
                        { (yyval.code) = cl_push_binop("add", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1374 "minic.tab.c"
+#line 1373 "minic.tab.c"
     break;
 
   case 28: /* expr: expr OMINUS expr  */
-#line 148 "minic.y"
+#line 147 "minic.y"
                         { (yyval.code) = cl_push_binop("sub", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1380 "minic.tab.c"
+#line 1379 "minic.tab.c"
     break;
 
   case 29: /* expr: expr OASTERISK expr  */
-#line 149 "minic.y"
+#line 148 "minic.y"
                            { (yyval.code) = cl_push_binop("mul", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1386 "minic.tab.c"
+#line 1385 "minic.tab.c"
     break;
 
   case 30: /* expr: expr OSLASH expr  */
-#line 150 "minic.y"
+#line 149 "minic.y"
                         { (yyval.code) = cl_push_binop("div", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1392 "minic.tab.c"
+#line 1391 "minic.tab.c"
     break;
 
   case 31: /* expr: PARENL expr QUESTIONMARK expr COLON expr PARENR  */
-#line 151 "minic.y"
+#line 150 "minic.y"
                                                        { (yyval.code) = cl_push_condop((yyvsp[-5].code), (yyvsp[-3].code), (yyvsp[-1].code)); }
-#line 1398 "minic.tab.c"
+#line 1397 "minic.tab.c"
     break;
 
   case 32: /* expr: OMINUS expr  */
-#line 152 "minic.y"
-                   { (yyval.code) = cl_push_ominus_expr((yyvsp[0].code)); }
-#line 1404 "minic.tab.c"
+#line 151 "minic.y"
+                                 { (yyval.code) = cl_push_ominus_expr((yyvsp[0].code)); }
+#line 1403 "minic.tab.c"
     break;
 
   case 33: /* expr: PARENL expr PARENR  */
-#line 153 "minic.y"
+#line 152 "minic.y"
                           { (yyval.code) = (yyvsp[-1].code); }
-#line 1410 "minic.tab.c"
+#line 1409 "minic.tab.c"
     break;
 
   case 34: /* expr: ID  */
-#line 154 "minic.y"
+#line 153 "minic.y"
           { (yyval.code) = cl_push_id((yyvsp[0].lex)); }
-#line 1416 "minic.tab.c"
+#line 1415 "minic.tab.c"
     break;
 
   case 35: /* expr: LINT  */
-#line 155 "minic.y"
+#line 154 "minic.y"
             { (yyval.code) = cl_push_lint((yyvsp[0].lex)); }
-#line 1422 "minic.tab.c"
+#line 1421 "minic.tab.c"
     break;
 
 
-#line 1426 "minic.tab.c"
+#line 1425 "minic.tab.c"
 
       default: break;
     }
@@ -1615,7 +1614,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 160 "minic.y"
+#line 159 "minic.y"
 
 
 
@@ -1650,12 +1649,12 @@ print_code(ListaC code)
 void
 symtable_print() {
     PosicionLista end = finalLS(symtable);
-    printf("symbol table:\nsymbol\n======\n");
+    fprintf(stderr, "symbol table:\nsymbol\n======\n");
     for (PosicionLista t = inicioLS(symtable); t != end; t = siguienteLS(symtable, t)) {
         Simbolo s = recuperaLS(symtable, t);
-        printf("%s\n", s.nombre);
+        fprintf(stderr, "%s\n", s.nombre);
     }
-    printf("\n");
+    fprintf(stderr, "\n");
 }
 
 const char*
@@ -1668,7 +1667,7 @@ alloc_reg()
         }
     }
 
-    printf("error: ran out of registers\n");
+    fprintf(stderr, "error: ran out of registers\n");
     return "";
 }
 
@@ -1754,8 +1753,11 @@ label_colon(const char *label)
 void
 symtable_push(const char *id)
 {
-    if (buscaLS(symtable, id) == finalLS(symtable)) {
-        insertaLS(symtable, finalLS(symtable), ((Simbolo){strdup(id), VARIABLE, 0}));
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
+    if (buscaLS(symtable, buff) == finalLS(symtable)) {
+        insertaLS(symtable, finalLS(symtable), ((Simbolo){strdup(buff), VARIABLE, 0}));
     }
     else
         fprintf(stderr, "%d: error: symbol `%s' redefined\n", yylineno, id);
@@ -1776,7 +1778,10 @@ setup_program()
 void
 ds_push_word(char *id)
 {
-    Operacion op = { label_colon(id) };
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
+    Operacion op = { label_colon(buff) };
     insertaLC(dataseg, finalLC(dataseg), op);
 
     op = (Operacion){ ".word 0" };
@@ -1825,8 +1830,11 @@ cl_program(const char *id, ListaC decls, ListaC statements)
 ListaC
 cl_push_const_list(ListaC constl, const char *id, ListaC vl)
 {
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
     concatenaLC(constl, vl);
-    Operacion op = { "sw", recuperaResLC(vl), strdup(id) };
+    Operacion op = { "sw", recuperaResLC(vl), strdup(buff) };
     insertaLC(constl, finalLC(constl), op);
     free_reg(recuperaResLC(vl));
     return constl;
@@ -1836,15 +1844,18 @@ cl_push_const_list(ListaC constl, const char *id, ListaC vl)
 ListaC
 cl_push_read(const char *id)
 {
-    if (buscaLS(symtable, id) == finalLS(symtable))
-        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, id);
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
+    if (buscaLS(symtable, buff) == finalLS(symtable))
+        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, buff);
     
     ListaC rl = creaLC();
     Operacion op = { "li", "$v0", "5" };
     insertaLC(rl, finalLC(rl), op);
     op = (Operacion){ "syscall" };
     insertaLC(rl, finalLC(rl), op);
-    op = (Operacion){ "sw", "$v0", id };
+    op = (Operacion){ "sw", "$v0", strdup(buff) };
     insertaLC(rl, finalLC(rl), op);
 
     return rl;
@@ -1859,6 +1870,8 @@ cl_push_print_expr(ListaC exprl)
     insertaLC(exprl, finalLC(exprl), op);
     op = (Operacion){ "syscall" };
     insertaLC(exprl, finalLC(exprl), op);
+
+    free_reg(recuperaResLC(exprl));
 
     return exprl;
 }
@@ -1892,7 +1905,7 @@ cl_push_while(ListaC cond, ListaC statementl)
     Operacion op = { label_colon(looplbl) };
     insertaLC(ll, finalLC(ll), op);
     // condition
-    concatenaLC(ll, statementl);
+    concatenaLC(ll, cond);
     op = (Operacion){ "beqz", recuperaResLC(cond), loopendlbl };
     insertaLC(ll, finalLC(ll), op);
     // body
@@ -1946,7 +1959,7 @@ cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel)
     char *ifendlabel = if_end_label();
     
     // continue to if or go to else
-    Operacion op = { "beqz", recuperaResLC(cond), ifendlabel };
+    Operacion op = { "beqz", recuperaResLC(cond), elselabel };
     insertaLC(res, finalLC(res), op);
     // if block
     concatenaLC(res, ifl);
@@ -1970,8 +1983,11 @@ cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel)
 ListaC
 cl_push_assign(const char *id, ListaC l)
 {
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
     comment(l); 
-    Operacion op = { "sw", recuperaResLC(l), strdup(id) };
+    Operacion op = { "sw", recuperaResLC(l), strdup(buff) };
     insertaLC(l, finalLC(l), op);
     free_reg(recuperaResLC(l));
     return l; 
@@ -2043,11 +2059,14 @@ cl_push_ominus_expr(ListaC l)
 ListaC
 cl_push_id(const char *id)
 {
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
     ListaC l = creaLC();
-    if (buscaLS(symtable, id) == finalLS(symtable))
-        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, id);
+    if (buscaLS(symtable, buff) == finalLS(symtable))
+        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, buff);
     const char *reg = alloc_reg();
-    Operacion op = { "lw", reg, strdup(id) };
+    Operacion op = { "lw", reg, strdup(buff) };
     insertaLC(l, finalLC(l), op);
     guardaResLC(l, reg);
     return l;

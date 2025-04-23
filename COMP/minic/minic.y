@@ -51,16 +51,16 @@ int while_counter = 0;
 #ifdef _DEBUG_
 #define insertaLC(l, p, o) { \
     if (o.arg2) \
-        printf("==%d: pushing `%s %s, %s, %s'\n", \
+        fprintf(stderr, "==%d: pushing `%s %s, %s, %s'\n", \
             yylineno, o.op, o.res, o.arg1, o.arg2); \
     else \
-        printf("==%d: pushing `%s %s, %s'\n", \
+        fprintf(stderr, "==%d: pushing `%s %s, %s'\n", \
             yylineno, o.op, o.res, o.arg1); \
     insertaLC(l, p, o); \
 }
 
 #define insertaLS(l, p, s) { \
-    printf("==%d: pushing symbol '%s'\n", yylineno, s.nombre); \
+    fprintf(stderr, "==%d: pushing symbol '%s'\n", yylineno, s.nombre); \
     insertaLS(l, p, s); \
 }
 
@@ -72,7 +72,7 @@ int while_counter = 0;
 } \
 
 #else
-#define 
+#define comment(l)
 #endif
 
 
@@ -82,10 +82,9 @@ int while_counter = 0;
 
 %token <lex> ID LSTR LINT
 
-%left OMINUS
-%left OPLUS
-%left OSLASH
-%left OASTERISK
+%left OMINUS OPLUS
+%left OSLASH OASTERISK
+%left OUMINUS
 
 %expect 1
 
@@ -149,7 +148,7 @@ expr : expr OPLUS expr { $$ = cl_push_binop("add", $1, $3); }
      | expr OASTERISK expr { $$ = cl_push_binop("mul", $1, $3); }
      | expr OSLASH expr { $$ = cl_push_binop("div", $1, $3); }
      | PARENL expr QUESTIONMARK expr COLON expr PARENR { $$ = cl_push_condop($2, $4, $6); }
-     | OMINUS expr { $$ = cl_push_ominus_expr($2); }
+     | OMINUS expr %prec OUMINUS { $$ = cl_push_ominus_expr($2); }
      | PARENL expr PARENR { $$ = $2; }
      | ID { $$ = cl_push_id($1); }
      | LINT { $$ = cl_push_lint($1); }
@@ -191,12 +190,12 @@ print_code(ListaC code)
 void
 symtable_print() {
     PosicionLista end = finalLS(symtable);
-    printf("symbol table:\nsymbol\n======\n");
+    fprintf(stderr, "symbol table:\nsymbol\n======\n");
     for (PosicionLista t = inicioLS(symtable); t != end; t = siguienteLS(symtable, t)) {
         Simbolo s = recuperaLS(symtable, t);
-        printf("%s\n", s.nombre);
+        fprintf(stderr, "%s\n", s.nombre);
     }
-    printf("\n");
+    fprintf(stderr, "\n");
 }
 
 const char*
@@ -209,7 +208,7 @@ alloc_reg()
         }
     }
 
-    printf("error: ran out of registers\n");
+    fprintf(stderr, "error: ran out of registers\n");
     return "";
 }
 
@@ -295,8 +294,11 @@ label_colon(const char *label)
 void
 symtable_push(const char *id)
 {
-    if (buscaLS(symtable, id) == finalLS(symtable)) {
-        insertaLS(symtable, finalLS(symtable), ((Simbolo){strdup(id), VARIABLE, 0}));
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
+    if (buscaLS(symtable, buff) == finalLS(symtable)) {
+        insertaLS(symtable, finalLS(symtable), ((Simbolo){strdup(buff), VARIABLE, 0}));
     }
     else
         fprintf(stderr, "%d: error: symbol `%s' redefined\n", yylineno, id);
@@ -317,7 +319,10 @@ setup_program()
 void
 ds_push_word(char *id)
 {
-    Operacion op = { label_colon(id) };
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
+    Operacion op = { label_colon(buff) };
     insertaLC(dataseg, finalLC(dataseg), op);
 
     op = (Operacion){ ".word 0" };
@@ -366,8 +371,11 @@ cl_program(const char *id, ListaC decls, ListaC statements)
 ListaC
 cl_push_const_list(ListaC constl, const char *id, ListaC vl)
 {
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
     concatenaLC(constl, vl);
-    Operacion op = { "sw", recuperaResLC(vl), strdup(id) };
+    Operacion op = { "sw", recuperaResLC(vl), strdup(buff) };
     insertaLC(constl, finalLC(constl), op);
     free_reg(recuperaResLC(vl));
     return constl;
@@ -377,15 +385,18 @@ cl_push_const_list(ListaC constl, const char *id, ListaC vl)
 ListaC
 cl_push_read(const char *id)
 {
-    if (buscaLS(symtable, id) == finalLS(symtable))
-        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, id);
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
+    if (buscaLS(symtable, buff) == finalLS(symtable))
+        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, buff);
     
     ListaC rl = creaLC();
     Operacion op = { "li", "$v0", "5" };
     insertaLC(rl, finalLC(rl), op);
     op = (Operacion){ "syscall" };
     insertaLC(rl, finalLC(rl), op);
-    op = (Operacion){ "sw", "$v0", id };
+    op = (Operacion){ "sw", "$v0", strdup(buff) };
     insertaLC(rl, finalLC(rl), op);
 
     return rl;
@@ -400,6 +411,8 @@ cl_push_print_expr(ListaC exprl)
     insertaLC(exprl, finalLC(exprl), op);
     op = (Operacion){ "syscall" };
     insertaLC(exprl, finalLC(exprl), op);
+
+    free_reg(recuperaResLC(exprl));
 
     return exprl;
 }
@@ -433,7 +446,7 @@ cl_push_while(ListaC cond, ListaC statementl)
     Operacion op = { label_colon(looplbl) };
     insertaLC(ll, finalLC(ll), op);
     // condition
-    concatenaLC(ll, statementl);
+    concatenaLC(ll, cond);
     op = (Operacion){ "beqz", recuperaResLC(cond), loopendlbl };
     insertaLC(ll, finalLC(ll), op);
     // body
@@ -487,7 +500,7 @@ cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel)
     char *ifendlabel = if_end_label();
     
     // continue to if or go to else
-    Operacion op = { "beqz", recuperaResLC(cond), ifendlabel };
+    Operacion op = { "beqz", recuperaResLC(cond), elselabel };
     insertaLC(res, finalLC(res), op);
     // if block
     concatenaLC(res, ifl);
@@ -511,8 +524,11 @@ cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel)
 ListaC
 cl_push_assign(const char *id, ListaC l)
 {
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
     comment(l); 
-    Operacion op = { "sw", recuperaResLC(l), strdup(id) };
+    Operacion op = { "sw", recuperaResLC(l), strdup(buff) };
     insertaLC(l, finalLC(l), op);
     free_reg(recuperaResLC(l));
     return l; 
@@ -584,11 +600,14 @@ cl_push_ominus_expr(ListaC l)
 ListaC
 cl_push_id(const char *id)
 {
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
     ListaC l = creaLC();
-    if (buscaLS(symtable, id) == finalLS(symtable))
-        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, id);
+    if (buscaLS(symtable, buff) == finalLS(symtable))
+        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, buff);
     const char *reg = alloc_reg();
-    Operacion op = { "lw", reg, strdup(id) };
+    Operacion op = { "lw", reg, strdup(buff) };
     insertaLC(l, finalLC(l), op);
     guardaResLC(l, reg);
     return l;

@@ -22,26 +22,21 @@ $str6:
 $str7:
 	.asciiz "\n"
 	.text
-# L2
 	li $t0, 0
-	sw $t0, _a
+	sw $t0, a
 	li $t0, 0
-	sw $t0, _b
-# L13
+	sw $t0, b
 	li $v0, 4
 	la $a0, $str0
 	syscall
-# L11
 	li $t0, 5
 	li $t1, 2
 	add $t2, $t0, $t1
 	li $t0, 2
 	sub $t1, $t2, $t0
 	sw $t1, _c
-# L12
 	lw $t0, _a
-	beqz $t0, if1else
-# L13
+	beqz $t0, if1end
 	li $v0, 4
 	la $a0, $str1
 	syscall
@@ -50,20 +45,14 @@ $str7:
 	syscall
 	j if1end
 if1else:
-# L12
 	lw $t1, _b
-	beqz $t1, if0else
-# L13
+	beqz $t1, if0end
 	li $v0, 4
 	la $a0, $str3
 	syscall
 	j if0end
 if0else:
-# L12
 while0:
-	lw $t2, _c
-	beqz $t2, while0end
-# L13
 	li $v0, 4
 	la $a0, $str4
 	syscall
@@ -74,18 +63,33 @@ while0:
 	li $v0, 4
 	la $a0, $str5
 	syscall
-# L11
+	lw $t4, _c
+	li $t5, 2
+	li $t6, 1
+	add $t7, $t5, $t6
+	sub $t6, $t4, $t7
+	sw $t6, _c
+	beqz $t2, while0end
+	li $v0, 4
+	la $a0, $str4
+	syscall
 	lw $t3, _c
-	li $t4, 2
-	sub $t5, $t3, $t4
-	li $t3, 1
-	add $t5, $t5, $t3
-	sw $t5, _c
+	li $v0, 1
+	move $a0, $t3
+	syscall
+	li $v0, 4
+	la $a0, $str5
+	syscall
+	lw $t4, _c
+	li $t5, 2
+	li $t6, 1
+	add $t7, $t5, $t6
+	sub $t6, $t4, $t7
+	sw $t6, _c
 	j while0
 while0end:
 if0end:
 if1end:
-# L13
 	li $v0, 4
 	la $a0, $str6
 	syscall
