@@ -60,25 +60,33 @@ extern int yydebug;
     RIF = 261,                     /* RIF  */
     RELSE = 262,                   /* RELSE  */
     RWHILE = 263,                  /* RWHILE  */
-    RPRINT = 264,                  /* RPRINT  */
-    RREAD = 265,                   /* RREAD  */
-    SEMICOLON = 266,               /* SEMICOLON  */
-    COMMA = 267,                   /* COMMA  */
-    OPLUS = 268,                   /* OPLUS  */
-    OMINUS = 269,                  /* OMINUS  */
-    OASTERISK = 270,               /* OASTERISK  */
-    OSLASH = 271,                  /* OSLASH  */
-    OEQUALS = 272,                 /* OEQUALS  */
-    PARENL = 273,                  /* PARENL  */
-    PARENR = 274,                  /* PARENR  */
-    BRACKETL = 275,                /* BRACKETL  */
-    BRACKETR = 276,                /* BRACKETR  */
-    QUESTIONMARK = 277,            /* QUESTIONMARK  */
-    COLON = 278,                   /* COLON  */
-    ID = 279,                      /* ID  */
-    LSTR = 280,                    /* LSTR  */
-    LINT = 281,                    /* LINT  */
-    OUMINUS = 282                  /* OUMINUS  */
+    RDO = 264,                     /* RDO  */
+    RFOR = 265,                    /* RFOR  */
+    RPRINT = 266,                  /* RPRINT  */
+    RREAD = 267,                   /* RREAD  */
+    SEMICOLON = 268,               /* SEMICOLON  */
+    COMMA = 269,                   /* COMMA  */
+    OPLUS = 270,                   /* OPLUS  */
+    OMINUS = 271,                  /* OMINUS  */
+    OASTERISK = 272,               /* OASTERISK  */
+    OSLASH = 273,                  /* OSLASH  */
+    OASSIGN = 274,                 /* OASSIGN  */
+    OLESS = 275,                   /* OLESS  */
+    OGREATER = 276,                /* OGREATER  */
+    OLESSEQUAL = 277,              /* OLESSEQUAL  */
+    OGREATEREQUAL = 278,           /* OGREATEREQUAL  */
+    OEQUALS = 279,                 /* OEQUALS  */
+    ONOTEQUALS = 280,              /* ONOTEQUALS  */
+    PARENL = 281,                  /* PARENL  */
+    PARENR = 282,                  /* PARENR  */
+    BRACKETL = 283,                /* BRACKETL  */
+    BRACKETR = 284,                /* BRACKETR  */
+    QUESTIONMARK = 285,            /* QUESTIONMARK  */
+    COLON = 286,                   /* COLON  */
+    ID = 287,                      /* ID  */
+    LSTR = 288,                    /* LSTR  */
+    LINT = 289,                    /* LINT  */
+    OUMINUS = 290                  /* OUMINUS  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -87,12 +95,12 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 93 "minic.y"
+#line 95 "minic.y"
 
     char *lex;
     ListaC code;
 
-#line 96 "minic.tab.h"
+#line 104 "minic.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

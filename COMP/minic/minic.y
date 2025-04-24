@@ -26,10 +26,13 @@ ListaC cl_push_id(const char *id);
 ListaC cl_push_ominus_expr(ListaC l);
 ListaC cl_push_condop(ListaC cond, ListaC tl, ListaC fl);
 ListaC cl_push_binop(const char *inst, ListaC ll, ListaC rl);
+ListaC cl_push_rel(const char *inst, ListaC ll, ListaC rl);
 ListaC cl_push_assign(const char *id, ListaC l);
 ListaC cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel);
 ListaC cl_push_if(ListaC cond, ListaC ifl);
 ListaC cl_push_while(ListaC cond, ListaC statementl);
+ListaC cl_push_do_while(ListaC statementl, ListaC cond);
+ListaC cl_push_for(const char *id, const char *lintinit, ListaC cond, ListaC statementl, int sign, const char *lintstep);
 ListaC cl_push_print_expr(ListaC exprl);
 ListaC cl_push_print_str(const char *lstr);
 ListaC cl_push_read(const char *id);
@@ -41,10 +44,8 @@ const char reg_strs[][10] = {
     "$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t6", "$t7", "$t8", "$t9"
 };
 
-int string_counter = 0;
-int cond_counter = 0;
-int if_counter = 0;
-int while_counter = 0;
+int string_counter = 0, cond_counter = 0, if_counter = 0, while_counter = 0,
+    dowhile_counter = 0, for_counter = 0;
 
 #define _DEBUG_
 
@@ -78,10 +79,11 @@ int while_counter = 0;
 
 %}
 
-%token RVAR RCONST RINT RIF RELSE RWHILE RPRINT RREAD SEMICOLON COMMA OPLUS OMINUS OASTERISK OSLASH OEQUALS PARENL PARENR BRACKETL BRACKETR QUESTIONMARK COLON
+%token RVAR RCONST RINT RIF RELSE RWHILE RDO RFOR RPRINT RREAD SEMICOLON COMMA OPLUS OMINUS OASTERISK OSLASH OASSIGN OLESS OGREATER OLESSEQUAL OGREATEREQUAL OEQUALS ONOTEQUALS PARENL PARENR BRACKETL BRACKETR QUESTIONMARK COLON
 
 %token <lex> ID LSTR LINT
 
+%left OLESS OGREATER OLESSEQUAL OGREATEREQUAL OEQUALS ONOTEQUALS
 %left OMINUS OPLUS
 %left OSLASH OASTERISK
 %left OUMINUS
@@ -114,19 +116,23 @@ var_list : ID { symtable_push($1); ds_push_word($1); }
          | var_list COMMA ID { symtable_push($3); ds_push_word($3); }
          ;
 
-const_list : ID OEQUALS expr { symtable_push($1); ds_push_word($1); $$ = cl_push_const_list(creaLC(), $1, $3); }
-           | const_list COMMA ID OEQUALS expr { symtable_push($3); ds_push_word($3); $$ = cl_push_const_list($1, $3, $5); }
+const_list : ID OASSIGN expr { symtable_push($1); ds_push_word($1); $$ = cl_push_const_list(creaLC(), $1, $3); }
+           | const_list COMMA ID OASSIGN expr { symtable_push($3); ds_push_word($3); $$ = cl_push_const_list($1, $3, $5); }
            ;
 
 statement_list : statement_list statement { concatenaLC($1, $2); $$ = $1; }
                | {$$ = creaLC();}
                ;
 
-statement : ID OEQUALS expr SEMICOLON { $$ = cl_push_assign($1, $3); }
+statement : ID OASSIGN expr SEMICOLON { $$ = cl_push_assign($1, $3); }
           | BRACKETL statement_list BRACKETR { $$ = $2; }
           | RIF PARENL expr PARENR statement RELSE statement { $$ = cl_push_if_else($3, $5, $7); }
           | RIF PARENL expr PARENR statement { $$ = cl_push_if($3, $5); }
           | RWHILE PARENL expr PARENR statement { $$ = cl_push_while($3, $5); }
+          | RDO statement RWHILE PARENL expr PARENR SEMICOLON { $$ = cl_push_do_while($2, $5); }
+          | RFOR PARENL ID OASSIGN LINT SEMICOLON expr PARENR statement { $$ = cl_push_for($3, $5, $7, $9, 0, "1"); }
+          | RFOR PARENL ID OASSIGN LINT SEMICOLON expr SEMICOLON OMINUS LINT PARENR statement { $$ = cl_push_for($3, $5, $7, $12, 1, $10); }
+          | RFOR PARENL ID OASSIGN LINT SEMICOLON expr SEMICOLON LINT PARENR statement { $$ = cl_push_for($3, $5, $7, $11, 0, $9); }
           | RPRINT PARENL print_list PARENR SEMICOLON { $$ = $3; comment($$); }
           | RREAD PARENL read_list PARENR SEMICOLON { $$ = $3; comment($$); }
           ;
@@ -147,6 +153,12 @@ expr : expr OPLUS expr { $$ = cl_push_binop("add", $1, $3); }
      | expr OMINUS expr { $$ = cl_push_binop("sub", $1, $3); }
      | expr OASTERISK expr { $$ = cl_push_binop("mul", $1, $3); }
      | expr OSLASH expr { $$ = cl_push_binop("div", $1, $3); }
+     | expr OLESS expr { $$ = cl_push_rel("slt", $1, $3); }
+     | expr OGREATER expr { $$ = cl_push_rel("sgt", $1, $3); }
+     | expr OLESSEQUAL expr { $$ = cl_push_rel("sle", $1, $3); }
+     | expr OGREATEREQUAL expr { $$ = cl_push_rel("sge", $1, $3); }
+     | expr OEQUALS expr { $$ = cl_push_rel("seq", $1, $3); }
+     | expr ONOTEQUALS expr { $$ = cl_push_rel("sne", $1, $3); }
      | PARENL expr QUESTIONMARK expr COLON expr PARENR { $$ = cl_push_condop($2, $4, $6); }
      | OMINUS expr %prec OUMINUS { $$ = cl_push_ominus_expr($2); }
      | PARENL expr PARENR { $$ = $2; }
@@ -270,6 +282,30 @@ while_end_label()
 }
 
 char*
+do_label()
+{
+    static char buff[32];
+    snprintf(buff, 32, "do%d", dowhile_counter);
+    return strdup(buff);
+}
+
+char*
+for_label()
+{
+    static char buff[32];
+    snprintf(buff, 32, "for%d", for_counter);
+    return strdup(buff);
+}
+
+char*
+for_end_label()
+{
+    static char buff[32];
+    snprintf(buff, 32, "for%dend", for_counter);
+    return strdup(buff);
+}
+
+char*
 next_string_label()
 {
     static char buff[32];
@@ -350,6 +386,10 @@ cl_program(const char *id, ListaC decls, ListaC statements)
 
     ListaC textseg = creaLC();
     Operacion op = { ".text" };
+    insertaLC(textseg, finalLC(textseg), op);
+    op = (Operacion){ ".globl main" };
+    insertaLC(textseg, finalLC(textseg), op);
+    op = (Operacion){ "main:" };
     insertaLC(textseg, finalLC(textseg), op);
     concatenaLC(textseg, decls);
     concatenaLC(textseg, statements);
@@ -460,6 +500,78 @@ cl_push_while(ListaC cond, ListaC statementl)
 
     while_counter++;
 
+    free_reg(recuperaResLC(cond));
+
+    return ll;
+}
+
+ListaC
+cl_push_do_while(ListaC statementl, ListaC cond)
+{
+    const char *looplbl = do_label();
+
+    ListaC ll = creaLC();
+    comment(ll);   
+    
+    // loop start label
+    Operacion op = { label_colon(looplbl) };
+    insertaLC(ll, finalLC(ll), op);
+    // body
+    concatenaLC(ll, statementl);
+    // condition
+    concatenaLC(ll, cond);
+    op = (Operacion){ "bnez", recuperaResLC(cond), looplbl };
+    insertaLC(ll, finalLC(ll), op);
+
+    dowhile_counter++;
+
+    free_reg(recuperaResLC(cond));
+
+    return ll;
+}
+
+ListaC
+cl_push_for(const char *id, const char *lintinit,
+    ListaC cond, ListaC statementl, int sign, const char *lintstep)
+{
+    const char *looplbl = for_label();
+    const char *loopendlbl = for_end_label();
+
+    const char *iter_reg = alloc_reg();
+   
+    static char buff[256];
+    snprintf(buff, 256, "_%s", id);
+
+    ListaC ll = creaLC();
+    comment(ll);
+
+    // loop start label
+    Operacion op = { label_colon(looplbl) };
+    insertaLC(ll, finalLC(ll), op);
+    // condition
+    concatenaLC(ll, cond);
+    op = (Operacion){ "beqz", recuperaResLC(cond), loopendlbl };
+    insertaLC(ll, finalLC(ll), op);
+    // body
+    concatenaLC(ll, statementl);
+    // iterator
+    op = (Operacion){ "lw", iter_reg, buff };
+    insertaLC(ll, finalLC(ll), op);
+    op = (Operacion){ sign ? "sub" : "add", buff, buff, lintstep };
+    insertaLC(ll, finalLC(ll), op);
+    op = (Operacion){ "sw", iter_reg, buff };
+    insertaLC(ll, finalLC(ll), op);
+    // loop over
+    op = (Operacion){ "j", looplbl };
+    insertaLC(ll, finalLC(ll), op);
+    // loop end label
+    op = (Operacion){ label_colon(loopendlbl) };
+    insertaLC(ll, finalLC(ll), op);
+
+    for_counter++;
+
+    free_reg(iter_reg);
+
     return ll;
 }
 
@@ -470,7 +582,6 @@ cl_push_if(ListaC cond, ListaC ifl)
     comment(res); 
 
     concatenaLC(res, cond);
-
 
     char *ifendlabel = if_end_label(); 
     
@@ -484,6 +595,8 @@ cl_push_if(ListaC cond, ListaC ifl)
     insertaLC(res, finalLC(res), op);
 
     if_counter++;
+
+    free_reg(recuperaResLC(cond));
 
     return res;
 }
@@ -518,6 +631,8 @@ cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel)
 
     if_counter++;
 
+    free_reg(recuperaResLC(cond));
+
     return res;
 }
 
@@ -550,6 +665,25 @@ cl_push_binop(const char *inst, ListaC ll, ListaC rl)
     free_reg(recuperaResLC(ll));
     free_reg(recuperaResLC(rl));
 
+    return res;
+}
+
+ListaC
+cl_push_rel(const char *inst, ListaC ll, ListaC rl)
+{
+    ListaC res = creaLC();
+    concatenaLC(res, ll);
+    concatenaLC(res, rl);
+
+    const char *reg = alloc_reg();
+
+    Operacion op = { inst, reg, recuperaResLC(ll), recuperaResLC(rl) };
+    insertaLC(res, finalLC(res), op);
+
+    guardaResLC(res, reg);
+    free_reg(recuperaResLC(ll));
+    free_reg(recuperaResLC(rl));
+    
     return res;
 }
 

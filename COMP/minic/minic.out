@@ -1,97 +1,180 @@
 	.data
-_a:
+_var1:
 	.word 0
-_b:
+_var2:
 	.word 0
-_c:
+_var4:
+	.word 0
+_var3:
+	.word 0
+_const1:
+	.word 0
+_const2:
+	.word 0
+_const3:
 	.word 0
 $str0:
-	.asciiz "Inicio del programa\n"
+	.asciiz "lol"
 $str1:
-	.asciiz "a"
+	.asciiz "por su puesto que "
 $str2:
-	.asciiz "\n"
+	.asciiz "obviamente no "
 $str3:
-	.asciiz "No a y b\n"
+	.asciiz "a"
 $str4:
-	.asciiz "c = "
+	.asciiz "for "
 $str5:
-	.asciiz "\n"
-$str6:
-	.asciiz "Final"
-$str7:
-	.asciiz "\n"
+	.asciiz "for2 "
 	.text
-# L2
-	li $t0, 0
-	sw $t0, _a
-	li $t0, 0
-	sw $t0, _b
-# L13
+	.globl main
+main:
+# L5
+# L5
+	li $t0, 69
+	sw $t0, _const1
+	li $t0, 420
+	sw $t0, _const2
+	li $t0, 1234
+	sw $t0, _const3
+# L31
+	li $t0, 420
+	sw $t0, _var1
+# L31
+	lw $t0, _var1
+	li $t1, 2
+	lw $t2, _const1
+	mul $t3, $t1, $t2
+	add $t1, $t0, $t3
+	lw $t0, _const2
+	add $t2, $t1, $t0
+	lw $t0, _const3
+	add $t1, $t2, $t0
+	sw $t1, _var2
+# L31
+	lw $t0, _var1
+	li $t1, 2
+	mul $t2, $t0, $t1
+	lw $t0, _var1
+	mul $t1, $t2, $t0
+	lw $t0, _var2
+	add $t2, $t1, $t0
+	li $t0, 123
+	add $t1, $t2, $t0
+	li $t0, 321
+	sub $t2, $t1, $t0
+	sw $t2, _var3
+# L24
+	lw $t0, _var1
+	beqz $t0, if0end
+# L37
 	li $v0, 4
 	la $a0, $str0
 	syscall
-# L11
-	li $t0, 5
-	li $t1, 2
+if0end:
+# L24
+	lw $t0, _var2
+	li $t1, 3
 	add $t2, $t0, $t1
-	li $t0, 2
-	sub $t1, $t2, $t0
-	sw $t1, _c
-# L12
-	lw $t0, _a
-	beqz $t0, if1else
-# L13
+	beqz $t2, if3else
+# L37
 	li $v0, 4
 	la $a0, $str1
 	syscall
-	li $v0, 4
-	la $a0, $str2
-	syscall
-	j if1end
-if1else:
-# L12
-	lw $t1, _b
-	beqz $t1, if0else
-# L13
-	li $v0, 4
-	la $a0, $str3
-	syscall
-	j if0end
-if0else:
-# L12
-while0:
-	lw $t2, _c
-	beqz $t2, while0end
-# L13
-	li $v0, 4
-	la $a0, $str4
-	syscall
-	lw $t3, _c
+	lw $t0, _var2
+	li $t1, 3
+	add $t3, $t0, $t1
 	li $v0, 1
 	move $a0, $t3
 	syscall
+	j if3end
+if3else:
+# L24
+	lw $t0, _var3
+	beqz $t0, if2else
+# L24
+	lw $t1, _var3
+	li $t3, 1
+	sub $t4, $t1, $t3
+	beqz $t4, if1end
+# L37
+	li $v0, 4
+	la $a0, $str2
+	syscall
+	lw $t1, _var2
+	li $v0, 1
+	move $a0, $t1
+	syscall
+if1end:
+	j if2end
+if2else:
+# L37
+	li $v0, 4
+	la $a0, $str3
+	syscall
+if2end:
+if3end:
+# L28
+while0:
+	lw $t0, _var3
+	beqz $t0, while0end
+# L31
+	lw $t1, _var3
+	li $t2, 1
+	sub $t3, $t1, $t2
+	sw $t3, _var3
+	j while0
+while0end:
+# L32
+do0:
+# L31
+	lw $t0, _var3
+	li $t1, 1
+	add $t2, $t0, $t1
+	sw $t2, _var3
+	lw $t0, _var3
+	bnez $t0, do0
+# L37
+for0:
+	lw $t0, _var1
+	li $t1, 10
+	slt $t2, $t0, $t1
+	beqz $t2, for0end
+# L37
+	li $v0, 4
+	la $a0, $str4
+	syscall
+	lw $t0, _var1
+	li $v0, 1
+	move $a0, $t0
+	syscall
+	lw $t0, _var2
+	add _var2, _var2, 1
+	sw $t0, _var2
+	j for0
+for0end:
+# L37
+for1:
+	lw $t0, _var2
+	li $t1, 0
+	sge $t3, $t0, $t1
+	beqz $t3, for1end
+# L37
 	li $v0, 4
 	la $a0, $str5
 	syscall
-# L11
-	lw $t3, _c
-	li $t4, 2
-	sub $t5, $t3, $t4
-	li $t3, 1
-	add $t5, $t5, $t3
-	sw $t5, _c
-	j while0
-while0end:
-if0end:
-if1end:
-# L13
-	li $v0, 4
-	la $a0, $str6
+	lw $t0, _var2
+	li $v0, 1
+	move $a0, $t0
 	syscall
-	li $v0, 4
-	la $a0, $str7
+	lw $t0, _var2
+	sub _var2, _var2, 2
+	sw $t0, _var2
+	j for1
+for1end:
+# L39
+	li $v0, 5
 	syscall
+	sw $v0, _var4
 # program end
 	li $v0, 10
 	syscall
