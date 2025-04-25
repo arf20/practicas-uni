@@ -1,0 +1,285 @@
+.pagewidth 80
+.pageheight 63
+.tabstop 4
+.indent on
+.header "MEMORIA COMP" "miniC" pagenumext
+
+.margin 1 0 1 0
+.align left
+
+.title MEMORIA DE PROYECTO DE COMPILADORES - miniC
+.author Ángel Ruiz Fernandez <a.ruizfernandez@um.es>
+.date 2° - Grupo 2.2 - Primera Convocatoria
+
+.titlepage
+
+.tableofcontents
+
+.section Explicación de la práctica
+
+.subsection Funciones principales
+
+.itemize
+.item void yyerror(): funcion de error semantico
+.item void print_code(ListaC code): imprime una lista de código
+.item void print_symtable(): imprime la tabla de simbolos
+.item void setup_program(): inicializa estructuras de datos al inicio del programa
+.item void symtable_push(const char *id): insertar entrada en tabla de simbolos
+.item void ds_push_word(char *id): insertar un .word a segmento de datos (const y var)
+.item const char* ds_push_asciiz(const char *lstr): insertar cadena a segmento de datos
+.item void cl_program(const char *id, ListaC decls, ListaC statements): genera código común a todos los programas
+.item ListaC cl_push_const_list(ListaC constl, const char *id, ListaC vl): genera código de inicialización de constantes
+.item ListaC cl_push_lint(const char *lint): genera código de carga de literales enteros
+.item ListaC cl_push_id(const char *id): genera código de carga de simbolos
+.item ListaC cl_push_ominus_expr(ListaC l): genera código para negación unaria
+.item ListaC cl_push_condop(ListaC cond, ListaC tl, ListaC fl): genera código para el operador condicional
+.item ListaC cl_push_binop(const char *inst, ListaC ll, ListaC rl): genera código para operacdores binarios (+, -, *, /)
+.item ListaC cl_push_rel(const char *inst, ListaC ll, ListaC rl): genera código para operadores relacionales (<, >, <=, >=, ==, !=)
+.item ListaC cl_push_assign(const char *id, ListaC l): genera código para la asignación
+.item ListaC cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel): genera código para si-sino
+.item ListaC cl_push_if(ListaC cond, ListaC ifl): genera código para condicional si
+.item ListaC cl_push_while(ListaC cond, ListaC statementl): genera código para bucle mientras
+.item ListaC cl_push_do_while(ListaC statementl, ListaC cond): genera código para bucle hacer mientras
+.itemize
+.item ListaC cl_push_for(const char *id, const char *lintinit, ListaC cond, ListaC statementl, int sign, const char *lintstep): genera código para bucle for
+.item ListaC cl_push_print_expr(ListaC exprl): genera código para impresión de expresiones
+.item ListaC cl_push_print_str(const char *lstr): genera código para impresión de cadenas
+.item ListaC cl_push_read(const char *id): genera código para lecturas
+
+.itemize Funciones de utilidad
+.item const char* alloc_reg(): función de asignación de registros
+.item void free_reg(const char *reg): libera un registro asignado
+.item char* *_label(): genera etiquetas a partir del correspondiente contador (los contadores se incrementan manualmente)
+.item char* next_string_label(): genera la siguiente etiqueta de cadena
+.item char* label_colon(const char *label): añade ':' al final de una etiqueta
+
+.subsection Estructuras de datos
+
+%union define la colección de todos los posibles tipos que puede adoptar un sintagma. char* para tokens yylval como IDs, literales, etc; y ListaC para el resultado de statements, etc.
+
+.fig
+%union {
+    char *lex;
+    ListaC code;
+}
+.!fig
+
+La lista de simbolos, que es usada solo para comprobar errores de no definición en el analisis sintactico.
+
+.fig
+Lista symtable = NULL;
+.!fig
+
+La lista de codigo correspondiente al segmento de datos, que se va rellenando conforme se encuentran variables, constantes y cadenas.
+
+.fig
+ListaC dataseg = NULL;
+.!fig
+
+Array de registros y nombres: representa el uso de estos para el asignador de registros, y sus nombres segun el indice.
+
+.fig
+int regs[10] = { 0 };
+const char reg_strs[][10] = {
+    "$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t6", "$t7", "$t8", "$t9"
+};
+.!fig
+
+Contadores de etiquetas por cada tipo de sentencia.
+
+.fig
+int string_counter = 0, cond_counter = 0, if_counter = 0, while_counter = 0,
+    dowhile_counter = 0, for_counter = 0;
+.!fig
+
+.pagebreak
+
+.subsection Manual de usuario
+
+.itemize minicc acepta dos flags:
+.item: --help: para imprimir el uso
+.item: --debug: para activar la salida de depuración
+
+Y la entrada y la salida se definen con respectivos argumentos posicionales, primero la entrada.
+
+.fig Ayuda incluida
+usage: minicc [--help|--debug] [input] [output]
+  --help:     display this
+  --debug:    enable debugging output
+
+.!fig
+
+.section Ejemplos de ejecución explicados
+
+.fig Llamada
+# compilar usando stdin y stdout
+./minicc < prueba.mc > prueba.S
+# compilar usando archivos
+./minicc prueba.mc prueba.S
+
+.!fig
+
+.fig Entrada de prueba
+prueba() {
+const int a=0, b=0;
+var int c;
+print ("Inicio del programa\n");
+c = 5+2-2;
+if (a)  print ("a","\n");
+  else if (b) print ("No a y b\n");
+       else while (c)
+            {
+                  print ("c = ",c,"\n");
+                  c = c-2+1;
+            }
+  print ("Final","\n");
+}
+
+.!fig
+
+.fig
+    .data
+_a:
+    .word 0
+_b:
+    .word 0
+_c:
+    .word 0
+$str0:
+    .asciiz "Inicio del programa\n"
+$str1:
+    .asciiz "a"
+$str2:
+    .asciiz "\n"
+$str3:
+    .asciiz "No a y b\n"
+$str4:
+    .asciiz "c = "
+$str5:
+    .asciiz "\n"
+.!fig
+
+
+
+.fig
+$str6:
+    .asciiz "Final"
+$str7:
+    .asciiz "\n"
+    .text
+    .globl main
+main:
+    li $t0, 0
+    sw $t0, _a
+    li $t0, 0
+    sw $t0, _b
+    li $v0, 4
+    la $a0, $str0
+    syscall
+    li $t0, 5
+    li $t1, 2
+    add $t2, $t0, $t1
+    li $t0, 2
+    sub $t1, $t2, $t0
+    sw $t1, _c
+    lw $t0, _a
+    beqz $t0, if1else
+    li $v0, 4
+    la $a0, $str1
+    syscall
+    li $v0, 4
+    la $a0, $str2
+    syscall
+    j if1end
+if1else:
+    lw $t1, _b
+    beqz $t1, if0else
+    li $v0, 4
+    la $a0, $str3
+    syscall
+    j if0end
+if0else:
+while0:
+    lw $t2, _c
+    beqz $t2, while0end
+    li $v0, 4
+    la $a0, $str4
+    syscall
+    lw $t3, _c
+    li $v0, 1
+    move $a0, $t3
+    syscall
+    li $v0, 4
+    la $a0, $str5
+    syscall
+    lw $t3, _c
+    li $t4, 2
+    sub $t5, $t3, $t4
+    li $t3, 1
+    add $t5, $t5, $t3
+    sw $t5, _c
+    j while0
+.!fig
+
+
+.fig Código generado
+while0end:
+if0end:
+if1end:
+    li $v0, 4
+    la $a0, $str6
+    syscall
+    li $v0, 4
+    la $a0, $str7
+    syscall
+# program end
+    li $v0, 10
+    syscall
+
+.!fig
+
+.section Mejoras
+
+.subsection do-while
+
+El bucle do-while se implementó definiendo el lexema "do", la sintaxis de statement "do statement while (expr);" y generando la etiqueta de loop primero, seguido de el cuerpo, y al final unicamente la expresión de condición y una instrucción de 'bnez'.
+
+.subsection for
+
+.itemize El bucle for se implementó definiendo el lexema "for" y las sintaxis en statement:
+.item for (id = lint; expr) statement
+.item for (id = lint; expr; [-]lint) statement
+
+Las sintaxis admiten el id del iterador, el valor inicial, la expresión de condición (asumiendo uso del mismo iterador) y opcionalmente el paso con o sin signo que sumar al iterador, seguido del cuerpo del bucle.
+
+.itemize El codigo de este bucle se genera concatenando las siguientes listas en este orden:
+.item etiqueta de inicio de bucle
+.item lista de expresión condición
+.item instrucción de branch a la terminación de bucle
+.item lista de cuerpo de bucle
+.item instrucciones para cargar, incrementar y guardar iterador
+.item instrucción de salto al inicio (bucle)
+.item etiqueta de terminación de bucle
+
+.subsection Operadores relacionales
+
+.itemize Definidos los siguientes lexemas:
+.item <
+.item >
+.item <=
+.item >=
+.item ==
+.item !=
+
+.pagebreak
+
+.itemize Definidas las siguientes sintaxis en expr:
+.item expr < expr
+.item expr > expr
+.item expr <= expr
+.item expr >= expr
+.item expr == expr
+.item expr != expr
+
+Y una función que toma las listas de las dos expresiones y la instrucción de comparación correspondiente al operador, y se genera el codigo concatenando las dos listas de expresiones y a continuación la instrucción de comparación que toma como operandos los resultados de cada expresión, y retorna la nueva lista cuyo resultado es un nuevo registro con el resultado de la comparación.
+

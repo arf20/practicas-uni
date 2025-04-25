@@ -95,7 +95,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 95 "minic.y"
+#line 94 "minic.y"
 
     char *lex;
     ListaC code;
