@@ -7,14 +7,16 @@
 #include "listaCodigo.h"
 
 FILE *out = NULL;
+int debug = 0;
 
 extern int yylineno;
 extern char *yytext;
 extern int yylex();
+
 void yyerror();
 
 void print_code(ListaC code);
-void symtable_print();
+void print_symtable();
 void setup_program();
 void symtable_push(const char *id);
 void ds_push_word(char *id);
@@ -47,35 +49,32 @@ const char reg_strs[][10] = {
 int string_counter = 0, cond_counter = 0, if_counter = 0, while_counter = 0,
     dowhile_counter = 0, for_counter = 0;
 
-#define _DEBUG_
-
-#ifdef _DEBUG_
 #define insertaLC(l, p, o) { \
-    if (o.arg2) \
-        fprintf(stderr, "==%d: pushing `%s %s, %s, %s'\n", \
-            yylineno, o.op, o.res, o.arg1, o.arg2); \
-    else \
-        fprintf(stderr, "==%d: pushing `%s %s, %s'\n", \
-            yylineno, o.op, o.res, o.arg1); \
+    if (debug) { \
+        if (o.arg2) \
+            fprintf(stderr, "==%d: pushing `%s %s, %s, %s'\n", \
+                yylineno, o.op, o.res, o.arg1, o.arg2); \
+        else \
+            fprintf(stderr, "==%d: pushing `%s %s, %s'\n", \
+                yylineno, o.op, o.res, o.arg1); \
+    } \
     insertaLC(l, p, o); \
 }
 
 #define insertaLS(l, p, s) { \
-    fprintf(stderr, "==%d: pushing symbol '%s'\n", yylineno, s.nombre); \
+    if (debug) \
+        fprintf(stderr, "==%d: pushing symbol '%s'\n", yylineno, s.nombre); \
     insertaLS(l, p, s); \
 }
 
 #define comment(l) { \
-    static char buff[16]; \
-    snprintf(buff, 16, "# L%d", yylineno); \
-    Operacion com = (Operacion){ buff }; \
-    insertaLC(l, inicioLC(l), com); \
+    if (debug) { \
+        static char buff[16]; \
+        snprintf(buff, 16, "# L%d", yylineno); \
+        Operacion com = (Operacion){ buff }; \
+        insertaLC(l, inicioLC(l), com); \
+    } \
 } \
-
-#else
-#define comment(l)
-#endif
-
 
 %}
 
@@ -200,7 +199,7 @@ print_code(ListaC code)
 } 
 
 void
-symtable_print() {
+print_symtable() {
     PosicionLista end = finalLS(symtable);
     fprintf(stderr, "symbol table:\nsymbol\n======\n");
     for (PosicionLista t = inicioLS(symtable); t != end; t = siguienteLS(symtable, t)) {
@@ -381,7 +380,7 @@ ds_push_asciiz(const char *lstr)
 void
 cl_program(const char *id, ListaC decls, ListaC statements)
 {
-    symtable_print();
+    print_symtable();
     liberaLS(symtable);
 
     ListaC textseg = creaLC();

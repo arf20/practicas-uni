@@ -77,14 +77,16 @@
 #include "listaCodigo.h"
 
 FILE *out = NULL;
+int debug = 0;
 
 extern int yylineno;
 extern char *yytext;
 extern int yylex();
+
 void yyerror();
 
 void print_code(ListaC code);
-void symtable_print();
+void print_symtable();
 void setup_program();
 void symtable_push(const char *id);
 void ds_push_word(char *id);
@@ -117,38 +119,35 @@ const char reg_strs[][10] = {
 int string_counter = 0, cond_counter = 0, if_counter = 0, while_counter = 0,
     dowhile_counter = 0, for_counter = 0;
 
-#define _DEBUG_
-
-#ifdef _DEBUG_
 #define insertaLC(l, p, o) { \
-    if (o.arg2) \
-        fprintf(stderr, "==%d: pushing `%s %s, %s, %s'\n", \
-            yylineno, o.op, o.res, o.arg1, o.arg2); \
-    else \
-        fprintf(stderr, "==%d: pushing `%s %s, %s'\n", \
-            yylineno, o.op, o.res, o.arg1); \
+    if (debug) { \
+        if (o.arg2) \
+            fprintf(stderr, "==%d: pushing `%s %s, %s, %s'\n", \
+                yylineno, o.op, o.res, o.arg1, o.arg2); \
+        else \
+            fprintf(stderr, "==%d: pushing `%s %s, %s'\n", \
+                yylineno, o.op, o.res, o.arg1); \
+    } \
     insertaLC(l, p, o); \
 }
 
 #define insertaLS(l, p, s) { \
-    fprintf(stderr, "==%d: pushing symbol '%s'\n", yylineno, s.nombre); \
+    if (debug) \
+        fprintf(stderr, "==%d: pushing symbol '%s'\n", yylineno, s.nombre); \
     insertaLS(l, p, s); \
 }
 
 #define comment(l) { \
-    static char buff[16]; \
-    snprintf(buff, 16, "# L%d", yylineno); \
-    Operacion com = (Operacion){ buff }; \
-    insertaLC(l, inicioLC(l), com); \
+    if (debug) { \
+        static char buff[16]; \
+        snprintf(buff, 16, "# L%d", yylineno); \
+        Operacion com = (Operacion){ buff }; \
+        insertaLC(l, inicioLC(l), com); \
+    } \
 } \
 
-#else
-#define comment(l)
-#endif
 
-
-
-#line 152 "minic.tab.c"
+#line 151 "minic.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -614,11 +613,11 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,   104,   104,   104,   107,   108,   109,   112,   115,   116,
-     119,   120,   123,   124,   127,   128,   129,   130,   131,   132,
-     133,   134,   135,   136,   137,   140,   141,   144,   145,   148,
-     149,   152,   153,   154,   155,   156,   157,   158,   159,   160,
-     161,   162,   163,   164,   165,   166
+       0,   103,   103,   103,   106,   107,   108,   111,   114,   115,
+     118,   119,   122,   123,   126,   127,   128,   129,   130,   131,
+     132,   133,   134,   135,   136,   139,   140,   143,   144,   147,
+     148,   151,   152,   153,   154,   155,   156,   157,   158,   159,
+     160,   161,   162,   163,   164,   165
 };
 #endif
 
@@ -1271,265 +1270,265 @@ yyreduce:
   switch (yyn)
     {
   case 2: /* $@1: %empty  */
-#line 104 "minic.y"
+#line 103 "minic.y"
           { setup_program(); }
-#line 1277 "minic.tab.c"
+#line 1276 "minic.tab.c"
     break;
 
   case 3: /* program: $@1 ID PARENL PARENR BRACKETL decls statement_list BRACKETR  */
-#line 104 "minic.y"
+#line 103 "minic.y"
                                                                                        { cl_program((yyvsp[-6].lex), (yyvsp[-2].code), (yyvsp[-1].code));  }
-#line 1283 "minic.tab.c"
+#line 1282 "minic.tab.c"
     break;
 
   case 4: /* decls: decls RVAR type var_list SEMICOLON  */
-#line 107 "minic.y"
+#line 106 "minic.y"
                                            { (yyval.code) = (yyvsp[-4].code); }
-#line 1289 "minic.tab.c"
+#line 1288 "minic.tab.c"
     break;
 
   case 5: /* decls: decls RCONST type const_list SEMICOLON  */
-#line 108 "minic.y"
+#line 107 "minic.y"
                                                { concatenaLC((yyvsp[-4].code), (yyvsp[-1].code)); (yyval.code) = (yyvsp[-4].code); comment((yyval.code)); }
-#line 1295 "minic.tab.c"
+#line 1294 "minic.tab.c"
     break;
 
   case 6: /* decls: %empty  */
-#line 109 "minic.y"
+#line 108 "minic.y"
         { (yyval.code) = creaLC(); }
-#line 1301 "minic.tab.c"
+#line 1300 "minic.tab.c"
     break;
 
   case 8: /* var_list: ID  */
-#line 115 "minic.y"
+#line 114 "minic.y"
               { symtable_push((yyvsp[0].lex)); ds_push_word((yyvsp[0].lex)); }
-#line 1307 "minic.tab.c"
+#line 1306 "minic.tab.c"
     break;
 
   case 9: /* var_list: var_list COMMA ID  */
-#line 116 "minic.y"
+#line 115 "minic.y"
                              { symtable_push((yyvsp[0].lex)); ds_push_word((yyvsp[0].lex)); }
-#line 1313 "minic.tab.c"
+#line 1312 "minic.tab.c"
     break;
 
   case 10: /* const_list: ID OASSIGN expr  */
-#line 119 "minic.y"
+#line 118 "minic.y"
                              { symtable_push((yyvsp[-2].lex)); ds_push_word((yyvsp[-2].lex)); (yyval.code) = cl_push_const_list(creaLC(), (yyvsp[-2].lex), (yyvsp[0].code)); }
-#line 1319 "minic.tab.c"
+#line 1318 "minic.tab.c"
     break;
 
   case 11: /* const_list: const_list COMMA ID OASSIGN expr  */
-#line 120 "minic.y"
+#line 119 "minic.y"
                                               { symtable_push((yyvsp[-2].lex)); ds_push_word((yyvsp[-2].lex)); (yyval.code) = cl_push_const_list((yyvsp[-4].code), (yyvsp[-2].lex), (yyvsp[0].code)); }
-#line 1325 "minic.tab.c"
+#line 1324 "minic.tab.c"
     break;
 
   case 12: /* statement_list: statement_list statement  */
-#line 123 "minic.y"
+#line 122 "minic.y"
                                           { concatenaLC((yyvsp[-1].code), (yyvsp[0].code)); (yyval.code) = (yyvsp[-1].code); }
-#line 1331 "minic.tab.c"
+#line 1330 "minic.tab.c"
     break;
 
   case 13: /* statement_list: %empty  */
-#line 124 "minic.y"
+#line 123 "minic.y"
                  {(yyval.code) = creaLC();}
-#line 1337 "minic.tab.c"
+#line 1336 "minic.tab.c"
     break;
 
   case 14: /* statement: ID OASSIGN expr SEMICOLON  */
-#line 127 "minic.y"
+#line 126 "minic.y"
                                       { (yyval.code) = cl_push_assign((yyvsp[-3].lex), (yyvsp[-1].code)); }
-#line 1343 "minic.tab.c"
+#line 1342 "minic.tab.c"
     break;
 
   case 15: /* statement: BRACKETL statement_list BRACKETR  */
-#line 128 "minic.y"
+#line 127 "minic.y"
                                              { (yyval.code) = (yyvsp[-1].code); }
-#line 1349 "minic.tab.c"
+#line 1348 "minic.tab.c"
     break;
 
   case 16: /* statement: RIF PARENL expr PARENR statement RELSE statement  */
-#line 129 "minic.y"
+#line 128 "minic.y"
                                                              { (yyval.code) = cl_push_if_else((yyvsp[-4].code), (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1355 "minic.tab.c"
+#line 1354 "minic.tab.c"
     break;
 
   case 17: /* statement: RIF PARENL expr PARENR statement  */
-#line 130 "minic.y"
+#line 129 "minic.y"
                                              { (yyval.code) = cl_push_if((yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1361 "minic.tab.c"
+#line 1360 "minic.tab.c"
     break;
 
   case 18: /* statement: RWHILE PARENL expr PARENR statement  */
-#line 131 "minic.y"
+#line 130 "minic.y"
                                                 { (yyval.code) = cl_push_while((yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1367 "minic.tab.c"
+#line 1366 "minic.tab.c"
     break;
 
   case 19: /* statement: RDO statement RWHILE PARENL expr PARENR SEMICOLON  */
-#line 132 "minic.y"
+#line 131 "minic.y"
                                                               { (yyval.code) = cl_push_do_while((yyvsp[-5].code), (yyvsp[-2].code)); }
-#line 1373 "minic.tab.c"
+#line 1372 "minic.tab.c"
     break;
 
   case 20: /* statement: RFOR PARENL ID OASSIGN LINT SEMICOLON expr PARENR statement  */
-#line 133 "minic.y"
+#line 132 "minic.y"
                                                                         { (yyval.code) = cl_push_for((yyvsp[-6].lex), (yyvsp[-4].lex), (yyvsp[-2].code), (yyvsp[0].code), 0, "1"); }
-#line 1379 "minic.tab.c"
+#line 1378 "minic.tab.c"
     break;
 
   case 21: /* statement: RFOR PARENL ID OASSIGN LINT SEMICOLON expr SEMICOLON OMINUS LINT PARENR statement  */
-#line 134 "minic.y"
+#line 133 "minic.y"
                                                                                               { (yyval.code) = cl_push_for((yyvsp[-9].lex), (yyvsp[-7].lex), (yyvsp[-5].code), (yyvsp[0].code), 1, (yyvsp[-2].lex)); }
-#line 1385 "minic.tab.c"
+#line 1384 "minic.tab.c"
     break;
 
   case 22: /* statement: RFOR PARENL ID OASSIGN LINT SEMICOLON expr SEMICOLON LINT PARENR statement  */
-#line 135 "minic.y"
+#line 134 "minic.y"
                                                                                        { (yyval.code) = cl_push_for((yyvsp[-8].lex), (yyvsp[-6].lex), (yyvsp[-4].code), (yyvsp[0].code), 0, (yyvsp[-2].lex)); }
-#line 1391 "minic.tab.c"
+#line 1390 "minic.tab.c"
     break;
 
   case 23: /* statement: RPRINT PARENL print_list PARENR SEMICOLON  */
-#line 136 "minic.y"
+#line 135 "minic.y"
                                                       { (yyval.code) = (yyvsp[-2].code); comment((yyval.code)); }
-#line 1397 "minic.tab.c"
+#line 1396 "minic.tab.c"
     break;
 
   case 24: /* statement: RREAD PARENL read_list PARENR SEMICOLON  */
-#line 137 "minic.y"
+#line 136 "minic.y"
                                                     { (yyval.code) = (yyvsp[-2].code); comment((yyval.code)); }
-#line 1403 "minic.tab.c"
+#line 1402 "minic.tab.c"
     break;
 
   case 25: /* print_list: print_item  */
-#line 140 "minic.y"
+#line 139 "minic.y"
                         { (yyval.code) = (yyvsp[0].code); }
-#line 1409 "minic.tab.c"
+#line 1408 "minic.tab.c"
     break;
 
   case 26: /* print_list: print_list COMMA print_item  */
-#line 141 "minic.y"
+#line 140 "minic.y"
                                          { concatenaLC((yyvsp[-2].code), (yyvsp[0].code)); (yyval.code) = (yyvsp[-2].code); }
-#line 1415 "minic.tab.c"
+#line 1414 "minic.tab.c"
     break;
 
   case 27: /* print_item: expr  */
-#line 144 "minic.y"
+#line 143 "minic.y"
                   { (yyval.code) = cl_push_print_expr((yyvsp[0].code)); }
-#line 1421 "minic.tab.c"
+#line 1420 "minic.tab.c"
     break;
 
   case 28: /* print_item: LSTR  */
-#line 145 "minic.y"
+#line 144 "minic.y"
                   { (yyval.code) = cl_push_print_str((yyvsp[0].lex)); }
-#line 1427 "minic.tab.c"
+#line 1426 "minic.tab.c"
     break;
 
   case 29: /* read_list: ID  */
-#line 148 "minic.y"
+#line 147 "minic.y"
                { (yyval.code) = cl_push_read((yyvsp[0].lex)); }
-#line 1433 "minic.tab.c"
+#line 1432 "minic.tab.c"
     break;
 
   case 30: /* read_list: read_list COMMA ID  */
-#line 149 "minic.y"
+#line 148 "minic.y"
                                { concatenaLC((yyvsp[-2].code), cl_push_read((yyvsp[0].lex))); (yyval.code) = (yyvsp[-2].code); }
-#line 1439 "minic.tab.c"
+#line 1438 "minic.tab.c"
     break;
 
   case 31: /* expr: expr OPLUS expr  */
-#line 152 "minic.y"
+#line 151 "minic.y"
                        { (yyval.code) = cl_push_binop("add", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1445 "minic.tab.c"
+#line 1444 "minic.tab.c"
     break;
 
   case 32: /* expr: expr OMINUS expr  */
-#line 153 "minic.y"
+#line 152 "minic.y"
                         { (yyval.code) = cl_push_binop("sub", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1451 "minic.tab.c"
+#line 1450 "minic.tab.c"
     break;
 
   case 33: /* expr: expr OASTERISK expr  */
-#line 154 "minic.y"
+#line 153 "minic.y"
                            { (yyval.code) = cl_push_binop("mul", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1457 "minic.tab.c"
+#line 1456 "minic.tab.c"
     break;
 
   case 34: /* expr: expr OSLASH expr  */
-#line 155 "minic.y"
+#line 154 "minic.y"
                         { (yyval.code) = cl_push_binop("div", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1463 "minic.tab.c"
+#line 1462 "minic.tab.c"
     break;
 
   case 35: /* expr: expr OLESS expr  */
-#line 156 "minic.y"
+#line 155 "minic.y"
                        { (yyval.code) = cl_push_rel("slt", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1469 "minic.tab.c"
+#line 1468 "minic.tab.c"
     break;
 
   case 36: /* expr: expr OGREATER expr  */
-#line 157 "minic.y"
+#line 156 "minic.y"
                           { (yyval.code) = cl_push_rel("sgt", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1475 "minic.tab.c"
+#line 1474 "minic.tab.c"
     break;
 
   case 37: /* expr: expr OLESSEQUAL expr  */
-#line 158 "minic.y"
+#line 157 "minic.y"
                             { (yyval.code) = cl_push_rel("sle", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1481 "minic.tab.c"
+#line 1480 "minic.tab.c"
     break;
 
   case 38: /* expr: expr OGREATEREQUAL expr  */
-#line 159 "minic.y"
+#line 158 "minic.y"
                                { (yyval.code) = cl_push_rel("sge", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1487 "minic.tab.c"
+#line 1486 "minic.tab.c"
     break;
 
   case 39: /* expr: expr OEQUALS expr  */
-#line 160 "minic.y"
+#line 159 "minic.y"
                          { (yyval.code) = cl_push_rel("seq", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1493 "minic.tab.c"
+#line 1492 "minic.tab.c"
     break;
 
   case 40: /* expr: expr ONOTEQUALS expr  */
-#line 161 "minic.y"
+#line 160 "minic.y"
                             { (yyval.code) = cl_push_rel("sne", (yyvsp[-2].code), (yyvsp[0].code)); }
-#line 1499 "minic.tab.c"
+#line 1498 "minic.tab.c"
     break;
 
   case 41: /* expr: PARENL expr QUESTIONMARK expr COLON expr PARENR  */
-#line 162 "minic.y"
+#line 161 "minic.y"
                                                        { (yyval.code) = cl_push_condop((yyvsp[-5].code), (yyvsp[-3].code), (yyvsp[-1].code)); }
-#line 1505 "minic.tab.c"
+#line 1504 "minic.tab.c"
     break;
 
   case 42: /* expr: OMINUS expr  */
-#line 163 "minic.y"
+#line 162 "minic.y"
                                  { (yyval.code) = cl_push_ominus_expr((yyvsp[0].code)); }
-#line 1511 "minic.tab.c"
+#line 1510 "minic.tab.c"
     break;
 
   case 43: /* expr: PARENL expr PARENR  */
-#line 164 "minic.y"
+#line 163 "minic.y"
                           { (yyval.code) = (yyvsp[-1].code); }
-#line 1517 "minic.tab.c"
+#line 1516 "minic.tab.c"
     break;
 
   case 44: /* expr: ID  */
-#line 165 "minic.y"
+#line 164 "minic.y"
           { (yyval.code) = cl_push_id((yyvsp[0].lex)); }
-#line 1523 "minic.tab.c"
+#line 1522 "minic.tab.c"
     break;
 
   case 45: /* expr: LINT  */
-#line 166 "minic.y"
+#line 165 "minic.y"
             { (yyval.code) = cl_push_lint((yyvsp[0].lex)); }
-#line 1529 "minic.tab.c"
+#line 1528 "minic.tab.c"
     break;
 
 
-#line 1533 "minic.tab.c"
+#line 1532 "minic.tab.c"
 
       default: break;
     }
@@ -1722,7 +1721,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 171 "minic.y"
+#line 170 "minic.y"
 
 
 
@@ -1755,7 +1754,7 @@ print_code(ListaC code)
 } 
 
 void
-symtable_print() {
+print_symtable() {
     PosicionLista end = finalLS(symtable);
     fprintf(stderr, "symbol table:\nsymbol\n======\n");
     for (PosicionLista t = inicioLS(symtable); t != end; t = siguienteLS(symtable, t)) {
@@ -1936,7 +1935,7 @@ ds_push_asciiz(const char *lstr)
 void
 cl_program(const char *id, ListaC decls, ListaC statements)
 {
-    symtable_print();
+    print_symtable();
     liberaLS(symtable);
 
     ListaC textseg = creaLC();
