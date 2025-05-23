@@ -1,0 +1,217 @@
+Construcción de tabla LR-canonica y LALR
+
+Gramatica G = {
+    S' -> S
+(1) S  -> L = R
+(2)     | R
+(3) L  -> * R
+(4)     | id
+(5) R  -> L
+}
+
+================================================================================
+1. Primero y siguiente
+
+Pri(S') = Pri(S) = Pri(L) U Pri(R) = { *, id }
+Pri(S)  = { *, id }
+Pri(L)  = { *, id }
+Pri(R)  = Pri(L) = { *, id }
+
+Sig(S') = { $ }
+Sig(S)  = { $ }
+Sig(L)  = { =, $ }
+Sig(R)  = { $, = }
+
+================================================================================
+2. Conjuntos items LR(1)
+
+Los simbolos de lookahead { A -> X, cosas } se generan en la clausura
+
+I0 = Clausura(G) = {
+    S' -> ·S,       $
+    S  -> ·L = R,   Pri($) = { $ }
+        | ·R,       (same) $
+    L  -> ·* R,     Pri(= R) = { = }
+        | ·id,      (same) =
+    R  -> ·L,       Pri($) = $
+}
+
+I1 = Goto(I0, S) = {
+    S' -> S·        $
+}
+
+I2 = Goto(I0, L) = {
+    S  -> L· = R    $
+    R  -> L·        $
+}
+
+I3 = Goto(I0, R) = {
+    S  -> R·        $
+}
+
+I4 = Goto(I0, *) = {
+    L  -> * ·R      =
+    R  -> ·L        $
+    L  -> ·* R      =
+        | ·id       =
+}
+
+I5 = Goto(I0, id) = {
+    L  -> id·       =
+}
+
+I6 = Goto(I2, =) = {
+    S  -> L = ·R    $
+    R  -> L·        $
+}
+
+I7 = Goto(I4, R) = {
+    L  -> * R·      =
+}
+
+I8 = Goto(I4, L) = {
+    R  -> L·        $
+}
+
+Goto(I4, *) = I4
+
+Goto(I4, id) = I5
+
+I9 = Goto(I6, R) = {
+    S  -> L = R·    $
+}
+
+================================================================================
+3. Construir tabla LR-canonico
+
+Goto
+    I1 = Goto(I0, S)        =>  [S, 0] = 1
+Accion
+    Desplazamiento
+        I4 = Goto(I0, *)    =>  [*, 0] = d4
+    Reducción
+        I3 = Goto(I0, R) = { S  -> R·, $ }  =>  [$, 3] = r(regla de S -> R)
+}
+        
+
+I   | Accion       | Goto
+    | =  *  id $   | S  L  R
+----------------------------------
+0   |    d4 d5     | 1  2  3    
+1   |          ac  |            
+2   | d6       r1/ |            
+    |          r5  |
+3   |          r2  |            
+4   |              |    8  7    
+5   |              |            
+6   |              |       9    
+7   | r3           |            
+8   |          r5  |            
+9   |          r1  |            
+
+
+
+================================================================================
+Ejemplo 2
+
+Gramática G = {
+    A' -> A
+(1) A  -> Be
+(2)     | aBCD
+(3) B  -> b
+(4) C  -> λ
+(5) D  -> c
+(6)     | d
+}
+
+I0 = Clausura(A') = {
+    A' -> ·A,       $
+    A  -> ·Be,      $
+    A  -> ·aBCD,    $
+    B  -> ·b,       e
+}
+
+I1 = Goto(I0, A) = {
+    A' -> A·,       $
+}
+
+I2 = Goto(I0, B) = {
+    A  -> B·e,      $
+}
+
+I3 = Goto(I0, a) = {
+    A  -> a·BCD,    $
+    B  -> ·b,       c|d
+}
+
+I4 = Goto(I0, b) = {
+    B  -> b·.       e
+}
+
+I5 = Goto(I2, e) = {
+    A  -> Be·,      $
+}
+
+I6 = Goto(I3, B) = {
+    A  -> aB·CD,    $
+    C  -> λ·,       c|d
+}
+
+I7 = Goto(I3, b) = {
+    B  -> b·,       c|d
+}
+
+I8 = Goto(I6, C) = {
+    A  -> aBC·D,    $
+    D  -> ·c,       $
+    D  -> ·d,       $
+}
+
+I9 = Goto(I8, D) = {
+    A  -> aBCD·,    $
+}
+
+I10 = Goto(I8, c) = {
+    D  -> c·,       $
+}
+
+I11 = Goto(I8, d) = {
+    D  -> d·,       $
+}
+
+
+I   |   Vt                     |  Vn
+    |   a   b   c   d   e   $  |  A  B  C  D
+----------------------------------------------
+0   |   d3  d4                 |  1  2      
+1   |                       ac |               
+2   |                   d5     |               
+3   |       d7                 |     6         
+4   |                   r3     |               
+5   |                   r1     |               
+6   |           r4  r4         |        8      
+7   |           r3  r3         |               
+8   |           d10 d11        |           9   
+9   |                       r2 |               
+10  |                       r5 |               
+11  |                       r6 |               
+
+Tabla LALR
+
+Mergear estados
+
+I   |   Vt                     |  Vn
+    |   a   b   c   d   e   $  |  A  B  C  D
+----------------------------------------------
+0   |   d3  d4                 |  1  2      
+1   |                       ac |               
+2   |                   d5     |               
+3   |       d7                 |     6         
+4   |                   r3     |               
+5   |                   r1     |               
+6   |           r4  r4         |        7      
+7   |           d10 d11        |           8   
+8   |                       r2 |               
+9   |                       r5 |               
+10  |                       r6 |               
+

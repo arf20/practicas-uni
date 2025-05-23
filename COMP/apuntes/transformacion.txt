@@ -1,0 +1,128 @@
+Transformación de gramáticas
+
+Gramatica es ambigua si tiene reglas simetricas 
+    A -> A = A
+
+Libre de contexto
+
+1. Eliminación de lambda-producciones
+    
+    Quitar A -> λ, y quitar As del resto de reglas, posible nuevo inicial
+
+    A -> BC  =>   A -> C
+    B -> λ
+
+ -> Lambda-libre
+
+2. Eliminación de producciones unitarias
+
+    A -> B   =>   A -> β
+    B -> β
+
+ -> Libre de ciclos
+
+3. Eliminación de simbolos inutiles
+(vars inproductivas, simbolos inaccesibles)
+
+    Improductivas
+
+        Vpro = Variables A -> (solo terminales) son productivas
+        Variables A -> (terminales o variables de Vpro) son productivas
+        Quitar resto
+
+    Inaccesibles
+
+        A -> B | C  =>  A -> C
+        (no B -> β)
+
+ -> Propia
+
+4. Eliminación de recursividad por la izquierda
+
+    Recursiva inmediata
+
+        A  -> Aα | β
+
+        A  -> β | βA'
+        A' -> α | αA'
+
+    Recursiva indirecta
+
+        Eliminar inmediata
+        Sustituir
+        Repetir en lo posible
+
+ -> No recursiva por la izquierda
+
+5. Factorización
+
+Encontrar prefijo α
+    A  -> αβ1 | αβ2 | γ1 | γ2
+Sustituir producciones por una sola a nueva variable
+    A  -> αA' | γ1 | γ2
+    A' -> β1 | β2
+
+Factorizada por la izquierda (y LL)
+
+6. Simplificación
+
+S -> ABC
+B -> a b c (deriva solo en 1 cosa sin |)
+
+S -> AabcC
+
+Gramatica igual exactamente pero menos compleja (menos reglas)
+
+================================================================================
+Ejemplos
+
+Recursion
+
+Inmediata
+
+    E -> E + T | T
+    T -> T * F | F
+    F -> (E) | id
+
+    E  -> T | T E'
+    E' -> + T, + T E'
+    T  -> F | F T'
+    T' -> * F | * F T'
+    F  -> (E) | id
+
+Directa + Indirecta
+
+    S -> SX | SSb | XS | a
+    X -> Xb | Sa | b
+
+    i=1: eliminar recursion de S
+        S  -> XS | a | XSS' | aS'
+        S' -> X | Sb | XS' | SbS'
+    sustituir la S en regla de X por las derechas de S
+        X  -> Xb | XSa | aa | XSS'a | aS'a | b
+    i=2: eliminar recursion de X
+        X  -> aa | aS'a | b | aaX' | aS'aX' | bX'
+        X' -> b | Sa | SS'a | bX' | SaX' | SS'aX'
+
+    S  -> XS | a | XSS' | aS'
+    S' -> X | Sb | XS' | SbS'
+    X  -> aa | aS'a | b | aaX' | aS'aX' | bX'
+    X' -> b | Sa | SS'a | bX' | SaX' | SS'aX'
+
+Factorización
+
+    E  -> T  | TE'
+    E' -> +T | +TE'
+    T  -> F  | FT'
+    T' -> *F | *FT'
+    F  -> id | (E)
+
+    E   -> TE''
+    E'' -> λ | E'
+    E'  -> +TE''
+    T   -> FT''
+    T'' -> λ | T'
+    T'  -> *FT''
+    F  -> id | (E)
+
+

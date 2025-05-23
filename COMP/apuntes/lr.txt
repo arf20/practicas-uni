@@ -1,0 +1,54 @@
+Algoritmo LR: Simulacion reconocer cadena
+
+Gramatica G = { 
+        E' -> E,
+    1   E  -> E + T
+    2   E  -> T,
+    3   T  -> T * F
+    4   T  -> F,
+    5   F  -> ( E )
+    6   F  -> id
+}
+
+Tabla LR
+    I  | accion                  | goto      
+       | id   +   *   (   )   $  | E   T   F 
+    -------------------------------------------
+    0  | d5           d4         | 1   2   3  
+    1  |      d6              ac |             
+    2  |      r2  d7/     r2  r2 |             
+       |          r2*            |              
+    3  |      r4  r4      r4  r4 |             
+    4  | d5           d4         | 8   2   3   
+    5  |      r6  r6      r6  r6 |             
+    6  | d5           d4         |     9   3  
+    7  | d5           d4         |         10 
+    8  |      d6          d11    |             
+    9  |      r1  d7/     r1  r1 |             
+       |          r1*            |
+    10 |      r3  r3      r3  r3 |             
+    11 |      r5  r5      r5  r5 |     
+
+Entrada
+    id * id + id $
+
+Pila                Entrada         Acción
+----------------------------------------------
+0                   id * id + id $  d5 
+    [id, 0] = d5, desplazar id: apilar id y estado 5
+0 id 5              * id + id $     r6
+    [*,  5] = r6, reducir usando regla 6 (F -> id):
+        desapilar id 5, apilar F (regla izq) y 3 (goto[F, 0])
+0 F  3              * id + id $     r4
+0 T  2              * id + id $     d7
+0 T  2 * 7          id + id $       d5
+0 T  2 * 7 id 5     + id $          r6
+0 T  2 * 7 F  10    + id $          r3
+0 T  2              + id $          r2
+0 E  1              + id $          d6
+0 E  1 + 6          id $            d5
+0 E  1 + 6 id 5     $               r6
+0 E  1 + 6 F  3     $               r4
+0 E  1 + 6 T  9     $               r1
+0 E  1              $               aceptar
+

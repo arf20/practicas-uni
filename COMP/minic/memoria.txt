@@ -19,6 +19,7 @@ MEMORIA COMP                         miniC                                PAGE 1
 
 
 
+
                   MEMORIA DE PROYECTO DE COMPILADORES - miniC
                  Ángel Ruiz Fernandez <a.ruizfernandez@um.es>
                      2° - Grupo 2.2 - Primera Convocatoria
@@ -26,21 +27,28 @@ MEMORIA COMP                         miniC                                PAGE 1
 MEMORIA COMP                         miniC                                PAGE 2
 
 TABLE OF CONTENTS
-1. Explicación de la práctica ................................................ 3
-    1.1. Funciones principales ............................................... 3
-    1.2. Estructuras de datos ................................................ 4
-    1.3. Manual de usuario ................................................... 5
-2. Ejemplos de ejecución explicados .......................................... 5
-3. Mejoras ................................................................... 7
-    3.1. do-while ............................................................ 7
-    3.2. for ................................................................. 7
-    3.3. Operadores relacionales ............................................. 7
+1. Introducción .............................................................. 3
+2. Explicación de la práctica ................................................ 3
+    2.1. Funciones principales ............................................... 3
+    2.2. Estructuras de datos ................................................ 4
+    2.3. Manual de usuario ................................................... 5
+3. Ejemplos de ejecución explicados .......................................... 5
+4. Mejoras ................................................................... 7
+    4.1. do-while ............................................................ 7
+    4.2. for ................................................................. 7
+    4.3. Operadores relacionales ............................................. 8
+5. Conclusión ................................................................ 8
 
 MEMORIA COMP                         miniC                                PAGE 3
 
-1. Explicación de la práctica
+1. Introducción
 
-1.1. Funciones principales
+    En esta memoria se describe la práctica de compiladores según los puntos
+definidos en la tarea.
+
+2. Explicación de la práctica
+
+2.1. Funciones principales
 
   - void yyerror(): funcion de error semantico
 
@@ -89,16 +97,16 @@ TABLE OF CONTENTS
   - ListaC cl_push_if(ListaC cond, ListaC ifl): genera código para condicional
     si
     
+
+
+MEMORIA COMP                         miniC                                PAGE 4
+
   - ListaC cl_push_while(ListaC cond, ListaC statementl): genera código para
     bucle mientras
     
   - ListaC cl_push_do_while(ListaC statementl, ListaC cond): genera código para
     bucle hacer mientras
     
-
-
-MEMORIA COMP                         miniC                                PAGE 4
-
   - ListaC cl_push_for(const char *id, const char *lintinit, ListaC cond, ListaC
     statementl, int sign, const char *lintstep): genera código para bucle for
     
@@ -124,7 +132,7 @@ Funciones de utilidad
   - char* label_colon(const char *label): añade ':' al final de una etiqueta
 
 
-1.2. Estructuras de datos
+2.2. Estructuras de datos
 
     %union define la colección de todos los posibles tipos que puede adoptar un
 sintagma. char* para tokens yylval como IDs, literales, etc; y ListaC para el
@@ -148,6 +156,9 @@ rellenando conforme se encuentran variables, constantes y cadenas.
     Array de registros y nombres: representa el uso de estos para el asignador
 de registros, y sus nombres segun el indice.
 
+
+MEMORIA COMP                         miniC                                PAGE 5
+
     int regs[10] = { 0 };
     const char reg_strs[][10] = {
         "$t0", "$t1", "$t2", "$t3", "$t4", "$t5", "$t6", "$t7", "$t8", "$t9"
@@ -158,12 +169,11 @@ de registros, y sus nombres segun el indice.
     int string_counter = 0, cond_counter = 0, if_counter = 0, while_counter = 0,
         dowhile_counter = 0, for_counter = 0;
 
-
-MEMORIA COMP                         miniC                                PAGE 5
-
-1.3. Manual de usuario
+2.3. Manual de usuario
 
 minicc acepta dos flags:
+  - --help: para imprimir el uso
+  - --debug: para activar la salida de depuración
 
     Y la entrada y la salida se definen con respectivos argumentos posicionales,
 primero la entrada.
@@ -174,7 +184,7 @@ primero la entrada.
 
     Fig 1. Ayuda incluida
 
-2. Ejemplos de ejecución explicados
+3. Ejemplos de ejecución explicados
 
     # compilar usando stdin y stdout
     ./minicc < prueba.mc > prueba.S
@@ -200,6 +210,9 @@ primero la entrada.
 
     Fig 3. Entrada de prueba
 
+
+MEMORIA COMP                         miniC                                PAGE 6
+
         .data
     _a:
         .word 0
@@ -219,10 +232,6 @@ primero la entrada.
         .asciiz "c = "
     $str5:
         .asciiz "\n"
-
-
-MEMORIA COMP                         miniC                                PAGE 6
-
     $str6:
         .asciiz "Final"
     $str7:
@@ -260,6 +269,10 @@ primero la entrada.
         syscall
         j if0end
     if0else:
+
+
+MEMORIA COMP                         miniC                                PAGE 7
+
     while0:
         lw $t2, _c
         beqz $t2, while0end
@@ -281,9 +294,6 @@ primero la entrada.
         sw $t5, _c
         j while0
 
-
-MEMORIA COMP                         miniC                                PAGE 7
-
     while0end:
     if0end:
     if1end:
@@ -299,16 +309,16 @@ primero la entrada.
 
     Fig 4. Código generado
 
-3. Mejoras
+4. Mejoras
 
-3.1. do-while
+4.1. do-while
 
     El bucle do-while se implementó definiendo el lexema "do", la sintaxis de
 statement "do statement while (expr);" y generando la etiqueta de loop primero,
 seguido de el cuerpo, y al final unicamente la expresión de condición y una
 instrucción de 'bnez'.
 
-3.2. for
+4.2. for
 
 El bucle for se implementó definiendo el lexema "for" y las sintaxis en statement:
   - for (id = lint; expr) statement
@@ -317,6 +327,9 @@ El bucle for se implementó definiendo el lexema "for" y las sintaxis en stateme
     Las sintaxis admiten el id del iterador, el valor inicial, la expresión de
 condición (asumiendo uso del mismo iterador) y opcionalmente el paso con o sin
 signo que sumar al iterador, seguido del cuerpo del bucle.
+
+
+MEMORIA COMP                         miniC                                PAGE 8
 
 El codigo de este bucle se genera concatenando las siguientes listas en este orden:
   - etiqueta de inicio de bucle
@@ -327,7 +340,7 @@ El codigo de este bucle se genera concatenando las siguientes listas en este ord
   - instrucción de salto al inicio (bucle)
   - etiqueta de terminación de bucle
 
-3.3. Operadores relacionales
+4.3. Operadores relacionales
 
 Definidos los siguientes lexemas:
   - <
@@ -336,9 +349,6 @@ Definidos los siguientes lexemas:
   - >=
   - ==
   - !=
-
-
-MEMORIA COMP                         miniC                                PAGE 8
 
 Definidas las siguientes sintaxis en expr:
   - expr < expr
@@ -353,4 +363,10 @@ comparación correspondiente al operador, y se genera el codigo concatenando las
 dos listas de expresiones y a continuación la instrucción de comparación que
 toma como operandos los resultados de cada expresión, y retorna la nueva lista
 cuyo resultado es un nuevo registro con el resultado de la comparación.
+
+5. Conclusión
+
+    Esta practica ha sido muy interesante para descubrir como funciona un
+compilador basado en GNU flex y bison como lo es GNU gcc, y para entender como
+se define la gramatica de un lenguaje en este.
 

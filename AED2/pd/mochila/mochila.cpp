@@ -56,25 +56,6 @@ std::pair<int, std::vector<int>> recomponer_solucion(const std::vector<std::vect
     return {V[n][m], x};
 }
 
-std::pair<int, std::vector<int>> mochila01_paso3_reconstruir_solucion(const std::vector<std::vector<int>>& V) {
-    int k_actual = n;
-    int m_actual = m;
-    std::vector<int> S(n, 0); // S es inicializado a ceros
-    while (k_actual > 0) {
-        int m1 = (m_actual - p[k_actual - 1] >= 0) ? b[k_actual - 1] + V[k_actual - 1][m_actual -
-            p[k_actual - 1]] : std::numeric_limits<int>::min();
-        int m2 = V[k_actual - 1][m_actual];
-        if (m1 != m2) {
-            S[k_actual - 1] = 1;
-            m_actual -= p[k_actual - 1];
-        }
-        //else... S ha sido inicializado a ceros
-        k_actual--;
-    }
-    return {V[n][m], S};
-}
-
-
 int main() {
     auto V = rellenar_tabla();
 
