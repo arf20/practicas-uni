@@ -15,6 +15,10 @@
 
 .tableofcontents
 
+.section Introducción
+
+En esta memoria se describe la práctica de compiladores según los puntos definidos en la tarea.
+
 .section Explicación de la práctica
 
 .subsection Funciones principales
@@ -38,9 +42,9 @@
 .item ListaC cl_push_assign(const char *id, ListaC l): genera código para la asignación
 .item ListaC cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel): genera código para si-sino
 .item ListaC cl_push_if(ListaC cond, ListaC ifl): genera código para condicional si
+.itemize
 .item ListaC cl_push_while(ListaC cond, ListaC statementl): genera código para bucle mientras
 .item ListaC cl_push_do_while(ListaC statementl, ListaC cond): genera código para bucle hacer mientras
-.itemize
 .item ListaC cl_push_for(const char *id, const char *lintinit, ListaC cond, ListaC statementl, int sign, const char *lintstep): genera código para bucle for
 .item ListaC cl_push_print_expr(ListaC exprl): genera código para impresión de expresiones
 .item ListaC cl_push_print_str(const char *lstr): genera código para impresión de cadenas
@@ -92,13 +96,11 @@ int string_counter = 0, cond_counter = 0, if_counter = 0, while_counter = 0,
     dowhile_counter = 0, for_counter = 0;
 .!fig
 
-.pagebreak
-
 .subsection Manual de usuario
 
 .itemize minicc acepta dos flags:
-.item: --help: para imprimir el uso
-.item: --debug: para activar la salida de depuración
+.item --help: para imprimir el uso
+.item --debug: para activar la salida de depuración
 
 Y la entrada y la salida se definen con respectivos argumentos posicionales, primero la entrada.
 
@@ -157,11 +159,6 @@ $str4:
     .asciiz "c = "
 $str5:
     .asciiz "\n"
-.!fig
-
-
-
-.fig
 $str6:
     .asciiz "Final"
 $str7:
@@ -199,6 +196,8 @@ if1else:
     syscall
     j if0end
 if0else:
+.!fig
+.fig
 while0:
     lw $t2, _c
     beqz $t2, while0end
@@ -271,8 +270,6 @@ Las sintaxis admiten el id del iterador, el valor inicial, la expresión de cond
 .item ==
 .item !=
 
-.pagebreak
-
 .itemize Definidas las siguientes sintaxis en expr:
 .item expr < expr
 .item expr > expr
@@ -282,4 +279,8 @@ Las sintaxis admiten el id del iterador, el valor inicial, la expresión de cond
 .item expr != expr
 
 Y una función que toma las listas de las dos expresiones y la instrucción de comparación correspondiente al operador, y se genera el codigo concatenando las dos listas de expresiones y a continuación la instrucción de comparación que toma como operandos los resultados de cada expresión, y retorna la nueva lista cuyo resultado es un nuevo registro con el resultado de la comparación.
+
+.section Conclusión
+
+Esta practica ha sido muy interesante para descubrir como funciona un compilador basado en GNU flex y bison como lo es GNU gcc, y para entender como se define la gramatica de un lenguaje en este.
 

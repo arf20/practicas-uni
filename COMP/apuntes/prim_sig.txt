@@ -1,0 +1,57 @@
+Gramática G
+A -> B e | a
+B -> C D | b
+C -> c | λ
+D -> d | λ
+
+1. Conjunto primero
+
+Se aplica a no terminales y puede dar terminales y λ.
+
+Se calcula observando y derivando el primero simbolo de cada regla de producción
+de un no terminal.
+
+Prim(A) = { a, b, c, d, e }
+Prim(B) = { b, c, d, λ }
+Prim(C) = { c, λ }
+Prim(D) = { d, λ }
+
+2. Conjunto siguiente
+
+Se aplica a no terminales y solo puede dar terminales y $ (fin de entrada).
+
+    Siguiente(X)
+        Si X es simbolo inicial, añadir $.
+        En todas las reglas de producción de Y donde aparezca X (Y -> X)
+            Con β detrás (Y -> Xβ):
+                Añadir Primero(β) quitando λ
+            Si no hay β o β es λ (Y -> X):
+                Añadir Siguiente(Y)
+            
+Sig(A) = { $ }
+Sig(B) = { e }
+Sig(C) = { d } U Sig(B) = { d, e }
+Sig(D) = Sig(B) = { e }
+
+
+Ejemplo 2.
+
+S -> aA | bc | ABd | CD
+A -> λ
+B -> c | λ
+C -> e | λ
+D -> Df | λ
+
+Prim(S) = { a, b, c, d, λ }
+Prim(A) = { λ }
+Prim(B) = { c, λ }
+Prim(C) = { e, λ }
+Prim(D) = { f, λ }
+
+Sig(S) = { $ }
+Sig(A) = { $, c, d }
+Sig(B) = { d }
+Sig(C) = { f, $ }
+Sig(D) = { $, f } # <=== ESTO TIENE QUE TENER $ !!!!!! NO???
+
+

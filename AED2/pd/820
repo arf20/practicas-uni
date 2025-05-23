@@ -1,0 +1,26 @@
+PASO 1
+
+Dos mochilas, capacidades M1, M2
+n objetos:
+	pesos p
+	beneficios b
+
+opciones
+	no meter: 	Mochila(k - 1, r1, r2)
+	meter en M1:	b_k + Mochila(k - 1, r1 - p_k, r2)
+	meter en M2:	b_k + Mochila(k - 1, r1, r2 - p_k)
+
+Mochila(k, r1, r2)
+	si k o m1 o m2 son 0: 0
+	si k o m1 o m2 < 0: -inf
+	sino max(
+		Mochila(k - 1, r1, r2)
+		b_k + Mochila(k - 1, r1 - p_k, r2)
+		b_k + Mochila(k - 1, r1, r2 - p_k)
+	)
+
+func rellenar_tabla():
+	for k in 1 to n
+		for r in 1 to max(M1, M2)
+
+

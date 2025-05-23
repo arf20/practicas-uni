@@ -1,0 +1,200 @@
+Construir tabla LR: Algoritmo de SLR
+
+Gramatica G = { 
+    E' -> E,
+    E  -> E + T | T,
+    T  -> T * F | F,
+    F  -> ( E ) | id,
+}
+
+
+================================================================================
+1. Clausura y Gotos
+
+I0 = clausura({E'->E}) = {
+    E' -> ·E,
+    E  -> ·E + T,
+    E  -> ·T,
+    T  -> ·T * F,
+    T  -> ·F,
+    F  -> ·(E),
+    F  -> ·id
+}
+
+I1 = goto(I0, E) = {
+    E' -> E·,
+    E  -> E· + T
+}
+
+I2 = goto(I0, T) = {
+    E -> T·,
+    T -> T· * F
+}
+
+I3 = goto(I0, F) = {
+    T -> F·
+}
+
+I4 = goto(I0, '(') = {
+    F -> (·E),
+    E -> ·E + T,
+    E -> ·T,
+    T -> ·T * F,
+    T -> ·F,
+    F -> ·(E),
+    F -> ·id
+}
+
+I5 = goto(I0, 'id') = {
+    F -> id·
+}
+
+I6 = goto(I1, '+') = {
+    E -> E + ·T
+    T -> ·T * F,
+    T -> ·F,
+    F -> ·(E),
+    F -> ·id
+}
+
+I7 = goto(I2, '*') = {
+    T -> T * ·F,
+    F -> ·(E),
+    F -> ·id
+}
+
+I8 = goto(I4, E) = {
+    F -> (E·),
+    E -> E· + T
+}
+
+goto(I4, T) = I2
+
+goto(I4, F) = I3
+
+goto(I4, '(') = I4
+
+goto(I4, 'id') = I5
+
+I9 = goto(I6, T) = {
+    E -> E + T·,
+    T -> T· * F,
+}
+
+goto(I6, F) = I3
+
+goto(I6, '(') = I4
+
+goto(I6, 'id') = I5
+
+I10 = goto(I7, F) = {
+    T -> T * F·
+}
+
+goto(I7, '(') = I4
+
+goto(I7, 'id') = I5
+
+I11 = goto(I8, ')') = {
+    F -> (E)·
+}
+
+goto(I8, '+') = I6
+
+goto(I9, '*') = I7
+
+
+================================================================================
+2. Primero y Siguiente
+
+Gramatica G = { 
+    E' -> E,
+1   E  -> E + T
+2       | T,
+3   T  -> T * F
+4       | F,
+5   F  -> ( E )
+6       | id
+}
+
+Prim(E') = { '(', 'id' }
+Prim(E)  = Prim(E')
+Prim(T)  = Prim(E')
+Prim(F)  = Prim(E')
+
+Sig(E')  = { $ }
+Sig(E)   = { '+', '*', ')' } U Sig(E') = { '+', '*', ')', $ }
+Sig(T)   = Sig(E) = { '+', '*', ')', $ }
+Sig(F)   = Sig(T) = { '+', '*', ')', $ }
+
+Si en el siguiente de X, una regla A -> loquesea X, Sig(A) pertenece a Sig(X)
+
+================================================================================
+3. Construir tabla
+
+Desplazamiento i.e. de I0 desplaza a I5 por 'id': ['id', 0] = d5
+
+I5 = goto(I0, 'id') = {
+    F -> id·
+}
+
+Reducción i.e. de I2 reduce usando regla 2 porque tiene · al final,
+    para Sig(simbolo de regla): [Sig(E), 2] = r2
+
+I2 = goto(I0, T) = {
+    E -> T·,
+    T -> T· * F
+}
+
+I  | accion                  | goto      
+   | id   +   *   (   )   $  | E   T   F 
+-------------------------------------------
+0  | d5           d4         | 1   2   3  
+1  |      d6              ac |             
+2  |      r2  d7/     r2  r2 |             
+   |          r2*            |              
+3  |      r4  r4      r4  r4 |             
+4  | d5           d4         | 8   2   3   
+5  |      r6  r6      r6  r6 |             
+6  | d5           d4         |     9   3  
+7  | d5           d4         |         10 
+8  |      d6          d11    |             
+9  |      r1  d7/     r1  r1 |             
+   |          r1*            |
+10 |      r3  r3      r3  r3 |             
+11 |      r5  r5      r5  r5 |             
+
+*conflicto desplazamiento/reduccion
+
+================================================================================
+4. Reconocer cadena
+
+Gramatica G = { 
+    E' -> E,
+1   E  -> E + T
+2   E  -> T,
+3   T  -> T * F
+4   T  -> F,
+5   F  -> ( E )
+6   F  -> id
+}
+
+id * id + id $
+
+Pila                Entrada         Acción
+----------------------------------------------
+0                   id * id + id $  d5
+0 id 5              * id + id $     r6
+0 F  3              * id + id $     r4
+0 T  2              * id + id $     d7
+0 T  2 * 7          id + id $       d5
+0 T  2 * 7 id 5     + id $          r6
+0 T  2 * 7 F  10    + id $          r3
+0 T  2              + id $          r2
+0 E  1              + id $          d6
+0 E  1 + 6          id $            d5
+0 E  1 + 6 id 5     $               r6
+0 E  1 + 6 F  3     $               r4
+0 E  1 + 6 T  9     $               r1
+0 E  1              $               aceptar
+
