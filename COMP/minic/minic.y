@@ -104,7 +104,7 @@ program : { setup_program(); } ID PARENL PARENR BRACKETL decls statement_list BR
         ;
 
 decls : decls RVAR type var_list SEMICOLON { $$ = $1; }
-      | decls RCONST type const_list SEMICOLON { concatenaLC($1, $4); $$ = $1; comment($$); }
+      | decls RCONST type const_list SEMICOLON { concatenaLC($1, $4); liberaLC($4); $$ = $1; comment($$); }
       | { $$ = creaLC(); }
       ;
 
@@ -119,7 +119,7 @@ const_list : ID OASSIGN expr { symtable_push($1); ds_push_word($1); $$ = cl_push
            | const_list COMMA ID OASSIGN expr { symtable_push($3); ds_push_word($3); $$ = cl_push_const_list($1, $3, $5); }
            ;
 
-statement_list : statement_list statement { concatenaLC($1, $2); $$ = $1; }
+statement_list : statement_list statement { concatenaLC($1, $2); liberaLC($2); $$ = $1; }
                | {$$ = creaLC();}
                ;
 
@@ -137,7 +137,7 @@ statement : ID OASSIGN expr SEMICOLON { $$ = cl_push_assign($1, $3); }
           ;
 
 print_list : print_item { $$ = $1; }
-           | print_list COMMA print_item { concatenaLC($1, $3); $$ = $1; }
+           | print_list COMMA print_item { concatenaLC($1, $3); liberaLC($3); $$ = $1; }
            ;
 
 print_item : expr { $$ = cl_push_print_expr($1); }
@@ -145,7 +145,7 @@ print_item : expr { $$ = cl_push_print_expr($1); }
            ;
 
 read_list : ID { $$ = cl_push_read($1); }
-          | read_list COMMA ID { concatenaLC($1, cl_push_read($3)); $$ = $1; }
+          | read_list COMMA ID { ListaC t = cl_push_read($3); concatenaLC($1, t); liberaLC(t); $$ = $1; }
           ;
 
 expr : expr OPLUS expr { $$ = cl_push_binop("add", $1, $3); }
@@ -403,6 +403,11 @@ cl_program(const char *id, ListaC decls, ListaC statements)
     ListaC program = creaLC();
     concatenaLC(program, dataseg);
     concatenaLC(program, textseg);
+    
+    liberaLC(decls);
+    liberaLC(statements);
+    liberaLC(dataseg);
+    liberaLC(textseg);
 
     print_code(program);
 }
@@ -416,10 +421,11 @@ cl_push_const_list(ListaC constl, const char *id, ListaC vl)
     concatenaLC(constl, vl);
     Operacion op = { "sw", recuperaResLC(vl), strdup(buff) };
     insertaLC(constl, finalLC(constl), op);
-    free_reg(recuperaResLC(vl));
-    return constl;
-}
-
+    free_reg(recuperaResLC(vl)); 
+    liberaLC(vl);
+    return constl;               
+}                                
+                                 
 
 ListaC
 cl_push_read(const char *id)
@@ -500,6 +506,8 @@ cl_push_while(ListaC cond, ListaC statementl)
     while_counter++;
 
     free_reg(recuperaResLC(cond));
+    liberaLC(cond);
+    liberaLC(statementl);
 
     return ll;
 }
@@ -525,6 +533,8 @@ cl_push_do_while(ListaC statementl, ListaC cond)
     dowhile_counter++;
 
     free_reg(recuperaResLC(cond));
+    liberaLC(statementl);
+    liberaLC(cond);
 
     return ll;
 }
@@ -570,6 +580,8 @@ cl_push_for(const char *id, const char *lintinit,
     for_counter++;
 
     free_reg(iter_reg);
+    liberaLC(cond);
+    liberaLC(statementl);
 
     return ll;
 }
@@ -596,6 +608,8 @@ cl_push_if(ListaC cond, ListaC ifl)
     if_counter++;
 
     free_reg(recuperaResLC(cond));
+    liberaLC(cond);
+    liberaLC(ifl);
 
     return res;
 }
@@ -631,6 +645,9 @@ cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel)
     if_counter++;
 
     free_reg(recuperaResLC(cond));
+    liberaLC(cond);
+    liberaLC(ifl);
+    liberaLC(elsel);
 
     return res;
 }
@@ -663,6 +680,8 @@ cl_push_binop(const char *inst, ListaC ll, ListaC rl)
     guardaResLC(res, reg);
     free_reg(recuperaResLC(ll));
     free_reg(recuperaResLC(rl));
+    liberaLC(ll);
+    liberaLC(rl);
 
     return res;
 }
@@ -682,6 +701,8 @@ cl_push_rel(const char *inst, ListaC ll, ListaC rl)
     guardaResLC(res, reg);
     free_reg(recuperaResLC(ll));
     free_reg(recuperaResLC(rl));
+    liberaLC(ll);
+    liberaLC(rl);
     
     return res;
 }
@@ -715,6 +736,9 @@ cl_push_condop(ListaC cond, ListaC tl, ListaC fl)
     free_reg(recuperaResLC(cond));
     free_reg(recuperaResLC(tl));
     free_reg(recuperaResLC(fl));
+    liberaLC(tl);
+    liberaLC(fl);
+    liberaLC(cond);
 
     cond_counter++;
 
@@ -738,7 +762,7 @@ cl_push_id(const char *id)
 
     ListaC l = creaLC();
     if (buscaLS(symtable, buff) == finalLS(symtable))
-        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, buff);
+        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, id);
     const char *reg = alloc_reg();
     Operacion op = { "lw", reg, strdup(buff) };
     insertaLC(l, finalLC(l), op);

@@ -5,8 +5,8 @@ Convocatoria: junio
 
 Practica: P3. Definicion y Modificacion de Datos en SQL
 
-Equipo de practicas: bdxxyy
- Integrante 1:
+Equipo de practicas: bd2215
+ Integrante 1: Angel Ruiz Fernandez
  Integrante 2: 
 
 SCRIPT PARA ESTUDIANTES

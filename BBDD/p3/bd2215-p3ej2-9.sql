@@ -265,3 +265,74 @@ COMMIT;
 
 SELECT *
 FROM INTERACCION_ADMIN;
+
+--------------------------------------------------------------------------------------
+-- EJERCICIO 8. Restricciones de integridad: Asertos.
+
+-- a
+
+--CREATE ASSERTION chat_no_vacio (NOT EXISTS
+SELECT *
+FROM CHAT_GRUPO C
+WHERE C.codigo NOT IN (
+    SELECT DISTINCT M.chat_grupo
+    FROM MENSAJE M
+);
+
+--CREATE ASSERTION anclado_pertenece_a_chat (NOT EXISTS
+SELECT *
+FROM CHAT_GRUPO C
+WHERE C.codigo NOT IN (
+    SELECT C2.codigo
+    FROM CHAT_GRUPO C2
+    JOIN MENSAJE M ON C2.msj_anclado = M.mensaje_id
+);
+
+--------------------------------------------------------------------------------------
+-- EJERCICIO 9. Creación y uso de índices.
+
+SELECT DISTINCT M.mensaje_id
+FROM mensaje M
+JOIN chat_grupo G ON M.chat_grupo = G.codigo
+JOIN participacion P ON P.chat_grupo = G.codigo
+WHERE M.msj_original IS NOT NULL
+AND EXISTS (
+    SELECT *
+    FROM miusuario U
+    WHERE U.telefono = P.usuario
+    AND U.telefono IN (
+        SELECT usuario
+        FROM contacto
+        GROUP BY usuario
+        HAVING COUNT(*) > 5
+    )
+);
+
+-- coste: 26
+
+-- b
+
+CREATE INDEX index_contacto_usuario
+ON CONTACTO (usuario);
+
+-- c
+
+SELECT DISTINCT M.mensaje_id
+FROM mensaje M
+JOIN chat_grupo G ON M.chat_grupo = G.codigo
+JOIN participacion P ON P.chat_grupo = G.codigo
+WHERE M.msj_original IS NOT NULL
+AND EXISTS (
+    SELECT *
+    FROM miusuario U
+    WHERE U.telefono = P.usuario
+    AND U.telefono IN (
+        SELECT usuario
+        FROM contacto
+        GROUP BY usuario
+        HAVING COUNT(*) > 5
+    )
+);
+
+-- 1. Coste 5 ahora
+-- 2. Si.

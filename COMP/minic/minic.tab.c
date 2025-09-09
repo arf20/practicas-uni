@@ -1289,7 +1289,7 @@ yyreduce:
 
   case 5: /* decls: decls RCONST type const_list SEMICOLON  */
 #line 107 "minic.y"
-                                               { concatenaLC((yyvsp[-4].code), (yyvsp[-1].code)); (yyval.code) = (yyvsp[-4].code); comment((yyval.code)); }
+                                               { concatenaLC((yyvsp[-4].code), (yyvsp[-1].code)); liberaLC((yyvsp[-1].code)); (yyval.code) = (yyvsp[-4].code); comment((yyval.code)); }
 #line 1294 "minic.tab.c"
     break;
 
@@ -1325,7 +1325,7 @@ yyreduce:
 
   case 12: /* statement_list: statement_list statement  */
 #line 122 "minic.y"
-                                          { concatenaLC((yyvsp[-1].code), (yyvsp[0].code)); (yyval.code) = (yyvsp[-1].code); }
+                                          { concatenaLC((yyvsp[-1].code), (yyvsp[0].code)); liberaLC((yyvsp[0].code)); (yyval.code) = (yyvsp[-1].code); }
 #line 1330 "minic.tab.c"
     break;
 
@@ -1409,7 +1409,7 @@ yyreduce:
 
   case 26: /* print_list: print_list COMMA print_item  */
 #line 140 "minic.y"
-                                         { concatenaLC((yyvsp[-2].code), (yyvsp[0].code)); (yyval.code) = (yyvsp[-2].code); }
+                                         { concatenaLC((yyvsp[-2].code), (yyvsp[0].code)); liberaLC((yyvsp[0].code)); (yyval.code) = (yyvsp[-2].code); }
 #line 1414 "minic.tab.c"
     break;
 
@@ -1433,7 +1433,7 @@ yyreduce:
 
   case 30: /* read_list: read_list COMMA ID  */
 #line 148 "minic.y"
-                               { concatenaLC((yyvsp[-2].code), cl_push_read((yyvsp[0].lex))); (yyval.code) = (yyvsp[-2].code); }
+                               { ListaC t = cl_push_read((yyvsp[0].lex)); concatenaLC((yyvsp[-2].code), t); liberaLC(t); (yyval.code) = (yyvsp[-2].code); }
 #line 1438 "minic.tab.c"
     break;
 
@@ -1958,6 +1958,11 @@ cl_program(const char *id, ListaC decls, ListaC statements)
     ListaC program = creaLC();
     concatenaLC(program, dataseg);
     concatenaLC(program, textseg);
+    
+    liberaLC(decls);
+    liberaLC(statements);
+    liberaLC(dataseg);
+    liberaLC(textseg);
 
     print_code(program);
 }
@@ -1971,10 +1976,11 @@ cl_push_const_list(ListaC constl, const char *id, ListaC vl)
     concatenaLC(constl, vl);
     Operacion op = { "sw", recuperaResLC(vl), strdup(buff) };
     insertaLC(constl, finalLC(constl), op);
-    free_reg(recuperaResLC(vl));
-    return constl;
-}
-
+    free_reg(recuperaResLC(vl)); 
+    liberaLC(vl);
+    return constl;               
+}                                
+                                 
 
 ListaC
 cl_push_read(const char *id)
@@ -2055,6 +2061,8 @@ cl_push_while(ListaC cond, ListaC statementl)
     while_counter++;
 
     free_reg(recuperaResLC(cond));
+    liberaLC(cond);
+    liberaLC(statementl);
 
     return ll;
 }
@@ -2080,6 +2088,8 @@ cl_push_do_while(ListaC statementl, ListaC cond)
     dowhile_counter++;
 
     free_reg(recuperaResLC(cond));
+    liberaLC(statementl);
+    liberaLC(cond);
 
     return ll;
 }
@@ -2125,6 +2135,8 @@ cl_push_for(const char *id, const char *lintinit,
     for_counter++;
 
     free_reg(iter_reg);
+    liberaLC(cond);
+    liberaLC(statementl);
 
     return ll;
 }
@@ -2151,6 +2163,8 @@ cl_push_if(ListaC cond, ListaC ifl)
     if_counter++;
 
     free_reg(recuperaResLC(cond));
+    liberaLC(cond);
+    liberaLC(ifl);
 
     return res;
 }
@@ -2186,6 +2200,9 @@ cl_push_if_else(ListaC cond, ListaC ifl, ListaC elsel)
     if_counter++;
 
     free_reg(recuperaResLC(cond));
+    liberaLC(cond);
+    liberaLC(ifl);
+    liberaLC(elsel);
 
     return res;
 }
@@ -2218,6 +2235,8 @@ cl_push_binop(const char *inst, ListaC ll, ListaC rl)
     guardaResLC(res, reg);
     free_reg(recuperaResLC(ll));
     free_reg(recuperaResLC(rl));
+    liberaLC(ll);
+    liberaLC(rl);
 
     return res;
 }
@@ -2237,6 +2256,8 @@ cl_push_rel(const char *inst, ListaC ll, ListaC rl)
     guardaResLC(res, reg);
     free_reg(recuperaResLC(ll));
     free_reg(recuperaResLC(rl));
+    liberaLC(ll);
+    liberaLC(rl);
     
     return res;
 }
@@ -2270,6 +2291,9 @@ cl_push_condop(ListaC cond, ListaC tl, ListaC fl)
     free_reg(recuperaResLC(cond));
     free_reg(recuperaResLC(tl));
     free_reg(recuperaResLC(fl));
+    liberaLC(tl);
+    liberaLC(fl);
+    liberaLC(cond);
 
     cond_counter++;
 
@@ -2293,7 +2317,7 @@ cl_push_id(const char *id)
 
     ListaC l = creaLC();
     if (buscaLS(symtable, buff) == finalLS(symtable))
-        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, buff);
+        fprintf(stderr, "%d: error: undeclared symbol `%s'\n", yylineno, id);
     const char *reg = alloc_reg();
     Operacion op = { "lw", reg, strdup(buff) };
     insertaLC(l, finalLC(l), op);

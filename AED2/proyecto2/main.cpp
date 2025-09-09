@@ -76,7 +76,7 @@ std::pair<int, int> bt(std::vector<int> pesos) {
         c++;
     }
 
-    std::cout << c << std::endl;
+    //std::cout << c << std::endl;
     
     if (solsumequipoA > solsumequipoB)
         std::swap(solsumequipoA, solsumequipoB);
@@ -113,6 +113,9 @@ int main() {
     for (; casos > 0; casos--) {
         int n;
         std::cin >> n;
+
+        if (n == 0)
+            continue;
 
         std::vector<int> pesos;
 
