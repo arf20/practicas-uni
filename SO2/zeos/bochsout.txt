@@ -21,7 +21,7 @@
 00000000000i[IMG   ] Disk image modules
 00000000000i[IMG   ]   flat concat sparse dll growing undoable volatile vmware3
 00000000000i[IMG   ]   vmware4 vbox vpc vvfat
-00000000000i[MEM0  ] allocated memory at 0x7fea48bdd010. after alignment, vector=0x7fea48bde000, block_size = 128K
+00000000000i[MEM0  ] allocated memory at 0x7f0e505dd010. after alignment, vector=0x7f0e505de000, block_size = 128K
 00000000000i[MEM0  ] 16.00MB
 00000000000i[MEM0  ] mem block size = 0x00020000, blocks=128
 00000000000i[MEM0  ] rom at 0xfffe0000/131072 ('/usr/local/share/bochs/BIOS-bochs-latest')
@@ -33,7 +33,7 @@
 00000000000i[DEV   ] PIIX3 PCI-to-ISA bridge present at device 1, function 0
 00000000000i[PLUGIN] init_dev of 'cmos' plugin device by virtual method
 00000000000i[CMOS  ] Using local time for initial clock
-00000000000i[CMOS  ] Setting initial clock to: Tue Sep 23 13:31:39   2025 tz=utc (time0=1758634299)
+00000000000i[CMOS  ] Setting initial clock to: Tue Sep 23 19:08:04   2025 tz=utc (time0=1758654484)
 00000000000i[PLUGIN] init_dev of 'dma' plugin device by virtual method
 00000000000i[DMA   ] channel 4 used by cascade
 00000000000i[PLUGIN] init_dev of 'pic' plugin device by virtual method
@@ -47,7 +47,7 @@
 00000000000i[BXVGA ] VBE Bochs Display Extension Enabled (16 MB)
 00000000000i[XGUI  ] test_alloc_colors: 16 colors available out of 16 colors tried
 00000000000i[XGUI  ] font 8 wide x 16 high, display depth = 24
-00000000000i[XGUI  ] maximum host resolution: x=1920 y=1030
+00000000000i[XGUI  ] maximum host resolution: x=3840 y=1030
 00000000000i[MEM0  ] rom at 0xc0000/38400 ('/usr/share/bochs/VGABIOS-lgpl-latest')
 00000000000i[PLUGIN] init_dev of 'floppy' plugin device by virtual method
 00000000000i[DMA   ] channel 2 used by Floppy Drive
@@ -152,10 +152,8 @@
 00000000000i[GDBST ] addr 000000000000fff0 len 8
 00000000000i[GDBST ] addr 000000000000fff0 len 7
 00000000000i[GDBST ] addr 0000000000114000 len 40
-00000000000i[GDBST ] addr 000000000011401b len 1
 00000000000i[GDBST ] addr 0000000000114000 len 1
 00000000000i[GDBST ] Setting breakpoint at 0000000000114000
-00000000000i[GDBST ] Setting breakpoint at 000000000011401b
 00000001740i[BIOS  ] BIOS BUILD DATE: 02/16/25
 00000316859i[KBD   ] reset-disable command received
 00000318805i[BIOS  ] Starting rombios32
@@ -196,7 +194,7 @@
 00001535788i[BXVGA ] VBE known Display Interface b0c5
 00001538431i[VBIOS ] VBE Bios $Id: vbe.c 292 2021-06-03 12:24:22Z vruppert $
 00013811889i[BIOS  ] Booting from 0000:7c00
-00033057427e[FLOPPY] partial read() on floppy image returns 283/512
+00033057427e[FLOPPY] partial read() on floppy image returns 294/512
 00033101871e[FLOPPY] read() on floppy image returns 0
 00033146315e[FLOPPY] read() on floppy image returns 0
 00033190759e[FLOPPY] read() on floppy image returns 0
@@ -276,532 +274,90 @@
 00036485429e[FLOPPY] read() on floppy image returns 0
 00036529873e[FLOPPY] read() on floppy image returns 0
 00036574317e[FLOPPY] read() on floppy image returns 0
-00036739227i[GDBST ] found breakpoint at 0000000000114000
-00036739227i[GDBST ] stopped with ac1
-00036739227i[GDBST ] reg 8 set to 0000000000114000
-00036739227i[GDBST ] reg 41 set to 00000000ffffffff
-00036739227i[GDBST ] Removing breakpoint at 0000000000114000
-00036739227i[GDBST ] Removing breakpoint at 000000000011401b
-00036739227i[GDBST ] addr 0000000000114000 len 40
-00036739227i[GDBST ] addr 0000000000113fc0 len 40
-00036739227i[GDBST ] Setting breakpoint at 000000000011401b
-00036739227i[GDBST ] stepping
-00036739228i[GDBST ] stopped with ac2
-00036739228i[GDBST ] Setting breakpoint at 0000000000114000
-00036739228i[GDBST ] stepping
-00036739229i[GDBST ] stopped with ac2
-00036739229i[GDBST ] stepping
-00036739230i[GDBST ] stopped with ac2
-00036739230i[GDBST ] addr 0000000000113fc0 len 40
-00036739230i[GDBST ] Removing breakpoint at 0000000000114000
-00036739230i[GDBST ] Removing breakpoint at 000000000011401b
-00036739230i[GDBST ] addr 0000000000114000 len 40
-00036739230i[GDBST ] Setting breakpoint at 0000000000114000
-00036739230i[GDBST ] Setting breakpoint at 000000000011401b
-00036739230i[GDBST ] stepping
-00036739231i[GDBST ] stopped with ac2
-00036739231i[GDBST ] stepping
-00036739232i[GDBST ] stopped with ac2
-00036739232i[GDBST ] stepping
-00036739233i[GDBST ] found breakpoint at 000000000011401b
+00036739233i[GDBST ] found breakpoint at 0000000000114000
 00036739233i[GDBST ] stopped with ac1
+00036739233i[GDBST ] reg 8 set to 0000000000114000
+00036739233i[GDBST ] reg 41 set to 00000000ffffffff
+00036739233i[GDBST ] Removing breakpoint at 0000000000114000
+00036739233i[GDBST ] addr 0000000000114000 len 40
+00036739233i[GDBST ] addr 0000000000017fb8 len 4
 00036739233i[GDBST ] addr 0000000000113fc0 len 40
-00036739233i[GDBST ] addr 0000000000000045 len 8
-00036739233i[GDBST ] addr 0000000000000045 len 7
-00036739233i[GDBST ] addr 0000000000000040 len 40
 00036739233i[GDBST ] stepping
 00036739234i[GDBST ] stopped with ac2
+00036739234i[GDBST ] Setting breakpoint at 0000000000114000
 00036739234i[GDBST ] stepping
 00036739235i[GDBST ] stopped with ac2
-00036739235i[GDBST ] addr 0000000000113fc0 len 40
-00036739235i[GDBST ] Removing breakpoint at 0000000000114000
-00036739235i[GDBST ] Removing breakpoint at 000000000011401b
-00036739235i[GDBST ] addr 0000000000114000 len 40
-00036739235i[GDBST ] Setting breakpoint at 0000000000114000
-00036739235i[GDBST ] Setting breakpoint at 000000000011401b
 00036739235i[GDBST ] stepping
 00036739236i[GDBST ] stopped with ac2
 00036739236i[GDBST ] stepping
 00036739237i[GDBST ] stopped with ac2
 00036739237i[GDBST ] stepping
 00036739238i[GDBST ] stopped with ac2
-00036739238i[GDBST ] addr 0000000000113fc0 len 40
-00036739238i[GDBST ] Removing breakpoint at 0000000000114000
-00036739238i[GDBST ] Removing breakpoint at 000000000011401b
-00036739238i[GDBST ] addr 0000000000114000 len 40
-00036739238i[GDBST ] Setting breakpoint at 0000000000114000
-00036739238i[GDBST ] Setting breakpoint at 000000000011401b
 00036739238i[GDBST ] stepping
 00036739239i[GDBST ] stopped with ac2
 00036739239i[GDBST ] stepping
 00036739240i[GDBST ] stopped with ac2
+00036739240i[GDBST ] addr 0000000000113fe4 len 4
 00036739240i[GDBST ] addr 0000000000113fc0 len 40
-00036739240i[GDBST ] addr 0000000000000000 len 8
-00036739240i[GDBST ] addr 0000000000000000 len 7
-00036739240i[GDBST ] addr 0000000000000000 len 40
+00036739240i[GDBST ] Removing breakpoint at 0000000000114000
+00036739240i[GDBST ] addr 0000000000113fe4 len 4
+00036739240i[GDBST ] addr 0000000000114000 len 40
+00036739240i[GDBST ] addr 0000000000113fdc len 4
+00036739240i[GDBST ] Setting breakpoint at 0000000000114000
 00036739240i[GDBST ] stepping
 00036739241i[GDBST ] stopped with ac2
 00036739241i[GDBST ] stepping
 00036739242i[GDBST ] stopped with ac2
-00036739242i[GDBST ] addr 0000000000113fc0 len 40
-00036739242i[GDBST ] Removing breakpoint at 0000000000114000
-00036739242i[GDBST ] Removing breakpoint at 000000000011401b
-00036739242i[GDBST ] addr 0000000000114000 len 40
-00036739242i[GDBST ] Setting breakpoint at 0000000000114000
-00036739242i[GDBST ] Setting breakpoint at 000000000011401b
 00036739242i[GDBST ] stepping
 00036739243i[GDBST ] stopped with ac2
 00036739243i[GDBST ] stepping
 00036739244i[GDBST ] stopped with ac2
-00036739244i[GDBST ] stepping
-00036739245i[GDBST ] stopped with ac2
-00036739245i[GDBST ] stepping
-00036739246i[GDBST ] stopped with ac2
-00036739246i[GDBST ] stepping
-00036739247i[GDBST ] stopped with ac2
-00036739247i[GDBST ] stepping
-00036739248i[GDBST ] stopped with ac2
-00036739248i[GDBST ] stepping
-00036739249i[GDBST ] stopped with ac2
-00036739249i[GDBST ] stepping
-00036739250i[GDBST ] stopped with ac2
+00036739244i[GDBST ] addr 000000000011411b len 1
+00036739244i[GDBST ] addr 0000000000114100 len 40
+00036739244i[GDBST ] addr 0000000000113f80 len 40
+00036739244i[GDBST ] addr 0000000000113fe4 len 4
+00036739244i[GDBST ] addr 0000000000113fc0 len 40
+00036739244i[GDBST ] addr 0000000000114020 len 1
+00036739244i[GDBST ] Setting breakpoint at 0000000000114020
+00036739250i[GDBST ] found breakpoint at 0000000000114020
+00036739250i[GDBST ] stopped with ac1
+00036739250i[GDBST ] reg 8 set to 0000000000114020
+00036739250i[GDBST ] reg 41 set to 00000000ffffffff
+00036739250i[GDBST ] addr 0000000000113fe4 len 4
+00036739250i[GDBST ] addr 0000000000113fc0 len 40
+00036739250i[GDBST ] Removing breakpoint at 0000000000114020
 00036739250i[GDBST ] stepping
 00036739251i[GDBST ] stopped with ac2
 00036739251i[GDBST ] stepping
 00036739252i[GDBST ] stopped with ac2
-00036739252i[GDBST ] stepping
-00036739253i[GDBST ] stopped with ac2
-00036739253i[GDBST ] stepping
-00036739254i[GDBST ] stopped with ac2
-00036739254i[GDBST ] stepping
-00036739255i[GDBST ] stopped with ac2
-00036739255i[GDBST ] stepping
-00036739256i[GDBST ] stopped with ac2
-00036739256i[GDBST ] stepping
-00036739257i[GDBST ] stopped with ac2
-00036739257i[GDBST ] stepping
-00036739258i[GDBST ] stopped with ac2
-00036739258i[GDBST ] stepping
-00036739259i[GDBST ] stopped with ac2
-00036739259i[GDBST ] stepping
-00036739260i[GDBST ] stopped with ac2
-00036739260i[GDBST ] stepping
-00036739261i[GDBST ] stopped with ac2
-00036739261i[GDBST ] stepping
-00036739262i[GDBST ] stopped with ac2
-00036739262i[GDBST ] stepping
-00036739263i[GDBST ] stopped with ac2
-00036739263i[GDBST ] stepping
-00036739264i[GDBST ] stopped with ac2
-00036739264i[GDBST ] stepping
-00036739265i[GDBST ] stopped with ac2
-00036739265i[GDBST ] stepping
-00036739266i[GDBST ] stopped with ac2
-00036739266i[GDBST ] stepping
-00036739267i[GDBST ] stopped with ac2
-00036739267i[GDBST ] stepping
-00036739268i[GDBST ] stopped with ac2
-00036739268i[GDBST ] stepping
-00036739269i[GDBST ] stopped with ac2
-00036739269i[GDBST ] stepping
-00036739270i[GDBST ] stopped with ac2
-00036739270i[GDBST ] stepping
-00036739271i[GDBST ] stopped with ac2
-00036739271i[GDBST ] stepping
-00036739272i[GDBST ] stopped with ac2
-00036739272i[GDBST ] stepping
-00036739273i[GDBST ] stopped with ac2
-00036739273i[GDBST ] stepping
-00036739274i[GDBST ] stopped with ac2
-00036739274i[GDBST ] stepping
-00036739275i[GDBST ] stopped with ac2
-00036739275i[GDBST ] stepping
-00036739276i[GDBST ] stopped with ac2
-00036739276i[GDBST ] stepping
-00036739277i[GDBST ] stopped with ac2
-00036739277i[GDBST ] stepping
-00036739278i[GDBST ] stopped with ac2
-00036739278i[GDBST ] stepping
-00036739279i[GDBST ] stopped with ac2
-00036739279i[GDBST ] stepping
-00036739280i[GDBST ] stopped with ac2
-00036739280i[GDBST ] stepping
-00036739281i[GDBST ] stopped with ac2
-00036739281i[GDBST ] stepping
-00036739282i[GDBST ] stopped with ac2
-00036739282i[GDBST ] stepping
-00036739283i[GDBST ] stopped with ac2
-00036739283i[GDBST ] stepping
-00036739284i[GDBST ] stopped with ac2
-00036739284i[GDBST ] stepping
-00036739285i[GDBST ] stopped with ac2
-00036739285i[GDBST ] stepping
-00036739286i[GDBST ] stopped with ac2
-00036739286i[GDBST ] stepping
-00036739287i[GDBST ] stopped with ac2
-00036739287i[GDBST ] stepping
-00036739288i[GDBST ] stopped with ac2
-00036739288i[GDBST ] stepping
-00036739289i[GDBST ] stopped with ac2
-00036739289i[GDBST ] stepping
-00036739290i[GDBST ] stopped with ac2
-00036739290i[GDBST ] stepping
-00036739291i[GDBST ] stopped with ac2
-00036739291i[GDBST ] stepping
-00036739292i[GDBST ] stopped with ac2
-00036739292i[GDBST ] stepping
-00036739293i[GDBST ] stopped with ac2
-00036739293i[GDBST ] stepping
-00036739294i[GDBST ] stopped with ac2
-00036739294i[GDBST ] stepping
-00036739295i[GDBST ] stopped with ac2
-00036739295i[GDBST ] stepping
-00036739296i[GDBST ] stopped with ac2
-00036739296i[GDBST ] stepping
-00036739297i[GDBST ] stopped with ac2
-00036739297i[GDBST ] stepping
-00036739298i[GDBST ] stopped with ac2
-00036739298i[GDBST ] stepping
-00036739299i[GDBST ] stopped with ac2
-00036739299i[GDBST ] stepping
-00036739300i[GDBST ] stopped with ac2
-00036739300i[GDBST ] stepping
-00036739301i[GDBST ] stopped with ac2
-00036739301i[GDBST ] stepping
-00036739302i[GDBST ] stopped with ac2
-00036739302i[GDBST ] stepping
-00036739303i[GDBST ] stopped with ac2
-00036739303i[GDBST ] stepping
-00036739304i[GDBST ] stopped with ac2
-00036739304i[GDBST ] stepping
-00036739305i[GDBST ] stopped with ac2
-00036739305i[GDBST ] stepping
-00036739306i[GDBST ] stopped with ac2
-00036739306i[GDBST ] stepping
-00036739307i[GDBST ] stopped with ac2
-00036739307i[GDBST ] stepping
-00036739308i[GDBST ] stopped with ac2
-00036739308i[GDBST ] stepping
-00036739309i[GDBST ] stopped with ac2
-00036739309i[GDBST ] stepping
-00036739310i[GDBST ] stopped with ac2
-00036739310i[GDBST ] stepping
-00036739311i[GDBST ] stopped with ac2
-00036739311i[GDBST ] stepping
-00036739312i[GDBST ] stopped with ac2
-00036739312i[GDBST ] stepping
-00036739313i[GDBST ] stopped with ac2
-00036739313i[GDBST ] stepping
-00036739314i[GDBST ] stopped with ac2
-00036739314i[GDBST ] stepping
-00036739315i[GDBST ] stopped with ac2
-00036739315i[GDBST ] stepping
-00036739316i[GDBST ] stopped with ac2
-00036739316i[GDBST ] stepping
-00036739317i[GDBST ] stopped with ac2
-00036739317i[GDBST ] stepping
-00036739318i[GDBST ] stopped with ac2
-00036739318i[GDBST ] stepping
-00036739319i[GDBST ] stopped with ac2
-00036739319i[GDBST ] stepping
-00036739320i[GDBST ] stopped with ac2
-00036739320i[GDBST ] stepping
-00036739321i[GDBST ] stopped with ac2
-00036739321i[GDBST ] stepping
-00036739322i[GDBST ] stopped with ac2
-00036739322i[GDBST ] stepping
-00036739323i[GDBST ] stopped with ac2
-00036739323i[GDBST ] stepping
-00036739324i[GDBST ] stopped with ac2
-00036739324i[GDBST ] stepping
-00036739325i[GDBST ] stopped with ac2
-00036739325i[GDBST ] stepping
-00036739326i[GDBST ] stopped with ac2
-00036739326i[GDBST ] stepping
-00036739327i[GDBST ] stopped with ac2
-00036739327i[GDBST ] stepping
-00036739328i[GDBST ] stopped with ac2
-00036739328i[GDBST ] stepping
-00036739329i[GDBST ] stopped with ac2
-00036739329i[GDBST ] stepping
-00036739330i[GDBST ] stopped with ac2
-00036739330i[GDBST ] stepping
-00036739331i[GDBST ] stopped with ac2
-00036739331i[GDBST ] stepping
-00036739332i[GDBST ] stopped with ac2
-00036739332i[GDBST ] stepping
-00036739333i[GDBST ] stopped with ac2
-00036739333i[GDBST ] stepping
-00036739334i[GDBST ] stopped with ac2
-00036739334i[GDBST ] stepping
-00036739335i[GDBST ] stopped with ac2
-00036739335i[GDBST ] stepping
-00036739336i[GDBST ] stopped with ac2
-00036739336i[GDBST ] stepping
-00036739337i[GDBST ] stopped with ac2
-00036739337i[GDBST ] stepping
-00036739338i[GDBST ] stopped with ac2
-00036739338i[GDBST ] stepping
-00036739339i[GDBST ] stopped with ac2
-00036739339i[GDBST ] stepping
-00036739340i[GDBST ] stopped with ac2
-00036739340i[GDBST ] stepping
-00036739341i[GDBST ] stopped with ac2
-00036739341i[GDBST ] stepping
-00036739342i[GDBST ] stopped with ac2
-00036739342i[GDBST ] stepping
-00036739343i[GDBST ] stopped with ac2
-00036739343i[GDBST ] stepping
-00036739344i[GDBST ] stopped with ac2
-00036739344i[GDBST ] stepping
-00036739345i[GDBST ] stopped with ac2
-00036739345i[GDBST ] stepping
-00036739346i[GDBST ] stopped with ac2
-00036739346i[GDBST ] stepping
-00036739347i[GDBST ] stopped with ac2
-00036739347i[GDBST ] stepping
-00036739348i[GDBST ] stopped with ac2
-00036739348i[GDBST ] stepping
-00036739349i[GDBST ] stopped with ac2
-00036739349i[GDBST ] stepping
-00036739350i[GDBST ] stopped with ac2
-00036739350i[GDBST ] stepping
-00036739351i[GDBST ] stopped with ac2
-00036739351i[GDBST ] stepping
-00036739352i[GDBST ] stopped with ac2
-00036739352i[GDBST ] stepping
-00036739353i[GDBST ] stopped with ac2
-00036739353i[GDBST ] stepping
-00036739354i[GDBST ] stopped with ac2
-00036739354i[GDBST ] stepping
-00036739355i[GDBST ] stopped with ac2
-00036739355i[GDBST ] stepping
-00036739356i[GDBST ] stopped with ac2
-00036739356i[GDBST ] stepping
-00036739357i[GDBST ] stopped with ac2
-00036739357i[GDBST ] stepping
-00036739358i[GDBST ] stopped with ac2
-00036739358i[GDBST ] stepping
-00036739359i[GDBST ] stopped with ac2
-00036739359i[GDBST ] stepping
-00036739360i[GDBST ] stopped with ac2
-00036739360i[GDBST ] stepping
-00036739361i[GDBST ] stopped with ac2
-00036739361i[GDBST ] stepping
-00036739362i[GDBST ] stopped with ac2
-00036739362i[GDBST ] stepping
-00036739363i[GDBST ] stopped with ac2
-00036739363i[GDBST ] stepping
-00036739364i[GDBST ] stopped with ac2
-00036739364i[GDBST ] stepping
-00036739365i[GDBST ] stopped with ac2
-00036739365i[GDBST ] stepping
-00036739366i[GDBST ] stopped with ac2
-00036739366i[GDBST ] stepping
-00036739367i[GDBST ] stopped with ac2
-00036739367i[GDBST ] stepping
-00036739368i[GDBST ] stopped with ac2
-00036739368i[GDBST ] stepping
-00036739369i[GDBST ] stopped with ac2
-00036739369i[GDBST ] stepping
-00036739370i[GDBST ] stopped with ac2
-00036739370i[GDBST ] stepping
-00036739371i[GDBST ] stopped with ac2
-00036739371i[GDBST ] stepping
-00036739372i[GDBST ] stopped with ac2
-00036739372i[GDBST ] stepping
-00036739373i[GDBST ] stopped with ac2
-00036739373i[GDBST ] stepping
-00036739374i[GDBST ] stopped with ac2
-00036739374i[GDBST ] stepping
-00036739375i[GDBST ] stopped with ac2
-00036739375i[GDBST ] stepping
-00036739376i[GDBST ] stopped with ac2
-00036739376i[GDBST ] stepping
-00036739377i[GDBST ] stopped with ac2
-00036739377i[GDBST ] stepping
-00036739378i[GDBST ] stopped with ac2
-00036739378i[GDBST ] stepping
-00036739379i[GDBST ] stopped with ac2
-00036739379i[GDBST ] stepping
-00036739380i[GDBST ] stopped with ac2
-00036739380i[GDBST ] stepping
-00036739381i[GDBST ] stopped with ac2
-00036739381i[GDBST ] stepping
-00036739382i[GDBST ] stopped with ac2
-00036739382i[GDBST ] stepping
-00036739383i[GDBST ] stopped with ac2
-00036739383i[GDBST ] stepping
-00036739384i[GDBST ] stopped with ac2
-00036739384i[GDBST ] stepping
-00036739385i[GDBST ] stopped with ac2
-00036739385i[GDBST ] stepping
-00036739386i[GDBST ] stopped with ac2
-00036739386i[GDBST ] stepping
-00036739387i[GDBST ] stopped with ac2
-00036739387i[GDBST ] stepping
-00036739388i[GDBST ] stopped with ac2
-00036739388i[GDBST ] stepping
-00036739389i[GDBST ] stopped with ac2
-00036739389i[GDBST ] stepping
-00036739390i[GDBST ] stopped with ac2
-00036739390i[GDBST ] stepping
-00036739391i[GDBST ] stopped with ac2
-00036739391i[GDBST ] stepping
-00036739392i[GDBST ] stopped with ac2
-00036739392i[GDBST ] stepping
-00036739393i[GDBST ] stopped with ac2
-00036739393i[GDBST ] stepping
-00036739394i[GDBST ] stopped with ac2
-00036739394i[GDBST ] stepping
-00036739395i[GDBST ] stopped with ac2
-00036739395i[GDBST ] stepping
-00036739396i[GDBST ] stopped with ac2
-00036739396i[GDBST ] stepping
-00036739397i[GDBST ] stopped with ac2
-00036739397i[GDBST ] stepping
-00036739398i[GDBST ] stopped with ac2
-00036739398i[GDBST ] stepping
-00036739399i[GDBST ] stopped with ac2
-00036739399i[GDBST ] stepping
-00036739400i[GDBST ] stopped with ac2
-00036739400i[GDBST ] stepping
-00036739401i[GDBST ] stopped with ac2
-00036739401i[GDBST ] stepping
-00036739402i[GDBST ] stopped with ac2
-00036739402i[GDBST ] stepping
-00036739403i[GDBST ] stopped with ac2
-00036739403i[GDBST ] stepping
-00036739404i[GDBST ] stopped with ac2
-00036739404i[GDBST ] stepping
-00036739405i[GDBST ] stopped with ac2
-00036739405i[GDBST ] stepping
-00036739406i[GDBST ] stopped with ac2
-00036739406i[GDBST ] stepping
-00036739407i[GDBST ] stopped with ac2
-00036739407i[GDBST ] stepping
-00036739408i[GDBST ] stopped with ac2
-00036739408i[GDBST ] stepping
-00036739409i[GDBST ] stopped with ac2
-00036739409i[GDBST ] stepping
-00036739410i[GDBST ] stopped with ac2
-00036739410i[GDBST ] stepping
-00036739411i[GDBST ] stopped with ac2
-00036739411i[GDBST ] stepping
-00036739412i[GDBST ] stopped with ac2
-00036739412i[GDBST ] stepping
-00036739413i[GDBST ] stopped with ac2
-00036739413i[GDBST ] stepping
-00036739414i[GDBST ] stopped with ac2
-00036739414i[GDBST ] stepping
-00036739415i[GDBST ] stopped with ac2
-00036739415i[GDBST ] stepping
-00036739416i[GDBST ] stopped with ac2
-00036739416i[GDBST ] stepping
-00036739417i[GDBST ] stopped with ac2
-00036739417i[GDBST ] stepping
-00036739418i[GDBST ] stopped with ac2
-00036739418i[GDBST ] stepping
-00036739419i[GDBST ] stopped with ac2
-00036739419i[GDBST ] stepping
-00036739420i[GDBST ] stopped with ac2
-00036739420i[GDBST ] stepping
-00036739421i[GDBST ] stopped with ac2
-00036739421i[GDBST ] stepping
-00036739422i[GDBST ] stopped with ac2
-00036739422i[GDBST ] stepping
-00036739423i[GDBST ] stopped with ac2
-00036739423i[GDBST ] stepping
-00036739424i[GDBST ] stopped with ac2
-00036739424i[GDBST ] stepping
-00036739425i[GDBST ] stopped with ac2
-00036739425i[GDBST ] stepping
-00036739426i[GDBST ] stopped with ac2
-00036739426i[GDBST ] stepping
-00036739427i[GDBST ] stopped with ac2
-00036739427i[GDBST ] stepping
-00036739428i[GDBST ] stopped with ac2
-00036739428i[GDBST ] stepping
-00036739429i[GDBST ] stopped with ac2
-00036739429i[GDBST ] stepping
-00036739430i[GDBST ] stopped with ac2
-00036739430i[GDBST ] stepping
-00036739431i[GDBST ] stopped with ac2
-00036739431i[GDBST ] stepping
-00036739432i[GDBST ] stopped with ac2
-00036739432i[GDBST ] stepping
-00036739433i[GDBST ] stopped with ac2
-00036739433i[GDBST ] stepping
-00036739434i[GDBST ] stopped with ac2
-00036739434i[GDBST ] stepping
-00036739435i[GDBST ] stopped with ac2
-00036739435i[GDBST ] stepping
-00036739436i[GDBST ] stopped with ac2
-00036739436i[GDBST ] stepping
-00036739437i[GDBST ] stopped with ac2
-00036739437i[GDBST ] stepping
-00036739438i[GDBST ] stopped with ac2
-00036739438i[GDBST ] stepping
-00036739439i[GDBST ] stopped with ac2
-00036739439i[GDBST ] stepping
-00036739440i[GDBST ] stopped with ac2
-00036739440i[GDBST ] stepping
-00036739441i[GDBST ] stopped with ac2
-00036739441i[GDBST ] stepping
-00036739442i[GDBST ] stopped with ac2
-00036739442i[GDBST ] stepping
-00036739443i[GDBST ] stopped with ac2
-00036739443i[GDBST ] stepping
-00036739444i[GDBST ] stopped with ac2
-00036739444i[GDBST ] stepping
-00036739445i[GDBST ] stopped with ac2
-00036739445i[GDBST ] stepping
-00036739446i[GDBST ] stopped with ac2
-00036739446i[GDBST ] stepping
-00036739447i[GDBST ] stopped with ac2
-00036739447i[GDBST ] stepping
-00036739448i[GDBST ] stopped with ac2
-00036739448i[GDBST ] stepping
-00036739449i[GDBST ] stopped with ac2
-00036739449i[GDBST ] stepping
-00036739450i[GDBST ] stopped with ac2
-00036739450i[GDBST ] stepping
-00036739451i[GDBST ] stopped with ac2
-00036739451i[GDBST ] stepping
-00036739452i[GDBST ] stopped with ac2
-00036739452i[GDBST ] stepping
-00036739453i[GDBST ] stopped with ac2
-00036739453i[GDBST ] stepping
-00036739454i[GDBST ] stopped with ac2
-00036739454i[GDBST ] stepping
-00036739455i[GDBST ] stopped with ac2
-00036739455i[GDBST ] stepping
-00036739456i[GDBST ] stopped with ac2
-00036739456i[GDBST ] stepping
-00036739457i[GDBST ] stopped with ac2
-00036739457i[GDBST ] stepping
-00036739458i[GDBST ] stopped with ac2
-00036739458i[GDBST ] stepping
-00036739459i[GDBST ] stopped with ac2
-00036739459i[GDBST ] stepping
-00036739460i[GDBST ] stopped with ac2
-00036739460i[GDBST ] stepping
-00036739461i[GDBST ] stopped with ac2
-00036739461i[GDBST ] stepping
-00036739462i[GDBST ] stopped with ac2
-00036739462i[GDBST ] stepping
-00036739463i[GDBST ] stopped with ac2
-00036739463i[GDBST ] stepping
-00036739464i[GDBST ] stopped with ac2
-00036739464i[GDBST ] stepping
-00036739465i[GDBST ] stopped with ac2
-00036739465i[GDBST ] stepping
-00036739466i[GDBST ] stopped with ac2
-00036739466i[GDBST ] stepping
-00036739467i[GDBST ] stopped with ac2
-00036739467i[GDBST ] stepping
-00036739468i[GDBST ] stopped with ac2
-00036739468i[GDBST ] stepping
-00036739469i[GDBST ] stopped with ac2
-00036739469i[GDBST ] stepping
-00036739470p[      ] >>PANIC<< SIGNAL 2 caught
+00036739252i[GDBST ] addr 0000000000113fe4 len 4
+00036739252i[GDBST ] addr 0000000000113fc0 len 40
+00036739252i[GDBST ] Removing breakpoint at 0000000000114000
+00036739252i[GDBST ] addr 0000000000113fe4 len 4
+00036739252i[GDBST ] addr 0000000000114000 len 40
+00036739252i[GDBST ] addr 0000000000113fdc len 4
+00036739252p[GDBST ] >>PANIC<< Debugger asked us to quit
+00036739252i[CPU0  ] CPU is in protected mode (active)
+00036739252i[CPU0  ] CS.mode = 32 bit
+00036739252i[CPU0  ] SS.mode = 32 bit
+00036739252i[CPU0  ] EFER = 0x00000000: ffxsr nxe lma lme sce
+00036739252i[CPU0  ] | EAX=000001e9  EBX=00001378  ECX=00113ff4  EDX=00007e6a
+00036739252i[CPU0  ] | ESP=00113fd0  EBP=00113fe8  ESI=000e0200  EDI=00003ff4
+00036739252i[CPU0  ] | EFLAGS=00000202: id vip vif ac vm rf nt IOPL=0 of df IF tf sf zf af pf cf
+00036739252i[CPU0  ] | SEG sltr(index|ti|rpl)     base    limit G D
+00036739252i[CPU0  ] |  CS:0023( 0004| 0|  3) 00000000 ffffffff 1 1
+00036739252i[CPU0  ] |  DS:002b( 0005| 0|  3) 00000000 ffffffff 1 1
+00036739252i[CPU0  ] |  SS:002b( 0005| 0|  3) 00000000 ffffffff 1 1
+00036739252i[CPU0  ] |  ES:002b( 0005| 0|  3) 00000000 ffffffff 1 1
+00036739252i[CPU0  ] |  FS:0000( 0003| 0|  0) 00000000 ffffffff 1 1
+00036739252i[CPU0  ] |  GS:0000( 0003| 0|  0) 00000000 ffffffff 1 1
+00036739252i[CPU0  ] | EIP=00114026 (00114026)
+00036739252i[CPU0  ] | CR0=0x80000011: PG cd nw ac wp ne ET ts em mp PE
+00036739252i[CPU0  ] | CR2=0x00000000
+00036739252i[CPU0  ] | CR3=0x00028000
+00036739252i[CPU0  ] | CR4=0x00000000: lass uintr pks cet pke smap smep keylock osxsave pcid fsgsbase smx vmx la57 umip osxmmexcpt osfxsr pce pge mce pae pse de tsd pvi vme
+00036739252i[CPU0  ] 0x00114026>> nop  : 90
+00036739252i[CMOS  ] Last time: 1758654493 tz=utc (Tue Sep 23 19:08:13   2025)
+00036739252i[XGUI  ] Exit
+00036739252i[      ] restoring default signal behavior
+00036739252i[SIM   ] quit_sim called with exit code 1

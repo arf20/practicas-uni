@@ -40,6 +40,7 @@ LIBZEOS = -L . -l zeos
 #add to USROBJ any object files required to complete the user program
 USROBJ = \
 	libc.o \
+	suma.o
 	# libjp.a \
 
 all:zeos.bin
@@ -67,24 +68,27 @@ entry.s: entry.S $(INCLUDEDIR)/asm.h $(INCLUDEDIR)/segment.h
 sys_call_table.s: sys_call_table.S $(INCLUDEDIR)/asm.h $(INCLUDEDIR)/segment.h
 	$(CPP) $(ASMFLAGS) -o $@ $<
 
-user.o:user.c user.S $(INCLUDEDIR)/libc.h
+user.o: user.c $(INCLUDEDIR)/libc.h
 
-interrupt.o:interrupt.c $(INCLUDEDIR)/interrupt.h $(INCLUDEDIR)/segment.h $(INCLUDEDIR)/types.h
+suma.s: suma.S $(INCLUDEDIR)/asm.h
+	$(CPP) $(ASMFLAGS) -o $@ $<
 
-io.o:io.c $(INCLUDEDIR)/io.h
+interrupt.o: interrupt.c $(INCLUDEDIR)/interrupt.h $(INCLUDEDIR)/segment.h $(INCLUDEDIR)/types.h
 
-sched.o:sched.c $(INCLUDEDIR)/sched.h
+io.o: io.c $(INCLUDEDIR)/io.h
 
-libc.o:libc.c $(INCLUDEDIR)/libc.h
+sched.o: sched.c $(INCLUDEDIR)/sched.h
 
-mm.o:mm.c $(INCLUDEDIR)/types.h $(INCLUDEDIR)/mm.h
+libc.o: libc.c $(INCLUDEDIR)/libc.h
 
-sys.o:sys.c $(INCLUDEDIR)/devices.h
+mm.o: mm.c $(INCLUDEDIR)/types.h $(INCLUDEDIR)/mm.h
 
-utils.o:utils.c $(INCLUDEDIR)/utils.h
+sys.o: sys.c $(INCLUDEDIR)/devices.h
+
+utils.o: utils.c $(INCLUDEDIR)/utils.h
 
 
-system.o:system.c $(INCLUDEDIR)/hardware.h system.lds $(SYSOBJ) $(INCLUDEDIR)/segment.h $(INCLUDEDIR)/types.h $(INCLUDEDIR)/interrupt.h $(INCLUDEDIR)/system.h $(INCLUDEDIR)/sched.h $(INCLUDEDIR)/mm.h $(INCLUDEDIR)/io.h $(INCLUDEDIR)/mm_address.h 
+system.o: system.c $(INCLUDEDIR)/hardware.h system.lds $(SYSOBJ) $(INCLUDEDIR)/segment.h $(INCLUDEDIR)/types.h $(INCLUDEDIR)/interrupt.h $(INCLUDEDIR)/system.h $(INCLUDEDIR)/sched.h $(INCLUDEDIR)/mm.h $(INCLUDEDIR)/io.h $(INCLUDEDIR)/mm_address.h 
 
 
 system: system.o system.lds $(SYSOBJ)
