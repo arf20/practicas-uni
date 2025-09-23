@@ -1,0 +1,7 @@
+.text codigo
+.data vars
+.bss vars sin inicializar
+.rodata constantes
+
+
+la makefile es -O2 

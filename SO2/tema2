@@ -1,0 +1,60 @@
+# tema 2
+
+nivel de privilegios
+
+kernel CPL 0
+
+
+## entrar excepcion
+
+ - excepcion
+ - int hardware
+ - int software
+
+int
+sysenter
+syscall
+
+## context switch a sistema
+
+ - guardar estado
+
+TSS 
+ -> ESP0
+  ->
+    - esp
+    - cs eip
+    - psw
+    - esp
+    - ss
+
+ - ejecutar primera instruccion de sistema en GDT de CS EIP en el modo de privilegio 0
+ - indicar sistema en GDT
+
+## syscall llamada a sistema
+
+CPL=3
+open()
+ int
+  system.handler
+   save.dll
+
+
+ebx	-
+ecx	 |
+edx	 |
+esi	 |
+edi	 |
+ebp	 | context switch
+edx	 |
+ds	 |
+es	 |
+fs	 |
+gs	-
+eip	-
+cs	 |
+psw	  | context hardware
+esp	 |
+ss	-
+
+

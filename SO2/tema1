@@ -1,0 +1,32 @@
+# tema 1
+
+boot process
+
+ - power on
+ - reset
+ - BIOS
+ - POST
+ - reconocer hardware
+ - cargar MBR
+ - ejecutiar boot sector
+ - bootloader
+ - kernel
+
+ - init struct software
+ - init struct hardware
+ - protected mode
+ - hardware check & initialization
+ - init & idle
+ - user mode
+
+frame de activacion
+
+push ebp
+mov ebp, esp
+sub esp, 4*locales
+...
+
+mov esp, ebp
+pop ebp
+ret
+
