@@ -34,10 +34,22 @@ TSS
 ## syscall llamada a sistema
 
 CPL=3
-open()
- int
-  system.handler
-   save.dll
+-> open()
+    -> wrapper
+        push ebp...
+        mov ebp, fd
+        mov ecx, mode
+        mov eax, numservicio
+        intl
+        -> syscall_handler
+            save_all
+
+            call syscall_table[sys_open] -> eax
+
+            restore_all
+            iret
+        ret
+
 
 
 ebx	-
