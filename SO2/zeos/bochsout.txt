@@ -21,7 +21,7 @@
 00000000000i[IMG   ] Disk image modules
 00000000000i[IMG   ]   flat concat sparse dll growing undoable volatile vmware3
 00000000000i[IMG   ]   vmware4 vbox vpc vvfat
-00000000000i[MEM0  ] allocated memory at 0x7f0e505dd010. after alignment, vector=0x7f0e505de000, block_size = 128K
+00000000000i[MEM0  ] allocated memory at 0x7ff2a51dd010. after alignment, vector=0x7ff2a51de000, block_size = 128K
 00000000000i[MEM0  ] 16.00MB
 00000000000i[MEM0  ] mem block size = 0x00020000, blocks=128
 00000000000i[MEM0  ] rom at 0xfffe0000/131072 ('/usr/local/share/bochs/BIOS-bochs-latest')
@@ -33,7 +33,7 @@
 00000000000i[DEV   ] PIIX3 PCI-to-ISA bridge present at device 1, function 0
 00000000000i[PLUGIN] init_dev of 'cmos' plugin device by virtual method
 00000000000i[CMOS  ] Using local time for initial clock
-00000000000i[CMOS  ] Setting initial clock to: Tue Sep 23 19:08:04   2025 tz=utc (time0=1758654484)
+00000000000i[CMOS  ] Setting initial clock to: Fri Sep 26 13:59:33   2025 tz=utc (time0=1758895173)
 00000000000i[PLUGIN] init_dev of 'dma' plugin device by virtual method
 00000000000i[DMA   ] channel 4 used by cascade
 00000000000i[PLUGIN] init_dev of 'pic' plugin device by virtual method
@@ -47,7 +47,7 @@
 00000000000i[BXVGA ] VBE Bochs Display Extension Enabled (16 MB)
 00000000000i[XGUI  ] test_alloc_colors: 16 colors available out of 16 colors tried
 00000000000i[XGUI  ] font 8 wide x 16 high, display depth = 24
-00000000000i[XGUI  ] maximum host resolution: x=3840 y=1030
+00000000000i[XGUI  ] maximum host resolution: x=1920 y=1030
 00000000000i[MEM0  ] rom at 0xc0000/38400 ('/usr/share/bochs/VGABIOS-lgpl-latest')
 00000000000i[PLUGIN] init_dev of 'floppy' plugin device by virtual method
 00000000000i[DMA   ] channel 2 used by Floppy Drive
@@ -151,213 +151,148 @@
 00000000000i[GDBST ] addr 000000000000ffc0 len 40
 00000000000i[GDBST ] addr 000000000000fff0 len 8
 00000000000i[GDBST ] addr 000000000000fff0 len 7
-00000000000i[GDBST ] addr 0000000000114000 len 40
-00000000000i[GDBST ] addr 0000000000114000 len 1
-00000000000i[GDBST ] Setting breakpoint at 0000000000114000
 00000001740i[BIOS  ] BIOS BUILD DATE: 02/16/25
-00000316859i[KBD   ] reset-disable command received
-00000318805i[BIOS  ] Starting rombios32
-00000319243i[BIOS  ] Shutdown flag 0
-00000319842i[BIOS  ] ram_size=0x01000000
-00000320274i[BIOS  ] ram_end=16MB
-00000361041i[BIOS  ] Found 1 cpu(s)
-00000374999i[BIOS  ] bios_table_addr: 0x000fa168 end=0x000fcc00
-00000702815i[PCI   ] i440FX PMC write to PAM register 59 (TLB Flush)
-00001030750i[P2ISA ] PCI IRQ routing: PIRQA# set to 0x0b
-00001030774i[P2ISA ] PCI IRQ routing: PIRQB# set to 0x09
-00001030798i[P2ISA ] PCI IRQ routing: PIRQC# set to 0x0b
-00001030822i[P2ISA ] PCI IRQ routing: PIRQD# set to 0x09
-00001030832i[P2ISA ] write: ELCR2 = 0x0a
-00001031601i[BIOS  ] PIIX3/PIIX4 init: elcr=00 0a
-00001045223i[BIOS  ] PCI: bus=0 devfn=0x00: vendor_id=0x8086 device_id=0x1237 class=0x0600
-00001047567i[BIOS  ] PCI: bus=0 devfn=0x08: vendor_id=0x8086 device_id=0x7000 class=0x0601
-00001049750i[BIOS  ] PCI: bus=0 devfn=0x09: vendor_id=0x8086 device_id=0x7010 class=0x0101
-00001049985i[PIDE  ] BAR #4: i/o base address = 0xc000
-00001050601i[BIOS  ] region 4: 0x0000c000
-00001052659i[BIOS  ] PCI: bus=0 devfn=0x0b: vendor_id=0x8086 device_id=0x7113 class=0x0680
-00001052935i[ACPI  ] new IRQ line = 11
-00001052949i[ACPI  ] new IRQ line = 9
-00001052977i[ACPI  ] new PM base address: 0xb000
-00001052991i[ACPI  ] new SM base address: 0xb100
-00001053019i[PCI   ] setting SMRAM control register to 0x4a
-00001217154i[CPU0  ] Enter to System Management Mode
-00001217165i[CPU0  ] RSM: Resuming from System Management Mode
-00001381221i[PCI   ] setting SMRAM control register to 0x0a
-00001407837i[BIOS  ] MP table addr=0x000fa240 MPC table addr=0x000fa170 size=0xc8
-00001409544i[BIOS  ] SMBIOS table addr=0x000fa250
-00001411619i[BIOS  ] ACPI tables: RSDP addr=0x000fa370 ACPI DATA addr=0x00ff0000 size=0xff8
-00001414581i[BIOS  ] Firmware waking vector 0xff00cc
-00001416835i[PCI   ] i440FX PMC write to PAM register 59 (TLB Flush)
-00001417565i[BIOS  ] bios_table_cur_addr: 0x000fa394
-00001535685i[VBIOS ] VGABios $Id: vgabios.c 288 2021-05-28 19:05:28Z vruppert $
-00001535756i[BXVGA ] VBE known Display Interface b0c0
-00001535788i[BXVGA ] VBE known Display Interface b0c5
-00001538431i[VBIOS ] VBE Bios $Id: vbe.c 292 2021-06-03 12:24:22Z vruppert $
-00013811889i[BIOS  ] Booting from 0000:7c00
-00033057427e[FLOPPY] partial read() on floppy image returns 294/512
-00033101871e[FLOPPY] read() on floppy image returns 0
-00033146315e[FLOPPY] read() on floppy image returns 0
-00033190759e[FLOPPY] read() on floppy image returns 0
-00033235203e[FLOPPY] read() on floppy image returns 0
-00033279647e[FLOPPY] read() on floppy image returns 0
-00033324091e[FLOPPY] read() on floppy image returns 0
-00033368535e[FLOPPY] read() on floppy image returns 0
-00033412979e[FLOPPY] read() on floppy image returns 0
-00033457423e[FLOPPY] read() on floppy image returns 0
-00033501867e[FLOPPY] read() on floppy image returns 0
-00033546311e[FLOPPY] read() on floppy image returns 0
-00033590755e[FLOPPY] read() on floppy image returns 0
-00033635199e[FLOPPY] read() on floppy image returns 0
-00033679643e[FLOPPY] read() on floppy image returns 0
-00033724087e[FLOPPY] read() on floppy image returns 0
-00033768531e[FLOPPY] read() on floppy image returns 0
-00033814425e[FLOPPY] read() on floppy image returns 0
-00033858869e[FLOPPY] read() on floppy image returns 0
-00033903313e[FLOPPY] read() on floppy image returns 0
-00033947757e[FLOPPY] read() on floppy image returns 0
-00033992201e[FLOPPY] read() on floppy image returns 0
-00034036645e[FLOPPY] read() on floppy image returns 0
-00034081089e[FLOPPY] read() on floppy image returns 0
-00034125533e[FLOPPY] read() on floppy image returns 0
-00034169977e[FLOPPY] read() on floppy image returns 0
-00034214421e[FLOPPY] read() on floppy image returns 0
-00034258865e[FLOPPY] read() on floppy image returns 0
-00034303309e[FLOPPY] read() on floppy image returns 0
-00034347753e[FLOPPY] read() on floppy image returns 0
-00034392197e[FLOPPY] read() on floppy image returns 0
-00034436641e[FLOPPY] read() on floppy image returns 0
-00034481085e[FLOPPY] read() on floppy image returns 0
-00034525529e[FLOPPY] read() on floppy image returns 0
-00034569973e[FLOPPY] read() on floppy image returns 0
-00034615872e[FLOPPY] read() on floppy image returns 0
-00034660316e[FLOPPY] read() on floppy image returns 0
-00034704760e[FLOPPY] read() on floppy image returns 0
-00034749204e[FLOPPY] read() on floppy image returns 0
-00034793648e[FLOPPY] read() on floppy image returns 0
-00034838092e[FLOPPY] read() on floppy image returns 0
-00034882536e[FLOPPY] read() on floppy image returns 0
-00034926980e[FLOPPY] read() on floppy image returns 0
-00034971424e[FLOPPY] read() on floppy image returns 0
-00035015868e[FLOPPY] read() on floppy image returns 0
-00035060312e[FLOPPY] read() on floppy image returns 0
-00035104756e[FLOPPY] read() on floppy image returns 0
-00035149200e[FLOPPY] read() on floppy image returns 0
-00035193644e[FLOPPY] read() on floppy image returns 0
-00035238088e[FLOPPY] read() on floppy image returns 0
-00035282532e[FLOPPY] read() on floppy image returns 0
-00035326976e[FLOPPY] read() on floppy image returns 0
-00035371420e[FLOPPY] read() on floppy image returns 0
-00035417318e[FLOPPY] read() on floppy image returns 0
-00035461762e[FLOPPY] read() on floppy image returns 0
-00035506206e[FLOPPY] read() on floppy image returns 0
-00035550650e[FLOPPY] read() on floppy image returns 0
-00035595094e[FLOPPY] read() on floppy image returns 0
-00035639538e[FLOPPY] read() on floppy image returns 0
-00035683982e[FLOPPY] read() on floppy image returns 0
-00035728426e[FLOPPY] read() on floppy image returns 0
-00035772870e[FLOPPY] read() on floppy image returns 0
-00035817314e[FLOPPY] read() on floppy image returns 0
-00035861758e[FLOPPY] read() on floppy image returns 0
-00035906202e[FLOPPY] read() on floppy image returns 0
-00035950646e[FLOPPY] read() on floppy image returns 0
-00035995090e[FLOPPY] read() on floppy image returns 0
-00036039534e[FLOPPY] read() on floppy image returns 0
-00036083978e[FLOPPY] read() on floppy image returns 0
-00036128422e[FLOPPY] read() on floppy image returns 0
-00036172866e[FLOPPY] read() on floppy image returns 0
-00036218765e[FLOPPY] read() on floppy image returns 0
-00036263209e[FLOPPY] read() on floppy image returns 0
-00036307653e[FLOPPY] read() on floppy image returns 0
-00036352097e[FLOPPY] read() on floppy image returns 0
-00036396541e[FLOPPY] read() on floppy image returns 0
-00036440985e[FLOPPY] read() on floppy image returns 0
-00036485429e[FLOPPY] read() on floppy image returns 0
-00036529873e[FLOPPY] read() on floppy image returns 0
-00036574317e[FLOPPY] read() on floppy image returns 0
-00036739233i[GDBST ] found breakpoint at 0000000000114000
-00036739233i[GDBST ] stopped with ac1
-00036739233i[GDBST ] reg 8 set to 0000000000114000
-00036739233i[GDBST ] reg 41 set to 00000000ffffffff
-00036739233i[GDBST ] Removing breakpoint at 0000000000114000
-00036739233i[GDBST ] addr 0000000000114000 len 40
-00036739233i[GDBST ] addr 0000000000017fb8 len 4
-00036739233i[GDBST ] addr 0000000000113fc0 len 40
-00036739233i[GDBST ] stepping
-00036739234i[GDBST ] stopped with ac2
-00036739234i[GDBST ] Setting breakpoint at 0000000000114000
-00036739234i[GDBST ] stepping
-00036739235i[GDBST ] stopped with ac2
-00036739235i[GDBST ] stepping
-00036739236i[GDBST ] stopped with ac2
-00036739236i[GDBST ] stepping
-00036739237i[GDBST ] stopped with ac2
-00036739237i[GDBST ] stepping
-00036739238i[GDBST ] stopped with ac2
-00036739238i[GDBST ] stepping
-00036739239i[GDBST ] stopped with ac2
-00036739239i[GDBST ] stepping
-00036739240i[GDBST ] stopped with ac2
-00036739240i[GDBST ] addr 0000000000113fe4 len 4
-00036739240i[GDBST ] addr 0000000000113fc0 len 40
-00036739240i[GDBST ] Removing breakpoint at 0000000000114000
-00036739240i[GDBST ] addr 0000000000113fe4 len 4
-00036739240i[GDBST ] addr 0000000000114000 len 40
-00036739240i[GDBST ] addr 0000000000113fdc len 4
-00036739240i[GDBST ] Setting breakpoint at 0000000000114000
-00036739240i[GDBST ] stepping
-00036739241i[GDBST ] stopped with ac2
-00036739241i[GDBST ] stepping
-00036739242i[GDBST ] stopped with ac2
-00036739242i[GDBST ] stepping
-00036739243i[GDBST ] stopped with ac2
-00036739243i[GDBST ] stepping
-00036739244i[GDBST ] stopped with ac2
-00036739244i[GDBST ] addr 000000000011411b len 1
-00036739244i[GDBST ] addr 0000000000114100 len 40
-00036739244i[GDBST ] addr 0000000000113f80 len 40
-00036739244i[GDBST ] addr 0000000000113fe4 len 4
-00036739244i[GDBST ] addr 0000000000113fc0 len 40
-00036739244i[GDBST ] addr 0000000000114020 len 1
-00036739244i[GDBST ] Setting breakpoint at 0000000000114020
-00036739250i[GDBST ] found breakpoint at 0000000000114020
-00036739250i[GDBST ] stopped with ac1
-00036739250i[GDBST ] reg 8 set to 0000000000114020
-00036739250i[GDBST ] reg 41 set to 00000000ffffffff
-00036739250i[GDBST ] addr 0000000000113fe4 len 4
-00036739250i[GDBST ] addr 0000000000113fc0 len 40
-00036739250i[GDBST ] Removing breakpoint at 0000000000114020
-00036739250i[GDBST ] stepping
-00036739251i[GDBST ] stopped with ac2
-00036739251i[GDBST ] stepping
-00036739252i[GDBST ] stopped with ac2
-00036739252i[GDBST ] addr 0000000000113fe4 len 4
-00036739252i[GDBST ] addr 0000000000113fc0 len 40
-00036739252i[GDBST ] Removing breakpoint at 0000000000114000
-00036739252i[GDBST ] addr 0000000000113fe4 len 4
-00036739252i[GDBST ] addr 0000000000114000 len 40
-00036739252i[GDBST ] addr 0000000000113fdc len 4
-00036739252p[GDBST ] >>PANIC<< Debugger asked us to quit
-00036739252i[CPU0  ] CPU is in protected mode (active)
-00036739252i[CPU0  ] CS.mode = 32 bit
-00036739252i[CPU0  ] SS.mode = 32 bit
-00036739252i[CPU0  ] EFER = 0x00000000: ffxsr nxe lma lme sce
-00036739252i[CPU0  ] | EAX=000001e9  EBX=00001378  ECX=00113ff4  EDX=00007e6a
-00036739252i[CPU0  ] | ESP=00113fd0  EBP=00113fe8  ESI=000e0200  EDI=00003ff4
-00036739252i[CPU0  ] | EFLAGS=00000202: id vip vif ac vm rf nt IOPL=0 of df IF tf sf zf af pf cf
-00036739252i[CPU0  ] | SEG sltr(index|ti|rpl)     base    limit G D
-00036739252i[CPU0  ] |  CS:0023( 0004| 0|  3) 00000000 ffffffff 1 1
-00036739252i[CPU0  ] |  DS:002b( 0005| 0|  3) 00000000 ffffffff 1 1
-00036739252i[CPU0  ] |  SS:002b( 0005| 0|  3) 00000000 ffffffff 1 1
-00036739252i[CPU0  ] |  ES:002b( 0005| 0|  3) 00000000 ffffffff 1 1
-00036739252i[CPU0  ] |  FS:0000( 0003| 0|  0) 00000000 ffffffff 1 1
-00036739252i[CPU0  ] |  GS:0000( 0003| 0|  0) 00000000 ffffffff 1 1
-00036739252i[CPU0  ] | EIP=00114026 (00114026)
-00036739252i[CPU0  ] | CR0=0x80000011: PG cd nw ac wp ne ET ts em mp PE
-00036739252i[CPU0  ] | CR2=0x00000000
-00036739252i[CPU0  ] | CR3=0x00028000
-00036739252i[CPU0  ] | CR4=0x00000000: lass uintr pks cet pke smap smep keylock osxsave pcid fsgsbase smx vmx la57 umip osxmmexcpt osfxsr pce pge mce pae pse de tsd pvi vme
-00036739252i[CPU0  ] 0x00114026>> nop  : 90
-00036739252i[CMOS  ] Last time: 1758654493 tz=utc (Tue Sep 23 19:08:13   2025)
-00036739252i[XGUI  ] Exit
-00036739252i[      ] restoring default signal behavior
-00036739252i[SIM   ] quit_sim called with exit code 1
+00000314450i[KBD   ] reset-disable command received
+00000316434i[BIOS  ] Starting rombios32
+00000316872i[BIOS  ] Shutdown flag 0
+00000317471i[BIOS  ] ram_size=0x01000000
+00000317903i[BIOS  ] ram_end=16MB
+00000358643i[BIOS  ] Found 1 cpu(s)
+00000372601i[BIOS  ] bios_table_addr: 0x000fa168 end=0x000fcc00
+00000700417i[PCI   ] i440FX PMC write to PAM register 59 (TLB Flush)
+00001028352i[P2ISA ] PCI IRQ routing: PIRQA# set to 0x0b
+00001028376i[P2ISA ] PCI IRQ routing: PIRQB# set to 0x09
+00001028400i[P2ISA ] PCI IRQ routing: PIRQC# set to 0x0b
+00001028424i[P2ISA ] PCI IRQ routing: PIRQD# set to 0x09
+00001028434i[P2ISA ] write: ELCR2 = 0x0a
+00001029203i[BIOS  ] PIIX3/PIIX4 init: elcr=00 0a
+00001042825i[BIOS  ] PCI: bus=0 devfn=0x00: vendor_id=0x8086 device_id=0x1237 class=0x0600
+00001045169i[BIOS  ] PCI: bus=0 devfn=0x08: vendor_id=0x8086 device_id=0x7000 class=0x0601
+00001047352i[BIOS  ] PCI: bus=0 devfn=0x09: vendor_id=0x8086 device_id=0x7010 class=0x0101
+00001047587i[PIDE  ] BAR #4: i/o base address = 0xc000
+00001048203i[BIOS  ] region 4: 0x0000c000
+00001050261i[BIOS  ] PCI: bus=0 devfn=0x0b: vendor_id=0x8086 device_id=0x7113 class=0x0680
+00001050537i[ACPI  ] new IRQ line = 11
+00001050551i[ACPI  ] new IRQ line = 9
+00001050579i[ACPI  ] new PM base address: 0xb000
+00001050593i[ACPI  ] new SM base address: 0xb100
+00001050621i[PCI   ] setting SMRAM control register to 0x4a
+00001214756i[CPU0  ] Enter to System Management Mode
+00001214767i[CPU0  ] RSM: Resuming from System Management Mode
+00001378823i[PCI   ] setting SMRAM control register to 0x0a
+00001405439i[BIOS  ] MP table addr=0x000fa240 MPC table addr=0x000fa170 size=0xc8
+00001407146i[BIOS  ] SMBIOS table addr=0x000fa250
+00001409221i[BIOS  ] ACPI tables: RSDP addr=0x000fa370 ACPI DATA addr=0x00ff0000 size=0xff8
+00001412183i[BIOS  ] Firmware waking vector 0xff00cc
+00001414437i[PCI   ] i440FX PMC write to PAM register 59 (TLB Flush)
+00001415167i[BIOS  ] bios_table_cur_addr: 0x000fa394
+00001533287i[VBIOS ] VGABios $Id: vgabios.c 288 2021-05-28 19:05:28Z vruppert $
+00001533358i[BXVGA ] VBE known Display Interface b0c0
+00001533390i[BXVGA ] VBE known Display Interface b0c5
+00001536033i[VBIOS ] VBE Bios $Id: vbe.c 292 2021-06-03 12:24:22Z vruppert $
+00013811891i[BIOS  ] Booting from 0000:7c00
+00033057429e[FLOPPY] partial read() on floppy image returns 294/512
+00033101873e[FLOPPY] read() on floppy image returns 0
+00033146317e[FLOPPY] read() on floppy image returns 0
+00033190761e[FLOPPY] read() on floppy image returns 0
+00033235205e[FLOPPY] read() on floppy image returns 0
+00033279649e[FLOPPY] read() on floppy image returns 0
+00033324093e[FLOPPY] read() on floppy image returns 0
+00033368537e[FLOPPY] read() on floppy image returns 0
+00033412981e[FLOPPY] read() on floppy image returns 0
+00033457425e[FLOPPY] read() on floppy image returns 0
+00033501869e[FLOPPY] read() on floppy image returns 0
+00033546313e[FLOPPY] read() on floppy image returns 0
+00033590757e[FLOPPY] read() on floppy image returns 0
+00033635201e[FLOPPY] read() on floppy image returns 0
+00033679645e[FLOPPY] read() on floppy image returns 0
+00033724089e[FLOPPY] read() on floppy image returns 0
+00033768533e[FLOPPY] read() on floppy image returns 0
+00033814427e[FLOPPY] read() on floppy image returns 0
+00033858871e[FLOPPY] read() on floppy image returns 0
+00033903315e[FLOPPY] read() on floppy image returns 0
+00033947759e[FLOPPY] read() on floppy image returns 0
+00033992203e[FLOPPY] read() on floppy image returns 0
+00034036647e[FLOPPY] read() on floppy image returns 0
+00034081091e[FLOPPY] read() on floppy image returns 0
+00034125535e[FLOPPY] read() on floppy image returns 0
+00034169979e[FLOPPY] read() on floppy image returns 0
+00034214423e[FLOPPY] read() on floppy image returns 0
+00034258867e[FLOPPY] read() on floppy image returns 0
+00034303311e[FLOPPY] read() on floppy image returns 0
+00034347755e[FLOPPY] read() on floppy image returns 0
+00034392199e[FLOPPY] read() on floppy image returns 0
+00034436643e[FLOPPY] read() on floppy image returns 0
+00034481087e[FLOPPY] read() on floppy image returns 0
+00034525531e[FLOPPY] read() on floppy image returns 0
+00034569975e[FLOPPY] read() on floppy image returns 0
+00034615874e[FLOPPY] read() on floppy image returns 0
+00034660318e[FLOPPY] read() on floppy image returns 0
+00034704762e[FLOPPY] read() on floppy image returns 0
+00034749206e[FLOPPY] read() on floppy image returns 0
+00034793650e[FLOPPY] read() on floppy image returns 0
+00034838094e[FLOPPY] read() on floppy image returns 0
+00034882538e[FLOPPY] read() on floppy image returns 0
+00034926982e[FLOPPY] read() on floppy image returns 0
+00034971426e[FLOPPY] read() on floppy image returns 0
+00035015870e[FLOPPY] read() on floppy image returns 0
+00035060314e[FLOPPY] read() on floppy image returns 0
+00035104758e[FLOPPY] read() on floppy image returns 0
+00035149202e[FLOPPY] read() on floppy image returns 0
+00035193646e[FLOPPY] read() on floppy image returns 0
+00035238090e[FLOPPY] read() on floppy image returns 0
+00035282534e[FLOPPY] read() on floppy image returns 0
+00035326978e[FLOPPY] read() on floppy image returns 0
+00035371422e[FLOPPY] read() on floppy image returns 0
+00035417320e[FLOPPY] read() on floppy image returns 0
+00035461764e[FLOPPY] read() on floppy image returns 0
+00035506208e[FLOPPY] read() on floppy image returns 0
+00035550652e[FLOPPY] read() on floppy image returns 0
+00035595096e[FLOPPY] read() on floppy image returns 0
+00035639540e[FLOPPY] read() on floppy image returns 0
+00035683984e[FLOPPY] read() on floppy image returns 0
+00035728428e[FLOPPY] read() on floppy image returns 0
+00035772872e[FLOPPY] read() on floppy image returns 0
+00035817316e[FLOPPY] read() on floppy image returns 0
+00035861760e[FLOPPY] read() on floppy image returns 0
+00035906204e[FLOPPY] read() on floppy image returns 0
+00035950648e[FLOPPY] read() on floppy image returns 0
+00035995092e[FLOPPY] read() on floppy image returns 0
+00036039536e[FLOPPY] read() on floppy image returns 0
+00036083980e[FLOPPY] read() on floppy image returns 0
+00036128424e[FLOPPY] read() on floppy image returns 0
+00036172868e[FLOPPY] read() on floppy image returns 0
+00036218767e[FLOPPY] read() on floppy image returns 0
+00036263211e[FLOPPY] read() on floppy image returns 0
+00036307655e[FLOPPY] read() on floppy image returns 0
+00036352099e[FLOPPY] read() on floppy image returns 0
+00036396543e[FLOPPY] read() on floppy image returns 0
+00036440987e[FLOPPY] read() on floppy image returns 0
+00036485431e[FLOPPY] read() on floppy image returns 0
+00036529875e[FLOPPY] read() on floppy image returns 0
+00036574319e[FLOPPY] read() on floppy image returns 0
+07766804000p[XGUI  ] >>PANIC<< POWER button turned off.
+07766804000i[CPU0  ] CPU is in protected mode (active)
+07766804000i[CPU0  ] CS.mode = 32 bit
+07766804000i[CPU0  ] SS.mode = 32 bit
+07766804000i[CPU0  ] EFER = 0x00000000: ffxsr nxe lma lme sce
+07766804000i[CPU0  ] | EAX=00000120  EBX=00001378  ECX=00113ff4  EDX=00007e6a
+07766804000i[CPU0  ] | ESP=00113fd0  EBP=00113fe8  ESI=000e0200  EDI=00003ff4
+07766804000i[CPU0  ] | EFLAGS=00000202: id vip vif ac vm rf nt IOPL=0 of df IF tf sf zf af pf cf
+07766804000i[CPU0  ] | SEG sltr(index|ti|rpl)     base    limit G D
+07766804000i[CPU0  ] |  CS:0023( 0004| 0|  3) 00000000 ffffffff 1 1
+07766804000i[CPU0  ] |  DS:002b( 0005| 0|  3) 00000000 ffffffff 1 1
+07766804000i[CPU0  ] |  SS:002b( 0005| 0|  3) 00000000 ffffffff 1 1
+07766804000i[CPU0  ] |  ES:002b( 0005| 0|  3) 00000000 ffffffff 1 1
+07766804000i[CPU0  ] |  FS:0000( 0000| 0|  0) 00000000 00000000 0 0
+07766804000i[CPU0  ] |  GS:0000( 0000| 0|  0) 00000000 00000000 0 0
+07766804000i[CPU0  ] | EIP=00114027 (00114027)
+07766804000i[CPU0  ] | CR0=0x80000011: PG cd nw ac wp ne ET ts em mp PE
+07766804000i[CPU0  ] | CR2=0x00000000
+07766804000i[CPU0  ] | CR3=0x00028000
+07766804000i[CPU0  ] | CR4=0x00000000: lass uintr pks cet pke smap smep keylock osxsave pcid fsgsbase smx vmx la57 umip osxmmexcpt osfxsr pce pge mce pae pse de tsd pvi vme
+07766804000i[CPU0  ] 0x00114027>> jmp .-3 (0x00114026) : EBFD
+07766804000i[CMOS  ] Last time: 1758897114 tz=utc (Fri Sep 26 14:31:54   2025)
+07766804000i[XGUI  ] Exit
+07766804000i[      ] restoring default signal behavior
+07766804000i[SIM   ] quit_sim called with exit code 1

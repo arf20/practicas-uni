@@ -1,3 +1,4 @@
+# lab 1
 .text codigo
 .data vars
 .bss vars sin inicializar
@@ -5,3 +6,19 @@
 
 
 la makefile es -O2 
+
+
+# lab 2
+
+1) Complete Zeos code.
+2) Implement the keyboard management.
+4) Implement the clock management.
+6) Implement the page fault exception management
+5) Implement the gettime system call.
+3) Implement the write system call.
+
+interrupt de teclado [check]
+
+en user, llamada write() para probar llamada write, cuando se presione una tecla
+masks
+
