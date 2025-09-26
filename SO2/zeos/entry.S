@@ -36,18 +36,44 @@
 /**************************************************/
 
 #define SAVE_ALL \
-      pushl %gs; \
-      pushl %fs; \
-      pushl %es; \
-      pushl %ds; \
-      pushl %eax; \
-      pushl %ebp; \
-      pushl %edi; \
-      pushl %esi; \
-      pushl %ebx; \
-      pushl %ecx; \
-      pushl %edx; \
-      movl $__KERNEL_DS, %edx;    \
-      movl %edx, %ds;           \
-      movl %edx, %es
+    pushl   %gs; \
+    pushl   %fs; \
+    pushl   %es; \
+    pushl   %ds; \
+    pushl   %eax; \
+    pushl   %ebp; \
+    pushl   %edi; \
+    pushl   %esi; \
+    pushl   %ebx; \
+    pushl   %ecx; \
+    pushl   %edx; \
+    movl    $__KERNEL_DS, %edx; \
+    movl    %edx, %ds; \
+    movl    %edx, %es;
+
+#define RESTORE_ALL \
+    popl    %edx; \
+    popl    %ecx; \
+    popl    %ebx; \
+    popl    %esi; \
+    popl    %edi; \
+    popl    %ebp; \
+    popl    %eax; \
+    popl    %ds; \
+    popl    %es; \
+    popl    %fs; \
+    popl    %gs;
+
+/* indicates to APIC ok for more interrupts */
+#define EOI \
+    movb $0x20, %al ; \
+    outb %al, $0x20 ;
+
+
+ENTRY(keyboard_handler)
+    SAVE_ALL
+    call keyboard_routine
+    RESTORE_ALL
+    EOI
+    iret
 

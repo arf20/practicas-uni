@@ -12,6 +12,8 @@
 Gate idt[IDT_ENTRIES];
 Register    idtR;
 
+extern void keyboard_handler(void);
+
 char char_map[] =
 {
   '\0','\0','1','2','3','4','5','6',
@@ -83,7 +85,24 @@ void setIdt()
   set_handlers();
 
   /* ADD INITIALIZATION CODE FOR INTERRUPT VECTOR */
+  setInterruptHandler(33, keyboard_handler, 0);
 
   set_idt_reg(&idtR);
+}
+
+
+/* interrupt routines */
+
+void keyboard_routine(void)
+{
+    unsigned char read_byte = inb(0x60);
+    unsigned char scancode = read_byte & 0x7f;
+    char make = (read_byte >> 7) & 1;
+
+    if (make) {
+        char c = char_map[scancode];
+        if (c == 0) c = 'C';
+        printc_xy(0, 0, c);
+    }
 }
 
