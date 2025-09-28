@@ -13,6 +13,7 @@ Gate idt[IDT_ENTRIES];
 Register    idtR;
 
 extern void keyboard_handler(void);
+extern void clock_handler(void);
 
 char char_map[] =
 {
@@ -86,6 +87,7 @@ void setIdt()
 
   /* ADD INITIALIZATION CODE FOR INTERRUPT VECTOR */
   setInterruptHandler(33, keyboard_handler, 0);
+  setInterruptHandler(32, clock_handler, 0);
 
   set_idt_reg(&idtR);
 }
@@ -104,5 +106,10 @@ void keyboard_routine(void)
         if (c == 0) c = 'C';
         printc_xy(0, 0, c);
     }
+}
+
+void clock_routine(void)
+{
+    zeos_show_clock();
 }
 
