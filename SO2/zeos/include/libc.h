@@ -20,4 +20,6 @@ int fork();
 
 void exit();
 
+int gettime(void);
+
 #endif  /* __LIBC_H__ */

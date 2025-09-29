@@ -14,6 +14,9 @@ Register    idtR;
 
 extern void keyboard_handler(void);
 extern void clock_handler(void);
+extern void syscall_handler(void);
+
+int zeos_ticks;
 
 char char_map[] =
 {
@@ -88,6 +91,7 @@ void setIdt()
   /* ADD INITIALIZATION CODE FOR INTERRUPT VECTOR */
   setInterruptHandler(33, keyboard_handler, 0);
   setInterruptHandler(32, clock_handler, 0);
+  setInterruptHandler(0x80, syscall_handler, 3);
 
   set_idt_reg(&idtR);
 }
@@ -111,5 +115,6 @@ void keyboard_routine(void)
 void clock_routine(void)
 {
     zeos_show_clock();
+    zeos_ticks++;
 }
 

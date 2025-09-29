@@ -18,6 +18,8 @@ int __attribute__ ((__section__(".text.main")))
      /* __asm__ __volatile__ ("mov %0, %%cr3"::"r" (0) ); */
 
     int c = addAsm(69, 420);
-    
+
+    int time = gettime();
+
     while(1) { }
 }
