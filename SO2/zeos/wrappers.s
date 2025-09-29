@@ -14,10 +14,28 @@
     mov $10, %eax
     int $0x80
     cmp $0, %eax
-    jge gettime_ok
+    jge syscall_ok
 
     neg %eax
     mov %eax, errno
     mov -1, %eax
-gettime_ok:
+    ret
+
+
+.globl write; .type write, @function; .align 0; write:
+    mov $4, %eax
+    mov -12(%esp), %edx
+    mov -8(%esp), %ecx
+    mov -4(%esp), %ebx
+    int $0x80
+
+    cmp $0, %eax
+    jge syscall_ok
+
+    neg %eax
+    mov %eax, errno
+    mov -1, %eax
+    ret
+
+syscall_ok:
     ret

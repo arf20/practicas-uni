@@ -22,3 +22,14 @@ interrupt de teclado [check]
 en user, llamada write() para probar llamada write, cuando se presione una tecla
 masks
 
+
+[X] Implement the sys_write routine.
+[X] Modify the sys_call_table with the new routine.
+[X] Create a wrapper for the system call.
+[X] Implement the system_call_handler routine.
+[Xi] Initialize either the IDT or the MSRs (or both) with the handler, depending on the mechanism
+to invoke the operating system code used (int, sysenter or both).
+[ ] Implement the errno [variable] and perror function.
+
+syscall args EDX, ECX, EBX, ESI, EDI, EBP. result EAX
+
