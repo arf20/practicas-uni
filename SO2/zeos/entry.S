@@ -4,6 +4,7 @@
 
 #include <asm.h>
 #include <segment.h>
+#include <errno.h>
 
 
 /**************************************************/
@@ -81,6 +82,23 @@ ENTRY(clock_handler)
     SAVE_ALL
     EOI
     call clock_routine
+    RESTORE_ALL
+    iret
+
+#define MAX_SYSCALL     10
+
+ENTRY(syscall_handler)
+    SAVE_ALL
+    cmpl $0, %eax
+    jl err
+    cmpl $MAX_SYSCALL, %eax
+    jg err
+    call *sys_call_table(, %eax, 0x04)
+    jmp fin
+err:
+    movl $-ENOSYS, %eax
+fin:
+    movl %eax, 0x18(%esp)
     RESTORE_ALL
     iret
 

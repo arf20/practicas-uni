@@ -13,6 +13,7 @@
 #include <utils.h>
 #include <zeos_mm.h> /* TO BE DELETED WHEN ADDED THE PROCESS MANAGEMENT CODE TO BECOME MULTIPROCESS */
 
+extern int zeos_ticks;
 
 int (*usr_main)(void) = (void *) (PAG_LOG_INIT_CODE*PAGE_SIZE);
 unsigned int *p_sys_size = (unsigned int *) KERNEL_START;
@@ -85,6 +86,9 @@ int __attribute__((__section__(".text.main")))
 
   /* Initialize an address space to be used for the monoprocess version of ZeOS */
   monoprocess_init_addr_space(); /* TO BE DELETED WHEN THE PROCESS MANAGEMENT CODE TO BECOME MULTIPROCESS IS ADDED */
+
+  /* time init */
+  zeos_ticks = 0;
 
   /* Initialize Scheduling */
   init_sched();
