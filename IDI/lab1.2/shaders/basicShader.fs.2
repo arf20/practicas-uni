@@ -1,0 +1,15 @@
+#version 330 core
+
+out vec4 FragColor;
+
+void main() {
+    if (int(gl_FragCoord.y) / 10 % 2 == 0)
+        discard;
+    FragColor = vec4(
+        gl_FragCoord.x < 354 ? 1 : 0,
+        gl_FragCoord.y < 354 ? 1 : 0,
+        gl_FragCoord.x > 354 ? 1 : 0,
+        1
+    );
+}
+
