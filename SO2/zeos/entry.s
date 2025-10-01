@@ -13,12 +13,6 @@
 # 1 "include/segment.h" 1
 # 7 "entry.S" 2
 # 1 "include/errno.h" 1
-
-
-
-
-# 1 "/usr/include/asm-generic/errno-base.h" 1 3 4
-# 6 "include/errno.h" 2
 # 8 "entry.S" 2
 # 74 "entry.S"
 .globl keyboard_handler; .type keyboard_handler, @function; .align 0; keyboard_handler:
@@ -31,6 +25,15 @@
 .globl clock_handler; .type clock_handler, @function; .align 0; clock_handler:
     pushl %gs; pushl %fs; pushl %es; pushl %ds; pushl %eax; pushl %ebp; pushl %edi; pushl %esi; pushl %ebx; pushl %ecx; pushl %edx; movl $0x18, %edx; movl %edx, %ds; movl %edx, %es;
     movb $0x20, %al ; outb %al, $0x20 ;
+    call clock_routine
+    popl %edx; popl %ecx; popl %ebx; popl %esi; popl %edi; popl %ebp; popl %eax; popl %ds; popl %es; popl %fs; popl %gs;
+    iret
+
+.globl general_protection_fault_handler; .type general_protection_fault_handler, @function; .align 0; general_protection_fault_handler:
+    pushl %gs; pushl %fs; pushl %es; pushl %ds; pushl %eax; pushl %ebp; pushl %edi; pushl %esi; pushl %ebx; pushl %ecx; pushl %edx; movl $0x18, %edx; movl %edx, %ds; movl %edx, %es;
+    movb $0x20, %al ; outb %al, $0x20 ;
+    mov 0x2c(%esp), %eax
+    pushl %eax
     call clock_routine
     popl %edx; popl %ecx; popl %ebx; popl %esi; popl %edi; popl %ebp; popl %eax; popl %ds; popl %es; popl %fs; popl %gs;
     iret

@@ -21,5 +21,10 @@ int __attribute__ ((__section__(".text.main")))
 
     int time = gettime();
 
+    write(1, "asdf\n", 5);
+    
+    char *invalid = (char*)0;
+    *invalid = 1;
+
     while(1) { }
 }

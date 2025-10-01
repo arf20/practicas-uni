@@ -6,15 +6,12 @@
 #include <segment.h>
 #include <hardware.h>
 #include <io.h>
+#include <entry.h>
 
 #include <zeos_interrupt.h>
 
 Gate idt[IDT_ENTRIES];
 Register    idtR;
-
-extern void keyboard_handler(void);
-extern void clock_handler(void);
-extern void syscall_handler(void);
 
 int zeos_ticks;
 
@@ -89,6 +86,7 @@ void setIdt()
   set_handlers();
 
   /* ADD INITIALIZATION CODE FOR INTERRUPT VECTOR */
+  setTrapHandler(13, general_protection_fault_handler, 0);
   setInterruptHandler(33, keyboard_handler, 0);
   setInterruptHandler(32, clock_handler, 0);
   setInterruptHandler(0x80, syscall_handler, 3);
@@ -116,5 +114,38 @@ void clock_routine(void)
 {
     zeos_show_clock();
     zeos_ticks++;
+}
+
+static void itoa(int a, char *b)
+{
+  int i, i1;
+  char c;
+  
+  if (a==0) { b[0]='0'; b[1]=0; return ;}
+  
+  i=0;
+  while (a>0)
+  {
+    b[i]=(a%10)+'0';
+    a=a/10;
+    i++;
+  }
+  
+  for (i1=0; i1<i/2; i1++)
+  {
+    c=b[i1];
+    b[i1]=b[i-i1-1];
+    b[i-i1-1]=c;
+  }
+  b[i]=0;
+}
+
+void general_protection_fault_routine(unsigned int eip)
+{
+    char eipbuf[16];
+    printk("\nGeneral Protection Fault at EIP ");
+    itoa(eip, eipbuf);
+    printk(eipbuf);
+    printk("\n");
 }
 
