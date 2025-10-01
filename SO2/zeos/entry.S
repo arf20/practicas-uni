@@ -85,6 +85,15 @@ ENTRY(clock_handler)
     RESTORE_ALL
     iret
 
+ENTRY(general_protection_fault_handler)
+    SAVE_ALL
+    EOI
+    mov     0x2c(%esp), %eax    // retrieve error code pushed on top of eip
+    pushl   %eax                // pass as argument to routine cdelc
+    call clock_routine
+    RESTORE_ALL
+    iret
+
 #define MAX_SYSCALL     10
 
 ENTRY(syscall_handler)

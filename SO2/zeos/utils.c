@@ -3,9 +3,10 @@
 
 #include <mm_address.h>
 
-void copy_data(void *start, void *dest, int size)
+void copy_data(const void *start, void *dest, int size)
 {
-  DWord *p = start, *q = dest;
+  const DWord *p = start;
+  DWord *q = dest;
   Byte *p1, *q1;
   while(size > 4) {
     *q++ = *p++;
@@ -19,9 +20,10 @@ void copy_data(void *start, void *dest, int size)
   }
 }
 /* Copia de espacio de usuario a espacio de kernel, devuelve 0 si ok y -1 si error*/
-int copy_from_user(void *start, void *dest, int size)
+int copy_from_user(const void *start, void *dest, int size)
 {
-  DWord *p = start, *q = dest;
+  const DWord *p = start;
+  DWord *q = dest;
   Byte *p1, *q1;
   while(size > 4) {
     *q++ = *p++;
@@ -36,9 +38,10 @@ int copy_from_user(void *start, void *dest, int size)
   return 0;
 }
 /* Copia de espacio de kernel a espacio de usuario, devuelve 0 si ok y -1 si error*/
-int copy_to_user(void *start, void *dest, int size)
+int copy_to_user(const void *start, void *dest, int size)
 {
-  DWord *p = start, *q = dest;
+  const DWord *p = start;
+  DWord *q = dest;
   Byte *p1, *q1;
   while(size > 4) {
     *q++ = *p++;

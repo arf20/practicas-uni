@@ -5,4 +5,9 @@
 #ifndef __ENTRY_H__
 #define __ENTRY_H__
 
+void keyboard_handler(void);
+void clock_handler(void);
+void general_protection_fault_handler(void);
+void syscall_handler(void);
+
 #endif  /* __ENTRY_H__ */
