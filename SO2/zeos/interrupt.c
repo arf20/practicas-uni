@@ -86,7 +86,7 @@ void setIdt()
   set_handlers();
 
   /* ADD INITIALIZATION CODE FOR INTERRUPT VECTOR */
-  setTrapHandler(13, general_protection_fault_handler, 0);
+  setTrapHandler(14, page_fault_handler_new, 0);
   setInterruptHandler(33, keyboard_handler, 0);
   setInterruptHandler(32, clock_handler, 0);
   setInterruptHandler(0x80, syscall_handler, 3);
@@ -140,7 +140,7 @@ static void itoa(int a, char *b)
   b[i]=0;
 }
 
-void general_protection_fault_routine(unsigned int eip)
+void page_fault_routine_new(unsigned int eip)
 {
     char eipbuf[16];
     printk("\nGeneral Protection Fault at EIP ");
