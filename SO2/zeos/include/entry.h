@@ -7,7 +7,7 @@
 
 void keyboard_handler(void);
 void clock_handler(void);
-void general_protection_fault_handler(void);
+void page_fault_handler_new(void);
 void syscall_handler(void);
 
 #endif  /* __ENTRY_H__ */

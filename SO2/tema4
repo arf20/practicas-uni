@@ -1,0 +1,26 @@
+proceso desde POV usuario -> irrelevante
+proceso desde POV de sistema -> PCB (process control block) (linux: task.struct)
+
+cada proceso tiene PCB
+
+PCB
+    PID
+    Tabla paginas
+    signals
+    Tabla canales
+    etc...
+
+vector de PCBs
+en memoria
+guarda todos los PCBs que el SO puede tener
+PCBs usados y libres
+
+procesos tienen estados: ready, run, blocked, zombie
+proceso esta en ready cuando está encolado en cola de ready
+blocked tiene muchas colas distintas
+    cola de procesos esperando disco
+    cola de procesos esperando red
+    cola de procesos esperando timer
+    etc...
+procesos zombie son procesos que se han liberado los recursos de usuario por excepcion o exit() pero su PCB aun existen
+

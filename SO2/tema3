@@ -1,0 +1,28 @@
+problema: segmentacion
+solucion: procesos con memoria fisica no consecutiva -> paginación
+            memoria logica consecutiva y uniforme entre procesos
+
+
+
+tamaño pagina: 4K -> 12 bits
+32 bits - 12 = 20 bits de numero de pagina logica
+
+TLB/tabla pagina
+    NPL
+    NPF
+    bit de presencia o validez
+    bit de usuario: 0 -> del kernel !0 -> usuario
+
+TLB miss -> page fault exception -> page table hit -> swap TLB
+                                 -> page table miss -> swap disk
+                                 -> unmapped -> segmentation fault
+
+x86 CR3 apunta a tabla de paginas
+
+cuando salta a modo protegido, sistema y usuario todo en direcciones logicas
+
+cada tabla de paginas de proceso, contiene los mapeos del proceso y del kernel
+cada espacio logico contiene el proceso y todo el kernel
+no hay que cambiar la tabla de paginas para saltar de usuario a sistema y viceversa solo entre procesos
+
+

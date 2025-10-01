@@ -4,23 +4,23 @@
 
 #define SYSCALL(name, num) \
 ENTRY(name) \
-    mov     num, %eax
-
-    mov     20(%esp), %ebp
-    mov     16(%esp), %edi
-    mov     12(%esp), %esi
-    mov     8(%esp), %ebx
-    mov     4(%esp), %ecx
-    mov     0(%esp), %edx
-
-    int     $0x80
-    
-    cmp     $0, %eax
-    jge     syscall_ok
-
-    neg     %eax
-    mov     %eax, errno
-    mov     -1, %eax
+    mov     $num, %eax;      \
+                            \
+    mov     24(%esp), %ebp; \
+    mov     20(%esp), %edi; \
+    mov     16(%esp), %esi; \
+    mov     12(%esp), %ebx;  \
+    mov     8(%esp), %ecx;  \
+    mov     4(%esp), %edx;  \
+                            \
+    int     $0x80;          \
+                            \
+    cmp     $0, %eax;       \
+    jge     syscall_ok;     \
+                            \
+    neg     %eax;           \
+    mov     %eax, errno;    \
+    mov     $-1, %eax;      \
     ret
 
 // int gettime();
