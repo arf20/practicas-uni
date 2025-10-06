@@ -114,3 +114,12 @@ __asm__ __volatile__(
   : : );
 }
 
+void write_msr(DWord msrnum, DWord low, DWord high)
+{
+__asm__ __volatile__(
+    "wrmsr"
+    :
+    : "a" (low), "d" (high), "c" (msrnum)
+);
+}
+

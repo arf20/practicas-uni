@@ -29,5 +29,33 @@
 
 ## 3.10.2
 
- - 
+ - keyboard_handler
+ - keyboard_routine()
+
+# 3.10.3
+ 
+ - write() wrapper
+ - sys_write(): Uses a 4096 buffer, for which the kernel stack was increased to 8192 bytes
+ - system_call_handler
+ - errno, perror() and strerror()
+
+ - FAST_SYSCALL
+ - fast_syscall_handler
+ - MSR inits
+
+# 3.10.4
+
+ - clock_handler
+ - clock_routine()
+ - zeos_ticks
+
+# 3.10.5
+
+ - gettime() wrapper
+ - sys_gettime
+
+# 3.10.6
+
+ - page_fault_handler_new
+ - page_fault_routine_new
 
