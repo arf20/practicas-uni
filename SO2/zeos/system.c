@@ -12,6 +12,7 @@
 #include <io.h>
 #include <utils.h>
 #include <zeos_mm.h> /* TO BE DELETED WHEN ADDED THE PROCESS MANAGEMENT CODE TO BECOME MULTIPROCESS */
+#include <entry.h>
 
 extern int zeos_ticks;
 
@@ -80,6 +81,10 @@ int __attribute__((__section__(".text.main")))
   setGdt(); /* Definicio de la taula de segments de memoria */
   setIdt(); /* Definicio del vector de interrupcions */
   setTSS(); /* Definicio de la TSS */
+
+  write_msr(0x174, __KERNEL_CS, 0);
+  write_msr(0x175, INITIAL_ESP, 0);
+  write_msr(0x176, (DWord)fast_syscall_handler, 0);
 
   /* Initialize Memory */
   init_mm();

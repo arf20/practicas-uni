@@ -112,3 +112,32 @@ fin:
     RESTORE_ALL
     iret
 
+ENTRY(fast_syscall_handler)
+    pushl   $__USER_DS
+    pushl   %ebp
+    pushfl
+    pushl   $__USER_CS
+    pushl   4(%ebp)
+
+    SAVE_ALL
+
+    cmpl $0, %eax
+    jl enosys
+    cmpl $MAX_SYSCALL, %eax
+    jg enosys
+
+    call *sys_call_table(, %eax, 0x04)
+    jmp fast_syscall_handler_end
+
+enosys:
+    movl $-ENOSYS, %eax
+fast_syscall_handler_end:
+    movl %eax, 0x18(%esp)
+    RESTORE_ALL
+
+    movl    (%esp), %edx
+    movl    12(%esp), %ecx
+
+    sti
+    sysexit
+
