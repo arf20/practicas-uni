@@ -66,7 +66,7 @@ int sys_write(int fd, const void *buf, int count)
         return cfdr;
     if (!buf)
         return -EFAULT;
-    if (count <= 0)
+    if (count < 0)
         return -EINVAL;
 
     char sysbuf[IOBS];

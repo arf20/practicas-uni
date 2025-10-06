@@ -13,12 +13,12 @@ ENTRY(name)                 \
                             \
     mov     $num, %eax;     \
                             \
-    mov     24(%esp), %ebp; \
-    mov     20(%esp), %edi; \
-    mov     16(%esp), %esi; \
-    mov     12(%esp), %ebx; \
-    mov     8(%esp), %ecx;  \
-    mov     4(%esp), %edx;  \
+    mov     40(%esp), %ebp; \
+    mov     36(%esp), %edi; \
+    mov     32(%esp), %esi; \
+    mov     28(%esp), %ebx; \
+    mov     24(%esp), %ecx;  \
+    mov     20(%esp), %edx;  \
                             \
     int     $0x80;          \
                             \
