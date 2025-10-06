@@ -140,12 +140,86 @@ static void itoa(int a, char *b)
   b[i]=0;
 }
 
+
+void
+reverse(char *str, int length) {
+    int start = 0;
+    int end = length - 1;
+    while (start < end) {
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+        end--;
+        start++;
+    }
+}
+
+int
+strlen(const char *str) {
+    if (!str)
+        return 0;
+    int i = 0;
+    while (str[i]) { i++; }
+    return i;
+}
+
+void *
+memset(void *s, char c, unsigned int n) {
+    for (unsigned int i = 0; i < n; i++)
+        ((char*)s)[i] = c;
+    return s;
+}
+
+void *
+memmove(void *s, void *d, int n) {
+    if (s > d)
+        for (int i = 0; i < n; i++)
+            ((char*)d)[i] = ((char*)s)[i];
+    else
+        for (int i = n - 1; i >= 0; i--)
+            ((char*)d)[i] = ((char*)s)[i];
+    return d;
+}
+
+char *
+utoa(unsigned int num, int base) {
+    static char buff[128];
+
+    int i = 0;
+    if (num == 0) {
+        buff[i++] = '0';
+            buff[i] = '\0';
+            return buff;
+    }
+
+    while (num != 0) {
+        unsigned int rem = num % base;
+            buff[i++] = (rem > 9) ? (rem - 10) + 'a' : rem + '0';
+            num /= base;
+    }
+
+    buff[i] = '\0';
+
+    reverse(buff, i);
+
+    return buff;
+}
+
+char *
+leftpad(char *str, int n, char c) {
+    int len = strlen(str);
+    int pad = n - len;
+    memmove(str, str + pad, len);
+    memset(str, c, pad);
+    return str;
+}
+
+
 void page_fault_routine_new(unsigned int eip)
 {
-    char eipbuf[16];
-    printk("\nGeneral Protection Fault at EIP ");
-    itoa(eip, eipbuf);
-    printk(eipbuf);
+    printk("\nPage Fault at EIP 0x");
+    printk(leftpad(utoa(eip, 16), 8, '0'));
     printk("\n");
+    while (1) {}
 }
 

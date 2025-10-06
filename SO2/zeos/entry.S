@@ -73,9 +73,9 @@
 
 ENTRY(keyboard_handler)
     SAVE_ALL
+    EOI
     call keyboard_routine
     RESTORE_ALL
-    EOI
     iret
 
 ENTRY(clock_handler)
@@ -87,13 +87,12 @@ ENTRY(clock_handler)
 
 ENTRY(page_fault_handler_new)
     SAVE_ALL
-    EOI
     mov     0x30(%esp), %eax    // retrieve error code pushed on top of eip
     pushl   %eax                // pass as argument to routine cdelc
     call page_fault_routine_new
     popl    %eax                // remove parameter
     RESTORE_ALL
-    add     $4, %esp            // clear error
+    add     $-4, %esp            // clear error
     iret
 
 #define MAX_SYSCALL     10

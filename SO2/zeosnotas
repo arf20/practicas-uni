@@ -27,9 +27,24 @@ masks
 [X] Modify the sys_call_table with the new routine.
 [X] Create a wrapper for the system call.
 [X] Implement the system_call_handler routine.
-[Xi] Initialize either the IDT or the MSRs (or both) with the handler, depending on the mechanism
+[X] Initialize either the IDT or the MSRs (or both) with the handler, depending on the mechanism
 to invoke the operating system code used (int, sysenter or both).
-[ ] Implement the errno [variable] and perror function.
+[X] Implement the errno [variable] and perror function.
 
 syscall args EDX, ECX, EBX, ESI, EDI, EBP. result EAX
+
+[ ] comprovacio crides a sistema: basiques
+[X] falta perror
+[ ] no hi ha fast syscall
+[X] wrappers: tot i que l'idea de reaprofitar codi no em desagrada, no compliu la convenció de C de crides a funció. Cal guardar el valor dels registres EBP, ESP, EBX, ESI i EDI si es modifiquen i clarament aquí els modifiqueu tots
+[X] handlers: EOI a les interrupcions hardware sempre abans de la crida a la rutina de servei. Les excepcions (PF) NO han de fer EOI.
+[ ] l'excepció de PF s'ha de quedar en un bucle infinit
+[ ] l'excepció de PF ha de mostrar l'adreça en format hexadecimal.
+[ ] sys_write: defineix una variable local de 4096 bytes. Això no ho podeu fer. La pila té mida fixa de 4096 bytes i ja hi té coses, si feu això quan hi guardeu valors estareu matxacant camps d'altres processos.
+[ ] sys_write: count==0 NO és un error
+Valoracio: ***_ 
+
+(ret)   0x114022
+ebp     0x113fe8
+esp     0x113fcc
 
