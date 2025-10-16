@@ -21,13 +21,16 @@
 #define MIN(x, y)   (x > y ? y : x)
 
 #define IOBS    4096
+static char iobuffer[IOBS];
 
 extern int zeos_ticks;
 
 int check_fd(int fd, int permissions)
 {
-    if (fd!=1) return -9; /*EBADFD*/
-    if (permissions!=ESCRIPTURA) return -13; /*EACCES*/
+    if (fd != 1)
+        return -EBADFD;
+    if (permissions != ESCRIPTURA)
+        return -EACCES;
     return 0;
 }
 
@@ -61,6 +64,7 @@ int sys_gettime()
 
 int sys_write(int fd, const void *buf, int count)
 {
+    /* check arguemnts */
     int cfdr = check_fd(fd, ESCRIPTURA);
     if (cfdr < 0)
         return cfdr;
@@ -69,14 +73,16 @@ int sys_write(int fd, const void *buf, int count)
     if (count < 0)
         return -EINVAL;
 
-    char sysbuf[IOBS];
+    /* print data 1 block at a time */
     int written = 0, sysr = 0;
-    for (; count > 0; count -= IOBS) {
-        copy_from_user(buf, sysbuf, IOBS);
-        sysr = sys_write_console(sysbuf, MIN(IOBS, count));
+    for (; count > 0;) {
+        copy_from_user(buf, iobuffer, IOBS);
+        buf += IOBS; /* next block */
+        sysr = sys_write_console(iobuffer, MIN(IOBS, count));
         if (sysr < 0)
             return sysr;
         written += sysr;
+        count -= IOBS;
     }
 
     return written;
