@@ -22,9 +22,12 @@ class MyGLWidget : public BL2GLWidget {
         void viewTransform();
 
         GLuint VAO_model = 0;
+        GLuint VAO_terra = 0;
 
         GLuint projLoc = 0, viewLoc = 0;
         Model m;
+
+        float rotacion = 0.0f;
 
     private:
         int printOglError(const char file[], int line, const char func[]);

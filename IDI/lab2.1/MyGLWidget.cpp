@@ -57,15 +57,17 @@ void MyGLWidget::initializeGL() {
 void MyGLWidget::paintGL() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+    glm::mat4 transform(1.0f);
+    transform = glm::scale(transform, glm::vec3(escala));
+    glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
+
+    glBindVertexArray(VAO_terra);
+    glDrawArrays(GL_TRIANGLES, 0, 9);
+    glBindVertexArray(0);
+
     modelTransform();
     projectTransform();
     viewTransform();
-
-    /*
-    glBindVertexArray(VAO_Casa);
-    glDrawArrays(GL_TRIANGLES, 0, 9);
-    glBindVertexArray(0);
-    */
 
     glBindVertexArray(VAO_model);
     glDrawArrays(GL_TRIANGLES, 0, m.faces().size() * 3);
@@ -76,13 +78,26 @@ void MyGLWidget::resizeGL(int width, int height) {
 }
 
 void MyGLWidget::keyPressEvent(QKeyEvent *event) {
-    BL2GLWidget::keyPressEvent(event);
+    makeCurrent();
+    switch (event->key()) {
+        case Qt::Key_S: { // escalar a més gran
+            escala += 0.05;
+        } break;
+        case Qt::Key_D: { // escalar a més petit
+            escala -= 0.05;
+        } break;
+        case Qt::Key_R: { // rotar 
+            rotacion += M_PI/4.0;
+        } break;
+        default: event->ignore(); break;
+    }
+    update();
 }
 
 void MyGLWidget::creaBuffers() {
     //BL2GLWidget::creaBuffers();
 
-    m.load("../models/HomerProves.obj");
+    m.load("../models/Rick.obj");
 
 
     glGenVertexArrays(1, &VAO_model);
@@ -105,13 +120,54 @@ void MyGLWidget::creaBuffers() {
 
     glVertexAttribPointer(colorLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(colorLoc);
+
+
+    glGenVertexArrays(1, &VAO_terra);
+    glBindVertexArray(VAO_terra);
    
+    GLuint VBO_terra[2];
+    glGenBuffers(2, VBO_terra);
+
+    glm::vec3 terra_vertex[] = {
+        {-2, -1, -2},
+        {2, -1, -2},
+        {2, -1, 2},
+        {-2, -1, -2},
+        {2, -1, 2},
+        {-2, -1, 2}
+    };
+
+    glm::vec3 terra_color[] = {
+        {0.5, 0.5, 0.5},
+        {0.5, 0.5, 0.5},
+        {0.5, 0.5, 0.5},
+        {0.5, 0.5, 0.5},
+        {0.5, 0.5, 0.5},
+        {0.5, 0.5, 0.5}
+    };
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO_terra[0]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(terra_vertex),
+        terra_vertex, GL_STATIC_DRAW);
+    
+    glVertexAttribPointer(vertexLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(vertexLoc);
+
+    glBindBuffer(GL_ARRAY_BUFFER, VBO_terra[1]);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(terra_color),
+        terra_color, GL_STATIC_DRAW);
+
+    glVertexAttribPointer(colorLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(colorLoc);
 }
 
 
 
 void MyGLWidget::modelTransform() {
-    BL2GLWidget::modelTransform();
+    glm::mat4 transform(1.0f);
+    transform = glm::scale(transform, glm::vec3(escala));
+    transform = glm::rotate(transform, rotacion, glm::vec3(0.0f, 1.0f, 0.0f));
+    glUniformMatrix4fv(transLoc, 1, GL_FALSE, &transform[0][0]);
 }
 
 
