@@ -1,0 +1,40 @@
+TEMA 5: THREADS
+
+EN LINUX task_union representa THREADs no procesos
+el proceso es una estructura de mas alto nivel
+
+COMPARTEN
+    memoria
+    sistema de ficheros
+
+NO COMPARTEN
+    TCP
+    TID
+    %eip
+    registros
+    user stack
+    system stack
+    TLS thread local storage
+
+pthread_create(void*(*func)(void*), void *param) {
+    parameter checking
+    resources
+        TCB (task_union)
+        user stack
+        system stack
+        TLS
+
+    TID
+    copiar task_union padre -> task_union hijo
+    init user_stack iniciar pila de la llamada
+        | 0 (direccion de retorno) (por ahora 0)
+        | parametros de derecha a izquierda
+    preparar exec
+}
+
+
+void *thread(void *arg) {
+    ..........
+    pthread_exit();
+}
+
