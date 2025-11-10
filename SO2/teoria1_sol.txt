@@ -1,0 +1,120 @@
+1.
+
+En la inicializacion del sistema, antes de pasar a modo protegido
+
+2.
+
+El handler de sysenter/de interrupcion de syscall
+
+3. 
+
+InitTP[KERNEL_BASE_PAGE].baseAddr = (void*)syscall_handler | 0xfffff000;
+
+4.
+
+Convertir la llamada de C ABI (cdecl) con parametros en el stack, en una llamada al sistema
+con parametros en registros, y la real instrucción int o sysenter o syscall; y el apropiado retorno a 0 o -1
+con el codigo de error negado en errno en ese caso.
+
+5.
+
+Mediante el valor de retorno (int) o a traves de memoria de usuario indicada por el proceso como parametro
+
+6.
+
+Que solo hay que tener un handler, que llama a las respectivas rutinas,
+y que los wrappers son uniformes cambiando solo numero de syscall y simbolo.
+
+7.
+
+No sé si habrá algun hack pero por lo general no, porque sysenter solo va a 1 punto indicado por MSR
+
+8.
+
+Todos??
+
+9. 
+
+Porque tenemos que hacer que el procesador haga operaciones bastante especificas que C no nos da el control de hacer,
+mediante instrucciones como guardar y restaurar el contexto, usar puertos I/O (del PIC), y la instrucción iret
+
+10.
+
+La IDT (int), la TLB (ifetch) y el TSS (esp0)
+
+11. 
+
+TP[TSS>>12].pBaseAddr + (TSS & 0x00000fff)
+
+12.
+
+Porque en ZeOS, las paginas lógicas del kernel están mapeados a los mismos numeros de frame. Es decir, las direcciones
+lógicas y fisicas del kernel coinciden por diseño.
+
+13.
+
+Que la primera instruccion (cuyo fetch no provoca el page fault, porque la pagina del kernel con su código sí está mapeada)
+es un push, a un stack que no está mapeado, porque la pagina de kernel que se está ejecutando es la unica mapeada en la TP de proceso.
+
+14.
+
+Si, se debe, porque sin ella no se pueden hacer los push de SAVE_ALL al stack sin mapear.
+
+15.
+
+No, porque entonces se harán push a un stack que no está mapeado, provocando page fault.
+
+16.
+
+No. Porque el principio de las dos es igual.
+
+17.
+
++------------+
+| eip = ra   |
+| cs         |
+| eflags     |
+| esp (%ebp) |
+| ss = %ds   |
++------------+
+
+18.
+
+El SS de usuario es constante y conocido, ademas de duplicado cn CS
+
+19.
+
+movl OSTPadress, %ss
+movl %ss, %cr3
+movl %ds, %ss
+
+20.
+
+La física (que es la misma que la lógica en ZeOS)
+
+21.
+
+inner_task_switch(new) {
+	tss.esp0 = new->stack[1023];
+
+	write_msr(0x175, tss.esp0);
+
+	set_cr3();
+
+	save_ebp();
+
+	inner_task_return();
+}
+
+22.
+
+Nose
+
+23.
+
+Nose.
+
+24.
+
+
+
