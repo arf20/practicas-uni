@@ -1,0 +1,78 @@
+context Sistema:altaInscripcion(dniPart: String, nomT: String, eval: TPrecio)
+
+# que los objetos existan
+pre: Taller.allInstances()->exists(t | t.nombre == nomT and t.fechaInicio > today()) and
+    Participante.allInstances()->exists(pa | pa.dni = dniPart
+
+
+# que la inscripcion se haya creado
+post: Inscripcion.allInstances->exists(i |
+    i.oclIsNew() and -- objeto ha sido creado en esta operacion
+    -- valores en atributos
+    i.Participante.dni == dniPart and i.Taller.nombre = nomT and -- objetos asociados
+    if i.Taller.oclIsTypeOf(TallerDePago) then  -- objeto especializado
+        i.oclIsTypeOf(InscripcionDePago) and
+        i.oclAsType(InscripcionDePago).pagada = false and
+        i.ockAsType(InscripcionDePago).evaluacionPrecio = eval
+    endif
+)
+
+
+pre
+    - que los argumentos existan
+
+post
+    - oclIsNew
+    - valores atributos
+    - objetos asociados
+
+
+
+
+context Sistema:altaPersona(codS, nomT, f, h, dur) : Reserva
+
+pre: Sala.allInstances()->exists(s | s.codigo = codS) and
+    Taller.allInstances()->exists(t | t.nombre = nomT) and
+    FechaHora.allInstances()->exists(fh | fh.fecha = f and fh.hora = h)
+
+post: Reserva.allInstances->exists(r |
+    r.oclIsNew() and
+    r.duracion = dur and
+    r.Sala.codigo = codS and r.Taller.nombre = nomT and
+    r.Inicio.fecha = f and r.Inicio.hora = h and
+    result = r
+)
+
+
+
+context Sistema::addRecurso(codRec)
+
+pre: -
+
+post: r.recurso.codigo = codRec
+
+    r.recurso->exists(re | re.codigo = codRec)  and
+    if not Recurso.allInstances()@pre->exists(re | re.codigo = codPre then
+    recursos.allInstances( re |
+        re.oclIsNew
+
+
+context Sistema::listResExistosas(nomT: String) : Set(TupleType(String), Fecha, Hora, Set(String))
+
+pre: InscripcionDePago.allInstances()->select(ip |
+    ip.Taller.nombre = nomT and ip.pagado and
+    ip.evaluacionPrecio = TPrecio::barata)->size() > 3
+
+body: let reservas:Set(Reserva) = Reserva.allInstances()->select(r |
+    r.Taller.nombre = nomT
+    and r.Valoracion->select(v \ v.puntuacion = TPunt::5).size() > 5)
+
+in reserva->collect(r | Tuple {
+    sala = r.sala.codigo,
+    fecha = r.inicio.fecha,
+    hora = r.inicio.hora,
+    inscritos = r.taller.participante.correo->asSet() -- eliminar duplicados
+})
+
+
+
