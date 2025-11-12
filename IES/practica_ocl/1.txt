@@ -1,0 +1,54 @@
+context: Sistema::afegirTasca(projecte: String, tasca: codi, pressupost: int)
+
+pre: 
+    Projecte.allInstances()->exists(p | p.nom = projecte and
+        (p.tasca.collect(t | t.pressupost)->sum() + pressupost < p.pressupost)
+
+post:
+    Tasca.allInstances()->exists(t | 
+        t.oclIsNew() and
+        t.codiTasca = codi and t.pressupost = pressupost and
+        t.projecte.nom = projecte)
+
+
+context: Sistema::crearAssignacioBasica(empleat: int, projecte: String, dataInici: Date, dataFi: Date[0..1], tascas: Set(Tuple(String codi, int horesDedicacio)), complementSou: int)
+
+pre:
+    Empleat.allInstances()->exists(e | e.codi = empleat) and
+    Projecte.allInstances()->exists(p | p.nom = projecte) and
+    if dataFi.size() then dataInici < dataFi[0] else true endif and
+    tascas.size() > 0
+
+post:
+    var dedicacioTotal = tascas->collect(h | Set(int) { h })->sum()
+    Assignacio.allInstances()->exists(a |
+        a.oclIsNew() and
+        a.dataInici = dataInici and
+        if dataFi.size() then a.dataFi = dataFi[0] else true endif and
+        a.empleat = empleat and a.projecte = projecte and
+        if a.oclIsTypeOf(AssignacioBasica) then
+            a.oclAsType(AssignacioBasica).complementSou = complementSou and
+            a.oclAsType(AssignacioBasica).tasca->exists(t |
+                tascas->includes(t' | t'.codi = t.codiTasca and
+                t'.realitzacio.horesDedicacio = t.horesDedicacio))
+            a.oclAsType(AssignacioBasica).realitzacio->collect(r | Set(int) { r })->sum() = dedicacioTotal
+        else false endif)
+
+context: Sistema::consultaProjectesBenComplementats() : Set(Tuple(projecte: String, tascas: Set(String)))
+
+pre:
+
+body:
+    Projecte.allInstances()->collect(p |
+        var assignacionsOk = p.assignacio->collect(a |
+            a.oclIsTypeOf(AssignacioBasica) and
+            a.oclAsType(AssignacioBasica).complementSou > 1000 and
+            a.oclAsType(AssignacioBasica.realitzacio->size() >= 3))
+
+        Set(Tuple(projecte: String, tascas: Set(String))) {
+            projecte = p.nom,
+            tascas = Tascas.allInstances()->collect(t | Set(String) { t.codiTasca }
+                assignacionsOk->includes(t.assignacioBasica))
+        })
+    
+    
