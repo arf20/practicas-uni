@@ -38,3 +38,11 @@ void *thread(void *arg) {
     pthread_exit();
 }
 
+
+
+
+MITIGAR FALLOS DE TLB DE set_cr3 EN task_switch
+    threads COMPARTEN MEMORIA -> no hay que cambiar cr3
+
+quantum a nivel de thread y a nivel de proceso
+

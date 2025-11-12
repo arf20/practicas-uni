@@ -58,7 +58,9 @@ es un push, a un stack que no está mapeado, porque la pagina de kernel que se e
 
 14.
 
-Si, se debe, porque sin ella no se pueden hacer los push de SAVE_ALL al stack sin mapear.
+#Si, se debe, porque sin ella no se pueden hacer los push de SAVE_ALL al stack sin mapear.
+
+No, porque sobreescribiría %eax y hay que guardar el contexto
 
 15.
 
@@ -108,13 +110,43 @@ inner_task_switch(new) {
 
 22.
 
-Nose
+Quitar el set_cr3
 
 23.
 
-Nose.
+Si.
 
 24.
+
+No se hereda ni los datos del padre, pero la pagina donde está la entrada al sistema si
+
+25.
+
+for (int pag = 0; pag < NUM_PAG_DATA; i++) {
+    set_ss_pag(TPC, PAG_LOG_INIT_DATA + pag, pf[pag]);
+    set_ss_pag(TPP, (0x80000000 >> 12) + pag, pf[pag]);
+}
+
+
+copy_data(L_USER_START, 0x8000000, NUM_PAG_DATA * PAG_SIZE);
+
+for (int pag = 0; pag < NUM_PAG_DATA; i++)
+    del_ss_pag(TPP, (0x8000000 >> pag) + pag);
+
+26.
+
+Si, porque si no, en la TLB pueden quedar mapeos cacheados que ya no existen en la tabla de paginas
+y la CPU no se enterará.
+
+27.
+
+Porque el hijo ha de retornar 0, en vez de su propio PID
+
+28.
+
+No
+
+29.
 
 
 
