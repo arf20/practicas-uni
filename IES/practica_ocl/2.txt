@@ -1,0 +1,42 @@
+context: Sistema::altaCiclista(nom: String, nacionalitat: String, equip: String)
+
+pre:
+    Equip.allInstances()->exists(e | e.nom = equip)
+
+post:
+    Persona.allInstances()->exists(p |
+        p.oclIsNew() and
+        p.nom = nom and p.nationalitat = nacionalitat and
+        if p.oclIsTypeOf(Ciclista) then
+            Equip.allInstances()->includes(p.oclAsType(Ciclista).equip)
+        else false endif)
+
+
+context: altaEdicioCursaEtapes(cursa: String, any: Any, premi: int, empresa: String, director: String,
+    etapes: Set(Tuple(num: int, pobIni: String, pobFi: String, distancia: int))
+
+pre:
+    Cursa.allInstances()->exists(c | c.nom = cursa) and
+    Empresa.allInstances()->exists(e | e.nom = empresa) and
+    Director.allInstances()->exists(d | d.nom = director)
+
+post:
+    Any.allInstances()->exists(a | a.any = any) and
+    EdicioDeLaCursa.allInstances()->exists(e |
+        e.oclIsNew() and
+        e.premi = premi and
+        Cursa.allInstances()->includes(e.cursa) and
+        Any.allInstances()->includes(e.any) and
+        Empresa.allInstances()->includes(e.empresa) and
+        Director.allInstances()->includes(e.director) and
+        if e.oclIsTypeOf(Etapes) then
+            e.oclAsType(Etapes).etapes->count() > 1 and
+            e.oclAsType(Etapes).etapes->forAll(e |
+                Etapes.exists(e' |
+                    e'.num = e.num and
+                    e'.pobIni = e.pobIni and
+                    e'.pobFi = e.pobFi and
+                    e'.distancia = e.distancia))
+        else false endif and
+        not e.oclIsTypeOf(UnDia))
+
