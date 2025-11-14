@@ -40,3 +40,22 @@ post:
         else false endif and
         not e.oclIsTypeOf(UnDia))
 
+context: System::consultaAbandonaments(cursa: String) : Set(Tuple(nom: String, dorsal: int, motiu: String))
+
+pre:
+    Cursa.allInstances()->exists(c | c.nom = cursa) and
+    EdicioDeLaCursa.allInstances()->select(e | e.cursa.nom = cursa and e.participant->exists(p |
+        p.ciclista.nacionalitat = "Andorra"))->count() > 1
+
+body:
+    EdicioDeLaCursa.allInstances()->select(e | e.cursa.nom = cursa and e.participant->exists(p |
+        p.ciclista.nacionalitat = "Andorra"))->forAll(e | e.abandonament->collect(a |
+            Set(Tuple(nom: String, dorsal: int, motiu: String)) {
+                nom = a.participant.ciclista.nom,
+                dorsal = a.participant.dorsal,
+                motiu = a.motiu
+            })
+        )
+
+post: 
+
