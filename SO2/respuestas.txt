@@ -1,0 +1,230 @@
+RESPUESTAS CLAB1 SO2 Angel Ruiz Fernandez
+Todo el codigo está incluido en este archivo
+
+1.
+
+a.
+
+/* int writeTo(int pid, char* src, int size); */
+ENTRY(writeTo)
+	pushl %ebp
+	movl %esp, %ebp
+	pushl %ebx;  // Save EBX, ESI and EDI if modified
+	movl $40, %eax
+	movl 0x8(%ebp), %ebx;	// pid
+	movl 0xC(%ebp), %ecx;	// src
+	movl 0x10(%ebp), %edx;	// size
+	call syscall_sysenter
+	popl %ebx
+	test %eax, %eax
+	js nok	// if (eax < 0) -->
+	popl %ebp
+	ret
+
+/* int readFrom(int* pid, char *dst); */
+ENTRY(readFrom)
+	pushl %ebp
+	movl %esp, %ebp
+	pushl %ebx;  // Save EBX, ESI and EDI if modified
+	movl $41, %eax
+	movl 0x8(%ebp), %ebx;	// pid
+	movl 0xC(%ebp), %ecx;	// dst
+	call syscall_sysenter
+	popl %ebx
+	test %eax, %eax
+	js nok	// if (eax < 0) -->
+	popl %ebp
+	ret
+
+
+b.
+
+struct readData {
+    DWord receivePage;
+    int writtenBytes;
+    int currentWriterPID;
+    struct list_head pendingWriteList;
+};
+
+c.
+
+Añadir un elemento struct readData en la PCB de proceso
+
+d.
+
+void initializeData(struct task_struct *pcb) {
+    pcb->receivePage = alloc_frame();
+    pcb->readData.availableBytes = 0;
+    pcb->readData.writerPID = 0;
+    INIT_LIST_HEAD(&pcb->readData.pendingWriteList);
+}
+
+e.
+
+void mapPhysicalPageFrom(struct task_struct *pcb, DWord addr) {
+    set_ss_pag(current()->dir_pages_baseAddr, addr >> 12, pcb->readData.receivePage);
+}
+
+f.
+
+void unmapPage(struct task_struct *pcb, DWord addr) {
+    del_ss_pag(pcb->dir_pages_baseAddr, addr >> 12);
+    del_ss_pag(pcb->dir_pages_baseAddr, 0x3FF000);
+    set_cr3(pcb->dir_pages_baseAddr);
+}
+
+g.
+
+/* Cada proceso tendrá una página física asociada para recibir información, así como
+un contador del número de bytes que se han enviado, un puntero al escritor activo y
+una lista de procesos pendientes para escribir. */
+
+/* La función writeTo permite enviar size bytes desde src al proceso lector pid. Si el
+proceso lector está bloqueado y no tiene ningún escritor activo, debemos
+desbloquearlo. A continuación, el proceso actual debe quedarse bloqueado en la
+lista de procesos pendientes del proceso lector a que el readFrom lo desbloquee. Al
+desbloquearse, el proceso debe mapear la página física del proceso lector en la
+dirección lógica 0x3FF000, copiar la región de memoria desde src, desmapear la
+página física, desbloquear al lector y devolver el número de bytes escritos. Para
+simplificar, sólo permitimos escrituras de hasta 4096 bytes. */
+
+int sys_writeTo(int pid, char* src, int size) {
+    if (size > 4096)
+        return -EINVALID;
+
+    if (task[pid].task.state = ST_BLOCKED && task[pid].task.readData.writerPID == 0)
+        update_process_state_rr(&task[pid].task, &readyqueue);
+
+    update_process_state_rr(current(), &task[pid].task.readData.pendingWriteList);
+    sched_next_rr();
+
+    mapPhysicalPageFrom(&task[pid].task, 0x3FF000);
+    copy_data(src, (void*)0x3FF000, size);
+    unmapPage(current(), 0x3FF000);
+    update_process_state_rr(&task[pid].task, &readyqueue);
+    return size;
+}
+
+h.
+
+/* La función readFrom permite leer la información enviada por otros procesos. Para
+ello, si no hay nadie bloqueado para escribir, el proceso actual debe bloquearse.
+Caso que haya alguien, debe marcarlo como el actual escritor activo, desbloquearlo y
+bloquearse a que este escritor escriba los datos. Al desbloquearse, debe mapear la
+página física en la dirección 0x3FD000, copiar tantos bytes como se hayan escrito a
+partir de la dirección dst, desmapear la página, marcar que ya no hay escritor activo,
+copiar el pid del escritor en el parámetro pid y devolver el número de bytes leídos.
+Estas llamadas deben implementarse usando los números de servicio 40 y 41
+respectivamente. Puedes ignorar la gestión de errores de estas llamadas. */
+
+int sys_readFrom(int* pid, char *dst) {
+    struct list_head *e;
+    struct task_struct *t;
+    if (list_empty(current()->readData.pendingWriteList)) {
+        update_process_state_rr(current(), blocked);
+        sched_next_rr();
+    } else {
+        e = list_first(&current()->readData.pendingWriteList);
+        t=list_head_to_task_struct(e);
+        list_del(e);
+
+        current()->readData.currentWriterPID = t.PID;
+        update_process_state_rr(t, &readyqueue);
+        update_process_state_rr(current(), blocked);
+        sched_next_rr();
+
+        set_ss_pag(current()->dir_pages_baseAddr, 0x3FD000, current()->readData.receivePage);
+        copy_data((void*)0x3FD000, dst, t->readData.writtenBytes);
+        unmapPage(current(), 0x3FD000);
+        current->readData.activeWriterPID = 0;
+        *pid = t->PID;
+        return t->readData.writtenBytes;
+    }
+}
+
+i.
+
+Hay que llamar a initializeData() en fork()
+
+
+
+2.
+
+a.
+
+(Añadiendo un fork() en user.c)
+
+$ make gdb
+(gdb) b switch_stack
+(gdb) c
+(gdb) print-stack
+0x17f24 <protected_tasks+12068>:        0x00010c94
+0x17f28 <protected_tasks+12072>:        0x00017010
+0x17f2c <protected_tasks+12076>:        0x00018fb4
+0x17f30 <protected_tasks+12080>:        0x00019000
+0x17f34 <protected_tasks+12084>:        0x0001702c
+0x17f38 <protected_tasks+12088>:        0x00017f58
+0x17f3c <protected_tasks+12092>:        0x00011e4f
+0x17f40 <protected_tasks+12096>:        0x00000000
+0x17f44 <protected_tasks+12100>:        0x00000000
+0x17f48 <protected_tasks+12104>:        0x00011e3b
+0x17f4c <protected_tasks+12108>:        0x00013818
+
+b.
+
+Makefile:
+
+sched.o:sched.c $(INCLUDEDIR)/sched.h
+	$(CC) -O0 -g $(JP) -fno-omit-frame-pointer -ffreestanding -Wall -I$(INCLUDEDIR) -c -o $@ $<
+
+c.
+
+(Eliminar task_switch)
+
+/* void switch_stack(int* save_sp, int* new_sp); */
+ENTRY(switch_stack)
+	pushl %esi
+	pushl %edi
+	pushl %ebx
+	
+    mov 16(%esp), %eax
+	mov %ebp, (%eax)
+	mov 20(%esp), %eax
+	mov (%eax), %esp
+
+	popl %ebx
+	popl %edi
+	popl %esi
+	popl %ebp
+	ret
+
+d.
+
+$ make gdb
+(gdb) b switch_stack
+(gdb) stepi 6
+(gdb) print-stack
+0x17f30 <protected_tasks+12080>:        0x00013778
+0x17f34 <protected_tasks+12084>:        0x00003ff4
+0x17f38 <protected_tasks+12088>:        0x00018010
+0x17f3c <protected_tasks+12092>:        0x00010c52
+0x17f40 <protected_tasks+12096>:        0x00017010
+0x17f44 <protected_tasks+12100>:        0x00018010
+0x17f48 <protected_tasks+12104>:        0x00017f68
+0x17f4c <protected_tasks+12108>:        0x00010c45
+0x17f50 <protected_tasks+12112>:        0x00000000
+0x17f54 <protected_tasks+12116>:        0x00000000
+0x17f58 <protected_tasks+12120>:        0x00011dfb
+
+e.
+
+Ninguno.
+
+A efectos de los callers, task_switch tiene la misma cabecera y mismo funcionamiento.
+
+f.
+
+Ninguno.
+
+A efectos de los callers, task_switch tiene la misma cabecera y mismo funcionamiento.
+

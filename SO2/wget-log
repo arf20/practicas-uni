@@ -1,0 +1,16 @@
+--2025-11-14 12:04:58--  https://raco.fib.upc.edu/avisos/attachment?assig=GRAU-SO2
+Resolving raco.fib.upc.edu (raco.fib.upc.edu)... 147.83.41.15
+Connecting to raco.fib.upc.edu (raco.fib.upc.edu)|147.83.41.15|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://sso.upc.edu/CAS/login?service=https%3A%2F%2Fraco.fib.upc.edu%2Favisos%2Fattachment%3Fassig%3DGRAU-SO2 [following]
+--2025-11-14 12:04:59--  https://sso.upc.edu/CAS/login?service=https%3A%2F%2Fraco.fib.upc.edu%2Favisos%2Fattachment%3Fassig%3DGRAU-SO2
+Resolving sso.upc.edu (sso.upc.edu)... 147.83.194.201
+Connecting to sso.upc.edu (sso.upc.edu)|147.83.194.201|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified [text/html]
+Saving to: ‘attachment?assig=GRAU-SO2’
+
+attachment?assig=GRAU-SO2                                                [<=>                                                                                                                                                                 ]       0  --.-KB/s               attachment?assig=GRAU-SO2                                                [ <=>                                                                                                                                                                ]  40.08K  --.-KB/s    in 0.1s    
+
+2025-11-14 12:04:59 (401 KB/s) - ‘attachment?assig=GRAU-SO2’ saved [41044]
+

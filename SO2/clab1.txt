@@ -1,0 +1,53 @@
+1.
+a.
+0x18000
+
+b.
+
+el final de la ultima pagina de datos de usuario -16 = 0x100000-20*4096-16 = 0x113ff0
+
+mirando el codigo: USER_ESP
+
+c.
+
+as --32 exam.S -o exam.s
+gcc -c exam.s -o exam.o
+ld exam.o ... -o exam
+
+2.
+
+a.
+
+No funcionara, rutinas de guardar disfuncionales
+
+b.
+
+union task_union {
+    struct task_struct {
+        struct {
+            DWord ebx, esi, edi;
+        } registros;
+    }
+    char stack[4096];
+}
+
+c.
+
+
+3.
+
+a.
+
+ENTRY(exit):
+    ...    
+    mov 8(%ebp), %edx
+    ...
+b.
+
+copias el exit le cambias el nombre y le pones otro parametro y atpc
+
+c.
+
+
+
+
