@@ -59,10 +59,10 @@ vec3 Especular (vec3 NormSCO, vec3 L, vec4 vertSCO, vec3 colFocus)
 void main()
 {	
 
-    vec4 L = normalize((view * vec4(posFocus, 1.0)) - (view * TG * vec4(vertex, 1.0)));
-    vec4 normSCO = normalize(inverse(transpose(view * TG)) * vec4(normal, 1.0));
+    vec3 L = normalize(vec3((view * vec4(posFocus, 1.0)) - (view * TG * vec4(vertex, 1.0))));
+    vec3 normSCO = normalize(vec3(inverse(transpose(view * TG)) * vec4(normal, 1.0)));
 
-    fcolor = Ambient() + Difus(vec3(normSCO), vec3(L), colorFocus) + Especular(vec3(normSCO), vec3(L), view * TG * vec4(vertex, 1.0), colorFocus);
+    fcolor = Ambient() + Difus(normSCO, L, colorFocus) + Especular(normSCO, L, view * TG * vec4(vertex, 1.0), colorFocus);
     gl_Position = proj * view * TG * vec4 (vertex, 1.0);
 }
 
