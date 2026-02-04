@@ -1,0 +1,31 @@
+Competencia Transversal 1
+Angel Ruiz Fernandez IES 41
+
+En la especificación de la tienda de aplicaciones se identifican claramente
+las entidades Usuario, Aplicación, Version, Aprobación y Categoría.
+
+Usuario tiene subtipos Cliente y Desarrollador. El Cliente compra Aplicaciones
+(entidad relacional Compra) mientras que el Desarrollador las desarrolla.
+
+Los clientes además pueden valorar Versiones de estas Aplicaciones; y ahora
+que lo miro otra vez, podría faltar una relación entre Version y Aplicación,
+con multiplicidad Version -1-> Aplicacion, Aplicacion -*-> Version.
+
+Los Desarrolladores han de solicitar una Aprovación para publicar la Aplicación
+y esta puede resultar del tipo Aprobada o Denegada (disjunta, incompleta).
+
+Las Aplicaciones además deben pertenecer a una Categoría
+(entonces es disjunta y completa), de las cuales se contemplan
+Noticias y ServicioDeSubscripción. Me falta la multiplicidad en la
+relación Aplicacion y Categoría:
+Aplicación -1-> Categoría, Categoría -*-> Aplicacion.
+
+Tengo duda de la clave externa de Version, porque debería de ser la version y
+la aplicación, por tanto relacional, es decir Version sería entidad relacional
+entre un NumeroVersion y Aplicacion? No estoy seguro
+
+Cometí un error de sintaxis con las flechas de subtipos, deberían de ser flechas
+vacías sin rellenar, pero bueno.
+
+Igual me faltan restricciones textuales
+

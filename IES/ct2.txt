@@ -1,0 +1,52 @@
+IES 41 Angel Ruiz Fernandez 04/12/25
+
+En el apartado a., que se trata de hacer el diagrama de clases a aprtir del
+esquema de datos.
+
+Se conservan las clases no asociativas: Persona, TipusOperació, CentreMedic,
+Hospital, Sala.
+Operació se convierte en no asociativa, eliminandose la clase Data porque es
+especial: se pasa a atributo de Operació. Su clave externa sería la fecha y
+la persona.
+Las clases incompletas RinoplastaDeRisc y UCI se eliminan. RinoplastiaDeRisc se
+representa como una Rinoplasta con su atributo risc a true, indicando posible
+instancia de relación reserva (de UCI) como atributo. UCI es un caso especial de
+sala, indicado por el atributo reserva de Rinoplastia.
+Las clases incompletas Liposucció y Rinoplastia se conservan, y se convierte
+la especialización en complete añadiendo una clase llamada Unspec, para otros
+tipos de operaciones posibles.
+
+En la eliminación de las clases RinoplastiaDeRisc y UCI, me ha surgido la duda
+de si el atributo risc, y relación reserva son suficientes para representarse
+el diseño, y de si la clave externa de Operació es correcta.
+
+En b., se propone una posible solución para el diagrama de secuencia de
+getNumRino(). El contrato de esta operación ha sido lo mas complicado del
+problema, y me ha llevado una cantidad de tiempo grande para solo comprender
+lo que se está pidiendo, planteandome si el contrato contiene erratas.
+
+Primero se comprueban los prerequisitos mediante llamadasy posibles excepciones.
+Una vez terminado esto, compieza un loop con un contador. A continuación,
+si no se cumplen alguna de las 5 condiciones indicadas, se continúa a la
+siguiente iteración sin incrementar. Al final al pasar todas, se incrementa; y
+al terminar el loop, se devuelve el conteo.
+
+Se indica el metodo virtual de getUCI de Rinoplastia : Operacion aparte.
+
+En las diapositivas no hay ejemplos de conteo de instancias. Desconozco si
+esta solución es correcta. Que haya que llamar a un metodo de cada elemento
+al contarlo me resulta raro.
+
+El punto c. me resultó mas sencillo, puesto que no había loops sino solo
+la creación de una instancia de Rinoplastia (de riesgo). Una vez mas se
+comprueban los parametros, y se llama al creador de Rinoplastia, que llama
+al creador padre Operació; seteando los atributos correspondientes de tipus,
+metge, data y risc. El creador devuelve la instancia pero el metodo no devuelve
+nada.
+
+Estoy confiado de que esta parte está correcta.
+
+Por último se ha de indicar la navegabilidad entre las clases; y basandome
+únicamente en las llamadas aquí descritas, solo hay unidireccinales como se
+indica en el diagrama. Si los puntos anteriores están bien, este debería estarlo.
+

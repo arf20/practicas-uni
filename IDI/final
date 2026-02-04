@@ -1,0 +1,15 @@
+ - teoria color
+   - RGB, CMYK, HSB
+ - calculo difuso y especular vectorial
+ - caja contenedora
+ - viewport lookup y ortho
+ - SCA -> SCD
+ - angulos de euler
+ - z-buffer y backface culling
+
+ - interaccion
+   - fitts
+   - tests de usabilidad
+ - realidad virtual
+
+
