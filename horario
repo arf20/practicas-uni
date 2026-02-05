@@ -1,0 +1,33 @@
+     mon    tue    wed  jue   vie                      
+------------------------------------
+0800        aso t                                           
+0900        #####                                           
+1000 par t  im t        aso l par l                         
+1100 #####  ####        ##### #####                         
+1200 prop t prop l            im t                          
+1300 ###### ######            im l                          
+1400 gps t              gps l                               
+1500 #####              #####                               
+1600
+
+
+par t:  20 a6102
+prop t: 10 a6e01
+gps t:  10 a6002
+aso t:  10 a6103
+im t:   10 a6103
+
+par l:  21 a5s104
+prop l: 11 a5105
+gps l:  12 a6106
+aso l:  11 b5s202
+im l:   10 a6103
+
+
+09-04-2026 1530-1730 im   parcial
+13-04-2026 0800-1000 par  parcial
+13-04-2026 1030-1230 aso  parcial
+15-06-2026 0800-1100 aso  final
+16-06-2026 0800-1100 par  final
+18-06-2026 1500-1800 im   finak
+
