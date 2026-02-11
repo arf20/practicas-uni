@@ -11,11 +11,11 @@
 1600
 
 
-par t:  20 a6102
-prop t: 10 a6e01
-gps t:  10 a6002
-aso t:  10 a6103
-im t:   10 a6103
+par t:  20 a6102 cas
+prop t: 10 a6e01 cas
+gps t:  10 a6002 cat
+aso t:  10 a6103 cat
+im t:   10 a6103 cas
 
 par l:  21 a5s104
 prop l: 11 a5105
@@ -27,7 +27,10 @@ im l:   10 a6103
 09-04-2026 1530-1730 im   parcial
 13-04-2026 0800-1000 par  parcial
 13-04-2026 1030-1230 aso  parcial
+20-04-2026 2359	     prop entrega 1
+25-05-2026 2359	     prop entrega 2
+02-06-2026 2359	     prop entrega 3
 15-06-2026 0800-1100 aso  final
 16-06-2026 0800-1100 par  final
-18-06-2026 1500-1800 im   finak
+18-06-2026 1500-1800 im   final
 
