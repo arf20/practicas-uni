@@ -1,0 +1,13 @@
+1. a. Pmin
+
+	A	B	C
+Tinf	9tc	3tc	3tc
+Pmin	1	3	4
+
+diagrama temporal C
+
+CPU3	  2,4
+CPU2	  5,8
+CPU1	  3,7
+CPU0	0,1,6
+

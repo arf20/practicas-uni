@@ -1,0 +1,3 @@
+[submodule "PAR/practicas-par"]
+	path = PAR/practicas-par
+	url = https://github.com/arf20/practicas-par

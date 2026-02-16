@@ -17,7 +17,7 @@ gps t:  10 a6002 cat
 aso t:  10 a6103 cat
 im t:   10 a6103 cas
 
-par l:  21 a5s104
+par l:  21 a5s104 cas
 prop l: 11 a5105
 gps l:  12 a6106
 aso l:  11 b5s202
