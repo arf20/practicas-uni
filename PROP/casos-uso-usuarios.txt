@@ -1,0 +1,55 @@
+Caso: 		crear cuenta
+Actor:		usuario
+Input:		nombre de usuario, contraseña
+Comportamiento:	el sistema comprueba y guarda el usuario y la contraseña encriptada en la db
+Output:		ok
+
+Caso:		iniciar sesion
+Actor:		usuario
+Input:		nombre de usuario, contraseña
+Comportamiento:	el sistema comprueba las credenciales contra la db y entra en la pantalla de usuario
+Output:		ok -> pantalla
+
+Caso:		cerrar sesion
+Actor:		usuario
+Input:		
+Comportamiento:	el sistema sale de la ventana de usuario y vuelve al form de inicio de sesion
+Output:		ok -> inicio sesion
+
+Caso:		eliminar cuenta
+Actor:		usuario
+Input:		
+Comportamiento:	elimina todos los datos relacionados con usuario
+Output:		ok -> vuelve al form de inicio sesion
+
+Caso:		resolver hidato
+Actor:		usuario
+Input:		
+Comportamiento:	guarda el hidato resuelto y el tiempo (puntos) en su perfil y en el raking general y recordsde hidato
+Output:		success
+
+Caso:		visualizar ranking
+Actor:		usuario
+Input:		
+Comportamiento:	toma N usuarios con mas puntos y muestra una lista
+Output:		la lista
+
+Caso:		guardar hidato
+Actor:		usuario
+Input:		
+Comportamiento:	guarda estado de hidato actual en perfil
+Output:		
+
+Caso:		recuperar hidato
+Actor:		usuario
+Input;		
+Comportamiento:	recupera estado de hidato de perfil
+Output:		
+
+Caso:		setear nivel de dificultad y ayuda
+Actor:		usuario
+Input:		nivel de dificultad, ayuda
+Comportamiento:	guardar nivel de dificultad y ayuda en perfil
+Output:		ok
+
+
