@@ -1,0 +1,12 @@
+preguntas fulgencio telefono
+
+los telefonos van por SIP o SCCP, como va el provisioning en asterisk, vlan?
+
+asterisk proxy: version, dialplan, pjsip, extensiones
+
+kamailio registrar
+
+shared db
+
+el trunk, quien lo da, SIP, que auth, capacidad
+
