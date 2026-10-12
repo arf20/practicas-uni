@@ -60,11 +60,19 @@ class Database {
 }
 
 class Cart {
-    private Set<Product> cart;
+    private HashSet<Product> cart = new HashSet<Product>();
+
+    public Cart() {
+    
+    }
 
     public Cart(String fromCookie, Database db) {
-        for (String id : fromCookie.split(",")) {
-            cart.add(db.get(id));
+        if (fromCookie == null)
+            return;
+
+        for (String id : fromCookie.split("\\$")) {
+            if (!id.equals(""))
+                cart.add(db.get(id));
         }
     }
 
@@ -73,7 +81,11 @@ class Cart {
     }
 
     public void delete(Product p) {
-        cart.
+        cart.remove(p);
+    }
+    
+    public Set<Product> list() {
+        return Collections.unmodifiableSet(cart);
     }
 
     public String toJSON() {
@@ -86,6 +98,17 @@ class Cart {
             a.put(o);
         }
         return a.toString();
+    }
+    
+    public String toCookie() {
+        StringBuilder sb = new StringBuilder();
+        for (Product p : cart) {
+            sb.append(p.id);
+            sb.append("$");
+        }
+        if (cart.size() > 0)
+            sb.deleteCharAt(sb.length()-1);
+        return sb.toString();
     }
 }
 
@@ -100,22 +123,39 @@ class ServerThread implements Runnable {
 
     private void serve(String method, String path, List<String[]> headers, Map<String, String> cookies, List<String> body) throws IOException {
         PrintWriter out = new PrintWriter(s.getOutputStream(), true);
+        Cart cart = new Cart(cookies.get("cart"), db);
+        path = path.replace("?", "");
+
         if (method.equals("GET") && path.equals("/")) {
             out.print("HTTP/1.1 200 OK\r\n");
             out.print("Connection: close\r\n");
             out.print("Server: PCC java shit/1\r\n");
-            out.print("Set-Cookie: test=a;test2=b\r\n");
-            out.print("Content-Type: text/html\r\n\r\n");
+            out.print("Content-Type: text/html; charset=utf8\r\n\r\n");
+
             out.print("<html><head><title>PCC cosa</title></head><body>\r\n");
-            out.print("<h1>PCC servidor tienda</h1>");
-            out.print("<form>\r\n");
+            out.print("<h1>PCC servidor tienda</h1>\r\n");
+
+            out.print("<h2>Catálogo</h2>");
             out.print("<table><tr><th>Producto</th><th>Precio</th><th>Accion</th></tr>\r\n");
-
             for (Product p : db.list()) {
-                out.print("<tr><td><a href=\"/product/html/" + p.id + "\">" + p.name + "</td><td>" + p.price + "</td><td><button formaction=\"/cart/" + p.id + "\">Añadir</button></td></tr>");
+                out.print("<tr><td><a href=\"/product/html/" + p.id + "\">" + p.name + "</td><td>" + p.price +
+                        "</td><td><button type=\"button\" onclick=\"" +
+                   "event.preventDefault(); (async() => { const res = window.fetch(location.protocol + '//' + location.host + '/cart/" + p.id + "', { method: 'post' }).then(res => { console.log(res); location.reload(); }); })()\">Añadir</button></td></tr>");
             }
+            out.print("</table>");
 
-            out.print("</form></table></body></html>\r\n");
+            out.print("<h2>Cesta</h2>\r\n");
+
+            System.out.println(cart);
+            out.print("<table><tr><th>Producto</th><th>Precio</th><th>Accion</th></tr>\r\n");
+            for (Product p : cart.list()) {
+                out.print("<tr><td><a href=\"/product/html/" + p.id + "\">" + p.name + "</td><td>" + p.price + "</td><td><button type=\"button\" onclick=\"" +
+                   "event.preventDefault(); (async() => { const res = window.fetch(location.protocol + '//' + location.host + '/cart/" + p.id + "', { method: 'delete' }).then(res => { console.log(res); location.reload(); }); })()\">Eliminar</button></td></tr>");
+                // location.reload();
+            }
+            out.print("</table>");
+
+            out.print("</body></html>\r\n");
         } else if (method.equals("GET") && path.startsWith("/product/html/")) {
             Product p = db.get(path.substring(14));
             if (p == null) {
@@ -126,7 +166,7 @@ class ServerThread implements Runnable {
                 out.print("HTTP/1.1 200 OK\r\n");
                 out.print("Connection: close\r\n");
                 out.print("Server: PCC java shit/1\r\n");
-                out.print("Content-Type: text/html\r\n\r\n");
+                out.print("Content-Type: text/html; charset=utf8\r\n\r\n");
                 out.print("<html><head><title>PCC cosa</title></head><body><h1>" + p.name + "</h1><p>" + p.desc + "</p><i>" +p.price + "€</i></body></html>\r\n");
             }
         } else if (method.equals("GET") && path.startsWith("/product/json/")) {
@@ -145,19 +185,47 @@ class ServerThread implements Runnable {
                 out.print("HTTP/1.1 200 OK\r\n");
                 out.print("Connection: close\r\n");
                 out.print("Server: PCC java shit/1\r\n");
-                out.print("Content-Type: text/json\r\n\r\n");
+                out.print("Content-Type: text/json; charset=utf8\r\n\r\n");
                 out.print(o.toString());
             }
         } else if (method.equals("POST") && path.startsWith("/cart/")) {
-            String id = path.substring(6).replace("?", "");
+            String id = path.substring(6);
 
-            
+            Product p = db.get(id);
+            if (p == null) {
+                out.print("HTTP/1.1 404 Not Found\r\n");
+                out.print("Connection: close\r\n");
+                out.print("Server: PCC java shit/1\r\n");
+            } else {
+                cart.add(p);
+                out.print("HTTP/1.1 201 Created\r\n");
+                out.print("Connection: close\r\n");
+                out.print("Server: PCC java shit/1\r\n");
+                out.print("Location: /\r\n");
+                out.print("Set-Cookie: cart=" + cart.toCookie() + "; Path=/\r\n");
+            }
+        } else if (method.equals("DELETE") && path.startsWith("/cart/")) {
+            String id = path.substring(6);
 
+            Product p = db.get(id);
+            if (p == null) {
+                out.print("HTTP/1.1 404 Not Found\r\n");
+                out.print("Connection: close\r\n");
+                out.print("Server: PCC java shit/1\r\n");
+            } else {
+                cart.delete(p);
+                out.print("HTTP/1.1 200 OK\r\n");
+                out.print("Connection: close\r\n");
+                out.print("Server: PCC java shit/1\r\n");
+                out.print("Set-Cookie: cart=" + cart.toCookie() + "; Path=/\r\n");
+            }
+        } else if (method.equals("GET") && path.startsWith("/cart/json")) {
             out.print("HTTP/1.1 200 OK\r\n");
             out.print("Connection: close\r\n");
             out.print("Server: PCC java shit/1\r\n");
-            out.print("Set-Cookie");
-
+            out.print("Set-Cookie: cart=" + cart.toCookie() + "; Path=/\r\n");
+            out.print("Content-Type: text/json; charset=utf8\r\n\r\n");
+            out.print(cart.toJSON());
         } else {
             out.print("HTTP/1.1 404 Not Found\r\n");
             out.print("Connection: close\r\n");
@@ -212,12 +280,14 @@ class ServerThread implements Runnable {
 
             HashMap<String, String> cookies = new HashMap<String, String>();
             for (String[] h : headers) {
-                System.out.println(h[0] + ": " + h[1]);
-                if (h[0].equals("Set-Cookie")) {
+                //System.out.println(h[0] + ": " + h[1]);
+                if (h[0].equals("Cookie")) {
                     String[] resCookies = h[1].split("\\s*;\\s*");
                     for (String c : resCookies) {
-                        String[] p = c.split("\\s*=\\s*");
-                        cookies.put(p[0], p[1]);
+                        String[] p = c.split("\\s*=\\s*", 2);
+                        if (p.length == 2)
+                            cookies.put(p[0], p[1]);
+                        //System.out.println(p[0] + "=" + p[1]);
                     }
                 }
             }
