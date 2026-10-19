@@ -1,6 +1,7 @@
 preguntas fulgencio telefono
 
 los telefonos van por SIP o SCCP, como va el provisioning en asterisk, vlan?
+chan_sccp?
 
 asterisk proxy: version, dialplan, pjsip, extensiones
 
@@ -9,4 +10,48 @@ kamailio registrar
 shared db
 
 el trunk, quien lo da, SIP, que auth, capacidad
+
+como hay suficientes extensiones en XXXX
+
+ldap
+
+
+
+--
+
+core
+
+kamailio: registrar, proxy rtp (+ rtpengine)
+
+asterisk: core? señalizacion
+
+
+antiguo 12 PRI x32
+
+ahora kamailio trunk sip aislado
+
+microsoft teams interconnect
+
+183 politono
+
+sngrep capturar sip diagrama
+
+REFER
+
+remote party id
+
+yealink caca 
+
+no ldap, solo db sql
+
+kamailio location
+
+cid spoofing lol
+
+no queda nada de cobre ni rdsi
+ericsson md110
+
+
+
+
 
