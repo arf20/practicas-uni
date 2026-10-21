@@ -1,0 +1,189 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+
+\title{Práctica 1 - Algoritmos Genéticos - SSII}
+\date{21 de Octubre, 2026}
+\author{Ángel Ruiz Fernandez \and Yingxuan Wang}
+
+\begin{document}
+
+    \maketitle
+    \pagebreak
+
+    \tableofcontents
+    \pagebreak
+
+    \section{Explicación de Algoritmo Genético}
+
+    \subsection{Elementos}
+
+    \begin{itemize}
+    \item \textbf{Representación:} cómo mediante simbolos, el algoritmo entiende la información
+     correspondiente al mundo real o espacio de la solución
+    \item \textbf{Operadores:} cambian el estado, mediante ellos se llega a la solución. algunos
+     pasos se acercan a la solución y otros se alejan
+    \item \textbf{Estrategia del control:} cuando aplicar que operadores, de manera que nominalmente
+     se encamine hacia una solución
+    \end{itemize}
+
+    \subsection{Representación}
+
+    \subsubsection{Codificación}
+
+    Representación del estado, o cromosoma.
+
+    Dependiendo del problema se usan distintos tipos de elemento (gen): binario, entero, real, orden...
+
+    \subsubsection{Operadores genéticos}
+
+    \begin{itemize}
+    \item \textbf{Selección:} escoge que individuos van a reproducirse y cuales no
+        \begin{itemize}
+        \item \textbf{Ruleta:} probabilidad de ser seleccionado proporcional a su función idoneidad
+        \item \textbf{Torneo:} se celebran n torneos de parejas de individuos donde ganan por idoneidad
+        \end{itemize}
+    \item \textbf{Cruce:} el acto de combinar los cromosomas para producir descendencia
+        \begin{itemize}
+        \item Por punto
+        \item Por dos puntos
+        \end{itemize}
+    \item \textbf{Mutación:} con cierta probabilidad, el cromosoma varía de cierta manera
+        \begin{itemize}
+        \item Cambio de gen aleatorio (bit flip)
+        \item Intercambio de genes
+        \end{itemize}
+    \end{itemize}
+
+    \subsubsection{Algoritmo genético}
+
+    \begin{itemize}
+    \item Seleccionar k elementos
+    \item De ellos, con probabilidad $P_c$ se cruzan individuos, la descendencia reemplaza a los padres
+    \item Con probabilidad $P_m$, se muta cualquiera de los individuos
+    \end{itemize}
+
+    \subsection{Proceso}
+
+    Diseño y construcción de un algoritmo genético
+
+    \begin{enumerate}
+    \item Diseñar una representación apropiada para el espacio de soluciones
+    \item Decidir cómo inicializar una población. Uniforme para cubrir todos los máximos locales, o heurística previa
+    \item Diseñar una correspondencia entre genotipo y fenotipo. A veces la correspondencia es directa; otras el genotipo es la entrada de algún algoritmo clásico que genera la solución final.
+    \item Diseñar una forma de evaluar un individuo. Función de idoneidad (fitness) que distinga los genotipos mas adaptados y menos.
+    \item Decidir cómo seleccionar los individuos para ser padres. Situar la linea entre los que se reproducen y los que no.
+    \item Diseñar un operador de cruce adecuado. Intensificar. Probabilidad alta ($0.6 < P_c < 0.9$), debe hacer heredar características de los padres, no crear otras nuevas.
+    \item Diseñar un operador de mutación adecuado. Diversificar. Probabilidad baja ($P_m$), lo suficientemente significativa como para alcanzar todo el espacio de busqueda.
+    \item Decidir la condición de parada. Determinada por una función que comprueba si se ha llegado a una solución (óptima?).
+    \end{enumerate}
+
+    \section{Analisis}
+
+    De 41 hasta 70 reinas la probabilidad de mutación de 0.05 a 0.0.25 anterior es
+    demasiado para asegurar una solución. Entonces en este nuevo estudio se añaden
+    columnas de 0.01375 y 0.0125, en las que aparecen mas soluciones a lo largo do todo
+    la dimensión de N de reinas.
+
+    Elegimos 0.0125 de Pm para N reinas de 9 a 60, y 0.01375 para 61, y vuelta a
+    0.0125 de 62 a 70. Porque así se evitan las instancias donde el algoritmo
+    genético no llega a una solución satisfactoria, y se reduce Pm para que 
+    tarde menos en llegarse a una solución.
+
+    \section{Manual de Asignación}
+
+    \begin{enumerate}
+    \item \textless N de reinas \textgreater
+    \item 100
+    \item 10000
+    \item TOUR
+    \item ONEP
+    \item FLIP
+    \item 0.85
+    \item para N reinas
+        \begin{itemize}
+           \item \textless= 8: 0.05
+           \item {[9, 28]}: 0.025
+           \item {[29, 61]}: 0.01375
+           \item {[62, 70]}: 0.0125
+       \end{itemize}
+    \end{enumerate}
+
+    \section{Validación}
+
+    Casos de validación
+
+    Ejecución: \texttt{./nreinas <N reinas> <2> <3> <4> <5> <6> <7> <8>}
+
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{|| c c c c c c c c | c ||}
+    \hline
+    N reinas & 2 & 3 & 4 & 5 & 6 & 7 & 8 & jaques \\ [0.5ex]
+    \hline
+    \hline
+    7 & 100 & 10000 & TOUR & ONEP & FLIP & 0.85 & 0.05 & 0 \\
+    8 & 100 & 10000 & TOUR & ONEP & FLIP & 0.85 & 0.05 & 0 \\
+    23 & 100 & 10000 & TOUR & ONEP & FLIP & 0.85 & 0.025 & 0 \\
+    28 & 100 & 10000 & TOUR & ONEP & FLIP & 0.85 & 0.025 & 0 \\
+    40 & 100 & 10000 & TOUR & ONEP & FLIP & 0.85 & 0.01375 & 0 \\
+    41 & 100 & 10000 & TOUR & ONEP & FLIP & 0.85 & 0.01375 & 0 \\
+    61 & 100 & 10000 & TOUR & ONEP & FLIP & 0.85 & 0.01375 & 0 \\
+    68 & 100 & 10000 & TOUR & ONEP & FLIP & 0.85 & 0.0125 & 0 \\
+    72 & 100 & 10000 & TOUR & ONEP & FLIP & 0.85 & 0.0125 & 0 \\
+    73 & 100 & 10000 & TOUR & ONEP & FLIP & 0.85 & 0.0125 & 0 \\
+    \hline
+    \end{tabular}
+    \caption{Asignaciones y resultado}
+    \end{table}
+
+    Para los anteriores casos de validación se obtiene un resultado favorable
+
+    \section{Analisis del comportamiento global del SI basado en AG con respecto 4 criterios}
+
+    \subsection{Completitud}
+
+    Si se sigue el manual de asignación correctamente, si, es completo
+
+    \subsection{Optimalidad}
+
+    El problema no es de optimización, mientras que haya 0 jaques, dos soluciones son igualmente optimas
+
+    \subsection{Complejidad en tiempo}
+
+    \begin{table}[H]
+    \centering
+    \begin{tabular}{|| c c ||}
+    \hline
+    N reinas & tiempo (s) \\ [0.5ex]
+    \hline
+    \hline
+    7 & 0.011 \\
+    8 & 0.006 \\
+    23 & 0.042 \\
+    28 & 0.877 \\
+    40 & 2.182 \\
+    41 & 0.571 \\
+    61 & 5.676 \\
+    68 & 4.077 \\
+    72 & 12.294 \\
+    73 & 15.975 \\
+    \hline
+    \end{tabular}
+    \caption{Tabla de tiempos}
+    \end{table}
+
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\textwidth]{time}
+    \caption{Grafico de tiempos}
+    \end{figure}
+
+    \subsection{Complejidad en memoria}
+
+    Fijo, ya que el tamaño de la población es siempre 100
+
+\end{document}
+

@@ -71,7 +71,7 @@ Diseño y construcción de un algoritmo genético
  7. Diseñar un operador de mutación adecuado. Diversificar. Probabilidad baja (P_m), lo suficientemente significativa como para alcanzar todo el espacio de busqueda.
  8. Decidir la condición de parada. Determinada por una función que comprueba si se ha llegado a una solución (óptima?).
 
-## B. Analiss
+## B. Analisis
 
 De 41 hasta 70 reinas la probabilidad de mutación de 0.05 a 0.0.25 anterior es
 demasiado para asegurar una solución. Entonces en este nuevo estudio se añaden
@@ -92,10 +92,10 @@ satisfactoria, y se reduce Pm para que tarde menos en llegarse a una solución.
  - Parametro 6: FLIP
  - Parametro 7: 0.85
  - Parametro 8: para N reinas
-   - menor que 8: 0.05 <br>
-   - de 9 a 60: 0.0125 <br>
-   - 61: 0.01375 <br>
-   - de 62 a 70: 0.0125 <br>
+   - <= 8: 0.05
+   - \[9, 28\]: 0.025
+   - \[29, 61\]: 0.01375
+   - \[62, 70\]: 0.0125
 
 ## D. Validación
 
@@ -107,10 +107,10 @@ Ejecución: `./nreinas <N reinas> <2> <3> <4> <5> <6> <7> <8>`
 |----------|---|---|---|---|---|---|---|--------|
 | 7 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.05 | 0 |
 | 8 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.05 | 0 |
-| 23 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.0125 | 0 |
-| 28 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.0125 | 0 |
-| 40 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.0125 | 0 |
-| 41 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.0125 | 0 |
+| 23 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.025 | 0 |
+| 28 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.025 | 0 |
+| 40 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.01375 | 0 |
+| 41 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.01375 | 0 |
 | 61 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.01375 | 0 |
 | 68 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.0125 | 0 |
 | 72 | 100 | 10000 | TOUR | ONEP | FLIP | 0.85 | 0.0125 | 0 |
@@ -132,16 +132,16 @@ El problema no es de optimización, mientras que haya 0 jaques, dos soluciones s
 
 | N reinas | tiempo (s) |
 |----------|------------|
-| 7        | 0m0.029s |
-| 8        | 0m0.018s |
-| 23       | 0m0.171s |
-| 28       | 0m3.058s |
-| 40       | 0m5.631s |
-| 41       | 0m3.852s |
-| 61       | 0m13.347s |
-| 68       | 0m9.291s |
-| 72       | 0m28.189s |
-| 73       | 0m36.349s |
+| 7        | 0m0.011s |
+| 8        | 0m0.006s |
+| 23       | 0m0.042s |
+| 28       | 0m0.877s |
+| 40       | 0m2.182s |
+| 41       | 0m0.571s |
+| 61       | 0m5.676s |
+| 68       | 0m4.077s |
+| 72       | 0m12.294s |
+| 73       | 0m15.975s |
 
 ![time plot](time.svg)
 

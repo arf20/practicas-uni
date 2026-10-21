@@ -19,9 +19,9 @@ for NREINAS in 7 8 23 28 40 41 61 68 72 73
 do
     if [ $NREINAS -le 8 ]; then
         PM=0.05
-    elif [ $NREINAS -ge 9 ] && [ $NREINAS -le 60 ]; then
+    elif [ $NREINAS -ge 9 ] && [ $NREINAS -le 28 ]; then
         PM=0.0125
-    elif [ $NREINAS -eq 61 ]; then
+    elif [ $NREINAS -ge 29 ] && [ $NREINAS -le 61 ]; then
         PM=0.01375
     elif [ $NREINAS -ge 62 ] && [ $NREINAS -le 70 ]; then
         PM=0.0125
