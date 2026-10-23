@@ -11,7 +11,7 @@ using namespace std;
 
 float Objective(GAGenome &);   // Funcion objetivo --> al final
 
-GABoolean Termina(GAGeneticAlgorithm &);   // Funcion de terminacion --> al final
+GABoolean Termina(GAGeneticAlgorithm &);  // Funcion de terminacion --> al final
 
 string mayuscula(string str1);  // Funcion convertir a mayúsculas --> al final
 
@@ -34,8 +34,9 @@ int main(int argc, char **argv)
     float pcross = atof(argv[7]);
     float pmuta = atof(argv[8]);
 
-    cout << "Valores de los parámetros: (" << popsize << ", " << ngen << ", " << sel << ", " << cross << ", " <<
-         muta << ", " << pcross << ", " << pmuta << ")" << endl << endl;
+    cout << "Valores de los parámetros: (" << popsize << ", " << ngen << ", "
+        << sel << ", " << cross << ", " <<
+        muta << ", " << pcross << ", " << pmuta << ")" << endl << endl;
 
     // Conjunto enumerado de alelos --> valores posibles de cada gen del genoma
     GAAlleleSet<int> alelos;
@@ -44,16 +45,21 @@ int main(int argc, char **argv)
     // Creamos el genoma y definimos operadores de inicio, cruce y mutación
     GA1DArrayAlleleGenome<int> mG(nreinas,alelos,Objective,NULL);
 
-    if (cross.compare("ONEP")==0) mG.crossover(GA1DArrayAlleleGenome<int>::OnePointCrossover);
-	else if (cross.compare("TWOP")==0) mG.crossover(GA1DArrayAlleleGenome<int>::TwoPointCrossover);
+    if (cross.compare("ONEP")==0)
+        mG.crossover(GA1DArrayAlleleGenome<int>::OnePointCrossover);
+	else if (cross.compare("TWOP")==0)
+        mG.crossover(GA1DArrayAlleleGenome<int>::TwoPointCrossover);
 
-	if (muta.compare("FLIP")==0) mG.mutator(GA1DArrayAlleleGenome<int>::FlipMutator);
-	else if (muta.compare("SWAP")==0) mG.mutator(GA1DArrayAlleleGenome<int>::SwapMutator);
+	if (muta.compare("FLIP")==0)
+        mG.mutator(GA1DArrayAlleleGenome<int>::FlipMutator);
+	else if (muta.compare("SWAP")==0)
+        mG.mutator(GA1DArrayAlleleGenome<int>::SwapMutator);
 
     // Creamos el algoritmo genetico
     GASimpleGA ga(mG);
 
-    // Inicializamos - minimizar funcion objetivo, tamaño poblacion, nº generaciones,
+    // Inicializamos - minimizar funcion objetivo, tamaño poblacion, 
+    // nº generaciones,
     // pr. cruce y pr. mutacion, selección y le indicamos que evolucione.
     ga.minimaxi(-1);
     ga.populationSize(popsize);
@@ -73,7 +79,8 @@ int main(int argc, char **argv)
 
     // Imprimimos el mejor individuo que encuentra el GA y su valor fitness
     cout << "El sistema encuentra la solución " << endl << endl;
-    GA1DArrayAlleleGenome<int> & g = (GA1DArrayAlleleGenome<int> &)ga.statistics().bestIndividual();
+    GA1DArrayAlleleGenome<int> & g =
+        (GA1DArrayAlleleGenome<int> &)ga.statistics().bestIndividual();
     mostrarTablero(g);
     cout << "con " << ga.statistics().minEver() << " jaques. " << endl << endl;
     cout << " " << endl;
@@ -87,7 +94,8 @@ float Objective(GAGenome& g) {
 
     for(int i=0; i<mG.length(); i++)
        for(int j=i+1;j<mG.length();j++)
-            if ((mG.gene(i)==mG.gene(j))||(abs(j-i)==abs(mG.gene(j)-mG.gene(i)))) jaques++;
+            if ((mG.gene(i)==mG.gene(j))|
+                (abs(j-i)==abs(mG.gene(j)-mG.gene(i)))) jaques++;
     return jaques;
 }
 
@@ -122,3 +130,4 @@ void mostrarTablero (GAGenome& g)
   }
   cout << endl;
 }
+

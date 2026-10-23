@@ -2,6 +2,8 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import org.json.*;
+import javax.net.ssl.*;
+import java.security.*;
 
 /**
  * Carrito de la compra
@@ -303,18 +305,72 @@ class ServerThread implements Runnable {
 }
 
 
-class Server {
-    private Server() throws IOException {
-        ServerSocket ss = new ServerSocket(8080);
-        Database db = new Database();
+class TLSServer implements Runnable {
+    private Database db;
+    private SSLServerSocket serverSocket;
 
+    public TLSServer(Database db) throws IOException {
+        this.db = db;
+
+        char[] password = "ppcppc".toCharArray();
+
+        // TLS stuff
+        try {
+            KeyStore keyStore = KeyStore.getInstance("JKS");
+
+            try (FileInputStream fis = new FileInputStream("servidor.ks")) {
+                keyStore.load(fis, password);
+            }
+
+            KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
+            kmf.init(keyStore, password);
+
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(kmf.getKeyManagers(), null, null);
+            SSLServerSocketFactory ssf = sslContext.getServerSocketFactory();
+
+            serverSocket = (SSLServerSocket) ssf.createServerSocket(8443);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void run() {
         while (true) {
-            Socket c = ss.accept();
-            System.out.println("client accepted");
+            try {
+                SSLSocket c = (SSLSocket)serverSocket.accept();
+                System.out.println("Client connected.");
 
-            ServerThread st = new ServerThread(c, db);
-            Thread t = new Thread(st);
-            t.start();
+                ServerThread st = new ServerThread(c, db);
+                Thread t = new Thread(st);
+                t.start();
+            } catch (IOException e) { e.printStackTrace(); }
+        }
+    }
+}
+
+class Server implements Runnable {
+    private Database db;
+    private ServerSocket ss;
+
+    public Server(Database db) throws IOException {
+        this.db = db;
+
+        ss = new ServerSocket(8080);
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                Socket c = ss.accept();
+                System.out.println("client accepted");
+
+                ServerThread st = new ServerThread(c, db);
+                Thread t = new Thread(st);
+                t.start();
+            } catch (IOException e) { e.printStackTrace(); }
         }
     }
 
@@ -322,8 +378,22 @@ class Server {
     public static void main(String[] args) {
         System.out.println("http server");
 
-        try { new Server(); }
-        catch (IOException e) {
+        Database db = new Database();
+
+        try {
+            Server server = new Server(db);
+            TLSServer tlsserver = new TLSServer(db);
+
+            Thread st = new Thread(server);
+            Thread tlsst = new Thread(tlsserver);
+
+            st.start();
+            tlsst.start();
+
+            st.join();
+            tlsst.join();
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
