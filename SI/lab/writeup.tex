@@ -82,32 +82,39 @@
 
     \section{Analisis}
 
-    De 41 hasta 70 reinas la probabilidad de mutación de 0.05 a 0.0.25 anterior es
-    demasiado para asegurar una solución. Entonces en este nuevo estudio se añaden
-    columnas de 0.01375 y 0.0125, en las que aparecen mas soluciones a lo largo do todo
-    la dimensión de N de reinas.
+    El estudio inicial del documento ``P1.2-Fundamentos-Practicos.pdf'' estableció las bases del ajuste de parámetros. En este nuevo análisis, partimos de dichas decisiones previas para los casos de menor dimensión, pero las extendemos y adaptamos para cubrir el rango completo de 8 a 70 reinas.\\\\
+    El sistema, para 10000 generaciones, operador de cruce por un punto, operador de mutación ``Flipmutador'' y utilizando los casos para el ajuste de tamaños 8-40, tiene su mejor comportamiento con:
 
-    Elegimos 0.0125 de Pm para N reinas de 9 a 60, y 0.01375 para 61, y vuelta a
-    0.0125 de 62 a 70. Porque así se evitan las instancias donde el algoritmo
-    genético no llega a una solución satisfactoria, y se reduce Pm para que 
-    tarde menos en llegarse a una solución.
+\begin{itemize}
+    \item \textbf{Operador de selección TOUR:} Observando las tablas de los operadores de selección TOUR y ROUL, vemos que TOUR tiene un mejor comportamiento al conseguir 0 jaques para más casos, que es el resultado óptimo que esperamos.
+    \item \textbf{Tamaño de población 100:} Centrándonos en los resultados de la tabla de TOUR, para el tamaño de población fijamos el valor 100 en vez de 150. A pesar de que tienen un comportamiento similar, como la complejidad en espacio y en tiempo dependen del tamaño de la población, al elegir un valor menor aseguramos que el programa ocupa menos memoria.
+    \item \textbf{Pc = 0.85:} Para los parámetros Pc = 0.85 y Pc = 0.9, el sistema tiene un comportamiento similar, obteniendo valores 0 en prácticamente los mismos casos. Según la complejidad en tiempo, seleccionamos 0.85 por requerir menos recursos, ya que al tener una probabilidad de cruce ligeramente más baja, realiza menos cruces y mejora el tiempo.
+    \item \textbf{Pm:} El comportamiento de Pm nos induce que conforme vamos teniendo mayor número de reinas el valor de Pm debería decrecer. Seleccionamos 0.05 para \(nreinas \leq 8\) y 0.025 para \(9 \leq nreinas \leq 40\). Esto se debe a que con esos valores cada caso obtiene el resultado óptimo de 0 jaques, y son de los valores más pequeños que se pueden usar con menos recursos, al reducir la probabilidad de mutación se realizan mejores operaciones y mejora el tiempo.
+\end{itemize}
+De 41 hasta 70 reinas, la probabilidad de mutación de 0.05 a 0.025 anterior es demasiado alta para asegurar una solución óptima (0 jaques). Entonces en este nuevo estudio se añaden columnas de 0.01375 y 0.0125, en las que aparecen más soluciones a lo largo de toda la dimensión de N de reinas.\\
+Analizando los resultados:
+\begin{itemize}
+    \item El valor Pm = 0.01375 obtiene un fitness de 0 de forma continua para \(29 \leq nreinas \leq 67\), pero falla (fitness=1) en nreinas=68.
+    \item El valor Pm = 0.0125 falla en nreinas=61, pero obtiene 0 en el resto de casos.
+\end{itemize}
+Para obtener un mejor comportamiento con los menos recursos posibles, hemos mantenido las decisiones para \(nreinas \leq 28\), y elegimos Pm = 0.01375 para N reinas de 29 a 61, y Pm = 0.0125 de 62 a 70. De esta forma, se evitan las instancias donde el algoritmo genético no llega a una solución satisfactoria, se mantiene el patrón de que conforme crece el problema (mayor número de reinas) decrece el valor de Pm, y se garantiza que tarde el menor tiempo posible en llegar a una solución.
 
     \section{Manual de Asignación}
 
     \begin{enumerate}
     \item \textless N de reinas \textgreater
-    \item 100
-    \item 10000
-    \item TOUR
-    \item ONEP
-    \item FLIP
-    \item 0.85
-    \item para N reinas
+    \item Valor para el párametro 2º: 100 (valor recomendado)
+    \item Valor para el párametro 3º: 10000 (valor recomendado)
+    \item Valor para el párametro 4º: TOUR (valor recomendado)
+    \item Valor para el párametro 5º: ONEP (valor recomendado)
+    \item Valor para el párametro 6º: FLIP (valor recomendado)
+    \item Valor para el párametro 7º: 0.85 (valor recomendado)
+    \item Valor para el párametro 8º: para N reinas
         \begin{itemize}
-           \item \textless= 8: 0.05
-           \item {[9, 28]}: 0.025
-           \item {[29, 61]}: 0.01375
-           \item {[62, 70]}: 0.0125
+           \item \textless= 8: 0.05 (valor recomendado)
+           \item {[9, 28]}: 0.025 (valor recomendado)
+           \item {[29, 61]}: 0.01375 (valor recomendado)
+           \item {[62, 70]}: 0.0125 (valor recomendado)
        \end{itemize}
     \end{enumerate}
 
@@ -145,14 +152,14 @@
 
     \subsection{Completitud}
 
-    Si se sigue el manual de asignación correctamente, si, es completo
+   El sistema demuestra una alta completitud para los casos de validación. Dado que el problema de las n-reinas tiene solución para \(n \geq 4\), el AG es capaz de encontrarla en la gran mayoría de los casos antes de alcanzar el límite de 10000 generaciones. La inclusión de un criterio de parada temprano (cuando fitness=0) asegura que el sistema no desperdicie recursos una vez encontrada la solución.
 
     \subsection{Optimalidad}
 
-    El problema no es de optimización, mientras que haya 0 jaques, dos soluciones son igualmente optimas
+    Aunque los Algoritmos Genéticos no garantizan encontrar el óptimo global (es una técnica heurística), nuestro sistema alcanza el fitness 0 (solución óptima) en la gran mayoría de los casos gracias al ajuste de parámetros realizado.
 
     \subsection{Complejidad en tiempo}
-
+    El coste temporal del sistema depende principalmente del tamaño de la población (TP=100), el número máximo de generaciones (10000) y el coste de evaluar la función fitness. Con mayor número de reinas más tarda el sistema en encontrar una solución.\\La función Objective tiene una complejidad de \(O(n^2)\) debido al doble bucle que comprueba los ataques. Además, hemos optimizado el tiempo al elegir TP=100 (en lugar de 150), Pc=0.85 (en lugar de 0.9) y los valores menor posibles de Pm para cada caso, así reduciendo el número de operaciones por generación sin perder calidad en las soluciones.
     \begin{table}[H]
     \centering
     \begin{tabular}{|| c c ||}
@@ -183,7 +190,6 @@
 
     \subsection{Complejidad en memoria}
 
-    Fijo, ya que el tamaño de la población es siempre 100
+    El consumo de memoria está directamente relacionado con el tamaño de la población. Al fijar el tamaño de la población en 100, garantizamos que el espacio requerido sea reducido y constante.
 
 \end{document}
-

@@ -6,10 +6,10 @@
 \contentsline {subsubsection}{\numberline {1.2.3}Algoritmo genético}{4}{subsubsection.1.2.3}%
 \contentsline {subsection}{\numberline {1.3}Proceso}{4}{subsection.1.3}%
 \contentsline {section}{\numberline {2}Analisis}{5}{section.2}%
-\contentsline {section}{\numberline {3}Manual de Asignación}{5}{section.3}%
-\contentsline {section}{\numberline {4}Validación}{5}{section.4}%
-\contentsline {section}{\numberline {5}Analisis del comportamiento global del SI basado en AG con respecto 4 criterios}{6}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Completitud}{6}{subsection.5.1}%
-\contentsline {subsection}{\numberline {5.2}Optimalidad}{6}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Complejidad en tiempo}{7}{subsection.5.3}%
-\contentsline {subsection}{\numberline {5.4}Complejidad en memoria}{7}{subsection.5.4}%
+\contentsline {section}{\numberline {3}Manual de Asignación}{6}{section.3}%
+\contentsline {section}{\numberline {4}Validación}{7}{section.4}%
+\contentsline {section}{\numberline {5}Analisis del comportamiento global del SI basado en AG con respecto 4 criterios}{7}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Completitud}{7}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Optimalidad}{7}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Complejidad en tiempo}{8}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Complejidad en memoria}{9}{subsection.5.4}%
