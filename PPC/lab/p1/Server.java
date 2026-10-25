@@ -6,9 +6,10 @@ import javax.net.ssl.*;
 import java.security.*;
 
 /**
- * Carrito de la compra
+ * API ref:
  *
  * GET /
+ * GET /json
  * Index
  *
  * GET /product/html/<id>
@@ -58,6 +59,20 @@ class Database {
 
     public Collection<Product> list() {
         return store.values();
+    }
+
+    public String toJSON() {
+        JSONArray a = new JSONArray();
+        for (Map.Entry<String, Product> e : store.entrySet()) {
+            Product p = e.getValue();
+            JSONObject o = new JSONObject();
+            o.put("id", p.id);
+            o.put("name", p.name);
+            o.put("desc", p.desc);
+            o.put("price", p.price);
+            a.put(o);
+        }
+        return a.toString();
     }
 }
 
@@ -158,6 +173,13 @@ class ServerThread implements Runnable {
             out.print("</table>");
 
             out.print("</body></html>\r\n");
+        } else if (method.equals("GET") && path.equals("/json")) {
+            out.print("HTTP/1.1 200 OK\r\n");
+            out.print("Connection: close\r\n");
+            out.print("Server: PCC java shit/1\r\n");
+            out.print("Set-Cookie: cart=" + cart.toCookie() + "; Path=/\r\n");
+            out.print("Content-Type: text/json; charset=utf8\r\n\r\n");
+            out.print(db.toJSON());
         } else if (method.equals("GET") && path.startsWith("/product/html/")) {
             Product p = db.get(path.substring(14));
             if (p == null) {
