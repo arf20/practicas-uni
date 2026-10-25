@@ -1,0 +1,56 @@
+hostname R1
+
+interface FastEthernet0/0
+ no ip address
+ duplex half
+ speed auto
+ ipv6 address 3F32:0:1::1/64
+ ipv6 ospf 100 area 1
+!
+interface FastEthernet0/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface Serial2/0
+ no ip address
+ ipv6 enable
+ serial restart-delay 0
+!
+interface Serial2/1
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+
+ipv6 route 2D32:0:1::/64 Serial2/0
+ipv6 route 2F32::/64 Serial2/0
+ipv6 router ospf 100
+ router-id 1.0.0.1
+ log-adjacency-changes
+ redistribute connected
+ redistribute static
+!
+

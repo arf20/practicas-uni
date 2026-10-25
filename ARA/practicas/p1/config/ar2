@@ -1,0 +1,55 @@
+hostname AR2
+
+interface FastEthernet0/0
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2D32:0:1::2/64
+ ipv6 ospf 100 area 2
+!
+interface FastEthernet0/1
+ no ip address
+ duplex auto
+ speed auto
+ ipv6 address 2F32::1/64
+!
+interface FastEthernet1/0
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!
+interface FastEthernet1/1
+ no ip address
+ shutdown
+ duplex auto
+ speed auto
+!         
+interface Serial2/0
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/1
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/2
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+interface Serial2/3
+ no ip address
+ shutdown
+ serial restart-delay 0
+!
+
+ipv6 router ospf 100
+ router-id 2.0.1.2
+ log-adjacency-changes
+ redistribute connected
+ redistribute static
+!
+
