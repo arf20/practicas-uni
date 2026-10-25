@@ -1,0 +1,9 @@
+auto lo
+iface lo inet loopback
+
+allow-hotplug eth0
+auto eth0
+iface eth0 inet6 static
+    address 3f32::2/64
+    gateway 3f32::1
+
