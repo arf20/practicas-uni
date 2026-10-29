@@ -2,12 +2,15 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import org.json.*;
+import org.apache.xerces.parsers.DOMParser;
 
 class Server implements Runnable {
     private MulticastSocket socket;
     private final InetAddress group = InetAddress.getByName("ff12::caca");;
     private final int port = 6767;
     private int periodms = 1000;
+
+    DOMParser parser = new DOMParser();
 
     private void sendBroadcast(String msg) throws IOException {
         byte[] buf = msg.getBytes();

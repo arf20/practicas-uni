@@ -1,19 +1,34 @@
 <?xml version="1.0"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-targetNamespace="https://www.w3schools.com"
-xmlns="https://www.w3schools.com"
-elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-<xs:element name="control">
-  <xs:complexType>
-    <xs:sequence>
-      <xs:element name="to" type="xs:string"/>
-      <xs:element name="from" type="xs:string"/>
-      <xs:element name="heading" type="xs:string"/>
-      <xs:element name="body" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-</xs:element>
+  <xs:element name="control">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="format" type="xs:string"/>
+        <xs:element name="frequency" type="xs:integer"/>
+        <xs:element name="unit">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="magnitude"
+                              type="xs:string"
+                              use="required"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="enabled" type="xs:boolean"/>
+      </xs:choice>
 
-</xs:schema> 
+      <xs:assert test="count(format) le 1"/>
+      <xs:assert test="count(frequency) le 1"/>
+      <xs:assert test="count(enabled) le 1"/>
+
+      <xs:assert test="
+        count(unit/@magnitude) = count(distinct-values(unit/@magnitude))
+      "/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
 
