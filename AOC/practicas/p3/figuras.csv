@@ -1,0 +1,7 @@
+solucion,clang,gcc,icc
+01-messages,5.8,2.7,6.5
+02-conversions,8.6,3.1,8.6
+03-strength-reduction,8.8,8.8,12.1
+04-parallel,15.6,7.6,23.8
+05-vectorization,38.5,42.5,36.5
+06-tiling,39.9,42.1,43.1

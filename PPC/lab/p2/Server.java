@@ -2,7 +2,13 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import org.json.*;
-import org.apache.xerces.parsers.DOMParser;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import javax.xml.validation.*;
 
 class Server implements Runnable {
     private MulticastSocket socket;
@@ -10,7 +16,24 @@ class Server implements Runnable {
     private final int port = 6767;
     private int periodms = 1000;
 
-    DOMParser parser = new DOMParser();
+    DocumentBuilder dbuilder;
+    Validator validator;
+
+
+    public Server(String ifname) throws IOException {
+        socket = new MulticastSocket(port);
+        socket.setReuseAddress(true);
+        socket.bind(new InetSocketAddress(port));
+        socket.setNetworkInterface(NetworkInterface.getByName(ifname));
+
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        dbuilder = dbFactory.newDocumentBuilder();
+
+        SchemaFactory sfactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
+        Source schemaFile = new StreamSource(new File("control.xsd"));
+        Schema schema = factory.newSchema(schemaFile);
+        validator = schema.newValidator();
+    }
 
     private void sendBroadcast(String msg) throws IOException {
         byte[] buf = msg.getBytes();
@@ -18,12 +41,6 @@ class Server implements Runnable {
         socket.send(p);
     }
 
-    public Server(String ifname) throws IOException {
-        socket = new MulticastSocket(port);
-        socket.setReuseAddress(true);
-        socket.bind(new InetSocketAddress(port));
-        socket.setNetworkInterface(NetworkInterface.getByName(ifname));
-    }
 
     @Override
     public void run() {
@@ -33,7 +50,31 @@ class Server implements Runnable {
             try { socket.receive(p); }
             catch (IOException e) { e.printStackTrace(); }
             String s = new String(p.getData(), 0, p.getLength());
-            System.out.println("recv: " + s);
+            System.out.println("received: " + s);
+
+            Document document = builder.parse();
+            document.getDocumentElement().normalize();
+            Element root = document.getDocumentElement();
+
+            try {
+                validator.validate(new DOMSource(root));
+                System.out.println(" xml verified");
+            } catch (SAXException e) {
+                e.printStackTrace();
+                continue;
+            }
+
+            NodeList nlfmt = root.getElementsByTagName("format");
+            NodeList nlfreq = root.getElementsByTagName("frequency");
+            NodeList nlunit = root.getElementsByTagName("unit");
+            NodeList nlen = root.getElementsByTagName("enabled");
+            if (nlfmt.getLength() == 1)
+                System.out.println(" format: " + nl.getTextContent());
+            else if (nlfreq.getLength() == 1)
+                System.out.println(" frequency: " + nl.getTextContent());
+            else if (nlenabled.getLength() == 1)
+                System.out.println(" enabled: " + nlen.getTextContent());
+
         }
     }
 

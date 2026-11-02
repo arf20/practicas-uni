@@ -10,9 +10,7 @@
           <xs:complexType>
             <xs:simpleContent>
               <xs:extension base="xs:string">
-                <xs:attribute name="magnitude"
-                              type="xs:string"
-                              use="required"/>
+                <xs:attribute name="magnitude" type="xs:string" use="required"/>
               </xs:extension>
             </xs:simpleContent>
           </xs:complexType>
@@ -24,9 +22,7 @@
       <xs:assert test="count(frequency) le 1"/>
       <xs:assert test="count(enabled) le 1"/>
 
-      <xs:assert test="
-        count(unit/@magnitude) = count(distinct-values(unit/@magnitude))
-      "/>
+      <xs:assert test="count(unit/@magnitude) = count(distinct-values(unit/@magnitude))"/>
     </xs:complexType>
   </xs:element>
 
