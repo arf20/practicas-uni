@@ -2,6 +2,10 @@ import java.io.*;
 import java.net.*;
 import java.util.*;
 import org.json.*;
+import javax.xml.*;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.*;
+import javax.xml.transform.stream.*;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -9,6 +13,8 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import javax.xml.validation.*;
+import org.xml.sax.*;
+import javax.xml.parsers.*;
 
 class Server implements Runnable {
     private MulticastSocket socket;
@@ -20,10 +26,9 @@ class Server implements Runnable {
     Validator validator;
 
 
-    public Server(String ifname) throws IOException {
+    public Server(String ifname) throws IOException, ParserConfigurationException, SAXException {
         socket = new MulticastSocket(port);
         socket.setReuseAddress(true);
-        socket.bind(new InetSocketAddress(port));
         socket.setNetworkInterface(NetworkInterface.getByName(ifname));
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -31,7 +36,7 @@ class Server implements Runnable {
 
         SchemaFactory sfactory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         Source schemaFile = new StreamSource(new File("control.xsd"));
-        Schema schema = factory.newSchema(schemaFile);
+        Schema schema = sfactory.newSchema(schemaFile);
         validator = schema.newValidator();
     }
 
@@ -52,14 +57,16 @@ class Server implements Runnable {
             String s = new String(p.getData(), 0, p.getLength());
             System.out.println("received: " + s);
 
-            Document document = builder.parse();
-            document.getDocumentElement().normalize();
-            Element root = document.getDocumentElement();
+
+            Element root;
 
             try {
+                Document document = dbuilder.parse(new ByteArrayInputStream(p.getData()));
+                document.getDocumentElement().normalize();
+                root = document.getDocumentElement();
                 validator.validate(new DOMSource(root));
                 System.out.println(" xml verified");
-            } catch (SAXException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
                 continue;
             }
@@ -69,11 +76,11 @@ class Server implements Runnable {
             NodeList nlunit = root.getElementsByTagName("unit");
             NodeList nlen = root.getElementsByTagName("enabled");
             if (nlfmt.getLength() == 1)
-                System.out.println(" format: " + nl.getTextContent());
+                System.out.println(" format: " + nlfmt.item(0).getTextContent());
             else if (nlfreq.getLength() == 1)
-                System.out.println(" frequency: " + nl.getTextContent());
-            else if (nlenabled.getLength() == 1)
-                System.out.println(" enabled: " + nlen.getTextContent());
+                System.out.println(" frequency: " + nlfreq.item(0).getTextContent());
+            else if (nlen.getLength() == 1)
+                System.out.println(" enabled: " + nlen.item(0).getTextContent());
 
         }
     }

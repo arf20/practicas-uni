@@ -17,12 +17,6 @@
         </xs:element>
         <xs:element name="enabled" type="xs:boolean"/>
       </xs:choice>
-
-      <xs:assert test="count(format) le 1"/>
-      <xs:assert test="count(frequency) le 1"/>
-      <xs:assert test="count(enabled) le 1"/>
-
-      <xs:assert test="count(unit/@magnitude) = count(distinct-values(unit/@magnitude))"/>
     </xs:complexType>
   </xs:element>
 
