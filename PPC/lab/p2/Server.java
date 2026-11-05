@@ -12,21 +12,43 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
+import org.w3c.dom.Attr;
 import javax.xml.validation.*;
 import org.xml.sax.*;
 import javax.xml.parsers.*;
 
 class Server implements Runnable {
     private MulticastSocket socket;
-    private final InetAddress group = InetAddress.getByName("ff12::caca");;
+    private final InetAddress group = InetAddress.getByName("ff12::caca");
     private final int port = 6767;
     private int periodms = 1000;
 
-    DocumentBuilder dbuilder;
-    Validator validator;
+    private DocumentBuilder dbuilder;
+    private Validator validator;
+    private Transformer transformer;
 
+    private boolean temp = false, humid = false, press = false;
+    private float tempVal = 25, humidVal = 40, pressVal = 1000.0f;
+    private boolean tempC = true, pressMbar = true;
 
-    public Server(String ifname) throws IOException, ParserConfigurationException, SAXException {
+    private boolean json = false;
+
+    public Server(String[] args) throws IOException, ParserConfigurationException, SAXException, TransformerConfigurationException {
+        String ifname = "lo";
+        if (args.length > 0)
+            ifname = args[0];
+
+        if (args.length > 1) {
+            String[] sens = args[1].split(",");
+            for (String s : sens) {
+                temp |= s.equals("temp");
+                humid |= s.equals("humid");
+                press |= s.equals("press");
+            }
+        }
+        else
+            temp = humid = press = true;
+
         socket = new MulticastSocket(port);
         socket.setReuseAddress(true);
         socket.setNetworkInterface(NetworkInterface.getByName(ifname));
@@ -38,6 +60,10 @@ class Server implements Runnable {
         Source schemaFile = new StreamSource(new File("control.xsd"));
         Schema schema = sfactory.newSchema(schemaFile);
         validator = schema.newValidator();
+
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        transformer = transformerFactory.newTransformer();
+
     }
 
     private void sendBroadcast(String msg) throws IOException {
@@ -46,6 +72,9 @@ class Server implements Runnable {
         socket.send(p);
     }
 
+    private void sendUpdate() throws IOException {
+
+    }
 
     @Override
     public void run() {
@@ -85,11 +114,74 @@ class Server implements Runnable {
         }
     }
 
+    /* internal units
+     * temp: C
+     * humid: %
+     * press: mbar
+     */
+    private void genSensorData() {
+        if (temp)
+            tempVal += 0.01f;
+        if (humid)
+            humidVal *= 0.99;
+        if (press)
+            pressVal *= 1.05;
+    }
+
+    private String serializeDataXML() {
+        try {
+            Document doc = dbuilder.newDocument();
+
+            Element rootElement = doc.createElement("data");
+            doc.appendChild(rootElement);
+
+            if (temp) {
+                Element tempE = doc.createElement("temp");
+                tempE.appendChild(doc.createTextNode(Float.toString(tempVal)));
+                rootElement.appendChild(tempE);
+                Attr unitA = doc.createAttribute("unit");
+                unitA.setValue(tempC ? "C" : "F");
+                tempE.setAttributeNode(unitA);
+            }
+
+            if (humid) {
+                Element humidE = doc.createElement("humid");
+                humidE.appendChild(doc.createTextNode(Float.toString(humidVal)));
+                rootElement.appendChild(humidE);
+            }
+
+            if (press) {
+                Element pressE = doc.createElement("temp");
+                pressE.appendChild(doc.createTextNode(Float.toString(tempVal)));
+                rootElement.appendChild(pressE);
+                Attr unitA = doc.createAttribute("unit");
+                unitA.setValue(pressMbar ? "mbar" : "hpa");
+                pressE.setAttributeNode(unitA);
+            }
+
+            DOMSource source = new DOMSource(doc);
+            StringWriter sw = new StringWriter();
+            StreamResult result = new StreamResult(sw);
+            transformer.transform(source, result);
+            return sw.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "xml error";
+    }
+
+    private String serializeDataJSON() {
+        return "{}";
+    }
+
+
     public void sendLoop() {
         while (true) {
             try {
-                sendBroadcast("test");
-                System.out.println("sent");
+                genSensorData();
+                String serData = json ? serializeDataJSON() : serializeDataXML();
+                sendBroadcast(serData);
+                System.out.println("sent: " + serData);
             }
             catch (IOException e) { e.printStackTrace(); }
 
@@ -104,12 +196,7 @@ class Server implements Runnable {
         System.out.println("pcc practica2 servidor mxn");
 
         try {
-            Server s;
-            if (args.length > 0)
-                s = new Server(args[0]);
-            else
-                s =  new Server("lo");
-
+            Server s = new Server(args);
             Thread st = new Thread(s);
             st.start();
             s.sendLoop();

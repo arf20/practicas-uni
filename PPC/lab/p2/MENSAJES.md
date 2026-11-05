@@ -1,11 +1,13 @@
-# Mensajes de control
+# Mensajes
+
+## Mensajes de control
 
  - distribution format
  - distribution frequency
  - magnitude unit
  - distribution enable
 
-## XML
+### XML
 
 ```
 <?xml version="1.0"?>
@@ -15,5 +17,18 @@
   <unit magnitude="temp">celsius</unit>
   <enabled>true</enabled>
 </control>
+```
+
+## Mensajes de datos
+
+### XML
+
+```
+<?xml version="1.0"?>
+<data>
+  <temp unit="C">23</temp>
+  <humidity>40</humidity>
+  <pressure unit="mbar">1030</pressure>
+</data>
 ```
 
