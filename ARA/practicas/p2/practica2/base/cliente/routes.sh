@@ -1,4 +1,4 @@
 #!/bin/bash
 
-ip route add 192.168.123.0/24 via 10.0.1.200
+ip route add 180.2.3.0/24 via 176.3.2.220
 tail -f /dev/null
