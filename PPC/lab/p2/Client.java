@@ -57,17 +57,30 @@ class Client implements Runnable {
             try { socket.receive(p); }
             catch (IOException e) { e.printStackTrace(); }
             String s = new String(p.getData(), 0, p.getLength());
-            System.out.println("recv: " + s);
-
 
             Element root;
 
             try {
-                Document document = dbuilder.parse(new ByteArrayInputStream(p.getData()));
+                Document document = dbuilder.parse(new ByteArrayInputStream(p.getData(), p.getOffset(), p.getLength()));
                 document.getDocumentElement().normalize();
                 root = document.getDocumentElement();
                 validator.validate(new DOMSource(root));
-                System.out.println(" xml verified");
+
+                NodeList nlserver = root.getElementsByTagName("server");
+                NodeList nltemp = root.getElementsByTagName("temp");
+                NodeList nlhumid = root.getElementsByTagName("humid");
+                NodeList nlpress = root.getElementsByTagName("press");
+
+                System.out.println(nlserver.item(0).getTextContent() + ":");
+
+                
+                for (int i = 0; i < nltemp.getLength(); i++)
+                    System.out.println(" temperature: " + nltemp.item(i).getTextContent() + " " + nltemp.item(i).getAttributes().getNamedItem("unit").getTextContent());
+                for (int i = 0; i < nlhumid.getLength(); i++)
+                    System.out.println(" humidity:    " + nlhumid.item(i).getTextContent() + " %");
+                for (int i = 0; i < nlpress.getLength(); i++)
+                    System.out.println(" pressure:    " + nlpress.item(i).getTextContent() + " " + nlpress.item(i).getAttributes().getNamedItem("unit").getTextContent());
+
             } catch (Exception e) {
                 e.printStackTrace();
                 continue;

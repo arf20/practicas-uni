@@ -14,7 +14,8 @@
 <control>
   <format>xml</format>
   <frequency>10</frequency>
-  <unit magnitude="temp">celsius</unit>
+  <unit magnitude="temp">C</unit>
+  <unit magnitude="pressure">hpa</unit>
   <enabled>true</enabled>
 </control>
 ```

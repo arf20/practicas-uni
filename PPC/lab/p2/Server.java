@@ -123,6 +123,8 @@ class Server implements Runnable {
             else if (nlen.getLength() == 1)
                 System.out.println(" enabled: " + nlen.item(0).getTextContent());
 
+            for (int i = 0; i < nlunit.getLength(); i++)
+                System.out.println(" unit(" + nlunit.item(i).getAttributes().getNamedItem("magnitude").getTextContent() + "): " + nlunit.item(i).getTextContent());
         }
     }
 
@@ -137,7 +139,7 @@ class Server implements Runnable {
         if (humid)
             humidVal *= 0.99;
         if (press)
-            pressVal *= 1.05;
+            pressVal *= 1.01;
     }
 
     private String serializeDataXML() {
