@@ -167,8 +167,8 @@ class Server implements Runnable {
             }
 
             if (press) {
-                Element pressE = doc.createElement("temp");
-                pressE.appendChild(doc.createTextNode(Float.toString(tempVal)));
+                Element pressE = doc.createElement("press");
+                pressE.appendChild(doc.createTextNode(Float.toString(pressVal)));
                 rootElement.appendChild(pressE);
                 Attr unitA = doc.createAttribute("unit");
                 unitA.setValue(pressMbar ? "mbar" : "hpa");

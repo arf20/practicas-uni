@@ -1,21 +1,36 @@
 <?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-  <xs:element name="control">
+  <xs:element name="data">
     <xs:complexType>
       <xs:sequence>
         <xs:element name="server" type="xs:string"/>
 
         <xs:choice minOccurs="0" maxOccurs="unbounded">
-          <xs:element name="temp" type="xs:decimal">
+
+          <xs:element name="temp">
             <xs:complexType>
-              <xs:attribute name="xxx" type="yyy"/>
+              <xs:simpleContent>
+                <xs:extension base="xs:decimal">
+                  <xs:attribute name="unit" type="xs:string" use="required"/>
+                </xs:extension>
+              </xs:simpleContent>
             </xs:complexType>
           </xs:element>
-          <xs:element name="humidity" type="xs:decimal"/>
-          <xs:element name="pressure" type="xs:decimal"/>
-        </xs:choice>
 
+          <xs:element name="humid" type="xs:decimal"/>
+
+          <xs:element name="press">
+            <xs:complexType>
+              <xs:simpleContent>
+                <xs:extension base="xs:decimal">
+                  <xs:attribute name="unit" type="xs:string" use="required"/>
+                </xs:extension>
+              </xs:simpleContent>
+            </xs:complexType>
+          </xs:element>
+
+        </xs:choice>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
