@@ -20,9 +20,11 @@ import java.util.stream.*;
 
 class Server implements Runnable {
     private MulticastSocket socket;
-    private final ArrayList<InetAddress> ifaddr;
     private final InetAddress group = InetAddress.getByName("ff12::caca");
     private final int port = 6767;
+
+    private DatagramSocket ctrlSocket;
+
     private int periodms = 1000;
 
     private DocumentBuilder dbuilder;
@@ -36,6 +38,7 @@ class Server implements Runnable {
     private boolean tempC = true, pressMbar = true;
 
     private boolean json = false;
+    private boolean enabled = true;
 
     public Server(String[] args) throws IOException, ParserConfigurationException, SAXException, TransformerConfigurationException {
         String ifname = "lo";
@@ -58,10 +61,11 @@ class Server implements Runnable {
         else
             id = "default";
 
-        socket = new MulticastSocket(port);
+        socket = new MulticastSocket();
         socket.setReuseAddress(true);
         socket.setNetworkInterface(NetworkInterface.getByName(ifname));
-        ifaddr = new ArrayList<InetAddress>(NetworkInterface.getByName(ifname).inetAddresses().collect(Collectors.toList()));
+
+        ctrlSocket = new DatagramSocket(port+1);
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         dbuilder = dbFactory.newDocumentBuilder();
@@ -82,31 +86,23 @@ class Server implements Runnable {
         socket.send(p);
     }
 
-    private void sendUpdate() throws IOException {
-
-    }
-
     @Override
     public void run() {
         byte[] buf = new byte[1024];
         while (true) {
             DatagramPacket p = new DatagramPacket(buf, buf.length);
-            try { socket.receive(p); }
+            try { ctrlSocket.receive(p); }
             catch (IOException e) { e.printStackTrace(); }
-            if (ifaddr.contains(p.getAddress()))
-                continue;
             String s = new String(p.getData(), 0, p.getLength());
             System.out.println("received: " + s);
-
 
             Element root;
 
             try {
-                Document document = dbuilder.parse(new ByteArrayInputStream(p.getData()));
+                Document document = dbuilder.parse(new ByteArrayInputStream(p.getData(), p.getOffset(), p.getLength()));
                 document.getDocumentElement().normalize();
                 root = document.getDocumentElement();
                 validator.validate(new DOMSource(root));
-                System.out.println(" xml verified");
             } catch (Exception e) {
                 e.printStackTrace();
                 continue;
@@ -115,16 +111,35 @@ class Server implements Runnable {
             NodeList nlfmt = root.getElementsByTagName("format");
             NodeList nlfreq = root.getElementsByTagName("frequency");
             NodeList nlunit = root.getElementsByTagName("unit");
-            NodeList nlen = root.getElementsByTagName("enabled");
-            if (nlfmt.getLength() == 1)
+            NodeList nlen = root.getElementsByTagName("enable");
+            if (nlfmt.getLength() == 1) {
                 System.out.println(" format: " + nlfmt.item(0).getTextContent());
-            else if (nlfreq.getLength() == 1)
+                json = nlfmt.item(0).getTextContent().equals("json");
+            }
+            else if (nlfreq.getLength() == 1) {
                 System.out.println(" frequency: " + nlfreq.item(0).getTextContent());
-            else if (nlen.getLength() == 1)
-                System.out.println(" enabled: " + nlen.item(0).getTextContent());
+                periodms = 1000/Integer.parseInt(nlfreq.item(0).getTextContent());
+            } else if (nlen.getLength() == 1) {
+                System.out.println(" enable: " + nlen.item(0).getTextContent());
+                enabled = nlen.item(0).getTextContent().equals("true");
+            }
 
-            for (int i = 0; i < nlunit.getLength(); i++)
-                System.out.println(" unit(" + nlunit.item(i).getAttributes().getNamedItem("magnitude").getTextContent() + "): " + nlunit.item(i).getTextContent());
+            for (int i = 0; i < nlunit.getLength(); i++) {
+                String mag = nlunit.item(i).getAttributes().getNamedItem("magnitude").getTextContent();
+                String unit = nlunit.item(i).getTextContent();
+                System.out.println(" unit(" + mag + "): " + unit);
+                if (mag.equals("temp")) {
+                    if (unit.equals("F"))
+                        tempC = false;
+                    else if (unit.equals("C"))
+                        tempC = true;
+                } else if (mag.equals("press")) {
+                    if (unit.equals("mbar"))
+                        pressMbar = true;
+                    else if (unit.equals("hpa"))
+                        pressMbar = false;
+                }
+            }
         }
     }
 
@@ -195,13 +210,15 @@ class Server implements Runnable {
 
     public void sendLoop() {
         while (true) {
-            try {
-                genSensorData();
-                String serData = json ? serializeDataJSON() : serializeDataXML();
-                sendBroadcast(serData);
-                System.out.println("sent: " + serData);
+            if (enabled) {
+                try {
+                    genSensorData();
+                    String serData = json ? serializeDataJSON() : serializeDataXML();
+                    sendBroadcast(serData);
+                    System.out.println("sent: " + serData);
+                }
+                catch (IOException e) { e.printStackTrace(); }
             }
-            catch (IOException e) { e.printStackTrace(); }
 
             try {
                 Thread.sleep(periodms);

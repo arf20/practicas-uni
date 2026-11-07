@@ -4,18 +4,32 @@
   <xs:element name="control">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="format" type="xs:string"/>
+        <xs:element name="format">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="json"/>
+                    <xs:enumeration value="xml"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
         <xs:element name="frequency" type="xs:integer"/>
         <xs:element name="unit">
           <xs:complexType>
             <xs:simpleContent>
               <xs:extension base="xs:string">
-                <xs:attribute name="magnitude" type="xs:string" use="required"/>
+                <xs:attribute name="magnitude" use="required">
+                  <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                          <xs:enumeration value="temp"/>
+                          <xs:enumeration value="press"/>
+                      </xs:restriction>
+                  </xs:simpleType>
+                </xs:attribute>
               </xs:extension>
             </xs:simpleContent>
           </xs:complexType>
         </xs:element>
-        <xs:element name="enabled" type="xs:boolean"/>
+        <xs:element name="enable" type="xs:boolean"/>
       </xs:choice>
     </xs:complexType>
   </xs:element>

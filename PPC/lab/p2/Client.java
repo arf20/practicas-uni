@@ -19,9 +19,10 @@ import javax.xml.parsers.*;
 import java.util.stream.*;
 
 class Client implements Runnable {
+    private static final int port = 6767;
+    private static final InetSocketAddress group = new InetSocketAddress("ff12::caca", port);
+
     private MulticastSocket socket;
-    private final int port = 6767;
-    private final InetSocketAddress group = new InetSocketAddress("ff12::caca", port);;
     private final NetworkInterface netif;
 
     private DocumentBuilder dbuilder;
@@ -72,7 +73,6 @@ class Client implements Runnable {
                 NodeList nlpress = root.getElementsByTagName("press");
 
                 System.out.println(nlserver.item(0).getTextContent() + ":");
-
                 
                 for (int i = 0; i < nltemp.getLength(); i++)
                     System.out.println(" temperature: " + nltemp.item(i).getTextContent() + " " + nltemp.item(i).getAttributes().getNamedItem("unit").getTextContent());
@@ -88,22 +88,113 @@ class Client implements Runnable {
         }
     }
 
+    private static void usage() {
+        System.out.println("usage: client [-i <interface>] {listen | cmd <server> <command> <value> [magnitude]}");
+        System.exit(1);
+    }
+
+    private static void sendPacket(String server, String content) throws Exception {
+        byte[] buf = content.getBytes();
+        DatagramSocket s = new DatagramSocket();
+        DatagramPacket packet = new DatagramPacket(buf, buf.length, InetAddress.getByName(server), port+1);
+        s.send(packet);
+        s.close();
+    }
+
+    private static void sendCmd(String server, String cmd, String val) throws Exception {
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dbuilder = dbFactory.newDocumentBuilder();
+        Document doc = dbuilder.newDocument();
+
+        Element rootElement = doc.createElement("control");
+        doc.appendChild(rootElement);
+
+        Element cmdE = doc.createElement(cmd);
+        cmdE.appendChild(doc.createTextNode(val));
+        rootElement.appendChild(cmdE);
+
+        DOMSource source = new DOMSource(doc);
+        StringWriter sw = new StringWriter();
+        StreamResult result = new StreamResult(sw);
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        transformer.transform(source, result);
+        sendPacket(server, sw.toString());
+    }
+
+    private static void sendCmd(String server, String cmd, String val, String mag) throws Exception {
+        if (!cmd.equals("unit"))
+            throw new IllegalArgumentException();
+
+        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder dbuilder = dbFactory.newDocumentBuilder();
+        Document doc = dbuilder.newDocument();
+
+        Element rootElement = doc.createElement("control");
+        doc.appendChild(rootElement);
+
+        Element cmdE = doc.createElement(cmd);
+        cmdE.appendChild(doc.createTextNode(val));
+        rootElement.appendChild(cmdE);
+
+        Attr magA = doc.createAttribute("magnitude");
+        magA.setValue(mag);
+        cmdE.setAttributeNode(magA);
+
+        DOMSource source = new DOMSource(doc);
+        StringWriter sw = new StringWriter();
+        StreamResult result = new StreamResult(sw);
+        TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        transformer.transform(source, result);
+        sendPacket(server, sw.toString());
+    }
 
     public static void main(String[] args) {
         System.out.println("pcc practica2 cliente mxn");
 
-        try {
-            Client c;
-            if (args.length > 0)
-                c = new Client(args[0]);
-            else
-                c = new Client("lo");
+        String ifname = "lo";
+        for (int i = 0; i < args.length; i++) {
+            if (args[i].equals("-i")) {
+                if (args.length < 3)
+                    usage();
+                ifname = args[i+1];
+                i++;
+            } else if (args[i].equals("listen")) {
+                try {
+                    Client c = new Client(ifname);
+                    Thread st = new Thread(c);
+                    st.start();
+                    st.join();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else if (args[i].equals("cmd")) {
+                if (args.length - i < 3)
+                    usage();
 
-            Thread st = new Thread(c);
-            st.start();
-            st.join();
-        } catch (Exception e) {
-            e.printStackTrace();
+                try {
+                    if (args[i+2].equals("format")) {
+                        sendCmd(args[i+1], "format", args[i+3]);
+                        break;
+                    } else if (args[i+2].equals("frequency")) {
+                        sendCmd(args[i+1], "frequency", args[i+3]);
+                        break;
+                    } else if (args[i+2].equals("enable")) {
+                        sendCmd(args[i+1], "enable", args[i+3]);
+                        break;
+                    } else if (args[i+2].equals("unit") && ((args.length - i) == 5)) {
+                        sendCmd(args[i+1], "unit", args[i+3], args[i+4]);
+                        break;
+                    } else
+                        usage();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    System.exit(1);
+                }
+
+            } else
+                usage();
         }
     }
 }

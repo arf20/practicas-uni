@@ -16,7 +16,7 @@
   <frequency>10</frequency>
   <unit magnitude="temp">C</unit>
   <unit magnitude="pressure">hpa</unit>
-  <enabled>true</enabled>
+  <enable>true</enable>
 </control>
 ```
 
