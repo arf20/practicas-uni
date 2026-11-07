@@ -26,6 +26,7 @@
 ```
 <?xml version="1.0"?>
 <data>
+  <server>anid</server>
   <temp unit="C">23</temp>
   <humidity>40</humidity>
   <pressure unit="mbar">1030</pressure>

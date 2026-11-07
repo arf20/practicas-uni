@@ -16,9 +16,11 @@ import org.w3c.dom.Attr;
 import javax.xml.validation.*;
 import org.xml.sax.*;
 import javax.xml.parsers.*;
+import java.util.stream.*;
 
 class Server implements Runnable {
     private MulticastSocket socket;
+    private final ArrayList<InetAddress> ifaddr;
     private final InetAddress group = InetAddress.getByName("ff12::caca");
     private final int port = 6767;
     private int periodms = 1000;
@@ -26,6 +28,8 @@ class Server implements Runnable {
     private DocumentBuilder dbuilder;
     private Validator validator;
     private Transformer transformer;
+
+    private final String id;
 
     private boolean temp = false, humid = false, press = false;
     private float tempVal = 25, humidVal = 40, pressVal = 1000.0f;
@@ -49,9 +53,15 @@ class Server implements Runnable {
         else
             temp = humid = press = true;
 
+        if (args.length > 2)
+            id = args[2];
+        else
+            id = "default";
+
         socket = new MulticastSocket(port);
         socket.setReuseAddress(true);
         socket.setNetworkInterface(NetworkInterface.getByName(ifname));
+        ifaddr = new ArrayList<InetAddress>(NetworkInterface.getByName(ifname).inetAddresses().collect(Collectors.toList()));
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         dbuilder = dbFactory.newDocumentBuilder();
@@ -83,6 +93,8 @@ class Server implements Runnable {
             DatagramPacket p = new DatagramPacket(buf, buf.length);
             try { socket.receive(p); }
             catch (IOException e) { e.printStackTrace(); }
+            if (ifaddr.contains(p.getAddress()))
+                continue;
             String s = new String(p.getData(), 0, p.getLength());
             System.out.println("received: " + s);
 
@@ -134,6 +146,10 @@ class Server implements Runnable {
 
             Element rootElement = doc.createElement("data");
             doc.appendChild(rootElement);
+
+            Element serverE = doc.createElement("server");
+            serverE.appendChild(doc.createTextNode(id));
+            rootElement.appendChild(serverE);
 
             if (temp) {
                 Element tempE = doc.createElement("temp");

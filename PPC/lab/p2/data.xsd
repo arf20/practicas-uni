@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="control">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="server" type="xs:string"/>
+
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="temp" type="xs:decimal">
+            <xs:complexType>
+              <xs:attribute name="xxx" type="yyy"/>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="humidity" type="xs:decimal"/>
+          <xs:element name="pressure" type="xs:decimal"/>
+        </xs:choice>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+
