@@ -1,7 +1,6 @@
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import org.json.*;
 import javax.xml.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
@@ -17,6 +16,8 @@ import javax.xml.validation.*;
 import org.xml.sax.*;
 import javax.xml.parsers.*;
 import java.util.stream.*;
+import com.google.gson.*;
+import com.google.gson.stream.*;
 
 class Server implements Runnable {
     private MulticastSocket socket;
@@ -33,9 +34,14 @@ class Server implements Runnable {
 
     private final String id;
 
-    private boolean temp = false, humid = false, press = false;
+    private boolean weather = true, quality = false;
+
     private float tempVal = 25, humidVal = 40, pressVal = 1000.0f;
     private boolean tempC = true, pressMbar = true;
+
+    private float pm10val = 1, so2val = 1, no2val = 1, o3val = 1;
+    private boolean pm10ppm = true, gasppm = true;
+
 
     private boolean json = false;
     private boolean enabled = true;
@@ -46,15 +52,9 @@ class Server implements Runnable {
             ifname = args[0];
 
         if (args.length > 1) {
-            String[] sens = args[1].split(",");
-            for (String s : sens) {
-                temp |= s.equals("temp");
-                humid |= s.equals("humid");
-                press |= s.equals("press");
-            }
+            weather = args[1].equals("weather");
+            quality = args[1].equals("quality");
         }
-        else
-            temp = humid = press = true;
 
         if (args.length > 2)
             id = args[2];
@@ -138,6 +138,16 @@ class Server implements Runnable {
                         pressMbar = true;
                     else if (unit.equals("hpa"))
                         pressMbar = false;
+                } else if (mag.equals("pm10")) {
+                    if (unit.equals("ppm"))
+                        pm10ppm = true;
+                    else if (unit.equals("ugpsqm"))
+                        pm10ppm = false;
+                } else if (mag.equals("gas")) {
+                    if (unit.equals("ppm"))
+                        gasppm = true;
+                    else if (unit.equals("ugpsqm"))
+                        gasppm = false;
                 }
             }
         }
@@ -149,12 +159,30 @@ class Server implements Runnable {
      * press: mbar
      */
     private void genSensorData() {
-        if (temp)
+        if (weather) {
             tempVal += 0.01f;
-        if (humid)
             humidVal *= 0.99;
-        if (press)
             pressVal *= 1.01;
+        }
+        if (quality) {
+            pm10val += 1;
+            so2val += 1;
+            no2val += 1;
+            o3val += 1;
+
+        }
+    }
+
+    private Element serializeMeasurementXML(Document doc, String mag, String unit, float val) {
+        Element elem = doc.createElement("measurement");
+        Attr magA = doc.createAttribute("magnitude");
+        magA.setValue(mag);
+        elem.setAttributeNode(magA);
+        Attr unitA = doc.createAttribute("unit");
+        unitA.setValue(unit);
+        elem.setAttributeNode(unitA);
+        elem.appendChild(doc.createTextNode(Float.toString(val)));
+        return elem;
     }
 
     private String serializeDataXML() {
@@ -168,28 +196,17 @@ class Server implements Runnable {
             serverE.appendChild(doc.createTextNode(id));
             rootElement.appendChild(serverE);
 
-            if (temp) {
-                Element tempE = doc.createElement("temp");
-                tempE.appendChild(doc.createTextNode(Float.toString(tempVal)));
-                rootElement.appendChild(tempE);
-                Attr unitA = doc.createAttribute("unit");
-                unitA.setValue(tempC ? "C" : "F");
-                tempE.setAttributeNode(unitA);
+            if (weather) {
+                rootElement.appendChild(serializeMeasurementXML(doc, "temp", tempC ? "C" : "F", tempC ? tempVal : (tempVal * 1.8f) + 32.0f));
+                rootElement.appendChild(serializeMeasurementXML(doc, "humid", "%", humidVal));
+                rootElement.appendChild(serializeMeasurementXML(doc, "press", pressMbar ? "mbar" : "hpa", pressVal));
             }
 
-            if (humid) {
-                Element humidE = doc.createElement("humid");
-                humidE.appendChild(doc.createTextNode(Float.toString(humidVal)));
-                rootElement.appendChild(humidE);
-            }
-
-            if (press) {
-                Element pressE = doc.createElement("press");
-                pressE.appendChild(doc.createTextNode(Float.toString(pressVal)));
-                rootElement.appendChild(pressE);
-                Attr unitA = doc.createAttribute("unit");
-                unitA.setValue(pressMbar ? "mbar" : "hpa");
-                pressE.setAttributeNode(unitA);
+            if (quality) {
+                rootElement.appendChild(serializeMeasurementXML(doc, "pm10", "ugpsqm", pm10val));
+                rootElement.appendChild(serializeMeasurementXML(doc, "so2", gasppm ? "ppm" : "ugpsqm", gasppm ? so2val : so2val * 64.1f * 40.9f));
+                rootElement.appendChild(serializeMeasurementXML(doc, "no2", gasppm ? "ppm" : "ugpsqm", gasppm ? no2val : no2val * 46.1f * 40.9f));
+                rootElement.appendChild(serializeMeasurementXML(doc, "o3", gasppm ? "ppm" : "ugpsqm", gasppm ? o3val : o3val * 48.0f * 40.9f));
             }
 
             DOMSource source = new DOMSource(doc);
@@ -203,8 +220,69 @@ class Server implements Runnable {
         return "xml error";
     }
 
-    private String serializeDataJSON() {
-        return "{}";
+    private String serializeDataJSON() throws Exception {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        JsonWriter writer = new JsonWriter(new OutputStreamWriter(baos, "UTF-8"));
+        writer.setIndent(" ");
+        writer.beginObject();
+        writer.name("server").value(id);
+
+        writer.name("measurements");
+        writer.beginArray();
+
+        if (weather) {
+            writer.beginObject();
+            writer.name("magnitude").value("temp");
+            writer.name("unit").value(tempC ? "C" : "F");
+            writer.name("value").value(tempC ? tempVal : (tempVal * 1.8f) + 32.0f);
+            writer.endObject();
+
+            writer.beginObject();
+            writer.name("magnitude").value("humid");
+            writer.name("unit").value("%");
+            writer.name("value").value(humidVal);
+            writer.endObject();
+
+            writer.beginObject();
+            writer.name("magnitude").value("press");
+            writer.name("unit").value(pressMbar ? "mbar" : "hpa");
+            writer.name("value").value(pressVal);
+            writer.endObject();
+        }
+
+        if (quality) {
+            writer.beginObject();
+            writer.name("magnitude").value("pm10");
+            writer.name("unit").value("ugpsqm");
+            writer.name("value").value(pm10val);
+            writer.endObject();
+
+            writer.beginObject();
+            writer.name("magnitude").value("so2");
+            writer.name("unit").value(gasppm ? "ppm" : "ugpsqm");
+            writer.name("value").value(gasppm ? no2val : no2val * 64.1f * 40.9f);
+            writer.endObject();
+
+            writer.beginObject();
+            writer.name("magnitude").value("no2");
+            writer.name("unit").value(gasppm ? "ppm" : "ugpsqm");
+            writer.name("value").value(gasppm ? no2val : no2val * 46.1f * 40.9f);
+            writer.endObject();
+
+            writer.beginObject();
+            writer.name("magnitude").value("o3");
+            writer.name("unit").value(gasppm ? "ppm" : "ugpsqm");
+            writer.name("value").value(gasppm ? no2val : no2val * 48.0f * 40.9f);
+            writer.endObject();
+        }
+
+
+        writer.endArray();
+
+        writer.endObject();
+        writer.close();
+
+        return baos.toString();
     }
 
 
@@ -213,11 +291,12 @@ class Server implements Runnable {
             if (enabled) {
                 try {
                     genSensorData();
-                    String serData = json ? serializeDataJSON() : serializeDataXML();
+                    String serData;
+                    serData = json ? serializeDataJSON() : serializeDataXML();
                     sendBroadcast(serData);
                     System.out.println("sent: " + serData);
                 }
-                catch (IOException e) { e.printStackTrace(); }
+                catch (Exception e) { e.printStackTrace(); }
             }
 
             try {

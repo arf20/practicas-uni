@@ -17,14 +17,7 @@
           <xs:complexType>
             <xs:simpleContent>
               <xs:extension base="xs:string">
-                <xs:attribute name="magnitude" use="required">
-                  <xs:simpleType>
-                      <xs:restriction base="xs:string">
-                          <xs:enumeration value="temp"/>
-                          <xs:enumeration value="press"/>
-                      </xs:restriction>
-                  </xs:simpleType>
-                </xs:attribute>
+                <xs:attribute name="magnitude" use="required" type="xs:string"/>
               </xs:extension>
             </xs:simpleContent>
           </xs:complexType>

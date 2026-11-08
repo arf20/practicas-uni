@@ -1,7 +1,6 @@
 import java.io.*;
 import java.net.*;
 import java.util.*;
-import org.json.*;
 import javax.xml.*;
 import javax.xml.transform.*;
 import javax.xml.transform.dom.*;
@@ -17,6 +16,8 @@ import javax.xml.validation.*;
 import org.xml.sax.*;
 import javax.xml.parsers.*;
 import java.util.stream.*;
+import com.google.gson.*;
+import com.google.gson.stream.*;
 
 class Client implements Runnable {
     private static final int port = 6767;
@@ -50,6 +51,42 @@ class Client implements Runnable {
         validator = schema.newValidator();
     }
 
+    private void decodeXML(DatagramPacket p) {
+        Element root;
+
+        try {
+            Document document = dbuilder.parse(new ByteArrayInputStream(p.getData(), p.getOffset(), p.getLength()));
+            document.getDocumentElement().normalize();
+            root = document.getDocumentElement();
+            validator.validate(new DOMSource(root));
+
+            NodeList nlserver = root.getElementsByTagName("server");
+            NodeList nlmeas = root.getElementsByTagName("measurement");
+
+            System.out.println(nlserver.item(0).getTextContent() + ":");
+            
+            for (int i = 0; i < nlmeas.getLength(); i++)
+                System.out.println(" " + nlmeas.item(i).getAttributes().getNamedItem("magnitude").getTextContent() + ": " +
+                    nlmeas.item(i).getTextContent() + " " +
+                    nlmeas.item(i).getAttributes().getNamedItem("unit").getTextContent());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void decodeJSON(String s) {
+        JsonParser parser = new JsonParser();
+        JsonObject r = parser.parse(s).getAsJsonObject();
+        System.out.println(r.get("server").getAsString() + ":");
+        JsonArray meas = r.getAsJsonArray("measurements");
+        for (JsonElement e : meas) {
+            JsonObject m = e.getAsJsonObject();
+            System.out.println(" " + m.get("magnitude").getAsString() + ": " +
+                m.get("value").getAsString() + " " + m.get("unit").getAsString());
+        }
+    }
+
     @Override
     public void run() {
         byte[] buf = new byte[1024];
@@ -59,32 +96,10 @@ class Client implements Runnable {
             catch (IOException e) { e.printStackTrace(); }
             String s = new String(p.getData(), 0, p.getLength());
 
-            Element root;
-
-            try {
-                Document document = dbuilder.parse(new ByteArrayInputStream(p.getData(), p.getOffset(), p.getLength()));
-                document.getDocumentElement().normalize();
-                root = document.getDocumentElement();
-                validator.validate(new DOMSource(root));
-
-                NodeList nlserver = root.getElementsByTagName("server");
-                NodeList nltemp = root.getElementsByTagName("temp");
-                NodeList nlhumid = root.getElementsByTagName("humid");
-                NodeList nlpress = root.getElementsByTagName("press");
-
-                System.out.println(nlserver.item(0).getTextContent() + ":");
-                
-                for (int i = 0; i < nltemp.getLength(); i++)
-                    System.out.println(" temperature: " + nltemp.item(i).getTextContent() + " " + nltemp.item(i).getAttributes().getNamedItem("unit").getTextContent());
-                for (int i = 0; i < nlhumid.getLength(); i++)
-                    System.out.println(" humidity:    " + nlhumid.item(i).getTextContent() + " %");
-                for (int i = 0; i < nlpress.getLength(); i++)
-                    System.out.println(" pressure:    " + nlpress.item(i).getTextContent() + " " + nlpress.item(i).getAttributes().getNamedItem("unit").getTextContent());
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                continue;
-            }
+            if (s.charAt(0) == '<')
+                decodeXML(p);
+            else if (s.charAt(0) == '{')
+                decodeJSON(s);
         }
     }
 
