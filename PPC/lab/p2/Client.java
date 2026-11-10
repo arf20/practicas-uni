@@ -51,11 +51,11 @@ class Client implements Runnable {
         validator = schema.newValidator();
     }
 
-    private void decodeXML(DatagramPacket p) {
+    private void decodeXML(byte[] bytes) {
         Element root;
 
         try {
-            Document document = dbuilder.parse(new ByteArrayInputStream(p.getData(), p.getOffset(), p.getLength()));
+            Document document = dbuilder.parse(new ByteArrayInputStream(bytes));
             document.getDocumentElement().normalize();
             root = document.getDocumentElement();
             validator.validate(new DOMSource(root));
@@ -96,10 +96,10 @@ class Client implements Runnable {
             catch (IOException e) { e.printStackTrace(); }
             String s = new String(p.getData(), 0, p.getLength());
 
-            if (s.charAt(0) == '<')
-                decodeXML(p);
-            else if (s.charAt(0) == '{')
-                decodeJSON(s);
+            if (s.startsWith("Content-Type: application/xml"))
+                decodeXML(s.substring(33).getBytes());
+            else if (s.startsWith("Content-Type: application/json"))
+                decodeJSON(s.substring(34));
         }
     }
 

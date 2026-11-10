@@ -51,21 +51,24 @@ class Server implements Runnable {
         if (args.length > 0)
             ifname = args[0];
 
-        if (args.length > 1) {
-            weather = args[1].equals("weather");
-            quality = args[1].equals("quality");
-        }
-
-        if (args.length > 2)
-            id = args[2];
+        if (args.length > 1)
+            id = args[1];
         else
             id = "default";
+
+        if (args.length > 2) {
+            weather = args[2].equals("weather");
+            quality = args[2].equals("quality");
+        }
+
 
         socket = new MulticastSocket();
         socket.setReuseAddress(true);
         socket.setNetworkInterface(NetworkInterface.getByName(ifname));
 
-        ctrlSocket = new DatagramSocket(port+1);
+        ctrlSocket = new DatagramSocket(null);
+        ctrlSocket.setReuseAddress(true);
+        ctrlSocket.bind(new InetSocketAddress(InetAddress.getByAddress(new byte[]{0,0,0,0}), port+1));
 
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         dbuilder = dbFactory.newDocumentBuilder();
@@ -213,7 +216,7 @@ class Server implements Runnable {
             StringWriter sw = new StringWriter();
             StreamResult result = new StreamResult(sw);
             transformer.transform(source, result);
-            return sw.toString();
+            return "Content-Type: application/xml\r\n\r\n" + sw.toString();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -282,7 +285,7 @@ class Server implements Runnable {
         writer.endObject();
         writer.close();
 
-        return baos.toString();
+        return "Content-Type: application/json\r\n\r\n" + baos.toString();
     }
 
 
