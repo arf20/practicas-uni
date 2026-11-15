@@ -21,7 +21,7 @@ import com.google.gson.stream.*;
 
 class Client implements Runnable {
     private static final int port = 6767;
-    private static final InetSocketAddress group = new InetSocketAddress("ff12::caca", port);
+    private static final InetSocketAddress group = new InetSocketAddress("ff12::cafe", port);
 
     private MulticastSocket socket;
     private final NetworkInterface netif;
@@ -59,6 +59,7 @@ class Client implements Runnable {
             document.getDocumentElement().normalize();
             root = document.getDocumentElement();
             validator.validate(new DOMSource(root));
+            System.out.println("xml valid");
 
             NodeList nlserver = root.getElementsByTagName("server");
             NodeList nlmeas = root.getElementsByTagName("measurement");
@@ -95,6 +96,7 @@ class Client implements Runnable {
             try { socket.receive(p); }
             catch (IOException e) { e.printStackTrace(); }
             String s = new String(p.getData(), 0, p.getLength());
+            System.out.println("recv: " + s);
 
             if (s.startsWith("Content-Type: application/xml"))
                 decodeXML(s.substring(33).getBytes());

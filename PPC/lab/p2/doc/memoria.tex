@@ -1,0 +1,232 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+
+\title{PPC Práctica 2 - UDP, JSON y XML}
+\date{14 de Noviembre, 2026}
+\author{Ángel Ruiz Fernandez}
+
+\begin{document}
+
+    \maketitle
+    \pagebreak
+
+    \tableofcontents
+    \pagebreak
+
+    \section{Funcionalidades}
+
+    Se han implementado todos los requisitos obligatorios:
+
+    \begin{itemize}
+    \item a. mensajes de distribución con cabecera de \texttt{Content-Type} generados
+    \item b. mensajes de control
+    \begin{itemize}
+        \item cambiar codificación
+        \item cambiar frencuencia
+        \item cambiar unidades
+        \item activar y desactivar envío
+    \end{itemize}
+    \item formatos XML y JSON:
+    \begin{itemize}
+        \item validación XML Schema Definition 1.0 para XML utilizando \texttt{javax.xml} con archivos \texttt{.xsd} incluidos
+        \item parser DOM de XML
+        \item JSON utilizando paquete GSON
+        \item volcado a un archivo \texttt{server.log} en el servidor
+    \end{itemize}
+    \item requisitos opcionales
+    \begin{itemize}
+        \item distintas tramas de control
+        \item distintos clientes en misma maquina (gracias a \texttt{setsockopt(SO\_REUSEADDR)})
+    \end{itemize}
+    \end{itemize}
+
+    Mensajes descritos en \texttt{MENSAJES.md}
+
+    Ya que el servidor ha de enviar y recibir datos simultaneamente, es natural implementarlo
+    mediante dos hilos.
+
+    La validación mediante XML Schema Definition es la más extendida y con mayor funcionalidad, sencilla de usar con \texttt{javax.xml}.
+
+    El grupo multicast utilizado es configurable en tiempo de compilación modificando la constante \texttt{group}, que por defecto es \texttt{ff12::cafe}.
+    Asimismo, el puerto configirable de destino de datagramas es el \texttt{6767}, y el de comandos de control el \texttt{6768}.
+
+    \section{Implementación}
+    
+    \subsection{Diseño}
+
+    Utilizando sockets multicast IPv6 con MulticastSocket bindeados a una interfaz especifica link-local.
+
+    Cliente y servidor usan E/S síncrona, ya que al tener un thread dedicados a escuchar o enviar,
+    pueden esperar síncronamente si es hora de enviar o si se han recibido datos nuevos.
+
+    La serialización y deserialización es ad-hoc, ya que es más sencilla y compacta.
+    La serialización/deserialización mediante Java Reflection requiere una clase Bean en GSON
+    y en XML es inexistente porque XML no corresponde 1:1 a objetos, mientras que JSON si.
+
+    \subsubsection{Formato de datagramas}
+
+    \begin{verbatim}
+    Content-Type: <tipo>
+
+    [datos en xml o json]
+    \end{verbatim}
+
+    Tipo puede ser según el formato de la trama
+
+    \begin{itemize}
+    \item \texttt{application/xml}
+    \item \texttt{application/json}
+    \end{itemize}
+
+    Datagrama XML:
+    \begin{verbatim}
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="data">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="server" type="xs:string"/>
+
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+
+          <xs:element name="measurement">
+            <xs:complexType>
+              <xs:simpleContent>
+                <xs:extension base="xs:decimal">
+                  <xs:attribute name="magnitude" use="required" type="xs:string"/>
+                  <xs:attribute name="unit" use="required" type="xs:string"/>
+                </xs:extension>
+              </xs:simpleContent>
+            </xs:complexType>
+          </xs:element>
+
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+    \end{verbatim}
+
+    Datagrama JSON (ejemplo):
+    \begin{verbatim}
+    {
+        "server": "<id de servidor>",
+        "measurements": [
+            {
+                "magnitude": "<magnitud>",
+                "unit": "<unidad>",
+                "value": "<valor>"
+            }
+        ]
+    }
+    \end{verbatim}
+
+    Comandos:
+    \begin{verbatim}
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="control">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="format">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="json"/>
+                    <xs:enumeration value="xml"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:element>
+        <xs:element name="frequency" type="xs:integer"/>
+        <xs:element name="unit">
+          <xs:complexType>
+            <xs:simpleContent>
+              <xs:extension base="xs:string">
+                <xs:attribute name="magnitude" use="required" type="xs:string"/>
+              </xs:extension>
+            </xs:simpleContent>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="enable" type="xs:boolean"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
+    \end{verbatim}
+
+    \subsubsection{Servidor}
+
+    Aplicación en Java con dos threads, uno envía periodicamente datagramas,
+    y el otro está a la espera de comandos. Se compone de una sola clase que implementa
+    Runnable para lanzar el thread que escucha comandos, mientras que el main thread
+    es el que se dedica a enviar datagramas.
+
+    \subsubsection{Cliente}
+
+    Aplicación en Java con un solo thread. Según se ejecute, se queda escuchando datagramas
+    en una interfaz, o envía un comando y termina. También se compone de una sola clase.
+
+    \section{Ejecución}
+
+    \subsection{Compilación}
+    
+    \begin{verbatim}
+    make
+    \end{verbatim}
+    
+    \subsection{Lanzamiento}
+
+    \subsubsection{Servidor}
+
+    \begin{verbatim}
+    java -jar build/server.java [interfaz] [id de servidor] [weather | quality]
+    \end{verbatim}
+
+    \begin{itemize}
+    \item interfaz: interfaz donde enviar tráfico multicast
+    \item id de servidor: campo que identifica al servidor que manda los datagramas
+    \item weather \textbar quality: dos tipos de sensores en el servidor
+    \end{itemize}
+
+    Necesario especificar interfaz
+
+    \subsubsection{Cliente}
+
+    \begin{verbatim}
+    java -jar build/client.java [-i <interfaz>] <listen | cmd <servidor>
+     <comando> <argumento> [magnitud]]
+    \end{verbatim}
+
+    \begin{itemize}
+    \item interfaz: interfaz donde recibir tráfico multicast
+    \item listen \textbar cmd: escuchar datos de sensores, o enviar un comando
+    \item servidor: servidor al que mandarle comando de control
+    \item comando: comando que enviar
+    \begin{itemize}
+        \item format \textless json \textbar xml \textgreater: formato de datagramas de datos
+        \item frequency \textless f\textgreater: frecuencia en Hz de muestreo
+        \item unit \textless unidad\textgreater \textless magnitud\textgreater: unidad para la magnitud
+        \item enable \textless true \textbar false \textgreater: encender o apagar envio de datos
+    \end{itemize}
+    \item argumento: argumento del comando enviado
+    \item magnitud: el comando
+    \end{itemize}
+
+    Necesario especificar interfaz (\texttt{lo} por defecto)
+
+    El cliente puede recibir datagramas en cualquiera de los dos formatos, XML o JSON,
+    de manera transparente.
+
+    \section{Autoría}
+
+    Declaro que he confeccionado la totalidad de esta práctica.
+    No se ha usado IA tales como LLMs de ninguna manera para realizar esta práctica.
+
+\end{document}
+
