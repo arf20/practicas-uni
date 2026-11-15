@@ -146,7 +146,7 @@ class ServerThread implements Runnable {
         if (method.equals("GET") && path.equals("/")) {
             out.print("HTTP/1.1 200 OK\r\n");
             out.print("Connection: close\r\n");
-            out.print("Server: PCC java shit/1\r\n");
+            out.print("Server: PCC java server/1\r\n");
             out.print("Content-Type: text/html; charset=utf8\r\n\r\n");
 
             out.print("<html><head><title>PCC cosa</title></head><body>\r\n");
@@ -165,18 +165,20 @@ class ServerThread implements Runnable {
 
             System.out.println(cart);
             out.print("<table><tr><th>Producto</th><th>Precio</th><th>Accion</th></tr>\r\n");
+            float total = 0.0f;
             for (Product p : cart.list()) {
                 out.print("<tr><td><a href=\"/product/html/" + p.id + "\">" + p.name + "</td><td>" + p.price + "</td><td><button type=\"button\" onclick=\"" +
                    "event.preventDefault(); (async() => { const res = window.fetch(location.protocol + '//' + location.host + '/cart/" + p.id + "', { method: 'delete' }).then(res => { console.log(res); location.reload(); }); })()\">Eliminar</button></td></tr>");
+                total += p.price;
                 // location.reload();
             }
             out.print("</table>");
-
+            out.print("<p>Total: " + total + "</p>");
             out.print("</body></html>\r\n");
         } else if (method.equals("GET") && path.equals("/json")) {
             out.print("HTTP/1.1 200 OK\r\n");
             out.print("Connection: close\r\n");
-            out.print("Server: PCC java shit/1\r\n");
+            out.print("Server: PCC java server/1\r\n");
             out.print("Set-Cookie: cart=" + cart.toCookie() + "; Path=/\r\n");
             out.print("Content-Type: text/json; charset=utf8\r\n\r\n");
             out.print(db.toJSON());
@@ -185,11 +187,11 @@ class ServerThread implements Runnable {
             if (p == null) {
                 out.print("HTTP/1.1 404 Not Found\r\n");
                 out.print("Connection: close\r\n");
-                out.print("Server: PCC java shit/1\r\n");
+                out.print("Server: PCC java server/1\r\n");
             } else {
                 out.print("HTTP/1.1 200 OK\r\n");
                 out.print("Connection: close\r\n");
-                out.print("Server: PCC java shit/1\r\n");
+                out.print("Server: PCC java server/1\r\n");
                 out.print("Content-Type: text/html; charset=utf8\r\n\r\n");
                 out.print("<html><head><title>PCC cosa</title></head><body><h1>" + p.name + "</h1><p>" + p.desc + "</p><i>" +p.price + "€</i></body></html>\r\n");
             }
@@ -198,7 +200,7 @@ class ServerThread implements Runnable {
             if (p == null) {
                 out.print("HTTP/1.1 404 Not Found\r\n");
                 out.print("Connection: close\r\n");
-                out.print("Server: PCC java shit/1\r\n");
+                out.print("Server: PCC java server/1\r\n");
             } else {
                 JSONObject o = new JSONObject();
                 o.put("id", p.id);
@@ -208,7 +210,7 @@ class ServerThread implements Runnable {
 
                 out.print("HTTP/1.1 200 OK\r\n");
                 out.print("Connection: close\r\n");
-                out.print("Server: PCC java shit/1\r\n");
+                out.print("Server: PCC java server/1\r\n");
                 out.print("Content-Type: text/json; charset=utf8\r\n\r\n");
                 out.print(o.toString());
             }
@@ -219,12 +221,12 @@ class ServerThread implements Runnable {
             if (p == null) {
                 out.print("HTTP/1.1 404 Not Found\r\n");
                 out.print("Connection: close\r\n");
-                out.print("Server: PCC java shit/1\r\n");
+                out.print("Server: PCC java server/1\r\n");
             } else {
                 cart.add(p);
                 out.print("HTTP/1.1 201 Created\r\n");
                 out.print("Connection: close\r\n");
-                out.print("Server: PCC java shit/1\r\n");
+                out.print("Server: PCC java server/1\r\n");
                 out.print("Location: /\r\n");
                 out.print("Set-Cookie: cart=" + cart.toCookie() + "; Path=/\r\n");
             }
@@ -235,25 +237,25 @@ class ServerThread implements Runnable {
             if (p == null) {
                 out.print("HTTP/1.1 404 Not Found\r\n");
                 out.print("Connection: close\r\n");
-                out.print("Server: PCC java shit/1\r\n");
+                out.print("Server: PCC java server/1\r\n");
             } else {
                 cart.delete(p);
                 out.print("HTTP/1.1 200 OK\r\n");
                 out.print("Connection: close\r\n");
-                out.print("Server: PCC java shit/1\r\n");
+                out.print("Server: PCC java server/1\r\n");
                 out.print("Set-Cookie: cart=" + cart.toCookie() + "; Path=/\r\n");
             }
         } else if (method.equals("GET") && path.startsWith("/cart/json")) {
             out.print("HTTP/1.1 200 OK\r\n");
             out.print("Connection: close\r\n");
-            out.print("Server: PCC java shit/1\r\n");
+            out.print("Server: PCC java server/1\r\n");
             out.print("Set-Cookie: cart=" + cart.toCookie() + "; Path=/\r\n");
             out.print("Content-Type: text/json; charset=utf8\r\n\r\n");
             out.print(cart.toJSON());
         } else {
             out.print("HTTP/1.1 404 Not Found\r\n");
             out.print("Connection: close\r\n");
-            out.print("Server: PCC java shit/1\r\n");
+            out.print("Server: PCC java server/1\r\n");
         }
 
         out.flush();
@@ -351,7 +353,9 @@ class TLSServer implements Runnable {
             sslContext.init(kmf.getKeyManagers(), null, null);
             SSLServerSocketFactory ssf = sslContext.getServerSocketFactory();
 
-            serverSocket = (SSLServerSocket) ssf.createServerSocket(8443);
+            serverSocket = (SSLServerSocket)ssf.createServerSocket(8443);
+            serverSocket.setNeedClientAuth(true);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

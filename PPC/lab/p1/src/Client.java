@@ -32,7 +32,6 @@ class RequestResult {
 }
 
 class Client {
-
     private static RequestResult doRequest(Map<String, String> cookies, String host, int port, String method, String url) throws IOException {
         // open socket, connect
         Socket s = new Socket(host, port);
@@ -89,12 +88,16 @@ class Client {
         return new RequestResult(Integer.parseInt(status.split(" ")[0]), body);
     }
 
-
     public static void main(String[] args) {
         System.out.println("PCC Java Client");
 
         String host = "localhost";
         int port = 8080;
+
+        if (args.length > 0)
+            host = args[0];
+        if (args.length > 1)
+            port = Integer.parseInt(args[1]);
 
         try {
             // load cookies
@@ -132,7 +135,7 @@ class Client {
                 } else if (cmd.startsWith("add")) {
                     String id = cmd.split(" ")[1];
                     RequestResult rs = doRequest(cookies, host, port, "POST", "/cart/" + id);
-                    if (rs.status != 200) {
+                    if (rs.status != 201) {
                         System.out.println("error: " + rs.status);
                         break;
                     }
