@@ -2,7 +2,7 @@ PROJECT := sbr
 BINARY := $(PROJECT)
 CC := gcc
 CFLAGS := -Wall -pedantic -g
-LDFLAGS := -lm
+LDFLAGS := -lm -g
 
 SRC := $(wildcard src/*.c)
 HDR := $(wildcard src/*.h)
