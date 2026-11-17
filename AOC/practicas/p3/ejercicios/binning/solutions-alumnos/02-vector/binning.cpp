@@ -13,7 +13,8 @@ void BinParticles(const InputDataType& inputData, BinsType& outputBins) {
 
   // Loop through all particle coordinates
   int n = inputData.numDataPoints;
-#pragma omp parallel for simd reduction(+:hist[:nBinsX*nBinsY])
+//#pragma omp parallel for simd reduction(+:hist[:nBinsX*nBinsY])
+#pragma omp simd reduction(+:hist[:nBinsX*nBinsY])
   for (int i = 0; i < n; i++) {
     // Transforming from cylindrical to Cartesian coordinates:
     const FTYPE x = inputData.r[i]*COS(inputData.phi[i]);

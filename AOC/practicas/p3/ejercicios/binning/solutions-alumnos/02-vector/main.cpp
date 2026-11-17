@@ -148,9 +148,9 @@ int main(const int argc, const char** argv) {
   vector<double> times;
   vector<double> pps;
 
-  InputDataType inputData;
+  alignas(32) InputDataType inputData;
   init_input_data(inputData, seed, numDataPoints);
-  BinsType binnedData;
+  alignas(32) BinsType binnedData;
   
   for (size_t i = 0; i < repeat_times; ++i) {
     reset_bins(binnedData);

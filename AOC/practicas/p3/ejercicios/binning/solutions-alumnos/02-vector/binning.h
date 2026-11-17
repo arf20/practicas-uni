@@ -14,9 +14,9 @@
 // Input data arrives as an array of cylindrical coordinates
 // of particles: r and phi. Size of the array is numDataPoints
 struct InputDataType {
-  int numDataPoints;
-  FTYPE *r;
-  FTYPE *phi;
+  alignas(32) int numDataPoints;
+  alignas(32) FTYPE *r;
+  alignas(32) FTYPE *phi;
 };
 
 // The output type is a matrix of bins
