@@ -1,4 +1,3 @@
-solucion,clang,gcc,icc
 01-messages,5.8,2.7,6.5
 02-conversions,8.6,3.1,8.6
 03-strength-reduction,8.8,8.8,12.1

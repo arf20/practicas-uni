@@ -1,0 +1,28 @@
+dnie persona
+
+estudio juntos en la uni de murcia
+subdirector adjunto ministerio transformacion digital etc etc
+
+jefe area servicios administracion digital
+
+DNIe es unico sistema de id electronico de nivel de seguridad alto
+eIDAS cartera digital europea de id y firmar docs
+
+
+
+
+
+
+
+
+
+q&a:
+
+plan de criptografía post cuantica? ECC? ECDSA? ED22519?
+
+como se firma de manera segura el certificado cuando se utiliza un equipo de la policia
+el equipo manda un CSR a una entidad centralizada? como se hace seguro?
+
+eIDAS 2.0 verificacion de edad, endpoint que devuelve solo el bracket de edad
+
+

@@ -1,0 +1,259 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+
+\usetheme[progressbar=frametitle,numbering=fraction]{metropolis}
+\usepackage[spanish]{babel}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc}
+
+\definecolor{btblue}{HTML}{0082FC}
+\definecolor{btdark}{HTML}{102A43}
+\definecolor{btlight}{HTML}{E8F3FF}
+\definecolor{btorange}{HTML}{E8752B}
+
+\setbeamercolor{progress bar}{fg=btblue}
+\setbeamercolor{alerted text}{fg=btorange}
+\setbeamercolor{title separator}{fg=btblue}
+\setbeamercolor{block title}{bg=btblue!12,fg=btdark}
+\setbeamercolor{block body}{bg=btlight}
+\setbeamertemplate{frame footer}{\tiny TCI · WPAN · Escenario B}
+
+\tikzset{
+  btdev/.style={draw=btblue!70, fill=btlight, rounded corners=3pt,
+              minimum width=3.4cm, minimum height=1.4cm, align=center, font=\small},
+  btstep/.style={draw=btblue!65, fill=btlight, rounded corners=3pt,
+               text width=2.6cm, minimum height=1.25cm, align=center, font=\scriptsize},
+  btlayer/.style={draw=btblue!55, fill=btlight, rounded corners=2pt,
+                minimum height=0.55cm, align=center, font=\scriptsize},
+  btflow/.style={-{Latex[length=2mm]}, thick, btblue!80}
+}
+
+\title{Escenario B: llamada de manos libres}
+\subtitle{Bluetooth Clásico y Hands-Free Profile}
+\author{Prácticas TCI}
+\date{Tema 6 · Redes WPAN}
+
+\begin{document}
+
+\begin{frame}[plain,shrink]
+  \titlepage
+\end{frame}
+
+\begin{frame}{El escenario}
+  \begin{center}
+  \begin{tikzpicture}
+    \node[btdev] (ag) {AG\\[2pt]{\footnotesize Smartphone}};
+    \node[btdev, right=5.2cm of ag] (hf) {HF\\[2pt]{\footnotesize Coche / auricular}};
+    \draw[<->, thick, btblue] ([yshift=4mm]ag.east) -- node[above, font=\scriptsize, align=center]{ACL\\SDP · RFCOMM · AT} ([yshift=4mm]hf.west);
+    \draw[<->, thick, btorange] ([yshift=-5mm]ag.east) -- node[below, font=\scriptsize, align=center]{SCO/eSCO\\voz: CVSD / mSBC} ([yshift=-5mm]hf.west);
+  \end{tikzpicture}
+  \end{center}
+  \vspace{2mm}
+  \begin{itemize}
+    \item Bluetooth Clásico (BR/EDR): el móvil aporta la red celular; el HF, micrófono, altavoz y botones.
+    \item HFP separa \alert{control} (comandos AT por RFCOMM) y \alert{voz} (SCO/eSCO).
+    \item El enlace de audio solo existe mientras dura la llamada.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Conexión: establecimiento}
+  \begin{center}
+  \begin{tikzpicture}[node distance=4mm]
+    \node[btstep] (s1) {Descubrir\\+ emparejar};
+    \node[btstep, right=of s1] (s2) {ACL + SDP\\canal RFCOMM};
+    \node[btstep, right=of s2] (s3) {SLC por RFCOMM\\AT+BRSF · CIND};
+    \node[btstep, right=of s3] (s4) {Llamada\\SCO/eSCO};
+    \foreach \a/\b in {s1/s2,s2/s3,s3/s4} \draw[btflow] (\a) -- (\b);
+  \end{tikzpicture}
+  \end{center}
+  \vspace{2mm}
+  \begin{itemize}
+    \item \textbf{Emparejamiento} (SSP): solo la primera vez; se guarda la \emph{link key}. Just Works en auriculares, comparación numérica en el coche.
+    \item \textbf{SDP}: el HF obtiene el canal RFCOMM y las funciones del AG (UUID \texttt{0x111F}).
+    \item \textbf{SLC}: negocia features e indicadores y queda abierta entre llamadas.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Conexión: durante la llamada}
+  \begin{center}
+  \begin{tikzpicture}[font=\scriptsize]
+    \node[font=\small\bfseries, text=btblue] (ag) at (0,0) {AG (móvil)};
+    \node[font=\small\bfseries, text=btblue] (hf) at (10,0) {HF (coche)};
+    \draw[thick, btblue!40] (0,-0.15) -- (0,-4.55);
+    \draw[thick, btblue!40] (10,-0.15) -- (10,-4.55);
+    \draw[-{Latex}] (10,-0.8) -- node[above]{AT+BRSF, CIND, CMER, CHLD} (0,-0.8);
+    \draw[-{Latex}] (0,-1.5) -- node[above]{OK + indicadores (cobertura, batería)} (10,-1.5);
+    \draw[-{Latex}] (0,-2.2) -- node[above]{RING} (10,-2.2);
+    \draw[-{Latex}] (10,-2.65) -- node[above]{ATA} (0,-2.65);
+    \draw[<->, very thick, btorange] (0,-3.5) -- node[above]{eSCO: voz (CVSD / mSBC)} (10,-3.5);
+    \draw[-{Latex}] (10,-4.0) -- node[above]{AT+CHUP} (0,-4.0);
+  \end{tikzpicture}
+  \end{center}
+  \vspace{1mm}
+  \begin{itemize}
+    \item La voz va y vuelve por el enlace SCO/eSCO; el AG lo abre al activarse la llamada.
+    \item Al colgar se libera el audio, pero la SLC permanece: la siguiente llamada no renegocia todo.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Capas Bluetooth}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.43\textwidth}
+      \centering
+      \begin{tikzpicture}
+        \node[btlayer, minimum width=4.8cm] (hfp) at (0,0) {HFP (AT)};
+        \node[btlayer, minimum width=2.2cm] (sdp) at (-1.25,-0.8) {SDP};
+        \node[btlayer, minimum width=2.2cm] (rf) at (1.25,-0.8) {RFCOMM};
+        \node[btlayer, minimum width=4.8cm] (l2) at (0,-1.6) {L2CAP};
+        \node[btlayer, minimum width=4.8cm] (lm) at (0,-2.4) {Link Manager};
+        \node[btlayer, minimum width=4.8cm, fill=btorange!12, draw=btorange!70] (bb) at (0,-3.2) {Baseband (SCO/eSCO)};
+        \node[btlayer, minimum width=4.8cm] (radio) at (0,-4.0) {Radio 2.4 GHz};
+      \end{tikzpicture}
+    \end{column}
+    \begin{column}{0.53\textwidth}
+      \footnotesize
+      \begin{itemize}
+        \item \textbf{Radio}: 2.4 GHz ISM, 79 canales de 1 MHz, GFSK, FHSS 1600 saltos/s, TDD.
+        \item \textbf{Baseband}: piconet maestro/esclavo, slots de 625 µs; SCO reserva slots; ACL usa ARQ.
+        \item \textbf{LMP}: establece el enlace, autentica y crea SCO/eSCO.
+        \item \textbf{L2CAP}: canales lógicos y multiplexión.
+        \item \textbf{RFCOMM}: puerto serie (TS 07.10) para los AT.
+        \item \textbf{SDP}: publica servicios y canales.
+        \item La voz \alert{no} pasa por L2CAP/RFCOMM: va de Baseband a SCO/eSCO.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Dispositivos y roles}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{AG · Audio Gateway}
+        \footnotesize
+        \begin{itemize}
+          \item Smartphone o módulo telefónico del coche.
+          \item Stack clásico completo; rol HFP AG y servidor SDP.
+          \item Encamina la voz entre el módem celular y el enlace Bluetooth.
+          \item Normalmente \textbf{maestro} de la piconet.
+        \end{itemize}
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{HF · Hands-Free}
+        \footnotesize
+        \begin{itemize}
+          \item Kit de coche o auricular.
+          \item Rol HFP HF; HSP como respaldo.
+          \item Micrófono, altavoz, cancelación de eco/ruido y botones.
+          \item Normalmente \textbf{esclavo}; puede haber varios HF por AG.
+        \end{itemize}
+      \end{block}
+    \end{column}
+  \end{columns}
+  \vspace{2mm}
+  \begin{center}
+    \footnotesize Perfiles comunes: GAP · SDP · SPP · HFP \quad|\quad Opcionales: PBAP · MAP · A2DP/AVRCP
+  \end{center}
+\end{frame}
+
+\begin{frame}{Enlaces}
+  \centering
+  \scriptsize
+  \begin{tabular}{@{}lccc@{}}
+    \toprule
+    & \textbf{ACL} & \textbf{SCO} & \textbf{eSCO} \\
+    \midrule
+    Uso & control, SDP, AT & voz estrecha & voz ancha \\
+    Topología & punto-multipunto & punto a punto & punto a punto \\
+    Slots & 1, 3 o 5 & reservados (2/4/6) & ventana de retransmisión \\
+    Fiabilidad & ARQ & FEC, sin retx. & retx. limitada \\
+    Voz & --- & CVSD, 8 kHz & mSBC, 16 kHz \\
+    \bottomrule
+  \end{tabular}
+  \vspace{4mm}
+  \begin{itemize}
+    \item El maestro reserva los slots de voz; TDD alterna el sentido en slots adyacentes.
+    \item FHSS: 1600 saltos/s sobre 79 canales; la secuencia la fija el maestro.
+    \item El enlace de audio se crea al activar la llamada y se libera al colgarla.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Perfiles}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.5\textwidth}
+      \footnotesize
+      \textbf{Imprescindibles}
+      \begin{itemize}
+        \item \textbf{HFP} (AG/HF): responder/colgar, marcación, espera y multillamada, indicadores, volumen, códec.
+        \item \textbf{SPP}: transporte RFCOMM de los AT.
+        \item \textbf{GAP}: descubrimiento, pairing y roles.
+        \item \textbf{SDP}: UUID \texttt{0x111E} (HF) y \texttt{0x111F} (AG).
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.46\textwidth}
+      \footnotesize
+      \textbf{Opcionales}
+      \begin{itemize}
+        \item \textbf{HSP}: respaldo simple (CVSD).
+        \item \textbf{PBAP / MAP}: agenda y SMS.
+        \item \textbf{A2DP / AVRCP}: música fuera de la llamada.
+      \end{itemize}
+    \end{column}
+  \end{columns}
+  \vspace{3mm}
+  \begin{block}{Versiones de HFP}
+    \footnotesize 1.5 incorpora eSCO · 1.6 añade mSBC (16 kHz) · 1.9 añade LC3-SWB (32 kHz)
+  \end{block}
+\end{frame}
+
+\begin{frame}{Posible implementación}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      \begin{block}{HF de prototipo}
+        \footnotesize ESP32 con ESP-IDF/Bluedroid (\texttt{hfp\_hf}); micrófono y altavoz por I2S; botones por GPIO.
+      \end{block}
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      \begin{block}{AG alternativa}
+        \footnotesize PC/Raspberry Pi con dongle USB y BlueZ + oFono; voz por PipeWire/ALSA y módem o VoIP.
+      \end{block}
+    \end{column}
+  \end{columns}
+  \vspace{3mm}
+  \begin{center}
+  \begin{tikzpicture}[node distance=3mm]
+    \node[btstep] (i1) {Init radio\\+ SDP/RFCOMM};
+    \node[btstep, right=of i1] (i2) {SSP\\+ ACL};
+    \node[btstep, right=of i2] (i3) {SLC\\AT};
+    \node[btstep, right=of i3] (i4) {eSCO\\+ PCM};
+    \foreach \a/\b in {i1/i2,i2/i3,i3/i4} \draw[btflow] (\a) -- (\b);
+  \end{tikzpicture}
+  \end{center}
+  \vspace{2mm}
+  \footnotesize
+  Verificación: \texttt{btmon}/\texttt{btsnoop} con Wireshark (AT y paquetes SCO) + prueba de eco y latencia.
+\end{frame}
+
+\begin{frame}{Resumen}
+  \begin{itemize}
+    \item HFP combina \alert{SPP/RFCOMM} para el control (AT) y \alert{SCO/eSCO} para la voz.
+    \item El emparejamiento y la SLC se negocian una vez; el audio solo existe durante la llamada.
+    \item SCO transporta CVSD (8 kHz); eSCO permite mSBC (16 kHz) y retransmisión.
+    \item Implementación típica: ESP32 como HF o BlueZ/oFono como AG, con SDP, RFCOMM y HFP.
+  \end{itemize}
+  \vspace{4mm}
+  \begin{block}{Idea clave}
+    \footnotesize HFP es una \emph{rebanada} de Bluetooth Clásico: GAP + SDP + SPP + HFP para controlar, y Baseband + SCO/eSCO para la voz.
+  \end{block}
+\end{frame}
+
+\begin{frame}{Referencias}
+  \footnotesize
+  \begin{itemize}
+    \item Tema 6, \emph{WPAN: redes inalámbricas de área personal} (transparencias de clase).
+    \item Bluetooth SIG, \emph{Hands-Free Profile 1.9}, 2023.
+    \item Bluetooth SIG, \emph{Core Specification} (Baseband, LMP, L2CAP, RFCOMM, SDP).
+  \end{itemize}
+\end{frame}
+
+\end{document}
