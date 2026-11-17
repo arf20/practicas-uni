@@ -23,4 +23,15 @@ typedef struct {
     float           f_cert;         /* fact certainty factor */
 } fact_t;
 
+typedef struct {
+    size_t          rb_rules_size;
+    rule_t         *rb_rules;
+} rulebase_t;
+
+typedef struct {
+    size_t          fb_facts_size;
+    fact_t         *fb_facts;
+    uint8_t         fb_goal;        /* literal */
+} factbase_t;
+
 #endif /* _SBR_H */
