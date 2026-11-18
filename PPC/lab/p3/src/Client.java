@@ -21,6 +21,17 @@ import com.google.gson.stream.*;
 import javax.net.ssl.*;
 import java.security.*;
 
+
+class MailAgent {
+    private final String mail_server = "mail.arf20.com";
+    public MailAgent() {
+        Properties props = System.getProperties();
+        props.put("mail.smtp.host", mail_server);
+        Session session = Session.getDefaultInstance(props, null);
+    }
+}
+
+
 class WebServeThread implements Runnable {
     private Socket sock;
     private Broker broker;
