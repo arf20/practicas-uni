@@ -1,5 +1,5 @@
 JAVAC := javac
-JFLAGS := -cp gson-2.15.0.jar -d build/
+JFLAGS := -cp gson-2.15.0.jar -d build/ -Xlint:deprecation
 
 all: server.jar client.jar
 

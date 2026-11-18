@@ -18,46 +18,195 @@ import javax.xml.parsers.*;
 import java.util.stream.*;
 import com.google.gson.*;
 import com.google.gson.stream.*;
+import javax.net.ssl.*;
+import java.security.*;
 
-class WebServeThread {
-    public WebServeThread() {
+class WebServeThread implements Runnable {
+    private Socket sock;
+    private Broker broker;
 
+    public WebServeThread(Socket sock, Broker broker) {
+        this.sock = sock;
+        this.broker = broker;
+    }
+
+    private String response(String status, String mimetype, String body) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("HTTP/1.1 " + status + "\n");
+        sb.append("Connection: close\n");
+        sb.append("Server: ppc p3\n");
+        if (mimetype != null)
+            sb.append("Content-Type: " + mimetype + "\n\n");
+        if (body != null)
+            sb.append(body);
+        sb.append("\n");
+        return sb.toString().replaceAll("\n", "\r\n");
+    }
+
+    private void serve(String method, String path, List<String[]> headers, List<String> body) throws Exception {
+        if (method.equals("GET") && path.equals("/")) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("HTTP/1.1 301 Moved Permanently\n");
+            sb.append("Connection: close\n");
+            sb.append("Server: ppc p3\n");
+            sb.append("Location: /index.html\n");
+            String response = sb.toString().replaceAll("\n", "\r\n");
+            sock.getOutputStream().write(response.getBytes());
+            System.out.println("[site]  301 OK [" + response.length() + "]");
+        } else if (method.equals("GET") && path.equals("/index.html")) {
+            StringBuilder sb = new StringBuilder();
+            sb.append("<!DOCTYPE html>\n<html>\n");
+            sb.append(" <head>\n");
+            sb.append("  <title>ppc</title>\n");
+            sb.append(" </head>\n");
+            sb.append(" <body>\n");
+            sb.append("  <h1>PPC Broker</h1>\n");
+            sb.append("  <h2><a href=\"/data.html\">Mostrar datos</a></h1>\n");
+            sb.append("  <h2><a href=\"/api/\">API REST</a></h1>\n");
+            sb.append(" </body>\n");
+            sb.append("</html>");
+
+            String response = response("200 OK", "text/html", sb.toString());
+            sock.getOutputStream().write(response.getBytes());
+            System.out.println("[site]  200 OK [" + response.length() + "]");
+        } else if (method.equals("GET") && path.equals("/data.html")) {
+            // generate html
+            StringBuilder sb = new StringBuilder();
+            sb.append("<!DOCTYPE html>\n<html>\n");
+            sb.append(" <head>\n");
+            sb.append("  <title>ppc</title>\n");
+            sb.append(" </head>\n");
+            sb.append(" <body>\n");
+            sb.append("  <h1>PPC Broker</h1>\n");
+
+
+            for (Map.Entry<String, Set<Map.Entry<String, Datapoint>>> e : broker.getSourcesNow()) {
+                sb.append("  <h2>" + e.getKey() + "</h2>\n");
+                sb.append("  <table>\n");
+                sb.append("   <tr><th>Magnitude</th><th>Value</th><th>Unit</th></tr>\n");
+                for (Map.Entry<String, Datapoint> ee : e.getValue()) {
+                    sb.append("   <tr>\n");
+                    sb.append("    <td>" + ee.getValue().mag + "</td>\n");
+                    sb.append("    <td>" + ee.getValue().val+ "</td>\n");
+                    sb.append("    <td>" + ee.getValue().unit + "</td>\n");
+                    sb.append("   </tr>\n");
+                }
+                sb.append("  </table>\n");
+            }
+
+            sb.append(" </body>\n");
+            sb.append("</html>");
+
+            String response = response("200 OK", "text/html", sb.toString());
+            sock.getOutputStream().write(response.getBytes());
+            System.out.println("[site]  200 OK [" + response.length() + "]");
+        } else if (method.equals("GET") && path.equals("/api/")) {
+            // generate json
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            JsonWriter writer = new JsonWriter(new OutputStreamWriter(baos, "UTF-8"));
+
+            writer.beginArray();
+
+            for (Map.Entry<String, Set<Map.Entry<String, Datapoint>>> e : broker.getSourcesNow()) {
+                writer.beginObject();
+                writer.name("source").value(e.getKey());
+                writer.name("measurements");
+                writer.beginArray();
+                for (Map.Entry<String, Datapoint> ee : e.getValue()) {
+                    writer.beginObject();
+                    writer.name("magnitude").value(ee.getValue().mag);
+                    writer.name("value").value(ee.getValue().val);
+                    writer.name("unit").value(ee.getValue().unit);
+                    writer.endObject();
+                }
+                writer.endArray();
+                writer.endObject();
+            }
+
+            writer.endArray();
+            writer.close();
+
+            String response = response("200 OK", "application/json", baos.toString());
+            sock.getOutputStream().write(response.getBytes());
+            System.out.println("[api]  200 OK [" + response.length() + "]");
+        } else {
+            String response = response("404 Not Found", null, null);
+            sock.getOutputStream().write(response.getBytes());
+            System.out.println("[web]  404 Not Found [" + response.length() + "]");
+        }
     }
 
     @Override
     public void run() {
-
-    }
-}
-
-class HTTPSListener {
-    private final int port = 8443;
-    private SSLServerSocket ss;
-
-    public HTTPSListener {
-        char[] password = "ppcppc".toCharArray();
-
-        // TLS stuff
         try {
-            KeyStore keyStore = KeyStore.getInstance("JKS");
+            // create reader and writer
+            BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
 
-            try (FileInputStream fis = new FileInputStream("servidor.ks")) {
-                keyStore.load(fis, password);
+            // parse request
+            String[] requestLine = in.readLine().split(" ");
+            String method = requestLine[0];
+            String path = requestLine[1];
+            String httpVer = requestLine[2];
+
+            // parse headers
+            ArrayList<String[]> headers = new ArrayList<String[]>();
+            String header = null;
+            while ((header = in.readLine()) != null) {
+                if (header.equals(""))
+                    break;
+                headers.add(header.split("\\s*:\\s*", 2));
             }
 
-            KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
-            kmf.init(keyStore, password);
+            // parse body
+            ArrayList<String> body = new ArrayList<String>();
+            if (method == "POST") {
+                String bodyLine = null;
+                while ((bodyLine = in.readLine()) != null) {
+                    if (bodyLine.equals(""))
+                        break;
+                    body.add(bodyLine);
+                }
+            }
 
-            SSLContext sslContext = SSLContext.getInstance("TLS");
-            sslContext.init(kmf.getKeyManagers(), null, null);
-            SSLServerSocketFactory ssf = sslContext.getServerSocketFactory();
+            // print them
+            System.out.println("[web] " + method + " " + path + " " + httpVer + " -> ");
 
-            serverSocket = (SSLServerSocket)ssf.createServerSocket(8443);
-            serverSocket.setNeedClientAuth(true);
+            // send response
+            serve(method, path, headers, body);
 
+            sock.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+}
+
+class HTTPSListener implements Runnable {
+    private final int port = 8443;
+    
+    private SSLServerSocket ss;
+    private Broker broker;
+
+    public HTTPSListener(Broker broker) throws Exception {
+        this.broker = broker;
+        char[] password = "ppcppc".toCharArray();
+
+        // TLS stuff
+        KeyStore keyStore = KeyStore.getInstance("JKS");
+
+        try (FileInputStream fis = new FileInputStream("servidor.ks")) {
+            keyStore.load(fis, password);
+        }
+
+        KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
+        kmf.init(keyStore, password);
+
+        SSLContext sslContext = SSLContext.getInstance("TLS");
+        sslContext.init(kmf.getKeyManagers(), null, null);
+        SSLServerSocketFactory ssf = sslContext.getServerSocketFactory();
+
+        ss = (SSLServerSocket)ssf.createServerSocket(8443);
+        ss.setNeedClientAuth(true);
     }
 
     @Override
@@ -65,9 +214,9 @@ class HTTPSListener {
         while (true) {
             try {
                 SSLSocket c = (SSLSocket)ss.accept();
-                System.out.println("https client accepted");
+                System.out.println("[https] client accepted: " + c.getInetAddress());
 
-                WebServeThread = new WebServeThread(c);
+                WebServeThread st = new WebServeThread(c, broker);
                 Thread t = new Thread(st);
                 t.start();
             } catch (IOException e) { e.printStackTrace(); }
@@ -81,7 +230,7 @@ class HTTPListener implements Runnable {
     private ServerSocket ss;
     private Broker broker;
 
-    public HTTPSListener(Broker broker) {
+    public HTTPListener(Broker broker) throws IOException {
         this.broker = broker;
         ss = new ServerSocket(port);
     }
@@ -91,9 +240,9 @@ class HTTPListener implements Runnable {
         while (true) {
             try {
                 Socket c = ss.accept();
-                System.out.println("http client accepted");
+                System.out.println("[http] client accepted: " + c.getInetAddress());
 
-                WebServeThread = new WebServeThread(c);
+                WebServeThread st = new WebServeThread(c, broker);
                 Thread t = new Thread(st);
                 t.start();
             } catch (IOException e) { e.printStackTrace(); }
@@ -101,29 +250,63 @@ class HTTPListener implements Runnable {
     }
 }
 
-class Broker {
-    // store last discovered datapoints
-    HashMap<String, HashMap<String, float>> series;
+class Datapoint {
+    public String mag;
+    public float val;
+    public String unit;
 
-    HTTPListener httpl = new HTTPListener(this);
-    //HTTPListener httpl = new HTTPListener(this);
-
-    public Broker() {
-        
+    public Datapoint(String mag, float val, String unit) {
+        this.mag = mag;
+        this.val = val;
+        this.unit = unit;
     }
 
-    void pushDatapoint(String source, String mag, float val) {
-        ArrayList<String, float> sourceSeries = source.get(source);
+    public String toString() {
+        return mag + ": " + val + " " + unit;
+    }
+}
+
+class Broker {
+    // store last discovered datapoints
+    HashMap<String, HashMap<String, Datapoint>> series;
+
+    HTTPListener httpl;
+    //HTTPSListener httpsl = new HTTPSListener(this);
+
+    public Broker() {
+        series = new HashMap<String, HashMap<String, Datapoint>>();
+
+        try {
+            httpl = new HTTPListener(this);
+            Thread httpt = new Thread(httpl);
+            httpt.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    void pushDatapoint(String source, String mag, float val, String unit) {
+        HashMap<String, Datapoint> sourceSeries = series.get(source);
 
         if (sourceSeries != null) {
             // puts if mag does not exist or replaces if mag does exist
-            sourceSeries.put(mag, val);
+            sourceSeries.put(mag, new Datapoint(mag, val, unit));
         } else {
             // new source
-            sourceSeries = new ArrayList<String, float>();
-            sourceSeries.put(mag, val);
+            sourceSeries = new HashMap<String, Datapoint>();
+            sourceSeries.put(mag, new Datapoint(mag, val, unit));
             series.put(source, sourceSeries);
         }
+    }
+
+    Set<Map.Entry<String, Set<Map.Entry<String, Datapoint>>>> getSourcesNow() {
+        HashMap<String, Set<Map.Entry<String, Datapoint>>> views = new HashMap<>();
+
+        for (Map.Entry<String, HashMap<String, Datapoint>> e : series.entrySet()) {
+            views.put(e.getKey(), e.getValue().entrySet());
+        }
+        
+        return views.entrySet();
     }
 }
 
@@ -138,11 +321,7 @@ class Client implements Runnable {
     private Validator validator;
     private Transformer transformer;
 
-    private void sendUnicast(String host, String msg) throws IOException {
-        byte[] buf = msg.getBytes();
-        DatagramPacket p = new DatagramPacket(buf, buf.length, InetAddress.getByName(host), port);
-        socket.send(p);
-    }
+    private Broker broker;
 
     public Client(String ifname) throws IOException, ParserConfigurationException, SAXException, TransformerConfigurationException {
         socket = new MulticastSocket(port);
@@ -157,6 +336,14 @@ class Client implements Runnable {
         Source schemaFile = new StreamSource(new File("data.xsd"));
         Schema schema = sfactory.newSchema(schemaFile);
         validator = schema.newValidator();
+
+        broker = new Broker();
+    }
+
+    private void sendUnicast(String host, String msg) throws IOException {
+        byte[] buf = msg.getBytes();
+        DatagramPacket p = new DatagramPacket(buf, buf.length, InetAddress.getByName(host), port);
+        socket.send(p);
     }
 
     private void decodeXML(byte[] bytes) {
@@ -167,17 +354,23 @@ class Client implements Runnable {
             document.getDocumentElement().normalize();
             root = document.getDocumentElement();
             validator.validate(new DOMSource(root));
-            System.out.println("xml valid");
+            System.out.println("[client]  xml good");
 
             NodeList nlserver = root.getElementsByTagName("server");
             NodeList nlmeas = root.getElementsByTagName("measurement");
 
-            System.out.println(nlserver.item(0).getTextContent() + ":");
+            String server = nlserver.item(0).getTextContent();
+
+            System.out.println("[client]  " + server + ":");
             
-            for (int i = 0; i < nlmeas.getLength(); i++)
-                System.out.println(" " + nlmeas.item(i).getAttributes().getNamedItem("magnitude").getTextContent() + ": " +
-                    nlmeas.item(i).getTextContent() + " " +
-                    nlmeas.item(i).getAttributes().getNamedItem("unit").getTextContent());
+            for (int i = 0; i < nlmeas.getLength(); i++) {
+                String mag = nlmeas.item(i).getAttributes().getNamedItem("magnitude").getTextContent();
+                String val = nlmeas.item(i).getTextContent();
+                String unit = nlmeas.item(i).getAttributes().getNamedItem("unit").getTextContent();
+                System.out.println("[client]   " + mag + ": " + Float.parseFloat(val) + " " + unit);
+
+                broker.pushDatapoint(server, mag, Float.parseFloat(val), unit);
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -187,12 +380,20 @@ class Client implements Runnable {
     private void decodeJSON(String s) {
         JsonParser parser = new JsonParser();
         JsonObject r = parser.parse(s).getAsJsonObject();
-        System.out.println(r.get("server").getAsString() + ":");
+
+        String server = r.get("server").getAsString();
+        System.out.println("[client]  " + server + ":");
+
         JsonArray meas = r.getAsJsonArray("measurements");
+
         for (JsonElement e : meas) {
             JsonObject m = e.getAsJsonObject();
-            System.out.println(" " + m.get("magnitude").getAsString() + ": " +
-                m.get("value").getAsString() + " " + m.get("unit").getAsString());
+            String mag = m.get("magnitude").getAsString();
+            String val = m.get("value").getAsString();
+            String unit = m.get("unit").getAsString();
+            System.out.println("[client]   " + mag + ": " + val + " " + unit);
+
+            broker.pushDatapoint(server, mag, Float.parseFloat(val), unit);
         }
     }
 
@@ -204,12 +405,15 @@ class Client implements Runnable {
             try { socket.receive(p); }
             catch (IOException e) { e.printStackTrace(); }
             String s = new String(p.getData(), 0, p.getLength());
-            System.out.println("recv: " + s);
+            System.out.print("[client] message from " + p.getAddress() + ": ");
 
-            if (s.startsWith("Content-Type: application/xml"))
+            if (s.startsWith("Content-Type: application/xml")) {
+                System.out.println("xml[" + p.getLength() + "]");
                 decodeXML(s.substring(33).getBytes());
-            else if (s.startsWith("Content-Type: application/json"))
+            } else if (s.startsWith("Content-Type: application/json")) {
+                System.out.println("json[" + p.getLength() + "]");
                 decodeJSON(s.substring(34));
+            }
         }
     }
 
