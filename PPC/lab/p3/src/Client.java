@@ -20,14 +20,80 @@ import com.google.gson.*;
 import com.google.gson.stream.*;
 import javax.net.ssl.*;
 import java.security.*;
+import javax.mail.*;
+import javax.mail.internet.*;
 
 
-class MailAgent {
+class MailAgent implements Runnable {
     private final String mail_server = "mail.arf20.com";
-    public MailAgent() {
-        Properties props = System.getProperties();
-        props.put("mail.smtp.host", mail_server);
-        Session session = Session.getDefaultInstance(props, null);
+    private final String agent_addr = "ppc-client@arf20.com";
+    private final String agent_user = "ppc-test";
+    private final String agent_pass = "redacted";
+
+    private Broker broker;
+    private Session session;
+
+    public MailAgent(Broker broker) {
+        this.broker = broker;
+        Properties prop = System.getProperties();
+        prop.put("mail.smtp.auth", true);
+        prop.put("mail.smtp.starttls.enable", "false");
+        prop.put("mail.smtp.host", mail_server);
+        prop.put("mail.smtp.port", "25");
+        session = Session.getDefaultInstance(prop, null);
+    }
+
+    private void sendMessage(String to, String subj, String body) throws Exception {
+        Message message = new MimeMessage(session);
+        message.setFrom(new InternetAddress(agent_addr));
+        message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+        message.setSubject(subj);
+
+        MimeBodyPart mimeBodyPart = new MimeBodyPart();
+        mimeBodyPart.setContent(body, "text/html; charset=utf-8");
+
+        Multipart multipart = new MimeMultipart();
+        multipart.addBodyPart(mimeBodyPart);
+
+        message.setContent(multipart);
+
+        Transport.send(message);
+    }
+
+    private void checkMessages() throws Exception {
+        Store store = session.getStore("imap");
+        store.connect(mail_server, agent_user, agent_pass);
+        Folder folder = store.getFolder("INBOX");
+        folder.open(Folder.READ_ONLY);
+
+        if (!folder.hasNewMessages())
+            return;
+
+        if ()
+
+        int nmsg = folder.getMessageCount();
+        Message messages[] = folder.getMessages(nmsg - 10, nmsg);
+
+        for (int i = 0; i < Math.min(10, messages.length); i++) {
+            System.out.println("[mail] imap msg " + i + ": " + messages[i].getFrom()[0] + "\t" +
+                messages[i].getSubject());
+            //String m = ((MimeMessage)message).getContent();
+        }
+
+        folder.close(false);
+        store.close();
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            try {
+                checkMessages();
+                Thread.sleep(30000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
 
@@ -282,7 +348,8 @@ class Broker {
     HashMap<String, HashMap<String, Datapoint>> series;
 
     HTTPListener httpl;
-    //HTTPSListener httpsl = new HTTPSListener(this);
+    HTTPSListener httpsl;
+    MailAgent maila;
 
     public Broker() {
         series = new HashMap<String, HashMap<String, Datapoint>>();
@@ -291,6 +358,14 @@ class Broker {
             httpl = new HTTPListener(this);
             Thread httpt = new Thread(httpl);
             httpt.start();
+
+            httpsl = new HTTPSListener(this);
+            Thread httpst = new Thread(httpsl);
+            httpst.start();
+
+            maila = new MailAgent(this);
+            Thread mailt = new Thread(maila);
+            mailt.start();
         } catch (Exception e) {
             e.printStackTrace();
         }

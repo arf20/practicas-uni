@@ -18036,4 +18036,40 @@ Content-Type: application/xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">6.26847</measurement><measurement magnitude="humid" unit="%">12.53694</measurement><measurement magnitude="press" unit="mbar">983.899</measurement></data>
 Content-Type: application/xml
 
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">6.8234577</measurement><measurement magnitude=
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">6.8234577</measurement><measurement magnitude="humid" unit="%">13.646915</measurement><measurement magnitude="press" unit="mbar">979.81464</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">7.4673276</measurement><measurement magnitude="humid" unit="%">14.934655</measurement><measurement magnitude="press" unit="mbar">976.88727</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">8.193083</measurement><measurement magnitude="humid" unit="%">16.386166</measurement><measurement magnitude="press" unit="mbar">975.28516</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">8.99332</measurement><measurement magnitude="humid" unit="%">17.98664</measurement><measurement magnitude="press" unit="mbar">975.0985</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">9.858406</measurement><measurement magnitude="humid" unit="%">19.716812</measurement><measurement magnitude="press" unit="mbar">976.33826</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">10.779384</measurement><measurement magnitude="humid" unit="%">21.558767</measurement><measurement magnitude="press" unit="mbar">978.9345</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">11.746243</measurement><measurement magnitude="humid" unit="%">23.492485</measurement><measurement magnitude="press" unit="mbar">982.7361</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">12.749065</measurement><measurement magnitude="humid" unit="%">25.49813</measurement><measurement magnitude="press" unit="mbar">987.53143</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">13.77578</measurement><measurement magnitude="humid" unit="%">27.55156</measurement><measurement magnitude="press" unit="mbar">993.0364</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">14.816412</measurement><measurement magnitude="humid" unit="%">29.632824</measurement><measurement magnitude="press" unit="mbar">998.9431</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">15.857826</measurement><measurement magnitude="humid" unit="%">31.715652</measurement><measurement magnitude="press" unit="mbar">1004.9074</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">16.890526</measurement><measurement magnitude="humid" unit="%">33.78105</measurement><measurement magnitude="press" unit="mbar">1010.5907</measurement></data>
+Content-Type: application/xml
+
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><data><server>default</server><measurement magnitude="temp" unit="C">17.90326</measurement><measurement magnitude="humid" unit="%">35.80652</measurement>
