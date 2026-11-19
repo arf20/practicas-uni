@@ -22,9 +22,11 @@ import javax.net.ssl.*;
 import java.security.*;
 import javax.mail.*;
 import javax.mail.internet.*;
+import javax.mail.event.*;
+import com.sun.mail.imap.*;
 
 
-class MailAgent implements Runnable {
+class MailAgent implements Runnable, MessageCountListener {
     private final String mail_server = "mail.arf20.com";
     private final String agent_addr = "ppc-client@arf20.com";
     private final String agent_user = "ppc-test";
@@ -32,8 +34,9 @@ class MailAgent implements Runnable {
 
     private Broker broker;
     private Session session;
+    private IMAPFolder folder;
 
-    public MailAgent(Broker broker) {
+    public MailAgent(Broker broker) throws Exception {
         this.broker = broker;
         Properties prop = System.getProperties();
         prop.put("mail.smtp.auth", true);
@@ -41,6 +44,12 @@ class MailAgent implements Runnable {
         prop.put("mail.smtp.host", mail_server);
         prop.put("mail.smtp.port", "25");
         session = Session.getDefaultInstance(prop, null);
+
+        Store store = session.getStore("imap");
+        store.connect(mail_server, agent_user, agent_pass);
+        folder = (IMAPFolder)store.getFolder("INBOX");
+        folder.open(Folder.READ_ONLY);
+        folder.addMessageCountListener(this);
     }
 
     private void sendMessage(String to, String subj, String body) throws Exception {
@@ -60,36 +69,24 @@ class MailAgent implements Runnable {
         Transport.send(message);
     }
 
-    private void checkMessages() throws Exception {
-        Store store = session.getStore("imap");
-        store.connect(mail_server, agent_user, agent_pass);
-        Folder folder = store.getFolder("INBOX");
-        folder.open(Folder.READ_ONLY);
-
-        if (!folder.hasNewMessages())
-            return;
-
-        if ()
-
-        int nmsg = folder.getMessageCount();
-        Message messages[] = folder.getMessages(nmsg - 10, nmsg);
-
-        for (int i = 0; i < Math.min(10, messages.length); i++) {
-            System.out.println("[mail] imap msg " + i + ": " + messages[i].getFrom()[0] + "\t" +
-                messages[i].getSubject());
-            //String m = ((MimeMessage)message).getContent();
+    public void messagesAdded(MessageCountEvent e) {
+        try {
+            Message[] msgs = e.getMessages();
+            for (int i = 0; i < msgs.length; i++) {
+                System.out.println("[mail] new message: " + msgs[i].getFrom().toString() + "  " + msgs[i].getSubject());
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
-
-        folder.close(false);
-        store.close();
     }
+
+    public void messagesRemoved(MessageCountEvent e) { }
 
     @Override
     public void run() {
         while (true) {
             try {
-                checkMessages();
-                Thread.sleep(30000);
+                folder.idle();
             } catch (Exception e) {
                 e.printStackTrace();
             }
