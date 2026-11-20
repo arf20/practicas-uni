@@ -74,6 +74,10 @@ class MailAgent implements Runnable, MessageCountListener {
             Message[] msgs = e.getMessages();
             for (int i = 0; i < msgs.length; i++) {
                 System.out.println("[mail] new message: " + msgs[i].getFrom().toString() + "  " + msgs[i].getSubject());
+
+                if (msgs[i].getSubject().toString().toLowerCase().equals("get")) {
+                    sendMessage(msgs[i].getFrom().toString(), "pcc measurement data report", broker.getJSON());
+                }
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -176,31 +180,7 @@ class WebServeThread implements Runnable {
             System.out.println("[site]  200 OK [" + response.length() + "]");
         } else if (method.equals("GET") && path.equals("/api/")) {
             // generate json
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            JsonWriter writer = new JsonWriter(new OutputStreamWriter(baos, "UTF-8"));
-
-            writer.beginArray();
-
-            for (Map.Entry<String, Set<Map.Entry<String, Datapoint>>> e : broker.getSourcesNow()) {
-                writer.beginObject();
-                writer.name("source").value(e.getKey());
-                writer.name("measurements");
-                writer.beginArray();
-                for (Map.Entry<String, Datapoint> ee : e.getValue()) {
-                    writer.beginObject();
-                    writer.name("magnitude").value(ee.getValue().mag);
-                    writer.name("value").value(ee.getValue().val);
-                    writer.name("unit").value(ee.getValue().unit);
-                    writer.endObject();
-                }
-                writer.endArray();
-                writer.endObject();
-            }
-
-            writer.endArray();
-            writer.close();
-
-            String response = response("200 OK", "application/json", baos.toString());
+            String response = response("200 OK", "application/json", broker.getJSON());
             sock.getOutputStream().write(response.getBytes());
             System.out.println("[api]  200 OK [" + response.length() + "]");
         } else {
@@ -390,6 +370,34 @@ class Broker {
         }
         
         return views.entrySet();
+    }
+
+    public String getJSON() throws Exception {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        JsonWriter writer = new JsonWriter(new OutputStreamWriter(baos, "UTF-8"));
+
+        writer.beginArray();
+
+        for (Map.Entry<String, Set<Map.Entry<String, Datapoint>>> e : getSourcesNow()) {
+            writer.beginObject();
+            writer.name("source").value(e.getKey());
+            writer.name("measurements");
+            writer.beginArray();
+            for (Map.Entry<String, Datapoint> ee : e.getValue()) {
+                writer.beginObject();
+                writer.name("magnitude").value(ee.getValue().mag);
+                writer.name("value").value(ee.getValue().val);
+                writer.name("unit").value(ee.getValue().unit);
+                writer.endObject();
+            }
+            writer.endArray();
+            writer.endObject();
+        }
+
+        writer.endArray();
+        writer.close();
+
+        return baos.toString();
     }
 }
 
