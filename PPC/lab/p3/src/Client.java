@@ -30,7 +30,7 @@ class MailAgent implements Runnable, MessageCountListener {
     private final String mail_server = "mail.arf20.com";
     private final String agent_addr = "ppc-client@arf20.com";
     private final String agent_user = "ppc-test";
-    private final String agent_pass = "redacted";
+    private final String agent_pass = "ppcsucksass";
 
     private Broker broker;
     private Session session;
@@ -39,7 +39,7 @@ class MailAgent implements Runnable, MessageCountListener {
     public MailAgent(Broker broker) throws Exception {
         this.broker = broker;
         Properties prop = System.getProperties();
-        prop.put("mail.smtp.auth", true);
+        prop.put("mail.smtp.auth", false);
         prop.put("mail.smtp.starttls.enable", "false");
         prop.put("mail.smtp.host", mail_server);
         prop.put("mail.smtp.port", "25");
@@ -50,13 +50,19 @@ class MailAgent implements Runnable, MessageCountListener {
         folder = (IMAPFolder)store.getFolder("INBOX");
         folder.open(Folder.READ_ONLY);
         folder.addMessageCountListener(this);
+
+        //sendMessage("arf20@arf20.com", "test", "sdkfjhsdkgjsdhg");
     }
 
-    private void sendMessage(String to, String subj, String body) throws Exception {
+    private void sendMessage(String to, String subj, String body, String replyto) throws Exception {
+        System.out.println("[mail] sending to " + to + ": " + subj);
+
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress(agent_addr));
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
         message.setSubject(subj);
+        if (replyto != null)
+            message.setHeader("Answer-To", replyto);
 
         MimeBodyPart mimeBodyPart = new MimeBodyPart();
         mimeBodyPart.setContent(body, "text/html; charset=utf-8");
@@ -73,10 +79,11 @@ class MailAgent implements Runnable, MessageCountListener {
         try {
             Message[] msgs = e.getMessages();
             for (int i = 0; i < msgs.length; i++) {
-                System.out.println("[mail] new message: " + msgs[i].getFrom().toString() + "  " + msgs[i].getSubject());
+                System.out.println("[mail] new message: " + ((InternetAddress)msgs[i].getFrom()[0]).getAddress() + "  " + msgs[i].getSubject());
 
                 if (msgs[i].getSubject().toString().toLowerCase().equals("get")) {
-                    sendMessage(msgs[i].getFrom().toString(), "pcc measurement data report", broker.getJSON());
+                    String msgid = msgs[i].getHeader("Message-ID")[0];
+                    sendMessage(((InternetAddress)msgs[i].getFrom()[0]).getAddress(), "pcc measurement data report", broker.getJSON(), msgid);
                 }
             }
         } catch (Exception ex) {
