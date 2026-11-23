@@ -93,10 +93,12 @@ int verify(const rulebase_t *rb, factbase_t *fb, uint8_t goal)
     int verified = 0;
 
     while (cs.rb_rules_size > 0 && !verified) {
+        /* select rule smartly from conflict set and remove it from set */
         const rule_t *r = solve(&cs);
         rule_t sel_rule = *r;
         rulebase_remove(&cs, r);
 
+        /* check that all antedecents verify */
         verified = 1;
         while (sel_rule.r_inputs_size > 0 && verified) {
             uint8_t newgoal = sel_rule.r_inputs[sel_rule.r_inputs_size - 1];
@@ -107,6 +109,8 @@ int verify(const rulebase_t *rb, factbase_t *fb, uint8_t goal)
         if (verified)
             factbase_insert(fb, goal);
     }
+
+    free(cs.rb_rules);
     
     return verified;
 }
