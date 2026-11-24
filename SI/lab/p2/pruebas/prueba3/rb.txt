@@ -1,0 +1,8 @@
+7
+R1: Si conductor2o3años Entonces conductorExperimentado, FC=0.5
+R2: Si conductorMas3años Entonces conductorExperimentado, FC=0.9
+R3: Si conduce2o3horas Entonces conductorCansado, FC=0.5
+R4: Si conduceMas3horas Entonces conductorCansado, FC=1
+R5: Si conductorExperimentado y conductorNoViajaSolo Entonces conductorCausa, FC=-0.5
+R6: Si conductorCansado Entonces conductorCausa, FC=0.5
+R7: Si conductorJoven o conductorBebido Entonces conductorCausa, Fc=0.7

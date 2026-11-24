@@ -42,7 +42,7 @@ int main(int argc, char **argv)
     }
 
     if (factbase_read(&fb, &lb, factfile) < 0) {
-        fprintf(stderr, "error reading rules\n");
+        fprintf(stderr, "error reading facts\n");
         exit(1);
     }
 

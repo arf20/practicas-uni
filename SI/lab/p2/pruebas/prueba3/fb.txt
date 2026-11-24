@@ -1,0 +1,7 @@
+4
+conductorMas3años, FC=1
+conducido2o3horas, FC=1
+conductorNoViajaSolo, FC=0
+conductorJoven, FC=0.4
+Objetivo
+conductorCausa
