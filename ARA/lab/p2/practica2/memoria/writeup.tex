@@ -1,0 +1,71 @@
+\documentclass[12pt]{article}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+
+\title{Práctica 2 - Balanceo de Carga y alta disponibilidad - ARA}
+\subtitle{Primera Convocatoria}
+\date{25 de Noviembre, 2026}
+\author{Ángel Ruiz Fernandez 23836363Z \textless a.ruizfernandez@um.es\textgreater}
+
+\begin{document}
+    \maketitle
+    \pagebreak
+
+    \tableofcontents
+    \pagebreak
+
+    \section{Cuestiones}
+
+    \subsection{Escenario}
+
+    \subsubsection{Añada un cliente, un balanceador de carga y dos servidores más, al escenario que se entrega con el enunciado de prácticas.}
+
+    Hecho
+
+    \subsubsection{Configure las diferentes subredes, IPs, etc. en el nuevo escenario siguiendo la convención del enunciado de prácticas.}
+
+    Hecho
+
+    \subsubsection{Compruebe la conectividad y el funcionamiento del escenario antes de poner en marcha las herramientas de balanceo de carga y alta disponibilidad.}
+
+    Hecho
+
+    \subsection{Balanceo de Carga}
+
+    \subsubsection{Explique los parámetros principales del fichero haproxy.cfg proporcionado}
+
+    \begin{itemize}
+        \item mode http: trabajar a nivel de aplicación HTTP
+        \item frontend www.mybalancer.haproxy: Virtual Host al que contestar
+        \item bind *:80: dirección de bind
+        \item default\_backend web\_servers: backend
+        \item balance roundrobin: tipo de balance
+        \item cookie SERVERUSED insert indirect nocache: especificación de cookie de estado
+        \item server webserver0 180.2.3.101:80 cookie webserver0 check: servidores backend
+    \end{itemize}
+
+    \subsubsection{Pruebe y estudie con una herramienta analizadora de paquetes de red (p.ej. tcpdump + Wireshark) el comportamiento del sistema cuando un cliente accede al servicio web a través de la IP física de cada uno de los balanceadores.}
+
+    El balanceador actua como un proxy reverso que utiliza uno de los 3 servidores de backend para resolver una request. Una request al lb1 fue servida por servidor .101, y una request al lb2 fue servida por .102.
+
+    \subsubsection{Pruebe y estudie con el comportamiento del sistema cuando el algoritmo de balanceo de carga es roundrobin.}
+
+    \subsubsection{Escoja un algoritmo de balanceo diferente y comente sobre el escenario en qué se diferencia. El grupo puede escoger el algoritmo que desee.}
+    
+    \subsection{Alta Disponibilidad}
+
+    \subsubsection{Explique los parámetros principales del fichero keepalived-lb1.conf y keepalived-lb2.conf}
+
+    \subsubsection{Pruebe y estudie el comportamiento del sistema cuando la consulta http desde un cliente se realiza estando el sistema de alta disponibilidad (keepalived) en marcha. Es decir, a la IP virtual que keepalived gestiona. Analice cómo funciona la sincronización del servicio de alta disponibilidad a través del protocolo VRRP.}
+
+    \subsubsection{Analice qué pasa cuando el demonio de keepalived de lb1 deja de funcionar. ¿Cuál es la reacción a nivel ARP?}
+    
+    \subsubsection{Con los dos equipos que actúan de balanceadores están funcionando con la herramienta keepalived, analice el comportamiento del sistema cuando se hace un ping desde un host a la IP de un servicio web (p.ej. S2). Tire uno de los balanceadores (desactivando la interfaz eth0) y compruebe qué ocurre. ¿Sigue funcionando el ping? ¿Por qué?}
+    
+    \subsubsection{}
+
+
+\end{document}
+
